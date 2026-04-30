@@ -23,9 +23,12 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ReviewsIndexRouteImport } from './routes/reviews.index'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as CountriesIndexRouteImport } from './routes/countries.index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as VsMatchupRouteImport } from './routes/vs.$matchup'
 import { Route as ReviewsSlugRouteImport } from './routes/reviews.$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as CountriesSlugRouteImport } from './routes/countries.$slug'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const WhyTrustUsRoute = WhyTrustUsRouteImport.update({
   id: '/why-trust-us',
@@ -97,6 +100,16 @@ const CountriesIndexRoute = CountriesIndexRouteImport.update({
   path: '/countries/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VsMatchupRoute = VsMatchupRouteImport.update({
+  id: '/vs/$matchup',
+  path: '/vs/$matchup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsSlugRoute = ReviewsSlugRouteImport.update({
   id: '/reviews/$slug',
   path: '/reviews/$slug',
@@ -112,6 +125,11 @@ const CountriesSlugRoute = CountriesSlugRouteImport.update({
   path: '/countries/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -125,9 +143,12 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/why-trust-us': typeof WhyTrustUsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/countries/$slug': typeof CountriesSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/vs/$matchup': typeof VsMatchupRoute
+  '/blog/': typeof BlogIndexRoute
   '/countries/': typeof CountriesIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/reviews/': typeof ReviewsIndexRoute
@@ -144,9 +165,12 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/why-trust-us': typeof WhyTrustUsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/countries/$slug': typeof CountriesSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/vs/$matchup': typeof VsMatchupRoute
+  '/blog': typeof BlogIndexRoute
   '/countries': typeof CountriesIndexRoute
   '/guides': typeof GuidesIndexRoute
   '/reviews': typeof ReviewsIndexRoute
@@ -164,9 +188,12 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/why-trust-us': typeof WhyTrustUsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/countries/$slug': typeof CountriesSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/vs/$matchup': typeof VsMatchupRoute
+  '/blog/': typeof BlogIndexRoute
   '/countries/': typeof CountriesIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/reviews/': typeof ReviewsIndexRoute
@@ -185,9 +212,12 @@ export interface FileRouteTypes {
     | '/terms'
     | '/trust-score'
     | '/why-trust-us'
+    | '/blog/$slug'
     | '/countries/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
+    | '/vs/$matchup'
+    | '/blog/'
     | '/countries/'
     | '/guides/'
     | '/reviews/'
@@ -204,9 +234,12 @@ export interface FileRouteTypes {
     | '/terms'
     | '/trust-score'
     | '/why-trust-us'
+    | '/blog/$slug'
     | '/countries/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
+    | '/vs/$matchup'
+    | '/blog'
     | '/countries'
     | '/guides'
     | '/reviews'
@@ -223,9 +256,12 @@ export interface FileRouteTypes {
     | '/terms'
     | '/trust-score'
     | '/why-trust-us'
+    | '/blog/$slug'
     | '/countries/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
+    | '/vs/$matchup'
+    | '/blog/'
     | '/countries/'
     | '/guides/'
     | '/reviews/'
@@ -243,9 +279,12 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   TrustScoreRoute: typeof TrustScoreRoute
   WhyTrustUsRoute: typeof WhyTrustUsRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   CountriesSlugRoute: typeof CountriesSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   ReviewsSlugRoute: typeof ReviewsSlugRoute
+  VsMatchupRoute: typeof VsMatchupRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   CountriesIndexRoute: typeof CountriesIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   ReviewsIndexRoute: typeof ReviewsIndexRoute
@@ -351,6 +390,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CountriesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vs/$matchup': {
+      id: '/vs/$matchup'
+      path: '/vs/$matchup'
+      fullPath: '/vs/$matchup'
+      preLoaderRoute: typeof VsMatchupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews/$slug': {
       id: '/reviews/$slug'
       path: '/reviews/$slug'
@@ -372,6 +425,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CountriesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -387,9 +447,12 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   TrustScoreRoute: TrustScoreRoute,
   WhyTrustUsRoute: WhyTrustUsRoute,
+  BlogSlugRoute: BlogSlugRoute,
   CountriesSlugRoute: CountriesSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   ReviewsSlugRoute: ReviewsSlugRoute,
+  VsMatchupRoute: VsMatchupRoute,
+  BlogIndexRoute: BlogIndexRoute,
   CountriesIndexRoute: CountriesIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   ReviewsIndexRoute: ReviewsIndexRoute,
