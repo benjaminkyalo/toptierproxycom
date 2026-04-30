@@ -147,7 +147,7 @@ function ReviewPage() {
             <p>
               {provider.name} is the right choice for teams whose primary concern is{" "}
               <strong>{provider.bestFor.toLowerCase()}</strong>. If you need a different feature mix, see our{" "}
-              <Link to="/guides/best-proxies-2026">overall best proxies ranking</Link> or our{" "}
+              <Link to="/guides/$slug" params={{ slug: "best-proxies-2026" }}>overall best proxies ranking</Link> or our{" "}
               <Link to="/compare">side-by-side comparison tool</Link>.
             </p>
 

@@ -24,8 +24,7 @@ export function PageShell({
               {breadcrumb.map((b, i) => (
                 <span key={b.to}>
                   {i > 0 && <span className="mx-1">/</span>}
-                  {/* @ts-expect-error dynamic crumb */}
-                  <Link to={b.to} className="hover:underline">{b.label}</Link>
+                  <a href={b.to} className="hover:underline">{b.label}</a>
                 </span>
               ))}
             </nav>
