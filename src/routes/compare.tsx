@@ -70,6 +70,33 @@ function ComparePage() {
           </tbody>
         </table>
       </div>
+
+      <section className="mt-12">
+        <h2 className="text-2xl font-bold">Popular head-to-head comparisons</h2>
+        <p className="mt-2 text-muted-foreground">The most-searched proxy provider matchups, with full side-by-side breakdowns.</p>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+          {[
+            ["bright-data", "oxylabs"],
+            ["bright-data", "decodo"],
+            ["oxylabs", "decodo"],
+            ["decodo", "iproyal"],
+            ["soax", "decodo"],
+            ["bright-data", "soax"],
+            ["webshare", "decodo"],
+            ["iproyal", "webshare"],
+            ["netnut", "bright-data"],
+          ].map(([a, b]) => {
+            const A = providers.find((p) => p.slug === a)!;
+            const B = providers.find((p) => p.slug === b)!;
+            return (
+              <Link key={`${a}-${b}`} to="/vs/$matchup" params={{ matchup: `${a}-vs-${b}` }} className="rounded-md border border-border bg-card p-4 hover:border-primary">
+                <div className="font-bold">{A.name} <span className="text-muted-foreground">vs</span> {B.name}</div>
+                <div className="mt-1 text-xs text-muted-foreground">Pricing, pool size & verdict</div>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
     </PageShell>
   );
 }

@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyTrustUsRouteImport } from './routes/why-trust-us'
 import { Route as TrustScoreRouteImport } from './routes/trust-score'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as HowWeTestRouteImport } from './routes/how-we-test'
@@ -23,9 +25,12 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ReviewsIndexRouteImport } from './routes/reviews.index'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as CountriesIndexRouteImport } from './routes/countries.index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
+import { Route as VsMatchupRouteImport } from './routes/vs.$matchup'
 import { Route as ReviewsSlugRouteImport } from './routes/reviews.$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as CountriesSlugRouteImport } from './routes/countries.$slug'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const WhyTrustUsRoute = WhyTrustUsRouteImport.update({
   id: '/why-trust-us',
@@ -40,6 +45,16 @@ const TrustScoreRoute = TrustScoreRouteImport.update({
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResourcesRoute = ResourcesRouteImport.update({
@@ -97,6 +112,16 @@ const CountriesIndexRoute = CountriesIndexRouteImport.update({
   path: '/countries/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VsMatchupRoute = VsMatchupRouteImport.update({
+  id: '/vs/$matchup',
+  path: '/vs/$matchup',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsSlugRoute = ReviewsSlugRouteImport.update({
   id: '/reviews/$slug',
   path: '/reviews/$slug',
@@ -112,6 +137,11 @@ const CountriesSlugRoute = CountriesSlugRouteImport.update({
   path: '/countries/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -122,12 +152,17 @@ export interface FileRoutesByFullPath {
   '/how-we-test': typeof HowWeTestRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/why-trust-us': typeof WhyTrustUsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/countries/$slug': typeof CountriesSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/vs/$matchup': typeof VsMatchupRoute
+  '/blog/': typeof BlogIndexRoute
   '/countries/': typeof CountriesIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/reviews/': typeof ReviewsIndexRoute
@@ -141,12 +176,17 @@ export interface FileRoutesByTo {
   '/how-we-test': typeof HowWeTestRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/why-trust-us': typeof WhyTrustUsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/countries/$slug': typeof CountriesSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/vs/$matchup': typeof VsMatchupRoute
+  '/blog': typeof BlogIndexRoute
   '/countries': typeof CountriesIndexRoute
   '/guides': typeof GuidesIndexRoute
   '/reviews': typeof ReviewsIndexRoute
@@ -161,12 +201,17 @@ export interface FileRoutesById {
   '/how-we-test': typeof HowWeTestRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/why-trust-us': typeof WhyTrustUsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/countries/$slug': typeof CountriesSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/vs/$matchup': typeof VsMatchupRoute
+  '/blog/': typeof BlogIndexRoute
   '/countries/': typeof CountriesIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/reviews/': typeof ReviewsIndexRoute
@@ -182,12 +227,17 @@ export interface FileRouteTypes {
     | '/how-we-test'
     | '/privacy'
     | '/resources'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/terms'
     | '/trust-score'
     | '/why-trust-us'
+    | '/blog/$slug'
     | '/countries/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
+    | '/vs/$matchup'
+    | '/blog/'
     | '/countries/'
     | '/guides/'
     | '/reviews/'
@@ -201,12 +251,17 @@ export interface FileRouteTypes {
     | '/how-we-test'
     | '/privacy'
     | '/resources'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/terms'
     | '/trust-score'
     | '/why-trust-us'
+    | '/blog/$slug'
     | '/countries/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
+    | '/vs/$matchup'
+    | '/blog'
     | '/countries'
     | '/guides'
     | '/reviews'
@@ -220,12 +275,17 @@ export interface FileRouteTypes {
     | '/how-we-test'
     | '/privacy'
     | '/resources'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/terms'
     | '/trust-score'
     | '/why-trust-us'
+    | '/blog/$slug'
     | '/countries/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
+    | '/vs/$matchup'
+    | '/blog/'
     | '/countries/'
     | '/guides/'
     | '/reviews/'
@@ -240,12 +300,17 @@ export interface RootRouteChildren {
   HowWeTestRoute: typeof HowWeTestRoute
   PrivacyRoute: typeof PrivacyRoute
   ResourcesRoute: typeof ResourcesRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   TrustScoreRoute: typeof TrustScoreRoute
   WhyTrustUsRoute: typeof WhyTrustUsRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   CountriesSlugRoute: typeof CountriesSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   ReviewsSlugRoute: typeof ReviewsSlugRoute
+  VsMatchupRoute: typeof VsMatchupRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   CountriesIndexRoute: typeof CountriesIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   ReviewsIndexRoute: typeof ReviewsIndexRoute
@@ -272,6 +337,20 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/resources': {
@@ -351,6 +430,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CountriesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vs/$matchup': {
+      id: '/vs/$matchup'
+      path: '/vs/$matchup'
+      fullPath: '/vs/$matchup'
+      preLoaderRoute: typeof VsMatchupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews/$slug': {
       id: '/reviews/$slug'
       path: '/reviews/$slug'
@@ -372,6 +465,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CountriesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -384,12 +484,17 @@ const rootRouteChildren: RootRouteChildren = {
   HowWeTestRoute: HowWeTestRoute,
   PrivacyRoute: PrivacyRoute,
   ResourcesRoute: ResourcesRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   TrustScoreRoute: TrustScoreRoute,
   WhyTrustUsRoute: WhyTrustUsRoute,
+  BlogSlugRoute: BlogSlugRoute,
   CountriesSlugRoute: CountriesSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   ReviewsSlugRoute: ReviewsSlugRoute,
+  VsMatchupRoute: VsMatchupRoute,
+  BlogIndexRoute: BlogIndexRoute,
   CountriesIndexRoute: CountriesIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   ReviewsIndexRoute: ReviewsIndexRoute,
