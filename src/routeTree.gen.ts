@@ -25,6 +25,8 @@ import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as CountriesIndexRouteImport } from './routes/countries.index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as VsMatchupRouteImport } from './routes/vs.$matchup'
+import { Route as SitemapXmlRouteImport } from './routes/sitemap.xml'
+import { Route as RobotsTxtRouteImport } from './routes/robots.txt'
 import { Route as ReviewsSlugRouteImport } from './routes/reviews.$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as CountriesSlugRouteImport } from './routes/countries.$slug'
@@ -110,6 +112,16 @@ const VsMatchupRoute = VsMatchupRouteImport.update({
   path: '/vs/$matchup',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapXmlRoute = SitemapXmlRouteImport.update({
+  id: '/sitemap/xml',
+  path: '/sitemap/xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsTxtRoute = RobotsTxtRouteImport.update({
+  id: '/robots/txt',
+  path: '/robots/txt',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsSlugRoute = ReviewsSlugRouteImport.update({
   id: '/reviews/$slug',
   path: '/reviews/$slug',
@@ -147,6 +159,8 @@ export interface FileRoutesByFullPath {
   '/countries/$slug': typeof CountriesSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/robots/txt': typeof RobotsTxtRoute
+  '/sitemap/xml': typeof SitemapXmlRoute
   '/vs/$matchup': typeof VsMatchupRoute
   '/blog/': typeof BlogIndexRoute
   '/countries/': typeof CountriesIndexRoute
@@ -169,6 +183,8 @@ export interface FileRoutesByTo {
   '/countries/$slug': typeof CountriesSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/robots/txt': typeof RobotsTxtRoute
+  '/sitemap/xml': typeof SitemapXmlRoute
   '/vs/$matchup': typeof VsMatchupRoute
   '/blog': typeof BlogIndexRoute
   '/countries': typeof CountriesIndexRoute
@@ -192,6 +208,8 @@ export interface FileRoutesById {
   '/countries/$slug': typeof CountriesSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/robots/txt': typeof RobotsTxtRoute
+  '/sitemap/xml': typeof SitemapXmlRoute
   '/vs/$matchup': typeof VsMatchupRoute
   '/blog/': typeof BlogIndexRoute
   '/countries/': typeof CountriesIndexRoute
@@ -216,6 +234,8 @@ export interface FileRouteTypes {
     | '/countries/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
+    | '/robots/txt'
+    | '/sitemap/xml'
     | '/vs/$matchup'
     | '/blog/'
     | '/countries/'
@@ -238,6 +258,8 @@ export interface FileRouteTypes {
     | '/countries/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
+    | '/robots/txt'
+    | '/sitemap/xml'
     | '/vs/$matchup'
     | '/blog'
     | '/countries'
@@ -260,6 +282,8 @@ export interface FileRouteTypes {
     | '/countries/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
+    | '/robots/txt'
+    | '/sitemap/xml'
     | '/vs/$matchup'
     | '/blog/'
     | '/countries/'
@@ -283,6 +307,8 @@ export interface RootRouteChildren {
   CountriesSlugRoute: typeof CountriesSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   ReviewsSlugRoute: typeof ReviewsSlugRoute
+  RobotsTxtRoute: typeof RobotsTxtRoute
+  SitemapXmlRoute: typeof SitemapXmlRoute
   VsMatchupRoute: typeof VsMatchupRoute
   BlogIndexRoute: typeof BlogIndexRoute
   CountriesIndexRoute: typeof CountriesIndexRoute
@@ -404,6 +430,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VsMatchupRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap/xml': {
+      id: '/sitemap/xml'
+      path: '/sitemap/xml'
+      fullPath: '/sitemap/xml'
+      preLoaderRoute: typeof SitemapXmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots/txt': {
+      id: '/robots/txt'
+      path: '/robots/txt'
+      fullPath: '/robots/txt'
+      preLoaderRoute: typeof RobotsTxtRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews/$slug': {
       id: '/reviews/$slug'
       path: '/reviews/$slug'
@@ -451,6 +491,8 @@ const rootRouteChildren: RootRouteChildren = {
   CountriesSlugRoute: CountriesSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   ReviewsSlugRoute: ReviewsSlugRoute,
+  RobotsTxtRoute: RobotsTxtRoute,
+  SitemapXmlRoute: SitemapXmlRoute,
   VsMatchupRoute: VsMatchupRoute,
   BlogIndexRoute: BlogIndexRoute,
   CountriesIndexRoute: CountriesIndexRoute,

@@ -20,33 +20,17 @@ function buildSitemap(): string {
     ...countries.map((c) => ({ loc: `/countries/${c.slug}`, priority: "0.7", changefreq: "monthly" })),
     ...blogPosts.map((b) => ({ loc: `/blog/${b.slug}`, priority: "0.8", changefreq: "monthly" })),
   ];
-
-  // VS comparison URLs (combinations of top providers)
   const top = providers.slice(0, 8);
   for (let i = 0; i < top.length; i++) {
     for (let j = i + 1; j < top.length; j++) {
       urls.push({ loc: `/vs/${top[i].slug}-vs-${top[j].slug}`, priority: "0.6", changefreq: "monthly" });
     }
   }
-
-  const body = urls
-    .map(
-      (u) => `  <url>
-    <loc>${SITE}${u.loc}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>${u.changefreq}</changefreq>
-    <priority>${u.priority}</priority>
-  </url>`
-    )
-    .join("\n");
-
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${body}
-</urlset>`;
+  const body = urls.map((u) => `  <url><loc>${SITE}${u.loc}</loc><lastmod>${today}</lastmod><changefreq>${u.changefreq}</changefreq><priority>${u.priority}</priority></url>`).join("\n");
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>`;
 }
 
-export const Route = createFileRoute("/api/public/sitemap")({
+export const Route = createFileRoute("/sitemap/xml")({
   server: {
     handlers: {
       GET: () => new Response(buildSitemap(), {
