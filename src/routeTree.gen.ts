@@ -9,12 +9,74 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WhyTrustUsRouteImport } from './routes/why-trust-us'
+import { Route as TrustScoreRouteImport } from './routes/trust-score'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as HowWeTestRouteImport } from './routes/how-we-test'
+import { Route as DisclaimersRouteImport } from './routes/disclaimers'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CompareRouteImport } from './routes/compare'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ReviewsIndexRouteImport } from './routes/reviews.index'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
+import { Route as CountriesIndexRouteImport } from './routes/countries.index'
 import { Route as ReviewsSlugRouteImport } from './routes/reviews.$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
+import { Route as CountriesSlugRouteImport } from './routes/countries.$slug'
 
+const WhyTrustUsRoute = WhyTrustUsRouteImport.update({
+  id: '/why-trust-us',
+  path: '/why-trust-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrustScoreRoute = TrustScoreRouteImport.update({
+  id: '/trust-score',
+  path: '/trust-score',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResourcesRoute = ResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowWeTestRoute = HowWeTestRouteImport.update({
+  id: '/how-we-test',
+  path: '/how-we-test',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DisclaimersRoute = DisclaimersRouteImport.update({
+  id: '/disclaimers',
+  path: '/disclaimers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareRoute = CompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -30,6 +92,11 @@ const GuidesIndexRoute = GuidesIndexRouteImport.update({
   path: '/guides/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CountriesIndexRoute = CountriesIndexRouteImport.update({
+  id: '/countries/',
+  path: '/countries/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsSlugRoute = ReviewsSlugRouteImport.update({
   id: '/reviews/$slug',
   path: '/reviews/$slug',
@@ -40,53 +107,222 @@ const GuidesSlugRoute = GuidesSlugRouteImport.update({
   path: '/guides/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CountriesSlugRoute = CountriesSlugRouteImport.update({
+  id: '/countries/$slug',
+  path: '/countries/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/disclaimers': typeof DisclaimersRoute
+  '/how-we-test': typeof HowWeTestRoute
+  '/privacy': typeof PrivacyRoute
+  '/resources': typeof ResourcesRoute
+  '/terms': typeof TermsRoute
+  '/trust-score': typeof TrustScoreRoute
+  '/why-trust-us': typeof WhyTrustUsRoute
+  '/countries/$slug': typeof CountriesSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/countries/': typeof CountriesIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/reviews/': typeof ReviewsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/disclaimers': typeof DisclaimersRoute
+  '/how-we-test': typeof HowWeTestRoute
+  '/privacy': typeof PrivacyRoute
+  '/resources': typeof ResourcesRoute
+  '/terms': typeof TermsRoute
+  '/trust-score': typeof TrustScoreRoute
+  '/why-trust-us': typeof WhyTrustUsRoute
+  '/countries/$slug': typeof CountriesSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/countries': typeof CountriesIndexRoute
   '/guides': typeof GuidesIndexRoute
   '/reviews': typeof ReviewsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/disclaimers': typeof DisclaimersRoute
+  '/how-we-test': typeof HowWeTestRoute
+  '/privacy': typeof PrivacyRoute
+  '/resources': typeof ResourcesRoute
+  '/terms': typeof TermsRoute
+  '/trust-score': typeof TrustScoreRoute
+  '/why-trust-us': typeof WhyTrustUsRoute
+  '/countries/$slug': typeof CountriesSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/countries/': typeof CountriesIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/reviews/': typeof ReviewsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/guides/$slug' | '/reviews/$slug' | '/guides/' | '/reviews/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/compare'
+    | '/contact'
+    | '/disclaimers'
+    | '/how-we-test'
+    | '/privacy'
+    | '/resources'
+    | '/terms'
+    | '/trust-score'
+    | '/why-trust-us'
+    | '/countries/$slug'
+    | '/guides/$slug'
+    | '/reviews/$slug'
+    | '/countries/'
+    | '/guides/'
+    | '/reviews/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/guides/$slug' | '/reviews/$slug' | '/guides' | '/reviews'
+  to:
+    | '/'
+    | '/about'
+    | '/compare'
+    | '/contact'
+    | '/disclaimers'
+    | '/how-we-test'
+    | '/privacy'
+    | '/resources'
+    | '/terms'
+    | '/trust-score'
+    | '/why-trust-us'
+    | '/countries/$slug'
+    | '/guides/$slug'
+    | '/reviews/$slug'
+    | '/countries'
+    | '/guides'
+    | '/reviews'
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/compare'
+    | '/contact'
+    | '/disclaimers'
+    | '/how-we-test'
+    | '/privacy'
+    | '/resources'
+    | '/terms'
+    | '/trust-score'
+    | '/why-trust-us'
+    | '/countries/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
+    | '/countries/'
     | '/guides/'
     | '/reviews/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  CompareRoute: typeof CompareRoute
+  ContactRoute: typeof ContactRoute
+  DisclaimersRoute: typeof DisclaimersRoute
+  HowWeTestRoute: typeof HowWeTestRoute
+  PrivacyRoute: typeof PrivacyRoute
+  ResourcesRoute: typeof ResourcesRoute
+  TermsRoute: typeof TermsRoute
+  TrustScoreRoute: typeof TrustScoreRoute
+  WhyTrustUsRoute: typeof WhyTrustUsRoute
+  CountriesSlugRoute: typeof CountriesSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   ReviewsSlugRoute: typeof ReviewsSlugRoute
+  CountriesIndexRoute: typeof CountriesIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   ReviewsIndexRoute: typeof ReviewsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/why-trust-us': {
+      id: '/why-trust-us'
+      path: '/why-trust-us'
+      fullPath: '/why-trust-us'
+      preLoaderRoute: typeof WhyTrustUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/trust-score': {
+      id: '/trust-score'
+      path: '/trust-score'
+      fullPath: '/trust-score'
+      preLoaderRoute: typeof TrustScoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/resources': {
+      id: '/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-we-test': {
+      id: '/how-we-test'
+      path: '/how-we-test'
+      fullPath: '/how-we-test'
+      preLoaderRoute: typeof HowWeTestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/disclaimers': {
+      id: '/disclaimers'
+      path: '/disclaimers'
+      fullPath: '/disclaimers'
+      preLoaderRoute: typeof DisclaimersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare': {
+      id: '/compare'
+      path: '/compare'
+      fullPath: '/compare'
+      preLoaderRoute: typeof CompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -108,6 +344,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuidesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/countries/': {
+      id: '/countries/'
+      path: '/countries'
+      fullPath: '/countries/'
+      preLoaderRoute: typeof CountriesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews/$slug': {
       id: '/reviews/$slug'
       path: '/reviews/$slug'
@@ -122,13 +365,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuidesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/countries/$slug': {
+      id: '/countries/$slug'
+      path: '/countries/$slug'
+      fullPath: '/countries/$slug'
+      preLoaderRoute: typeof CountriesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  CompareRoute: CompareRoute,
+  ContactRoute: ContactRoute,
+  DisclaimersRoute: DisclaimersRoute,
+  HowWeTestRoute: HowWeTestRoute,
+  PrivacyRoute: PrivacyRoute,
+  ResourcesRoute: ResourcesRoute,
+  TermsRoute: TermsRoute,
+  TrustScoreRoute: TrustScoreRoute,
+  WhyTrustUsRoute: WhyTrustUsRoute,
+  CountriesSlugRoute: CountriesSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   ReviewsSlugRoute: ReviewsSlugRoute,
+  CountriesIndexRoute: CountriesIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   ReviewsIndexRoute: ReviewsIndexRoute,
 }
