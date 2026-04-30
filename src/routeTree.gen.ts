@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyTrustUsRouteImport } from './routes/why-trust-us'
 import { Route as TrustScoreRouteImport } from './routes/trust-score'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as HowWeTestRouteImport } from './routes/how-we-test'
@@ -43,6 +45,16 @@ const TrustScoreRoute = TrustScoreRouteImport.update({
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RobotsDottxtRoute = RobotsDottxtRouteImport.update({
+  id: '/robots.txt',
+  path: '/robots.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResourcesRoute = ResourcesRouteImport.update({
@@ -140,6 +152,8 @@ export interface FileRoutesByFullPath {
   '/how-we-test': typeof HowWeTestRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/why-trust-us': typeof WhyTrustUsRoute
@@ -162,6 +176,8 @@ export interface FileRoutesByTo {
   '/how-we-test': typeof HowWeTestRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/why-trust-us': typeof WhyTrustUsRoute
@@ -185,6 +201,8 @@ export interface FileRoutesById {
   '/how-we-test': typeof HowWeTestRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
+  '/robots.txt': typeof RobotsDottxtRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/why-trust-us': typeof WhyTrustUsRoute
@@ -209,6 +227,8 @@ export interface FileRouteTypes {
     | '/how-we-test'
     | '/privacy'
     | '/resources'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/terms'
     | '/trust-score'
     | '/why-trust-us'
@@ -231,6 +251,8 @@ export interface FileRouteTypes {
     | '/how-we-test'
     | '/privacy'
     | '/resources'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/terms'
     | '/trust-score'
     | '/why-trust-us'
@@ -253,6 +275,8 @@ export interface FileRouteTypes {
     | '/how-we-test'
     | '/privacy'
     | '/resources'
+    | '/robots.txt'
+    | '/sitemap.xml'
     | '/terms'
     | '/trust-score'
     | '/why-trust-us'
@@ -276,6 +300,8 @@ export interface RootRouteChildren {
   HowWeTestRoute: typeof HowWeTestRoute
   PrivacyRoute: typeof PrivacyRoute
   ResourcesRoute: typeof ResourcesRoute
+  RobotsDottxtRoute: typeof RobotsDottxtRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   TrustScoreRoute: typeof TrustScoreRoute
   WhyTrustUsRoute: typeof WhyTrustUsRoute
@@ -311,6 +337,20 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/robots.txt': {
+      id: '/robots.txt'
+      path: '/robots.txt'
+      fullPath: '/robots.txt'
+      preLoaderRoute: typeof RobotsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/resources': {
@@ -444,6 +484,8 @@ const rootRouteChildren: RootRouteChildren = {
   HowWeTestRoute: HowWeTestRoute,
   PrivacyRoute: PrivacyRoute,
   ResourcesRoute: ResourcesRoute,
+  RobotsDottxtRoute: RobotsDottxtRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   TrustScoreRoute: TrustScoreRoute,
   WhyTrustUsRoute: WhyTrustUsRoute,
