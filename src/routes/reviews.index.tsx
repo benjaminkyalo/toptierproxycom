@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Star } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
+import { ProviderLogo } from "@/components/provider-logo";
 import { providers } from "@/data/providers";
 
 export const Route = createFileRoute("/reviews/")({
@@ -30,9 +31,7 @@ function ReviewsIndex() {
             params={{ slug: p.slug }}
             className="group flex items-start gap-5 rounded-md border border-border bg-card p-5 shadow-card transition-shadow hover:shadow-card-hover"
           >
-            <div className="flex h-16 w-20 shrink-0 items-center justify-center rounded bg-muted text-sm font-bold">
-              {p.name}
-            </div>
+            <ProviderLogo provider={p} size="lg" />
             <div className="flex-1">
               <div className="flex items-center justify-between gap-3">
                 <h2 className="text-lg font-bold group-hover:text-primary">{p.name} Review</h2>

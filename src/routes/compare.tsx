@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell } from "@/components/page-shell";
+import { ProviderLogo } from "@/components/provider-logo";
 import { providers } from "@/data/providers";
 import { Star, Check } from "lucide-react";
 
@@ -45,8 +46,13 @@ function ComparePage() {
             {providers.map((p) => (
               <tr key={p.slug} className="hover:bg-muted/50">
                 <td className="px-4 py-4">
-                  <Link to="/reviews/$slug" params={{ slug: p.slug }} className="font-bold text-primary hover:underline">{p.name}</Link>
-                  <div className="text-xs text-muted-foreground">{p.bestFor}</div>
+                  <div className="flex items-center gap-2">
+                    <ProviderLogo provider={p} size="sm" />
+                    <div>
+                      <Link to="/reviews/$slug" params={{ slug: p.slug }} className="font-bold text-primary hover:underline">{p.name}</Link>
+                      <div className="text-xs text-muted-foreground">{p.bestFor}</div>
+                    </div>
+                  </div>
                 </td>
                 <td className="px-4 py-4">
                   <div className="flex items-center gap-1">
