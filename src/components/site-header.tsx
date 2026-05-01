@@ -5,9 +5,9 @@ const nav = [
   { to: "/reviews", label: "Reviews" },
   { to: "/guides", label: "Guides" },
   { to: "/countries", label: "Countries" },
+  { to: "/use-cases", label: "Use Cases" },
   { to: "/compare", label: "Compare" },
   { to: "/blog", label: "Blog" },
-  { to: "/resources", label: "Resources" },
 ] as const;
 
 export function SiteHeader({ variant = "navy" }: { variant?: "navy" | "white" }) {

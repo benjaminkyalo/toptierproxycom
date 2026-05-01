@@ -1,7 +1,8 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, Prose } from "@/components/page-shell";
 import { Flag } from "@/components/flag";
-import { getCountry, countries } from "@/data/countries";
+import { ProviderBadge } from "@/components/provider-logo";
+import { getCountry, countries, cityToSlug } from "@/data/countries";
 import { providers } from "@/data/providers";
 import { Star, MapPin, Users, Wifi, Globe2 } from "lucide-react";
 
@@ -99,7 +100,8 @@ function CountryPage() {
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">{idx + 1}</span>
-                <Link to="/reviews/$slug" params={{ slug: p.slug }} className="text-xl font-bold hover:text-primary">{p.name}</Link>
+                <ProviderBadge provider={p} />
+                <Link to="/reviews/$slug" params={{ slug: p.slug }} className="text-sm font-semibold text-primary hover:underline">Read review →</Link>
               </div>
               <div className="flex items-center gap-1">
                 <Star className="h-4 w-4 fill-warning text-warning" />
