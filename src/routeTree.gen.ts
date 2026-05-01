@@ -22,15 +22,19 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as UseCasesIndexRouteImport } from './routes/use-cases.index'
 import { Route as ReviewsIndexRouteImport } from './routes/reviews.index'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as CountriesIndexRouteImport } from './routes/countries.index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as VsMatchupRouteImport } from './routes/vs.$matchup'
+import { Route as UseCasesSlugRouteImport } from './routes/use-cases.$slug'
 import { Route as ReviewsSlugRouteImport } from './routes/reviews.$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as CountriesSlugRouteImport } from './routes/countries.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as BestSlugRouteImport } from './routes/best.$slug'
+import { Route as CountriesSlugCitiesCityRouteImport } from './routes/countries.$slug.cities.$city'
 
 const WhyTrustUsRoute = WhyTrustUsRouteImport.update({
   id: '/why-trust-us',
@@ -97,6 +101,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UseCasesIndexRoute = UseCasesIndexRouteImport.update({
+  id: '/use-cases/',
+  path: '/use-cases/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsIndexRoute = ReviewsIndexRouteImport.update({
   id: '/reviews/',
   path: '/reviews/',
@@ -122,6 +131,11 @@ const VsMatchupRoute = VsMatchupRouteImport.update({
   path: '/vs/$matchup',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UseCasesSlugRoute = UseCasesSlugRouteImport.update({
+  id: '/use-cases/$slug',
+  path: '/use-cases/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsSlugRoute = ReviewsSlugRouteImport.update({
   id: '/reviews/$slug',
   path: '/reviews/$slug',
@@ -142,6 +156,16 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BestSlugRoute = BestSlugRouteImport.update({
+  id: '/best/$slug',
+  path: '/best/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CountriesSlugCitiesCityRoute = CountriesSlugCitiesCityRouteImport.update({
+  id: '/cities/$city',
+  path: '/cities/$city',
+  getParentRoute: () => CountriesSlugRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -157,15 +181,19 @@ export interface FileRoutesByFullPath {
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/why-trust-us': typeof WhyTrustUsRoute
+  '/best/$slug': typeof BestSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
-  '/countries/$slug': typeof CountriesSlugRoute
+  '/countries/$slug': typeof CountriesSlugRouteWithChildren
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/use-cases/$slug': typeof UseCasesSlugRoute
   '/vs/$matchup': typeof VsMatchupRoute
   '/blog/': typeof BlogIndexRoute
   '/countries/': typeof CountriesIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/reviews/': typeof ReviewsIndexRoute
+  '/use-cases/': typeof UseCasesIndexRoute
+  '/countries/$slug/cities/$city': typeof CountriesSlugCitiesCityRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -181,15 +209,19 @@ export interface FileRoutesByTo {
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/why-trust-us': typeof WhyTrustUsRoute
+  '/best/$slug': typeof BestSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
-  '/countries/$slug': typeof CountriesSlugRoute
+  '/countries/$slug': typeof CountriesSlugRouteWithChildren
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/use-cases/$slug': typeof UseCasesSlugRoute
   '/vs/$matchup': typeof VsMatchupRoute
   '/blog': typeof BlogIndexRoute
   '/countries': typeof CountriesIndexRoute
   '/guides': typeof GuidesIndexRoute
   '/reviews': typeof ReviewsIndexRoute
+  '/use-cases': typeof UseCasesIndexRoute
+  '/countries/$slug/cities/$city': typeof CountriesSlugCitiesCityRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -206,15 +238,19 @@ export interface FileRoutesById {
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/why-trust-us': typeof WhyTrustUsRoute
+  '/best/$slug': typeof BestSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
-  '/countries/$slug': typeof CountriesSlugRoute
+  '/countries/$slug': typeof CountriesSlugRouteWithChildren
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/use-cases/$slug': typeof UseCasesSlugRoute
   '/vs/$matchup': typeof VsMatchupRoute
   '/blog/': typeof BlogIndexRoute
   '/countries/': typeof CountriesIndexRoute
   '/guides/': typeof GuidesIndexRoute
   '/reviews/': typeof ReviewsIndexRoute
+  '/use-cases/': typeof UseCasesIndexRoute
+  '/countries/$slug/cities/$city': typeof CountriesSlugCitiesCityRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -232,15 +268,19 @@ export interface FileRouteTypes {
     | '/terms'
     | '/trust-score'
     | '/why-trust-us'
+    | '/best/$slug'
     | '/blog/$slug'
     | '/countries/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
+    | '/use-cases/$slug'
     | '/vs/$matchup'
     | '/blog/'
     | '/countries/'
     | '/guides/'
     | '/reviews/'
+    | '/use-cases/'
+    | '/countries/$slug/cities/$city'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -256,15 +296,19 @@ export interface FileRouteTypes {
     | '/terms'
     | '/trust-score'
     | '/why-trust-us'
+    | '/best/$slug'
     | '/blog/$slug'
     | '/countries/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
+    | '/use-cases/$slug'
     | '/vs/$matchup'
     | '/blog'
     | '/countries'
     | '/guides'
     | '/reviews'
+    | '/use-cases'
+    | '/countries/$slug/cities/$city'
   id:
     | '__root__'
     | '/'
@@ -280,15 +324,19 @@ export interface FileRouteTypes {
     | '/terms'
     | '/trust-score'
     | '/why-trust-us'
+    | '/best/$slug'
     | '/blog/$slug'
     | '/countries/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
+    | '/use-cases/$slug'
     | '/vs/$matchup'
     | '/blog/'
     | '/countries/'
     | '/guides/'
     | '/reviews/'
+    | '/use-cases/'
+    | '/countries/$slug/cities/$city'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -305,15 +353,18 @@ export interface RootRouteChildren {
   TermsRoute: typeof TermsRoute
   TrustScoreRoute: typeof TrustScoreRoute
   WhyTrustUsRoute: typeof WhyTrustUsRoute
+  BestSlugRoute: typeof BestSlugRoute
   BlogSlugRoute: typeof BlogSlugRoute
-  CountriesSlugRoute: typeof CountriesSlugRoute
+  CountriesSlugRoute: typeof CountriesSlugRouteWithChildren
   GuidesSlugRoute: typeof GuidesSlugRoute
   ReviewsSlugRoute: typeof ReviewsSlugRoute
+  UseCasesSlugRoute: typeof UseCasesSlugRoute
   VsMatchupRoute: typeof VsMatchupRoute
   BlogIndexRoute: typeof BlogIndexRoute
   CountriesIndexRoute: typeof CountriesIndexRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
   ReviewsIndexRoute: typeof ReviewsIndexRoute
+  UseCasesIndexRoute: typeof UseCasesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -409,6 +460,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/use-cases/': {
+      id: '/use-cases/'
+      path: '/use-cases'
+      fullPath: '/use-cases/'
+      preLoaderRoute: typeof UseCasesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews/': {
       id: '/reviews/'
       path: '/reviews'
@@ -444,6 +502,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VsMatchupRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/use-cases/$slug': {
+      id: '/use-cases/$slug'
+      path: '/use-cases/$slug'
+      fullPath: '/use-cases/$slug'
+      preLoaderRoute: typeof UseCasesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews/$slug': {
       id: '/reviews/$slug'
       path: '/reviews/$slug'
@@ -472,8 +537,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/best/$slug': {
+      id: '/best/$slug'
+      path: '/best/$slug'
+      fullPath: '/best/$slug'
+      preLoaderRoute: typeof BestSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/countries/$slug/cities/$city': {
+      id: '/countries/$slug/cities/$city'
+      path: '/cities/$city'
+      fullPath: '/countries/$slug/cities/$city'
+      preLoaderRoute: typeof CountriesSlugCitiesCityRouteImport
+      parentRoute: typeof CountriesSlugRoute
+    }
   }
 }
+
+interface CountriesSlugRouteChildren {
+  CountriesSlugCitiesCityRoute: typeof CountriesSlugCitiesCityRoute
+}
+
+const CountriesSlugRouteChildren: CountriesSlugRouteChildren = {
+  CountriesSlugCitiesCityRoute: CountriesSlugCitiesCityRoute,
+}
+
+const CountriesSlugRouteWithChildren = CountriesSlugRoute._addFileChildren(
+  CountriesSlugRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -489,15 +580,18 @@ const rootRouteChildren: RootRouteChildren = {
   TermsRoute: TermsRoute,
   TrustScoreRoute: TrustScoreRoute,
   WhyTrustUsRoute: WhyTrustUsRoute,
+  BestSlugRoute: BestSlugRoute,
   BlogSlugRoute: BlogSlugRoute,
-  CountriesSlugRoute: CountriesSlugRoute,
+  CountriesSlugRoute: CountriesSlugRouteWithChildren,
   GuidesSlugRoute: GuidesSlugRoute,
   ReviewsSlugRoute: ReviewsSlugRoute,
+  UseCasesSlugRoute: UseCasesSlugRoute,
   VsMatchupRoute: VsMatchupRoute,
   BlogIndexRoute: BlogIndexRoute,
   CountriesIndexRoute: CountriesIndexRoute,
   GuidesIndexRoute: GuidesIndexRoute,
   ReviewsIndexRoute: ReviewsIndexRoute,
+  UseCasesIndexRoute: UseCasesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

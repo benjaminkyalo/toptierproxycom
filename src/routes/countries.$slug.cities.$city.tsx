@@ -65,7 +65,7 @@ function CityPage() {
         <h3>Are {city} proxies legal?</h3>
         <p>{country.legalNote}</p>
         <h3>How accurate is {city} city-level targeting?</h3>
-        <p>The top vendors (Bright Data, Oxylabs, Decodo) maintain >95% city-level accuracy in major metros like {city}.</p>
+        <p>The top vendors (Bright Data, Oxylabs, Decodo) maintain over 95% city-level accuracy in major metros like {city}.</p>
       </Prose>
       {otherCities.length > 0 && (
         <div className="mt-12 border-t border-border pt-8">
