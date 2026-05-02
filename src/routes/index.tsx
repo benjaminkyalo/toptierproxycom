@@ -8,7 +8,12 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { AwardCard } from "@/components/award-card";
 import { PartnerRow } from "@/components/partner-row";
+import { ProviderLogo } from "@/components/provider-logo";
 import { providers, editorChoice } from "@/data/providers";
+import { countries } from "@/data/countries";
+import { guides } from "@/data/guides";
+import { useCases } from "@/data/use-cases";
+import { blogPosts } from "@/data/blog";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -223,10 +228,10 @@ function HomePage() {
               </p>
             </div>
             <div className="hidden h-72 w-72 shrink-0 rounded-md bg-navy p-6 md:block">
-              <div className="grid h-full grid-cols-2 gap-3">
-                {providers.slice(0, 6).map((p) => (
-                  <div key={p.slug} className="flex items-center justify-center rounded bg-card text-xs font-bold">
-                    {p.name.split(" ")[0]}
+              <div className="grid h-full grid-cols-3 gap-3">
+                {providers.slice(0, 9).map((p) => (
+                  <div key={p.slug} className="flex items-center justify-center rounded bg-white p-2">
+                    <ProviderLogo provider={p} size="lg" className="!h-full !w-full !border-0 !shadow-none" />
                   </div>
                 ))}
               </div>
@@ -355,15 +360,119 @@ function HomePage() {
         </div>
       </section>
 
-      {/* MORE CONTENT ACCORDION */}
+      {/* MORE GREAT PROXY CONTENT — rich expandable link grids */}
       <section className="bg-background border-t border-border">
         <div className="mx-auto max-w-7xl px-6 py-16">
-          <h2 className="text-3xl font-bold">More great proxy content</h2>
-          <div className="mt-6 divide-y divide-border border-y border-border">
-            <FaqRow title="Reviews" body="Each year our team tests and assesses these firms on over 200 variables to formulate star ratings across residential, datacenter, ISP, mobile and scraping API categories." />
-            <FaqRow title="Guides" body="Find the best proxy provider for your use case based on what you scrape, your budget, or your preferred protocol — HTTP/S, SOCKS5 or rotating endpoints." />
-            <FaqRow title="Countries" body="Find the best providers offering high-quality residential and ISP IPs from your country — over 195 supported globally." />
-            <FaqRow title="Comparisons" body="Filter providers and compare the most popular features, pricing per GB, geo-coverage, success rates and authentication methods." />
+          <h2 className="text-3xl font-bold md:text-4xl">More great proxy content</h2>
+          <p className="mt-2 max-w-3xl text-foreground/80">
+            Hand-picked, SEO-optimized resources covering every proxy network, web scraping workflow,
+            anti-bot bypass technique, country-level IP availability, and provider matchup we test.
+          </p>
+          <div className="mt-8 divide-y divide-border border-y-2 border-border">
+            <ContentRow
+              title="Reviews"
+              defaultOpen
+              intro="Each year our team tests and assesses these firms on 225+ variables to formulate star ratings across residential, datacenter, ISP, mobile and scraping API categories."
+              groups={[
+                {
+                  label: "Top-Ranked Proxy Providers",
+                  links: [
+                    ...providers.slice(0, 11).map((p) => ({
+                      to: `/reviews/${p.slug}`,
+                      label: p.name,
+                    })),
+                    { to: "/reviews", label: "All reviews" },
+                  ],
+                },
+              ]}
+            />
+            <ContentRow
+              title="Guides"
+              intro="Find the best proxy provider for your use case based on what you scrape, your budget, your target geography, or your preferred protocol — HTTP/S, SOCKS5 or rotating endpoints."
+              groups={[
+                {
+                  label: "Top Proxy Buying Guides",
+                  links: [
+                    ...guides.slice(0, 11).map((g) => ({
+                      to: `/guides/${g.slug}`,
+                      label: g.title.replace(" for 2026", "").replace("Best ", ""),
+                    })),
+                    { to: "/guides", label: "All guides" },
+                  ],
+                },
+              ]}
+            />
+            <ContentRow
+              title="Countries"
+              intro="Find the best providers offering high-quality residential and ISP IPs from your country — over 195 supported globally with city-level targeting."
+              groups={[
+                {
+                  label: "Popular Country Proxy Pages",
+                  links: [
+                    ...countries.slice(0, 15).map((c) => ({
+                      to: `/countries/${c.slug}`,
+                      label: c.name,
+                    })),
+                    { to: "/countries", label: "All countries" },
+                  ],
+                },
+              ]}
+            />
+            <ContentRow
+              title="Comparisons"
+              intro="Filter providers and compare the most popular features, pricing per GB, geo-coverage, success rates, sticky-session length and authentication methods side by side."
+              groups={[
+                {
+                  label: "Most-Searched Proxy Comparisons",
+                  links: [
+                    { to: "/vs/bright-data-vs-oxylabs", label: "Bright Data vs Oxylabs" },
+                    { to: "/vs/bright-data-vs-decodo", label: "Bright Data vs Decodo" },
+                    { to: "/vs/oxylabs-vs-decodo", label: "Oxylabs vs Decodo" },
+                    { to: "/vs/decodo-vs-iproyal", label: "Decodo vs IPRoyal" },
+                    { to: "/vs/soax-vs-bright-data", label: "SOAX vs Bright Data" },
+                    { to: "/vs/webshare-vs-iproyal", label: "Webshare vs IPRoyal" },
+                    { to: "/vs/netnut-vs-oxylabs", label: "NetNut vs Oxylabs" },
+                    { to: "/vs/iproyal-vs-soax", label: "IPRoyal vs SOAX" },
+                    { to: "/vs/decodo-vs-webshare", label: "Decodo vs Webshare" },
+                    { to: "/vs/rayobyte-vs-webshare", label: "Rayobyte vs Webshare" },
+                    { to: "/vs/proxyempire-vs-iproyal", label: "ProxyEmpire vs IPRoyal" },
+                    { to: "/compare", label: "All comparisons" },
+                  ],
+                },
+              ]}
+            />
+            <ContentRow
+              title="Use Cases"
+              intro="Specialized proxy stacks for the highest-intent commercial workloads — scraping protected targets, ad verification, SERP tracking, sneaker copping, market research and AI training data."
+              groups={[
+                {
+                  label: "High-Intent Proxy Use Cases",
+                  links: [
+                    ...useCases.slice(0, 11).map((u) => ({
+                      to: `/use-cases/${u.slug}`,
+                      label: u.title.replace("Best Proxies for ", "").replace(" in 2026", ""),
+                    })),
+                    { to: "/use-cases", label: "All use cases" },
+                  ],
+                },
+              ]}
+            />
+            <ContentRow
+              title="Blog & Tutorials"
+              intro="In-depth tutorials covering anti-bot bypass, rotating vs sticky sessions, scraping with Python, Playwright and Puppeteer, and the legal & ethical landscape of web data collection."
+              groups={[
+                {
+                  label: "Latest Long-Form Articles",
+                  links: [
+                    ...blogPosts.slice(0, 11).map((b) => ({
+                      to: `/blog/${b.slug}`,
+                      label: b.title,
+                    })),
+                    { to: "/blog", label: "All articles" },
+                  ],
+                },
+              ]}
+            />
           </div>
         </div>
       </section>
@@ -397,20 +506,55 @@ function Expert({ name, role }: { name: string; role: string }) {
   );
 }
 
-function FaqRow({ title, body }: { title: string; body: string }) {
-  const [open, setOpen] = useState(false);
+type ContentLink = { to: string; label: string };
+type ContentGroup = { label: string; links: ContentLink[] };
+
+function ContentRow({
+  title,
+  intro,
+  groups,
+  defaultOpen = false,
+}: {
+  title: string;
+  intro: string;
+  groups: ContentGroup[];
+  defaultOpen?: boolean;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
   return (
-    <div className="py-5">
+    <div className="py-6">
       <button
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between gap-4 text-left"
+        aria-expanded={open}
       >
-        <span className="text-2xl font-bold">{title}</span>
-        <ChevronDown className={`h-6 w-6 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`} />
+        <span className="text-2xl font-bold md:text-3xl">{title}</span>
+        <ChevronDown
+          className={`h-6 w-6 shrink-0 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`}
+        />
       </button>
-      <div className={`grid transition-all ${open ? "mt-3 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
-        <p className="overflow-hidden text-foreground/80">{body}</p>
-      </div>
+      {open && (
+        <div className="mt-4">
+          <p className="text-foreground/80">{intro}</p>
+          {groups.map((g) => (
+            <div key={g.label} className="mt-6">
+              <h3 className="text-base font-bold text-foreground">{g.label}</h3>
+              <ul className="mt-3 grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3 md:grid-cols-4">
+                {g.links.map((l) => (
+                  <li key={l.to}>
+                    <a
+                      href={l.to}
+                      className="font-medium text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

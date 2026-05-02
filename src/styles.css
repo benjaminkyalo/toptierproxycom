@@ -11,8 +11,8 @@
  */
 
 @theme inline {
-  --font-sans: "Source Sans 3", "Source Sans Pro", system-ui, -apple-system, sans-serif;
-  --font-display: "Source Sans 3", "Source Sans Pro", system-ui, -apple-system, sans-serif;
+  --font-sans: "Poppins", system-ui, -apple-system, sans-serif;
+  --font-display: "Poppins", system-ui, -apple-system, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -131,6 +131,9 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
+    font-size: 16.5px;
+    line-height: 1.65;
+    font-weight: 400;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
