@@ -14,6 +14,8 @@ import { countries } from "@/data/countries";
 import { guides } from "@/data/guides";
 import { useCases } from "@/data/use-cases";
 import { blogPosts } from "@/data/blog";
+import { popularMatchups } from "@/data/matchups";
+import { cityToSlug } from "@/data/countries";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -377,10 +379,7 @@ function HomePage() {
                 {
                   label: "Top-Ranked Proxy Providers",
                   links: [
-                    ...providers.slice(0, 11).map((p) => ({
-                      to: `/reviews/${p.slug}`,
-                      label: p.name,
-                    })),
+                    ...providers.map((p) => ({ to: `/reviews/${p.slug}`, label: `${p.name} review` })),
                     { to: "/reviews", label: "All reviews" },
                   ],
                 },
@@ -393,7 +392,7 @@ function HomePage() {
                 {
                   label: "Top Proxy Buying Guides",
                   links: [
-                    ...guides.slice(0, 11).map((g) => ({
+                    ...guides.map((g) => ({
                       to: `/guides/${g.slug}`,
                       label: g.title.replace(" for 2026", "").replace("Best ", ""),
                     })),
@@ -407,14 +406,31 @@ function HomePage() {
               intro="Find the best providers offering high-quality residential and ISP IPs from your country — over 195 supported globally with city-level targeting."
               groups={[
                 {
-                  label: "Popular Country Proxy Pages",
+                  label: "Country Proxy Pages (50+)",
                   links: [
-                    ...countries.slice(0, 15).map((c) => ({
-                      to: `/countries/${c.slug}`,
-                      label: c.name,
-                    })),
+                    ...countries.map((c) => ({ to: `/countries/${c.slug}`, label: `${c.name} proxies` })),
                     { to: "/countries", label: "All countries" },
                   ],
+                },
+                {
+                  label: "Best-of Country Rankings",
+                  links: [
+                    ...countries.slice(0, 16).map((c) => ({
+                      to: `/best/${c.slug}-proxies`,
+                      label: `Best ${c.name} proxies 2026`,
+                    })),
+                  ],
+                },
+                {
+                  label: "City-Level Proxy Pages",
+                  links: countries
+                    .slice(0, 12)
+                    .flatMap((c) =>
+                      c.topCities.slice(0, 3).map((city) => ({
+                        to: `/countries/${c.slug}/cities/${cityToSlug(city)}`,
+                        label: `${city} proxies`,
+                      })),
+                    ),
                 },
               ]}
             />
@@ -425,17 +441,7 @@ function HomePage() {
                 {
                   label: "Most-Searched Proxy Comparisons",
                   links: [
-                    { to: "/vs/bright-data-vs-oxylabs", label: "Bright Data vs Oxylabs" },
-                    { to: "/vs/bright-data-vs-decodo", label: "Bright Data vs Decodo" },
-                    { to: "/vs/oxylabs-vs-decodo", label: "Oxylabs vs Decodo" },
-                    { to: "/vs/decodo-vs-iproyal", label: "Decodo vs IPRoyal" },
-                    { to: "/vs/soax-vs-bright-data", label: "SOAX vs Bright Data" },
-                    { to: "/vs/webshare-vs-iproyal", label: "Webshare vs IPRoyal" },
-                    { to: "/vs/netnut-vs-oxylabs", label: "NetNut vs Oxylabs" },
-                    { to: "/vs/iproyal-vs-soax", label: "IPRoyal vs SOAX" },
-                    { to: "/vs/decodo-vs-webshare", label: "Decodo vs Webshare" },
-                    { to: "/vs/rayobyte-vs-webshare", label: "Rayobyte vs Webshare" },
-                    { to: "/vs/proxyempire-vs-iproyal", label: "ProxyEmpire vs IPRoyal" },
+                    ...popularMatchups.map((m) => ({ to: `/vs/${m.slug}`, label: m.label })),
                     { to: "/compare", label: "All comparisons" },
                   ],
                 },
@@ -448,7 +454,7 @@ function HomePage() {
                 {
                   label: "High-Intent Proxy Use Cases",
                   links: [
-                    ...useCases.slice(0, 11).map((u) => ({
+                    ...useCases.map((u) => ({
                       to: `/use-cases/${u.slug}`,
                       label: u.title.replace("Best Proxies for ", "").replace(" in 2026", ""),
                     })),
@@ -464,10 +470,7 @@ function HomePage() {
                 {
                   label: "Latest Long-Form Articles",
                   links: [
-                    ...blogPosts.slice(0, 11).map((b) => ({
-                      to: `/blog/${b.slug}`,
-                      label: b.title,
-                    })),
+                    ...blogPosts.map((b) => ({ to: `/blog/${b.slug}`, label: b.title })),
                     { to: "/blog", label: "All articles" },
                   ],
                 },
