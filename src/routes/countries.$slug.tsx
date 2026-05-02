@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, Prose } from "@/components/page-shell";
 import { Flag } from "@/components/flag";
 import { ProviderBadge } from "@/components/provider-logo";
+import { LongFormSection } from "@/components/long-form";
 import { getCountry, countries, cityToSlug } from "@/data/countries";
 import { providers } from "@/data/providers";
 import { Star, MapPin, Users, Wifi, Globe2 } from "lucide-react";
@@ -137,6 +138,27 @@ function CountryPage() {
         <h3>How much do {country.name} residential proxies cost?</h3>
         <p>Entry-level pricing for {country.name} residential bandwidth starts at $1.75/GB on pay-as-you-go plans, and drops below $4/GB on most committed plans across the top vendors.</p>
       </Prose>
+
+      {/* City deep-link cluster — adds dozens of internal SEO links per page */}
+      <div className="mt-10 rounded-md border border-border bg-card p-6">
+        <h3 className="text-lg font-bold">Buy {country.name} proxies by city</h3>
+        <p className="mt-1 text-sm text-muted-foreground">Drill into city-level IP density and per-metro proxy guides.</p>
+        <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3 md:grid-cols-4">
+          {country.topCities.map((c) => (
+            <li key={c}>
+              <Link
+                to="/countries/$slug/cities/$city"
+                params={{ slug: country.slug, city: cityToSlug(c) }}
+                className="text-sm font-semibold text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary"
+              >
+                {c} proxies
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <LongFormSection variant="country" topic={country.name} />
 
       {/* Related countries */}
       {related.length > 0 && (

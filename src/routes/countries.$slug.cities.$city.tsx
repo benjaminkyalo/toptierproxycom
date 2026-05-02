@@ -67,6 +67,8 @@ function CityPage() {
         <h3>How accurate is {city} city-level targeting?</h3>
         <p>The top vendors (Bright Data, Oxylabs, Decodo) maintain over 95% city-level accuracy in major metros like {city}.</p>
       </Prose>
+      <LongFormSection variant="city" topic={`${city}, ${country.name}`} />
+
       {otherCities.length > 0 && (
         <div className="mt-12 border-t border-border pt-8">
           <h3 className="text-xl font-bold">Other cities in {country.name}</h3>

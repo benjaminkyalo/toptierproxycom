@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Star, Award } from "lucide-react";
 import { PageShell, Prose } from "@/components/page-shell";
+import { LongFormSection } from "@/components/long-form";
 import { providers } from "@/data/providers";
 import { getGuide, guides } from "@/data/guides";
 
@@ -132,6 +133,11 @@ function GuidePage() {
         <p>The most affordable pick here is <strong>{[...ranked].sort((a, b) => (a.startingPriceGB ?? 99) - (b.startingPriceGB ?? 99))[0].name}</strong> starting at ${[...ranked].sort((a, b) => (a.startingPriceGB ?? 99) - (b.startingPriceGB ?? 99))[0].startingPriceGB}/GB.</p>
         <h3>Do these providers offer free trials?</h3>
         <p>Most of them do. See our <Link to="/guides/$slug" params={{ slug: "best-free-proxy-trials" }}>best free proxy trials guide</Link> for a full breakdown.</p>
+      </Prose>
+
+      <LongFormSection variant="guide" topic={guide.shortLabel} />
+
+      <Prose>
         <h2>Related guides</h2>
       </Prose>
       <div className="mt-4 grid gap-3 sm:grid-cols-2">

@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, Prose } from "@/components/page-shell";
+import { LongFormSection } from "@/components/long-form";
 import { getBlogPost, blogPosts } from "@/data/blog";
 import { Calendar, Clock, User } from "lucide-react";
 
@@ -81,6 +82,8 @@ function BlogPostPage() {
             </div>
           ))}
         </Prose>
+
+        <LongFormSection variant="blog" topic={post.title} />
 
         <div className="mt-10 flex flex-wrap gap-2 border-t border-border pt-6">
           {post.tags.map((t) => (
