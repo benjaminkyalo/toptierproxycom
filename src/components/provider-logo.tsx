@@ -1,26 +1,44 @@
 import type { Provider } from "@/data/providers";
 
-// Brand-color squares with provider initials. Zero external dependencies, fast,
-// looks clean next to the provider name and works inside lists and tables.
-const BRAND: Record<string, { bg: string; fg: string; mark: string }> = {
-  "bright-data":  { bg: "#0F2F5C", fg: "#ffffff", mark: "BD" },
-  "oxylabs":      { bg: "#0AA47A", fg: "#ffffff", mark: "OX" },
-  "decodo":       { bg: "#7C3AED", fg: "#ffffff", mark: "DE" },
-  "iproyal":      { bg: "#1E40AF", fg: "#ffffff", mark: "IP" },
-  "soax":         { bg: "#FF5C28", fg: "#ffffff", mark: "SX" },
-  "netnut":       { bg: "#FF7A1A", fg: "#ffffff", mark: "NN" },
-  "webshare":     { bg: "#0EA5E9", fg: "#ffffff", mark: "WS" },
-  "rayobyte":     { bg: "#DC2626", fg: "#ffffff", mark: "RB" },
-  "proxyempire":  { bg: "#111827", fg: "#FBBF24", mark: "PE" },
-  "nimbleway":    { bg: "#16A34A", fg: "#ffffff", mark: "NW" },
-  "infatica":     { bg: "#0891B2", fg: "#ffffff", mark: "IN" },
-  "proxy-cheap":  { bg: "#F59E0B", fg: "#111827", mark: "PC" },
+// Real provider logos hosted on Cloudinary. We render them inside a clean
+// white rounded tile so every logo (dark, light, colored) sits well next to
+// the provider name across reviews, comparison tables and partner rows.
+const LOGO_URL: Record<string, string> = {
+  "bright-data":
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/bright_data_logo_muhsjd.png",
+  "oxylabs":
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/oxylabs_logo_lkvr2i.png",
+  "decodo":
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/decodo_logo_ek7uxk.png",
+  "iproyal":
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/iproyal_logo_fapvx7.png",
+  "soax":
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/soax_logo_ssdefv.png",
+  "netnut":
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/netnut_logo_ugn59g.png",
+  "webshare":
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701038/webshare_logo_stwvzs.png",
+  "rayobyte":
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/royabyte_logo_dxirbg.png",
+  "proxyempire":
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/proxy_empire_logo_tjuiqw.jpg",
+  "nimbleway":
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/nibleway_logo_wddvm2.png",
+  "proxy-cheap":
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/proxycheap_logo_jl5ucv.png",
+  // No official URL provided for Infatica — fallback to initials tile below.
 };
 
 const SIZES = {
-  sm: "h-7 w-7 text-[10px]",
-  md: "h-9 w-9 text-xs",
-  lg: "h-12 w-12 text-sm",
+  sm: "h-7 w-7",
+  md: "h-9 w-9",
+  lg: "h-12 w-12",
+} as const;
+
+const TEXT_SIZE = {
+  sm: "text-[10px]",
+  md: "text-xs",
+  lg: "text-sm",
 } as const;
 
 export function ProviderLogo({
@@ -32,14 +50,33 @@ export function ProviderLogo({
   size?: keyof typeof SIZES;
   className?: string;
 }) {
-  const b = BRAND[provider.slug] ?? { bg: "#1f2937", fg: "#ffffff", mark: provider.name.slice(0, 2).toUpperCase() };
+  const url = LOGO_URL[provider.slug];
+
+  if (url) {
+    return (
+      <span
+        aria-label={`${provider.name} logo`}
+        className={`inline-flex shrink-0 items-center justify-center overflow-hidden rounded border border-border bg-white shadow-sm ${SIZES[size]} ${className}`}
+      >
+        <img
+          src={url}
+          alt={`${provider.name} logo`}
+          loading="lazy"
+          decoding="async"
+          className="h-full w-full object-contain p-1"
+        />
+      </span>
+    );
+  }
+
+  // Fallback: initials tile for any provider without a hosted logo.
+  const mark = provider.name.slice(0, 2).toUpperCase();
   return (
     <span
       aria-label={`${provider.name} logo`}
-      className={`inline-flex shrink-0 items-center justify-center rounded font-extrabold tracking-tight shadow-sm ${SIZES[size]} ${className}`}
-      style={{ backgroundColor: b.bg, color: b.fg }}
+      className={`inline-flex shrink-0 items-center justify-center rounded bg-muted font-extrabold tracking-tight text-foreground shadow-sm ${SIZES[size]} ${TEXT_SIZE[size]} ${className}`}
     >
-      {b.mark}
+      {mark}
     </span>
   );
 }
