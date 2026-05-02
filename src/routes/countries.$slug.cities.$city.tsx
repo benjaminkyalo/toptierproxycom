@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, Prose } from "@/components/page-shell";
 import { ProviderBadge } from "@/components/provider-logo";
+import { LongFormSection } from "@/components/long-form";
 import { Flag } from "@/components/flag";
 import { getCityCountry, cityToSlug } from "@/data/countries";
 import { providers } from "@/data/providers";
