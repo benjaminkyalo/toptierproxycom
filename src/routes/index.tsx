@@ -8,7 +8,12 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { AwardCard } from "@/components/award-card";
 import { PartnerRow } from "@/components/partner-row";
+import { ProviderLogo } from "@/components/provider-logo";
 import { providers, editorChoice } from "@/data/providers";
+import { countries } from "@/data/countries";
+import { guides } from "@/data/guides";
+import { useCases } from "@/data/use-cases";
+import { blogPosts } from "@/data/blog";
 
 export const Route = createFileRoute("/")({
   head: () => ({
