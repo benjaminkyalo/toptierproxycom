@@ -228,10 +228,10 @@ function HomePage() {
               </p>
             </div>
             <div className="hidden h-72 w-72 shrink-0 rounded-md bg-navy p-6 md:block">
-              <div className="grid h-full grid-cols-2 gap-3">
-                {providers.slice(0, 6).map((p) => (
-                  <div key={p.slug} className="flex items-center justify-center rounded bg-card text-xs font-bold">
-                    {p.name.split(" ")[0]}
+              <div className="grid h-full grid-cols-3 gap-3">
+                {providers.slice(0, 9).map((p) => (
+                  <div key={p.slug} className="flex items-center justify-center rounded bg-white p-2">
+                    <ProviderLogo provider={p} size="lg" className="!h-full !w-full !border-0 !shadow-none" />
                   </div>
                 ))}
               </div>
