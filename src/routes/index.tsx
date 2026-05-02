@@ -506,20 +506,55 @@ function Expert({ name, role }: { name: string; role: string }) {
   );
 }
 
-function FaqRow({ title, body }: { title: string; body: string }) {
-  const [open, setOpen] = useState(false);
+type ContentLink = { to: string; label: string };
+type ContentGroup = { label: string; links: ContentLink[] };
+
+function ContentRow({
+  title,
+  intro,
+  groups,
+  defaultOpen = false,
+}: {
+  title: string;
+  intro: string;
+  groups: ContentGroup[];
+  defaultOpen?: boolean;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
   return (
-    <div className="py-5">
+    <div className="py-6">
       <button
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between gap-4 text-left"
+        aria-expanded={open}
       >
-        <span className="text-2xl font-bold">{title}</span>
-        <ChevronDown className={`h-6 w-6 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`} />
+        <span className="text-2xl font-bold md:text-3xl">{title}</span>
+        <ChevronDown
+          className={`h-6 w-6 shrink-0 text-muted-foreground transition-transform ${open ? "rotate-180" : ""}`}
+        />
       </button>
-      <div className={`grid transition-all ${open ? "mt-3 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
-        <p className="overflow-hidden text-foreground/80">{body}</p>
-      </div>
+      {open && (
+        <div className="mt-4">
+          <p className="text-foreground/80">{intro}</p>
+          {groups.map((g) => (
+            <div key={g.label} className="mt-6">
+              <h3 className="text-base font-bold text-foreground">{g.label}</h3>
+              <ul className="mt-3 grid grid-cols-2 gap-x-6 gap-y-3 sm:grid-cols-3 md:grid-cols-4">
+                {g.links.map((l) => (
+                  <li key={l.to}>
+                    <a
+                      href={l.to}
+                      className="font-medium text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary"
+                    >
+                      {l.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
