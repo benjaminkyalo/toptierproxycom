@@ -2,6 +2,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, Prose } from "@/components/page-shell";
 import { ProviderBadge } from "@/components/provider-logo";
+import { LongFormSection } from "@/components/long-form";
 import { Flag } from "@/components/flag";
 import { countries } from "@/data/countries";
 import { providers } from "@/data/providers";
@@ -82,6 +83,8 @@ function BestPage() {
         <h2>City-level coverage</h2>
         <p>City-level targeting available in: {country.topCities.join(", ")}. See our <Link to="/countries/$slug" params={{ slug: country.slug }}>full {country.name} country guide</Link> for per-city pages.</p>
       </Prose>
+
+      <LongFormSection variant="best" topic={`${country.name} proxies`} />
     </PageShell>
   );
 }

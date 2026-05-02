@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, Prose } from "@/components/page-shell";
 import { ProviderBadge } from "@/components/provider-logo";
+import { LongFormSection } from "@/components/long-form";
 import { getUseCase, useCases } from "@/data/use-cases";
 import { providers } from "@/data/providers";
 
@@ -62,6 +63,8 @@ function UseCasePage() {
         <h2>Frequently asked questions</h2>
         {useCase.faqs.map((f) => (<div key={f.q}><h3>{f.q}</h3><p>{f.a}</p></div>))}
       </Prose>
+
+      <LongFormSection variant="use-case" topic={useCase.title.replace(/^Best Proxies for /, "")} />
 
       <div className="mt-12 border-t border-border pt-8">
         <h3 className="text-xl font-bold">Related use cases</h3>

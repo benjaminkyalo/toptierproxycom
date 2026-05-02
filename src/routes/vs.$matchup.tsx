@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, Prose } from "@/components/page-shell";
+import { LongFormSection } from "@/components/long-form";
 import { providers, getProvider } from "@/data/providers";
 import { Star, Check, X } from "lucide-react";
 
@@ -91,6 +92,8 @@ function VsPage() {
         <h2>When to pick {B.name}</h2>
         <p>{B.shortDescription}</p>
       </Prose>
+
+      <LongFormSection variant="vs" topic={`${A.name} vs ${B.name}`} />
     </PageShell>
   );
 }
