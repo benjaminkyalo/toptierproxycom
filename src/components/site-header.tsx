@@ -1,19 +1,43 @@
 import { Link } from "@tanstack/react-router";
-import { Triangle, Menu, X } from "lucide-react";
+import { Triangle, Menu, X, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { providers } from "@/data/providers";
+import { guides } from "@/data/guides";
+import { countries } from "@/data/countries";
+import { useCases } from "@/data/use-cases";
 
-const nav = [
-  { to: "/reviews", label: "Reviews" },
-  { to: "/guides", label: "Guides" },
-  { to: "/countries", label: "Countries" },
-  { to: "/use-cases", label: "Use Cases" },
+type DropItem = { to: string; label: string; params?: Record<string, string> };
+
+const reviewItems: DropItem[] = providers
+  .slice(0, 12)
+  .map((p) => ({ to: "/reviews/$slug", params: { slug: p.slug }, label: `${p.name} Review` }));
+
+const guideItems: DropItem[] = guides
+  .slice(0, 10)
+  .map((g) => ({ to: "/guides/$slug", params: { slug: g.slug }, label: g.title }));
+
+const countryItems: DropItem[] = countries
+  .slice(0, 14)
+  .map((c) => ({ to: "/countries/$slug", params: { slug: c.slug }, label: c.name }));
+
+const useCaseItems: DropItem[] = useCases
+  .slice(0, 10)
+  .map((u) => ({ to: "/use-cases/$slug", params: { slug: u.slug }, label: u.title.replace(/\s*in 2026.*/i, "").replace(/^Best Proxies for /, "") }));
+
+const nav: { to: string; label: string; items?: DropItem[] }[] = [
+  { to: "/reviews", label: "Reviews", items: reviewItems },
+  { to: "/guides", label: "Guides", items: guideItems },
+  { to: "/countries", label: "Countries", items: countryItems },
+  { to: "/use-cases", label: "Use Cases", items: useCaseItems },
   { to: "/compare", label: "Compare" },
   { to: "/blog", label: "Blog" },
-] as const;
+];
 
 export function SiteHeader({ variant = "navy" }: { variant?: "navy" | "white" }) {
   const isNavy = variant === "navy";
   const [open, setOpen] = useState(false);
+  const [openDrop, setOpenDrop] = useState<string | null>(null);
+
   return (
     <header
       className={
@@ -29,16 +53,52 @@ export function SiteHeader({ variant = "navy" }: { variant?: "navy" | "white" })
             ToptierProxy<span className="font-normal opacity-80">.com</span>
           </span>
         </Link>
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-7 md:flex">
           {nav.map((item) => (
-            <Link
+            <div
               key={item.to}
-              to={item.to}
-              className="text-sm font-semibold opacity-90 transition-opacity hover:opacity-100"
-              activeProps={{ className: "opacity-100 underline underline-offset-4" }}
+              className="relative"
+              onMouseEnter={() => item.items && setOpenDrop(item.to)}
+              onMouseLeave={() => setOpenDrop(null)}
             >
-              {item.label}
-            </Link>
+              <Link
+                to={item.to}
+                className="inline-flex items-center gap-1 text-sm font-semibold opacity-90 transition-opacity hover:opacity-100"
+                activeProps={{ className: "opacity-100 underline underline-offset-4" }}
+              >
+                {item.label}
+                {item.items && <ChevronDown className="h-3.5 w-3.5" />}
+              </Link>
+              {item.items && openDrop === item.to && (
+                <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3">
+                  <div className="w-64 rounded-md border border-border bg-white text-foreground shadow-xl">
+                    <ul className="max-h-[60vh] overflow-y-auto py-2">
+                      {item.items.map((sub) => (
+                        <li key={sub.label}>
+                          <Link
+                            to={sub.to as any}
+                            params={sub.params as any}
+                            onClick={() => setOpenDrop(null)}
+                            className="block px-4 py-2 text-sm font-medium hover:bg-muted"
+                          >
+                            {sub.label}
+                          </Link>
+                        </li>
+                      ))}
+                      <li className="mt-1 border-t border-border">
+                        <Link
+                          to={item.to}
+                          onClick={() => setOpenDrop(null)}
+                          className="block px-4 py-2 text-sm font-bold text-primary hover:bg-muted"
+                        >
+                          See all {item.label.toLowerCase()} →
+                        </Link>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
         </nav>
         <button
