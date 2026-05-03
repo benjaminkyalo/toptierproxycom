@@ -54,7 +54,7 @@ export const providers: Provider[] = [
       "Bright Data operates the world's largest ethically-sourced proxy network with 150M+ residential IPs across every country.",
     longDescription:
       "Founded in 2014 (originally as Luminati Networks), Bright Data is widely regarded as the gold standard in the proxy industry. The company runs a strict KYC compliance program, holds SOC 2 Type II and ISO 27001 certifications, and powers data collection for thousands of Fortune 500 companies. Its product stack spans residential, ISP, datacenter and mobile proxies, alongside higher-level products like the Web Unlocker, Scraping Browser, and pre-built dataset marketplace.",
-    visitUrl: "https://brightdata.com",
+    visitUrl: "https://get.brightdata.com/68a0yf9mr2cl",
     trustScore: 98,
     badge: "Editor's Choice",
   },
@@ -81,7 +81,7 @@ export const providers: Provider[] = [
       "Oxylabs combines a 175M+ residential pool with industry-leading scraper APIs and is a top pick for serious data teams.",
     longDescription:
       "Oxylabs has grown into one of the two undisputed leaders of the premium proxy market. Its residential network covers every country with city-level targeting, and its SERP, E-Commerce and Web Scraper APIs deliver structured JSON output with built-in unblocking. Oxylabs holds SOC 2 Type II certification and is a founding member of the Ethical Web Data Collection Initiative.",
-    visitUrl: "https://oxylabs.io",
+    visitUrl: "https://oxylabs.hasoffers.com/signup/2192",
     trustScore: 97,
     badge: "Top Rated",
   },
@@ -108,7 +108,7 @@ export const providers: Provider[] = [
       "Decodo (formerly Smartproxy) delivers premium-grade proxies at half the price of the top two enterprise vendors.",
     longDescription:
       "Rebranded from Smartproxy in late 2024, Decodo has kept everything users loved about the original product while sharpening its focus on developer experience and pricing transparency. Pay-as-you-go residential traffic starts at $2/GB, free trials are available across the entire product catalog, and the dashboard remains one of the cleanest in the industry.",
-    visitUrl: "https://decodo.com",
+    visitUrl: "https://decodo.com/?refcode=toptierproxy",
     trustScore: 94,
     badge: "Best Value",
   },
@@ -135,7 +135,7 @@ export const providers: Provider[] = [
       "IPRoyal's Royal Residential plan offers true pay-as-you-go bandwidth that never expires, starting at $1.75/GB.",
     longDescription:
       "IPRoyal has carved out a strong position with hobbyists, sneaker resellers and small dev teams thanks to its non-expiring bandwidth model and aggressive pricing. The Royal Residential network spans every country with both rotating and sticky sessions, while dedicated datacenter and ISP plans round out a flexible product line.",
-    visitUrl: "https://iproyal.com",
+    visitUrl: "https://iproyal.com/?r=1289846",
     trustScore: 91,
   },
   {
@@ -187,7 +187,7 @@ export const providers: Provider[] = [
       "NetNut sources residential IPs directly from ISPs rather than peer-to-peer, delivering best-in-class speeds.",
     longDescription:
       "NetNut differentiates by sourcing its residential IPs through direct ISP partnerships rather than a peer-to-peer SDK. The result is faster, more stable connections — particularly useful for ad verification, brand protection and any workload that's sensitive to latency.",
-    visitUrl: "https://netnut.io",
+    visitUrl: "https://netnut.io?ref=mmq0nwq",
     trustScore: 92,
   },
   {
@@ -213,7 +213,7 @@ export const providers: Provider[] = [
       "Webshare is the go-to for cheap, reliable datacenter proxies with a generous free plan and API-first workflow.",
     longDescription:
       "Webshare has built a loyal developer following on the back of unbeatable datacenter pricing and a no-friction signup. The free tier (10 proxies, 1GB/month) is genuinely usable for prototyping, and paid datacenter plans are among the cheapest per-IP in the industry.",
-    visitUrl: "https://webshare.io",
+    visitUrl: "https://www.webshare.io/?referral_code=gp0x8ig1cckr",
     trustScore: 88,
   },
   {
@@ -265,7 +265,7 @@ export const providers: Provider[] = [
       "ProxyEmpire's rollover bandwidth and 30-minute sticky sessions make it a flexible pick for varied workloads.",
     longDescription:
       "ProxyEmpire is a younger provider that wins on flexibility: unused bandwidth rolls over each month, sticky sessions can hold up to 30 minutes, and pricing is competitive across residential and mobile.",
-    visitUrl: "https://proxyempire.io",
+    visitUrl: "https://proxyempire.io/?ref=zjuzmde",
     trustScore: 86,
   },
   {
@@ -343,7 +343,7 @@ export const providers: Provider[] = [
       "Proxy-Cheap lives up to its name — competitive pricing across residential, datacenter, ISP and mobile.",
     longDescription:
       "If price is the deciding factor, Proxy-Cheap is hard to ignore. The provider keeps things simple with transparent flat pricing, supports crypto payments, and ships a usable dashboard for managing rotating and static IP plans.",
-    visitUrl: "https://proxy-cheap.com",
+    visitUrl: "https://app.proxy-cheap.com/r/nAPT9Q",
     trustScore: 82,
   },
 ];
