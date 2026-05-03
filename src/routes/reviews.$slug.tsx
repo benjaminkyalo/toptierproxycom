@@ -253,9 +253,9 @@ function ReviewPage() {
             <div className="mt-2 text-2xl font-bold">{provider.name}</div>
             <p className="mt-2 text-sm text-muted-foreground">{provider.tagline}</p>
             <a
-              href={provider.visitUrl}
+              href={`/go/${provider.slug}`}
               target="_blank"
-              rel="noopener noreferrer sponsored"
+              rel="noopener noreferrer sponsored nofollow"
               className="mt-4 inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-primary text-sm font-bold text-primary-foreground hover:bg-brand-blue-hover"
             >
               Visit Site <ExternalLink className="h-4 w-4" />

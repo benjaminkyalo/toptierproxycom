@@ -13,9 +13,9 @@ export function PartnerRow({ provider }: { provider: Provider }) {
         </p>
       </div>
       <a
-        href={provider.visitUrl}
+        href={`/go/${provider.slug}`}
         target="_blank"
-        rel="noopener noreferrer sponsored"
+        rel="noopener noreferrer sponsored nofollow"
         className="inline-flex h-10 shrink-0 items-center justify-center rounded-md bg-primary px-6 text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-blue-hover"
       >
         Visit Site
