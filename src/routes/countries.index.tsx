@@ -26,16 +26,21 @@ function CountriesIndex() {
       {regions.map((region) => (
         <section key={region} className="mb-10">
           <h2 className="mb-4 text-2xl font-bold">{region}</h2>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {countries.filter((c) => c.region === region).map((c) => (
               <Link
                 key={c.slug}
                 to="/countries/$slug"
                 params={{ slug: c.slug }}
-                className="flex items-center gap-3 rounded-md border border-border bg-card p-4 shadow-card transition-shadow hover:shadow-card-hover"
+                className="flex items-start gap-3 rounded-md border border-border bg-card p-4 shadow-card transition-shadow hover:shadow-card-hover"
               >
                 <Flag code={c.code} name={c.name} size="md" />
-                <span className="font-bold text-sm">{c.name}</span>
+                <div className="min-w-0">
+                  <div className="font-bold text-sm">{c.name} proxies</div>
+                  <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">
+                    {c.poolDepth} · residential, mobile &amp; ISP IPs in {c.topCities.slice(0, 3).join(", ")}. {c.primaryUseCases[0]}.
+                  </p>
+                </div>
               </Link>
             ))}
           </div>
