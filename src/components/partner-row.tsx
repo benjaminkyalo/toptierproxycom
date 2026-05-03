@@ -12,13 +12,14 @@ export function PartnerRow({ provider }: { provider: Provider }) {
           (Pricing from ${provider.startingPriceGB}/GB — terms apply.)
         </p>
       </div>
-      <Link
-        to="/reviews/$slug"
-        params={{ slug: provider.slug }}
+      <a
+        href={provider.visitUrl}
+        target="_blank"
+        rel="noopener noreferrer sponsored"
         className="inline-flex h-10 shrink-0 items-center justify-center rounded-md bg-primary px-6 text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-blue-hover"
       >
         Visit Site
-      </Link>
+      </a>
     </div>
   );
 }
