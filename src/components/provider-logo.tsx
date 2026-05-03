@@ -1,9 +1,10 @@
 import type { Provider } from "@/data/providers";
 
-// Real provider logos hosted on Cloudinary. We render them inside a clean
-// white rounded tile so every logo (dark, light, colored) sits well next to
-// the provider name across reviews, comparison tables and partner rows.
-const LOGO_URL: Record<string, string> = {
+// Real provider logos hosted on Cloudinary. We pipe each URL through
+// Cloudinary's `f_auto,q_auto` transform so the CDN serves AVIF/WebP at
+// the smallest weight the browser supports, plus a width cap matching the
+// rendered tile size for ultra-fast loading.
+const RAW_LOGO_URL: Record<string, string> = {
   "bright-data":
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725875/bright_data_logo_muhsjd_efmshs.png",
   "oxylabs":
@@ -30,6 +31,16 @@ const LOGO_URL: Record<string, string> = {
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725875/infatica_logo_xxzvgj_qxk5vg.jpg",
 };
 
+function optimize(url: string, w: number): string {
+  return url.replace("/upload/", `/upload/f_auto,q_auto,c_fit,w_${w},h_${w}/`);
+}
+
+const LOGO_URL: Record<string, string> = Object.fromEntries(
+  Object.entries(RAW_LOGO_URL).map(([k, v]) => [k, v]),
+);
+
+const SIZE_PX = { sm: 56, md: 72, lg: 96 } as const;
+
 const SIZES = {
   sm: "h-7 w-7",
   md: "h-9 w-9",
@@ -46,24 +57,33 @@ export function ProviderLogo({
   provider,
   size = "md",
   className = "",
+  eager = false,
 }: {
   provider: Pick<Provider, "slug" | "name">;
   size?: keyof typeof SIZES;
   className?: string;
+  eager?: boolean;
 }) {
   const url = LOGO_URL[provider.slug];
 
   if (url) {
+    const w = SIZE_PX[size];
+    const src1x = optimize(url, w);
+    const src2x = optimize(url, w * 2);
     return (
       <span
         aria-label={`${provider.name} logo`}
         className={`inline-flex shrink-0 items-center justify-center overflow-hidden rounded border border-border bg-white shadow-sm ${SIZES[size]} ${className}`}
       >
         <img
-          src={url}
+          src={src1x}
+          srcSet={`${src1x} 1x, ${src2x} 2x`}
+          width={w}
+          height={w}
           alt={`${provider.name} logo`}
-          loading="lazy"
+          loading={eager ? "eager" : "lazy"}
           decoding="async"
+          fetchPriority={eager ? "high" : "low"}
           className="h-full w-full object-contain p-1"
         />
       </span>

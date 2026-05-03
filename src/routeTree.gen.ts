@@ -31,6 +31,7 @@ import { Route as VsMatchupRouteImport } from './routes/vs.$matchup'
 import { Route as UseCasesSlugRouteImport } from './routes/use-cases.$slug'
 import { Route as ReviewsSlugRouteImport } from './routes/reviews.$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
+import { Route as GoSlugRouteImport } from './routes/go.$slug'
 import { Route as CountriesSlugRouteImport } from './routes/countries.$slug'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as BestSlugRouteImport } from './routes/best.$slug'
@@ -146,6 +147,11 @@ const GuidesSlugRoute = GuidesSlugRouteImport.update({
   path: '/guides/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GoSlugRoute = GoSlugRouteImport.update({
+  id: '/go/$slug',
+  path: '/go/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CountriesSlugRoute = CountriesSlugRouteImport.update({
   id: '/countries/$slug',
   path: '/countries/$slug',
@@ -184,6 +190,7 @@ export interface FileRoutesByFullPath {
   '/best/$slug': typeof BestSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/countries/$slug': typeof CountriesSlugRouteWithChildren
+  '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
   '/use-cases/$slug': typeof UseCasesSlugRoute
@@ -212,6 +219,7 @@ export interface FileRoutesByTo {
   '/best/$slug': typeof BestSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/countries/$slug': typeof CountriesSlugRouteWithChildren
+  '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
   '/use-cases/$slug': typeof UseCasesSlugRoute
@@ -241,6 +249,7 @@ export interface FileRoutesById {
   '/best/$slug': typeof BestSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/countries/$slug': typeof CountriesSlugRouteWithChildren
+  '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
   '/use-cases/$slug': typeof UseCasesSlugRoute
@@ -271,6 +280,7 @@ export interface FileRouteTypes {
     | '/best/$slug'
     | '/blog/$slug'
     | '/countries/$slug'
+    | '/go/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
     | '/use-cases/$slug'
@@ -299,6 +309,7 @@ export interface FileRouteTypes {
     | '/best/$slug'
     | '/blog/$slug'
     | '/countries/$slug'
+    | '/go/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
     | '/use-cases/$slug'
@@ -327,6 +338,7 @@ export interface FileRouteTypes {
     | '/best/$slug'
     | '/blog/$slug'
     | '/countries/$slug'
+    | '/go/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
     | '/use-cases/$slug'
@@ -356,6 +368,7 @@ export interface RootRouteChildren {
   BestSlugRoute: typeof BestSlugRoute
   BlogSlugRoute: typeof BlogSlugRoute
   CountriesSlugRoute: typeof CountriesSlugRouteWithChildren
+  GoSlugRoute: typeof GoSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   ReviewsSlugRoute: typeof ReviewsSlugRoute
   UseCasesSlugRoute: typeof UseCasesSlugRoute
@@ -523,6 +536,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuidesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/go/$slug': {
+      id: '/go/$slug'
+      path: '/go/$slug'
+      fullPath: '/go/$slug'
+      preLoaderRoute: typeof GoSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/countries/$slug': {
       id: '/countries/$slug'
       path: '/countries/$slug'
@@ -583,6 +603,7 @@ const rootRouteChildren: RootRouteChildren = {
   BestSlugRoute: BestSlugRoute,
   BlogSlugRoute: BlogSlugRoute,
   CountriesSlugRoute: CountriesSlugRouteWithChildren,
+  GoSlugRoute: GoSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   ReviewsSlugRoute: ReviewsSlugRoute,
   UseCasesSlugRoute: UseCasesSlugRoute,
