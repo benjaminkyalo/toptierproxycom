@@ -5,28 +5,29 @@ import type { Provider } from "@/data/providers";
 // the provider name across reviews, comparison tables and partner rows.
 const LOGO_URL: Record<string, string> = {
   "bright-data":
-    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/bright_data_logo_muhsjd.png",
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725875/bright_data_logo_muhsjd_efmshs.png",
   "oxylabs":
-    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/oxylabs_logo_lkvr2i.png",
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725876/oxylabs_logo_lkvr2i_d5hfj9.png",
   "decodo":
-    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/decodo_logo_ek7uxk.png",
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725875/decodo_logo_ek7uxk_ednnxc.png",
   "iproyal":
-    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/iproyal_logo_fapvx7.png",
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725876/iproyal_logo_fapvx7_n2qdm5.png",
   "soax":
-    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/soax_logo_ssdefv.png",
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725875/soax_logo_ssdefv_wlxqwk.png",
   "netnut":
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/netnut_logo_ugn59g.png",
   "webshare":
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701038/webshare_logo_stwvzs.png",
   "rayobyte":
-    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/royabyte_logo_dxirbg.png",
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725875/royabyte_logo_dxirbg_c5h2uq.png",
   "proxyempire":
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/proxy_empire_logo_tjuiqw.jpg",
   "nimbleway":
-    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/nibleway_logo_wddvm2.png",
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725876/nibleway_logo_wddvm2_aqsi2z.png",
   "proxy-cheap":
-    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/proxycheap_logo_jl5ucv.png",
-  // No official URL provided for Infatica — fallback to initials tile below.
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725875/proxycheap_logo_jl5ucv_pnghvr.png",
+  "infatica":
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725875/infatica_logo_xxzvgj_qxk5vg.jpg",
 };
 
 const SIZES = {
