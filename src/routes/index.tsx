@@ -276,9 +276,9 @@ function HomePage() {
                 key={p.slug}
                 to="/reviews/$slug"
                 params={{ slug: p.slug }}
-                className="flex h-32 flex-col items-center justify-center gap-3 rounded-md bg-card px-4 py-6 text-center shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+                className="flex h-36 flex-col items-center justify-center gap-3 rounded-md bg-card px-4 py-6 text-center shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
               >
-                <div className="flex h-10 items-center text-base font-bold">{p.name}</div>
+                <ProviderLogo provider={p} size="lg" />
                 <span className="text-sm font-semibold text-foreground">{p.name} Review</span>
               </Link>
             ))}
