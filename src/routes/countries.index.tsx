@@ -24,20 +24,20 @@ function CountriesIndex() {
       breadcrumb={[{ to: "/", label: "Home" }, { to: "/countries", label: "Countries" }]}
     >
       {regions.map((region) => (
-        <section key={region} className="mb-10">
-          <h2 className="mb-4 text-2xl font-bold">{region}</h2>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <section key={region} className="mb-14">
+          <h2 className="mb-6 text-2xl font-bold">{region}</h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {countries.filter((c) => c.region === region).map((c) => (
               <Link
                 key={c.slug}
                 to="/countries/$slug"
                 params={{ slug: c.slug }}
-                className="flex items-start gap-3 rounded-md border border-border bg-card p-4 shadow-card transition-shadow hover:shadow-card-hover"
+                className="flex items-start gap-4 rounded-lg border border-border bg-card p-6 shadow-card transition-shadow hover:shadow-card-hover"
               >
                 <Flag code={c.code} name={c.name} size="md" />
                 <div className="min-w-0">
-                  <div className="font-bold text-sm">{c.name} proxies</div>
-                  <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">
+                  <div className="text-base font-bold">{c.name} proxies</div>
+                  <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">
                     {c.poolDepth} · residential, mobile &amp; ISP IPs in {c.topCities.slice(0, 3).join(", ")}. {c.primaryUseCases[0]}.
                   </p>
                 </div>
