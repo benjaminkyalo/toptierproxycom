@@ -39,12 +39,12 @@ const LOGO_URL: Record<string, string> = Object.fromEntries(
   Object.entries(RAW_LOGO_URL).map(([k, v]) => [k, v]),
 );
 
-const SIZE_PX = { sm: 56, md: 72, lg: 96 } as const;
+const SIZE_PX = { sm: 80, md: 112, lg: 160 } as const;
 
 const SIZES = {
-  sm: "h-7 w-7",
-  md: "h-9 w-9",
-  lg: "h-12 w-12",
+  sm: "h-10 w-10",
+  md: "h-14 w-14",
+  lg: "h-20 w-20",
 } as const;
 
 const TEXT_SIZE = {
@@ -73,7 +73,7 @@ export function ProviderLogo({
     return (
       <span
         aria-label={`${provider.name} logo`}
-        className={`inline-flex shrink-0 items-center justify-center overflow-hidden rounded border border-border bg-white shadow-sm ${SIZES[size]} ${className}`}
+        className={`inline-flex shrink-0 items-center justify-center overflow-hidden bg-transparent ${SIZES[size]} ${className}`}
       >
         <img
           src={src1x}
