@@ -28,7 +28,7 @@ export const Route = createFileRoute("/trust-score")({
           <li>
             <strong>Sourcing transparency (25 pts)</strong> — How residential IPs are obtained and disclosed.
             Vendors that publish their SDK opt-in flow, peer compensation model and removal-on-request process score highest.
-            See our deep-dive on <Link to="/blog/$slug" params={{ slug: "ethical-residential-proxies" }}>ethical residential sourcing</Link>.
+            See our deep-dive on <Link to="/blog/$slug" params={{ slug: "ethical-proxy-sourcing" }}>ethical residential sourcing</Link>.
           </li>
           <li>
             <strong>Corporate transparency (15 pts)</strong> — Public ownership, identifiable leadership team,

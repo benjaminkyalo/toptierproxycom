@@ -44,7 +44,7 @@ export const Route = createFileRoute("/use-cases/")({
             <strong>session model</strong> (rotating per request vs sticky for the duration of a session), and{" "}
             <strong>delivery layer</strong> (raw proxy endpoint, headless browser with proxy injection, or a fully-managed
             scraping API). Read{" "}
-            <Link to="/guides/$slug" params={{ slug: "residential-vs-datacenter" }}>residential vs datacenter</Link> for
+            <Link to="/blog/$slug" params={{ slug: "datacenter-vs-residential-proxies" }}>residential vs datacenter</Link> for
             the type decision and{" "}
             <Link to="/blog/$slug" params={{ slug: "rotating-vs-sticky-sessions" }}>rotating vs sticky sessions</Link> for
             the session model.
@@ -55,7 +55,7 @@ export const Route = createFileRoute("/use-cases/")({
             <li><Link to="/use-cases/$slug" params={{ slug: "seo-monitoring" }}>SEO rank tracking</Link> — geo-targeted residential, low-volume per IP.</li>
             <li><Link to="/use-cases/$slug" params={{ slug: "ad-verification" }}>Ad verification</Link> — global mobile + residential mix.</li>
             <li><Link to="/use-cases/$slug" params={{ slug: "sneaker-copping" }}>Sneaker copping</Link> — fresh ISP + mobile, region-specific.</li>
-            <li><Link to="/use-cases/$slug" params={{ slug: "social-media" }}>Social media automation</Link> — sticky mobile, one IP per account.</li>
+            <li><Link to="/use-cases/$slug" params={{ slug: "social-media-management" }}>Social media automation</Link> — sticky mobile, one IP per account.</li>
             <li><Link to="/use-cases/$slug" params={{ slug: "ai-training-data" }}>AI training data</Link> — ethically-sourced residential at scale.</li>
             <li><Link to="/use-cases/$slug" params={{ slug: "brand-protection" }}>Brand protection</Link> — geo-distributed residential.</li>
             <li><Link to="/use-cases/$slug" params={{ slug: "price-monitoring" }}>Price monitoring</Link> — high-volume residential rotating.</li>
