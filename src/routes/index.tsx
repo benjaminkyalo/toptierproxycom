@@ -170,14 +170,16 @@ function HomePage() {
       {/* AWARDS BANNER */}
       <section className="bg-navy">
         <div className="mx-auto max-w-7xl px-6 py-16">
-          <div className="rounded-md bg-award-bg p-8 md:p-12">
-            <div className="grid gap-8 md:grid-cols-[260px_1fr] md:gap-12">
+          <div className="rounded-lg bg-award-bg p-8 md:p-12">
+            <div className="grid gap-10 md:grid-cols-[280px_1fr] md:items-center md:gap-14">
               <div className="flex justify-center">
-                <div className="relative w-48 rounded-md border-2 border-primary bg-card p-6 text-center shadow-card">
-                  <div className="text-xs font-bold tracking-wider text-primary">ToptierProxy.com</div>
-                  <div className="my-3 border-y-2 border-primary py-2 text-sm font-bold">• 2026 •</div>
-                  <div className="text-sm font-medium">Annual</div>
-                  <div className="text-2xl font-bold">Awards</div>
+                <div className="relative flex h-56 w-56 flex-col items-center justify-center rounded-full border-[6px] border-primary bg-card text-center shadow-card">
+                  <div className="absolute inset-2 rounded-full border border-primary/40" />
+                  <Trophy className="h-8 w-8 text-primary" strokeWidth={1.5} />
+                  <div className="mt-2 text-[11px] font-bold uppercase tracking-[0.18em] text-primary">ToptierProxy.com</div>
+                  <div className="mt-2 border-y border-primary px-4 py-1 text-xs font-bold tracking-widest">• 2026 •</div>
+                  <div className="mt-2 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">Annual</div>
+                  <div className="text-xl font-bold leading-none">Awards</div>
                 </div>
               </div>
               <div>

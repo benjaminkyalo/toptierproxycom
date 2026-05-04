@@ -1,15 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageShell } from "@/components/page-shell";
+import { PageShell, Prose } from "@/components/page-shell";
 import { blogPosts } from "@/data/blog";
 import { Calendar, Clock } from "lucide-react";
 
 export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
-      { title: "Proxy & Web Scraping Blog 2026 | ToptierProxy.com" },
-      { name: "description", content: "Expert articles on residential proxies, web scraping, anti-bot bypass and proxy pricing. Updated weekly by the ToptierProxy.com research team." },
-      { property: "og:title", content: "Proxy & Web Scraping Blog" },
-      { property: "og:description", content: "Long-form expert content on proxies and web scraping." },
+      { title: "Proxy & Web Scraping Blog 2026 — Expert Articles | ToptierProxy.com" },
+      { name: "description", content: "Expert long-form articles on residential proxies, web scraping, Cloudflare bypass, DataDome bypass, anti-bot defenses, proxy pricing and the data collection industry. Updated weekly." },
+      { property: "og:title", content: "Proxy & Web Scraping Blog | ToptierProxy.com" },
+      { property: "og:description", content: "Long-form expert content on proxies, web scraping and anti-bot bypass." },
     ],
   }),
   component: BlogIndex,
@@ -22,7 +22,26 @@ function BlogIndex() {
       intro="Deep dives on proxies, web scraping, anti-bot defenses and the data collection industry — updated weekly by our research team."
       breadcrumb={[{ to: "/", label: "Home" }, { to: "/blog", label: "Blog" }]}
     >
-      <div className="grid gap-6 md:grid-cols-2">
+      <Prose>
+        <p>
+          Tutorials, technical deep-dives and industry analysis from the people who actually run our benchmarks.
+          Every article is written by a practitioner who ships production scrapers — not a freelance content marketer.
+        </p>
+        <h2>Most-read articles</h2>
+        <ul>
+          <li><Link to="/blog/$slug" params={{ slug: "how-to-bypass-cloudflare" }}>How to bypass Cloudflare bot management in 2026</Link></li>
+          <li><Link to="/blog/$slug" params={{ slug: "datacenter-vs-residential-proxies" }}>Datacenter vs residential proxies — which should you use?</Link></li>
+          <li><Link to="/blog/$slug" params={{ slug: "is-web-scraping-legal" }}>Is web scraping legal in 2026?</Link></li>
+          <li><Link to="/blog/$slug" params={{ slug: "rotating-vs-sticky-sessions" }}>Rotating vs sticky proxy sessions — when to use each</Link></li>
+          <li><Link to="/blog/$slug" params={{ slug: "proxy-pricing-explained" }}>Why proxy pricing varies 10× — explained</Link></li>
+          <li><Link to="/blog/$slug" params={{ slug: "best-proxy-for-amazon-scraping" }}>Best proxy for Amazon scraping</Link></li>
+          <li><Link to="/blog/$slug" params={{ slug: "best-proxy-for-instagram-tiktok" }}>Best proxy for Instagram & TikTok</Link></li>
+          <li><Link to="/blog/$slug" params={{ slug: "how-to-scrape-google-search" }}>How to scrape Google Search reliably</Link></li>
+          <li><Link to="/blog/$slug" params={{ slug: "ethical-proxy-sourcing" }}>What ethical residential-proxy sourcing actually looks like</Link></li>
+          <li><Link to="/blog/$slug" params={{ slug: "proxy-glossary" }}>The complete proxy glossary (ASN, JA3, CGNAT and more)</Link></li>
+        </ul>
+      </Prose>
+      <div className="mt-10 grid gap-6 md:grid-cols-2">
         {blogPosts.map((post) => (
           <Link
             key={post.slug}
