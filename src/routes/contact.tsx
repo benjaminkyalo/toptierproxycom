@@ -64,7 +64,7 @@ function ContactPage() {
 
         <h3>What is the difference between residential, datacenter, ISP and mobile proxies?</h3>
         <p>
-          A full breakdown lives in our <Link to="/guides/$slug" params={{ slug: "residential-vs-datacenter" }}>Residential vs Datacenter guide</Link>.
+          A full breakdown lives in our <Link to="/blog/$slug" params={{ slug: "datacenter-vs-residential-proxies" }}>Residential vs Datacenter guide</Link>.
           Short version: residential = real home IPs (highest stealth), datacenter = cloud-hosted IPs (cheapest & fastest),
           ISP = static residential routed through a datacenter (best of both), mobile = 4G/5G carrier IPs (highest trust score).
         </p>
