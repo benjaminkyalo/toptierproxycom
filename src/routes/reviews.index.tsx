@@ -1,14 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Star } from "lucide-react";
-import { PageShell } from "@/components/page-shell";
+import { PageShell, Prose } from "@/components/page-shell";
 import { ProviderLogo } from "@/components/provider-logo";
 import { providers } from "@/data/providers";
 
 export const Route = createFileRoute("/reviews/")({
   head: () => ({
     meta: [
-      { title: "All Proxy Provider Reviews — ToptierProxy.com" },
-      { name: "description", content: "Browse our complete library of in-depth, hands-on proxy provider reviews. Updated for 2026 with pricing, pool size and performance benchmarks." },
+      { title: "All Proxy Provider Reviews — Hands-On Tested for 2026" },
+      { name: "description", content: "Browse hands-on reviews of every major proxy provider — Bright Data, Oxylabs, Decodo, IPRoyal, SOAX, NetNut, Webshare, Rayobyte, ProxyEmpire, Nimbleway, Proxy-Cheap, Infatica. Pricing, pool size, success rates and Trust Score for 2026." },
       { property: "og:title", content: "All Proxy Provider Reviews | ToptierProxy.com" },
       { property: "og:description", content: "In-depth reviews of every major residential, datacenter, ISP, mobile and scraping API provider." },
     ],
@@ -20,10 +20,20 @@ function ReviewsIndex() {
   return (
     <PageShell
       title="Proxy Provider Reviews"
-      intro="In-depth, hands-on reviews of every major proxy provider. Updated for 2026 with pricing, pool size, geographic coverage and performance benchmarks."
+      intro="In-depth, hands-on reviews of every major proxy provider. Updated for 2026 with pricing, pool size, geographic coverage, anti-bot success rates and Trust Score."
       breadcrumb={[{ to: "/", label: "Home" }, { to: "/reviews", label: "Reviews" }]}
     >
-      <div className="grid gap-4 md:grid-cols-2">
+      <Prose>
+        <p>
+          Every provider below has been tested hands-on by our team using a paid customer account.
+          Scoring follows our published{" "}
+          <Link to="/how-we-test">225-criterion methodology</Link>; institutional trust is captured separately by the{" "}
+          <Link to="/trust-score">Trust Score</Link>. Use the cards to jump into a specific review,
+          or compare any two vendors side-by-side on the{" "}
+          <Link to="/compare">comparison tool</Link>.
+        </p>
+      </Prose>
+      <div className="mt-8 grid gap-4 md:grid-cols-2">
         {providers.map((p) => (
           <Link
             key={p.slug}
@@ -51,6 +61,38 @@ function ReviewsIndex() {
             </div>
           </Link>
         ))}
+      </div>
+
+      <div className="mt-12">
+        <Prose>
+          <h2>How our reviews are scored</h2>
+          <p>
+            Each review combines a <strong>star rating</strong> (product quality) and a{" "}
+            <strong>Trust Score</strong> (institutional trust). A vendor can earn 5 stars on benchmarks and
+            a moderate Trust Score — that combination tells you the product works but procurement should ask
+            additional questions. Read the full{" "}
+            <Link to="/how-we-test">testing methodology</Link> and the{" "}
+            <Link to="/trust-score">Trust Score breakdown</Link>.
+          </p>
+
+          <h2>Compare by category</h2>
+          <ul>
+            <li><Link to="/guides/$slug" params={{ slug: "best-residential-proxies" }}>Best residential proxy providers</Link></li>
+            <li><Link to="/guides/$slug" params={{ slug: "best-datacenter-proxies" }}>Best datacenter proxy providers</Link></li>
+            <li><Link to="/guides/$slug" params={{ slug: "best-isp-proxies" }}>Best ISP (static residential) providers</Link></li>
+            <li><Link to="/guides/$slug" params={{ slug: "best-mobile-proxies" }}>Best mobile (4G/5G) providers</Link></li>
+            <li><Link to="/guides/$slug" params={{ slug: "best-scraping-apis" }}>Best scraping API providers</Link></li>
+          </ul>
+
+          <h2>Popular head-to-head matchups</h2>
+          <ul>
+            <li><Link to="/vs/$matchup" params={{ matchup: "bright-data-vs-oxylabs" }}>Bright Data vs Oxylabs</Link></li>
+            <li><Link to="/vs/$matchup" params={{ matchup: "oxylabs-vs-decodo" }}>Oxylabs vs Decodo</Link></li>
+            <li><Link to="/vs/$matchup" params={{ matchup: "bright-data-vs-decodo" }}>Bright Data vs Decodo</Link></li>
+            <li><Link to="/vs/$matchup" params={{ matchup: "iproyal-vs-webshare" }}>IPRoyal vs Webshare</Link></li>
+            <li><Link to="/vs/$matchup" params={{ matchup: "soax-vs-netnut" }}>SOAX vs NetNut</Link></li>
+          </ul>
+        </Prose>
       </div>
     </PageShell>
   );
