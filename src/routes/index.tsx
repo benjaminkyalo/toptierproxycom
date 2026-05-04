@@ -270,15 +270,15 @@ function HomePage() {
             ToptierProxy.com provides unbiased proxy provider reviews and ratings to help individual developers, agencies and enterprise data teams find the best provider for their needs.{" "}
             <Link to="/reviews" className="font-semibold text-primary underline">Read all reviews.</Link>
           </p>
-          <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div className="mt-8 grid grid-cols-2 gap-5 md:grid-cols-4">
             {reviewGrid.map((p) => (
               <Link
                 key={p.slug}
                 to="/reviews/$slug"
                 params={{ slug: p.slug }}
-                className="flex h-36 flex-col items-center justify-center gap-3 rounded-md bg-card px-4 py-6 text-center shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+                className="flex h-44 flex-col items-center justify-center gap-4 rounded-md bg-card px-4 py-6 text-center shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
               >
-                <ProviderLogo provider={p} size="lg" />
+                <ProviderLogo provider={p} size="lg" className="!h-24 !w-24" />
                 <span className="text-sm font-semibold text-foreground">{p.name} Review</span>
               </Link>
             ))}

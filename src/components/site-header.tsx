@@ -71,30 +71,33 @@ export function SiteHeader({ variant = "navy" }: { variant?: "navy" | "white" })
               </Link>
               {item.items && openDrop === item.to && (
                 <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3">
-                  <div className="w-64 rounded-md border border-border bg-white text-foreground shadow-xl">
-                    <ul className="max-h-[60vh] overflow-y-auto py-2">
+                  <div className="w-[min(900px,90vw)] rounded-md border border-border bg-white text-foreground shadow-xl">
+                    <div className="border-b border-border px-6 py-3">
+                      <p className="text-xs font-bold uppercase tracking-widest text-primary">{item.label}</p>
+                    </div>
+                    <ul className="grid max-h-[60vh] grid-cols-2 gap-x-2 gap-y-1 overflow-y-auto p-4 sm:grid-cols-3 lg:grid-cols-4">
                       {item.items.map((sub) => (
                         <li key={sub.label}>
                           <Link
                             to={sub.to as any}
                             params={sub.params as any}
                             onClick={() => setOpenDrop(null)}
-                            className="block px-4 py-2 text-sm font-medium hover:bg-muted"
+                            className="block rounded px-3 py-2 text-sm font-medium text-primary hover:bg-muted hover:underline"
                           >
                             {sub.label}
                           </Link>
                         </li>
                       ))}
-                      <li className="mt-1 border-t border-border">
-                        <Link
-                          to={item.to}
-                          onClick={() => setOpenDrop(null)}
-                          className="block px-4 py-2 text-sm font-bold text-primary hover:bg-muted"
-                        >
-                          See all {item.label.toLowerCase()} →
-                        </Link>
-                      </li>
                     </ul>
+                    <div className="border-t border-border px-6 py-3">
+                      <Link
+                        to={item.to}
+                        onClick={() => setOpenDrop(null)}
+                        className="text-sm font-bold text-primary hover:underline"
+                      >
+                        See all {item.label.toLowerCase()} →
+                      </Link>
+                    </div>
                   </div>
                 </div>
               )}
