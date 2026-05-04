@@ -89,7 +89,7 @@ function ReviewsIndex() {
             <li><Link to="/vs/$matchup" params={{ matchup: "bright-data-vs-oxylabs" }}>Bright Data vs Oxylabs</Link></li>
             <li><Link to="/vs/$matchup" params={{ matchup: "oxylabs-vs-decodo" }}>Oxylabs vs Decodo</Link></li>
             <li><Link to="/vs/$matchup" params={{ matchup: "bright-data-vs-decodo" }}>Bright Data vs Decodo</Link></li>
-            <li><Link to="/vs/$matchup" params={{ matchup: "iproyal-vs-webshare" }}>IPRoyal vs Webshare</Link></li>
+            <li><Link to="/vs/$matchup" params={{ matchup: "webshare-vs-iproyal" }}>IPRoyal vs Webshare</Link></li>
             <li><Link to="/vs/$matchup" params={{ matchup: "soax-vs-netnut" }}>SOAX vs NetNut</Link></li>
           </ul>
         </Prose>
