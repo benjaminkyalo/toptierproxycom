@@ -174,7 +174,7 @@ function HomePage() {
             <div className="grid gap-10 md:grid-cols-[minmax(200px,300px)_1fr] md:items-center md:gap-14">
               <div className="flex justify-center">
                 <img
-                  src="https://res.cloudinary.com/dkcqakosa/image/upload/f_auto,q_auto,w_600/v1777963719/ChatGPT_Image_May_5_2026_09_40_59_AM-Photoroom_1__11zon_1_trvtpp.png"
+                  src="https://res.cloudinary.com/dkcqakosa/image/upload/f_auto,q_auto,w_600/v1777966397/ChatGPT_Image_May_5_2026_09_40_59_AM-Photoroom_dvil1o.png"
                   alt="ToptierProxy.com 2026 Annual Awards — Best Proxy Provider of the Year"
                   width={300}
                   height={300}
