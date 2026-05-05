@@ -33,7 +33,7 @@ export const Route = createFileRoute("/countries/$slug/cities/$city")({
 });
 
 function CityPage() {
-  const { country, city } = Route.useLoaderData();
+  const { country, city } = Route.useLoaderData() as NonNullable<ReturnType<typeof getCityCountry>>;
   const top = country.topProviders.map((s) => providers.find((p) => p.slug === s)).filter((p): p is NonNullable<typeof p> => Boolean(p)).slice(0, 5);
   const otherCities = country.topCities.filter((c) => c !== city).slice(0, 6);
   return (

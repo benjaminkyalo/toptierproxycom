@@ -38,7 +38,7 @@ export const Route = createFileRoute("/use-cases/$slug")({
 });
 
 function UseCasePage() {
-  const { useCase } = Route.useLoaderData();
+  const { useCase } = Route.useLoaderData() as { useCase: NonNullable<ReturnType<typeof getUseCase>> };
   const ranked = useCase.bestProviders.map((s) => providers.find((p) => p.slug === s)).filter((p): p is NonNullable<typeof p> => Boolean(p));
   const related = useCases.filter((u) => u.slug !== useCase.slug).slice(0, 4);
   return (

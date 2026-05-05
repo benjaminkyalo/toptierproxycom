@@ -1,3 +1,4 @@
+import "@tanstack/react-start";
 import { createFileRoute } from "@tanstack/react-router";
 
 const robots = `User-agent: *\nAllow: /\nDisallow: /go/\n\nSitemap: https://toptierproxy.com/sitemap.xml\n`;
