@@ -1,3 +1,4 @@
+import "@tanstack/react-start";
 import { createFileRoute } from "@tanstack/react-router";
 import { providers } from "@/data/providers";
 
