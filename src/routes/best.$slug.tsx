@@ -37,7 +37,7 @@ export const Route = createFileRoute("/best/$slug")({
 });
 
 function BestPage() {
-  const { country } = Route.useLoaderData();
+  const { country } = Route.useLoaderData() as { country: import("@/data/countries").Country };
   const top = country.topProviders.map((s) => providers.find((p) => p.slug === s)).filter((p): p is NonNullable<typeof p> => Boolean(p));
   return (
     <PageShell title={`Best ${country.name} Proxies for 2026`} intro={`Top-ranked residential, mobile and ISP proxy providers offering ${country.poolDepth} in ${country.name}.`} breadcrumb={[{ to: "/", label: "Home" }, { to: "/countries", label: "Countries" }]}>
