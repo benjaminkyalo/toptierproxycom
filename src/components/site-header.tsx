@@ -54,7 +54,7 @@ export function SiteHeader({ variant = "navy" }: { variant?: "navy" | "white" })
           </span>
         </Link>
         <nav className="hidden items-center gap-7 md:flex">
-          {nav.map((item) => (
+          {nav.map((item, idx) => (
             <div
               key={item.to}
               className="relative"
@@ -70,8 +70,17 @@ export function SiteHeader({ variant = "navy" }: { variant?: "navy" | "white" })
                 {item.items && <ChevronDown className="h-3.5 w-3.5" />}
               </Link>
               {item.items && openDrop === item.to && (
-                <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3">
-                  <div className="w-[min(900px,90vw)] rounded-md border border-border bg-white text-foreground shadow-xl">
+                <div
+                  className={`absolute top-full z-50 pt-3 ${
+                    idx >= nav.length - 2
+                      ? "right-0"
+                      : idx <= 1
+                        ? "left-0"
+                        : "left-1/2 -translate-x-1/2"
+                  }`}
+                >
+                  <div className="w-[min(820px,calc(100vw-2rem))] rounded-md border border-border bg-white text-foreground shadow-xl">
+
                     <div className="border-b border-border px-6 py-3">
                       <p className="text-xs font-bold uppercase tracking-widest text-primary">{item.label}</p>
                     </div>
