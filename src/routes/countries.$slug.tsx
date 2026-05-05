@@ -67,7 +67,7 @@ export const Route = createFileRoute("/countries/$slug")({
 });
 
 function CountryPage() {
-  const { country } = Route.useLoaderData();
+  const { country } = Route.useLoaderData() as { country: NonNullable<ReturnType<typeof getCountry>> };
   const top = country.topProviders
     .map((s) => providers.find((p) => p.slug === s))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
