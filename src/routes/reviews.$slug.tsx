@@ -88,7 +88,7 @@ export const Route = createFileRoute("/reviews/$slug")({
 });
 
 function ReviewPage() {
-  const { provider } = Route.useLoaderData();
+  const { provider } = Route.useLoaderData() as { provider: NonNullable<ReturnType<typeof getProvider>> };
   const alternatives = providers.filter((p) => p.slug !== provider.slug).sort((a, b) => b.rating - a.rating).slice(0, 4);
 
   return (
