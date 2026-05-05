@@ -54,7 +54,7 @@ export function SiteHeader({ variant = "navy" }: { variant?: "navy" | "white" })
           </span>
         </Link>
         <nav className="hidden items-center gap-7 md:flex">
-          {nav.map((item) => (
+          {nav.map((item, idx) => (
             <div
               key={item.to}
               className="relative"
