@@ -59,7 +59,7 @@ export const Route = createFileRoute("/guides/$slug")({
 });
 
 function GuidePage() {
-  const { guide } = Route.useLoaderData();
+  const { guide } = Route.useLoaderData() as { guide: NonNullable<ReturnType<typeof getGuide>> };
   const ranked = guide.providerSlugs
     .map((s) => providers.find((p) => p.slug === s))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
