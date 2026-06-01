@@ -2,7 +2,10 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, Prose } from "@/components/page-shell";
 import { LongFormSection } from "@/components/long-form";
 import { getBlogPost, blogPosts } from "@/data/blog";
+import { providers } from "@/data/providers";
+import { ProviderLogo } from "@/components/provider-logo";
 import { Calendar, Clock, User } from "lucide-react";
+
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
@@ -50,6 +53,17 @@ export const Route = createFileRoute("/blog/$slug")({
               mainEntityOfPage: { "@type": "WebPage", "@id": `https://www.toptierproxy.com/blog/${post.slug}` },
               keywords: post.tags.join(", "),
             },
+            ...(post.faq && post.faq.length > 0
+              ? [{
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  mainEntity: post.faq.map((f) => ({
+                    "@type": "Question",
+                    name: f.q,
+                    acceptedAnswer: { "@type": "Answer", text: f.a },
+                  })),
+                }]
+              : []),
           ]),
         },
       ],
@@ -95,7 +109,58 @@ function BlogPostPage() {
           ))}
         </Prose>
 
+        {/* Recommended provider CTA */}
+        {(() => {
+          const rec = post.recommendedProvider
+            ? providers.find((p) => p.slug === post.recommendedProvider)
+            : null;
+          if (!rec) return null;
+          return (
+            <aside className="mt-10 rounded-md border-2 border-primary/30 bg-card p-6 shadow-card">
+              <div className="text-xs font-bold uppercase tracking-wider text-primary">Editor&apos;s pick</div>
+              <div className="mt-3 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+                <ProviderLogo provider={rec} size="lg" />
+                <div className="flex-1">
+                  <div className="text-lg font-bold">{rec.name}</div>
+                  <div className="text-sm text-foreground/80">{rec.tagline}</div>
+                  <div className="mt-1 text-xs text-muted-foreground">
+                    {"⭐".repeat(Math.round(rec.rating))} {rec.rating}/5
+                    {rec.startingPriceGB ? ` · From $${rec.startingPriceGB}/GB` : ""}
+                  </div>
+                </div>
+                <a
+                  href={`/go/${rec.slug}`}
+                  target="_blank"
+                  rel="noopener noreferrer sponsored nofollow"
+                  className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-6 text-sm font-bold text-primary-foreground hover:bg-brand-blue-hover"
+                >
+                  Visit Site →
+                </a>
+              </div>
+            </aside>
+          );
+        })()}
+
+        {/* FAQ section (also emitted as FAQPage JSON-LD for rich results) */}
+        {post.faq && post.faq.length > 0 && (
+          <section className="mt-12 border-t border-border pt-8">
+            <h2 className="text-2xl font-bold">Frequently asked questions</h2>
+            <div className="mt-4 divide-y divide-border">
+              {post.faq.map((f) => (
+                <details key={f.q} className="group py-4">
+                  <summary className="cursor-pointer list-none text-base font-bold marker:hidden">
+                    <span className="mr-2 text-primary group-open:rotate-90 inline-block transition-transform">›</span>
+                    {f.q}
+                  </summary>
+                  <p className="mt-2 pl-5 text-sm leading-relaxed text-foreground/85">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
+
         <LongFormSection variant="blog" topic={post.title} />
+
 
         <div className="mt-10 flex flex-wrap gap-2 border-t border-border pt-6">
           {post.tags.map((t) => (
