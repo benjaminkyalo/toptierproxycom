@@ -2,7 +2,10 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, Prose } from "@/components/page-shell";
 import { LongFormSection } from "@/components/long-form";
 import { getBlogPost, blogPosts } from "@/data/blog";
+import { providers } from "@/data/providers";
+import { ProviderLogo } from "@/components/provider-logo";
 import { Calendar, Clock, User } from "lucide-react";
+
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
