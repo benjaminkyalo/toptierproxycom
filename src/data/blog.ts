@@ -12,7 +12,11 @@ export interface BlogPost {
   category: string;
   body: { heading: string; paragraphs: string[]; list?: string[] }[];
   tags: string[];
+  faq?: { q: string; a: string }[];
+  recommendedProvider?: string; // provider slug for affiliate CTA on card / in-body
+  featured?: boolean;
 }
+
 
 export const blogPosts: BlogPost[] = [
   {
