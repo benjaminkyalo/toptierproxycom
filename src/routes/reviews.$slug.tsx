@@ -30,6 +30,15 @@ export const Route = createFileRoute("/reviews/$slug")({
           children: JSON.stringify([
             {
               "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Home", item: "https://www.toptierproxy.com" },
+                { "@type": "ListItem", position: 2, name: "Reviews", item: "https://www.toptierproxy.com/reviews" },
+                { "@type": "ListItem", position: 3, name: provider.name, item: `https://www.toptierproxy.com/reviews/${provider.slug}` },
+              ],
+            },
+            {
+              "@context": "https://schema.org",
               "@type": "Review",
               itemReviewed: {
                 "@type": "Product",

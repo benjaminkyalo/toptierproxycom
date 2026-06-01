@@ -2,23 +2,33 @@ import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Link } from "@tanstack/react-router";
-
 export function PageShell({
   title,
   intro,
   breadcrumb,
   children,
+  bgImage,
 }: {
   title: string;
   intro?: string;
   breadcrumb?: { to: string; label: string }[];
   children: ReactNode;
+  bgImage?: string;
 }) {
   return (
     <div className="flex min-h-screen flex-col">
       <SiteHeader />
-      <section className="bg-navy text-navy-foreground">
-        <div className="mx-auto max-w-7xl px-6 py-16">
+      <section
+        className="bg-navy text-navy-foreground relative overflow-hidden"
+        style={bgImage ? {
+          backgroundImage: `url(${bgImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        } : undefined}
+      >
+        {bgImage && <div className="absolute inset-0 bg-navy/70" />}
+        <div className="mx-auto max-w-7xl px-6 py-16 relative z-10">
           {breadcrumb && (
             <nav className="mb-4 text-xs opacity-80">
               {breadcrumb.map((b, i) => (
@@ -40,7 +50,6 @@ export function PageShell({
     </div>
   );
 }
-
 export function Prose({ children }: { children: ReactNode }) {
   return (
     <div className="prose-tt max-w-none text-foreground/85 [&_h2]:mt-10 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-foreground [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-foreground [&_p]:mt-4 [&_p]:leading-relaxed [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-6 [&_a]:font-semibold [&_a]:text-primary [&_a]:underline">

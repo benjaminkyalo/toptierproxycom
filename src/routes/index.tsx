@@ -40,14 +40,52 @@ export const Route = createFileRoute("/")({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "ToptierProxy.com",
+          url: "https://www.toptierproxy.com",
+          description: "Independent expert reviews and rankings of the best proxy providers worldwide.",
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
           "@type": "WebSite",
           name: "ToptierProxy.com",
-          url: "https://toptierproxy.com",
+          url: "https://www.toptierproxy.com",
           potentialAction: {
             "@type": "SearchAction",
-            target: "https://toptierproxy.com/search?q={query}",
+            target: "https://www.toptierproxy.com/search?q={query}",
             "query-input": "required name=query",
           },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            { "@type": "Question", name: "What is the best proxy provider in 2026?", acceptedAnswer: { "@type": "Answer", text: "Based on our testing, Bright Data leads for enterprise use, while IPRoyal and Webshare offer the best value for individuals and small teams." } },
+            { "@type": "Question", name: "What is a residential proxy?", acceptedAnswer: { "@type": "Answer", text: "A residential proxy routes your traffic through real home IP addresses, making requests appear as genuine user traffic. They are ideal for web scraping, ad verification, and bypassing geo-restrictions." } },
+            { "@type": "Question", name: "How much do proxies cost in 2026?", acceptedAnswer: { "@type": "Answer", text: "Proxy prices range from free tiers to $10+/GB for premium residential IPs. Datacenter proxies are cheapest at $0.50-$2/IP/month, while residential proxies typically cost $2-$10/GB." } },
+            { "@type": "Question", name: "Are proxies legal?", acceptedAnswer: { "@type": "Answer", text: "Yes, proxies are legal in most countries when used for legitimate purposes like web scraping public data, privacy protection, and market research." } },
+          ],
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "Best Proxy Providers 2026",
+          numberOfItems: 10,
+          itemListElement: providers.slice(0, 10).map((p, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: p.name,
+            url: `https://www.toptierproxy.com/reviews/${p.slug}`,
+          })),
         }),
       },
     ],
@@ -255,10 +293,27 @@ function HomePage() {
                 Over the years we've conducted thousands of hours of research, scraped tens of millions of pages across every protected target you can think of, and built proprietary benchmarking infrastructure to keep our reviews honest.{" "}
                 <Link to="/why-trust-us" className="font-semibold text-primary underline">Why trust us.</Link>
               </p>
+              <div className="mt-8 grid gap-6 sm:grid-cols-3">
+                <div className="rounded-xl border border-border bg-muted/40 p-5 transition-all duration-500 hover:shadow-md hover:-translate-y-1">
+                  <div className="text-3xl font-extrabold text-primary">10,000+</div>
+                  <div className="mt-1 text-sm font-semibold text-foreground">Real-World Proxy Tests in 2026</div>
+                  <p className="mt-2 text-xs text-muted-foreground">We benchmark every residential, datacenter, ISP and mobile proxy provider against live targets — Amazon, Google SERP, Cloudflare and DataDome — measuring success rate, latency and IP quality before publishing any review or ranking.</p>
+                </div>
+                <div className="rounded-xl border border-border bg-muted/40 p-5 transition-all duration-500 hover:shadow-md hover:-translate-y-1">
+                  <div className="text-3xl font-extrabold text-primary">Zero Pay-to-Win</div>
+                  <div className="mt-1 text-sm font-semibold text-foreground">Unbiased Proxy Provider Rankings</div>
+                  <p className="mt-2 text-xs text-muted-foreground">No proxy provider can pay to rank higher on ToptierProxy.com. Every score is calculated by our transparent Trust Score algorithm — factoring in pool size, pricing per GB, uptime, ethical IP sourcing and real customer support response times.</p>
+                </div>
+                <div className="rounded-xl border border-border bg-muted/40 p-5 transition-all duration-500 hover:shadow-md hover:-translate-y-1">
+                  <div className="text-3xl font-extrabold text-primary">9M+ Users</div>
+                  <div className="mt-1 text-sm font-semibold text-foreground">Trusted by Developers & Enterprises</div>
+                  <p className="mt-2 text-xs text-muted-foreground">From indie web scrapers and SEO agencies to Fortune 500 data engineering teams, over 9 million professionals use ToptierProxy.com annually to compare proxy costs, evaluate anti-bot bypass rates and choose the best provider for their use case.</p>
+                </div>
+              </div>
             </div>
-            <div className="space-y-5">
-              <Expert name="Marcus Reiner" role="Director of Network Research" />
-              <Expert name="Elena Park" role="Senior Editor" />
+            <div className="space-y-12">
+              <Expert name="Marcus Reiner" role="Director of Network Research" image="https://res.cloudinary.com/dkcqakosa/image/upload/v1780194300/Capture-Photoroom_1_w5jmmt.png" />
+              <Expert name="Elena Park" role="Senior Editor" image="https://res.cloudinary.com/dkcqakosa/image/upload/v1780194300/image_22-Photoroom_1_d2osmc.png" />
             </div>
           </div>
         </div>
@@ -496,18 +551,19 @@ function Stat({ n, label }: { n: string; label: string }) {
   );
 }
 
-function Expert({ name, role }: { name: string; role: string }) {
+function Expert({ name, role, image }: { name: string; role: string; image?: string }) {
   const initials = name.split(" ").map((s) => s[0]).join("");
+  const slug = name.toLowerCase().replace(/\s+/g, "-");
   return (
-    <div className="flex items-center gap-4">
-      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-navy text-lg font-bold text-navy-foreground">
-        {initials}
+    <a href={`/team/${slug}`} className="flex items-center gap-5 pl-8 group cursor-pointer">
+      <div className="flex h-24 w-24 rounded-full overflow-hidden flex-shrink-0 transition-all duration-500 group-hover:scale-105 group-hover:shadow-lg group-hover:ring-2 group-hover:ring-primary">
+        {image ? <img src={image} alt={name} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-110" /> : <span className="flex h-full w-full items-center justify-center bg-navy text-lg font-bold text-navy-foreground">{initials}</span>}
       </div>
-      <div>
-        <div className="text-lg font-bold">{name}</div>
+      <div className="transition-all duration-300 group-hover:translate-x-1">
+        <div className="text-lg font-bold group-hover:text-primary transition-colors duration-300">{name}</div>
         <div className="text-sm italic text-muted-foreground">{role}</div>
       </div>
-    </div>
+    </a>
   );
 }
 
