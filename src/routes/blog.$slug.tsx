@@ -50,6 +50,17 @@ export const Route = createFileRoute("/blog/$slug")({
               mainEntityOfPage: { "@type": "WebPage", "@id": `https://www.toptierproxy.com/blog/${post.slug}` },
               keywords: post.tags.join(", "),
             },
+            ...(post.faq && post.faq.length > 0
+              ? [{
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  mainEntity: post.faq.map((f) => ({
+                    "@type": "Question",
+                    name: f.q,
+                    acceptedAnswer: { "@type": "Answer", text: f.a },
+                  })),
+                }]
+              : []),
           ]),
         },
       ],
