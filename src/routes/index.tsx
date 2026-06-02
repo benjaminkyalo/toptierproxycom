@@ -4,6 +4,7 @@ import {
   CheckCircle2, BarChart3, Star, ChevronDown,
 } from "lucide-react";
 import { useState } from "react";
+import { SiteSearch } from "@/components/site-search";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { AwardCard } from "@/components/award-card";
@@ -184,7 +185,10 @@ function HomePage() {
           <p className="mx-auto mt-6 max-w-3xl text-lg opacity-90 md:text-xl">
             Read and compare proxy provider reviews, rankings, and features
           </p>
-          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
+          <div className="mt-8 flex justify-center px-4">
+            <SiteSearch className="w-full max-w-2xl" heroMode />
+          </div>
+          <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
             {heroCards.map((c) => (
               <AwardCard key={c.to} to={c.to} title={c.title} icon={c.icon} />
             ))}
