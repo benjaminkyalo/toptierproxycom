@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState, useEffect } from "react";
 import { Calendar, Clock, Search, Sparkles } from "lucide-react";
+import { SiteSearch } from "@/components/site-search";
 import { PageShell, Prose } from "@/components/page-shell";
 import { blogPosts } from "@/data/blog";
 import { providers } from "@/data/providers";
@@ -101,22 +102,8 @@ function BlogIndex() {
       intro="Tutorials, deep dives, rankings and industry analysis from the people who actually run our benchmarks. 100+ articles — updated weekly."
       breadcrumb={[{ to: "/", label: "Home" }, { to: "/blog", label: "Blog" }]}
       bgImage="https://res.cloudinary.com/dkcqakosa/image/upload/v1778336545/ChatGPT_Image_May_9_2026_05_09_45_PM_1_qy6y0t.png"
+      heroContent={<div className="w-full max-w-3xl"><SiteSearch className="w-full" heroMode /></div>}
     >
-      {/* Search bar */}
-      <div className="mx-auto mb-8 max-w-2xl">
-        <label htmlFor="blog-search" className="sr-only">Search blog posts</label>
-        <div className="relative">
-          <Search className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-          <input
-            id="blog-search"
-            type="search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search articles, topics, keywords…"
-            className="w-full rounded-md border border-border bg-card py-3 pl-12 pr-4 text-base shadow-card focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/30"
-          />
-        </div>
-      </div>
 
       {/* Category tabs */}
       <div className="mb-10 flex flex-wrap justify-center gap-2">

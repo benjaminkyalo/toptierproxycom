@@ -153,7 +153,7 @@ export function SiteSearch({ className = "", heroMode = false }: { className?: s
       </div>
 
       {open && query.length >= 2 && (
-        <div className="absolute top-full mt-2 left-0 right-0 w-full rounded-xl border border-border bg-background shadow-2xl z-50 overflow-hidden">
+        <div className="fixed left-1/2 -translate-x-1/2 mt-2 w-[min(600px,90vw)] rounded-xl border border-border bg-background shadow-2xl z-[9999] overflow-hidden">
           {results.length === 0 ? (
             <div className="p-6 text-center text-muted-foreground text-sm">
               No results for "<strong>{query}</strong>"

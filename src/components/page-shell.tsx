@@ -8,12 +8,14 @@ export function PageShell({
   breadcrumb,
   children,
   bgImage,
+  heroContent,
 }: {
   title: string;
   intro?: string;
   breadcrumb?: { to: string; label: string }[];
   children: ReactNode;
   bgImage?: string;
+  heroContent?: ReactNode;
 }) {
   return (
     <div className="flex min-h-screen flex-col">
@@ -39,8 +41,9 @@ export function PageShell({
               ))}
             </nav>
           )}
-          <h1 className="text-4xl font-bold tracking-tight md:text-5xl">{title}</h1>
-          {intro && <p className="mt-4 max-w-3xl text-lg opacity-90">{intro}</p>}
+          <h1 className="text-4xl font-bold tracking-tight md:text-5xl text-center">{title}</h1>
+          {intro && <p className="mt-4 max-w-3xl text-lg opacity-90 text-center mx-auto">{intro}</p>}
+          {heroContent && <div className="mt-6 flex justify-center w-full max-w-2xl mx-auto">{heroContent}</div>}
         </div>
       </section>
       <main className="flex-1 bg-background">
