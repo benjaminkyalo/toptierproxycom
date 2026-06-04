@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Triangle, Menu, X, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { providers } from "@/data/providers";
 import { guides } from "@/data/guides";
 import { countries } from "@/data/countries";
@@ -37,6 +37,7 @@ export function SiteHeader({ variant = "navy" }: { variant?: "navy" | "white" })
   const isNavy = variant === "navy";
   const [open, setOpen] = useState(false);
   const [openDrop, setOpenDrop] = useState<string | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   return (
     <header
@@ -59,8 +60,8 @@ export function SiteHeader({ variant = "navy" }: { variant?: "navy" | "white" })
             <div
               key={item.to}
               className="relative"
-              onMouseEnter={() => item.items && setOpenDrop(item.to)}
-              onMouseLeave={() => setOpenDrop(null)}
+              onMouseEnter={() => { if (closeTimer.current) clearTimeout(closeTimer.current); item.items && setOpenDrop(item.to); }}
+              onMouseLeave={() => { closeTimer.current = setTimeout(() => setOpenDrop(null), 150); }}
             >
               <Link
                 to={item.to}

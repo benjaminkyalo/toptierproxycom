@@ -13,6 +13,18 @@ export default defineConfig({
   ],
   build: {
     outDir: "dist",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"],
+          router: ["@tanstack/react-router", "@tanstack/react-query"],
+          ui: ["lucide-react", "clsx", "tailwind-merge"],
+          search: ["fuse.js"],
+        }
+      }
+    },
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 600,
   },
   resolve: {
     alias: {
