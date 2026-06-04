@@ -41,9 +41,10 @@ export function SiteHeader({ variant = "navy" }: { variant?: "navy" | "white" })
   return (
     <header
       className={
-        isNavy
+        (isNavy
           ? "bg-navy text-navy-foreground"
-          : "bg-background text-foreground border-b border-border"
+          : "bg-background text-foreground border-b border-border") +
+        " sticky top-0 z-50 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-opacity-95"
       }
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
