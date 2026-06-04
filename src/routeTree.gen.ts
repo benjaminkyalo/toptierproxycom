@@ -27,6 +27,7 @@ import { Route as CountriesIndexRouteImport } from './routes/countries.index'
 import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as VsMatchupRouteImport } from './routes/vs.$matchup'
 import { Route as UseCasesSlugRouteImport } from './routes/use-cases.$slug'
+import { Route as TeamSlugRouteImport } from './routes/team.$slug'
 import { Route as ReviewsSlugRouteImport } from './routes/reviews.$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as GoSlugRouteImport } from './routes/go.$slug'
@@ -125,6 +126,11 @@ const UseCasesSlugRoute = UseCasesSlugRouteImport.update({
   path: '/use-cases/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TeamSlugRoute = TeamSlugRouteImport.update({
+  id: '/team/$slug',
+  path: '/team/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsSlugRoute = ReviewsSlugRouteImport.update({
   id: '/reviews/$slug',
   path: '/reviews/$slug',
@@ -179,6 +185,7 @@ export interface FileRoutesByFullPath {
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/team/$slug': typeof TeamSlugRoute
   '/use-cases/$slug': typeof UseCasesSlugRoute
   '/vs/$matchup': typeof VsMatchupRoute
   '/blog/': typeof BlogIndexRoute
@@ -206,6 +213,7 @@ export interface FileRoutesByTo {
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/team/$slug': typeof TeamSlugRoute
   '/use-cases/$slug': typeof UseCasesSlugRoute
   '/vs/$matchup': typeof VsMatchupRoute
   '/blog': typeof BlogIndexRoute
@@ -234,6 +242,7 @@ export interface FileRoutesById {
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/team/$slug': typeof TeamSlugRoute
   '/use-cases/$slug': typeof UseCasesSlugRoute
   '/vs/$matchup': typeof VsMatchupRoute
   '/blog/': typeof BlogIndexRoute
@@ -263,6 +272,7 @@ export interface FileRouteTypes {
     | '/go/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
+    | '/team/$slug'
     | '/use-cases/$slug'
     | '/vs/$matchup'
     | '/blog/'
@@ -290,6 +300,7 @@ export interface FileRouteTypes {
     | '/go/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
+    | '/team/$slug'
     | '/use-cases/$slug'
     | '/vs/$matchup'
     | '/blog'
@@ -317,6 +328,7 @@ export interface FileRouteTypes {
     | '/go/$slug'
     | '/guides/$slug'
     | '/reviews/$slug'
+    | '/team/$slug'
     | '/use-cases/$slug'
     | '/vs/$matchup'
     | '/blog/'
@@ -345,6 +357,7 @@ export interface RootRouteChildren {
   GoSlugRoute: typeof GoSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   ReviewsSlugRoute: typeof ReviewsSlugRoute
+  TeamSlugRoute: typeof TeamSlugRoute
   UseCasesSlugRoute: typeof UseCasesSlugRoute
   VsMatchupRoute: typeof VsMatchupRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -482,6 +495,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UseCasesSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/team/$slug': {
+      id: '/team/$slug'
+      path: '/team/$slug'
+      fullPath: '/team/$slug'
+      preLoaderRoute: typeof TeamSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews/$slug': {
       id: '/reviews/$slug'
       path: '/reviews/$slug'
@@ -564,6 +584,7 @@ const rootRouteChildren: RootRouteChildren = {
   GoSlugRoute: GoSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   ReviewsSlugRoute: ReviewsSlugRoute,
+  TeamSlugRoute: TeamSlugRoute,
   UseCasesSlugRoute: UseCasesSlugRoute,
   VsMatchupRoute: VsMatchupRoute,
   BlogIndexRoute: BlogIndexRoute,

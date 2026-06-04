@@ -186,7 +186,7 @@ export const Route = createFileRoute("/team/$slug")({
 });
 
 function TeamPage() {
-  const { author: a } = Route.useLoaderData();
+  const { author: a } = Route.useLoaderData() as { author: Author };
   const posts = blogPosts.filter((p) => p.author === a.name);
 
   return (
