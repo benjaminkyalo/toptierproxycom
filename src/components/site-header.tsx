@@ -55,7 +55,7 @@ export function SiteHeader({ variant = "navy" }: { variant?: "navy" | "white" })
           </span>
         </Link>
         <nav className="hidden items-center gap-7 md:flex">
-          {nav.map((item, idx) => (
+          {nav.map((item) => (
             <div
               key={item.to}
               className="relative"
@@ -71,18 +71,39 @@ export function SiteHeader({ variant = "navy" }: { variant?: "navy" | "white" })
                 {item.items && <ChevronDown className="h-3.5 w-3.5" />}
               </Link>
               {item.items && openDrop === item.to && (
-                <div
-                  className={`absolute top-full z-50 pt-3 ${
-                    idx >= nav.length - 2
-                      ? "right-0"
-                      : idx <= 1
-                        ? "left-0"
-                        : "left-1/2 -translate-x-1/2"
-                  }`}
-                >
-                  <div className="w-[min(820px,calc(100vw-2rem))] rounded-md border border-border bg-white text-foreground shadow-xl">
-
+                <div className="fixed left-4 right-4 top-[68px] z-50 mx-auto max-w-6xl">
+                  <div className="rounded-md border border-border bg-white text-foreground shadow-xl">
                     <div className="border-b border-border px-6 py-3">
+                      <p className="text-xs font-bold uppercase tracking-widest text-primary">{item.label}</p>
+                    </div>
+                    <ul className="grid max-h-[60vh] grid-cols-2 gap-x-2 gap-y-1 overflow-y-auto p-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+                      {item.items.map((sub) => (
+                        <li key={sub.label}>
+                          <Link
+                            to={sub.to as any}
+                            params={sub.params as any}
+                            onClick={() => setOpenDrop(null)}
+                            className="block rounded px-3 py-2 text-sm font-medium text-primary hover:bg-muted hover:underline"
+                          >
+                            {sub.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="border-t border-border px-6 py-3">
+                      <Link
+                        to={item.to}
+                        onClick={() => setOpenDrop(null)}
+                        className="text-sm font-bold text-primary hover:underline"
+                      >
+                        See all {item.label.toLowerCase()} →
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))}
                       <p className="text-xs font-bold uppercase tracking-widest text-primary">{item.label}</p>
                     </div>
                     <ul className="grid max-h-[60vh] grid-cols-2 gap-x-2 gap-y-1 overflow-y-auto p-4 sm:grid-cols-3 lg:grid-cols-4">
