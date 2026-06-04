@@ -104,36 +104,6 @@ export function SiteHeader({ variant = "navy" }: { variant?: "navy" | "white" })
               )}
             </div>
           ))}
-                      <p className="text-xs font-bold uppercase tracking-widest text-primary">{item.label}</p>
-                    </div>
-                    <ul className="grid max-h-[60vh] grid-cols-2 gap-x-2 gap-y-1 overflow-y-auto p-4 sm:grid-cols-3 lg:grid-cols-4">
-                      {item.items.map((sub) => (
-                        <li key={sub.label}>
-                          <Link
-                            to={sub.to as any}
-                            params={sub.params as any}
-                            onClick={() => setOpenDrop(null)}
-                            className="block rounded px-3 py-2 text-sm font-medium text-primary hover:bg-muted hover:underline"
-                          >
-                            {sub.label}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="border-t border-border px-6 py-3">
-                      <Link
-                        to={item.to}
-                        onClick={() => setOpenDrop(null)}
-                        className="text-sm font-bold text-primary hover:underline"
-                      >
-                        See all {item.label.toLowerCase()} →
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          ))}
         </nav>
         <button
           type="button"
