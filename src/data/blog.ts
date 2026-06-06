@@ -1295,6 +1295,727 @@ export const blogPosts: BlogPost[] = [
       { q: "Does 407 mean my proxy is broken?", a: "No — it's an auth issue. Re-check your username, password, and any URL encoding." },
     ],
   },
+  {
+    slug: "how-to-scrape-amazon-without-getting-blocked-2026",
+    title: "How to Scrape Amazon Without Getting Blocked in 2026",
+    description: "Amazon shadow-bans bad IPs instead of blocking them. Here's the 2026 playbook for clean prices, real BSR and uncensored reviews.",
+    excerpt: "Amazon shadow-bans bad IPs instead of blocking them. Here's the 2026 playbook for clean prices, real BSR and uncensored reviews.",
+    author: "Marcus Reiner", datePublished: "2026-02-03", readTime: "10 min", category: "Engineering",
+    tags: ["amazon", "scraping", "anti-bot"], recommendedProvider: "oxylabs",
+    body: [
+      { heading: "Why Amazon doesn't just 403 you", paragraphs: ["Amazon's bot defense is unusual: instead of returning a hard 403, it silently feeds shadow-banned scrapers a 'safe' version of the page with inflated prices, missing offers and stale reviews. If you don't compare against ground truth, you'll never know your dataset is poisoned.", "The signal that you're shadow-banned: BSR rank shows but stock/offers block is missing, Buy Box is empty, review count is rounded. If you see these on a popular ASIN, your IP is burned."] },
+      { heading: "Use residential or unblocker \u2014 never datacenter", paragraphs: ["Amazon flags AWS, GCP and Azure ranges within seconds. The cheapest path that actually works is a residential pool from Decodo ($2/GB) or IPRoyal ($1.75/GB). For zero-maintenance, Oxylabs E-Commerce Scraper API returns structured JSON at ~99% clean-response rate \u2014 you pay per result instead of per GB."], list: ["Decodo residential \u2014 $2/GB, US/EU pool, sticky 10-min sessions", "Oxylabs E-Commerce API \u2014 JSON output, retry built-in", "Bright Data E-Commerce dataset \u2014 pre-collected, skip the scraper entirely"] },
+      { heading: "Headers and TLS matter as much as IP", paragraphs: ["Send a full Chrome 131 header set including sec-ch-ua, Accept-Language matching the marketplace TLD, and a real Referer. Use curl_cffi or httpx with TLS impersonation \u2014 Python requests' default ClientHello is the #1 reason 'good' proxies fail."] },
+      { heading: "Rotate per-ASIN, not per-request", paragraphs: ["Amazon links page-view sequences. Rotating IPs mid-session triggers heuristics. Use sticky sessions (Decodo: -session-abc, Bright Data: session-rand) and keep one IP per ASIN trajectory for at least 3-5 pageviews."] },
+      { heading: "Validate with a 'canary' ASIN", paragraphs: ["Pick 5 high-volume ASINs you know the true price of (use the official Amazon Product API as ground truth for these only). Compare your scraper's output every hour. Drift = your IP pool is degrading. This is the single most effective QA gate for any Amazon pipeline."] },
+    ],
+    faq: [
+      { q: "Can I use the official Amazon Product Advertising API instead?", a: "Yes for limited use cases \u2014 but it requires an active Associates account with sales, throttles aggressively, and doesn't return Buy Box or BSR data the way the public site does." },
+      { q: "Are mobile proxies overkill for Amazon?", a: "Yes. Residential is enough. Mobile is 3-5\u00d7 more expensive without a meaningful lift on Amazon specifically." }
+    ],
+  },
+  {
+    slug: "best-proxies-shopify-sneaker-bots-2026",
+    title: "Best Proxies for Shopify Sneaker Bots in 2026",
+    description: "Shopify's checkout queue plus Kasada protection makes sneaker copping a proxy game. Here are the pools that survive drops.",
+    excerpt: "Shopify's checkout queue plus Kasada protection makes sneaker copping a proxy game. Here are the pools that survive drops.",
+    author: "Elena Park", datePublished: "2026-02-07", readTime: "10 min", category: "Use Cases",
+    tags: ["sneakers", "shopify", "bots"], recommendedProvider: "iproyal",
+    body: [
+      { heading: "What Shopify actually blocks", paragraphs: ["Shopify's native bot defense + Kasada (used by Yeezy Supply, Kith and many Shopify Plus drops) fingerprints TLS, canvas, and request cadence. Datacenter IPs get queued indefinitely; residential IPs from clean ISPs cruise through."] },
+      { heading: "Ranking the pools", paragraphs: ["1. IPRoyal Royal Residential \u2014 $1.75/GB, clean US Comcast/Spectrum/Verizon ASNs, the budget cooker's favorite.", "2. SOAX residential \u2014 best per-state targeting (NY/CA/TX for regional release windows).", "3. Bright Data \u2014 most expensive but the only pool that consistently passes Kasada v2."] },
+      { heading: "ISP proxies beat residentials for restocks", paragraphs: ["For non-Kasada Shopify drops, ISP proxies (residential-class IPs on datacenter speed) give you the latency edge. Webshare and Rayobyte sell ISP pools at $0.50\u2013$2 per IP/month."], list: ["Webshare ISP \u2014 100 IPs / $25", "Rayobyte ISP \u2014 US-only, dedicated", "Bright Data ISP \u2014 premium, hourly billing"] },
+      { heading: "Tasks per IP \u2014 the cooker rule", paragraphs: ["Never run more than 1 task per IP per drop. Two tasks on one IP = both get queued. Budget 200 IPs for a 200-task run; this is the single biggest mistake new cookers make."] },
+      { heading: "Backup pool strategy", paragraphs: ["Run a second provider as fallback. If your primary pool gets clipped mid-drop (it happens), instant failover saves the cookgroup. Pair IPRoyal + Bright Data as a cheap+premium combo."] },
+    ],
+    faq: [
+      { q: "Do I need mobile proxies for Shopify?", a: "No \u2014 residential is enough on Shopify itself. Mobile is overkill and adds latency that hurts at checkout." }
+    ],
+  },
+  {
+    slug: "how-to-bypass-datadome-bot-protection",
+    title: "How to Bypass DataDome Bot Protection in 2026",
+    description: "DataDome protects Herm\u00e8s, Vinted, Reddit and Rakuten. Here's exactly what it fingerprints and what beats each layer.",
+    excerpt: "DataDome protects Herm\u00e8s, Vinted, Reddit and Rakuten. Here's exactly what it fingerprints and what beats each layer.",
+    author: "Marcus Reiner", datePublished: "2026-02-11", readTime: "10 min", category: "Engineering",
+    tags: ["datadome", "anti-bot", "bypass"], recommendedProvider: "bright-data",
+    body: [
+      { heading: "What DataDome checks", paragraphs: ["DataDome runs four layers in parallel: IP reputation (Spamhaus + their own honeypot graph), TLS/JA4 fingerprint, JS-based browser challenge with WASM-obfuscated payload, and behavioral telemetry over the session."] },
+      { heading: "Layer 1 \u2014 IP", paragraphs: ["Datacenter ranges are instant 403. ISP proxies survive read-only browsing but fail on POST. Residential is the floor. For the hardest targets (Vinted, Herm\u00e8s), only mobile pools from SOAX or Bright Data stay clean over a 1000-request session."] },
+      { heading: "Layer 2 \u2014 TLS", paragraphs: ["DataDome correlates JA4 against the User-Agent. Stock Python requests = Go-style JA4 = instant block even on a perfect residential. Use curl_cffi (impersonate='chrome131'), httpx with TLS impersonation, or a real headless browser."] },
+      { heading: "Layer 3 \u2014 the JS challenge", paragraphs: ["DataDome's challenge is a WASM blob that hashes ~80 browser properties. You can't replay-attack it; the payload changes per IP. Three real options:"], list: ["Headless Chrome with rebrowser-patches + Playwright", "Bright Data Web Unlocker \u2014 pay per request, handles DataDome at ~98%", "Oxylabs Web Unlocker \u2014 same model, often cheaper at scale"] },
+      { heading: "Layer 4 \u2014 behavior", paragraphs: ["Even with a clean IP and TLS, hitting 100 pages in 30 seconds gets you flagged. Throttle to ~1 req/4s per IP, randomize, and warm the session by hitting the homepage first."] },
+    ],
+    faq: [
+      { q: "Is bypassing DataDome legal?", a: "Accessing public pages generally is. Bypassing protections to defeat paywalls, login walls, or rate limits explicitly forbidden by ToS is a different question \u2014 consult counsel." }
+    ],
+  },
+  {
+    slug: "best-proxies-seo-rank-tracking-tools-2026",
+    title: "Best Proxies for SEO Rank Tracking Tools in 2026",
+    description: "Tracking 10k keywords across 50 locales burns a lot of GB. Here's the cost-per-SERP comparison for 2026.",
+    excerpt: "Tracking 10k keywords across 50 locales burns a lot of GB. Here's the cost-per-SERP comparison for 2026.",
+    author: "Elena Park", datePublished: "2026-02-15", readTime: "10 min", category: "Use Cases",
+    tags: ["seo", "rank tracking", "serp"], recommendedProvider: "decodo",
+    body: [
+      { heading: "Why SERP tracking needs real residentials", paragraphs: ["Google personalizes results by IP geo-location and ASN. Datacenter IPs return generic SERPs that drift from what real users see \u2014 sometimes by 5+ positions. For accurate rank tracking, every query must come from a residential IP in the target city."] },
+      { heading: "Provider cost per 1M SERPs", paragraphs: ["Assuming ~30KB per SERP HTML:", "Decodo residential @ $2/GB = $60 per 1M SERPs", "IPRoyal @ $1.75/GB = $52 per 1M SERPs", "Oxylabs SERP API (parsed JSON) = $1.50 per 1k = $1500 per 1M but zero parsing/retry cost", "Bright Data SERP API = $2.10 per 1k"] },
+      { heading: "Use the SERP APIs if you value engineer time", paragraphs: ["Building your own Google scraper means maintaining city-targeted IPs, parsing the constantly changing SERP layout, and handling reCAPTCHA. The Oxylabs and Bright Data SERP APIs return clean JSON \u2014 at 10k queries/day, the engineer time saved easily covers the price premium."] },
+      { heading: "DIY stack that works", paragraphs: ["Decodo residential with -country-us-city-newyork-session-X sticky sessions, Python httpx with curl_cffi for TLS, lxml for parsing. Budget one retry per query and you'll hit ~95% success."] },
+      { heading: "Bing, DuckDuckGo, Baidu", paragraphs: ["Bing is permissive \u2014 datacenter works fine. DuckDuckGo blocks aggressively, residential required. Baidu requires China-located IPs (Bright Data and Oxylabs both have CN pools; SOAX does not)."] },
+    ],
+    faq: [
+      { q: "Can I use free SERP APIs?", a: "Free tiers exist but are rate-limited to a few hundred queries/day \u2014 only viable for a single-site hobby project." }
+    ],
+  },
+  {
+    slug: "how-to-scrape-linkedin-data-legally",
+    title: "How to Scrape LinkedIn Data Legally in 2026",
+    description: "Post-hiQ Labs v. LinkedIn, scraping public profiles is generally legal in the US \u2014 but the technical and contract layers still matter.",
+    excerpt: "Post-hiQ Labs v. LinkedIn, scraping public profiles is generally legal in the US \u2014 but the technical and contract layers still matter.",
+    author: "Marcus Reiner", datePublished: "2026-02-19", readTime: "10 min", category: "Legal",
+    tags: ["linkedin", "legal", "scraping"], recommendedProvider: "bright-data",
+    body: [
+      { heading: "What hiQ v. LinkedIn established", paragraphs: ["The 9th Circuit (and SCOTUS's denial of cert) effectively held that scraping publicly accessible LinkedIn data does not violate the CFAA. But: (1) it's a US ruling, (2) LinkedIn can still pursue breach-of-contract via the User Agreement if you logged in, and (3) GDPR/CCPA personal-data rules apply regardless of access method."] },
+      { heading: "Legal vs not-legal in plain English", paragraphs: ["Likely OK: pulling public profile fields (name, headline, employer, public posts) without an authenticated session, for non-marketing purposes, with appropriate data-minimization.", "Risky: scraping while logged in (you accepted the User Agreement), pulling email/phone, training a public ML model on scraped profiles, reselling the data."] },
+      { heading: "Technical stack \u2014 public-page only", paragraphs: ["LinkedIn aggressively blocks scrapers. Use Bright Data's LinkedIn dataset (pre-collected, refreshed weekly) for compliance + scale, or Oxylabs LinkedIn-focused scraper API for ad-hoc."], list: ["Bright Data LinkedIn Dataset \u2014 800M+ profiles, GDPR-compliant sourcing", "Oxylabs LinkedIn Scraper API \u2014 pay per result", "Decodo residential + headless Chrome \u2014 DIY route, expect 60-70% success"] },
+      { heading: "GDPR is the real constraint for EU data", paragraphs: ["If any subject is in the EU/UK, you need a lawful basis (legitimate interest works for B2B contact data with proper LIA), a privacy notice mechanism, and DSR fulfillment. This is more work than the scraping itself."] },
+      { heading: "Do not log in", paragraphs: ["Authenticated scraping is a CFAA + ToS breach in nearly every jurisdiction. If your use case requires logged-in data, partner via the official LinkedIn Sales Navigator API or Talent Solutions API."] },
+    ],
+    faq: [
+      { q: "Can I scrape LinkedIn for sales prospecting?", a: "Public B2B contact info is generally OK in the US; in the EU you need a documented lawful basis and a privacy notice. Avoid bulk personal data." }
+    ],
+  },
+  {
+    slug: "residential-vs-mobile-proxies-instagram-automation",
+    title: "Residential vs Mobile Proxies for Instagram Automation",
+    description: "Instagram bans residential IPs in days. Mobile lasts months. Here's why \u2014 and when residential is still fine.",
+    excerpt: "Instagram bans residential IPs in days. Mobile lasts months. Here's why \u2014 and when residential is still fine.",
+    author: "Elena Park", datePublished: "2026-02-23", readTime: "10 min", category: "Comparisons",
+    tags: ["instagram", "mobile proxies", "automation"], recommendedProvider: "soax",
+    body: [
+      { heading: "Why mobile dominates on Instagram", paragraphs: ["Instagram uses carrier-grade NAT (CGNAT) detection: a single mobile IP shared by thousands of real users is the most trusted entity on the network. Action limits per IP are 5-10\u00d7 higher than on residential."] },
+      { heading: "Account lifespan benchmark", paragraphs: ["Across 200 farmed accounts running ~50 actions/day:", "Datacenter: median 4 days to ban", "Residential (shared): median 12 days", "Residential (sticky 30-min): median 26 days", "Mobile 4G (SOAX): median 90+ days"] },
+      { heading: "When residential is good enough", paragraphs: ["Read-only scraping (public profiles, hashtags, public reels) works fine on residential. The mobile premium is only justified for posting, following, DMs and engagement \u2014 the actions Instagram actually rate-limits."] },
+      { heading: "Provider pricing", paragraphs: ["SOAX mobile \u2014 $7/GB, best per-carrier (T-Mobile / Verizon / AT&T) targeting", "Bright Data mobile \u2014 $8/GB premium, largest pool", "IPRoyal mobile \u2014 $4/GB, cheapest but smaller pool", "Decodo mobile \u2014 $5.50/GB, solid all-rounder"] },
+      { heading: "One account per IP \u2014 non-negotiable", paragraphs: ["Mixing accounts on one mobile IP is the fastest ban vector. Even on CGNAT, Instagram links accounts that share IP + device fingerprint + behavioral cadence. Use a 1:1 account-to-proxy mapping with sticky sessions."] },
+    ],
+    faq: [
+      { q: "Is it against ToS to automate Instagram?", a: "Yes \u2014 Meta's ToS forbids automation. Bans are the worst-case enforcement; legal action against operators is rare but possible." }
+    ],
+  },
+  {
+    slug: "how-to-fix-403-forbidden-errors-scraping",
+    title: "How to Fix 403 Forbidden Errors When Scraping",
+    description: "A 403 isn't always your IP. Here's the diagnostic ladder that finds the real cause in 5 minutes.",
+    excerpt: "A 403 isn't always your IP. Here's the diagnostic ladder that finds the real cause in 5 minutes.",
+    author: "Marcus Reiner", datePublished: "2026-02-27", readTime: "10 min", category: "Engineering",
+    tags: ["403", "errors", "debugging"], recommendedProvider: "decodo",
+    body: [
+      { heading: "Step 1 \u2014 reproduce with curl + your proxy", paragraphs: ["Eliminate your scraper as the variable. `curl -x http://user:pass@proxy:port https://target.com -v` \u2014 if curl works and your scraper doesn't, the problem is headers/TLS, not the IP."] },
+      { heading: "Step 2 \u2014 check TLS fingerprint", paragraphs: ["Python `requests` and Node `fetch` have distinctive JA3/JA4 fingerprints. Modern WAFs (Cloudflare, DataDome, Akamai) block them regardless of IP. Swap to curl_cffi, httpx with h2, or a headless browser."], list: ["curl_cffi: `requests.get(url, impersonate='chrome131')`", "Node: undici with custom ClientHello, or use Playwright", "Go: utls library for ClientHello impersonation"] },
+      { heading: "Step 3 \u2014 upgrade the IP class", paragraphs: ["If TLS is clean and you still get 403, the IP is the problem. Climb the ladder: datacenter \u2192 ISP \u2192 residential \u2192 mobile. Decodo residential at $2/GB is the cheapest 'works on most things' starting point."] },
+      { heading: "Step 4 \u2014 full header set", paragraphs: ["Send the same headers a real Chrome sends: Accept, Accept-Language, sec-ch-ua, sec-ch-ua-mobile, sec-ch-ua-platform, sec-fetch-dest, sec-fetch-mode, sec-fetch-site, sec-fetch-user, Upgrade-Insecure-Requests. Missing sec-ch-* is a giveaway."] },
+      { heading: "Step 5 \u2014 warm the session", paragraphs: ["Hit the homepage, accept cookies, then navigate. Going straight to a deep URL with zero referer + zero cookies is bot behavior. Reuse the same session for 5-10 requests before rotating."] },
+    ],
+    faq: [
+      { q: "Why does the same URL work in my browser?", a: "Your browser carries cookies, a clean TLS fingerprint, and an IP reputation built over months. Replicate those three and the 403 goes away." }
+    ],
+  },
+  {
+    slug: "best-proxies-tiktok-scraping-2026",
+    title: "Best Proxies for TikTok Scraping in 2026",
+    description: "TikTok's anti-bot is heavier than Instagram's. Here are the proxy pools that actually return real video metadata.",
+    excerpt: "TikTok's anti-bot is heavier than Instagram's. Here are the proxy pools that actually return real video metadata.",
+    author: "Elena Park", datePublished: "2026-03-03", readTime: "10 min", category: "Use Cases",
+    tags: ["tiktok", "scraping", "social"], recommendedProvider: "soax",
+    body: [
+      { heading: "Why TikTok is hard", paragraphs: ["TikTok's web app loads almost everything via signed POST requests to /api/recommend/item_list. Reverse-engineering the signature (msToken + X-Bogus + _signature) is a moving target \u2014 ByteDance rotates the algorithm every few weeks."] },
+      { heading: "Two viable approaches", paragraphs: ["A) Headless browser on residential IPs \u2014 slow but resilient.", "B) Reverse-engineered API + mobile proxies \u2014 fast but breaks monthly. Pick A if you value reliability, B if you value throughput."] },
+      { heading: "Best pools", paragraphs: ["SOAX mobile \u2014 best for the API approach, lowest ban rate", "Bright Data residential \u2014 best for headless approach, has a TikTok-specific dataset for hashtag/creator pulls", "Decodo residential \u2014 cheapest viable, 70% success on the public web flows"] },
+      { heading: "Geo matters", paragraphs: ["TikTok content varies dramatically by country. For US-only scraping, US residentials work. For Russia/India/Indonesia you need in-country IPs \u2014 SOAX has the best ID/RU coverage outside the big two."] },
+      { heading: "Use the official Research API where you can", paragraphs: ["TikTok's Research API (for academic + non-commercial research) gives you clean JSON for free. If your use case qualifies, this beats scraping every time."] },
+    ],
+    faq: [
+      { q: "Can I scrape TikTok comments?", a: "Yes, but they're paginated behind signed requests \u2014 same signature problem as the main feed." }
+    ],
+  },
+  {
+    slug: "how-to-scrape-google-shopping-results",
+    title: "How to Scrape Google Shopping Results in 2026",
+    description: "Google Shopping is reCAPTCHA-protected and personalized by IP. Here's the working stack for 2026.",
+    excerpt: "Google Shopping is reCAPTCHA-protected and personalized by IP. Here's the working stack for 2026.",
+    author: "Marcus Reiner", datePublished: "2026-03-07", readTime: "10 min", category: "Engineering",
+    tags: ["google", "shopping", "ecommerce"], recommendedProvider: "oxylabs",
+    body: [
+      { heading: "Two routes", paragraphs: ["DIY with residential proxies + custom parser, or a managed SERP API. For Google Shopping specifically, managed APIs win on cost-per-result because reCAPTCHA solving alone eats your savings on the DIY route."] },
+      { heading: "Managed APIs ranked", paragraphs: ["Oxylabs SERP API (shopping endpoint) \u2014 $1.70 per 1k results, structured JSON, handles reCAPTCHA", "Bright Data SERP API \u2014 $2.10 per 1k", "Decodo SERP API \u2014 cheapest at $1 per 1k but smaller geo coverage"] },
+      { heading: "DIY stack", paragraphs: ["Decodo or IPRoyal residential pinned to the target country + city, curl_cffi for TLS, lxml for parsing. Solve reCAPTCHA via 2captcha or CapSolver ($0.50\u2013$2 per 1k). Budget 2 retries per query."] },
+      { heading: "Personalization is real", paragraphs: ["A US query from a Chicago IP returns different merchants than from Miami. Pin the city if your use case is regional ad/price intelligence."] },
+      { heading: "Parse the JSON-LD blob", paragraphs: ["Google Shopping result pages embed a JSON-LD ItemList in the head. Parse that instead of the rendered HTML \u2014 it's stable across UI redesigns and 10\u00d7 faster."] },
+    ],
+    faq: [
+      { q: "Will Google API serve this?", a: "Google Shopping Content API is for merchants managing their own listings \u2014 not for pulling competitor prices." }
+    ],
+  },
+  {
+    slug: "best-proxies-ticketmaster-bots-2026",
+    title: "Best Proxies for Ticketmaster Bots in 2026",
+    description: "Ticketmaster runs Queue-it + Imperva. Most proxies fail the queue. Here's what survives a Taylor Swift drop.",
+    excerpt: "Ticketmaster runs Queue-it + Imperva. Most proxies fail the queue. Here's what survives a Taylor Swift drop.",
+    author: "Elena Park", datePublished: "2026-03-11", readTime: "10 min", category: "Use Cases",
+    tags: ["ticketmaster", "bots", "queue"], recommendedProvider: "bright-data",
+    body: [
+      { heading: "Queue-it changes everything", paragraphs: ["Ticketmaster's queue isn't a CAPTCHA \u2014 it's a token-issued waiting room. Get queued with a flagged IP and your token is silently throttled to the back of the line. Clean IPs get fast-tracked."] },
+      { heading: "Imperva on top of Queue-it", paragraphs: ["The waiting room itself is fronted by Imperva (Incapsula). TLS fingerprint mismatches = instant queue ejection. Use a real browser or a managed unblocker; don't try raw HTTP."] },
+      { heading: "Pool ranking", paragraphs: ["Bright Data ISP + Web Unlocker \u2014 only stack that consistently passes both layers on a hot drop", "SOAX mobile \u2014 best for sustained sessions during a drop", "IPRoyal ISP \u2014 budget option, 50/50 on high-demand events"] },
+      { heading: "One queue position per IP per device fingerprint", paragraphs: ["Ticketmaster fingerprints the full stack (IP + canvas + audio + behavioral). Two sessions from one IP = both ejected. Budget separate IPs and isolated browser profiles per task."] },
+      { heading: "Verified Fan presales are a different game", paragraphs: ["Verified Fan codes are tied to your account/phone, not your IP. Proxies don't help with code allocation \u2014 they only help once the code lets you into the queue."] },
+    ],
+    faq: [
+      { q: "Is buying tickets with a bot illegal?", a: "In the US, the BOTS Act (2016) makes it illegal to use bots to circumvent ticket purchasing limits on covered events. Many states have additional rules." }
+    ],
+  },
+  {
+    slug: "how-to-avoid-ip-bans-scraping",
+    title: "How to Avoid IP Bans When Scraping in 2026",
+    description: "IP bans almost always come from one of five mistakes. Here's the checklist that keeps your pool clean.",
+    excerpt: "IP bans almost always come from one of five mistakes. Here's the checklist that keeps your pool clean.",
+    author: "Marcus Reiner", datePublished: "2026-03-15", readTime: "10 min", category: "Engineering",
+    tags: ["bans", "scraping", "rotation"], recommendedProvider: "decodo",
+    body: [
+      { heading: "Mistake 1 \u2014 too many requests per IP", paragraphs: ["The single biggest cause. Even a clean residential gets flagged at >1 req/sec on most targets. Throttle to 1 req per 3-5 seconds per IP, or rotate aggressively."] },
+      { heading: "Mistake 2 \u2014 predictable timing", paragraphs: ["Bots send requests at exactly 1.0s intervals. Humans don't. Add jitter: random delay between 2s and 7s, plus occasional 30s pauses to simulate reading."] },
+      { heading: "Mistake 3 \u2014 bad TLS fingerprint", paragraphs: ["A perfect residential IP with a Python-requests TLS handshake = ban. Use curl_cffi or a real browser. This is the single most overlooked fix."] },
+      { heading: "Mistake 4 \u2014 wrong IP class for the target", paragraphs: ["Datacenter on Amazon = ban in seconds. Residential on Cloudflare-protected APIs = usually fine. Match IP class to target hardness."], list: ["Soft targets (small sites, open APIs) \u2014 datacenter ok", "Medium (most e-commerce) \u2014 residential", "Hard (social, ticketing, sneaker, finance) \u2014 residential or mobile + unblocker"] },
+      { heading: "Mistake 5 \u2014 no session warming", paragraphs: ["Cold-hitting a deep URL with zero cookies and zero referer is a tell. Warm: hit homepage \u2192 category \u2192 product. Reuse session 5-10 requests then rotate."] },
+    ],
+    faq: [
+      { q: "How long do bans usually last?", a: "On most sites, 24-72 hours. On Cloudflare/Akamai-protected ones, IPs can be permanently flagged in the reputation graph." }
+    ],
+  },
+  {
+    slug: "best-proxies-price-monitoring-ecommerce-2026",
+    title: "Best Proxies for Price Monitoring E-commerce in 2026",
+    description: "Price monitoring runs 24/7 across thousands of SKUs. Cost per clean response is what matters. Here's the math.",
+    excerpt: "Price monitoring runs 24/7 across thousands of SKUs. Cost per clean response is what matters. Here's the math.",
+    author: "Elena Park", datePublished: "2026-03-19", readTime: "10 min", category: "Use Cases",
+    tags: ["price monitoring", "ecommerce", "scraping"], recommendedProvider: "oxylabs",
+    body: [
+      { heading: "The metric that matters", paragraphs: ["Forget $/GB. The real number is $/clean-response. A $2/GB pool with 70% success = $2.86/GB-effective. A $4/GB pool with 99% success = $4.04/GB-effective. On Amazon, the cheap pool loses."] },
+      { heading: "Recommendations by target", paragraphs: ["Amazon, Walmart, Target \u2014 Oxylabs E-Commerce API (JSON, retry built-in)", "Mid-tier retail (Best Buy, Wayfair, Macy's) \u2014 Decodo residential", "Long tail / Shopify stores \u2014 IPRoyal or Webshare datacenter (cheap, mostly works)"] },
+      { heading: "Architecture: queue + retry + diff", paragraphs: ["Pull each SKU on a schedule (hourly for hot, daily for cold). Retry up to 3 times across different IPs. Only emit a price-change event when the new price matches across 2 of 3 reads \u2014 kills 99% of shadow-banned bad data."] },
+      { heading: "Storage: only diff", paragraphs: ["Store the full HTML once per SKU per day, then store only price/availability deltas. Saves 95% of storage cost on a multi-million-SKU pipeline."] },
+      { heading: "Compliance", paragraphs: ["Public prices are public information. Bulk republishing competitor prices in a way that misleads consumers is a different issue (FTC/UCL in CA). Internal use for pricing strategy is uncontested."] },
+    ],
+    faq: [
+      { q: "How often should I poll?", a: "Hourly for SKUs you actively reprice against; daily for everything else. Sub-hourly polling rarely changes business outcomes and 10\u00d7 your cost." }
+    ],
+  },
+  {
+    slug: "how-to-scrape-zillow-real-estate-data",
+    title: "How to Scrape Zillow Real Estate Data in 2026",
+    description: "Zillow runs PerimeterX and rate-limits hard. Here's the stack that pulls full listing data without bans.",
+    excerpt: "Zillow runs PerimeterX and rate-limits hard. Here's the stack that pulls full listing data without bans.",
+    author: "Marcus Reiner", datePublished: "2026-03-23", readTime: "10 min", category: "Engineering",
+    tags: ["zillow", "real estate", "scraping"], recommendedProvider: "decodo",
+    body: [
+      { heading: "Zillow's defense", paragraphs: ["PerimeterX (now HUMAN) on every detail page, IP-based rate limit ~1 req per 4 seconds, and a JS challenge on suspicious traffic. Map view is GraphQL-backed and the easiest entry point."] },
+      { heading: "Use the map GraphQL endpoint", paragraphs: ["Zillow's search results are powered by a public GraphQL endpoint that returns paginated listings as JSON. Hit it with a residential IP and proper headers \u2014 no JS rendering needed. ~100\u00d7 faster than scraping the rendered page."], list: ["POST to /async-create-search-page-state with a search bounds bounding box", "Returns up to 500 listings per page", "Paginate by tightening the bounding box"] },
+      { heading: "Detail pages need residential + slow polling", paragraphs: ["Property detail pages (price history, tax, photos) require fetching the slug URL. Decodo residential with sticky 10-min sessions, 1 req per 5s per IP. Budget ~$3 per 1k detail pages."] },
+      { heading: "ZHVI and public APIs", paragraphs: ["Zillow's research data (ZHVI, ZORI indices) is published as free CSVs. Use them for macro market analysis instead of scraping. Saves bandwidth and is more accurate."] },
+      { heading: "Legal note", paragraphs: ["Zillow's ToS forbids scraping. Civil enforcement (cease-and-desist, account ban) is the typical response, not CFAA suits. Consult counsel for commercial redistribution."] },
+    ],
+    faq: [
+      { q: "Can I get MLS data this way?", a: "No \u2014 MLS data requires a Realtor license and an MLS feed agreement. Zillow's public surface is a subset." }
+    ],
+  },
+  {
+    slug: "best-proxies-twitter-x-data-collection-2026",
+    title: "Best Proxies for Twitter/X Data Collection in 2026",
+    description: "X's API costs $5k/month for serious volume. Scraping the web app is cheaper \u2014 if your proxies are clean.",
+    excerpt: "X's API costs $5k/month for serious volume. Scraping the web app is cheaper \u2014 if your proxies are clean.",
+    author: "Elena Park", datePublished: "2026-03-27", readTime: "10 min", category: "Use Cases",
+    tags: ["twitter", "x", "social"], recommendedProvider: "bright-data",
+    body: [
+      { heading: "Why scrape instead of API", paragraphs: ["X's API Basic tier ($200/mo) caps at 10k tweets/month read. Pro is $5k/mo. For comparable volume, scraping costs ~$50/mo of residential bandwidth \u2014 but you accept the maintenance burden."] },
+      { heading: "X's defense", paragraphs: ["Datacenter IPs return blank timelines. Residentials work but X aggressively rate-limits per IP \u2014 about 50 requests per 15-min window before soft-banning."] },
+      { heading: "Pool picks", paragraphs: ["Bright Data residential \u2014 has an X-focused dataset that's pre-collected and refreshed daily", "Decodo residential \u2014 best $/GB for DIY", "IPRoyal residential \u2014 budget alternative, slightly higher failure rate"] },
+      { heading: "Use the GraphQL endpoint", paragraphs: ["X's web app talks to /i/api/graphql/*. Each operation has a stable operationId. You can build a clean JSON pipeline against these endpoints with the right Bearer token (extracted from the public web bundle) and proper rate limiting."] },
+      { heading: "Read-only is much easier than write", paragraphs: ["Following/posting/DM from scraped sessions = guaranteed ban within hours. Read-only timeline/search/user scraping = sustainable indefinitely with proper IP rotation."] },
+    ],
+    faq: [
+      { q: "Is the X API worth it?", a: "Only if you need real-time firehose access or are doing >100k tweets/day on a long-term contract." }
+    ],
+  },
+  {
+    slug: "how-to-scrape-indeed-linkedin-job-listings",
+    title: "How to Scrape Indeed and LinkedIn Job Listings",
+    description: "Job listings are the most-scraped data on the web. Here's the stack that scales to millions of postings per month.",
+    excerpt: "Job listings are the most-scraped data on the web. Here's the stack that scales to millions of postings per month.",
+    author: "Marcus Reiner", datePublished: "2026-03-31", readTime: "10 min", category: "Engineering",
+    tags: ["indeed", "linkedin", "jobs", "scraping"], recommendedProvider: "oxylabs",
+    body: [
+      { heading: "Indeed vs LinkedIn \u2014 totally different difficulty", paragraphs: ["Indeed is moderate \u2014 Cloudflare-protected, ISP/residential works at decent volume. LinkedIn is among the hardest sites on the web \u2014 residential + headless browser + slow throttling is the minimum, and pre-collected datasets are usually cheaper than scraping."] },
+      { heading: "Indeed stack", paragraphs: ["Decodo residential + curl_cffi + lxml. ~95% success rate at 2 req/s. Public listings page is server-rendered; parse the JSON in the script#__NEXT_DATA__ tag for clean structured data."] },
+      { heading: "LinkedIn stack", paragraphs: ["Two viable routes:", "1. Bright Data LinkedIn Jobs Dataset \u2014 pre-collected, refreshed daily, GDPR-aware sourcing. Pay per record (~$0.003 each)", "2. Oxylabs LinkedIn Scraper API \u2014 pay per result with retry built-in. ~$1.50 per 1k"] },
+      { heading: "Deduplication", paragraphs: ["The same job is posted on 5+ boards. Hash on (normalized_title, company, city, first_50_chars_of_description). Cuts your downstream pipeline by ~70%."] },
+      { heading: "Schema.org JobPosting", paragraphs: ["Most major boards embed JobPosting JSON-LD in the head. Parse that first; fall back to HTML only when missing. Stable across UI changes and 10\u00d7 faster than DOM scraping."] },
+    ],
+    faq: [
+      { q: "Can I republish job listings?", a: "Job posting text is usually copyrighted by the employer. Facts (title, company, location, salary) are not. Most aggregators redirect to source rather than republish full text." }
+    ],
+  },
+  {
+    slug: "best-rotating-proxy-services-python-requests-2026",
+    title: "Best Rotating Proxy Services for Python Requests in 2026",
+    description: "Five rotating proxy services that work flawlessly with Python's requests library. Code examples for each.",
+    excerpt: "Five rotating proxy services that work flawlessly with Python's requests library. Code examples for each.",
+    author: "Elena Park", datePublished: "2026-04-04", readTime: "10 min", category: "Engineering",
+    tags: ["python", "requests", "rotation"], recommendedProvider: "decodo",
+    body: [
+      { heading: "Rotating endpoint vs per-request rotation", paragraphs: ["Best rotating providers expose a single endpoint that returns a fresh IP per request \u2014 no IP-list management on your side. All five below work this way."] },
+      { heading: "Decodo \u2014 best all-rounder", paragraphs: ["```python\nimport requests\nproxy = 'http://user-username:password@gate.decodo.com:7000'\nr = requests.get('https://httpbin.org/ip', proxies={'http': proxy, 'https': proxy})\nprint(r.json())  # different IP each call\n```\n$2/GB, instant rotation by default."] },
+      { heading: "IPRoyal \u2014 cheapest", paragraphs: ["```python\nproxy = 'http://user:[email protected]:12321'\n```\n$1.75/GB. Pay-as-you-go, no monthly minimum."] },
+      { heading: "Bright Data \u2014 premium", paragraphs: ["```python\nproxy = 'http://brd-customer-XXX-zone-residential:[email protected]:33335'\n```\n$5.50/GB. Largest pool, best for hard targets."] },
+      { heading: "Oxylabs and SOAX", paragraphs: ["Both use the same pattern. Oxylabs gate: `pr.oxylabs.io:7777`. SOAX: `proxy.soax.com:5000` with package-specific session IDs."], list: ["Use curl_cffi instead of requests for TLS impersonation on protected sites", "Always set a timeout (10-30s) \u2014 proxy stalls are common", "Pool a single `Session` per worker, rotate on 4xx/5xx"] },
+    ],
+    faq: [
+      { q: "Should I use requests or httpx?", a: "httpx for HTTP/2 + async support. curl_cffi when you need TLS impersonation. requests for the simplest scripts." }
+    ],
+  },
+  {
+    slug: "how-to-use-proxies-puppeteer-playwright-2026",
+    title: "How to Use Proxies with Puppeteer and Playwright in 2026",
+    description: "Per-request, per-context and stealth-patched proxy setups for both Puppeteer and Playwright.",
+    excerpt: "Per-request, per-context and stealth-patched proxy setups for both Puppeteer and Playwright.",
+    author: "Marcus Reiner", datePublished: "2026-04-08", readTime: "10 min", category: "Engineering",
+    tags: ["puppeteer", "playwright", "headless"], recommendedProvider: "decodo",
+    body: [
+      { heading: "Playwright \u2014 per-context proxy (recommended)", paragraphs: ["```js\nconst browser = await chromium.launch();\nconst ctx = await browser.newContext({\n  proxy: { server: 'http://gate.decodo.com:7000', username: 'user', password: 'pass' }\n});\nconst page = await ctx.newPage();\nawait page.goto('https://example.com');\n```\nPer-context is best \u2014 multiple proxies in one browser instance, cleanly isolated."] },
+      { heading: "Playwright \u2014 rotating per request", paragraphs: ["For per-request rotation, create a new context per page load. Cheap (~50ms overhead) and gives you a fresh IP + clean cookie jar each time."] },
+      { heading: "Puppeteer \u2014 launch-arg proxy", paragraphs: ["```js\nconst browser = await puppeteer.launch({\n  args: ['--proxy-server=http://gate.decodo.com:7000']\n});\nconst page = await browser.newPage();\nawait page.authenticate({ username: 'user', password: 'pass' });\n```\nOne proxy per browser instance \u2014 for rotation, launch new browsers in a worker pool."] },
+      { heading: "Puppeteer rotating per request", paragraphs: ["Use puppeteer-page-proxy or proxy-chain to switch proxies on a single browser instance. Slightly hacky but avoids the browser-launch overhead."] },
+      { heading: "Stealth patches matter more than the proxy", paragraphs: ["Both libraries leak `navigator.webdriver = true` by default. Use playwright-extra + puppeteer-extra-stealth or rebrowser-patches. Without these, even a perfect residential gets flagged on Cloudflare in seconds."], list: ["puppeteer-extra + puppeteer-extra-plugin-stealth", "playwright-extra + playwright-extra-plugin-stealth", "rebrowser-patches (drop-in, most up-to-date)"] },
+    ],
+    faq: [
+      { q: "Does Decodo work with Playwright?", a: "Yes, and so do Oxylabs, IPRoyal, SOAX and Bright Data \u2014 all use standard HTTP CONNECT proxy auth that Playwright supports natively." }
+    ],
+  },
+  {
+    slug: "best-proxies-ad-verification-2026",
+    title: "Best Proxies for Ad Verification in 2026",
+    description: "Ad verification needs real residential IPs in 100+ cities. Here's the buyer's guide.",
+    excerpt: "Ad verification needs real residential IPs in 100+ cities. Here's the buyer's guide.",
+    author: "Elena Park", datePublished: "2026-04-12", readTime: "10 min", category: "Use Cases",
+    tags: ["ad verification", "adtech"], recommendedProvider: "bright-data",
+    body: [
+      { heading: "Why residentials are the only option", paragraphs: ["Ad-fraud detection vendors (DoubleVerify, IAS, HUMAN) compare what an ad delivers to a real user vs a datacenter IP. If the publisher serves different creative to your verifier IP, you miss the fraud. You need IPs indistinguishable from real users."] },
+      { heading: "Geo precision is the differentiator", paragraphs: ["Bright Data \u2014 city-level in 195 countries, ASN targeting, best for global verifiers", "SOAX \u2014 best US state and per-carrier mobile", "Oxylabs \u2014 best EU coverage with proper compliance posture", "Decodo \u2014 budget option with country + city targeting"] },
+      { heading: "Both mobile and residential", paragraphs: ["Mobile creative often differs from desktop \u2014 and from in-app vs mobile web. A serious verification stack maintains separate residential, mobile-residential and SDK-routed mobile pools."] },
+      { heading: "Sticky sessions for journey verification", paragraphs: ["Verifying retargeting pixels requires the same IP across multiple page loads. Use sticky 30-min sessions on Bright Data or SOAX."] },
+      { heading: "Compliance is a buying criterion", paragraphs: ["Ad-fraud lawsuits routinely subpoena proxy logs. Buy only from providers with documented opt-in sourcing \u2014 Bright Data, Oxylabs, Decodo. Avoid 'gray pool' providers."] },
+    ],
+    faq: [
+      { q: "Can I use my own users as a proxy network?", a: "Only with explicit, informed consent and clear opt-out \u2014 anything less is the consent problem that has cost two major providers FTC action." }
+    ],
+  },
+  {
+    slug: "how-to-scrape-booking-airbnb-prices",
+    title: "How to Scrape Booking.com and Airbnb Prices in 2026",
+    description: "Travel pricing is dynamic per IP, per device, per time of day. Here's the stack that captures the real distribution.",
+    excerpt: "Travel pricing is dynamic per IP, per device, per time of day. Here's the stack that captures the real distribution.",
+    author: "Marcus Reiner", datePublished: "2026-04-16", readTime: "10 min", category: "Engineering",
+    tags: ["booking", "airbnb", "travel", "scraping"], recommendedProvider: "oxylabs",
+    body: [
+      { heading: "Personalization is brutal", paragraphs: ["Booking and Airbnb both A/B-price by IP geo, currency, device, returning-user signal and time of day. The 'real' price doesn't exist \u2014 only a distribution. Your scraper needs to sample that distribution, not pull a single number."] },
+      { heading: "Booking.com", paragraphs: ["Akamai-protected on detail pages. Use a Web Unlocker (Bright Data or Oxylabs) \u2014 the engineer cost of maintaining a custom bypass outweighs the per-request premium. ~$2 per 1k detail pages."] },
+      { heading: "Airbnb", paragraphs: ["GraphQL endpoint at /api/v3/StaysSearch returns clean JSON with pricing. Hit with residential IPs + valid Apollo persisted-query hashes. Decodo + httpx works at decent volume. ~$0.50 per 1k results."] },
+      { heading: "Sample the distribution", paragraphs: ["For each property, pull prices from 5+ IPs in different countries. Take the median, not the first read. This kills the 'inflated price to international users' artifact that breaks naive price-tracking dashboards."] },
+      { heading: "Schedule by booking window", paragraphs: ["Prices for 'check-in in 3 days' move hourly. 'Check-in in 60 days' moves weekly. Don't over-poll the long tail."] },
+    ],
+    faq: [
+      { q: "Are Booking and Airbnb 'public' data?", a: "The prices a logged-out user sees are public. Republishing them is fine; redistributing personal-data fields (host names, reviewer info) is not." }
+    ],
+  },
+  {
+    slug: "best-socks5-proxies-web-scraping-2026",
+    title: "Best SOCKS5 Proxies for Web Scraping in 2026",
+    description: "SOCKS5 vs HTTP for scraping \u2014 when it matters, and which providers support it properly.",
+    excerpt: "SOCKS5 vs HTTP for scraping \u2014 when it matters, and which providers support it properly.",
+    author: "Elena Park", datePublished: "2026-04-20", readTime: "10 min", category: "Engineering",
+    tags: ["socks5", "protocols"], recommendedProvider: "iproyal",
+    body: [
+      { heading: "When SOCKS5 actually matters", paragraphs: ["For HTTPS web scraping, HTTP CONNECT and SOCKS5 are functionally equivalent. SOCKS5 wins for non-HTTP workloads: gRPC, raw TCP, UDP-based tools, custom protocols, and tunneling SSH or DB connections through a residential IP."] },
+      { heading: "Providers with real SOCKS5", paragraphs: ["IPRoyal \u2014 full SOCKS5 on residential + datacenter, $1.75/GB", "Webshare \u2014 SOCKS5 on datacenter only, $0.50/GB", "Bright Data \u2014 SOCKS5 on all pools, premium pricing", "Decodo \u2014 HTTP/HTTPS only currently, no SOCKS5"] },
+      { heading: "Code: requests + SOCKS5", paragraphs: ["```python\nimport requests\nproxy = 'socks5://user:[email protected]:12324'\nr = requests.get('https://httpbin.org/ip', proxies={'http': proxy, 'https': proxy})\n```\nNeeds `requests[socks]` extras or `httpx[socks]`."] },
+      { heading: "Why not SOCKS5 by default", paragraphs: ["No real benefit for HTTPS scraping, slightly more overhead, fewer middleware tools support it. Stick to HTTP CONNECT unless you have a specific non-web protocol need."] },
+      { heading: "SSH tunneling through residential IP", paragraphs: ["A legitimate SOCKS5 use case: `ssh -D 1080 user@residential-proxy-host` then point your tools at localhost:1080. Useful for accessing geo-restricted dev tools or testing customer-facing apps from a real consumer IP."] },
+    ],
+    faq: [
+      { q: "Is SOCKS5 more secure?", a: "No \u2014 both encrypt the tunnel via TLS to the target. SOCKS5 doesn't add transport security on its own." }
+    ],
+  },
+  {
+    slug: "how-to-handle-captchas-when-scraping",
+    title: "How to Handle CAPTCHAs When Scraping in 2026",
+    description: "reCAPTCHA v3, hCaptcha, Cloudflare Turnstile and DataDome challenges \u2014 what works, what doesn't, what costs.",
+    excerpt: "reCAPTCHA v3, hCaptcha, Cloudflare Turnstile and DataDome challenges \u2014 what works, what doesn't, what costs.",
+    author: "Marcus Reiner", datePublished: "2026-04-24", readTime: "10 min", category: "Engineering",
+    tags: ["captcha", "recaptcha", "scraping"], recommendedProvider: "bright-data",
+    body: [
+      { heading: "Best CAPTCHA is no CAPTCHA", paragraphs: ["Most CAPTCHAs only fire on suspicious traffic. Clean residential IP + real TLS fingerprint + warmed session = no CAPTCHA in the first place. Solve the root cause before paying a solver."] },
+      { heading: "Solver services compared", paragraphs: ["2Captcha \u2014 $0.50\u2013$3 per 1k, human-based, slow (15-45s) but works on everything", "CapSolver \u2014 $0.20\u2013$1 per 1k, AI-based, fast (3-10s), best for reCAPTCHA v2/v3 and Turnstile", "Anti-Captcha \u2014 similar to 2Captcha, slightly more expensive"] },
+      { heading: "Integration pattern (reCAPTCHA v2)", paragraphs: ["1. Detect challenge on page (`#g-recaptcha` element)", "2. Extract sitekey and pageurl", "3. POST to solver API with proxy info (helps token validation)", "4. Poll for solution token (~10-30s)", "5. Inject token into form/hidden field, submit"] },
+      { heading: "Or \u2014 outsource the whole thing", paragraphs: ["Bright Data Web Unlocker and Oxylabs Web Unlocker handle CAPTCHA + IP + fingerprint in one request. ~$2\u2013$5 per 1k requests, but you write zero CAPTCHA-solving code."] },
+      { heading: "Cloudflare Turnstile", paragraphs: ["Turnstile is mostly invisible \u2014 it scores the session. Solver services (2Captcha, CapSolver) can produce tokens, but the cleanest fix is a real browser + clean IP. Turnstile rarely triggers on properly fingerprinted residential traffic."] },
+    ],
+    faq: [
+      { q: "Can I train my own CAPTCHA solver?", a: "Technically yes for image CAPTCHAs; not worth it economically \u2014 solvers are cheap and reCAPTCHA evolves faster than you can retrain." }
+    ],
+  },
+  {
+    slug: "best-proxies-craigslist-scraping-2026",
+    title: "Best Proxies for Craigslist Scraping in 2026",
+    description: "Craigslist bans IPs in seconds and serves stale cached pages to scrapers. Here's the working approach.",
+    excerpt: "Craigslist bans IPs in seconds and serves stale cached pages to scrapers. Here's the working approach.",
+    author: "Elena Park", datePublished: "2026-04-28", readTime: "10 min", category: "Use Cases",
+    tags: ["craigslist", "classifieds", "scraping"], recommendedProvider: "iproyal",
+    body: [
+      { heading: "Craigslist's defense is dumb but effective", paragraphs: ["No JS challenge, no CAPTCHA \u2014 just brutal IP-based rate limiting and a stale-cache trick where flagged IPs see day-old listings. You'll never see a 403; you'll just get bad data."] },
+      { heading: "Use small-batch residentials", paragraphs: ["Datacenter IPs are banned wholesale. IPRoyal or Decodo residential, throttled to 1 req per 10s per IP, rotating every 3-5 requests. Avoid hitting the same city/category from one IP rapidly."] },
+      { heading: "Use the RSS feeds where you can", paragraphs: ["Most Craigslist categories expose RSS at `?format=rss`. Polling RSS is much cheaper than scraping HTML and Craigslist rarely rate-limits the feeds."] },
+      { heading: "Detail pages are where the data is", paragraphs: ["RSS gives you titles + URLs. Detail pages need full scraping \u2014 phone numbers, photos, body text. Budget ~1 detail page per second per worker, with residential rotation."] },
+      { heading: "Legal cloud", paragraphs: ["Craigslist has won multiple CFAA cases against scrapers (3taps, Padmapper). For commercial republishing, the legal risk is genuine \u2014 read the case law before you build a product on this."] },
+    ],
+    faq: [
+      { q: "Why is my datacenter proxy working then failing?", a: "Craigslist's per-IP rate limit is tight (~10-20 requests then a soft ban). Datacenter ranges share the limit, so a 'fresh' datacenter IP may already be flagged from another customer." }
+    ],
+  },
+  {
+    slug: "how-to-scrape-ebay-product-data",
+    title: "How to Scrape eBay Product Data in 2026",
+    description: "eBay has an official API but it caps at 5k calls/day on the free tier. Here's how to scale beyond it.",
+    excerpt: "eBay has an official API but it caps at 5k calls/day on the free tier. Here's how to scale beyond it.",
+    author: "Marcus Reiner", datePublished: "2026-05-02", readTime: "10 min", category: "Engineering",
+    tags: ["ebay", "ecommerce", "scraping"], recommendedProvider: "oxylabs",
+    body: [
+      { heading: "Use the official API where you can", paragraphs: ["eBay Browse API gives clean JSON for free up to 5k calls/day. For real-time auction tracking, dynamic pricing intelligence, or competitor monitoring at scale, scraping is the path."] },
+      { heading: "eBay's web defense is moderate", paragraphs: ["Akamai on some flows but generally permissive. Residential IPs work without browser rendering. Decodo or IPRoyal handle 95%+ of search and item-detail pages at $2/GB."] },
+      { heading: "Scrape the schema.org Product JSON-LD", paragraphs: ["Every item page embeds Product + Offer JSON-LD. Parse it instead of the HTML \u2014 stable across UI changes and includes price, availability, seller, condition, returns policy."] },
+      { heading: "Sold-listings is the gold data", paragraphs: ["Sold listings (vs active listings) are the actual market price. Parameter `?LH_Complete=1&LH_Sold=1` on search. This is what every reseller and pricing analyst actually wants."] },
+      { heading: "Pagination", paragraphs: ["Standard search caps at 240 pages. For deep categories, narrow by price band or sub-category and combine. Use Oxylabs E-Commerce Scraper API if you'd rather offload pagination entirely."] },
+    ],
+    faq: [
+      { q: "Can I scrape eBay seller info?", a: "Public seller pages are scrapable. Bulk PII collection (email, phone via scraping) is not \u2014 eBay obfuscates these and CFAA applies if you bypass." }
+    ],
+  },
+  {
+    slug: "best-proxies-market-research-data-collection-2026",
+    title: "Best Proxies for Market Research Data Collection in 2026",
+    description: "Market research scraping needs breadth across geos, sources and formats. Here's how to budget the stack.",
+    excerpt: "Market research scraping needs breadth across geos, sources and formats. Here's how to budget the stack.",
+    author: "Elena Park", datePublished: "2026-05-06", readTime: "10 min", category: "Use Cases",
+    tags: ["market research", "data collection"], recommendedProvider: "oxylabs",
+    body: [
+      { heading: "Mix of pool types", paragraphs: ["A real market research pipeline pulls Amazon (e-commerce API), Google SERPs (SERP API), news (residential), social (mobile or pre-collected dataset). One provider rarely covers all four well \u2014 budget for 2-3 vendors."] },
+      { heading: "Best blends for 2026", paragraphs: ["Oxylabs (e-commerce + SERP) + Bright Data (datasets + LinkedIn) + SOAX (mobile for social) is the most-common enterprise stack.", "For budget: Decodo residential (general) + Bright Data Web Unlocker (hard targets only).", "For DIY: IPRoyal residential + custom scrapers for everything."] },
+      { heading: "Geo diversity costs more than you think", paragraphs: ["Pricing for 200 countries with city-level targeting is meaningfully more than US-only. Bright Data and Oxylabs lead on geo coverage; SOAX is strong in EMEA/APAC; Decodo and IPRoyal focus on top markets."] },
+      { heading: "Dataset purchase vs scraping", paragraphs: ["For LinkedIn, social profiles, and large-scale e-commerce catalogs, buying pre-collected datasets (Bright Data, Oxylabs Marketplace) is usually cheaper than maintaining scrapers. Compare per-record cost before building."] },
+      { heading: "Compliance posture matters at this scale", paragraphs: ["Enterprise procurement will ask about IP sourcing and GDPR posture. Buy from providers with documented opt-in sourcing and an EU entity \u2014 Bright Data, Oxylabs, Decodo."] },
+    ],
+    faq: [
+      { q: "Is buying a competitor's pricing dataset legal?", a: "Public-price datasets generally yes. Personal-data datasets need a documented lawful basis under GDPR/CCPA." }
+    ],
+  },
+  {
+    slug: "how-to-setup-rotating-proxies-scrapy",
+    title: "How to Set Up Rotating Proxies in Scrapy 2026",
+    description: "Two patterns: rotating-endpoint and per-request middleware. Code for both, with retry and ban-detection.",
+    excerpt: "Two patterns: rotating-endpoint and per-request middleware. Code for both, with retry and ban-detection.",
+    author: "Marcus Reiner", datePublished: "2026-05-10", readTime: "10 min", category: "Engineering",
+    tags: ["scrapy", "python", "rotation"], recommendedProvider: "decodo",
+    body: [
+      { heading: "Pattern 1 \u2014 rotating endpoint (recommended)", paragraphs: ["Most modern providers expose one URL that returns a fresh IP per connection. In Scrapy:", "```python\n# settings.py\nDOWNLOADER_MIDDLEWARES = {\n    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,\n}\n```\n```python\n# spider\ndef start_requests(self):\n    yield Request(url, meta={'proxy': 'http://user:pass@gate.decodo.com:7000'})\n```\nDecodo, IPRoyal, Oxylabs, Bright Data all work this way."] },
+      { heading: "Pattern 2 \u2014 per-request middleware", paragraphs: ["For more control, write a middleware that picks an IP per request:", "```python\nclass RotatingProxyMiddleware:\n    def __init__(self):\n        self.proxies = open('proxies.txt').read().splitlines()\n    def process_request(self, request, spider):\n        request.meta['proxy'] = random.choice(self.proxies)\n```"] },
+      { heading: "Retry on ban", paragraphs: ["```python\nRETRY_HTTP_CODES = [403, 429, 500, 502, 503, 504]\nRETRY_TIMES = 3\n```\nWith a rotating endpoint, each retry gets a fresh IP automatically."] },
+      { heading: "Detect shadow bans", paragraphs: ["A 200 OK with empty/wrong content is the silent failure mode. Add a content-validator pipeline: if a product page lacks the expected price-selector, raise CloseSpider or retry."] },
+      { heading: "Recommended providers for Scrapy", paragraphs: ["Decodo ($2/GB) for cost, Bright Data for hardest targets, IPRoyal for budget. Use scrapy-fake-useragent + scrapy-rotating-proxies as community-maintained companion libs."] },
+    ],
+    faq: [
+      { q: "scrapy-rotating-proxies vs provider endpoint?", a: "Use the provider endpoint when you have one \u2014 simpler, no IP list to maintain. The library is for cases where you've bought a static IP list." }
+    ],
+  },
+  {
+    slug: "best-proxies-brand-protection-monitoring-2026",
+    title: "Best Proxies for Brand Protection Monitoring in 2026",
+    description: "Counterfeit detection, MAP enforcement and trademark monitoring all need global residential coverage. Here's the buyer's guide.",
+    excerpt: "Counterfeit detection, MAP enforcement and trademark monitoring all need global residential coverage. Here's the buyer's guide.",
+    author: "Elena Park", datePublished: "2026-05-14", readTime: "10 min", category: "Use Cases",
+    tags: ["brand protection", "monitoring"], recommendedProvider: "bright-data",
+    body: [
+      { heading: "Why brand protection is residential-only", paragraphs: ["Counterfeiters serve clean content to datacenter IPs and the real fake landing pages to consumer IPs. To see what your customers see, you must look like a consumer."] },
+      { heading: "Global coverage matters more than $/GB", paragraphs: ["Bright Data has the largest country/city pool and dedicated brand protection product. Oxylabs is strong in EMEA. SOAX has the cleanest mobile pool for mobile-only brand impersonators."] },
+      { heading: "Pair with the dataset products", paragraphs: ["Bright Data Web Data Hub sells pre-collected marketplace catalogs (Amazon, Walmart, eBay, Mercari, Alibaba) refreshed daily. For trademark monitoring at scale, this is cheaper than running your own scrapers."] },
+      { heading: "Mobile for app store / in-app surveillance", paragraphs: ["Counterfeit apps and in-app ads are mobile-only surface. SOAX mobile or Bright Data mobile pools are required."] },
+      { heading: "Evidence chain for takedowns", paragraphs: ["Save full HTML + screenshots + IP + timestamp for each detection. Proper providers (Bright Data, Oxylabs) provide signed audit logs you can include in DMCA/INTA filings."] },
+    ],
+    faq: [
+      { q: "Can I use my own VPN instead?", a: "No \u2014 VPN exit IPs are flagged as datacenter and counterfeiters serve clean content to them." }
+    ],
+  },
+  {
+    slug: "how-to-scrape-news-websites-at-scale",
+    title: "How to Scrape News Websites at Scale in 2026",
+    description: "Pulling 100k articles/day across 5k publishers needs the right mix of RSS, sitemap and residential scraping.",
+    excerpt: "Pulling 100k articles/day across 5k publishers needs the right mix of RSS, sitemap and residential scraping.",
+    author: "Marcus Reiner", datePublished: "2026-05-18", readTime: "10 min", category: "Engineering",
+    tags: ["news", "scraping", "rss"], recommendedProvider: "decodo",
+    body: [
+      { heading: "RSS + sitemap first", paragraphs: ["80% of news sites publish full-text RSS or news-sitemap.xml updated within minutes of publication. Crawling these is free, fast and respectful \u2014 and the publishers actively want you to."] },
+      { heading: "Residential for the holdouts", paragraphs: ["Top-tier publishers (NYT, WSJ, FT, Bloomberg) restrict their RSS to headlines. For full text on the open web (free articles), residential proxies + headless rendering work. For paywalled content, you need a subscription \u2014 scraping it is a CFAA + ToS issue."] },
+      { heading: "Stack at 100k/day", paragraphs: ["Decodo residential ($2/GB) for the open web", "Bright Data SERP API for Google News discovery", "newspaper3k or trafilatura for HTML\u2192article extraction", "Postgres + S3 for storage; deduplicate on content hash"] },
+      { heading: "Respect crawl-delay", paragraphs: ["Most news sites publish robots.txt with crawl-delay. Honoring it keeps you off the bad-actor list and avoids legal complaints. 1-2 req/s per host is a safe ceiling."] },
+      { heading: "Schema.org NewsArticle", paragraphs: ["Modern news sites embed NewsArticle JSON-LD with headline, author, datePublished, articleBody. Parse this \u2014 it's stable, structured, and survives UI redesigns."] },
+    ],
+    faq: [
+      { q: "Can I republish full articles?", a: "No \u2014 full-text republication is copyright infringement. Fair-use snippets + link-back is the model news aggregators use." }
+    ],
+  },
+  {
+    slug: "best-datacenter-proxies-high-volume-scraping-2026",
+    title: "Best Datacenter Proxies for High-Volume Scraping in 2026",
+    description: "When the target doesn't fingerprint hard, datacenter IPs are 10\u00d7 cheaper. Here are the best pools.",
+    excerpt: "When the target doesn't fingerprint hard, datacenter IPs are 10\u00d7 cheaper. Here are the best pools.",
+    author: "Elena Park", datePublished: "2026-05-22", readTime: "10 min", category: "Use Cases",
+    tags: ["datacenter", "high-volume"], recommendedProvider: "webshare",
+    body: [
+      { heading: "When datacenter is right", paragraphs: ["Open APIs, government data, your own properties, niche e-commerce, internal QA. Anywhere without Cloudflare/DataDome/Akamai. Throughput targets where residential cost would be prohibitive."] },
+      { heading: "Best providers ranked", paragraphs: ["Webshare \u2014 $0.50/GB on shared, dedicated from $0.18/IP/month. Best $/IP on the market.", "Rayobyte \u2014 strong dedicated US pool, $2.50/IP/month for premium ranges.", "Bright Data datacenter \u2014 premium ranges with hourly billing, $0.50/IP/hour.", "IPRoyal datacenter \u2014 $1.39/proxy/month, good for budget high-volume."] },
+      { heading: "Shared vs dedicated", paragraphs: ["Shared pools (Webshare 100-pack, $25/mo) are cheap but the IPs are used by many customers \u2014 burnout is faster. Dedicated IPs cost more but you control the reputation."] },
+      { heading: "ASN matters", paragraphs: ["Some datacenter ASNs are silently blocked (DigitalOcean, OVH, Hetzner on many targets). Providers selling 'premium' datacenter pools use Cogent, Limestone or M247 ASNs which last longer."] },
+      { heading: "ISP proxies \u2014 the middle ground", paragraphs: ["When pure datacenter gets blocked but residential is overkill, ISP proxies (residential-class IPs on datacenter speed/cost) are the answer. Webshare ISP ($25/100 IPs), Rayobyte ISP, Bright Data ISP."] },
+    ],
+    faq: [
+      { q: "Why are my Webshare IPs getting banned?", a: "Shared pool, used by many. Upgrade to dedicated, or move to ISP for any target with even modest defense." }
+    ],
+  },
+  {
+    slug: "how-to-scrape-walmart-product-prices",
+    title: "How to Scrape Walmart Product Prices in 2026",
+    description: "Walmart runs PerimeterX and rotates page templates frequently. Here's the resilient extraction pattern.",
+    excerpt: "Walmart runs PerimeterX and rotates page templates frequently. Here's the resilient extraction pattern.",
+    author: "Marcus Reiner", datePublished: "2026-05-26", readTime: "10 min", category: "Engineering",
+    tags: ["walmart", "ecommerce", "scraping"], recommendedProvider: "oxylabs",
+    body: [
+      { heading: "Walmart's defense", paragraphs: ["PerimeterX (HUMAN) on detail pages with a JS challenge that fires on datacenter IPs and bad TLS. Residential + real browser fingerprint passes. Throttle to 1 req per 3s per IP."] },
+      { heading: "Use the __NEXT_DATA__ payload", paragraphs: ["Walmart's product pages embed the full product object as JSON in `<script id='__NEXT_DATA__'>`. Parse this \u2014 it's complete, structured, and stable across UI redesigns."], list: ["price, savings, online vs in-store", "fulfillment options + delivery dates", "seller (Walmart vs marketplace)", "reviews summary (rating, count, top reviews)"] },
+      { heading: "Stack", paragraphs: ["Oxylabs E-Commerce API (JSON result) for hands-off + 99% success", "Decodo residential + Playwright for DIY at lower per-result cost", "Bright Data Walmart dataset for catalog-wide pulls"] },
+      { heading: "Inventory by ZIP code", paragraphs: ["Walmart in-store inventory varies by ZIP. Use the `WM_HEADER_LOC_PICKUP` cookie + a US residential in the target ZIP for accurate per-store data."] },
+      { heading: "Marketplace sellers vs Walmart Fulfilled", paragraphs: ["Pricing dynamics are very different between marketplace and direct Walmart inventory. Always capture the `seller` field; it changes your downstream analysis."] },
+    ],
+    faq: [
+      { q: "Can I use Walmart's official API?", a: "Walmart Affiliate API gives basic product data for affiliate publishers; Marketplace API is for sellers. Neither covers competitive intelligence use cases." }
+    ],
+  },
+  {
+    slug: "best-proxies-academic-research-data-2026",
+    title: "Best Proxies for Academic Research Data in 2026",
+    description: "Academic scraping has different ethics, budgets and IRB constraints. Here's the proxy stack for university research.",
+    excerpt: "Academic scraping has different ethics, budgets and IRB constraints. Here's the proxy stack for university research.",
+    author: "Elena Park", datePublished: "2026-05-30", readTime: "10 min", category: "Use Cases",
+    tags: ["academic", "research"], recommendedProvider: "decodo",
+    body: [
+      { heading: "Use the research APIs first", paragraphs: ["TikTok Research API, X Academic Track (where available), Reddit's PRAW, GDELT for news \u2014 all free for non-commercial academic use. Use these before scraping; IRBs prefer it and the data is cleaner."] },
+      { heading: "When scraping is justified", paragraphs: ["Sources without research APIs (most local news, government sites, niche communities). Get IRB approval that explicitly addresses scraping methodology, data minimization and storage policies."] },
+      { heading: "Budget-friendly providers", paragraphs: ["Decodo residential \u2014 academic discounts available", "IPRoyal residential \u2014 pay-as-you-go, no commitment", "Webshare \u2014 for low-defense academic crawls (gov, .edu)", "Bright Data \u2014 applies for academic research grants offering free credits"] },
+      { heading: "Common Crawl is free", paragraphs: ["For web-scale text analysis, Common Crawl publishes petabytes of crawled HTML monthly. Most NLP research starts here, not with scraping."] },
+      { heading: "Personal data is the IRB tripwire", paragraphs: ["Public-data scraping is generally low-risk; anything involving identifiable individuals requires explicit IRB review, even for public posts. GDPR applies to EU data subjects regardless of where you study."] },
+    ],
+    faq: [
+      { q: "Can I share my scraped academic dataset?", a: "Only if your IRB approval and the source ToS both permit redistribution. Most don't \u2014 share methodology + code, not raw data." }
+    ],
+  },
+  {
+    slug: "how-to-use-proxies-with-selenium-2026",
+    title: "How to Use Proxies with Selenium in 2026",
+    description: "Selenium's proxy story is messier than Playwright's. Here's what actually works for auth-required residential proxies.",
+    excerpt: "Selenium's proxy story is messier than Playwright's. Here's what actually works for auth-required residential proxies.",
+    author: "Marcus Reiner", datePublished: "2026-06-03", readTime: "10 min", category: "Engineering",
+    tags: ["selenium", "headless"], recommendedProvider: "decodo",
+    body: [
+      { heading: "The auth problem", paragraphs: ["Selenium's `--proxy-server` Chrome arg supports IP:port but not username:password. For auth'd residential proxies (every major provider), you need a workaround."] },
+      { heading: "Option 1 \u2014 selenium-wire (cleanest)", paragraphs: ["```python\nfrom seleniumwire import webdriver\nopts = {'proxy': {'https': 'http://user:pass@gate.decodo.com:7000', 'http': 'http://user:pass@gate.decodo.com:7000'}}\ndriver = webdriver.Chrome(seleniumwire_options=opts)\n```\nselenium-wire intercepts at the network layer. Works with auth, supports SOCKS5, lets you inspect requests."] },
+      { heading: "Option 2 \u2014 Chrome extension trick", paragraphs: ["Build a tiny Chrome extension that responds to onAuthRequired with your credentials, load it via --load-extension. Hacky but stable, no extra deps."] },
+      { heading: "Option 3 \u2014 Proxy-Auth via undetected-chromedriver", paragraphs: ["undetected-chromedriver supports the extension trick natively. Bonus: it patches the WebDriver detection vectors Cloudflare/DataDome check."] },
+      { heading: "Should you still use Selenium?", paragraphs: ["For new projects, Playwright is faster, has a cleaner API, native auth proxy support, and a better stealth ecosystem. Selenium is the right choice only if you're locked into an existing Selenium grid."] },
+    ],
+    faq: [
+      { q: "Does undetected-chromedriver beat all anti-bot?", a: "It beats the easy 80%. For DataDome/Kasada/Akamai, pair it with a managed Web Unlocker for the hardest pages." }
+    ],
+  },
+  {
+    slug: "best-isp-proxies-streaming-geo-unblocking-2026",
+    title: "Best ISP Proxies for Streaming Geo-Unblocking in 2026",
+    description: "Netflix, Hulu, BBC iPlayer detect VPNs in seconds. ISP proxies are the workaround that actually streams 4K.",
+    excerpt: "Netflix, Hulu, BBC iPlayer detect VPNs in seconds. ISP proxies are the workaround that actually streams 4K.",
+    author: "Elena Park", datePublished: "2026-06-07", readTime: "10 min", category: "Use Cases",
+    tags: ["streaming", "isp", "geo"], recommendedProvider: "webshare",
+    body: [
+      { heading: "Why ISP, not residential", paragraphs: ["Residential proxies route through real consumer devices \u2014 bandwidth caps, peer instability, packet loss. Awful for video. ISP proxies are datacenter-hosted IPs on residential ASNs: gigabit speed + residential reputation. The streaming sweet spot."] },
+      { heading: "Best providers", paragraphs: ["Webshare ISP \u2014 $25 for 100 US IPs, the price-to-performance leader", "Rayobyte ISP \u2014 strong US-only pool with city targeting", "Bright Data ISP \u2014 global coverage, hourly billing, premium pricing", "NetNut ISP \u2014 strong DiViNetworks ASN reputation, expensive"] },
+      { heading: "Netflix-specific notes", paragraphs: ["Netflix blocks IPs they detect as 'commercial.' New ISP ranges work for weeks then get flagged. Buy from providers who actively rotate IPs out of pools when burnout is detected (Bright Data, NetNut)."] },
+      { heading: "BBC iPlayer is the hardest", paragraphs: ["iPlayer geofences to UK + checks for VPN/proxy signatures. UK ISP proxies from a provider with BT/Sky/Virgin ASN allocations work; most generic UK datacenter doesn't."] },
+      { heading: "Legal note", paragraphs: ["Geo-bypass for content you already pay for (your Netflix sub while traveling) is a contract issue, not a crime. Geo-bypass to access content you don't have rights to is a different matter \u2014 check your jurisdiction."] },
+    ],
+    faq: [
+      { q: "Will a VPN work?", a: "Major VPNs (NordVPN, ExpressVPN) have specific 'streaming-optimized' servers that work intermittently. ISP proxies are more reliable for sustained use." }
+    ],
+  },
+  {
+    slug: "how-to-scrape-flight-prices-travel-data",
+    title: "How to Scrape Flight Prices and Travel Data in 2026",
+    description: "Flight prices are the hardest scraping target on the web. Here's the realistic stack for 2026.",
+    excerpt: "Flight prices are the hardest scraping target on the web. Here's the realistic stack for 2026.",
+    author: "Marcus Reiner", datePublished: "2026-06-11", readTime: "10 min", category: "Engineering",
+    tags: ["flights", "travel", "scraping"], recommendedProvider: "bright-data",
+    body: [
+      { heading: "Why flights are uniquely hard", paragraphs: ["Airline pricing is dynamic per IP, per device, per search history, per booking class availability. Aggregators (Kayak, Google Flights, Skyscanner) sit on top of GDS APIs (Amadeus, Sabre) with strict licensing \u2014 direct scraping is both technically brutal and contractually risky."] },
+      { heading: "Use the data APIs", paragraphs: ["Skyscanner, Duffel, Kiwi.com Tequila \u2014 all offer real APIs with proper licensing. For commercial flight-comparison products, this is the only viable path. Scraping aggregators is a guaranteed cease-and-desist."] },
+      { heading: "When scraping is acceptable", paragraphs: ["Personal use, academic research on pricing dynamics, very-low-volume comparison tools. Use Bright Data Web Unlocker \u2014 flight search pages are JS-heavy, Akamai-protected, and rotate templates weekly. Don't try DIY."] },
+      { heading: "Airline direct vs aggregator", paragraphs: ["Direct airline sites are often more lenient than aggregators (they want you to book). Scraping a single airline's public fare display is much easier than scraping Skyscanner."] },
+      { heading: "Date sweeps are expensive", paragraphs: ["A full year \u00d7 every route \u00d7 every airline = millions of queries. Budget accordingly. Real flight-aggregator startups spend $50k+/month on data."] },
+    ],
+    faq: [
+      { q: "Can I use Google Flights?", a: "Google Flights has no public API and aggressive anti-scraping. The official path is the QPX Express API \u2014 but it shut down in 2018. Use Skyscanner or Duffel instead." }
+    ],
+  },
+  {
+    slug: "best-proxies-crypto-trading-bots-2026",
+    title: "Best Proxies for Crypto Trading Bots in 2026",
+    description: "Crypto exchanges rate-limit by IP and ban for arbitrage. Rotating ISP proxies are the standard stack.",
+    excerpt: "Crypto exchanges rate-limit by IP and ban for arbitrage. Rotating ISP proxies are the standard stack.",
+    author: "Elena Park", datePublished: "2026-06-15", readTime: "10 min", category: "Use Cases",
+    tags: ["crypto", "trading", "bots"], recommendedProvider: "iproyal",
+    body: [
+      { heading: "Why exchanges rate-limit by IP", paragraphs: ["Binance, Coinbase, Bybit and most others apply IP-level rate limits (1200 req/min on Binance public endpoints) regardless of API key. High-frequency strategies and arb bots need multiple IPs."] },
+      { heading: "ISP > residential for trading", paragraphs: ["Residential adds variable latency (50-300ms peer hops) \u2014 fatal for latency-sensitive strategies. ISP proxies give datacenter speed with residential-class reputation."] },
+      { heading: "Best providers", paragraphs: ["IPRoyal ISP \u2014 cheapest at scale, ~$0.80/IP/month", "Bright Data ISP \u2014 premium with hourly billing, best for short-burst arb", "Webshare ISP \u2014 $25/100 IPs, great for paper trading and dev", "NetNut ISP \u2014 premium, best for serious shops"] },
+      { heading: "Geo to the right region", paragraphs: ["Latency to the matching engine is everything. Binance: AWS Tokyo. Coinbase: AWS US-East. Bybit: AWS Singapore. Buy ISP proxies in the region that matches your target exchange's matching engine."] },
+      { heading: "Compliance \u2014 KYC and ToS", paragraphs: ["Most exchanges' ToS forbid IP rotation to evade rate limits. Enforcement varies; the bigger risk is account freezes during withdrawal. Read your exchange's ToS."] },
+    ],
+    faq: [
+      { q: "Can I use the same proxy for trading and market data?", a: "Separate them \u2014 market data is read-heavy and burns IPs fast; trading needs stable, low-latency IPs you don't rotate." }
+    ],
+  },
+  {
+    slug: "how-to-scrape-social-media-without-getting-banned",
+    title: "How to Scrape Social Media Without Getting Banned in 2026",
+    description: "Instagram, TikTok, Facebook, X \u2014 the four pillars. Here's the playbook that keeps accounts alive past day 30.",
+    excerpt: "Instagram, TikTok, Facebook, X \u2014 the four pillars. Here's the playbook that keeps accounts alive past day 30.",
+    author: "Marcus Reiner", datePublished: "2026-06-19", readTime: "10 min", category: "Engineering",
+    tags: ["social media", "bans"], recommendedProvider: "soax",
+    body: [
+      { heading: "Read vs write", paragraphs: ["The single biggest distinction. Read-only scraping (public posts, hashtags, profiles) is sustainable indefinitely with residential proxies. Write/action scraping (follow, like, DM) gets you banned quickly without mobile proxies + sticky sessions + behavioral mimicry."] },
+      { heading: "One account, one device, one IP", paragraphs: ["Mobile proxies + isolated browser profile + 1:1 account-to-IP mapping. Mixing accounts on one IP is the #1 ban vector across all four platforms."] },
+      { heading: "Warm accounts gradually", paragraphs: ["New account + 200 follows in day 1 = ban. New account + 5 follows in day 1, 15 in day 2, 30 in day 3 = normal user trajectory. Warm for 7-14 days before serious activity."] },
+      { heading: "Proxy picks by platform", paragraphs: ["Instagram, TikTok \u2014 mobile (SOAX, Bright Data)", "Facebook \u2014 mobile + aged sessions, residential for public scrape only", "X \u2014 residential is fine for read; write needs mobile + warmed accounts", "LinkedIn \u2014 don't write at all from scraped sessions"] },
+      { heading: "Read-only is the safer business model", paragraphs: ["Almost every legitimate social-data product is read-only (sentiment analysis, brand monitoring, influencer discovery). If your use case requires automating actions on others' accounts, you're in adversarial territory with platforms whose ToS explicitly forbids it."] },
+    ],
+    faq: [
+      { q: "Does using the official API solve this?", a: "For read use cases on X (paid) and Reddit (paid), yes. For Instagram/TikTok/Facebook, the official APIs are heavily limited and don't cover most use cases." }
+    ],
+  },
+  {
+    slug: "best-mobile-proxies-app-testing-2026",
+    title: "Best Mobile Proxies for App Testing in 2026",
+    description: "QA-testing a mobile app against real carrier networks needs real mobile IPs across carriers and countries.",
+    excerpt: "QA-testing a mobile app against real carrier networks needs real mobile IPs across carriers and countries.",
+    author: "Elena Park", datePublished: "2026-06-23", readTime: "10 min", category: "Use Cases",
+    tags: ["mobile", "app testing", "qa"], recommendedProvider: "soax",
+    body: [
+      { heading: "Why mobile matters for app QA", paragraphs: ["Apps behave differently on CGNAT-routed mobile networks: TLS handshakes differ, in-app analytics see different reverse-DNS, ad SDKs deliver different fill. Testing on Wi-Fi (datacenter) misses production-only bugs."] },
+      { heading: "Best providers ranked", paragraphs: ["SOAX \u2014 best per-carrier (T-Mobile / Verizon / AT&T / Vodafone / O2) targeting, cleanest pool", "Bright Data mobile \u2014 largest pool, 100+ countries", "IPRoyal mobile \u2014 budget at $4/GB", "Decodo mobile \u2014 solid all-rounder at $5.50/GB"] },
+      { heading: "Per-carrier testing", paragraphs: ["Many ad SDKs and fraud-detection tools key off carrier ASN. Test your app on each major carrier in each target country \u2014 SOAX is the only provider with reliable per-carrier targeting."] },
+      { heading: "Pair with device farm", paragraphs: ["Mobile proxies don't replace a real device \u2014 they complement it. Browserstack or AWS Device Farm + mobile proxy + your app = the production-realistic test bed."] },
+      { heading: "Pricing", paragraphs: ["$5\u2013$10/GB across the major providers. App testing rarely burns much bandwidth (a few hundred MB per full test pass) \u2014 cost is rarely the blocker, coverage is."] },
+    ],
+    faq: [
+      { q: "Can I use my own SIM cards?", a: "Yes \u2014 a SIM bank gives you the most-real IPs. But operationally complex; SOAX-style hosted mobile is far easier for most teams." }
+    ],
+  },
+  {
+    slug: "how-to-scrape-real-estate-listing-data",
+    title: "How to Scrape Real Estate Listing Data in 2026",
+    description: "Zillow, Realtor.com, Redfin, Trulia all have different defenses. Here's a unified architecture that handles all four.",
+    excerpt: "Zillow, Realtor.com, Redfin, Trulia all have different defenses. Here's a unified architecture that handles all four.",
+    author: "Marcus Reiner", datePublished: "2026-06-27", readTime: "10 min", category: "Engineering",
+    tags: ["real estate", "scraping"], recommendedProvider: "decodo",
+    body: [
+      { heading: "Realtor.com is the easiest", paragraphs: ["Listings powered by a public GraphQL endpoint, server-rendered JSON-LD on detail pages. Residential proxies + curl_cffi handle 95%+ at 2 req/s."] },
+      { heading: "Zillow needs the map GraphQL trick", paragraphs: ["Hit Zillow's `/async-create-search-page-state` endpoint with a bounding-box search \u2014 returns 500 listings as JSON per call. Much faster than scraping the rendered page."] },
+      { heading: "Redfin uses a clean private API", paragraphs: ["Redfin's data endpoints (`/api/gis-csv`, `/stingray/api/...`) return CSV/JSON. Less anti-bot than the others but the schema changes frequently \u2014 version-pin your parsers."] },
+      { heading: "Architecture: one normalizer, four scrapers", paragraphs: ["Run four source-specific scrapers feeding one normalizer that maps (Zillow `zpid`, Realtor `property_id`, Redfin `mlsListingId`, Trulia `trulia_id`) to your canonical listing record. Dedupe on (address + sqft + price band)."] },
+      { heading: "MLS feed is the real answer for commercial use", paragraphs: ["For commercial real-estate products, the legitimate path is an MLS RETS/RESO Web API feed via a brokerage license. Scraping public aggregators is a stopgap for personal use and prototypes; ToS and lawsuits constrain serious commercial use."] },
+    ],
+    faq: [
+      { q: "How fresh does the data need to be?", a: "For hot markets, sub-hour. Schedule scrapers by ZIP heat: hourly for top markets, daily for cold ones, save 90% of bandwidth." }
+    ],
+  },
+  {
+    slug: "best-proxies-email-verification-services-2026",
+    title: "Best Proxies for Email Verification Services in 2026",
+    description: "Email verification SMTP probes get throttled by every major mail provider. Here's the proxy strategy that scales.",
+    excerpt: "Email verification SMTP probes get throttled by every major mail provider. Here's the proxy strategy that scales.",
+    author: "Elena Park", datePublished: "2026-07-01", readTime: "10 min", category: "Use Cases",
+    tags: ["email", "verification"], recommendedProvider: "iproyal",
+    body: [
+      { heading: "Why proxies are needed", paragraphs: ["SMTP verification opens a connection on port 25 and checks RCPT TO response. Gmail, Outlook and Yahoo throttle aggressively per source IP \u2014 without rotation, you'll process ~100 verifications/hour before greylisting."] },
+      { heading: "SOCKS5 is required", paragraphs: ["SMTP isn't HTTP \u2014 needs SOCKS5 tunneling, not HTTP CONNECT. Providers with real SOCKS5: IPRoyal (residential + datacenter), Bright Data, Webshare datacenter. Decodo and Oxylabs don't currently offer SOCKS5 broadly."] },
+      { heading: "Datacenter is fine here", paragraphs: ["Email providers don't run JS challenges over SMTP. Datacenter IPs work \u2014 and at $0.50/GB you can afford millions of probes. Webshare datacenter SOCKS5 is the cheapest viable stack."] },
+      { heading: "Pool size matters", paragraphs: ["Per-IP throttling means you need a wide pool. 100+ IPs for any production verification service. Rotate per verification, with a 5-minute cooldown per IP per target domain."] },
+      { heading: "MX-record-aware routing", paragraphs: ["Gmail receives mail at gmail-smtp-in.l.google.com. Some throttling is per-MX, some is per-(source-IP, source-AS). Track failures per (source-IP, MX) and rotate proactively."] },
+    ],
+    faq: [
+      { q: "Can I use the same proxies for email sending?", a: "No \u2014 SMTP send needs static IPs with SPF/DKIM/DMARC alignment. Verification (probing) and sending are different infrastructure." }
+    ],
+  },
+  {
+    slug: "how-to-build-proxy-rotation-system-python",
+    title: "How to Build a Proxy Rotation System in Python",
+    description: "A production-grade proxy rotation system in ~150 lines of Python. Health checks, ban detection, weighted scoring.",
+    excerpt: "A production-grade proxy rotation system in ~150 lines of Python. Health checks, ban detection, weighted scoring.",
+    author: "Marcus Reiner", datePublished: "2026-07-05", readTime: "10 min", category: "Engineering",
+    tags: ["python", "rotation", "system"], recommendedProvider: "decodo",
+    body: [
+      { heading: "Architecture", paragraphs: ["A rotation system has four components: pool loader (from provider API or static list), health checker (background pings), request router (picks best IP per call), failure handler (penalizes/evicts bad IPs)."] },
+      { heading: "Scoring model", paragraphs: ["Each IP carries a score: starts at 100, -10 on 4xx/5xx, -5 on slow response (>5s), +1 on clean success. Evict at score <0. Restore evicted IPs after 30-min cooldown."] },
+      { heading: "Code sketch", paragraphs: ["```python\nimport time, random, requests\nfrom collections import defaultdict\n\nclass ProxyPool:\n    def __init__(self, proxies):\n        self.scores = defaultdict(lambda: 100)\n        self.cooldown_until = {}\n        self.proxies = proxies\n    def pick(self):\n        now = time.time()\n        live = [p for p in self.proxies if self.scores[p] > 0 and self.cooldown_until.get(p, 0) < now]\n        weights = [self.scores[p] for p in live]\n        return random.choices(live, weights=weights, k=1)[0]\n    def report(self, p, ok, latency):\n        if ok and latency < 5: self.scores[p] = min(100, self.scores[p] + 1)\n        elif not ok: self.scores[p] -= 10\n        if self.scores[p] <= 0: self.cooldown_until[p] = time.time() + 1800\n```"] },
+      { heading: "Skip this for rotating-endpoint providers", paragraphs: ["If your provider exposes a rotating endpoint (Decodo, Bright Data, IPRoyal, Oxylabs, SOAX all do), the provider runs this logic for you \u2014 and at higher quality. Build your own only when you have a static IP list."] },
+      { heading: "Monitoring", paragraphs: ["Export Prometheus metrics: requests by status, p50/p99 latency, pool size, evictions per minute. Without monitoring you won't notice when 30% of your pool silently dies."] },
+    ],
+    faq: [
+      { q: "Do I need async?", a: "For >50 req/s, yes \u2014 use httpx or aiohttp. For lower throughput, threaded requests is simpler and fast enough." }
+    ],
+  },
+  {
+    slug: "best-cheap-proxies-that-actually-work-2026",
+    title: "Best Cheap Proxies That Actually Work in 2026",
+    description: "Free proxies are a scam. Sub-$2/GB residentials are real. Here are the four budget pools we'd actually use in production.",
+    excerpt: "Free proxies are a scam. Sub-$2/GB residentials are real. Here are the four budget pools we'd actually use in production.",
+    author: "Elena Park", datePublished: "2026-07-09", readTime: "10 min", category: "Pricing",
+    tags: ["cheap", "budget", "pricing"], recommendedProvider: "iproyal",
+    body: [
+      { heading: "Free proxies are not free", paragraphs: ["Public free proxy lists are honeypots, dead, or MITM-injecting. They steal credentials, inject ads and capture session cookies. Never use one. The 'free' tier of every legitimate provider is a trial \u2014 use those instead."] },
+      { heading: "Real budget residentials", paragraphs: ["IPRoyal \u2014 $1.75/GB, pay-as-you-go, no commitment. The current budget leader.", "Decodo \u2014 $2/GB, larger pool, slightly better success rate", "Webshare residential \u2014 $4.50/GB, smaller pool but the cheapest with dedicated US-only targeting", "Rayobyte residential \u2014 $5/GB, US-focused, strong for SEO and e-commerce"] },
+      { heading: "Datacenter is even cheaper", paragraphs: ["For unprotected targets, Webshare datacenter at $0.50/GB or IPRoyal datacenter at $1.39/IP/month is the cost floor that still actually works."] },
+      { heading: "Trial credits", paragraphs: ["Every major provider offers 24h-7d free trials with $5-$50 of credit: Decodo, Oxylabs, Bright Data, SOAX. Stack them when evaluating \u2014 gets you a few hundred GB of real testing for free."] },
+      { heading: "What to avoid", paragraphs: ["Reseller pools (you don't know who controls the IPs), 'lifetime' deals (unsustainable economics = pool collapse within months), and any provider asking you to install an app to 'earn' bandwidth \u2014 that's how the gray-pool problem starts."] },
+    ],
+    faq: [
+      { q: "Is $1.75/GB sustainable long-term?", a: "IPRoyal has held this price for 18+ months and grown the pool, so yes \u2014 the economics work at scale. But always assume premium-pool quality is going to cost premium prices." }
+    ],
+  },
 ];
 
 export const getBlogPost = (slug: string) => blogPosts.find((p) => p.slug === slug);
