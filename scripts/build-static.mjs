@@ -14,7 +14,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "..");
 const PUBLIC = resolve(root, "public");
-const SITE = process.env.SITE_URL || "https://toptierproxy.com";
+const SITE = process.env.SITE_URL || "https://www.toptierproxy.com";
 
 async function loadTs(rel) {
   // tsx is not required: data files are plain TS exports w/ no runtime deps.
