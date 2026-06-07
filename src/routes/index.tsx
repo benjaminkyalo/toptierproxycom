@@ -97,14 +97,14 @@ export const Route = createFileRoute("/")({
 });
 
 const heroCards = [
-  { to: "/guides/best-proxies-2026", title: "Best Proxy Providers for 2026", icon: <Trophy className="h-7 w-7" strokeWidth={1.5} /> },
-  { to: "/guides/best-residential-proxies", title: "Best Residential Proxies for 2026", icon: <Globe2 className="h-7 w-7" strokeWidth={1.5} /> },
-  { to: "/guides/best-datacenter-proxies", title: "Best Datacenter Proxies for 2026", icon: <Server className="h-7 w-7" strokeWidth={1.5} /> },
-  { to: "/guides/best-proxies-for-beginners", title: "Best Proxies for Beginners 2026", icon: <Award className="h-7 w-7" strokeWidth={1.5} /> },
-  { to: "/guides/best-mobile-proxies", title: "Best Mobile Proxies for 2026", icon: <Smartphone className="h-7 w-7" strokeWidth={1.5} /> },
-  { to: "/guides/best-isp-proxies", title: "Best ISP (Static Residential) Proxies", icon: <Zap className="h-7 w-7" strokeWidth={1.5} /> },
-  { to: "/reviews/bright-data", title: "Bright Data Review", icon: <Star className="h-7 w-7" strokeWidth={1.5} /> },
-  { to: "/reviews/oxylabs", title: "Oxylabs Review", icon: <Star className="h-7 w-7" strokeWidth={1.5} /> },
+  { to: "/guides/best-proxies-2026", title: "Best Proxy Providers for 2026", icon: <Trophy className="h-7 w-7 text-amber-500" strokeWidth={1.8} /> },
+  { to: "/guides/best-residential-proxies", title: "Best Residential Proxies for 2026", icon: <Globe2 className="h-7 w-7 text-emerald-600" strokeWidth={1.8} /> },
+  { to: "/guides/best-datacenter-proxies", title: "Best Datacenter Proxies for 2026", icon: <Server className="h-7 w-7 text-sky-600" strokeWidth={1.8} /> },
+  { to: "/guides/best-proxies-for-beginners", title: "Best Proxies for Beginners 2026", icon: <Award className="h-7 w-7 text-rose-500" strokeWidth={1.8} /> },
+  { to: "/guides/best-mobile-proxies", title: "Best Mobile Proxies for 2026", icon: <Smartphone className="h-7 w-7 text-violet-600" strokeWidth={1.8} /> },
+  { to: "/guides/best-isp-proxies", title: "Best ISP (Static Residential) Proxies", icon: <Zap className="h-7 w-7 text-yellow-500" strokeWidth={1.8} /> },
+  { to: "/reviews/bright-data", title: "Bright Data Review", icon: <Star className="h-7 w-7 fill-amber-400 text-amber-500" strokeWidth={1.8} /> },
+  { to: "/reviews/oxylabs", title: "Oxylabs Review", icon: <Star className="h-7 w-7 fill-amber-400 text-amber-500" strokeWidth={1.8} /> },
 ] as const;
 
 const tradingStyles = [
