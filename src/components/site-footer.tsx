@@ -205,7 +205,7 @@ function SectionBlock({ section }: { section: Section }) {
 
 export function SiteFooter() {
   return (
-    <footer className="bg-footer text-footer-foreground">
+    <footer className="bg-navy text-footer-foreground">
       <div className="mx-auto max-w-7xl px-6 py-14">
         {sections.map((s) => (
           <SectionBlock key={s.title} section={s} />
