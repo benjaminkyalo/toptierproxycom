@@ -52,6 +52,7 @@
   --color-footer-foreground: var(--footer-foreground);
   --color-success: var(--success);
   --color-warning: var(--warning);
+  --color-nav-hover: var(--nav-hover);
 
   --shadow-card: 0 1px 3px 0 oklch(0 0 0 / 0.08), 0 1px 2px -1px oklch(0 0 0 / 0.06);
   --shadow-card-hover: 0 10px 15px -3px oklch(0 0 0 / 0.1), 0 4px 6px -4px oklch(0 0 0 / 0.08);
@@ -100,6 +101,7 @@
   --footer-foreground: oklch(0.95 0 0);
   --success: oklch(0.58 0.15 150);
   --warning: oklch(0.75 0.15 80);
+  --nav-hover: oklch(0.72 0.22 145);
 }
 
 .dark {
