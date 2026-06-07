@@ -124,8 +124,8 @@ export function SiteHeader({ variant = "navy" }: { variant?: "navy" | "white" })
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
-                className="py-3 text-base font-semibold opacity-90 hover:opacity-100"
-                activeProps={{ className: "opacity-100 underline underline-offset-4" }}
+                className="py-3 text-base font-semibold text-white transition-all hover:underline hover:decoration-nav-hover hover:underline-offset-4"
+                activeProps={{ className: "underline underline-offset-4" }}
               >
                 {item.label}
               </Link>
