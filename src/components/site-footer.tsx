@@ -170,18 +170,31 @@ function isInternal(href: string) {
 }
 
 function FooterLink({ item }: { item: LinkItem }) {
-  const cls = "block py-1.5 text-sm text-footer-foreground/85 hover:text-white hover:underline";
+  const cls =
+    "group relative inline-block py-1.5 text-sm text-footer-foreground/85 hover:text-white";
+  const underline = (
+    <span
+      aria-hidden
+      className="pointer-events-none absolute bottom-1 left-0 h-[2px] w-0 bg-nav-hover transition-all duration-300 ease-out group-hover:w-full"
+    />
+  );
   if (isInternal(item.href)) {
     return (
-      <Link to={item.href} className={cls}>
-        {item.label}
-      </Link>
+      <span className="block">
+        <Link to={item.href} className={cls}>
+          {item.label}
+          {underline}
+        </Link>
+      </span>
     );
   }
   return (
-    <a href={item.href} className={cls} rel="nofollow noopener">
-      {item.label}
-    </a>
+    <span className="block">
+      <a href={item.href} className={cls} rel="nofollow noopener">
+        {item.label}
+        {underline}
+      </a>
+    </span>
   );
 }
 
@@ -192,7 +205,7 @@ function SectionBlock({ section }: { section: Section }) {
         <h3 className="whitespace-nowrap text-base font-extrabold uppercase tracking-wider">
           {section.title}
         </h3>
-        <div className="flex-1 border-t border-dotted border-white/30" />
+        <div className="flex-1 border-t-2 border-dotted border-white/70" />
       </div>
       <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
         {section.items.map((item) => (
