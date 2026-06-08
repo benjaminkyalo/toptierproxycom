@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, Prose } from "@/components/page-shell";
-import { Tag, ChevronDown, Plus, Shield, Globe, Zap, DollarSign, Lock, Star } from "lucide-react";
+import { Tag, ChevronDown, Plus, Shield, Star } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/vpn-deals")({
