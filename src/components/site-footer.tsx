@@ -24,9 +24,9 @@ const sections: Section[] = [
   {
     title: "DIRECT COMPLEMENTS",
     items: [
-      { label: "NordVPN", href: "#" },
-      { label: "ExpressVPN", href: "#" },
-      { label: "Surfshark", href: "#" },
+      { label: "NordVPN", href: "/vpn-deals" },
+      { label: "ExpressVPN", href: "/vpn-deals" },
+      { label: "Surfshark", href: "/vpn-deals" },
       { label: "Multilogin", href: "#" },
       { label: "GoLogin", href: "#" },
       { label: "AdsPower", href: "#" },

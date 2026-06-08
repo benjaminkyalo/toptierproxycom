@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyTrustUsRouteImport } from './routes/why-trust-us'
+import { Route as VpnDealsRouteImport } from './routes/vpn-deals'
 import { Route as TrustScoreRouteImport } from './routes/trust-score'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ResourcesRouteImport } from './routes/resources'
@@ -39,6 +40,11 @@ import { Route as CountriesSlugCitiesCityRouteImport } from './routes/countries.
 const WhyTrustUsRoute = WhyTrustUsRouteImport.update({
   id: '/why-trust-us',
   path: '/why-trust-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VpnDealsRoute = VpnDealsRouteImport.update({
+  id: '/vpn-deals',
+  path: '/vpn-deals',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TrustScoreRoute = TrustScoreRouteImport.update({
@@ -178,6 +184,7 @@ export interface FileRoutesByFullPath {
   '/resources': typeof ResourcesRoute
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
+  '/vpn-deals': typeof VpnDealsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
   '/best/$slug': typeof BestSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -206,6 +213,7 @@ export interface FileRoutesByTo {
   '/resources': typeof ResourcesRoute
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
+  '/vpn-deals': typeof VpnDealsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
   '/best/$slug': typeof BestSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -235,6 +243,7 @@ export interface FileRoutesById {
   '/resources': typeof ResourcesRoute
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
+  '/vpn-deals': typeof VpnDealsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
   '/best/$slug': typeof BestSlugRoute
   '/blog/$slug': typeof BlogSlugRoute
@@ -265,6 +274,7 @@ export interface FileRouteTypes {
     | '/resources'
     | '/terms'
     | '/trust-score'
+    | '/vpn-deals'
     | '/why-trust-us'
     | '/best/$slug'
     | '/blog/$slug'
@@ -293,6 +303,7 @@ export interface FileRouteTypes {
     | '/resources'
     | '/terms'
     | '/trust-score'
+    | '/vpn-deals'
     | '/why-trust-us'
     | '/best/$slug'
     | '/blog/$slug'
@@ -321,6 +332,7 @@ export interface FileRouteTypes {
     | '/resources'
     | '/terms'
     | '/trust-score'
+    | '/vpn-deals'
     | '/why-trust-us'
     | '/best/$slug'
     | '/blog/$slug'
@@ -350,6 +362,7 @@ export interface RootRouteChildren {
   ResourcesRoute: typeof ResourcesRoute
   TermsRoute: typeof TermsRoute
   TrustScoreRoute: typeof TrustScoreRoute
+  VpnDealsRoute: typeof VpnDealsRoute
   WhyTrustUsRoute: typeof WhyTrustUsRoute
   BestSlugRoute: typeof BestSlugRoute
   BlogSlugRoute: typeof BlogSlugRoute
@@ -374,6 +387,13 @@ declare module '@tanstack/react-router' {
       path: '/why-trust-us'
       fullPath: '/why-trust-us'
       preLoaderRoute: typeof WhyTrustUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vpn-deals': {
+      id: '/vpn-deals'
+      path: '/vpn-deals'
+      fullPath: '/vpn-deals'
+      preLoaderRoute: typeof VpnDealsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/trust-score': {
@@ -577,6 +597,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResourcesRoute: ResourcesRoute,
   TermsRoute: TermsRoute,
   TrustScoreRoute: TrustScoreRoute,
+  VpnDealsRoute: VpnDealsRoute,
   WhyTrustUsRoute: WhyTrustUsRoute,
   BestSlugRoute: BestSlugRoute,
   BlogSlugRoute: BlogSlugRoute,
