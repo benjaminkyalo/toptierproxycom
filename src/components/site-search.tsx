@@ -1,74 +1,16 @@
-import { useState, useMemo, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "@tanstack/react-router";
 import { Search, X, BookOpen, Globe, Star, Zap, FileText, ArrowRight } from "lucide-react";
 import Fuse from "fuse.js";
-import { providers } from "@/data/providers";
-import { guides } from "@/data/guides";
-import { countries } from "@/data/countries";
-import { useCases } from "@/data/use-cases";
-import { blogPosts } from "@/data/blog";
 
 interface SearchItem {
   id: string;
   title: string;
   description: string;
   url: string;
-  type: "review" | "guide" | "country" | "usecase" | "blog" | "vs";
+  type: string;
+  keywords?: string;
 }
-
-const allItems: SearchItem[] = [
-  ...providers.map(p => ({
-    id: `review-${p.slug}`,
-    title: `${p.name} Review 2026`,
-    description: p.shortDescription,
-    url: `/reviews/${p.slug}`,
-    type: "review" as const,
-  })),
-  ...guides.map(g => ({
-    id: `guide-${g.slug}`,
-    title: g.title,
-    description: g.intro,
-    url: `/guides/${g.slug}`,
-    type: "guide" as const,
-  })),
-  ...countries.map(c => ({
-    id: `country-${c.slug}`,
-    title: `Best ${c.name} Proxies 2026`,
-    description: `${c.poolDepth} available. ${c.primaryUseCases[0]}`,
-    url: `/countries/${c.slug}`,
-    type: "country" as const,
-  })),
-  ...useCases.map(u => ({
-    id: `usecase-${u.slug}`,
-    title: u.title,
-    description: u.intro,
-    url: `/use-cases/${u.slug}`,
-    type: "usecase" as const,
-  })),
-  ...blogPosts.map(b => ({
-    id: `blog-${b.slug}`,
-    title: b.title,
-    description: b.excerpt,
-    url: `/blog/${b.slug}`,
-    type: "blog" as const,
-  })),
-  ...providers.flatMap((a, i) =>
-    providers.slice(i + 1).map(b => ({
-      id: `vs-${a.slug}-${b.slug}`,
-      title: `${a.name} vs ${b.name} 2026`,
-      description: `Side-by-side comparison of pricing, pool size, speed and features.`,
-      url: `/vs/${a.slug}-vs-${b.slug}`,
-      type: "vs" as const,
-    }))
-  ),
-];
-
-const fuse = new Fuse(allItems, {
-  keys: ["title", "description"],
-  threshold: 0.35,
-  minMatchCharLength: 2,
-  includeScore: true,
-});
 
 const TYPE_ICON: Record<string, React.ReactNode> = {
   review: <Star className="h-4 w-4 text-yellow-500" />,
@@ -77,45 +19,60 @@ const TYPE_ICON: Record<string, React.ReactNode> = {
   usecase: <Zap className="h-4 w-4 text-purple-500" />,
   blog: <FileText className="h-4 w-4 text-orange-500" />,
   vs: <ArrowRight className="h-4 w-4 text-gray-500" />,
+  page: <FileText className="h-4 w-4 text-gray-400" />,
 };
 
 const TYPE_LABEL: Record<string, string> = {
-  review: "Review",
-  guide: "Guide",
-  country: "Country",
-  usecase: "Use Case",
-  blog: "Blog",
-  vs: "Compare",
+  review: "Review", guide: "Guide", country: "Country",
+  usecase: "Use Case", blog: "Blog", vs: "Compare", page: "Page",
 };
+
+let fuseCache: Fuse<SearchItem> | null = null;
 
 export function SiteSearch({ className = "", heroMode = false }: { className?: string; heroMode?: boolean }) {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
+  const [results, setResults] = useState<{ item: SearchItem }[]>([]);
+  const [loaded, setLoaded] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const results = useMemo(() => {
-    if (!query.trim() || query.length < 2) return [];
-    return fuse.search(query).slice(0, 8);
+  // Load search index once
+  useEffect(() => {
+    if (fuseCache) { setLoaded(true); return; }
+    fetch("/search-index.json")
+      .then(r => r.json())
+      .then((items: SearchItem[]) => {
+        fuseCache = new Fuse(items, {
+          keys: ["title", "description", "keywords"],
+          threshold: 0.35,
+          minMatchCharLength: 2,
+          includeScore: true,
+        });
+        setLoaded(true);
+      })
+      .catch(() => setLoaded(true));
+  }, []);
+
+  // Search
+  useEffect(() => {
+    if (!fuseCache || !query.trim() || query.length < 2) { setResults([]); return; }
+    setResults(fuseCache.search(query).slice(0, 8) as { item: SearchItem }[]);
   }, [query]);
 
+  // Close on outside click
   useEffect(() => {
     function handleClick(e: MouseEvent) {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) setOpen(false);
     }
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
+  // Keyboard shortcut
   useEffect(() => {
     function handleKey(e: KeyboardEvent) {
-      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault();
-        setOpen(true);
-        setTimeout(() => inputRef.current?.focus(), 50);
-      }
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") { e.preventDefault(); setOpen(true); setTimeout(() => inputRef.current?.focus(), 50); }
       if (e.key === "Escape") setOpen(false);
     }
     document.addEventListener("keydown", handleKey);
@@ -125,7 +82,9 @@ export function SiteSearch({ className = "", heroMode = false }: { className?: s
   return (
     <div ref={containerRef} className={`relative ${className}`}>
       <div
-        className={heroMode ? "flex items-center gap-2 rounded-full border-2 border-white/30 bg-white/10 backdrop-blur-sm px-4 py-3 cursor-text transition-all duration-200 hover:border-white/60 hover:bg-white/20 text-white w-full" : "flex items-center gap-2 rounded-full border border-border bg-muted/60 px-4 py-2 cursor-text transition-all duration-200 hover:border-primary/50 hover:bg-background"}
+        className={heroMode
+          ? "flex items-center gap-2 rounded-full border-2 border-white/30 bg-white/10 backdrop-blur-sm px-4 py-3 cursor-text transition-all duration-200 hover:border-white/60 hover:bg-white/20 text-white w-full"
+          : "flex items-center gap-2 rounded-full border border-border bg-muted/60 px-4 py-2 cursor-text transition-all duration-200 hover:border-primary/50 hover:bg-background"}
         onClick={() => { setOpen(true); setTimeout(() => inputRef.current?.focus(), 50); }}
       >
         <Search className="h-4 w-4 text-muted-foreground flex-shrink-0" />
@@ -171,11 +130,11 @@ export function SiteSearch({ className = "", heroMode = false }: { className?: s
                       onClick={() => { setOpen(false); setQuery(""); }}
                       className="flex items-start gap-3 px-4 py-3 hover:bg-muted/60 transition-colors duration-150 group"
                     >
-                      <div className="mt-0.5 flex-shrink-0">{TYPE_ICON[item.type]}</div>
+                      <div className="mt-0.5 flex-shrink-0">{TYPE_ICON[item.type] || TYPE_ICON.page}</div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2">
                           <span className="font-medium text-sm text-foreground group-hover:text-primary transition-colors truncate">{item.title}</span>
-                          <span className="flex-shrink-0 text-xs bg-muted text-muted-foreground px-1.5 py-0.5 rounded-full">{TYPE_LABEL[item.type]}</span>
+                          <span className="flex-shrink-0 text-xs bg-muted text-muted-foreground px-1.5 py-0.5 rounded-full">{TYPE_LABEL[item.type] || "Page"}</span>
                         </div>
                         <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{item.description}</p>
                       </div>

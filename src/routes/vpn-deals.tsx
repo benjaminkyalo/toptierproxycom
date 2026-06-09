@@ -52,6 +52,7 @@ type Deal = {
   blurb: string;
   accent: string; // tailwind bg class for logo tile
   logoText: string;
+  logoImg?: string;
 };
 
 const deals: Deal[] = [
@@ -64,10 +65,12 @@ const deals: Deal[] = [
     refund: "Fully refundable for 30 days",
     upfront: "Billed $70 upfront",
     cta: "See at ExpressVPN",
-    ctaHref: "#",
+    ctaHref: "https://www.expressvpn.com/order",
     blurb: "ExpressVPN still tops our list of the best VPNs in 2026 — Lightway protocol, audited no-logs policy, 105 countries, and a near-flawless streaming track record across Netflix, BBC iPlayer, Disney+ and Hulu.",
     accent: "bg-[#dc2626]",
     logoText: "E",
+    logoImg: "https://res.cloudinary.com/dkcqakosa/image/upload/v1780912428/EXPREE_VPN_cz2vvf.png",
+    logoImg: "https://res.cloudinary.com/dkcqakosa/image/upload/v1780912428/EXPREE_VPN_cz2vvf.png",
   },
   {
     name: "Surfshark",
@@ -77,10 +80,11 @@ const deals: Deal[] = [
     refund: "Fully refundable for 30 days",
     upfront: "Billed $54 upfront",
     cta: "See at Surfshark",
-    ctaHref: "#",
+    ctaHref: "https://surfshark.com/deal",
     blurb: "Surfshark, a relative newcomer, has quickly become known for unlimited simultaneous connections, a clean Linux GUI app, and the cheapest long-term pricing of any audited VPN — ideal for families and shared households.",
     accent: "bg-[#e5e7eb]",
     logoText: "S",
+    logoImg: "https://res.cloudinary.com/dkcqakosa/image/upload/v1780912428/SURFSHARK_w24oql.png",
   },
   {
     name: "NordVPN",
@@ -90,10 +94,11 @@ const deals: Deal[] = [
     refund: "Fully refundable for 30 days",
     upfront: "Billed $83 upfront",
     cta: "See at NordVPN",
-    ctaHref: "#",
+    ctaHref: "https://nordvpn.com/pricing",
     blurb: "An industry heavyweight and still one of CNET's top picks, NordVPN has the largest dedicated-IP pool, Meshnet for private peer-to-peer routing, and Threat Protection malware blocking baked in.",
     accent: "bg-[#1e40af]",
     logoText: "N",
+    logoImg: "https://res.cloudinary.com/dkcqakosa/image/upload/v1780912428/NORD_VPN_kqlwug.png",
   },
   {
     name: "Proton VPN",
@@ -103,10 +108,11 @@ const deals: Deal[] = [
     refund: "Fully refundable for 30 days",
     upfront: "Billed $72 upfront",
     cta: "See at ProtonVPN",
-    ctaHref: "#",
+    ctaHref: "https://protonvpn.com/pricing",
     blurb: "Proton VPN is the only free VPN we recommend, but if you need more — Secure Core multi-hop, NetShield ad blocking, and Switzerland-based no-logs jurisdiction — the paid tier is a serious privacy upgrade.",
     accent: "bg-gradient-to-br from-[#6d28d9] to-[#312e81]",
     logoText: "P",
+    logoImg: "https://res.cloudinary.com/dkcqakosa/image/upload/v1780912428/PROTON_VPN_nh2nhm.png",
   },
   {
     name: "PIA VPN",
@@ -116,10 +122,11 @@ const deals: Deal[] = [
     refund: "Fully refundable for 30 days",
     upfront: "Billed $35 upfront",
     cta: "See at PIA",
-    ctaHref: "#",
+    ctaHref: "https://www.privateinternetaccess.com/pages/buy-vpn",
     blurb: "Private Internet Access earned a spot on our list of the best VPN services as one of the cheapest privacy-first options — proven no-logs in US court, open-source apps, and port forwarding for torrents.",
     accent: "bg-[#0f172a]",
     logoText: "PIA",
+    logoImg: "https://res.cloudinary.com/dkcqakosa/image/upload/v1780912428/PIA_VPN_u7j01w.png",
   },
   {
     name: "Norton VPN",
@@ -129,10 +136,11 @@ const deals: Deal[] = [
     refund: "Fully refundable for 60 days",
     upfront: "Billed $40 upfront",
     cta: "See at Norton",
-    ctaHref: "#",
+    ctaHref: "https://us.norton.com/products/norton-secure-vpn",
     blurb: "Norton might be a company better known for its antivirus software, but Norton VPN is a strong bundle pick if you already use Norton 360 — split tunneling, dark-web monitoring, and ad tracker blocking included.",
     accent: "bg-[#0f172a]",
     logoText: "✓",
+    logoImg: "https://res.cloudinary.com/dkcqakosa/image/upload/v1780912428/NORTON_VPN_pjpfic.png",
   },
 ];
 
@@ -181,9 +189,9 @@ function VpnDealsPage() {
       <section className="relative -mt-12 overflow-hidden rounded-md bg-[#0f172a] p-8 text-white shadow-2xl md:p-12">
         <p className="text-xs font-semibold uppercase tracking-wider opacity-70">Deals</p>
         <div className="mt-3 grid gap-8 md:grid-cols-[1fr_auto]">
-          <div className="border-r-0 md:border-r md:border-dotted md:border-white/30 md:pr-8">
+          <div className="border-r-0 md:border-r-2 md:border-white/60 md:pr-8">
             <h1 className="text-3xl font-bold leading-tight md:text-5xl">
-              Keep Your Data Away From Prying Eyes With These Top-Rated VPN Deals
+              Keep Your Data Away From Prying Eyes With These Top-Rated <span className="text-nav-hover">VPN Deals</span>
             </h1>
             <p className="mt-4 text-base opacity-90 md:text-lg">
               With these offers, new subscribers can sign up for as little as $1 per month.
@@ -214,7 +222,7 @@ function VpnDealsPage() {
       {/* Trust banner */}
       <div className="mt-8 rounded-md border border-dashed border-border bg-card p-4 md:flex md:items-center md:gap-4">
         <div className="flex items-center gap-2 font-bold text-foreground">
-          <Shield className="h-4 w-4 text-primary" />
+          <Shield className="h-8 w-8 text-nav-hover fill-nav-hover" />
           Why You Can Trust ToptierProxy
         </div>
         <p className="mt-2 text-sm text-muted-foreground md:mt-0">
@@ -390,7 +398,10 @@ function DealCard({ deal }: { deal: Deal }) {
         </div>
       )}
       <div className={`relative flex h-44 items-center justify-center ${deal.accent}`}>
-        <span className="text-6xl font-black text-white drop-shadow-lg">{deal.logoText}</span>
+        {deal.logoImg
+          ? <img src={deal.logoImg} alt={deal.name + ' logo'} className="absolute inset-0 h-full w-full object-cover" />
+          : <span className="text-6xl font-black text-white drop-shadow-lg">{deal.logoText}</span>
+        }
       </div>
       <div className="flex flex-1 flex-col p-5">
         <h3 className="text-base font-bold text-foreground">
@@ -409,7 +420,7 @@ function DealCard({ deal }: { deal: Deal }) {
         </div>
         <a
           href={deal.ctaHref}
-          rel="sponsored nofollow noopener"
+          rel="sponsored nofollow noopener" target="_blank"
           className="mt-4 block w-full rounded-md bg-nav-hover py-3 text-center text-sm font-bold text-black transition-opacity hover:opacity-90"
         >
           {deal.cta}
