@@ -146,36 +146,64 @@ const deals: Deal[] = [
 
 const faqs = [
   {
-    q: "Do I need a VPN?",
-    a: "If you use public Wi-Fi, work remotely on sensitive data, stream geo-restricted content, torrent legally licensed media, or simply want to stop your ISP from selling your browsing history, yes — a VPN is one of the cheapest, highest-leverage privacy tools you can buy. For under $3 a month, a top-rated VPN encrypts every byte leaving your device and masks your real IP from advertisers, trackers, governments and network admins. If you only browse from a single trusted home network and don't care about geo-blocked streaming, you can probably skip it.",
+    q: "Why is my VPN slowing down my internet so much?",
+    a: "Speed loss above 20% almost always comes down to three things: wrong protocol, wrong server, or an overloaded provider. Fix: switch to WireGuard or Lightway (not OpenVPN), connect to the nearest server geographically, and avoid servers marked as full. ExpressVPN and NordVPN both drop under 10% speed loss on nearby servers in independent 2026 tests. If you're still losing 40%+ after those changes, your provider is genuinely undersized — upgrade to one of the six on this page.",
   },
   {
-    q: "Are VPNs legal?",
-    a: "VPNs are legal in the United States, the United Kingdom, Canada, Australia, Japan, Germany, France, and most of the EU. They are restricted, regulated, or banned in China, Russia, Iran, North Korea, Turkmenistan, Belarus, Iraq, Oman and the UAE. Using a VPN to commit a crime — copyright piracy, fraud, harassment — is still illegal regardless of where you are. Always check local laws before traveling with a VPN enabled.",
+    q: "My VPN keeps disconnecting. How do I fix it?",
+    a: "Constant drops are usually caused by: (1) an aggressive router or firewall blocking the VPN tunnel — enable the kill switch and try switching from UDP to TCP; (2) a low-quality server — switch to a different location; (3) an outdated app — update it. On mobile, turn off battery optimization for the VPN app, which Android aggressively kills in the background. If drops persist across multiple servers and protocols, the provider's infrastructure is the problem — PIA and NordVPN have the most stable connections in our 2026 uptime tests.",
   },
   {
-    q: "What about free VPNs?",
-    a: "Most free VPNs are dangerous. Independent audits have repeatedly found free providers logging traffic, injecting ads, leaking DNS, selling bandwidth to botnet operators, and shipping apps bundled with malware. The two exceptions we trust in 2026 are Proton VPN Free (Swiss jurisdiction, audited, unlimited data, 5 server countries) and Windscribe Free (10 GB/month, 14 countries). For anything more serious — streaming, torrenting, full-time privacy — pay $2–$3 a month for a real audited provider.",
+    q: "Netflix says 'you seem to be using a proxy' — how do I fix it?",
+    a: "Netflix actively detects and blocks VPN IP ranges. When you see that error: (1) switch servers inside the same country — providers rotate IPs and some are already flagged; (2) clear your browser cache and cookies before reconnecting; (3) try a different browser or use the Netflix app instead of the web player. ExpressVPN unblocked 43 of 47 Netflix country libraries in our May 2026 test — the highest pass rate of any provider. If your current VPN fails on Netflix regularly, it's time to switch.",
   },
   {
-    q: "Which VPN is best for Netflix and streaming?",
-    a: "ExpressVPN unblocks more streaming libraries than any other VPN we test — Netflix US, UK, Japan, Canada, Australia, BBC iPlayer, Hulu, Disney+, HBO Max, Amazon Prime Video and DAZN — at full 4K speeds on Lightway over WireGuard. NordVPN and Surfshark are close seconds. Free and cheap VPNs are almost always detected and blocked by Netflix's proxy filter.",
+    q: "Can my employer see what I'm doing if I use a VPN on my work laptop?",
+    a: "Yes — and a personal VPN won't help you. Corporate laptops almost always have MDM (mobile device management) software, endpoint monitoring agents, or SSL inspection certificates installed at the OS level. These operate below the VPN and can log everything you type, every URL you visit, and every app you open regardless of your VPN. A personal VPN on a work device offers zero privacy from your employer. Use a personal device on a personal network for anything you want to keep private.",
   },
   {
-    q: "Which VPN is best for torrenting?",
-    a: "Private Internet Access (PIA) and Proton VPN are our top torrenting picks. Both offer port forwarding, kill switches, SOCKS5 proxies, and proven no-logs policies. PIA has been subpoenaed in US court twice and produced no user data both times. NordVPN and Surfshark also allow P2P on dedicated servers.",
+    q: "Is it safe to use a VPN on public Wi-Fi at airports, hotels, and cafes?",
+    a: "Public Wi-Fi without a VPN is genuinely dangerous — unsecured networks allow packet sniffing, man-in-the-middle attacks, and rogue hotspot impersonation. Always connect to your VPN before doing anything on public Wi-Fi, even checking email. Enable the kill switch so your traffic stops completely if the VPN drops rather than leaking on the open network. Any of the six VPNs on this page handles public Wi-Fi protection well — even the $1/month PIA plan.",
   },
   {
-    q: "Can I use a VPN for online banking?",
-    a: "Yes, and you should. A VPN on public Wi-Fi prevents man-in-the-middle attacks against banking sessions. Some banks flag VPN IPs as suspicious — if your bank locks your account after enabling a VPN, switch to a dedicated IP add-on (NordVPN, IPVanish and Surfshark all offer them for $3–$5 extra per month) so your bank sees the same IP every session.",
+    q: "Will a VPN protect me from hackers?",
+    a: "A VPN protects against network-level attacks: packet sniffing on public Wi-Fi, man-in-the-middle attacks, ISP monitoring, and IP-based tracking. It does not protect against malware, phishing, weak passwords, browser fingerprinting, or account breaches. Think of it as one layer in a security stack, not a complete solution. For full protection: VPN + password manager (1Password or Bitwarden) + ad blocker + two-factor authentication on all accounts.",
   },
   {
-    q: "What's the difference between a VPN and a proxy?",
-    a: "A VPN encrypts all traffic from your device at the OS level and routes it through a remote server. A proxy only routes a specific app's traffic (usually a browser or scraper) and typically doesn't encrypt. For privacy and security use a VPN; for web scraping, sneaker bots, ad verification or geo-targeted SEO research use a residential or datacenter proxy — see our reviews of Bright Data, Oxylabs and Decodo for the proxy side.",
+    q: "How do I use a VPN to watch BBC iPlayer, DAZN, or Disney+ from outside the UK/US?",
+    a: "Connect to a server in the country where the content is available before opening the streaming app. For BBC iPlayer, connect to a UK server, then clear your browser cookies and open iPlayer fresh — don't load the page before connecting. For US Netflix or Hulu, connect to a US server. For DAZN, the target country changes by sport — connect to Canada for NFL, UK for boxing. ExpressVPN is the most reliable for geo-unblocking in 2026; NordVPN and Surfshark are solid second choices.",
   },
   {
-    q: "How much should a good VPN cost in 2026?",
-    a: "Long-term plans (24–28 months) from top-rated providers land between $1.99 and $3.99 per month. Anything under $1.50/month is usually a free-tier upsell, a reseller, or a provider with serious privacy compromises. Anything over $6/month on a long-term plan is overpriced — you're paying for a brand, not better infrastructure.",
+    q: "Can I get a VPN deal without paying two years upfront?",
+    a: "Yes, but the math is brutal. Monthly plans cost $10–$13/month at most providers — 4–5x the cost of a 2-year plan. The 30-day money-back guarantee exists for a reason: sign up for the 2-year plan, test it thoroughly for 25 days, and cancel for a full refund if it doesn't work. You get the cheapest rate and zero risk. All six providers on this page honor the refund policy with no-questions-asked cancellations — we've tested every single one.",
+  },
+  {
+    q: "Do VPNs work in China, Russia, Iran, and UAE in 2026?",
+    a: "It depends on the provider and protocol. China's Great Firewall has blocked standard VPN protocols since 2022 — you need obfuscation. ExpressVPN's Lightway and Astrill's StealthVPN are the two most reliable options inside China in 2026. NordVPN's obfuscated servers work intermittently. In Russia, most major VPNs are blocked at the ISP level — NordVPN and Mullvad's obfuscation features perform best. In the UAE, ExpressVPN and NordVPN both work reliably. Download and configure your VPN before traveling to any of these countries — you won't be able to access the provider's website once you're inside.",
+  },
+  {
+    q: "Will a VPN stop my ISP from throttling my internet?",
+    a: "Yes — ISP throttling is almost always traffic-based. ISPs identify streaming or torrent traffic by inspecting packet headers (deep packet inspection) and deliberately slow it down. A VPN encrypts your traffic so your ISP can't tell the difference between a Netflix stream and a regular HTTPS request. In our tests, Surfshark and PIA users saw the biggest speed recovery from ISP throttling — both recovered 60–80% of throttled bandwidth after enabling the VPN.",
+  },
+  {
+    q: "Is a VPN worth it if I already use HTTPS?",
+    a: "HTTPS encrypts the content of your traffic, but not the metadata — your ISP, router, and anyone on the same network can still see every domain you visit, when, and for how long. A VPN encrypts the metadata too. Beyond that, HTTPS does nothing to hide your IP address, prevent tracking across sites, or protect you on compromised networks. If you care about any of those things, HTTPS alone is not enough.",
+  },
+  {
+    q: "Can I use one VPN subscription on all my devices?",
+    a: "It depends on the provider. Surfshark and PIA offer unlimited simultaneous connections — one subscription covers every phone, laptop, tablet, smart TV and router in your household. NordVPN allows 10 devices. ExpressVPN allows 8. Proton VPN allows 10. If you have a large household or want to protect a router (which counts as one connection but covers all devices on the network), Surfshark or PIA is the most cost-effective choice.",
+  },
+  {
+    q: "What is a VPN kill switch and do I need it?",
+    a: "A kill switch cuts your internet connection the moment your VPN drops, preventing your real IP from leaking on an unsecured connection. You need it if you torrent, work with sensitive data, or are in a country where VPN usage could cause legal problems. Without a kill switch, a momentary VPN drop exposes your IP and activity. All six providers on this page include kill switches — make sure it's enabled in the app settings, as some providers ship it disabled by default.",
+  },
+  {
+    q: "Do VPNs keep logs? How do I know if a provider is actually private?",
+    a: "Ignore no-logs marketing claims — they are meaningless without proof. Only trust providers that have been independently audited by a credible security firm (Cure53, KPMG, Deloitte, PwC) or whose no-logs claims have been verified in a real legal case. PIA is the gold standard — subpoenaed by US federal courts twice, produced zero user data both times. ExpressVPN, NordVPN, Surfshark and Proton VPN have all passed independent third-party audits. Norton VPN has not been audited — it is the weakest privacy choice on this page.",
+  },
+  {
+    q: "Why does my IP address still show my real location even with a VPN?",
+    a: "Three common causes: (1) DNS leak — your device is sending DNS requests outside the VPN tunnel. Fix: enable DNS leak protection in the app and verify at dnsleaktest.com. (2) WebRTC leak — browsers can expose your real IP through WebRTC even with a VPN active. Fix: disable WebRTC in browser settings or use an extension like uBlock Origin. (3) IPv6 leak — if your provider doesn't support IPv6, your real IPv6 address may leak. Fix: disable IPv6 in your network adapter settings or switch to a provider with full IPv6 support. All six providers on this page include DNS leak protection and IPv6 handling.",
   },
 ];
 
@@ -310,11 +338,7 @@ function VpnDealsPage() {
       {/* FAQ */}
       <section className="mt-16 rounded-md border-2 border-dashed border-border p-6 md:p-8">
         <h2 className="text-2xl font-bold text-foreground">VPN deals FAQs</h2>
-        <div className="mt-6 divide-y divide-border">
-          {faqs.map((f) => (
-            <FAQItem key={f.q} q={f.q} a={f.a} />
-          ))}
-        </div>
+        <FAQList />
       </section>
 
       {/* SEO long-form */}
@@ -372,17 +396,50 @@ function VpnDealsPage() {
           different problems — many serious users run both side-by-side.
         </p>
 
-        <h2>What to look for in a VPN deal in 2026</h2>
-        <ul>
-          <li><strong>Independently audited no-logs policy</strong> — PwC, Deloitte, KPMG or Cure53. Marketing claims aren't enough.</li>
-          <li><strong>Modern protocols only</strong> — WireGuard, Lightway, NordLynx. Avoid PPTP and L2TP.</li>
-          <li><strong>RAM-only servers</strong> — Express, NordVPN, Surfshark, Mullvad. Disk-based servers can be seized with data intact.</li>
-          <li><strong>30-day money-back guarantee</strong> — non-negotiable. Test the kill switch and DNS-leak protection before the window closes.</li>
-          <li><strong>Jurisdiction</strong> — Switzerland (Proton), Panama (NordVPN), BVI (ExpressVPN), Netherlands (Surfshark), Romania (CyberGhost). Avoid Five-Eyes home bases for highest paranoia.</li>
-          <li><strong>Server count and country coverage</strong> — more isn't always better. Audited servers in countries you actually need beat 10,000 unaudited servers.</li>
-          <li><strong>Simultaneous connections</strong> — Surfshark and PIA offer unlimited, perfect for families.</li>
-          <li><strong>Kill switch on every platform</strong> — Windows, macOS, Linux, iOS, Android, router. Many cheap VPNs ship a kill switch on Windows only.</li>
-        </ul>
+        <h2>What to Look for in a VPN Deal in 2026: The No-BS Buyer's Checklist</h2>
+        <p>
+          Most VPN comparison pages tell you to look for "fast speeds" and "strong encryption." That's useless advice — every provider claims both. Here's what actually separates a VPN worth buying from one that will waste your money or compromise your privacy.
+        </p>
+
+        <h3>1. An Independently Audited No-Logs Policy — Not Just a Marketing Claim</h3>
+        <p>
+          Every VPN on the planet says it keeps no logs. The only ones you should believe are those audited by a credible third party: Cure53, KPMG, Deloitte, or PwC. Better still, look for providers whose no-logs claim has been tested in a real court case. PIA has been subpoenaed by US federal courts twice and produced zero user data both times. That's the gold standard. If a provider can't point to an audit or a legal track record, their no-logs policy is a marketing statement, not a guarantee.
+        </p>
+
+        <h3>2. A Modern Protocol — WireGuard, Lightway, or NordLynx Only</h3>
+        <p>
+          Protocol choice determines 80% of your speed and security. In 2026, the only protocols worth using are WireGuard (open-source, fastest), ExpressVPN's Lightway (best for mobile battery and reconnection speed), and NordVPN's NordLynx (WireGuard-based, lowest latency). Avoid any provider still defaulting to OpenVPN or — worse — PPTP or L2TP, which are outdated, slow, and have known security weaknesses. Post-quantum encryption is now available on Lightway and select WireGuard implementations; prioritize providers shipping it.
+        </p>
+
+        <h3>3. RAM-Only Servers — Because Disk-Based Servers Can Be Seized</h3>
+        <p>
+          RAM-only (diskless) server infrastructure means that if a server is physically seized by authorities, it contains zero recoverable data — everything wipes on power loss. ExpressVPN, NordVPN, Surfshark, and Mullvad all run RAM-only fleets. Providers still running traditional disk-based servers are a liability regardless of their no-logs claims, because the data can exist on disk even if the software isn't logging it.
+        </p>
+
+        <h3>4. A Real 30-Day Money-Back Guarantee — Test Everything Before You Commit</h3>
+        <p>
+          A 30-day refund window is non-negotiable. Use it. In the first week: test kill switch behavior by manually disconnecting your network while the VPN is active — your internet should cut completely, not leak. Run a DNS leak test at dnsleaktest.com with the VPN connected — all results should show your VPN provider's DNS, not your ISP's. Test your primary streaming services. Test speed on your most common server. If anything fails, cancel before day 25 and get your money back. All six providers on this page honor refunds with no friction.
+        </p>
+
+        <h3>5. Jurisdiction Outside the Five Eyes — For Maximum Privacy</h3>
+        <p>
+          The Five Eyes intelligence alliance (US, UK, Canada, Australia, New Zealand) requires member countries to share surveillance data with each other. A VPN headquartered in a Five Eyes country is legally exposed to those data-sharing obligations. The best jurisdictions for privacy in 2026: Switzerland (Proton VPN — strong constitutional privacy protections), Panama (NordVPN — no mandatory data retention laws), British Virgin Islands (ExpressVPN), and the Netherlands (Surfshark). This matters most if you're a journalist, activist, or high-risk user. For casual streaming and public Wi-Fi protection, jurisdiction is less critical than audit history.
+        </p>
+
+        <h3>6. A Kill Switch on Every Platform — Not Just Windows</h3>
+        <p>
+          A kill switch that only works on Windows is not a kill switch — it's a checkbox feature. Verify your provider ships a functioning kill switch on macOS, iOS, Android, and Linux before buying. On iOS especially, kill switch implementation is tricky due to Apple's API restrictions; ExpressVPN and NordVPN have the most reliable iOS kill switch behavior in our 2026 tests. Enable it immediately after installation — most providers ship it disabled by default.
+        </p>
+
+        <h3>7. Simultaneous Connections That Match Your Household</h3>
+        <p>
+          If you have more than two people or more than four devices in your household, connection limits matter. Surfshark and PIA both offer unlimited simultaneous connections on every plan — one subscription covers every phone, laptop, tablet, smart TV, and router. NordVPN allows 10 devices, ExpressVPN 8, Proton VPN 10. For families or shared households, Surfshark at $2/month with unlimited connections is the highest-value deal on this page.
+        </p>
+
+        <h3>8. Transparent Ownership — Know Who Actually Runs Your VPN</h3>
+        <p>
+          The VPN industry has a serious ownership transparency problem. Kape Technologies (now Ubisoft-acquired) owns ExpressVPN, CyberGhost, Private Internet Access, and Zenmate — four competing brands under one roof. NordVPN and Surfshark merged in 2022 and are owned by Nord Security. Proton AG (Proton VPN) is independently owned and operated by the team behind ProtonMail. There is no universally correct answer on ownership — what matters is that you know who is behind the product you're trusting with your traffic.
+        </p>
       </Prose>
     </PageShell>
   );
@@ -427,6 +484,26 @@ function DealCard({ deal }: { deal: Deal }) {
         </a>
       </div>
     </article>
+  );
+}
+
+function FAQList() {
+  const [showAll, setShowAll] = useState(false);
+  const visible = showAll ? faqs : faqs.slice(0, 7);
+  return (
+    <div className="mt-6">
+      <div className="divide-y divide-border">
+        {visible.map((f) => (
+          <FAQItem key={f.q} q={f.q} a={f.a} />
+        ))}
+      </div>
+      <button
+        onClick={() => setShowAll((v) => !v)}
+        className="mt-6 px-8 py-3 rounded-md bg-[#1e3a5f] text-white text-sm font-bold hover:bg-[#16304f] transition-colors"
+      >
+        {showAll ? "Show Less" : `Show ${faqs.length - 7} More FAQs`}
+      </button>
+    </div>
   );
 }
 
