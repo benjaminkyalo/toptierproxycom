@@ -70,7 +70,6 @@ const deals: Deal[] = [
     accent: "bg-[#dc2626]",
     logoText: "E",
     logoImg: "https://res.cloudinary.com/dkcqakosa/image/upload/v1780912428/EXPREE_VPN_cz2vvf.png",
-    logoImg: "https://res.cloudinary.com/dkcqakosa/image/upload/v1780912428/EXPREE_VPN_cz2vvf.png",
   },
   {
     name: "Surfshark",
