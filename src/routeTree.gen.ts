@@ -13,6 +13,7 @@ import { Route as WhyTrustUsRouteImport } from './routes/why-trust-us'
 import { Route as VpnDealsRouteImport } from './routes/vpn-deals'
 import { Route as TrustScoreRouteImport } from './routes/trust-score'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ScraperApiRouteImport } from './routes/scraper-api'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as HowWeTestRouteImport } from './routes/how-we-test'
@@ -55,6 +56,11 @@ const TrustScoreRoute = TrustScoreRouteImport.update({
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScraperApiRoute = ScraperApiRouteImport.update({
+  id: '/scraper-api',
+  path: '/scraper-api',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResourcesRoute = ResourcesRouteImport.update({
@@ -182,6 +188,7 @@ export interface FileRoutesByFullPath {
   '/how-we-test': typeof HowWeTestRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
+  '/scraper-api': typeof ScraperApiRoute
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/vpn-deals': typeof VpnDealsRoute
@@ -211,6 +218,7 @@ export interface FileRoutesByTo {
   '/how-we-test': typeof HowWeTestRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
+  '/scraper-api': typeof ScraperApiRoute
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/vpn-deals': typeof VpnDealsRoute
@@ -241,6 +249,7 @@ export interface FileRoutesById {
   '/how-we-test': typeof HowWeTestRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
+  '/scraper-api': typeof ScraperApiRoute
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/vpn-deals': typeof VpnDealsRoute
@@ -272,6 +281,7 @@ export interface FileRouteTypes {
     | '/how-we-test'
     | '/privacy'
     | '/resources'
+    | '/scraper-api'
     | '/terms'
     | '/trust-score'
     | '/vpn-deals'
@@ -301,6 +311,7 @@ export interface FileRouteTypes {
     | '/how-we-test'
     | '/privacy'
     | '/resources'
+    | '/scraper-api'
     | '/terms'
     | '/trust-score'
     | '/vpn-deals'
@@ -330,6 +341,7 @@ export interface FileRouteTypes {
     | '/how-we-test'
     | '/privacy'
     | '/resources'
+    | '/scraper-api'
     | '/terms'
     | '/trust-score'
     | '/vpn-deals'
@@ -360,6 +372,7 @@ export interface RootRouteChildren {
   HowWeTestRoute: typeof HowWeTestRoute
   PrivacyRoute: typeof PrivacyRoute
   ResourcesRoute: typeof ResourcesRoute
+  ScraperApiRoute: typeof ScraperApiRoute
   TermsRoute: typeof TermsRoute
   TrustScoreRoute: typeof TrustScoreRoute
   VpnDealsRoute: typeof VpnDealsRoute
@@ -408,6 +421,13 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scraper-api': {
+      id: '/scraper-api'
+      path: '/scraper-api'
+      fullPath: '/scraper-api'
+      preLoaderRoute: typeof ScraperApiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/resources': {
@@ -595,6 +615,7 @@ const rootRouteChildren: RootRouteChildren = {
   HowWeTestRoute: HowWeTestRoute,
   PrivacyRoute: PrivacyRoute,
   ResourcesRoute: ResourcesRoute,
+  ScraperApiRoute: ScraperApiRoute,
   TermsRoute: TermsRoute,
   TrustScoreRoute: TrustScoreRoute,
   VpnDealsRoute: VpnDealsRoute,
