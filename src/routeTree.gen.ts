@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyTrustUsRouteImport } from './routes/why-trust-us'
 import { Route as VpnDealsRouteImport } from './routes/vpn-deals'
-import { Route as ScraperApiRouteImport } from './routes/scraper-api'
 import { Route as TrustScoreRouteImport } from './routes/trust-score'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ScraperApiRouteImport } from './routes/scraper-api'
@@ -47,11 +46,6 @@ const WhyTrustUsRoute = WhyTrustUsRouteImport.update({
 const VpnDealsRoute = VpnDealsRouteImport.update({
   id: '/vpn-deals',
   path: '/vpn-deals',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ScraperApiRoute = ScraperApiRouteImport.update({
-  id: '/scraper-api',
-  path: '/scraper-api',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TrustScoreRoute = TrustScoreRouteImport.update({

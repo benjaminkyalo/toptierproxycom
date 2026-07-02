@@ -36,7 +36,7 @@ const sections: Section[] = [
       { label: "Scrapy", href: "#" },
       { label: "Playwright", href: "#" },
       { label: "Puppeteer", href: "#" },
-      { label: "ScraperAPI", href: "#" },
+      { label: "ScraperAPI", href: "/scraper-api" },
       { label: "ZenRows", href: "#" },
       { label: "ScrapingBee", href: "#" },
       { label: "Browserless", href: "#" },
