@@ -648,6 +648,83 @@ function ScraperApiPage() {
 
 // ---- Sections ------------------------------------------------------------
 
+function RealProblems() {
+  const problems = [
+    {
+      pain: "\"My scraper worked yesterday. Today Cloudflare returns a challenge page.\"",
+      fix: "Managed unblockers (ScraperAPI, Bright Data, Zyte) rotate TLS fingerprints and solve Turnstile automatically. Our July 2026 panel shows 96–99% success on Cloudflare targets — versus <20% for a raw datacenter proxy.",
+      pick: "ScraperAPI",
+      href: AFF.signup,
+    },
+    {
+      pain: "\"Prices I scrape from Amazon don't match what real users see.\"",
+      fix: "That's shadow-banning — Amazon returns 200 OK with inflated or missing prices when it flags your IP. Structured-data endpoints (ScraperAPI Amazon, Oxylabs E-Commerce) route through pools with active reputation management so the data you get is the data buyers see.",
+      pick: "ScraperAPI Structured Data",
+      href: AFF.docs,
+    },
+    {
+      pain: "\"My AI/RAG pipeline chokes on messy HTML full of navs and ads.\"",
+      fix: "Ask for Markdown, not HTML. ScraperAPI's output_format=markdown and Firecrawl's /scrape endpoint strip boilerplate and return LLM-ready text. Fewer tokens, cleaner embeddings, no jsdom in your pipeline.",
+      pick: "ScraperAPI (JSON/Markdown)",
+      href: AFF.docs,
+    },
+    {
+      pain: "\"My proxy bill 10×'d the week we scaled to 1M requests.\"",
+      fix: "Credit multipliers (10× for JS, 25× for premium) are where budgets die. Always calculate cost-per-success, not sticker credits. At 1M requests/mo, ScraperAPI came in at $190; Bright Data at $1,080 for the same workload.",
+      pick: "Scrape.do or ScraperAPI at volume",
+      href: AFF.pricing,
+    },
+    {
+      pain: "\"I need to run 500K URLs overnight without babysitting retries.\"",
+      fix: "Use an async endpoint. Submit the batch, poll for completion, get results in a webhook. ScraperAPI, Bright Data, Zyte and Oxylabs all support this — smaller providers usually don't.",
+      pick: "ScraperAPI Async",
+      href: AFF.docs,
+    },
+    {
+      pain: "\"Legal keeps blocking the vendor because they can't prove where IPs come from.\"",
+      fix: "For SOC 2 / KYC-vetted residential pools with clean sourcing, only Bright Data and Oxylabs pass procurement without a fight. Everyone else is a startup risk if you work in a regulated industry.",
+      pick: "Bright Data",
+      href: "/reviews/bright-data",
+    },
+  ];
+  return (
+    <section className="mb-12">
+      <h2 className="text-2xl font-bold">The 6 real problems scrapers actually have</h2>
+      <p className="mt-2 text-muted-foreground">
+        Every question we get from readers reduces to one of these. Here's the honest fix for each — and the tool we'd pick if we were solving it today.
+      </p>
+      <div className="mt-6 grid gap-4 md:grid-cols-2">
+        {problems.map((p) => {
+          const isExternal = p.href.startsWith("http");
+          return (
+            <div key={p.pain} className="flex flex-col rounded-md border border-border bg-card p-5 shadow-card">
+              <div className="text-sm font-bold italic text-foreground">{p.pain}</div>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{p.fix}</p>
+              <div className="mt-4 flex items-center justify-between gap-3 border-t border-border pt-3">
+                <span className="text-xs text-muted-foreground">Our pick:</span>
+                {isExternal ? (
+                  <a
+                    href={p.href}
+                    rel="sponsored nofollow noopener"
+                    target="_blank"
+                    className="text-sm font-bold text-primary hover:underline"
+                  >
+                    {p.pick} →
+                  </a>
+                ) : (
+                  <Link to={p.href} className="text-sm font-bold text-primary hover:underline">
+                    {p.pick} →
+                  </Link>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 function QuickAnswerBox() {
   const rows: { label: string; winner: string; why: string; href?: string }[] = [
     {
