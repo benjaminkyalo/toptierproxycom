@@ -609,6 +609,9 @@ function ScraperApiPage() {
       {/* Quick-answer box — the "skim" box */}
       <QuickAnswerBox />
 
+      {/* Real problems this page solves */}
+      <RealProblems />
+
       {/* Own test panel */}
       <BenchmarkPanel />
 
