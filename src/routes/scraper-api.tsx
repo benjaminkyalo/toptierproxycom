@@ -657,6 +657,40 @@ function ScraperApiPage() {
 
 // ---- Sections ------------------------------------------------------------
 
+function InlineAffiliateRibbon() {
+  return (
+    <aside
+      className="mb-12 overflow-hidden rounded-md border border-nav-hover/30 bg-gradient-to-r from-primary/5 via-nav-hover/10 to-primary/5"
+      aria-label="Recommended: ScraperAPI free tier"
+    >
+      <div className="flex flex-col items-start gap-4 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
+        <div className="flex items-start gap-3">
+          <Trophy className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+          <div>
+            <div className="text-xs font-bold uppercase tracking-wider text-primary">
+              Editor's pick · Skip the research
+            </div>
+            <div className="mt-1 text-base font-bold text-foreground">
+              ScraperAPI won our 2026 benchmark on cost-per-success — start free with 5,000 credits/month.
+            </div>
+            <div className="mt-1 text-xs text-muted-foreground">
+              No card. Free tier renews every month. Same API our tests ran on.
+            </div>
+          </div>
+        </div>
+        <a
+          href={AFF.signup}
+          rel="sponsored nofollow noopener"
+          target="_blank"
+          className="inline-flex h-11 shrink-0 items-center justify-center rounded-md bg-nav-hover px-6 text-sm font-bold text-navy shadow transition hover:brightness-110"
+        >
+          Claim 5,000 free credits →
+        </a>
+      </div>
+    </aside>
+  );
+}
+
 function RealProblems() {
   const problems = [
     {
