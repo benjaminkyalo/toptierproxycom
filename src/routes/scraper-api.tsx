@@ -543,13 +543,12 @@ function ScraperApiPage() {
   return (
     <PageShell
       title="Best Scraper API 2026 — Benchmarked, Ranked & Priced"
-      intro="We tested 11 leading web-scraping APIs on 15,000 real requests across Cloudflare, DataDome, PerimeterX and Akamai targets. Winner on price-per-successful-request: ScraperAPI. Winner on absolute success rate: Bright Data. Full data below."
+      intro="You're here because your scrapers keep dying on Cloudflare, your bill balloons the week you scale, or your AI pipeline is drowning in messy HTML. We ran 15,000 real requests across 11 scraper APIs to tell you exactly which one solves your problem — and which one wastes your money."
       breadcrumb={[
         { to: "/", label: "Home" },
         { to: "/compare", label: "Compare" },
         { to: "/scraper-api", label: "Scraper API" },
       ]}
-      bgImage={HERO_IMAGE}
       heroContent={
         <div className="flex flex-col items-center gap-3 sm:flex-row">
           <a
@@ -569,6 +568,28 @@ function ScraperApiPage() {
         </div>
       }
     >
+      {/* Intro block with image on the right */}
+      <section className="mb-10 grid gap-8 md:grid-cols-2 md:items-center">
+        <div>
+          <h2 className="text-2xl font-bold sm:text-3xl">Stop losing requests. Start shipping data.</h2>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            Every scraper hits the same wall: <strong className="text-foreground">Cloudflare Turnstile blocks you at 200 requests, DataDome flags your IP after a login page, and Amazon shadow-bans your ASINs with silently wrong prices.</strong> Rebuilding your own unblocker every quarter isn't engineering — it's a tax.
+          </p>
+          <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+            A modern scraper API replaces the mess: one endpoint, one API key, and someone else's team maintaining the proxy pool, browser fingerprints, CAPTCHA solvers and retry logic. Below is the honest ranking of which providers actually deliver in 2026 — with real numbers, not marketing decks.
+          </p>
+        </div>
+        <div className="order-first md:order-last">
+          <img
+            src={HERO_IMAGE}
+            alt="Scraper API comparison — proxy rotation, CAPTCHA bypass and structured data extraction"
+            loading="eager"
+            className="w-full rounded-md border border-border bg-card object-cover shadow-card"
+          />
+        </div>
+      </section>
+
+
       {/* Last-updated + affiliate disclosure */}
       <div className="mb-8 flex flex-col items-start justify-between gap-3 rounded-md border border-border bg-muted/40 p-4 text-xs text-muted-foreground sm:flex-row sm:items-center">
         <div className="flex items-center gap-2">
