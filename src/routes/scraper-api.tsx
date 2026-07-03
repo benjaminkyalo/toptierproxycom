@@ -1009,10 +1009,10 @@ function IntentSplit() {
 
 function ScraperApiDeepDive() {
   return (
-    <section className="mb-16 rounded-md border-2 border-nav-hover/40 bg-gradient-to-br from-emerald-500/5 to-teal-600/5 p-6 md:p-10">
-      <div className="flex items-center gap-2 text-nav-hover-foreground">
-        <Trophy className="h-5 w-5 text-emerald-600" />
-        <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">
+    <section className="mb-16 rounded-md border-2 border-primary/40 bg-primary/5 p-6 md:p-10">
+      <div className="flex items-center gap-2">
+        <Trophy className="h-5 w-5 text-primary" />
+        <span className="text-xs font-bold uppercase tracking-wider text-primary">
           Editor's Choice — Best Value 2026
         </span>
       </div>
