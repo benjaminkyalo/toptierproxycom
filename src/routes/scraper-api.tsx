@@ -740,7 +740,7 @@ function BenchmarkPanel() {
                   <td className="px-4 py-3 font-bold">
                     {r.tool}
                     {isSA && (
-                      <span className="ml-2 rounded bg-nav-hover/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-nav-hover-foreground">
+                      <span className="ml-2 rounded bg-nav-hover px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-navy">
                         Winner: value
                       </span>
                     )}
