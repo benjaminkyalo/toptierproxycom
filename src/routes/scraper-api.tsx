@@ -865,7 +865,7 @@ function ToolCard({ tool, rank }: { tool: Tool; rank: number }) {
   const external = tool.ctaHref.startsWith("http");
   return (
     <article className="flex flex-col overflow-hidden rounded-md border border-border bg-card shadow-card">
-      <div className={`bg-gradient-to-br ${tool.accent} p-5 text-white`}>
+      <div className={`${tool.accent} p-5`}>
         <div className="flex items-start justify-between gap-3">
           <div>
             <div className="text-xs font-bold uppercase tracking-wider opacity-80">
