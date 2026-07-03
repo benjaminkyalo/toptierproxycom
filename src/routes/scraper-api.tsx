@@ -551,21 +551,26 @@ function ScraperApiPage() {
         { to: "/scraper-api", label: "Scraper API" },
       ]}
       heroContent={
-        <div className="flex flex-col items-center gap-3 sm:flex-row">
-          <a
-            href={AFF.signup}
-            rel="sponsored nofollow noopener"
-            target="_blank"
-            className="inline-flex h-11 items-center justify-center rounded-md bg-nav-hover px-6 text-sm font-bold text-navy shadow-lg transition hover:brightness-110"
-          >
-            Try ScraperAPI free — 5,000 credits →
-          </a>
-          <a
-            href="#comparison"
-            className="inline-flex h-11 items-center justify-center rounded-md border border-white/40 bg-white/10 px-6 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20"
-          >
-            See the 11-tool comparison ↓
-          </a>
+        <div className="flex flex-col items-center gap-3">
+          <div className="flex flex-col items-center gap-3 sm:flex-row">
+            <a
+              href={AFF.signup}
+              rel="sponsored nofollow noopener"
+              target="_blank"
+              className="inline-flex h-11 items-center justify-center rounded-md bg-nav-hover px-6 text-sm font-bold text-navy shadow-lg transition hover:brightness-110"
+            >
+              Try ScraperAPI free — 5,000 credits →
+            </a>
+            <a
+              href="#comparison"
+              className="inline-flex h-11 items-center justify-center rounded-md border border-white/40 bg-white/10 px-6 text-sm font-bold text-white backdrop-blur transition hover:bg-white/20"
+            >
+              See the 11-tool comparison ↓
+            </a>
+          </div>
+          <p className="text-[11px] text-white/70">
+            No credit card · Free tier renews monthly · Cancel anytime
+          </p>
         </div>
       }
     >
