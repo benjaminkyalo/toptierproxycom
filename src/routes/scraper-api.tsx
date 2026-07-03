@@ -259,7 +259,7 @@ const tools: Tool[] = [
     ctaHref: "/reviews/bright-data",
     internalHref: "/reviews/bright-data",
     badge: "Enterprise Pick",
-    accent: "from-sky-500 to-indigo-600",
+    accent: "bg-navy text-navy-foreground",
     logoText: "BD",
   },
   {
@@ -288,7 +288,7 @@ const tools: Tool[] = [
     cta: "Read Oxylabs review →",
     ctaHref: "/reviews/oxylabs",
     internalHref: "/reviews/oxylabs",
-    accent: "from-blue-600 to-cyan-500",
+    accent: "bg-navy text-navy-foreground",
     logoText: "OX",
   },
   {
@@ -315,7 +315,7 @@ const tools: Tool[] = [
     ],
     cta: "Visit ScrapingBee →",
     ctaHref: "https://www.scrapingbee.com",
-    accent: "from-amber-400 to-orange-500",
+    accent: "bg-navy text-navy-foreground",
     logoText: "SB",
   },
   {
@@ -342,7 +342,7 @@ const tools: Tool[] = [
     ],
     cta: "Visit Scrape.do →",
     ctaHref: "https://scrape.do",
-    accent: "from-rose-500 to-red-600",
+    accent: "bg-navy text-navy-foreground",
     logoText: "SD",
   },
   {
@@ -369,7 +369,7 @@ const tools: Tool[] = [
     ],
     cta: "Visit ZenRows →",
     ctaHref: "https://zenrows.com",
-    accent: "from-violet-500 to-purple-600",
+    accent: "bg-navy text-navy-foreground",
     logoText: "ZR",
   },
   {
@@ -393,7 +393,7 @@ const tools: Tool[] = [
     cons: ["Pricing UI is less transparent than ScraperAPI"],
     cta: "Visit Zyte →",
     ctaHref: "https://www.zyte.com",
-    accent: "from-lime-500 to-green-600",
+    accent: "bg-navy text-navy-foreground",
     logoText: "ZY",
   },
   {
@@ -417,7 +417,7 @@ const tools: Tool[] = [
     cons: ["Per-actor pricing can add up on custom builds"],
     cta: "Visit Apify →",
     ctaHref: "https://apify.com",
-    accent: "from-fuchsia-500 to-pink-600",
+    accent: "bg-navy text-navy-foreground",
     logoText: "AP",
   },
   {
@@ -445,7 +445,7 @@ const tools: Tool[] = [
     cta: "Visit Firecrawl →",
     ctaHref: "https://firecrawl.dev",
     badge: "Best for AI",
-    accent: "from-orange-500 to-red-500",
+    accent: "bg-navy text-navy-foreground",
     logoText: "FC",
   },
   {
@@ -468,7 +468,7 @@ const tools: Tool[] = [
     cons: ["Lower success rate on the hardest targets"],
     cta: "Visit Scrapingdog →",
     ctaHref: "https://scrapingdog.com",
-    accent: "from-yellow-400 to-amber-500",
+    accent: "bg-navy text-navy-foreground",
     logoText: "SD",
   },
   {
@@ -493,7 +493,7 @@ const tools: Tool[] = [
     cta: "Read Decodo review →",
     ctaHref: "/reviews/decodo",
     internalHref: "/reviews/decodo",
-    accent: "from-cyan-500 to-blue-500",
+    accent: "bg-navy text-navy-foreground",
     logoText: "DE",
   },
 ];
