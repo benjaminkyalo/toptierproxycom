@@ -14,6 +14,7 @@ import {
   ExternalLink,
   Trophy,
   Clock,
+  Copy,
 } from "lucide-react";
 
 const LAST_UPDATED = "July 1, 2026";
