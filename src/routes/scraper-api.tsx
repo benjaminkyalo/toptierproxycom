@@ -618,6 +618,9 @@ function ScraperApiPage() {
       {/* Real problems this page solves */}
       <RealProblems />
 
+      {/* Inline affiliate ribbon */}
+      <InlineAffiliateRibbon />
+
       {/* Own test panel */}
       <BenchmarkPanel />
 
