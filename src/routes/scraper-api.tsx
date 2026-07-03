@@ -229,7 +229,7 @@ const tools: Tool[] = [
     cta: "Get 5,000 free credits →",
     ctaHref: AFF.signup,
     badge: "Editor's Choice",
-    accent: "from-emerald-500 to-teal-600",
+    accent: "bg-nav-hover text-navy",
     logoText: "SA",
   },
   {
@@ -259,7 +259,7 @@ const tools: Tool[] = [
     ctaHref: "/reviews/bright-data",
     internalHref: "/reviews/bright-data",
     badge: "Enterprise Pick",
-    accent: "from-sky-500 to-indigo-600",
+    accent: "bg-navy text-navy-foreground",
     logoText: "BD",
   },
   {
@@ -288,7 +288,7 @@ const tools: Tool[] = [
     cta: "Read Oxylabs review →",
     ctaHref: "/reviews/oxylabs",
     internalHref: "/reviews/oxylabs",
-    accent: "from-blue-600 to-cyan-500",
+    accent: "bg-navy text-navy-foreground",
     logoText: "OX",
   },
   {
@@ -315,7 +315,7 @@ const tools: Tool[] = [
     ],
     cta: "Visit ScrapingBee →",
     ctaHref: "https://www.scrapingbee.com",
-    accent: "from-amber-400 to-orange-500",
+    accent: "bg-navy text-navy-foreground",
     logoText: "SB",
   },
   {
@@ -342,7 +342,7 @@ const tools: Tool[] = [
     ],
     cta: "Visit Scrape.do →",
     ctaHref: "https://scrape.do",
-    accent: "from-rose-500 to-red-600",
+    accent: "bg-navy text-navy-foreground",
     logoText: "SD",
   },
   {
@@ -369,7 +369,7 @@ const tools: Tool[] = [
     ],
     cta: "Visit ZenRows →",
     ctaHref: "https://zenrows.com",
-    accent: "from-violet-500 to-purple-600",
+    accent: "bg-navy text-navy-foreground",
     logoText: "ZR",
   },
   {
@@ -393,7 +393,7 @@ const tools: Tool[] = [
     cons: ["Pricing UI is less transparent than ScraperAPI"],
     cta: "Visit Zyte →",
     ctaHref: "https://www.zyte.com",
-    accent: "from-lime-500 to-green-600",
+    accent: "bg-navy text-navy-foreground",
     logoText: "ZY",
   },
   {
@@ -417,7 +417,7 @@ const tools: Tool[] = [
     cons: ["Per-actor pricing can add up on custom builds"],
     cta: "Visit Apify →",
     ctaHref: "https://apify.com",
-    accent: "from-fuchsia-500 to-pink-600",
+    accent: "bg-navy text-navy-foreground",
     logoText: "AP",
   },
   {
@@ -445,7 +445,7 @@ const tools: Tool[] = [
     cta: "Visit Firecrawl →",
     ctaHref: "https://firecrawl.dev",
     badge: "Best for AI",
-    accent: "from-orange-500 to-red-500",
+    accent: "bg-navy text-navy-foreground",
     logoText: "FC",
   },
   {
@@ -468,7 +468,7 @@ const tools: Tool[] = [
     cons: ["Lower success rate on the hardest targets"],
     cta: "Visit Scrapingdog →",
     ctaHref: "https://scrapingdog.com",
-    accent: "from-yellow-400 to-amber-500",
+    accent: "bg-navy text-navy-foreground",
     logoText: "SD",
   },
   {
@@ -493,7 +493,7 @@ const tools: Tool[] = [
     cta: "Read Decodo review →",
     ctaHref: "/reviews/decodo",
     internalHref: "/reviews/decodo",
-    accent: "from-cyan-500 to-blue-500",
+    accent: "bg-navy text-navy-foreground",
     logoText: "DE",
   },
 ];
@@ -543,13 +543,12 @@ function ScraperApiPage() {
   return (
     <PageShell
       title="Best Scraper API 2026 — Benchmarked, Ranked & Priced"
-      intro="We tested 11 leading web-scraping APIs on 15,000 real requests across Cloudflare, DataDome, PerimeterX and Akamai targets. Winner on price-per-successful-request: ScraperAPI. Winner on absolute success rate: Bright Data. Full data below."
+      intro="You're here because your scrapers keep dying on Cloudflare, your bill balloons the week you scale, or your AI pipeline is drowning in messy HTML. We ran 15,000 real requests across 11 scraper APIs to tell you exactly which one solves your problem — and which one wastes your money."
       breadcrumb={[
         { to: "/", label: "Home" },
         { to: "/compare", label: "Compare" },
         { to: "/scraper-api", label: "Scraper API" },
       ]}
-      bgImage={HERO_IMAGE}
       heroContent={
         <div className="flex flex-col items-center gap-3 sm:flex-row">
           <a
@@ -569,6 +568,28 @@ function ScraperApiPage() {
         </div>
       }
     >
+      {/* Intro block with image on the right */}
+      <section className="mb-10 grid gap-8 md:grid-cols-2 md:items-center">
+        <div>
+          <h2 className="text-2xl font-bold sm:text-3xl">Stop losing requests. Start shipping data.</h2>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+            Every scraper hits the same wall: <strong className="text-foreground">Cloudflare Turnstile blocks you at 200 requests, DataDome flags your IP after a login page, and Amazon shadow-bans your ASINs with silently wrong prices.</strong> Rebuilding your own unblocker every quarter isn't engineering — it's a tax.
+          </p>
+          <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+            A modern scraper API replaces the mess: one endpoint, one API key, and someone else's team maintaining the proxy pool, browser fingerprints, CAPTCHA solvers and retry logic. Below is the honest ranking of which providers actually deliver in 2026 — with real numbers, not marketing decks.
+          </p>
+        </div>
+        <div className="order-first md:order-last">
+          <img
+            src={HERO_IMAGE}
+            alt="Scraper API comparison — proxy rotation, CAPTCHA bypass and structured data extraction"
+            loading="eager"
+            className="w-full rounded-md border border-border bg-card object-cover shadow-card"
+          />
+        </div>
+      </section>
+
+
       {/* Last-updated + affiliate disclosure */}
       <div className="mb-8 flex flex-col items-start justify-between gap-3 rounded-md border border-border bg-muted/40 p-4 text-xs text-muted-foreground sm:flex-row sm:items-center">
         <div className="flex items-center gap-2">
@@ -587,6 +608,9 @@ function ScraperApiPage() {
 
       {/* Quick-answer box — the "skim" box */}
       <QuickAnswerBox />
+
+      {/* Real problems this page solves */}
+      <RealProblems />
 
       {/* Own test panel */}
       <BenchmarkPanel />
@@ -623,6 +647,83 @@ function ScraperApiPage() {
 }
 
 // ---- Sections ------------------------------------------------------------
+
+function RealProblems() {
+  const problems = [
+    {
+      pain: "\"My scraper worked yesterday. Today Cloudflare returns a challenge page.\"",
+      fix: "Managed unblockers (ScraperAPI, Bright Data, Zyte) rotate TLS fingerprints and solve Turnstile automatically. Our July 2026 panel shows 96–99% success on Cloudflare targets — versus <20% for a raw datacenter proxy.",
+      pick: "ScraperAPI",
+      href: AFF.signup,
+    },
+    {
+      pain: "\"Prices I scrape from Amazon don't match what real users see.\"",
+      fix: "That's shadow-banning — Amazon returns 200 OK with inflated or missing prices when it flags your IP. Structured-data endpoints (ScraperAPI Amazon, Oxylabs E-Commerce) route through pools with active reputation management so the data you get is the data buyers see.",
+      pick: "ScraperAPI Structured Data",
+      href: AFF.docs,
+    },
+    {
+      pain: "\"My AI/RAG pipeline chokes on messy HTML full of navs and ads.\"",
+      fix: "Ask for Markdown, not HTML. ScraperAPI's output_format=markdown and Firecrawl's /scrape endpoint strip boilerplate and return LLM-ready text. Fewer tokens, cleaner embeddings, no jsdom in your pipeline.",
+      pick: "ScraperAPI (JSON/Markdown)",
+      href: AFF.docs,
+    },
+    {
+      pain: "\"My proxy bill 10×'d the week we scaled to 1M requests.\"",
+      fix: "Credit multipliers (10× for JS, 25× for premium) are where budgets die. Always calculate cost-per-success, not sticker credits. At 1M requests/mo, ScraperAPI came in at $190; Bright Data at $1,080 for the same workload.",
+      pick: "Scrape.do or ScraperAPI at volume",
+      href: AFF.pricing,
+    },
+    {
+      pain: "\"I need to run 500K URLs overnight without babysitting retries.\"",
+      fix: "Use an async endpoint. Submit the batch, poll for completion, get results in a webhook. ScraperAPI, Bright Data, Zyte and Oxylabs all support this — smaller providers usually don't.",
+      pick: "ScraperAPI Async",
+      href: AFF.docs,
+    },
+    {
+      pain: "\"Legal keeps blocking the vendor because they can't prove where IPs come from.\"",
+      fix: "For SOC 2 / KYC-vetted residential pools with clean sourcing, only Bright Data and Oxylabs pass procurement without a fight. Everyone else is a startup risk if you work in a regulated industry.",
+      pick: "Bright Data",
+      href: "/reviews/bright-data",
+    },
+  ];
+  return (
+    <section className="mb-12">
+      <h2 className="text-2xl font-bold">The 6 real problems scrapers actually have</h2>
+      <p className="mt-2 text-muted-foreground">
+        Every question we get from readers reduces to one of these. Here's the honest fix for each — and the tool we'd pick if we were solving it today.
+      </p>
+      <div className="mt-6 grid gap-4 md:grid-cols-2">
+        {problems.map((p) => {
+          const isExternal = p.href.startsWith("http");
+          return (
+            <div key={p.pain} className="flex flex-col rounded-md border border-border bg-card p-5 shadow-card">
+              <div className="text-sm font-bold italic text-foreground">{p.pain}</div>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{p.fix}</p>
+              <div className="mt-4 flex items-center justify-between gap-3 border-t border-border pt-3">
+                <span className="text-xs text-muted-foreground">Our pick:</span>
+                {isExternal ? (
+                  <a
+                    href={p.href}
+                    rel="sponsored nofollow noopener"
+                    target="_blank"
+                    className="text-sm font-bold text-primary hover:underline"
+                  >
+                    {p.pick} →
+                  </a>
+                ) : (
+                  <Link to={p.href} className="text-sm font-bold text-primary hover:underline">
+                    {p.pick} →
+                  </Link>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
 
 function QuickAnswerBox() {
   const rows: { label: string; winner: string; why: string; href?: string }[] = [
@@ -740,7 +841,7 @@ function BenchmarkPanel() {
                   <td className="px-4 py-3 font-bold">
                     {r.tool}
                     {isSA && (
-                      <span className="ml-2 rounded bg-nav-hover/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-nav-hover-foreground">
+                      <span className="ml-2 rounded bg-nav-hover px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-navy">
                         Winner: value
                       </span>
                     )}
@@ -865,7 +966,7 @@ function ToolCard({ tool, rank }: { tool: Tool; rank: number }) {
   const external = tool.ctaHref.startsWith("http");
   return (
     <article className="flex flex-col overflow-hidden rounded-md border border-border bg-card shadow-card">
-      <div className={`bg-gradient-to-br ${tool.accent} p-5 text-white`}>
+      <div className={`${tool.accent} p-5`}>
         <div className="flex items-start justify-between gap-3">
           <div>
             <div className="text-xs font-bold uppercase tracking-wider opacity-80">
@@ -1009,10 +1110,10 @@ function IntentSplit() {
 
 function ScraperApiDeepDive() {
   return (
-    <section className="mb-16 rounded-md border-2 border-nav-hover/40 bg-gradient-to-br from-emerald-500/5 to-teal-600/5 p-6 md:p-10">
-      <div className="flex items-center gap-2 text-nav-hover-foreground">
-        <Trophy className="h-5 w-5 text-emerald-600" />
-        <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">
+    <section className="mb-16 rounded-md border-2 border-primary/40 bg-primary/5 p-6 md:p-10">
+      <div className="flex items-center gap-2">
+        <Trophy className="h-5 w-5 text-primary" />
+        <span className="text-xs font-bold uppercase tracking-wider text-primary">
           Editor's Choice — Best Value 2026
         </span>
       </div>
@@ -1049,7 +1150,7 @@ function ScraperApiDeepDive() {
           href={AFF.signup}
           rel="sponsored nofollow noopener"
           target="_blank"
-          className="inline-flex h-12 items-center justify-center rounded-md bg-emerald-600 px-4 text-sm font-bold text-white shadow-lg transition hover:bg-emerald-700"
+          className="inline-flex h-12 items-center justify-center rounded-md bg-nav-hover px-4 text-sm font-bold text-navy shadow-lg transition hover:brightness-110"
         >
           Sign up free — 5K credits
         </a>
