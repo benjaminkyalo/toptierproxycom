@@ -1180,12 +1180,13 @@ function ScraperApiDeepDive() {
         </a>
       </div>
 
-      <div className="mt-8 rounded-md bg-navy p-5 text-navy-foreground">
-        <div className="mb-2 text-xs font-bold uppercase tracking-wider opacity-80">
-          Minimal example — Python
-        </div>
-        <pre className="overflow-x-auto text-xs leading-relaxed">
-{`import requests
+      <CodeExample />
+    </section>
+  );
+}
+
+function CodeExample() {
+  const code = `import requests
 
 payload = {
     "api_key": "YOUR_KEY",
@@ -1194,9 +1195,65 @@ payload = {
     "output_format": "markdown",  # LLM-ready
 }
 r = requests.get("https://api.scraperapi.com/", params=payload)
-print(r.text)`}
-        </pre>
+print(r.text)`;
+  const [copied, setCopied] = useState(false);
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
+    } catch {
+      /* noop */
+    }
+  };
+  return (
+    <div className="mt-8 overflow-hidden rounded-md bg-navy text-navy-foreground">
+      <div className="flex items-center justify-between gap-3 border-b border-white/10 px-5 py-3">
+        <div className="text-xs font-bold uppercase tracking-wider opacity-80">
+          Minimal example — Python
+        </div>
+        <button
+          type="button"
+          onClick={copy}
+          aria-label="Copy code to clipboard"
+          className="inline-flex items-center gap-1.5 rounded border border-white/20 bg-white/10 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider transition hover:bg-white/20"
+        >
+          {copied ? (
+            <>
+              <Check className="h-3.5 w-3.5 text-nav-hover" /> Copied
+            </>
+          ) : (
+            <>
+              <Copy className="h-3.5 w-3.5" /> Copy
+            </>
+          )}
+        </button>
       </div>
+      <pre className="overflow-x-auto p-5 text-xs leading-relaxed">{code}</pre>
+      <div className="border-t border-white/10 bg-white/5 px-5 py-3 text-xs">
+        Need an API key?{" "}
+        <a
+          href={AFF.signup}
+          rel="sponsored nofollow noopener"
+          target="_blank"
+          className="font-bold text-nav-hover underline decoration-nav-hover/40 underline-offset-2 hover:decoration-nav-hover"
+        >
+          Grab 5,000 free credits (no card) →
+        </a>
+      </div>
+    </div>
+  );
+}
+
+function _ScraperApiDeepDiveClose() {
+  return null;
+}
+
+// Legacy close preserved below
+function __removed() {
+  return (
+    <section>
+      <div>{null}</div>
     </section>
   );
 }
