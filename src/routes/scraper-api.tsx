@@ -1049,7 +1049,7 @@ function ScraperApiDeepDive() {
           href={AFF.signup}
           rel="sponsored nofollow noopener"
           target="_blank"
-          className="inline-flex h-12 items-center justify-center rounded-md bg-emerald-600 px-4 text-sm font-bold text-white shadow-lg transition hover:bg-emerald-700"
+          className="inline-flex h-12 items-center justify-center rounded-md bg-nav-hover px-4 text-sm font-bold text-navy shadow-lg transition hover:brightness-110"
         >
           Sign up free — 5K credits
         </a>
