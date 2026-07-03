@@ -1245,19 +1245,6 @@ print(r.text)`;
   );
 }
 
-function _ScraperApiDeepDiveClose() {
-  return null;
-}
-
-// Legacy close preserved below
-function __removed() {
-  return (
-    <section>
-      <div>{null}</div>
-    </section>
-  );
-}
-
 function Methodology() {
   return (
     <section className="mb-16">
