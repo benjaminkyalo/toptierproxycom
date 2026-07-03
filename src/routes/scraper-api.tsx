@@ -1402,27 +1402,68 @@ function FaqSection() {
 }
 
 function RelatedResources() {
-  const items = [
-    { to: "/reviews/bright-data", label: "Bright Data review", note: "Enterprise-grade residential + Web Unlocker" },
-    { to: "/reviews/oxylabs", label: "Oxylabs review", note: "Web Scraper API deep-dive" },
-    { to: "/reviews/decodo", label: "Decodo review", note: "Best price-to-performance proxy" },
-    { to: "/compare", label: "All proxy providers compared", note: "Side-by-side pool size, price & features" },
-    { to: "/vs/bright-data-vs-oxylabs", label: "Bright Data vs Oxylabs", note: "The two enterprise leaders head-to-head" },
-    { to: "/how-we-test", label: "How we test", note: "Our benchmark & compliance methodology" },
+  const groups: { title: string; items: { to: string; label: string; note: string }[] }[] = [
+    {
+      title: "Provider reviews",
+      items: [
+        { to: "/reviews/bright-data", label: "Bright Data review", note: "Enterprise Web Unlocker & 150M residential IPs" },
+        { to: "/reviews/oxylabs", label: "Oxylabs review", note: "SERP & E-Commerce Scraper API breakdown" },
+        { to: "/reviews/decodo", label: "Decodo review", note: "Best price-to-performance proxy pool" },
+        { to: "/reviews/soax", label: "SOAX review", note: "Cleanest mobile pool for anti-bot bypass" },
+        { to: "/reviews/netnut", label: "NetNut review", note: "Fastest ISP-partnered residential" },
+        { to: "/reviews/iproyal", label: "IPRoyal review", note: "Budget residential + sneaker-ready ISP" },
+      ],
+    },
+    {
+      title: "Use-case guides",
+      items: [
+        { to: "/use-cases/web-scraping", label: "Best proxies for web scraping", note: "Success rates on Cloudflare, DataDome & Akamai" },
+        { to: "/use-cases/price-monitoring", label: "E-commerce price monitoring", note: "Beat Amazon shadow-banning" },
+        { to: "/use-cases/seo-monitoring", label: "SERP & rank tracking", note: "Local Google results without CAPTCHAs" },
+        { to: "/use-cases/ai-training-data", label: "AI & LLM training data", note: "Terabyte-scale ethical collection" },
+        { to: "/use-cases/lead-generation", label: "B2B lead generation", note: "LinkedIn & Apollo scraping in 2026" },
+        { to: "/use-cases/brand-protection", label: "Brand protection", note: "Counterfeit & MAP-violation detection" },
+      ],
+    },
+    {
+      title: "Head-to-heads & methodology",
+      items: [
+        { to: "/compare", label: "All proxy providers compared", note: "Side-by-side pool size, price & features" },
+        { to: "/vs/bright-data-vs-oxylabs", label: "Bright Data vs Oxylabs", note: "The two enterprise leaders head-to-head" },
+        { to: "/how-we-test", label: "How we test", note: "Benchmark, compliance & KYC methodology" },
+        { to: "/trust-score", label: "Trust Score explained", note: "How we score every provider" },
+        { to: "/why-trust-us", label: "Why trust us", note: "Editorial independence & funding" },
+        { to: "/guides", label: "All scraping guides", note: "Python, Scrapy, Playwright, unblocker patterns" },
+      ],
+    },
   ];
   return (
     <section className="mb-16">
-      <h2 className="text-2xl font-bold">Related reading</h2>
-      <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {items.map((i) => (
-          <Link
-            key={i.to}
-            to={i.to}
-            className="rounded-md border border-border bg-card p-4 transition hover:border-primary"
-          >
-            <div className="font-bold text-foreground">{i.label}</div>
-            <div className="mt-1 text-xs text-muted-foreground">{i.note}</div>
-          </Link>
+      <h2 className="text-2xl font-bold">Keep reading</h2>
+      <p className="mt-2 text-muted-foreground">
+        Everything on this page in more depth — pick your next stop by role.
+      </p>
+      <div className="mt-6 space-y-8">
+        {groups.map((g) => (
+          <div key={g.title}>
+            <div className="mb-3 text-xs font-bold uppercase tracking-wider text-primary">
+              {g.title}
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {g.items.map((i) => (
+                <Link
+                  key={i.to}
+                  to={i.to}
+                  className="group rounded-md border border-border bg-card p-4 transition hover:-translate-y-0.5 hover:border-primary hover:shadow-card"
+                >
+                  <div className="font-bold text-foreground group-hover:text-primary">
+                    {i.label} →
+                  </div>
+                  <div className="mt-1 text-xs text-muted-foreground">{i.note}</div>
+                </Link>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </section>
@@ -1443,6 +1484,18 @@ function FinalCta() {
             5,000 free credits every month, no credit card. Cloudflare, DataDome
             and PerimeterX handled for you. Structured JSON and Markdown for AI pipelines built in.
           </p>
+          <ul className="mt-4 grid gap-2 text-sm opacity-90 sm:grid-cols-2">
+            {[
+              "No credit card required",
+              "Cancel or downgrade anytime",
+              "Free tier renews every month",
+              "5-minute Python / Node integration",
+            ].map((t) => (
+              <li key={t} className="flex items-center gap-2">
+                <Check className="h-4 w-4 text-nav-hover" /> {t}
+              </li>
+            ))}
+          </ul>
         </div>
         <div className="flex flex-col gap-2">
           <a
@@ -1451,7 +1504,7 @@ function FinalCta() {
             target="_blank"
             className="inline-flex h-12 items-center justify-center rounded-md bg-nav-hover px-6 text-sm font-bold text-navy shadow-lg transition hover:brightness-110"
           >
-            Get ScraperAPI free →
+            Get 5,000 free credits →
           </a>
           <a
             href={AFF.pricing}
@@ -1459,8 +1512,11 @@ function FinalCta() {
             target="_blank"
             className="inline-flex h-10 items-center justify-center rounded-md border border-white/30 px-6 text-xs font-bold text-white hover:bg-white/10"
           >
-            See pricing
+            See pricing plans
           </a>
+          <span className="mt-1 text-center text-[11px] opacity-70">
+            Takes ~60 seconds · No card · Cancel anytime
+          </span>
         </div>
       </div>
     </section>
