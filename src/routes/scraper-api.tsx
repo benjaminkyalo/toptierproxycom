@@ -229,7 +229,7 @@ const tools: Tool[] = [
     cta: "Get 5,000 free credits →",
     ctaHref: AFF.signup,
     badge: "Editor's Choice",
-    accent: "from-emerald-500 to-teal-600",
+    accent: "bg-nav-hover text-navy",
     logoText: "SA",
   },
   {
