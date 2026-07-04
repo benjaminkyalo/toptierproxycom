@@ -29,6 +29,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "9 min",
     category: "Education",
     tags: ["residential proxies", "beginner", "guide"],
+    recommendedProvider: "bright-data",
     body: [
       { heading: "What is a residential proxy?", paragraphs: ["A residential proxy is an intermediary server that routes your traffic through an IP address assigned by an Internet Service Provider (ISP) to a real consumer device — a home router, laptop or smartphone. Because the destination website sees a perfectly ordinary residential IP, residential proxies are far harder to detect and block than IPs originating from cloud data centers.", "The largest residential networks today (Bright Data, Oxylabs, Decodo, SOAX) operate pools of 100M+ IPs sourced through opt-in SDKs and ISP partnerships, with city-, ASN- and carrier-level targeting available in most countries."] },
       { heading: "How residential proxies work", paragraphs: ["When you send a request through a residential proxy provider, your traffic is routed through a peer device whose IP address has been assigned by an ISP. The target website's anti-bot stack sees the connection as coming from that consumer device — not from your origin or a cloud data center."] },
@@ -47,6 +48,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "7 min",
     category: "Comparisons",
     tags: ["datacenter", "residential", "comparison"],
+    recommendedProvider: "decodo",
     body: [
       { heading: "TL;DR", paragraphs: ["Use datacenter proxies for speed, cost and unprotected targets. Use residential proxies for any site protected by Cloudflare, DataDome, PerimeterX or Akamai. The price gap is roughly 10×, and the success rate gap on protected sites is even larger."] },
       { heading: "What's the difference?", paragraphs: ["Datacenter proxies are hosted in commercial cloud data centers. Their IP ranges are well-known to anti-bot vendors and trivially blocked. Residential proxies use IPs assigned by ISPs to real consumer devices, making them effectively indistinguishable from regular user traffic."] },
@@ -65,6 +67,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "12 min",
     category: "Engineering",
     tags: ["cloudflare", "anti-bot", "scraping"],
+    recommendedProvider: "oxylabs",
     body: [
       { heading: "What Cloudflare actually checks", paragraphs: ["Cloudflare's bot management combines IP reputation, TLS/JA3 fingerprinting, HTTP/2 fingerprinting, browser canvas/audio fingerprints, behavioral signals and a managed challenge layer. No single trick beats it — you need a layered approach."] },
       { heading: "Step 1: Get the IP right", paragraphs: ["Datacenter IPs are flagged immediately. Use residential or ISP proxies from a reputable vendor. Bright Data, Oxylabs, Decodo and SOAX all maintain IP reputation systems that automatically rotate out IPs that have been detected."] },
@@ -83,6 +86,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "10 min",
     category: "Use Cases",
     tags: ["amazon", "e-commerce", "scraping"],
+    recommendedProvider: "oxylabs",
     body: [
       { heading: "Why Amazon is hard", paragraphs: ["Amazon doesn't usually return a hard 403 — it returns wrong content. Shadow-banned IPs see inflated prices, missing offers and stale reviews. That makes Amazon scraping uniquely dangerous: your scraper looks fine but your data is poisoned."] },
       { heading: "Our benchmark", paragraphs: ["We pulled 50,000 product pages across amazon.com, amazon.de and amazon.co.jp using 8 providers. Each provider was scored on raw success rate, content fidelity (vs ground truth pulled from a real desktop browser), and total cost per clean response."] },
@@ -99,6 +103,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "8 min",
     category: "Legal",
     tags: ["legal", "compliance", "gdpr"],
+    recommendedProvider: "bright-data",
     body: [
       { heading: "United States — hiQ v. LinkedIn", paragraphs: ["Following the 2022 Ninth Circuit ruling in hiQ Labs v. LinkedIn, scraping publicly available data does not violate the Computer Fraud and Abuse Act (CFAA). The CFAA only kicks in when you bypass a technical access barrier (login, CAPTCHA explicitly designed to gate access)."] },
       { heading: "European Union — GDPR", paragraphs: ["GDPR applies whenever you process personal data of EU data subjects, regardless of where you scrape from. Scraping public business data is generally fine; scraping personal data requires a lawful basis and triggers your obligations as a data controller."] },
@@ -112,6 +117,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Choose wrong and you'll either get blocked instantly or burn 10× the bandwidth. The full breakdown for 2026.",
     author: "Marcus Reiner", datePublished: "2026-02-08", readTime: "7 min", category: "Engineering",
     tags: ["sessions","rotating","sticky","architecture"],
+    recommendedProvider: "soax",
     body: [
       { heading: "Rotating proxies, explained", paragraphs: ["Rotating proxies assign a new IP on every request (or every N requests). They're the default for high-volume scraping where each request is independent — search results, public product pages, sitemaps."] },
       { heading: "Sticky sessions, explained", paragraphs: ["Sticky sessions hold one IP for a configurable window (typically 1–30 minutes). You need them whenever the target site has session state — login flows, multi-step checkouts, paginated dashboards behind auth."] },
@@ -126,6 +132,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "ISP (static residential) proxies are the sleeper hit of 2026 — datacenter speeds with residential trust scores.",
     author: "Elena Park", datePublished: "2026-02-14", readTime: "8 min", category: "Education",
     tags: ["isp","static residential","architecture"],
+    recommendedProvider: "webshare",
     body: [
       { heading: "What ISP proxies actually are", paragraphs: ["ISP proxies are IPs registered to consumer ISPs (Comcast, AT&T, Spectrum) but hosted in commercial data centers. The ASN says 'residential', the network performance says 'datacenter'. Best of both worlds for use cases where you need speed and stability."] },
       { heading: "When ISP wins over rotating residential", paragraphs: ["Sneaker copping (you need the same IP through checkout). Long-form scraping with cookies. Account management. Anywhere you need a stable IP that won't trigger anti-bot defenses."] },
@@ -139,6 +146,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Instagram bans on IP fingerprint. Here are the proxies SMM agencies actually use to scale to 100+ accounts.",
     author: "Marcus Reiner", datePublished: "2026-02-20", readTime: "9 min", category: "Use Cases",
     tags: ["instagram","tiktok","social media","mobile proxy"],
+    recommendedProvider: "soax",
     body: [
       { heading: "Why mobile proxies dominate social", paragraphs: ["Carrier-grade NAT means thousands of real users share each mobile IP. Instagram and TikTok can't ban a carrier IP without nuking a town's worth of legitimate users."] },
       { heading: "How many accounts per IP?", paragraphs: ["Conservative: 1 sticky mobile IP per account. Aggressive: 3–5 accounts per residential IP with strict device fingerprint isolation. Above that and you're rolling the dice."] },
@@ -152,6 +160,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Google blocks scrapers within minutes. Here's the modern stack that returns clean SERPs at scale.",
     author: "Elena Park", datePublished: "2026-02-26", readTime: "11 min", category: "Engineering",
     tags: ["google","serp","scraping","seo"],
+    recommendedProvider: "decodo",
     body: [
       { heading: "Why DIY Google scraping fails fast", paragraphs: ["Google fingerprints aggressively: TLS, HTTP/2 priority frames, header order, mouse-movement signals, and IP reputation. A naïve requests-based scraper from a datacenter IP gets a CAPTCHA within ~50 requests."] },
       { heading: "Option 1: Residential proxies + parser", paragraphs: ["Use city-targeted residential IPs (Bright Data, Decodo, Oxylabs) with a maintained HTML parser. Cheaper per request but you eat the maintenance overhead when Google ships a markup change."] },
@@ -166,6 +175,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Confused by ASN, JA3, ISP proxies, sticky sessions, or peer SDKs? This glossary cuts through the jargon in 2 minutes.",
     author: "Marcus Reiner", datePublished: "2026-03-04", readTime: "13 min", category: "Education",
     tags: ["glossary","reference","beginner"],
+    recommendedProvider: "bright-data",
     body: [
       { heading: "Proxy types", paragraphs: ["**Residential proxy** — IP assigned by an ISP to a real consumer device.", "**Datacenter proxy** — IP hosted in a commercial data center.", "**ISP proxy** — Datacenter-hosted but registered to a consumer ISP ASN.", "**Mobile proxy** — IP from a mobile carrier (4G/5G), shared via CGNAT."] },
       { heading: "Network terms", paragraphs: ["**ASN** — Autonomous System Number identifying an IP's owning network.", "**CGNAT** — Carrier-Grade NAT, the mechanism that lets thousands of mobile users share one IP.", "**Pool size** — Total unique IPs available in a provider's network."] },
@@ -180,6 +190,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Some proxy vendors source IPs ethically through opt-in SDKs and ISP deals. Others don't. Here's how to tell the difference.",
     author: "Elena Park", datePublished: "2026-03-10", readTime: "10 min", category: "Legal",
     tags: ["ethics","compliance","sourcing","kyc"],
+    recommendedProvider: "netnut",
     body: [
       { heading: "The two legitimate sourcing models", paragraphs: ["**Opt-in SDK**: A free app (often a free VPN or browser extension) embeds an SDK that, with informed user consent, lets the user's IP be used as an exit node. Bright Data (EarnApp), Decodo and Infatica use variants of this.", "**ISP partnership**: The vendor has a direct commercial agreement with an ISP to use specific IP ranges. NetNut leads on this model."] },
       { heading: "Red flags", paragraphs: ["No published sourcing policy. No KYC. No SOC 2 / ISO 27001. Cheap residential bandwidth from an unknown vendor is almost always sourced from compromised devices — botnet traffic dressed up as residential proxies."] },
@@ -196,6 +207,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "6 min",
     category: "Pricing",
     tags: ["pricing", "buyers guide"],
+    recommendedProvider: "decodo",
     body: [
       { heading: "Where the cost comes from", paragraphs: ["Proxy providers pay peer-network operators per GB of relayed traffic, plus infrastructure, compliance, support and software. At scale, the marginal cost of a GB of residential traffic is somewhere between $0.50 and $2.00 — everything above that is margin, support quality, and compliance overhead."] },
       { heading: "Why premium vendors charge more", paragraphs: ["Bright Data and Oxylabs invest heavily in KYC, ethical sourcing audits, SOC 2 / ISO 27001 certification, 24/7 enterprise support, and high-quality unblocking software. That's worth real money to compliance-sensitive buyers — banks, agencies, Fortune 500 data teams."] },
