@@ -114,7 +114,35 @@ function BlogPostPage() {
       return { p, score: shared * 2 + catBonus };
     });
     scored.sort((a, b) => b.score - a.score);
-    return scored.slice(0, 3).map((s) => s.p);
+    return scored.slice(0, 6).map((s) => s.p);
+  }, [post]);
+
+  // Curated internal links by tag — deep-links to guides, use-cases, countries, reviews
+  const exploreLinks = useMemo(() => {
+    const tagStr = (post.tags.join(" ") + " " + post.title).toLowerCase();
+    const has = (...ks: string[]) => ks.some((k) => tagStr.includes(k));
+    const links: { label: string; href: string; kind: string }[] = [];
+    if (has("residential")) links.push({ label: "Best Residential Proxies 2026", href: "/guides/best-residential-proxies", kind: "Guide" });
+    if (has("datacenter")) links.push({ label: "Best Datacenter Proxies 2026", href: "/guides/best-datacenter-proxies", kind: "Guide" });
+    if (has("isp", "static")) links.push({ label: "Best ISP Proxies 2026", href: "/guides/best-isp-proxies", kind: "Guide" });
+    if (has("mobile", "instagram", "tiktok")) links.push({ label: "Best Mobile Proxies 2026", href: "/guides/best-mobile-proxies", kind: "Guide" });
+    if (has("scraping", "scrape", "cloudflare", "anti-bot")) links.push({ label: "Best Proxies for Web Scraping", href: "/use-cases/web-scraping", kind: "Use case" });
+    if (has("google", "serp", "seo")) links.push({ label: "Best SERP APIs 2026", href: "/guides/best-serp-apis", kind: "Guide" });
+    if (has("amazon", "e-commerce", "price")) links.push({ label: "E-commerce Price Monitoring Proxies", href: "/use-cases/price-monitoring", kind: "Use case" });
+    if (has("ad ")) links.push({ label: "Ad Verification Proxies", href: "/use-cases/ad-verification", kind: "Use case" });
+    if (has("sneaker")) links.push({ label: "Sneaker Copping Proxies", href: "/use-cases/sneaker-copping", kind: "Use case" });
+    if (has("legal", "gdpr", "compliance", "ethics", "sourcing")) links.push({ label: "How We Test Proxies", href: "/how-we-test", kind: "Trust" });
+    if (has("pricing", "cheap", "budget")) links.push({ label: "Compare Proxy Providers", href: "/compare", kind: "Tool" });
+    if (has("scraping api", "unblocker")) links.push({ label: "Scraper API Comparison Hub", href: "/scraper-api", kind: "Hub" });
+    // Always-on evergreen hubs
+    links.push({ label: "All Proxy Provider Reviews", href: "/reviews", kind: "Hub" });
+    links.push({ label: "Proxies by Country", href: "/countries", kind: "Hub" });
+    if (post.recommendedProvider) {
+      links.unshift({ label: `Read our full ${post.recommendedProvider.replace(/-/g, " ")} review`, href: `/reviews/${post.recommendedProvider}`, kind: "Review" });
+    }
+    // De-dupe by href, cap at 9
+    const seen = new Set<string>();
+    return links.filter((l) => (seen.has(l.href) ? false : (seen.add(l.href), true))).slice(0, 9);
   }, [post]);
 
   // Top 3 affiliate alternatives (recommended first, then top-rated)
@@ -281,8 +309,21 @@ function BlogPostPage() {
           </div>
 
           <div className="mt-12 border-t border-border pt-8">
+            <h3 className="text-xl font-bold">Explore more on ToptierProxy</h3>
+            <p className="mt-1 text-sm text-muted-foreground">Hand-picked guides, reviews and tools related to this article.</p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {exploreLinks.map((l) => (
+                <a key={l.href} href={l.href} className="group rounded-md border border-border bg-card p-4 hover:border-primary">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-primary">{l.kind}</div>
+                  <div className="mt-1 text-sm font-bold text-foreground group-hover:text-primary">{l.label} →</div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-10 border-t border-border pt-8">
             <h3 className="text-xl font-bold">Related articles</h3>
-            <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((r) => (
                 <Link key={r.slug} to="/blog/$slug" params={{ slug: r.slug }} className="rounded-md border border-border bg-card p-4 hover:border-primary">
                   <div className="text-xs font-bold text-primary">{r.category.toUpperCase()}</div>
