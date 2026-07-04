@@ -309,8 +309,21 @@ function BlogPostPage() {
           </div>
 
           <div className="mt-12 border-t border-border pt-8">
+            <h3 className="text-xl font-bold">Explore more on ToptierProxy</h3>
+            <p className="mt-1 text-sm text-muted-foreground">Hand-picked guides, reviews and tools related to this article.</p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {exploreLinks.map((l) => (
+                <a key={l.href} href={l.href} className="group rounded-md border border-border bg-card p-4 hover:border-primary">
+                  <div className="text-[10px] font-bold uppercase tracking-wider text-primary">{l.kind}</div>
+                  <div className="mt-1 text-sm font-bold text-foreground group-hover:text-primary">{l.label} →</div>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-10 border-t border-border pt-8">
             <h3 className="text-xl font-bold">Related articles</h3>
-            <div className="mt-4 grid gap-3 sm:grid-cols-3">
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {related.map((r) => (
                 <Link key={r.slug} to="/blog/$slug" params={{ slug: r.slug }} className="rounded-md border border-border bg-card p-4 hover:border-primary">
                   <div className="text-xs font-bold text-primary">{r.category.toUpperCase()}</div>
