@@ -146,10 +146,10 @@ export const useCases: UseCase[] = [
   {
     slug: "streaming-geo-checks",
     title: "Best Proxies for Streaming & Geo-Restriction Tests",
-    metaTitle: "Best Streaming Proxies 2026 — Netflix, Hulu, BBC iPlayer Geo Tests",
-    metaDescription: "Test streaming geo-restrictions across Netflix, Hulu, BBC iPlayer, Disney+ and more with residential proxies that aren't blacklisted.",
+    metaTitle: "Best Streaming Proxies 2026 — Test Netflix & BBC iPlayer From Anywhere",
+    metaDescription: "Netflix blocks datacenter IPs instantly. We ranked the only residential proxies that still bypass Netflix, Hulu and BBC iPlayer geo-restrictions in 2026 — tested, working and fairly priced.",
     intro: "Streaming services aggressively block datacenter and known proxy IPs. Residential pools that haven't been burned by VPN providers are the only reliable option for geo-restriction QA.",
-    primaryKeywords: ["streaming proxy","netflix proxy","bbc iplayer proxy","disney plus proxy","geo unblock proxy"],
+    primaryKeywords: ["streaming proxy","netflix proxy","bbc iplayer proxy","disney plus proxy","hulu proxy","streaming geo restriction proxy","residential proxy for netflix","geo unblock proxy 2026"],
     bestProviders: ["bright-data","oxylabs","decodo","soax"],
     whyMatters: ["Netflix maintains a known-VPN blocklist","Region-locked catalogs differ by IP","BBC iPlayer requires UK residential"],
     recommendedType: "residential",
