@@ -188,10 +188,10 @@ export const useCases: UseCase[] = [
   {
     slug: "brand-protection",
     title: "Best Proxies for Brand Protection & Counterfeit Detection",
-    metaTitle: "Best Brand Protection Proxies 2026 — Counterfeit, MAP & Grey Market Detection",
-    metaDescription: "Detect counterfeits, MAP violations and grey-market resellers across global marketplaces with city-targeted residential proxies in 2026.",
+    metaTitle: "Best Brand Protection Proxies 2026 — Detect Counterfeits Globally",
+    metaDescription: "Counterfeiters cloak listings from corporate IPs. We ranked the best residential proxies for brand protection, MAP monitoring and grey market detection across global marketplaces in 2026.",
     intro: "Counterfeit and MAP-violation detection requires looking at marketplaces from real consumer IPs in every market you sell in. Residential pools with city-level targeting are the standard.",
-    primaryKeywords: ["brand protection proxy","counterfeit detection proxy","map monitoring proxy","grey market proxy"],
+    primaryKeywords: ["brand protection proxy","counterfeit detection proxy","map monitoring proxy","grey market proxy","marketplace brand protection proxy","residential proxy for brand monitoring","anti-counterfeiting proxy 2026"],
     bestProviders: ["bright-data","oxylabs","nimbleway","decodo"],
     whyMatters: ["Marketplace creative varies by buyer geo","MAP violations need cross-region price proof","Counterfeit listings hide from corporate IPs"],
     recommendedType: "residential",
