@@ -62,10 +62,10 @@ export const useCases: UseCase[] = [
   {
     slug: "ad-verification",
     title: "Best Proxies for Ad Verification 2026",
-    metaTitle: "Best Ad Verification Proxies 2026 — Detect Fraud & Verify Placements",
-    metaDescription: "Verify ad placements, detect ad fraud and check creative across markets with the right residential and mobile proxy network. 2026 vendor ranking and methodology.",
+    metaTitle: "Best Ad Verification Proxies 2026 — Catch Ad Fraud in Every Market",
+    metaDescription: "Ad fraud drains 20% of programmatic budgets. Our tested ad verification proxies see exactly what real users see in every market — residential and mobile pools that do not get substituted creative.",
     intro: "Ad verification requires looking at the web from a real user's perspective in every market you buy media. Datacenter IPs see different creative than residential users — that's the whole problem ad verification solves.",
-    primaryKeywords: ["ad verification proxy","ad fraud proxy","brand safety proxy","mobile ad verification proxy"],
+    primaryKeywords: ["ad verification proxy","ad verification proxies","best ad verification proxy 2026","programmatic ad fraud proxy","mobile ad verification","brand safety proxy","ad fraud detection proxy"],
     bestProviders: ["bright-data","oxylabs","soax","netnut"],
     whyMatters: ["~20% of programmatic ad spend is wasted on fraud","Datacenter IPs see fundamentally different creative","Mobile carrier targeting catches mobile-only fraud"],
     recommendedType: "mobile",
