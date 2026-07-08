@@ -12,8 +12,8 @@ export const Route = createFileRoute("/reviews/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) return {};
     const { provider } = loaderData;
-    const title = `${provider.name} Review 2026 — Pricing, Pool Size & Hands-On Benchmarks`;
-    const description = `Independent ${provider.name} review: ${provider.poolSize} pool across ${provider.countries}+ countries, pricing from $${provider.startingPriceGB}/GB. Pros, cons, benchmarks, alternatives.`;
+    const title = `${provider.name} Review 2026 — Honest Score, Real Tests & Verdict`;
+    const description = `${provider.name} rated ${provider.rating}/5 in our 2026 hands-on review — tested with a real paid account. Honest breakdown of success rates on Cloudflare and DataDome, ${provider.poolSize} pool, pricing from $${provider.startingPriceGB}/GB and who it is actually best for.`;
     return {
       meta: [
         { title: `${title} | ToptierProxy.com` },
