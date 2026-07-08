@@ -174,10 +174,10 @@ export const useCases: UseCase[] = [
   {
     slug: "lead-generation",
     title: "Best Proxies for Lead Generation & B2B Data",
-    metaTitle: "Best Proxies for Lead Generation 2026 — LinkedIn, Apollo & B2B Scraping",
-    metaDescription: "Build B2B lead lists from LinkedIn, Apollo and public company data with the right residential proxies. 2026 ranking and compliance notes.",
+    metaTitle: "Best Lead Generation Proxies 2026 — Scrape LinkedIn & B2B Data Safely",
+    metaDescription: "LinkedIn blocks datacenter IPs the moment they hit the platform. We ranked the best residential proxies for B2B lead generation, LinkedIn scraping and Apollo data collection in 2026.",
     intro: "B2B lead generation typically scrapes LinkedIn, company websites and public databases. LinkedIn in particular is famously hostile to scrapers — premium residential or mobile is the only viable option.",
-    primaryKeywords: ["lead generation proxy","linkedin proxy","b2b scraping proxy","apollo scraping proxy"],
+    primaryKeywords: ["lead generation proxy","linkedin proxy","b2b scraping proxy","apollo proxy","residential proxy for linkedin","b2b lead proxy 2026","linkedin scraping proxy","sales intelligence proxy"],
     bestProviders: ["bright-data","oxylabs","soax","decodo"],
     whyMatters: ["LinkedIn aggressively blocks datacenter IPs","Public business data is generally legal to scrape","GDPR/CCPA apply when personal data enters the funnel"],
     recommendedType: "residential",
