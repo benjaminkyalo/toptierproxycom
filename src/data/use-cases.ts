@@ -118,10 +118,10 @@ export const useCases: UseCase[] = [
   {
     slug: "market-research",
     title: "Best Proxies for Market Research & Competitive Intelligence",
-    metaTitle: "Best Proxies for Market Research 2026 — Brand & Competitive Intelligence",
-    metaDescription: "Run brand monitoring, competitive intelligence and market research at scale with ethical, geo-targeted residential proxies. The 2026 enterprise pick.",
+    metaTitle: "Best Market Research Proxies 2026 — Global Competitive Intelligence",
+    metaDescription: "Geo-personalized content shows different results by city. We ranked the best residential proxies for market research and competitive intelligence in 2026 — SOC 2 compliant and enterprise ready.",
     intro: "Market research touches public web data across geographies. Premium residential pools with KYC and SOC 2 compliance are the only safe choice for regulated industries.",
-    primaryKeywords: ["market research proxy","competitive intelligence proxy","brand monitoring proxy","mystery shopping proxy"],
+    primaryKeywords: ["market research proxy","competitive intelligence proxy","brand monitoring proxy","enterprise market research proxy","soc 2 compliant proxy","geo targeted research proxy","mystery shopping proxy 2026"],
     bestProviders: ["bright-data","oxylabs","nimbleway","decodo"],
     whyMatters: ["Geo-personalized content varies by city","Compliance is non-negotiable in regulated industries","SOC 2 / ISO 27001 vendors only"],
     recommendedType: "residential",
