@@ -160,10 +160,10 @@ export const useCases: UseCase[] = [
   {
     slug: "travel-fare-aggregation",
     title: "Best Proxies for Travel Fare Aggregation",
-    metaTitle: "Best Travel & Airline Proxies 2026 — Skyscanner, Booking, Expedia",
-    metaDescription: "Aggregate flight, hotel and car rental prices across hundreds of OTAs and airline sites with residential proxies built for travel scraping in 2026.",
+    metaTitle: "Best Travel Fare Proxies 2026 — Scrape Skyscanner & Airlines Without Blocks",
+    metaDescription: "Travel sites run Akamai Bot Manager — one of the hardest anti-bot stacks online. We ranked the best proxies for scraping Skyscanner, Booking.com and airline fares in 2026 with real success rates.",
     intro: "Travel sites are some of the hardest scraping targets — airlines and OTAs use Akamai, DataDome and PerimeterX with custom signals. Premium residential + managed unblocker is the standard stack.",
-    primaryKeywords: ["travel proxy","airline scraping proxy","ota proxy","skyscanner proxy","booking proxy"],
+    primaryKeywords: ["proxy for travel fare aggregation","travel proxy","airline scraping proxy","skyscanner proxy","booking proxy","travel fare proxy 2026","ota scraping proxy","akamai bypass proxy"],
     bestProviders: ["bright-data","oxylabs","nimbleway","soax"],
     whyMatters: ["OTA prices vary by IP geo","Airlines fingerprint on TLS + behavior","Akamai Bot Manager guards most carriers"],
     recommendedType: "scraping-api",
