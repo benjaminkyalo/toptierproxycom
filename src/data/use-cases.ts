@@ -132,10 +132,10 @@ export const useCases: UseCase[] = [
   {
     slug: "ai-training-data",
     title: "Best Proxies for AI/LLM Training Data Collection",
-    metaTitle: "Best Proxies for AI & LLM Training Data 2026",
-    metaDescription: "Collect web data at scale for AI/LLM training with ethical, high-throughput residential proxies. Pre-built datasets vs raw scraping in 2026.",
+    metaTitle: "Best Proxies for AI Training Data 2026 — Collect Web Data for LLMs",
+    metaDescription: "LLMs need terabytes of clean diverse web data. We ranked the best proxies and datasets for AI training data collection in 2026 — throughput, compliance and licensing compared honestly.",
     intro: "AI labs need clean, fresh web data at terabyte scale. Bright Data, Oxylabs and a handful of others sell pre-collected datasets and high-throughput residential pipes purpose-built for LLM training.",
-    primaryKeywords: ["ai training data proxy","llm training proxy","web data for ai","dataset for llm","gpt training data proxy"],
+    primaryKeywords: ["best proxy for ai training data 2026","llm training data proxy","web scraping proxy for ai","dataset collection proxy","gpt training proxy","high throughput proxy for llm","ethical web data collection proxy"],
     bestProviders: ["bright-data","oxylabs","nimbleway","decodo"],
     whyMatters: ["LLM training needs PB-scale clean data","Robots.txt + content licensing matters","Vendor compliance is part of model risk"],
     recommendedType: "scraping-api",
