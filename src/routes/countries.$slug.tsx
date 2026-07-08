@@ -16,13 +16,13 @@ export const Route = createFileRoute("/countries/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) return {};
     const { country } = loaderData;
-    const title = `Best Proxies for ${country.name} 2026 — Residential, Mobile & ISP IPs`;
-    const description = `The best ${country.name} proxy providers for 2026. ${country.poolDepth} available across major vendors with city-level targeting in ${country.topCities.slice(0, 3).join(", ")} and more.`;
+    const title = `Best ${country.name} Proxies 2026 — Tested, Ranked & Ready to Buy`;
+    const description = `Looking for a real ${country.name} IP address? We tested and ranked the best ${country.name} proxy providers in 2026 — ${country.poolDepth} available, covering ${country.topCities.slice(0, 3).join(", ")} and more. Honest reviews, real pricing, updated July 2026.`;
     return {
       meta: [
         { title: `${title} | ToptierProxy.com` },
         { name: "description", content: description },
-        { name: "keywords", content: `${country.name} proxies, ${country.name} residential proxy, ${country.name} IP, buy ${country.name} proxy, ${country.name} mobile proxy` },
+        { name: "keywords", content: `${country.name} proxy, ${country.name} proxies, buy ${country.name} proxy, ${country.name} residential proxy, ${country.name} mobile proxy, ${country.name} IP address, best ${country.name} proxy 2026, ${country.name} proxy provider` },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
