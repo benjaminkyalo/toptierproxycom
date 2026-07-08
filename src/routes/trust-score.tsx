@@ -4,10 +4,11 @@ import { PageShell, Prose } from "@/components/page-shell";
 export const Route = createFileRoute("/trust-score")({
   head: () => ({
     meta: [
-      { title: "ToptierProxy Trust Score — How We Rate Provider Trust (0-100)" },
-      { name: "description", content: "The ToptierProxy Trust Score (0-100) captures compliance, sourcing ethics, transparency, financial stability and customer outcomes for every major proxy provider. See the full methodology and current scores." },
-      { property: "og:title", content: "ToptierProxy Trust Score Methodology" },
-      { property: "og:description", content: "How we calculate the Trust Score (0-100) for every proxy provider." },
+      { title: "Proxy Provider Ratings 2026 — How We Score Every Provider" },
+      { name: "description", content: "Wondering how proxy providers are rated on ToptierProxy.com? Our scoring covers 225+ criteria including pool size, success rate, pricing, ethics and compliance. Here is exactly how every rating is calculated." },
+      { name: "keywords", content: "proxy rating, proxy ratings, how are proxies rated, proxy trust score, proxy provider score, proxy review methodology, best rated proxy provider 2026" },
+      { property: "og:title", content: "Proxy Provider Ratings 2026 — How We Score Every Provider" },
+      { property: "og:description", content: "How we calculate the Trust Score (0-100) and star rating for every proxy provider." },
     ],
   }),
   component: () => (
