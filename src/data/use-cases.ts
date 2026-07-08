@@ -90,10 +90,10 @@ export const useCases: UseCase[] = [
   {
     slug: "sneaker-copping",
     title: "Best Proxies for Sneaker Copping 2026",
-    metaTitle: "Best Sneaker Proxies 2026 — Nike SNKRS, Shopify, Yeezy Supply",
-    metaDescription: "Cop limited drops on Nike SNKRS, Shopify, Yeezy Supply, Footsites and Adidas Confirmed with the fastest, cleanest sneaker proxies in 2026.",
+    metaTitle: "Best Sneaker Proxies 2026 — Cop Nike SNKRS & Shopify Drops Without Bans",
+    metaDescription: "Sneaker drops sell out in under 30 seconds. We ranked the fastest lowest-detection sneaker proxies for Nike SNKRS, Shopify and Footsites in 2026 — ISP vs residential, speed and cook rate tested.",
     intro: "Sneaker drops happen in seconds. The proxy network you bring to the fight decides whether your bot gets through queue, holds checkout, and converts to a successful cop.",
-    primaryKeywords: ["sneaker proxies","nike snkrs proxy","shopify sneaker proxy","yeezy supply proxy","footsites proxy"],
+    primaryKeywords: ["sneaker proxies","best sneaker proxies 2026","nike snkrs proxy","shopify drop proxy","footsites proxy 2026","isp proxy for sneaker copping","fastest sneaker proxy provider","sneaker copping proxy"],
     bestProviders: ["iproyal","bright-data","oxylabs","soax"],
     whyMatters: ["Drops sell out in <30 seconds","Nike & Shopify fingerprint at multiple layers","Sticky sessions retain checkout state"],
     recommendedType: "isp",
