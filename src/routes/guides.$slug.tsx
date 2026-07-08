@@ -18,7 +18,7 @@ export const Route = createFileRoute("/guides/$slug")({
       meta: [
         { title: `${guide.title} | ToptierProxy.com` },
         { name: "description", content: guide.description },
-        { name: "keywords", content: `${guide.shortLabel}, best ${guide.shortLabel}, ${guide.shortLabel} 2026, top ${guide.shortLabel}` },
+        { name: "keywords", content: guide.primaryKeywords?.join(", ") ?? `${guide.shortLabel}, best ${guide.shortLabel}, ${guide.shortLabel} 2026, top ${guide.shortLabel}` },
         { property: "og:title", content: guide.title },
         { property: "og:description", content: guide.description },
         { property: "og:type", content: "article" },
