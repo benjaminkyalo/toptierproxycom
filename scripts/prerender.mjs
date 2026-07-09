@@ -23,8 +23,11 @@ function writeHtml(urlPath, title, description, bodyContent = "") {
     .replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
     .replace(/<meta name="description" content=".*?"/, `<meta name="description" content="${description.replace(/"/g, "&quot;")}"`);
 
+  // SEO shell: kept in DOM for non-JS crawlers/LLMs, but visually hidden so
+  // users don't see a flash of unstyled HTML before React hydrates and
+  // replaces #root's children.
   const seoBody = bodyContent
-    ? `<div id="root"><main style="font-family:system-ui,sans-serif;max-width:960px;margin:0 auto;padding:2rem 1.5rem;color:#1a1a2e;line-height:1.7">${bodyContent}</main></div>`
+    ? `<div id="root"><main data-seo-shell="true" style="position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden;font-family:system-ui,sans-serif;color:#1a1a2e;line-height:1.7">${bodyContent}</main></div>`
     : '<div id="root"></div>';
   html = html.replace('<div id="root"></div>', seoBody);
 
