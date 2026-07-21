@@ -1,7 +1,10 @@
-// Shared internal linking component — used across blog, guides, use-cases, reviews, vs pages.
+// Shared internal linking component - used across blog, guides, use-cases, reviews, vs pages.
 // Automatically links the FIRST occurrence of each keyword to the right internal page.
+// NOTE: findLink() below is also imported directly by scripts/prerender.mjs (via tsx)
+// so the static prerendered HTML and the live React app share ONE keyword map,
+// instead of two copies that can silently drift out of sync.
 
-const INTERNAL_LINKS: Record<string, string> = {
+export const INTERNAL_LINKS: Record<string, string> = {
   // Guides
   "best residential proxies": "/guides/best-residential-proxies",
   "residential proxies": "/guides/best-residential-proxies",
@@ -110,7 +113,9 @@ const INTERNAL_LINKS: Record<string, string> = {
   "buy proxy": "/guides/best-proxies-2026",
 };
 
-export function LinkedParagraph({ text }: { text: string }) {
+// Pure logic, no JSX - shared by the React component below AND by
+// scripts/prerender.mjs (imported directly via tsx) for static HTML generation.
+export function findLink(text: string): { before: string; keyword: string; url: string; after: string } | null {
   const keywords = Object.keys(INTERNAL_LINKS).sort((a, b) => b.length - a.length);
   for (const keyword of keywords) {
     const idx = text.indexOf(keyword);
@@ -118,16 +123,22 @@ export function LinkedParagraph({ text }: { text: string }) {
       const url = INTERNAL_LINKS[keyword];
       const before = text.slice(0, idx);
       const after = text.slice(idx + keyword.length);
-      return (
-        <p>
-          {before}
-          <a href={url} className="font-semibold text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary">
-            {keyword}
-          </a>
-          {after}
-        </p>
-      );
+      return { before, keyword, url, after };
     }
   }
-  return <p>{text}</p>;
+  return null;
+}
+
+export function LinkedParagraph({ text }: { text: string }) {
+  const match = findLink(text);
+  if (!match) return <p>{text}</p>;
+  return (
+    <p>
+      {match.before}
+      <a href={match.url} className="font-semibold text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary">
+        {match.keyword}
+      </a>
+      {match.after}
+    </p>
+  );
 }
