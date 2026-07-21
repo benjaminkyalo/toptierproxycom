@@ -5,14 +5,14 @@ export const Route = createFileRoute("/trust-score")({
   head: () => ({
     meta: [
       { title: "Proxy Provider Ratings 2026 — How We Score Every Provider" },
-      { name: "description", content: "Wondering how proxy providers are rated on ToptierProxy.com? Our scoring covers 225+ criteria including pool size, success rate, pricing, ethics and compliance. Here is exactly how every rating is calculated." },
+      { name: "description", content: "How are proxy providers rated in 2026? Our proxy rating system covers 225+ criteria  pool size, success rate, pricing, ethics & compliance. See every provider's score and how we calculate it." },
       { name: "keywords", content: "proxy rating, proxy ratings, how are proxies rated, proxy trust score, proxy provider score, proxy review methodology, best rated proxy provider 2026" },
       { property: "og:title", content: "Proxy Provider Ratings 2026 — How We Score Every Provider" },
       { property: "og:description", content: "How we calculate the Trust Score (0-100) and star rating for every proxy provider." },
     ],
   }),
   component: () => (
-    <PageShell title="Trust Score methodology" intro="A 0-100 score that captures compliance posture, sourcing ethics, transparency, financial stability and customer outcomes — referenced in enterprise RFPs worldwide." breadcrumb={[{ to: "/", label: "Home" }, { to: "/trust-score", label: "Trust Score" }]}>
+    <PageShell title="Proxy Provider Ratings  How We Score & Rank Every Provider" intro="A 0-100 score that captures compliance posture, sourcing ethics, transparency, financial stability and customer outcomes — referenced in enterprise RFPs worldwide." breadcrumb={[{ to: "/", label: "Home" }, { to: "/trust-score", label: "Trust Score" }]}>
       <Prose>
         <p>
           The ToptierProxy Trust Score (0-100) sits alongside our editorial star rating to capture trust signals

@@ -109,13 +109,24 @@ function GuidePage() {
               <div><strong className="text-foreground">Pool:</strong> {p.poolSize}</div>
               <div><strong className="text-foreground">Best for:</strong> {p.bestFor}</div>
             </div>
-            <Link
-              to="/reviews/$slug"
-              params={{ slug: p.slug }}
-              className="mt-4 inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 text-sm font-bold text-primary-foreground hover:bg-brand-blue-hover"
-            >
-              Read full {p.name} review
-            </Link>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <Link
+                to="/reviews/$slug"
+                params={{ slug: p.slug }}
+                className="inline-flex h-9 items-center justify-center rounded-md border border-primary px-4 text-sm font-bold text-primary hover:bg-primary/10"
+              >
+                Read full {p.name} review
+              </Link>
+              
+              <a
+                href={p.visitUrl}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 text-sm font-bold text-primary-foreground hover:bg-brand-blue-hover"
+              >
+                Visit {p.name} 
+              </a>
+            </div>
           </li>
         ))}
       </ol>

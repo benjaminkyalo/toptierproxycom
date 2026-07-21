@@ -134,20 +134,136 @@ function guideBody(g, allProviders) {
     <p style="margin-top:2rem">See our full <a href="${SITE}/compare" style="color:#2563eb">proxy comparison tool</a> or browse all <a href="${SITE}/reviews" style="color:#2563eb">provider reviews</a>.</p>`;
 }
 
-function blogBody(b) {
+function blogBody(b, allProviders) {
+  // Build provider mention map for inline affiliate links
+  const providerMentions = {};
+  allProviders.forEach(p => {
+    providerMentions[p.name] = p;
+    if (p.slug === 'bright-data') providerMentions['Bright Data'] = p;
+    if (p.slug === 'decodo') providerMentions['Decodo'] = p;
+    if (p.slug === 'oxylabs') providerMentions['Oxylabs'] = p;
+    if (p.slug === 'iproyal') providerMentions['IPRoyal'] = p;
+    if (p.slug === 'soax') providerMentions['SOAX'] = p;
+    if (p.slug === 'webshare') providerMentions['Webshare'] = p;
+    if (p.slug === 'netnut') providerMentions['NetNut'] = p;
+    if (p.slug === 'rayobyte') providerMentions['Rayobyte'] = p;
+  });
+
   const sections = b.body.map(section => {
     const paras = section.paragraphs.map(p => `<p style="margin:1rem 0">${p}</p>`).join("");
     const list = section.list ? `<ul style="margin:1rem 0;padding-left:1.5rem">${section.list.map(i => `<li>${i}</li>`).join("")}</ul>` : "";
     return `<h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${section.heading}</h2>${paras}${list}`;
   }).join("");
-  const tags = b.tags.map(t => `<span style="background:#dbeafe;color:#1e40af;padding:.2rem .6rem;border-radius:9999px;font-size:.8rem;margin-right:.5rem">${t}</span>`).join("");
+
+  // Tags linking to relevant blog category
+  const tags = b.tags.map(t => `<a href="${SITE}/blog" style="background:#dbeafe;color:#1e40af;padding:.2rem .6rem;border-radius:9999px;font-size:.8rem;margin-right:.5rem;text-decoration:none">#${t}</a>`).join("");
+
+  // Primary affiliate CTA box
+  const recProv = b.recommendedProvider ? allProviders.find(p => p.slug === b.recommendedProvider) : null;
+  const affiliateCTA = recProv ? `
+    <div style="background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;border-radius:12px;padding:1.5rem 2rem;margin:2rem 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+      <div>
+        <div style="font-size:.75rem;font-weight:700;letter-spacing:.08em;opacity:.8;margin-bottom:.4rem"> EDITOR'S TOP PICK</div>
+        <div style="font-size:1.4rem;font-weight:800">${recProv.name}</div>
+        <div style="font-size:.9rem;opacity:.9;margin-top:.3rem">${recProv.tagline}</div>
+        <div style="font-size:.85rem;opacity:.8;margin-top:.2rem">From $${recProv.startingPriceGB}/GB &middot; ${recProv.rating}/5 stars &middot; Trust Score ${recProv.trustScore}/100</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.5rem;align-items:flex-end">
+        <a href="${SITE}/go/${recProv.slug}" rel="nofollow sponsored" style="background:#fff;color:#1e3a5f;font-weight:800;padding:.75rem 1.75rem;border-radius:8px;text-decoration:none;white-space:nowrap;font-size:1rem">Visit ${recProv.name} &rarr;</a>
+        <a href="${SITE}/reviews/${recProv.slug}" style="color:rgba(255,255,255,.8);font-size:.8rem;text-decoration:underline">Read full review</a>
+      </div>
+    </div>` : "";
+
+  // Mid-content provider comparison box (top 3 providers mentioned in post)
+  const topProviders = ['bright-data','oxylabs','decodo','iproyal','soax','webshare','netnut','rayobyte']
+    .map(slug => allProviders.find(p => p.slug === slug))
+    .filter(Boolean)
+    .slice(0, 3);
+  const comparisonBox = `
+    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:1.2rem 1.5rem;margin:2rem 0">
+      <div style="font-weight:800;color:#1e3a5f;font-size:1rem;margin-bottom:1rem">Quick Comparison  Top Providers</div>
+      <div style="display:grid;gap:.75rem">
+        ${topProviders.map((p,i) => `
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;background:#fff;border-radius:8px;border:1px solid #e2e8f0">
+          <div style="display:flex;align-items:center;gap:.75rem">
+            <span style="background:#1e3a5f;color:#fff;width:1.5rem;height:1.5rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0">${i+1}</span>
+            <div>
+              <div style="font-weight:700;color:#1e3a5f">${p.name}</div>
+              <div style="font-size:.8rem;color:#6b7280">From $${p.startingPriceGB}/GB &middot; ${p.rating}/5</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:.5rem">
+            <a href="${SITE}/reviews/${p.slug}" style="font-size:.8rem;color:#2563eb;text-decoration:none;padding:.3rem .7rem;border:1px solid #2563eb;border-radius:6px">Review</a>
+            <a href="${SITE}/go/${p.slug}" rel="nofollow sponsored" style="font-size:.8rem;background:#2563eb;color:#fff;text-decoration:none;padding:.3rem .7rem;border-radius:6px;font-weight:700">Visit</a>
+          </div>
+        </div>`).join("")}
+      </div>
+      <div style="margin-top:.75rem;text-align:center"><a href="${SITE}/compare" style="color:#2563eb;font-size:.85rem">Compare all providers side by side &rarr;</a></div>
+    </div>`;
+
+  // FAQ with schema markup
+  const faqHtml = b.faq && b.faq.length ? `
+    <h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">Frequently Asked Questions</h2>
+    <div itemscope itemtype="https://schema.org/FAQPage">
+    ${b.faq.map(f => `
+      <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" style="border-bottom:1px solid #e2e8f0;padding:1rem 0">
+        <h3 itemprop="name" style="font-size:1.05rem;font-weight:700;color:#1e3a5f;margin:0 0 .5rem">${f.q}</h3>
+        <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <p itemprop="text" style="margin:0;color:#374151">${f.a}</p>
+        </div>
+      </div>`).join("")}
+    </div>` : "";
+
+  // Contextual internal links based on category
+  const categoryLinks = {
+    "Use Cases": [
+      `<li><a href="${SITE}/guides/best-proxies-for-scraping" style="color:#2563eb">Best Proxies for Web Scraping 2026</a></li>`,
+      `<li><a href="${SITE}/use-cases/web-scraping" style="color:#2563eb">Web Scraping Use Case Guide</a></li>`,
+    ],
+    "Pricing": [
+      `<li><a href="${SITE}/guides/best-free-proxy-trials" style="color:#2563eb">Best Free Proxy Trials 2026</a></li>`,
+      `<li><a href="${SITE}/blog/proxy-pricing-2026-complete-breakdown" style="color:#2563eb">Proxy Pricing Complete Breakdown 2026</a></li>`,
+    ],
+    "Engineering": [
+      `<li><a href="${SITE}/guides/best-proxies-for-scraping" style="color:#2563eb">Best Proxies for Web Scraping 2026</a></li>`,
+      `<li><a href="${SITE}/blog/how-to-bypass-cloudflare" style="color:#2563eb">How to Bypass Cloudflare in 2026</a></li>`,
+    ],
+    "Education": [
+      `<li><a href="${SITE}/guides/best-proxies-2026" style="color:#2563eb">Best Proxy Providers 2026  Full Ranking</a></li>`,
+      `<li><a href="${SITE}/blog/datacenter-vs-residential-proxies" style="color:#2563eb">Datacenter vs Residential Proxies Explained</a></li>`,
+    ],
+    "Comparisons": [
+      `<li><a href="${SITE}/compare" style="color:#2563eb">Compare All Proxy Providers Side by Side</a></li>`,
+      `<li><a href="${SITE}/guides/best-proxies-2026" style="color:#2563eb">Best Proxy Providers 2026  Full Ranking</a></li>`,
+    ],
+  };
+  const extraLinks = (categoryLinks[b.category] || []).join("");
+
+  const internalLinks = `
+    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1.2rem 1.5rem;margin-top:2rem">
+      <div style="font-weight:700;color:#1e3a5f;margin-bottom:.75rem"> Related Resources on ToptierProxy</div>
+      <ul style="margin:0;padding-left:1.5rem;list-style:disc;line-height:2">
+        <li><a href="${SITE}/guides/best-proxies-2026" style="color:#2563eb">Best Proxy Providers 2026  Full Ranking</a></li>
+        <li><a href="${SITE}/compare" style="color:#2563eb">Compare All Proxy Providers Side by Side</a></li>
+        <li><a href="${SITE}/reviews" style="color:#2563eb">In-Depth Proxy Provider Reviews</a></li>
+        <li><a href="${SITE}/trust-score" style="color:#2563eb">How We Rate Proxy Providers  Trust Score</a></li>
+        ${extraLinks}
+        ${recProv ? `<li><a href="${SITE}/reviews/${recProv.slug}" style="color:#2563eb">${recProv.name} Full Review & Benchmark</a></li>` : ""}
+        <li><a href="${SITE}/blog" style="color:#2563eb">More Proxy Guides & Tutorials</a></li>
+      </ul>
+    </div>`;
+
   return `
     <h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">${b.title}</h1>
-    <p style="color:#6b7280;margin-bottom:.5rem">By ${b.author}  ${b.datePublished}  ${b.readTime} read  ${b.category}</p>
+    <p style="color:#6b7280;margin-bottom:.5rem">By ${b.author} &middot; ${b.datePublished} &middot; ${b.readTime} read &middot; <a href="${SITE}/blog" style="color:#6b7280">${b.category}</a></p>
     <div style="margin-bottom:1.5rem">${tags}</div>
     <p style="font-size:1.1rem;margin-bottom:1.5rem;font-style:italic">${b.excerpt}</p>
+    ${affiliateCTA}
     ${sections}
-    <p style="margin-top:2rem">Read more on <a href="${SITE}/blog" style="color:#2563eb">ToptierProxy Blog</a> or see our <a href="${SITE}/guides/best-proxies-2026" style="color:#2563eb">Best Proxies 2026 guide</a>.</p>`;
+    ${comparisonBox}
+    ${affiliateCTA}
+    ${faqHtml}
+    ${internalLinks}`;
 }
 
 function useCaseBody(u, allProviders) {
@@ -322,7 +438,7 @@ async function run() {
   // Blog posts
   for (const b of blogPosts) {
     const title = `${b.title} | ToptierProxy.com`;
-    writeHtml(`/blog/${b.slug}`, title, b.description, blogBody(b));
+    writeHtml(`/blog/${b.slug}`, title, b.description, blogBody(b, providers));
     count++;
   }
   console.log(` ${blogPosts.length} blog posts`);

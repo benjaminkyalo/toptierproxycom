@@ -13,14 +13,17 @@ import { Route as WhyTrustUsRouteImport } from './routes/why-trust-us'
 import { Route as VpnDealsRouteImport } from './routes/vpn-deals'
 import { Route as TrustScoreRouteImport } from './routes/trust-score'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ScrapyReviewRouteImport } from './routes/scrapy-review'
 import { Route as ScraperApiRouteImport } from './routes/scraper-api'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as MultiloginReviewRouteImport } from './routes/multilogin-review'
 import { Route as HowWeTestRouteImport } from './routes/how-we-test'
 import { Route as DisclaimersRouteImport } from './routes/disclaimers'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as R2captchaReviewRouteImport } from './routes/2captcha-review'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as UseCasesIndexRouteImport } from './routes/use-cases.index'
 import { Route as ReviewsIndexRouteImport } from './routes/reviews.index'
@@ -58,6 +61,11 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ScrapyReviewRoute = ScrapyReviewRouteImport.update({
+  id: '/scrapy-review',
+  path: '/scrapy-review',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ScraperApiRoute = ScraperApiRouteImport.update({
   id: '/scraper-api',
   path: '/scraper-api',
@@ -71,6 +79,11 @@ const ResourcesRoute = ResourcesRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MultiloginReviewRoute = MultiloginReviewRouteImport.update({
+  id: '/multilogin-review',
+  path: '/multilogin-review',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HowWeTestRoute = HowWeTestRouteImport.update({
@@ -96,6 +109,11 @@ const CompareRoute = CompareRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R2captchaReviewRoute = R2captchaReviewRouteImport.update({
+  id: '/2captcha-review',
+  path: '/2captcha-review',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -181,14 +199,17 @@ const CountriesSlugCitiesCityRoute = CountriesSlugCitiesCityRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/2captcha-review': typeof R2captchaReviewRoute
   '/about': typeof AboutRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/disclaimers': typeof DisclaimersRoute
   '/how-we-test': typeof HowWeTestRoute
+  '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/scraper-api': typeof ScraperApiRoute
+  '/scrapy-review': typeof ScrapyReviewRoute
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/vpn-deals': typeof VpnDealsRoute
@@ -211,14 +232,17 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/2captcha-review': typeof R2captchaReviewRoute
   '/about': typeof AboutRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/disclaimers': typeof DisclaimersRoute
   '/how-we-test': typeof HowWeTestRoute
+  '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/scraper-api': typeof ScraperApiRoute
+  '/scrapy-review': typeof ScrapyReviewRoute
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/vpn-deals': typeof VpnDealsRoute
@@ -242,14 +266,17 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/2captcha-review': typeof R2captchaReviewRoute
   '/about': typeof AboutRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/disclaimers': typeof DisclaimersRoute
   '/how-we-test': typeof HowWeTestRoute
+  '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
   '/resources': typeof ResourcesRoute
   '/scraper-api': typeof ScraperApiRoute
+  '/scrapy-review': typeof ScrapyReviewRoute
   '/terms': typeof TermsRoute
   '/trust-score': typeof TrustScoreRoute
   '/vpn-deals': typeof VpnDealsRoute
@@ -274,14 +301,17 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/2captcha-review'
     | '/about'
     | '/compare'
     | '/contact'
     | '/disclaimers'
     | '/how-we-test'
+    | '/multilogin-review'
     | '/privacy'
     | '/resources'
     | '/scraper-api'
+    | '/scrapy-review'
     | '/terms'
     | '/trust-score'
     | '/vpn-deals'
@@ -304,14 +334,17 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/2captcha-review'
     | '/about'
     | '/compare'
     | '/contact'
     | '/disclaimers'
     | '/how-we-test'
+    | '/multilogin-review'
     | '/privacy'
     | '/resources'
     | '/scraper-api'
+    | '/scrapy-review'
     | '/terms'
     | '/trust-score'
     | '/vpn-deals'
@@ -334,14 +367,17 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/2captcha-review'
     | '/about'
     | '/compare'
     | '/contact'
     | '/disclaimers'
     | '/how-we-test'
+    | '/multilogin-review'
     | '/privacy'
     | '/resources'
     | '/scraper-api'
+    | '/scrapy-review'
     | '/terms'
     | '/trust-score'
     | '/vpn-deals'
@@ -365,14 +401,17 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  R2captchaReviewRoute: typeof R2captchaReviewRoute
   AboutRoute: typeof AboutRoute
   CompareRoute: typeof CompareRoute
   ContactRoute: typeof ContactRoute
   DisclaimersRoute: typeof DisclaimersRoute
   HowWeTestRoute: typeof HowWeTestRoute
+  MultiloginReviewRoute: typeof MultiloginReviewRoute
   PrivacyRoute: typeof PrivacyRoute
   ResourcesRoute: typeof ResourcesRoute
   ScraperApiRoute: typeof ScraperApiRoute
+  ScrapyReviewRoute: typeof ScrapyReviewRoute
   TermsRoute: typeof TermsRoute
   TrustScoreRoute: typeof TrustScoreRoute
   VpnDealsRoute: typeof VpnDealsRoute
@@ -423,6 +462,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/scrapy-review': {
+      id: '/scrapy-review'
+      path: '/scrapy-review'
+      fullPath: '/scrapy-review'
+      preLoaderRoute: typeof ScrapyReviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/scraper-api': {
       id: '/scraper-api'
       path: '/scraper-api'
@@ -442,6 +488,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/multilogin-review': {
+      id: '/multilogin-review'
+      path: '/multilogin-review'
+      fullPath: '/multilogin-review'
+      preLoaderRoute: typeof MultiloginReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/how-we-test': {
@@ -477,6 +530,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/2captcha-review': {
+      id: '/2captcha-review'
+      path: '/2captcha-review'
+      fullPath: '/2captcha-review'
+      preLoaderRoute: typeof R2captchaReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -608,14 +668,17 @@ const CountriesSlugRouteWithChildren = CountriesSlugRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  R2captchaReviewRoute: R2captchaReviewRoute,
   AboutRoute: AboutRoute,
   CompareRoute: CompareRoute,
   ContactRoute: ContactRoute,
   DisclaimersRoute: DisclaimersRoute,
   HowWeTestRoute: HowWeTestRoute,
+  MultiloginReviewRoute: MultiloginReviewRoute,
   PrivacyRoute: PrivacyRoute,
   ResourcesRoute: ResourcesRoute,
   ScraperApiRoute: ScraperApiRoute,
+  ScrapyReviewRoute: ScrapyReviewRoute,
   TermsRoute: TermsRoute,
   TrustScoreRoute: TrustScoreRoute,
   VpnDealsRoute: VpnDealsRoute,

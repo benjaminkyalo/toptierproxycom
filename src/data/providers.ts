@@ -317,7 +317,7 @@ export const providers: Provider[] = [
       "Infatica runs an opt-in peer network with transparent sourcing and competitive mid-tier pricing.",
     longDescription:
       "Infatica's residential pool is sourced via an opt-in SDK with clear user disclosure, and its pricing sits comfortably in the mid-tier. A solid all-rounder for teams that need decent scale without enterprise budgets.",
-    visitUrl: "https://infatica.io",
+    visitUrl: "https://dashboard.infatica.io/aff.php?aff=845",
     trustScore: 84,
   },
   {

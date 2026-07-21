@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, Prose } from "@/components/page-shell";
 import { Mail, Handshake, Star, Newspaper, MessageCircle, Linkedin, ExternalLink, Clock } from "lucide-react";
@@ -64,6 +65,25 @@ const faqs = [
   { q: "Are you open to guest posts or content contributions?", a: "Yes — we accept high-quality contributions from proxy and web scraping experts. Email editor@toptierproxy.com with your topic idea and a brief writing sample." },
 ];
 
+function EmailButton({ email, label }: { email: string; label: string }) {
+  const [copied, setCopied] = useState(false);
+  const handleClick = () => {
+    window.location.href = `mailto:${email}?subject=Hello ToptierProxy.com`;
+    navigator.clipboard.writeText(email).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    }).catch(() => {});
+  };
+  return (
+    <button
+      onClick={handleClick}
+      className="mt-4 inline-flex h-10 w-full items-center justify-center rounded-md bg-primary px-4 text-sm font-bold text-primary-foreground transition-all hover:opacity-90"
+    >
+      {label}
+    </button>
+  );
+}
+
 function ContactPage() {
   return (
     <PageShell
@@ -85,12 +105,7 @@ function ContactPage() {
               </div>
               <p className="mt-3 text-sm text-muted-foreground">{c.description}</p>
               <a href={`mailto:${c.email}`} className="mt-3 break-all text-sm font-semibold text-primary hover:underline">{c.email}</a>
-              <a
-                href={`mailto:${c.email}`}
-                className="mt-4 inline-flex h-10 items-center justify-center rounded-md bg-primary px-4 text-sm font-bold text-primary-foreground transition-opacity hover:opacity-90"
-              >
-                {c.button}
-              </a>
+              <EmailButton email={c.email} label={c.button} />
             </div>
           ))}
         </div>
