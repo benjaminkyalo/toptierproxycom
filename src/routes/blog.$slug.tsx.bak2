@@ -5,7 +5,6 @@ import { LongFormSection } from "@/components/long-form";
 import { getBlogPost, blogPosts } from "@/data/blog";
 import { providers } from "@/data/providers";
 import { ProviderLogo } from "@/components/provider-logo";
-import { LinkedParagraph } from "@/components/linked-paragraph";
 import { Calendar, Clock, User, ListOrdered } from "lucide-react";
 
 
@@ -194,7 +193,7 @@ function BlogPostPage() {
             {post.body.map((section, idx) => (
               <div key={section.heading}>
                 <h2 id={slugifyHeading(section.heading)}>{section.heading}</h2>
-                {section.paragraphs.map((p, i) => <LinkedParagraph key={i} text={p} />)}
+                {section.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
                 {section.list && <ul>{section.list.map((l) => <li key={l}>{l}</li>)}</ul>}
 
                 {/* Mid-article inline affiliate CTA */}
