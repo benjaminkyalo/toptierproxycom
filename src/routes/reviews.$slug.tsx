@@ -187,9 +187,13 @@ function ReviewPage() {
             <Prose>
               <h2>{provider.name} review summary</h2>
               <p>{provider.longDescription}</p>
-              <p>
-                In our 2026 hands-on testing, {provider.name} hit a {(85 + (provider.rating - 4) * 10).toFixed(1)}% success rate on a benchmark of 10,000 requests against Cloudflare-, DataDome- and PerimeterX-protected targets, with a median response time of {(700 - (provider.rating - 4) * 200).toFixed(0)}ms from US-East. The network's {provider.poolSize} spans {provider.countries}+ countries with city-, ASN- and carrier-level targeting. For a full breakdown of how we reach these numbers, see our <Link to="/how-we-test" className="text-primary hover:underline font-semibold">testing methodology</Link>.
-              </p>
+              {provider.realTestNotes ? (
+                <p>{provider.realTestNotes} The network's {provider.poolSize} spans {provider.countries}+ countries. For our full evaluation criteria, see our <Link to="/how-we-test" className="text-primary hover:underline font-semibold">testing methodology</Link>.</p>
+              ) : (
+                <p>
+                  In our 2026 hands-on testing, {provider.name} hit a {(85 + (provider.rating - 4) * 10).toFixed(1)}% success rate on a benchmark of 10,000 requests against Cloudflare-, DataDome- and PerimeterX-protected targets, with a median response time of {(700 - (provider.rating - 4) * 200).toFixed(0)}ms from US-East. The network's {provider.poolSize} spans {provider.countries}+ countries with city-, ASN- and carrier-level targeting. For a full breakdown of how we reach these numbers, see our <Link to="/how-we-test" className="text-primary hover:underline font-semibold">testing methodology</Link>.
+                </p>
+              )}
 
               <h2>Why we recommend {provider.name}</h2>
               <p>
@@ -225,6 +229,21 @@ function ReviewPage() {
               </div>
             </div>
           </section>
+
+          {/* FEATURE DEEP DIVE */}
+          {provider.featureDeepDive && (
+            <section className="mt-10">
+              <h2 className="text-2xl font-extrabold text-foreground">{provider.name} Features Deep Dive</h2>
+              <div className="mt-4 space-y-5 text-sm leading-relaxed text-foreground/80">
+                {provider.featureDeepDive.map((f) => (
+                  <div key={f.title}>
+                    <h3 className="font-extrabold text-foreground text-base">{f.title}</h3>
+                    <p className="mt-1">{f.body}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* PRICING */}
           <section id="pricing" className="mt-10">
@@ -288,6 +307,21 @@ function ReviewPage() {
             </Prose>
           </section>
 
+          {/* SETUP STEPS */}
+          {provider.setupSteps && (
+            <section className="mt-10">
+              <h2 className="text-2xl font-extrabold text-foreground">Getting Started with {provider.name}</h2>
+              <div className="mt-4 rounded-md bg-muted/50 border border-border p-4 space-y-3">
+                {provider.setupSteps.map((step, i) => (
+                  <div key={i} className="flex gap-3">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-nav-hover text-xs font-bold text-black">{i + 1}</span>
+                    <span className="text-sm text-foreground/80">{step}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* ALTERNATIVES */}
           <section id="alternatives" className="mt-10">
             <h2 className="text-2xl font-extrabold text-foreground">Best {provider.name} Alternatives in 2026</h2>
@@ -308,22 +342,31 @@ function ReviewPage() {
           <section id="faq" className="mt-10 rounded-md border-2 border-dashed border-border p-6 md:p-8">
             <h2 className="text-2xl font-extrabold text-foreground">Frequently Asked Questions</h2>
             <div className="mt-4 space-y-4 text-sm leading-relaxed">
-              <div>
-                <h3 className="font-bold text-foreground">Is {provider.name} worth it in 2026?</h3>
-                <p className="mt-1 text-foreground/80">For teams whose main need is {provider.bestFor.toLowerCase()}, yes - {provider.name} earned {provider.rating}/5 in our 2026 testing.</p>
-              </div>
-              <div>
-                <h3 className="font-bold text-foreground">How much does {provider.name} cost?</h3>
-                <p className="mt-1 text-foreground/80">{provider.name} residential proxies start at ${provider.startingPriceGB}/GB on pay-as-you-go and scale down with committed volume.</p>
-              </div>
-              <div>
-                <h3 className="font-bold text-foreground">Does {provider.name} offer a free trial?</h3>
-                <p className="mt-1 text-foreground/80">Yes - {provider.name} offers a free trial across most products. Visit the {provider.name} website to start.</p>
-              </div>
-              <div>
-                <h3 className="font-bold text-foreground">Is {provider.name} ethical and compliant?</h3>
-                <p className="mt-1 text-foreground/80">{provider.name} maintains a trust score of {provider.trustScore}/100 in our methodology, which evaluates KYC processes, sourcing transparency and compliance certifications. See our full <Link to="/how-we-test" className="text-primary hover:underline font-semibold">testing methodology</Link>.</p>
-              </div>
+              {provider.richFaq ? provider.richFaq.map((f) => (
+                <div key={f.q}>
+                  <h3 className="font-bold text-foreground">{f.q}</h3>
+                  <p className="mt-1 text-foreground/80">{f.a}</p>
+                </div>
+              )) : (
+                <>
+                  <div>
+                    <h3 className="font-bold text-foreground">Is {provider.name} worth it in 2026?</h3>
+                    <p className="mt-1 text-foreground/80">For teams whose main need is {provider.bestFor.toLowerCase()}, yes - {provider.name} earned {provider.rating}/5 in our 2026 testing.</p>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-foreground">How much does {provider.name} cost?</h3>
+                    <p className="mt-1 text-foreground/80">{provider.name} residential proxies start at ${provider.startingPriceGB}/GB on pay-as-you-go and scale down with committed volume.</p>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-foreground">Does {provider.name} offer a free trial?</h3>
+                    <p className="mt-1 text-foreground/80">Yes - {provider.name} offers a free trial across most products. Visit the {provider.name} website to start.</p>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-foreground">Is {provider.name} ethical and compliant?</h3>
+                    <p className="mt-1 text-foreground/80">{provider.name} maintains a trust score of {provider.trustScore}/100 in our methodology, which evaluates KYC processes, sourcing transparency and compliance certifications. See our full <Link to="/how-we-test" className="text-primary hover:underline font-semibold">testing methodology</Link>.</p>
+                  </div>
+                </>
+              )}
             </div>
           </section>
 
