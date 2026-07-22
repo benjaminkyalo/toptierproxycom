@@ -19,6 +19,7 @@ import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as MultiloginReviewRouteImport } from './routes/multilogin-review'
 import { Route as HowWeTestRouteImport } from './routes/how-we-test'
+import { Route as GologinReviewRouteImport } from './routes/gologin-review'
 import { Route as DisclaimersRouteImport } from './routes/disclaimers'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CompareRouteImport } from './routes/compare'
@@ -89,6 +90,11 @@ const MultiloginReviewRoute = MultiloginReviewRouteImport.update({
 const HowWeTestRoute = HowWeTestRouteImport.update({
   id: '/how-we-test',
   path: '/how-we-test',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GologinReviewRoute = GologinReviewRouteImport.update({
+  id: '/gologin-review',
+  path: '/gologin-review',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DisclaimersRoute = DisclaimersRouteImport.update({
@@ -204,6 +210,7 @@ export interface FileRoutesByFullPath {
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/disclaimers': typeof DisclaimersRoute
+  '/gologin-review': typeof GologinReviewRoute
   '/how-we-test': typeof HowWeTestRoute
   '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
@@ -237,6 +244,7 @@ export interface FileRoutesByTo {
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/disclaimers': typeof DisclaimersRoute
+  '/gologin-review': typeof GologinReviewRoute
   '/how-we-test': typeof HowWeTestRoute
   '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
@@ -271,6 +279,7 @@ export interface FileRoutesById {
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/disclaimers': typeof DisclaimersRoute
+  '/gologin-review': typeof GologinReviewRoute
   '/how-we-test': typeof HowWeTestRoute
   '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
@@ -306,6 +315,7 @@ export interface FileRouteTypes {
     | '/compare'
     | '/contact'
     | '/disclaimers'
+    | '/gologin-review'
     | '/how-we-test'
     | '/multilogin-review'
     | '/privacy'
@@ -339,6 +349,7 @@ export interface FileRouteTypes {
     | '/compare'
     | '/contact'
     | '/disclaimers'
+    | '/gologin-review'
     | '/how-we-test'
     | '/multilogin-review'
     | '/privacy'
@@ -372,6 +383,7 @@ export interface FileRouteTypes {
     | '/compare'
     | '/contact'
     | '/disclaimers'
+    | '/gologin-review'
     | '/how-we-test'
     | '/multilogin-review'
     | '/privacy'
@@ -406,6 +418,7 @@ export interface RootRouteChildren {
   CompareRoute: typeof CompareRoute
   ContactRoute: typeof ContactRoute
   DisclaimersRoute: typeof DisclaimersRoute
+  GologinReviewRoute: typeof GologinReviewRoute
   HowWeTestRoute: typeof HowWeTestRoute
   MultiloginReviewRoute: typeof MultiloginReviewRoute
   PrivacyRoute: typeof PrivacyRoute
@@ -502,6 +515,13 @@ declare module '@tanstack/react-router' {
       path: '/how-we-test'
       fullPath: '/how-we-test'
       preLoaderRoute: typeof HowWeTestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gologin-review': {
+      id: '/gologin-review'
+      path: '/gologin-review'
+      fullPath: '/gologin-review'
+      preLoaderRoute: typeof GologinReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/disclaimers': {
@@ -673,6 +693,7 @@ const rootRouteChildren: RootRouteChildren = {
   CompareRoute: CompareRoute,
   ContactRoute: ContactRoute,
   DisclaimersRoute: DisclaimersRoute,
+  GologinReviewRoute: GologinReviewRoute,
   HowWeTestRoute: HowWeTestRoute,
   MultiloginReviewRoute: MultiloginReviewRoute,
   PrivacyRoute: PrivacyRoute,
