@@ -27,13 +27,13 @@ const sections: Section[] = [
       { label: "Best VPN Deals", href: "/vpn-deals" },
       { label: "ExpressVPN", href: "/" },
       { label: "Surfshark", href: "/" },
-      { label: "Multilogin", href: "/multilogin-review" },
-      { label: "GoLogin", href: "/gologin-review" },
+      { label: "Multilogin", href: "#" },
+      { label: "GoLogin", href: "#" },
       { label: "AdsPower", href: "#" },
-      { label: "2Captcha", href: "/2captcha-review" },
+      { label: "2Captcha", href: "#" },
       { label: "CapSolver", href: "#" },
       { label: "AntiCaptcha", href: "#" },
-      { label: "Scrapy", href: "/scrapy-review" },
+      { label: "Scrapy", href: "#" },
       { label: "Playwright", href: "#" },
       { label: "Puppeteer", href: "#" },
       { label: "ScraperAPI", href: "/scraper-api" },
@@ -190,7 +190,7 @@ function FooterLink({ item }: { item: LinkItem }) {
   }
   return (
     <span className="block">
-      <a href={item.href} className={cls} target="_blank" rel="nofollow noopener">
+      <a href={item.href} className={cls} rel="nofollow noopener">
         {item.label}
         {underline}
       </a>
