@@ -31,6 +31,8 @@ export interface Provider {
   featureDeepDive?: { title: string; body: string }[]; // real feature breakdown
   setupSteps?: string[]; // real getting-started steps
   richFaq?: { q: string; a: string }[]; // provider-specific FAQ, overrides generic FAQ when present
+  richRatings?: { label: string; score: number }[]; // sub-metric breakdown, only shown when we have real editorial basis for it
+  richRatings?: { label: string; score: number }[]; // sub-metric breakdown, only shown when we have real editorial basis for it
   trustScore: number; // 0-100
   badge?: string; // e.g. "Editor's Choice"
 }
@@ -89,6 +91,14 @@ export const providers: Provider[] = [
       { q: "What is the difference between Bright Data's proxies and its Web Unlocker?", a: "Raw proxies give you an IP address and you handle fingerprinting, retries and CAPTCHA yourself. The Web Unlocker is a managed layer that handles all of that automatically and is billed per successful request rather than per GB - it costs more per request but can be cheaper overall on heavily protected targets where raw proxies would need many retries." },
       { q: "Does Bright Data offer a free trial?", a: "Yes, a free trial is available on all proxy types with no credit card required at signup, and trial traffic is visible in your dashboard without counting toward billing." },
     ],
+    richRatings: [
+      { label: "Network size and coverage", score: 5 },
+      { label: "Product breadth", score: 5 },
+      { label: "Compliance and trust", score: 5 },
+      { label: "Value for money", score: 3.5 },
+      { label: "Ease of onboarding", score: 4 },
+      { label: "Overall", score: 4.9 },
+    ],
   },
   {
     slug: "oxylabs",
@@ -142,6 +152,14 @@ export const providers: Provider[] = [
       { q: "Is Oxylabs better than Bright Data?", a: "Both are premium, enterprise-grade providers with comparable pricing structures and compliance postures. Oxylabs' Web Scraper API tiers and OxyCopilot AI tooling are a differentiator for teams that want managed scraping over raw proxies; Bright Data's broader product catalog (Scraping Browser, Dataset Marketplace) suits teams that want one vendor for everything. Independent Proxyway benchmarks put both near the top of the market." },
       { q: "Does Oxylabs offer a free trial?", a: "Yes - a free trial is available across proxy services, the Web Scraper API, OxyCopilot and AI Studio, including up to 2,000 free results on the Scraper API with no expiration." },
       { q: "What is the minimum commitment for Oxylabs?", a: "The Starter self-serve plan is $30/month for 5GB with no long-term contract. Higher tiers (Advanced, Corporate) are still monthly plans rather than annual contracts, though the best per-GB rates require committing to higher monthly volume." },
+    ],
+    richRatings: [
+      { label: "Performance (Proxyway 2025)", score: 5 },
+      { label: "Scraper API quality", score: 4.5 },
+      { label: "Support and account management", score: 5 },
+      { label: "Value for money", score: 3.5 },
+      { label: "Ease of onboarding", score: 4 },
+      { label: "Overall", score: 4.8 },
     ],
   },
   {

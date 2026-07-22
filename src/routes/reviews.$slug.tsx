@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Star, Check, X, ExternalLink, Award, Globe2, Server, DollarSign, ShieldCheck } from "lucide-react";
 import { PageShell, Prose } from "@/components/page-shell";
 import { providers, getProvider } from "@/data/providers";
+import { LinkedParagraph } from "@/components/linked-paragraph";
 
 export const Route = createFileRoute("/reviews/$slug")({
   loader: ({ params }) => {
@@ -116,6 +117,18 @@ function estimateTiers(startingPriceGB: number) {
   ];
 }
 
+function RatingBar({ label, score }: { label: string; score: number }) {
+  return (
+    <div className="flex items-center gap-3">
+      <span className="w-52 text-sm text-white/70">{label}</span>
+      <div className="flex-1 h-2 rounded-full bg-white/10 overflow-hidden">
+        <div className="h-full rounded-full bg-nav-hover" style={{ width: `${(score / 5) * 100}%` }} />
+      </div>
+      <span className="w-8 text-sm font-bold text-right text-white">{score}</span>
+    </div>
+  );
+}
+
 function ReviewPage() {
   const { provider } = Route.useLoaderData() as { provider: NonNullable<ReturnType<typeof getProvider>> };
   const alternatives = providers.filter((p) => p.slug !== provider.slug).sort((a, b) => b.rating - a.rating).slice(0, 4);
@@ -188,7 +201,10 @@ function ReviewPage() {
               <h2>{provider.name} review summary</h2>
               <p>{provider.longDescription}</p>
               {provider.realTestNotes ? (
-                <p>{provider.realTestNotes} The network's {provider.poolSize} spans {provider.countries}+ countries. For our full evaluation criteria, see our <Link to="/how-we-test" className="text-primary hover:underline font-semibold">testing methodology</Link>.</p>
+                <>
+                  <LinkedParagraph text={`${provider.realTestNotes} The network's ${provider.poolSize} spans ${provider.countries}+ countries.`} />
+                  <p>For our full evaluation criteria, see our <Link to="/how-we-test" className="text-primary hover:underline font-semibold">testing methodology</Link>.</p>
+                </>
               ) : (
                 <p>
                   In our 2026 hands-on testing, {provider.name} hit a {(85 + (provider.rating - 4) * 10).toFixed(1)}% success rate on a benchmark of 10,000 requests against Cloudflare-, DataDome- and PerimeterX-protected targets, with a median response time of {(700 - (provider.rating - 4) * 200).toFixed(0)}ms from US-East. The network's {provider.poolSize} spans {provider.countries}+ countries with city-, ASN- and carrier-level targeting. For a full breakdown of how we reach these numbers, see our <Link to="/how-we-test" className="text-primary hover:underline font-semibold">testing methodology</Link>.
@@ -238,11 +254,25 @@ function ReviewPage() {
                 {provider.featureDeepDive.map((f) => (
                   <div key={f.title}>
                     <h3 className="font-extrabold text-foreground text-base">{f.title}</h3>
-                    <p className="mt-1">{f.body}</p>
+                    <LinkedParagraph text={f.body} />
                   </div>
                 ))}
               </div>
             </section>
+          )}
+
+          {/* CTA: After feature deep dive */}
+          {provider.featureDeepDive && (
+            <div className="mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-md border border-nav-hover/30 bg-nav-hover/5 px-5 py-4">
+              <div>
+                <div className="text-sm font-extrabold text-foreground">Like what you see in {provider.name}'s feature set?</div>
+                <div className="text-xs text-foreground/60 mt-0.5">See the full pricing breakdown below, or jump straight to signup.</div>
+              </div>
+              <a href={`/go/${provider.slug}`} target="_blank" rel="noopener noreferrer sponsored nofollow"
+                className="shrink-0 rounded-md bg-nav-hover px-5 py-2 text-sm font-bold text-black hover:opacity-90 transition-opacity">
+                Visit {provider.name} -&gt;
+              </a>
+            </div>
           )}
 
           {/* PRICING */}
@@ -376,6 +406,15 @@ function ReviewPage() {
             <p className="mt-3 text-sm text-white/80 leading-relaxed">
               {provider.shortDescription} For most users in its target segment, {provider.name} represents one of the strongest options available in 2026. We rate it <strong>{provider.rating}/5</strong>.
             </p>
+            {provider.richRatings && (
+              <div className="mt-6 space-y-3">
+                {provider.richRatings.map((r, i, arr) => (
+                  <div key={r.label} className={i === arr.length - 1 ? "pt-2 border-t border-white/10" : ""}>
+                    <RatingBar label={r.label} score={r.score} />
+                  </div>
+                ))}
+              </div>
+            )}
             <a href={`/go/${provider.slug}`} target="_blank" rel="noopener noreferrer sponsored nofollow"
               className="mt-6 inline-flex items-center gap-2 rounded-md bg-nav-hover px-8 py-3 text-sm font-bold text-black hover:opacity-90 transition-opacity">
               Get {provider.name} <ExternalLink className="h-4 w-4" />
