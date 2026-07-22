@@ -26,7 +26,6 @@ export interface Provider {
   shortDescription: string;
   longDescription: string;
   visitUrl: string;
-  pricingTiers?: { plan: string; bandwidth: string; pricePerGB: string; bestFor: string }[]; // real published pricing, when we have it
   trustScore: number; // 0-100
   badge?: string; // e.g. "Editor's Choice"
 }
@@ -300,9 +299,9 @@ export const providers: Provider[] = [
     name: "Infatica",
     tagline: "Ethically-sourced peer network",
     rating: 4.2,
-    startingPriceGB: 4,
-    poolSize: "40M+ IPs",
-    countries: 195,
+    startingPriceGB: 3.6,
+    poolSize: "15M+ IPs",
+    countries: 100,
     bestFor: "Mid-budget residential needs",
     proxyTypes: ["residential", "datacenter", "isp", "mobile", "scraping-api"],
     founded: 2019,
@@ -310,22 +309,15 @@ export const providers: Provider[] = [
     pros: [
       "Transparent SDK-based sourcing",
       "Pay-as-you-go option",
-      "195+ country coverage",
+      "Decent global coverage",
       "Scraper API included",
     ],
     cons: ["Pool smaller than market leaders", "Speeds vary by region"],
     shortDescription:
-      "Infatica runs an opt-in peer network with transparent sourcing and competitive mid-tier pricing across 195+ countries.",
+      "Infatica runs an opt-in peer network with transparent sourcing and competitive mid-tier pricing.",
     longDescription:
-      "Infatica's residential pool is sourced via an opt-in SDK with clear user disclosure, spans 40M+ IPs across 195+ countries, and its pricing sits comfortably in the mid-tier. A solid all-rounder for teams that need decent scale without enterprise budgets.",
+      "Infatica's residential pool is sourced via an opt-in SDK with clear user disclosure, and its pricing sits comfortably in the mid-tier. A solid all-rounder for teams that need decent scale without enterprise budgets.",
     visitUrl: "https://dashboard.infatica.io/aff.php?aff=845",
-    pricingTiers: [
-      { plan: "Pay-as-you-go", bandwidth: "From 1 GB", pricePerGB: "$4.00", bestFor: "Testing & small projects" },
-      { plan: "Starter", bandwidth: "25 GB / mo", pricePerGB: "$3.84", bestFor: "Solo developers ($96 total)" },
-      { plan: "Business", bandwidth: "100 GB / mo", pricePerGB: "$3.60", bestFor: "Growing teams ($360 total)" },
-      { plan: "Scale", bandwidth: "1,000 GB / mo", pricePerGB: "$2.60", bestFor: "High-volume ($2,600 total)" },
-      { plan: "Custom", bandwidth: "Upon request", pricePerGB: "Contact sales", bestFor: "Enterprise & SLA needs" },
-    ],
     trustScore: 84,
   },
   {

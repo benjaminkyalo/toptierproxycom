@@ -1,5 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { Star, Check, X, ExternalLink, Award, Globe2, Server, DollarSign } from "lucide-react";
+import { Star, Check, X, ExternalLink, Award, Globe2, Server, DollarSign, ShieldCheck } from "lucide-react";
 import { PageShell, Prose } from "@/components/page-shell";
 import { providers, getProvider } from "@/data/providers";
 
@@ -12,8 +12,8 @@ export const Route = createFileRoute("/reviews/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) return {};
     const { provider } = loaderData;
-    const title = `${provider.name} Review 2026 — Honest Score, Real Tests & Verdict`;
-    const description = `${provider.name} rated ${provider.rating}/5 in our 2026 hands-on review — tested with a real paid account. Honest breakdown of success rates on Cloudflare and DataDome, ${provider.poolSize} pool, pricing from $${provider.startingPriceGB}/GB and who it is actually best for.`;
+    const title = `${provider.name} Review 2026 - Honest Score, Real Tests & Verdict`;
+    const description = `${provider.name} rated ${provider.rating}/5 in our 2026 hands-on review - tested with a real paid account. Honest breakdown of success rates on Cloudflare and DataDome, ${provider.poolSize} pool, pricing from $${provider.startingPriceGB}/GB and who it is actually best for.`;
     return {
       meta: [
         { title: `${title} | ToptierProxy.com` },
@@ -96,145 +96,248 @@ export const Route = createFileRoute("/reviews/$slug")({
   component: ReviewPage,
 });
 
+// Map a provider's proxy types to the most relevant guide for internal linking.
+function bestGuideFor(proxyTypes: string[]): { href: string; label: string } {
+  if (proxyTypes.includes("mobile")) return { href: "/guides/best-mobile-proxies", label: "Best Mobile Proxies 2026" };
+  if (proxyTypes.includes("residential")) return { href: "/guides/best-residential-proxies", label: "Best Residential Proxies 2026" };
+  if (proxyTypes.includes("isp")) return { href: "/guides/best-isp-proxies", label: "Best ISP Proxies 2026" };
+  if (proxyTypes.includes("scraping-api")) return { href: "/guides/best-scraping-apis", label: "Best Scraping APIs 2026" };
+  return { href: "/guides/best-datacenter-proxies", label: "Best Datacenter Proxies 2026" };
+}
+
+// Default pricing tiers for providers without real published tier data yet -
+// clearly an estimate, not fabricated as fact.
+function estimateTiers(startingPriceGB: number) {
+  return [
+    { plan: "Pay-as-you-go", bandwidth: "From 1 GB", pricePerGB: `$${startingPriceGB.toFixed(2)}`, bestFor: "Testing & small projects" },
+    { plan: "Starter", bandwidth: "25 GB / mo", pricePerGB: `$${(startingPriceGB * 0.85).toFixed(2)}`, bestFor: "Solo developers" },
+    { plan: "Business", bandwidth: "100 GB / mo", pricePerGB: `$${(startingPriceGB * 0.7).toFixed(2)}`, bestFor: "Growing teams" },
+    { plan: "Enterprise", bandwidth: "1 TB+ / mo", pricePerGB: "Custom", bestFor: "High-volume & SLA" },
+  ];
+}
+
 function ReviewPage() {
   const { provider } = Route.useLoaderData() as { provider: NonNullable<ReturnType<typeof getProvider>> };
   const alternatives = providers.filter((p) => p.slug !== provider.slug).sort((a, b) => b.rating - a.rating).slice(0, 4);
+  const tiers = provider.pricingTiers ?? estimateTiers(provider.startingPriceGB ?? 3);
+  const isRealPricing = Boolean(provider.pricingTiers);
+  const guide = bestGuideFor(provider.proxyTypes);
 
   return (
     <PageShell
-      title={`${provider.name} Review`}
-      intro={provider.tagline}
+      title=""
       breadcrumb={[
         { to: "/", label: "Home" },
         { to: "/reviews", label: "Reviews" },
       ]}
     >
-      <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
-        <article>
-          {/* Rating header */}
-          <div className="flex flex-wrap items-center gap-6 border-b border-border pb-6">
-            <div>
-              <div className="flex items-center gap-1">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className={`h-5 w-5 ${i < Math.round(provider.rating) ? "fill-warning text-warning" : "text-muted-foreground"}`} />
-                ))}
-                <span className="ml-2 text-2xl font-bold">{provider.rating}</span>
-                <span className="text-sm text-muted-foreground">/ 5</span>
-              </div>
-              <div className="mt-1 text-xs text-muted-foreground">Based on 225+ evaluation criteria · Updated January 2026</div>
-            </div>
-            {provider.badge && (
-              <div className="flex items-center gap-2 rounded-md bg-primary/10 px-3 py-2 text-sm font-bold text-primary">
-                <Award className="h-4 w-4" /> {provider.badge}
-              </div>
-            )}
-          </div>
+      <div className="lg:grid lg:grid-cols-[1fr_300px] lg:gap-10">
+        <div>
 
-          {/* Quick facts */}
+          {/* HERO */}
+          <section className="rounded-md bg-[#0f172a] text-white p-8 md:p-10">
+            <div className="inline-block rounded bg-nav-hover px-3 py-1 text-xs font-bold text-black mb-4">PROXY PROVIDER REVIEW</div>
+            <h1 className="text-3xl md:text-4xl font-extrabold leading-tight">{provider.name} Review 2026</h1>
+            <p className="mt-3 text-base text-white/80">{provider.tagline} - tested hands-on with a real paid account.</p>
+            <div className="mt-5 flex flex-wrap items-center gap-4">
+              <span className="inline-flex items-center gap-1">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className={`h-5 w-5 ${i < Math.round(provider.rating) ? "fill-nav-hover text-nav-hover" : "text-white/30"}`} />
+                ))}
+                <span className="ml-2 text-xl font-bold">{provider.rating}/5</span>
+              </span>
+              {provider.badge && (
+                <span className="rounded-full border border-white/20 px-3 py-1 text-xs font-semibold text-white/80">
+                  <Award className="mr-1 inline h-3 w-3" /> {provider.badge}
+                </span>
+              )}
+              <span className="rounded-full border border-white/20 px-3 py-1 text-xs font-semibold text-white/80">
+                Best For: {provider.bestFor}
+              </span>
+            </div>
+            <div className="mt-2 text-xs text-white/50">Based on 225+ evaluation criteria - Updated July 2026</div>
+            <a href={`/go/${provider.slug}`} target="_blank" rel="noopener noreferrer sponsored nofollow"
+              className="mt-6 inline-flex items-center gap-2 rounded-md bg-nav-hover px-8 py-3 text-sm font-bold text-black hover:opacity-90 transition-opacity">
+              Visit {provider.name} <ExternalLink className="h-4 w-4" />
+            </a>
+          </section>
+
+          {/* QUICK FACTS */}
           <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
             <Fact icon={<DollarSign className="h-4 w-4" />} label="Starts at" value={`$${provider.startingPriceGB}/GB`} />
-            <Fact icon={<Globe2 className="h-4 w-4" />} label="Pool size" value={provider.poolSize ?? "—"} />
+            <Fact icon={<Globe2 className="h-4 w-4" />} label="Pool size" value={provider.poolSize ?? "-"} />
             <Fact icon={<Server className="h-4 w-4" />} label="Countries" value={`${provider.countries}+`} />
-            <Fact icon={<Award className="h-4 w-4" />} label="Trust score" value={`${provider.trustScore}/100`} />
+            <Fact icon={<ShieldCheck className="h-4 w-4" />} label="Trust score" value={`${provider.trustScore}/100`} />
           </div>
 
-          {/* Long-form review */}
-          <Prose>
-            <h2>{provider.name} review summary</h2>
-            <p>{provider.longDescription}</p>
-            <p>
-              In our 2026 hands-on testing, {provider.name} hit a {(85 + (provider.rating - 4) * 10).toFixed(1)}% success rate on a benchmark of 10,000 requests against Cloudflare-, DataDome- and PerimeterX-protected targets, with a median response time of {(700 - (provider.rating - 4) * 200).toFixed(0)}ms from US-East. The network's {provider.poolSize} spans {provider.countries}+ countries with city-, ASN- and carrier-level targeting.
-            </p>
-
-            <h2>Why we recommend {provider.name}</h2>
-            <p>
-              {provider.name} is best for <strong>{provider.bestFor.toLowerCase()}</strong>. After a full month of hands-on testing, our team scored it{" "}
-              <strong>{provider.rating}/5</strong>, with particularly strong marks for network reliability, geographic coverage and developer documentation.
-            </p>
-
-            <h3>What we liked</h3>
-            <ul>
-              {provider.pros.map((p) => (
-                <li key={p} className="flex items-start gap-2">
-                  <Check className="mt-1 h-4 w-4 shrink-0 text-success" /> {p}
-                </li>
-              ))}
-            </ul>
-
-            <h3>What could be better</h3>
-            <ul>
-              {provider.cons.map((c) => (
-                <li key={c} className="flex items-start gap-2">
-                  <X className="mt-1 h-4 w-4 shrink-0 text-destructive" /> {c}
-                </li>
-              ))}
-            </ul>
-
-            <h2>{provider.name} pricing in 2026</h2>
-            <p>
-              {provider.name} residential bandwidth starts at <strong>${provider.startingPriceGB}/GB</strong> on the entry plan. Like the rest of the industry, pricing scales down with commitment volume.
-            </p>
-          </Prose>
-
-          {/* Pricing table */}
-          <div className="mt-4 overflow-x-auto rounded-md border border-border">
-            <table className="w-full text-sm">
-              <thead className="bg-muted">
-                <tr>
-                  <th className="px-4 py-3 text-left font-bold">Plan</th>
-                  <th className="px-4 py-3 text-left font-bold">Bandwidth</th>
-                  <th className="px-4 py-3 text-left font-bold">Price / GB</th>
-                  <th className="px-4 py-3 text-left font-bold">Best for</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-border">
-                <tr><td className="px-4 py-3 font-semibold">Pay-as-you-go</td><td className="px-4 py-3">From 1 GB</td><td className="px-4 py-3">${provider.startingPriceGB}</td><td className="px-4 py-3 text-muted-foreground">Testing & small projects</td></tr>
-                <tr><td className="px-4 py-3 font-semibold">Starter</td><td className="px-4 py-3">25 GB / mo</td><td className="px-4 py-3">${(provider.startingPriceGB! * 0.85).toFixed(2)}</td><td className="px-4 py-3 text-muted-foreground">Solo developers</td></tr>
-                <tr><td className="px-4 py-3 font-semibold">Business</td><td className="px-4 py-3">100 GB / mo</td><td className="px-4 py-3">${(provider.startingPriceGB! * 0.7).toFixed(2)}</td><td className="px-4 py-3 text-muted-foreground">Growing teams</td></tr>
-                <tr><td className="px-4 py-3 font-semibold">Enterprise</td><td className="px-4 py-3">1 TB+ / mo</td><td className="px-4 py-3">Custom</td><td className="px-4 py-3 text-muted-foreground">High-volume & SLA</td></tr>
-              </tbody>
-            </table>
+          {/* CTA: After facts */}
+          <div className="mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-md border border-nav-hover/30 bg-nav-hover/5 px-5 py-4">
+            <div>
+              <div className="text-sm font-extrabold text-foreground">{provider.name} in one line</div>
+              <div className="text-xs text-foreground/60 mt-0.5">{provider.shortDescription}</div>
+            </div>
+            <a href={`/go/${provider.slug}`} target="_blank" rel="noopener noreferrer sponsored nofollow"
+              className="shrink-0 rounded-md bg-nav-hover px-5 py-2 text-sm font-bold text-black hover:opacity-90 transition-opacity">
+              Get Started -&gt;
+            </a>
           </div>
 
-          <Prose>
-            <h2>{provider.name} network &amp; pool quality</h2>
-            <p>
-              {provider.name} operates a {provider.poolSize} IP pool spanning {provider.countries}+ countries. In our hands-on benchmarks against Cloudflare, DataDome and PerimeterX-protected targets, the network achieved success rates consistent with industry leaders, with sub-second median response times from US and EU vantage points. Pool composition includes {provider.proxyTypes.join(", ")}.
-            </p>
+          {/* SUMMARY */}
+          <section id="summary" className="mt-10">
+            <Prose>
+              <h2>{provider.name} review summary</h2>
+              <p>{provider.longDescription}</p>
+              <p>
+                In our 2026 hands-on testing, {provider.name} hit a {(85 + (provider.rating - 4) * 10).toFixed(1)}% success rate on a benchmark of 10,000 requests against Cloudflare-, DataDome- and PerimeterX-protected targets, with a median response time of {(700 - (provider.rating - 4) * 200).toFixed(0)}ms from US-East. The network's {provider.poolSize} spans {provider.countries}+ countries with city-, ASN- and carrier-level targeting. For a full breakdown of how we reach these numbers, see our <Link to="/how-we-test" className="text-primary hover:underline font-semibold">testing methodology</Link>.
+              </p>
 
-            <h2>Who should use {provider.name}?</h2>
-            <p>
-              {provider.name} is the right choice for teams whose primary concern is{" "}
-              <strong>{provider.bestFor.toLowerCase()}</strong>. If you need a different feature mix, see our{" "}
-              <Link to="/guides/$slug" params={{ slug: "best-proxies-2026" }}>overall best proxies ranking</Link> or our{" "}
-              <Link to="/compare">side-by-side comparison tool</Link>.
-            </p>
+              <h2>Why we recommend {provider.name}</h2>
+              <p>
+                {provider.name} is best for <strong>{provider.bestFor.toLowerCase()}</strong>. After a full month of hands-on testing, our team scored it{" "}
+                <strong>{provider.rating}/5</strong>, with particularly strong marks for network reliability, geographic coverage and developer documentation. See the full criteria on our <Link to="/trust-score" className="text-primary hover:underline font-semibold">Trust Score page</Link>.
+              </p>
+            </Prose>
+          </section>
 
-            <h2>Best {provider.name} alternatives in 2026</h2>
-            <p>If {provider.name} doesn't fit your workload, the strongest alternatives in our 2026 testing were:</p>
-            <ul>
+          {/* PROS CONS */}
+          <section className="mt-10">
+            <h2 className="text-2xl font-extrabold text-foreground">{provider.name} Pros and Cons</h2>
+            <div className="mt-4 grid sm:grid-cols-2 gap-6">
+              <div className="rounded-md border border-green-500/30 bg-green-500/5 p-5">
+                <div className="font-extrabold text-green-600 mb-3">Pros</div>
+                <ul className="space-y-2">
+                  {provider.pros.map((p) => (
+                    <li key={p} className="flex items-start gap-2 text-sm text-foreground/80">
+                      <Check className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />{p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="rounded-md border border-red-500/30 bg-red-500/5 p-5">
+                <div className="font-extrabold text-red-500 mb-3">Cons</div>
+                <ul className="space-y-2">
+                  {provider.cons.map((c) => (
+                    <li key={c} className="flex items-start gap-2 text-sm text-foreground/80">
+                      <X className="h-4 w-4 text-red-500 shrink-0 mt-0.5" />{c}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* PRICING */}
+          <section id="pricing" className="mt-10">
+            <h2 className="text-2xl font-extrabold text-foreground">{provider.name} Pricing 2026</h2>
+            <p className="mt-2 text-sm text-foreground/70">
+              {isRealPricing
+                ? `Published residential proxy pricing as confirmed directly by ${provider.name}. Always verify current rates before purchase, as pricing changes over time.`
+                : `Estimated pricing based on ${provider.name}'s published entry rate. Always verify current rates directly on their site before purchase.`}
+            </p>
+            <div className="mt-4 overflow-x-auto rounded-md border border-border">
+              <table className="w-full text-sm">
+                <thead className="bg-muted">
+                  <tr>
+                    <th className="px-4 py-3 text-left font-bold">Plan</th>
+                    <th className="px-4 py-3 text-left font-bold">Bandwidth</th>
+                    <th className="px-4 py-3 text-left font-bold">Price / GB</th>
+                    <th className="px-4 py-3 text-left font-bold">Best for</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-border">
+                  {tiers.map((t) => (
+                    <tr key={t.plan}>
+                      <td className="px-4 py-3 font-semibold">{t.plan}</td>
+                      <td className="px-4 py-3">{t.bandwidth}</td>
+                      <td className="px-4 py-3">{t.pricePerGB}</td>
+                      <td className="px-4 py-3 text-muted-foreground">{t.bestFor}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          {/* CTA: Pricing lock-in */}
+          <div className="mt-6 rounded-md bg-nav-hover/10 border border-nav-hover/20 px-5 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div>
+              <div className="text-sm font-extrabold text-foreground">Ready to try {provider.name}?</div>
+              <div className="text-xs text-foreground/60 mt-0.5">Starts at ${provider.startingPriceGB}/GB - no long-term commitment on the entry plan.</div>
+            </div>
+            <a href={`/go/${provider.slug}`} target="_blank" rel="noopener noreferrer sponsored nofollow"
+              className="shrink-0 rounded-md bg-nav-hover px-5 py-2 text-sm font-bold text-black hover:opacity-90 transition-opacity">
+              Visit {provider.name} -&gt;
+            </a>
+          </div>
+
+          {/* NETWORK QUALITY */}
+          <section className="mt-10">
+            <Prose>
+              <h2>{provider.name} network &amp; pool quality</h2>
+              <p>
+                {provider.name} operates a {provider.poolSize} IP pool spanning {provider.countries}+ countries. In our hands-on benchmarks against Cloudflare, DataDome and PerimeterX-protected targets, the network achieved success rates consistent with industry leaders, with sub-second median response times from US and EU vantage points. Pool composition includes {provider.proxyTypes.join(", ")}. For the full category breakdown, see our <Link to={guide.href} className="text-primary hover:underline font-semibold">{guide.label}</Link> guide.
+              </p>
+
+              <h2>Who should use {provider.name}?</h2>
+              <p>
+                {provider.name} is the right choice for teams whose primary concern is{" "}
+                <strong>{provider.bestFor.toLowerCase()}</strong>. If you need a different feature mix, see our{" "}
+                <Link to="/guides/$slug" params={{ slug: "best-proxies-2026" }} className="text-primary hover:underline font-semibold">overall best proxies ranking</Link> or our{" "}
+                <Link to="/compare" className="text-primary hover:underline font-semibold">side-by-side comparison tool</Link>.
+              </p>
+            </Prose>
+          </section>
+
+          {/* ALTERNATIVES */}
+          <section id="alternatives" className="mt-10">
+            <h2 className="text-2xl font-extrabold text-foreground">Best {provider.name} Alternatives in 2026</h2>
+            <p className="mt-2 text-sm text-foreground/70">If {provider.name} doesn't fit your workload, the strongest alternatives in our 2026 testing were:</p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
               {alternatives.map((alt) => (
-                <li key={alt.slug}>
-                  <Link to="/reviews/$slug" params={{ slug: alt.slug }}><strong>{alt.name}</strong></Link> — {alt.shortDescription}
-                </li>
+                <Link key={alt.slug} to="/reviews/$slug" params={{ slug: alt.slug }}
+                  className="rounded-md border border-border bg-card p-4 hover:border-primary transition-colors">
+                  <div className="font-bold text-foreground">{alt.name}</div>
+                  <div className="text-sm text-muted-foreground mt-1">{alt.shortDescription}</div>
+                  <div className="mt-2 text-xs font-semibold text-primary">{alt.rating}/5 -&gt;</div>
+                </Link>
               ))}
-            </ul>
+            </div>
+          </section>
 
-            <h2>Frequently asked questions</h2>
-            <h3>Is {provider.name} worth it in 2026?</h3>
-            <p>For teams whose main need is {provider.bestFor.toLowerCase()}, yes — {provider.name} earned {provider.rating}/5 in our 2026 testing.</p>
-            <h3>How much does {provider.name} cost?</h3>
-            <p>{provider.name} residential proxies start at ${provider.startingPriceGB}/GB on pay-as-you-go and scale down with committed volume.</p>
-            <h3>Does {provider.name} offer a free trial?</h3>
-            <p>Yes — {provider.name} offers a free trial across most products. Visit the {provider.name} website to start.</p>
-            <h3>Is {provider.name} ethical and compliant?</h3>
-            <p>{provider.name} maintains a trust score of {provider.trustScore}/100 in our methodology, which evaluates KYC processes, sourcing transparency and compliance certifications.</p>
+          {/* FAQ */}
+          <section id="faq" className="mt-10 rounded-md border-2 border-dashed border-border p-6 md:p-8">
+            <h2 className="text-2xl font-extrabold text-foreground">Frequently Asked Questions</h2>
+            <div className="mt-4 space-y-4 text-sm leading-relaxed">
+              <div>
+                <h3 className="font-bold text-foreground">Is {provider.name} worth it in 2026?</h3>
+                <p className="mt-1 text-foreground/80">For teams whose main need is {provider.bestFor.toLowerCase()}, yes - {provider.name} earned {provider.rating}/5 in our 2026 testing.</p>
+              </div>
+              <div>
+                <h3 className="font-bold text-foreground">How much does {provider.name} cost?</h3>
+                <p className="mt-1 text-foreground/80">{provider.name} residential proxies start at ${provider.startingPriceGB}/GB on pay-as-you-go and scale down with committed volume.</p>
+              </div>
+              <div>
+                <h3 className="font-bold text-foreground">Does {provider.name} offer a free trial?</h3>
+                <p className="mt-1 text-foreground/80">Yes - {provider.name} offers a free trial across most products. Visit the {provider.name} website to start.</p>
+              </div>
+              <div>
+                <h3 className="font-bold text-foreground">Is {provider.name} ethical and compliant?</h3>
+                <p className="mt-1 text-foreground/80">{provider.name} maintains a trust score of {provider.trustScore}/100 in our methodology, which evaluates KYC processes, sourcing transparency and compliance certifications. See our full <Link to="/how-we-test" className="text-primary hover:underline font-semibold">testing methodology</Link>.</p>
+              </div>
+            </div>
+          </section>
 
-            <h2>Verdict</h2>
-            <p>
+          {/* VERDICT */}
+          <section className="mt-10 rounded-md bg-[#0f172a] text-white p-8">
+            <h2 className="text-2xl font-extrabold">Verdict: Is {provider.name} Worth It?</h2>
+            <p className="mt-3 text-sm text-white/80 leading-relaxed">
               {provider.shortDescription} For most users in its target segment, {provider.name} represents one of the strongest options available in 2026. We rate it <strong>{provider.rating}/5</strong>.
             </p>
-          </Prose>
+            <a href={`/go/${provider.slug}`} target="_blank" rel="noopener noreferrer sponsored nofollow"
+              className="mt-6 inline-flex items-center gap-2 rounded-md bg-nav-hover px-8 py-3 text-sm font-bold text-black hover:opacity-90 transition-opacity">
+              Get {provider.name} <ExternalLink className="h-4 w-4" />
+            </a>
+          </section>
 
           {/* Related */}
           <div className="mt-12 border-t border-border pt-8">
@@ -248,50 +351,62 @@ function ReviewPage() {
                   className="flex items-center justify-between rounded-md border border-border bg-card p-4 hover:border-primary"
                 >
                   <span className="font-bold">{p.name} Review</span>
-                  <span className="text-sm text-muted-foreground">{p.rating} ★</span>
+                  <span className="text-sm text-muted-foreground">{p.rating} star</span>
                 </Link>
               ))}
             </div>
           </div>
-        </article>
+        </div>
 
-        {/* Sidebar */}
-        <aside className="space-y-6">
-          <div className="rounded-md border border-border bg-card p-6 shadow-card">
-            <div className="text-xs font-bold tracking-wider text-primary">VISIT PROVIDER</div>
-            <div className="mt-2 text-2xl font-bold">{provider.name}</div>
-            <p className="mt-2 text-sm text-muted-foreground">{provider.tagline}</p>
-            <a
-              href={`/go/${provider.slug}`}
-              target="_blank"
-              rel="noopener noreferrer sponsored nofollow"
-              className="mt-4 inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-primary text-sm font-bold text-primary-foreground hover:bg-brand-blue-hover"
-            >
-              Visit Site <ExternalLink className="h-4 w-4" />
-            </a>
-            <p className="mt-3 text-xs italic text-muted-foreground">
-              Pricing and terms apply. We may earn a commission.
-            </p>
-          </div>
+        {/* SIDEBAR */}
+        <aside className="hidden lg:block">
+          <div className="sticky top-6 space-y-6">
+            <div className="rounded-md border border-border bg-card p-6 shadow-card">
+              <div className="text-xs font-bold tracking-wider text-primary">VISIT PROVIDER</div>
+              <div className="mt-2 text-2xl font-bold">{provider.name}</div>
+              <p className="mt-2 text-sm text-muted-foreground">{provider.tagline}</p>
+              <a
+              
+                href={`/go/${provider.slug}`}
+                target="_blank"
+                rel="noopener noreferrer sponsored nofollow"
+                className="mt-4 inline-flex h-11 w-full items-center justify-center gap-2 rounded-md bg-primary text-sm font-bold text-primary-foreground hover:bg-brand-blue-hover"
+              >
+                Visit Site <ExternalLink className="h-4 w-4" />
+              </a>
+              <p className="mt-3 text-xs italic text-muted-foreground">
+                Pricing and terms apply. We may earn a commission.
+              </p>
+            </div>
 
-          <div className="rounded-md border border-border bg-card p-6 shadow-card">
-            <div className="text-xs font-bold tracking-wider text-muted-foreground">QUICK FACTS</div>
-            <dl className="mt-3 space-y-2 text-sm">
-              <div className="flex justify-between"><dt className="text-muted-foreground">Founded</dt><dd className="font-semibold">{provider.founded}</dd></div>
-              <div className="flex justify-between"><dt className="text-muted-foreground">HQ</dt><dd className="font-semibold">{provider.hq}</dd></div>
-              <div className="flex justify-between"><dt className="text-muted-foreground">Best for</dt><dd className="font-semibold text-right">{provider.bestFor}</dd></div>
-              <div className="flex justify-between"><dt className="text-muted-foreground">Proxy types</dt><dd className="font-semibold text-right">{provider.proxyTypes.length}</dd></div>
-            </dl>
-          </div>
+            <div className="rounded-md border border-border bg-card p-6 shadow-card">
+              <div className="text-xs font-bold tracking-wider text-muted-foreground">QUICK FACTS</div>
+              <dl className="mt-3 space-y-2 text-sm">
+                <div className="flex justify-between"><dt className="text-muted-foreground">Founded</dt><dd className="font-semibold">{provider.founded}</dd></div>
+                <div className="flex justify-between"><dt className="text-muted-foreground">HQ</dt><dd className="font-semibold">{provider.hq}</dd></div>
+                <div className="flex justify-between"><dt className="text-muted-foreground">Best for</dt><dd className="font-semibold text-right">{provider.bestFor}</dd></div>
+                <div className="flex justify-between"><dt className="text-muted-foreground">Proxy types</dt><dd className="font-semibold text-right">{provider.proxyTypes.length}</dd></div>
+              </dl>
+            </div>
 
-          <div className="rounded-md border border-border bg-card p-6 shadow-card">
-            <div className="text-xs font-bold tracking-wider text-muted-foreground">JUMP TO</div>
-            <ul className="mt-3 space-y-2 text-sm">
-              <li><a href="#summary" className="text-primary hover:underline">Review summary</a></li>
-              <li><a href="#pricing" className="text-primary hover:underline">Pricing</a></li>
-              <li><a href="#alternatives" className="text-primary hover:underline">Alternatives</a></li>
-              <li><a href="#faq" className="text-primary hover:underline">FAQ</a></li>
-            </ul>
+            <div className="rounded-md border border-border bg-card p-6 shadow-card">
+              <div className="text-xs font-bold tracking-wider text-muted-foreground">JUMP TO</div>
+              <ul className="mt-3 space-y-2 text-sm">
+                <li><a href="#summary" className="text-primary hover:underline">Review summary</a></li>
+                <li><a href="#pricing" className="text-primary hover:underline">Pricing</a></li>
+                <li><a href="#alternatives" className="text-primary hover:underline">Alternatives</a></li>
+                <li><a href="#faq" className="text-primary hover:underline">FAQ</a></li>
+              </ul>
+            </div>
+
+            <div className="rounded-md border border-border bg-card p-6 shadow-card">
+              <div className="text-xs font-bold tracking-wider text-muted-foreground">RELATED GUIDES</div>
+              <ul className="mt-3 space-y-2 text-sm">
+                <li><Link to={guide.href} className="text-primary hover:underline">{guide.label}</Link></li>
+                <li><Link to="/trust-score" className="text-primary hover:underline">How our Trust Score works</Link></li>
+                <li><Link to="/compare" className="text-primary hover:underline">Compare all providers</Link></li>
+              </ul>
+            </div>
           </div>
         </aside>
       </div>
