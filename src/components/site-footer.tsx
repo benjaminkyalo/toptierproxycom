@@ -25,8 +25,8 @@ const sections: Section[] = [
     title: "DIRECT COMPLEMENTS",
     items: [
       { label: "Best VPN Deals", href: "/vpn-deals" },
-      { label: "ExpressVPN", href: "/" },
-      { label: "Surfshark", href: "/" },
+      { label: "ExpressVPN", href: "/vpn-deals" },
+      { label: "Surfshark", href: "/vpn-deals" },
       { label: "Multilogin", href: "/multilogin-review" },
       { label: "GoLogin", href: "/gologin-review" },
       { label: "AdsPower", href: "#" },
@@ -181,7 +181,7 @@ function FooterLink({ item }: { item: LinkItem }) {
   if (isInternal(item.href)) {
     return (
       <span className="block">
-        <Link to={item.href} className={cls}>
+        <Link to={item.href} className={cls} target="_blank">
           {item.label}
           {underline}
         </Link>
