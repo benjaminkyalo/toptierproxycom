@@ -259,7 +259,7 @@ export const providers: Provider[] = [
       "NetNut's domains were seized by the FBI in July 2026 following a Google-led investigation tying its residential IP pool to a botnet of hijacked devices. We do not recommend using NetNut at this time.",
     longDescription:
       "In July 2026, Google's Threat Intelligence Group and the FBI disrupted NetNut's residential proxy network, tying its exit-node pool to the 'Popa' botnet - built from over 2 million hijacked consumer devices enrolled without owner knowledge. The FBI, DOJ and IRS Criminal Investigation seized NetNut's domains. This directly contradicts NetNut's own prior marketing claim of sourcing IPs through direct ISP partnerships rather than peer-to-peer methods. Parent company Alarum Technologies disputes the allegations. We are not recommending NetNut until the situation is resolved and will update this page as new information becomes available.",
-    visitUrl: "https://res.cloudinary.com/dkcqakosa/image/upload/v1784928032/net_nut_now_down_fhg7gd.jpg",
+    visitUrl: "https://netnut.com/",
     trustScore: 0,
   },
   {
