@@ -21,7 +21,7 @@ function linkifyParagraph(text) {
 }
 
 function slugify(str) {
-  return str.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
 }
 
 function writeHtml(urlPath, title, description, bodyContent = "") {

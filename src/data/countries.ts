@@ -253,7 +253,7 @@ export const countries: Country[] = [
 export const getCountry = (slug: string) => countries.find((c) => c.slug === slug);
 
 // Cities helper for /countries/$slug/cities/$city
-export const cityToSlug = (city: string) => city.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+export const cityToSlug = (city: string) => city.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 export function getCityCountry(citySlug: string, countrySlug: string) {
   const country = getCountry(countrySlug);
   if (!country) return null;
