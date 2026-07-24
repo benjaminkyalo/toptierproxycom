@@ -4,6 +4,7 @@ import { ProviderBadge } from "@/components/provider-logo";
 import { LongFormSection } from "@/components/long-form";
 import { getUseCase, useCases } from "@/data/use-cases";
 import { providers } from "@/data/providers";
+import { LinkedParagraph } from "@/components/linked-paragraph";
 
 export const Route = createFileRoute("/use-cases/$slug")({
   loader: ({ params }) => {
@@ -59,7 +60,7 @@ function UseCasePage() {
 
       <Prose>
         <h2>Key challenges</h2><ul>{useCase.challenges.map((c) => <li key={c}>{c}</li>)}</ul>
-        {useCase.body.map((s) => (<div key={s.heading}><h2>{s.heading}</h2>{s.paragraphs.map((p, i) => <p key={i}>{p}</p>)}{s.list && <ul>{s.list.map((l) => <li key={l}>{l}</li>)}</ul>}</div>))}
+        {useCase.body.map((s) => (<div key={s.heading}><h2>{s.heading}</h2>{s.paragraphs.map((p, i) => <LinkedParagraph key={i} text={p} />)}{s.list && <ul>{s.list.map((l) => <li key={l}>{l}</li>)}</ul>}</div>))}
         <h2>Frequently asked questions</h2>
         {useCase.faqs.map((f) => (<div key={f.q}><h3>{f.q}</h3><p>{f.a}</p></div>))}
       </Prose>

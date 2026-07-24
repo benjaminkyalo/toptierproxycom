@@ -72,7 +72,7 @@ function GuidePage() {
       breadcrumb={[{ to: "/", label: "Home" }, { to: "/guides", label: "Guides" }]}
     >
       <Prose>
-        <p>{guide.body}</p>
+        <LinkedParagraph text={guide.body} />
         <p>Below, our team's 2026 ranking — based on 1,000+ hours of hands-on testing across 35 vendors, with success rates measured on Cloudflare-, DataDome- and PerimeterX-protected targets.</p>
         <h2>The {ranked.length} best picks for {guide.shortLabel}</h2>
       </Prose>

@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, Prose } from "@/components/page-shell";
 import { LongFormSection } from "@/components/long-form";
 import { providers, getProvider } from "@/data/providers";
+import { LinkedParagraph } from "@/components/linked-paragraph";
 import { Star, Check, X } from "lucide-react";
 
 export const Route = createFileRoute("/vs/$matchup")({
@@ -88,9 +89,9 @@ function VsPage() {
           For most workloads in 2026, <strong>{winner.name}</strong> takes the edge based on overall rating ({winner.rating}/5) and trust score ({winner.trustScore}/100). However, the right choice depends on your priority — {A.bestFor.toLowerCase()} for {A.name}, or {B.bestFor.toLowerCase()} for {B.name}.
         </p>
         <h2>When to pick {A.name}</h2>
-        <p>{A.shortDescription}</p>
+        <LinkedParagraph text={A.shortDescription} />
         <h2>When to pick {B.name}</h2>
-        <p>{B.shortDescription}</p>
+        <LinkedParagraph text={B.shortDescription} />
       </Prose>
 
       <LongFormSection variant="vs" topic={`${A.name} vs ${B.name}`} />

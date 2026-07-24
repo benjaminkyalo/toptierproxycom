@@ -6,6 +6,7 @@ import { LongFormSection } from "@/components/long-form";
 import { getCountry, countries, cityToSlug } from "@/data/countries";
 import { providers } from "@/data/providers";
 import { Star, MapPin, Users, Wifi, Globe2 } from "lucide-react";
+import { LinkedParagraph } from "@/components/linked-paragraph";
 
 export const Route = createFileRoute("/countries/$slug")({
   loader: ({ params }) => {
@@ -91,7 +92,7 @@ function CountryPage() {
       </div>
 
       <Prose>
-        <p>{country.notes}</p>
+        <LinkedParagraph text={country.notes} />
         <h2>Top {top.length} proxy providers for {country.name}</h2>
       </Prose>
 
