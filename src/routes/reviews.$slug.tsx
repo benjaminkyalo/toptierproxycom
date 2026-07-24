@@ -3,6 +3,7 @@ import { Star, Check, X, ExternalLink, Award, Globe2, Server, DollarSign, Shield
 import { PageShell, Prose } from "@/components/page-shell";
 import { providers, getProvider } from "@/data/providers";
 import { LinkedParagraph } from "@/components/linked-paragraph";
+import { NetNutAlert } from "@/components/netnut-alert";
 
 export const Route = createFileRoute("/reviews/$slug")({
   loader: ({ params }) => {
@@ -146,6 +147,8 @@ function ReviewPage() {
     >
       <div className="lg:grid lg:grid-cols-[1fr_300px] lg:gap-10">
         <div>
+
+          {provider.slug === "netnut" && <NetNutAlert />}
 
           {/* HERO */}
           <section className="rounded-md bg-[#0f172a] text-white p-8 md:p-10">

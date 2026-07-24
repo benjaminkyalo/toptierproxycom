@@ -16,7 +16,7 @@ const RAW_LOGO_URL: Record<string, string> = {
   "soax":
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725875/soax_logo_ssdefv_wlxqwk.png",
   "netnut":
-    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/netnut_logo_ugn59g.png",
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1784928032/net_nut_now_down_fhg7gd.jpg",
   "webshare":
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701038/webshare_logo_stwvzs.png",
   "rayobyte":

@@ -3,6 +3,7 @@ import { PageShell, Prose } from "@/components/page-shell";
 import { LongFormSection } from "@/components/long-form";
 import { providers, getProvider } from "@/data/providers";
 import { LinkedParagraph } from "@/components/linked-paragraph";
+import { NetNutAlert } from "@/components/netnut-alert";
 import { Star, Check, X } from "lucide-react";
 
 export const Route = createFileRoute("/vs/$matchup")({
@@ -48,6 +49,8 @@ function VsPage() {
       intro={`Independent 2026 head-to-head comparison: pricing, pool size, country coverage, success rates and verdict.`}
       breadcrumb={[{ to: "/", label: "Home" }, { to: "/compare", label: "Compare" }]}
     >
+      {(A.slug === "netnut" || B.slug === "netnut") && <NetNutAlert />}
+
       <Prose>
         <p>
           Looking to choose between <Link to="/reviews/$slug" params={{ slug: A.slug }}>{A.name}</Link> and{" "}
