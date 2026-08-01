@@ -28,6 +28,13 @@ async function run() {
     { id: "blog", title: "Proxy Blog", description: "Latest proxy news, tutorials and expert tips.", url: "/blog", type: "page" },
     { id: "use-cases", title: "Proxy Use Cases", description: "How proxies are used for scraping, SEO, ad verification and more.", url: "/use-cases", type: "page" },
 
+    // Standalone tool/provider reviews (not part of the main providers array)
+    { id: "review-gologin", title: "GoLogin Review 2026", description: "Independent GoLogin review - antidetect browser pricing, features and alternatives.", url: "/gologin-review", type: "review", keywords: "gologin review antidetect browser pricing multilogin" },
+    { id: "review-multilogin", title: "Multilogin Review 2026", description: "Independent Multilogin review - source-level fingerprinting, pricing and alternatives.", url: "/multilogin-review", type: "review", keywords: "multilogin review antidetect browser pricing gologin" },
+    { id: "review-2captcha", title: "2Captcha Review 2026", description: "Independent 2Captcha review - CAPTCHA solving API pricing, accuracy and alternatives.", url: "/2captcha-review", type: "review", keywords: "2captcha review captcha solver api pricing" },
+    { id: "review-scrapy", title: "Scrapy Review 2026", description: "Independent Scrapy review - Python web scraping framework costs, setup and comparisons.", url: "/scrapy-review", type: "review", keywords: "scrapy review python web scraping framework" },
+    { id: "review-thordata", title: "Thordata Review 2026", description: "Independent Thordata review - 125M+ residential proxies, pricing from $0.65/GB, pros and cons.", url: "/thordata-review", type: "review", keywords: "thordata review proxy pricing residential isp mobile datacenter" },
+
     // Providers
     ...providers.map(p => ({
       id: `review-${p.slug}`,

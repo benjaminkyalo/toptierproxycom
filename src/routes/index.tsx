@@ -6,10 +6,12 @@ import {
 import { useState } from "react";
 import { SiteSearch } from "@/components/site-search";
 import { SiteHeader } from "@/components/site-header";
+import { PromoBanner } from "@/components/promo-banner";
 import { SiteFooter } from "@/components/site-footer";
 import { AwardCard } from "@/components/award-card";
 import { PartnerRow } from "@/components/partner-row";
 import { ProviderLogo } from "@/components/provider-logo";
+import { TopPicks } from "@/components/top-picks";
 import { providers, editorChoice } from "@/data/providers";
 import { countries } from "@/data/countries";
 import { guides } from "@/data/guides";
@@ -176,7 +178,10 @@ function HomePage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <SiteHeader />
+      <div className="sticky top-0 z-50">
+        <SiteHeader />
+        <PromoBanner />
+      </div>
 
       {/* HERO */}
       <section className="bg-navy text-navy-foreground">
@@ -287,6 +292,8 @@ function HomePage() {
           </div>
         </div>
       </section>
+
+      <TopPicks />
 
       {/* WHY TRUST US */}
       <section className="bg-background border-t border-border">

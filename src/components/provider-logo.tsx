@@ -5,6 +5,8 @@ import type { Provider } from "@/data/providers";
 // the smallest weight the browser supports, plus a width cap matching the
 // rendered tile size for ultra-fast loading.
 const RAW_LOGO_URL: Record<string, string> = {
+  "thordata":
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1785274640/thordata_logo_e7qs2t.jpg",
   "bright-data":
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725875/bright_data_logo_muhsjd_efmshs.png",
   "oxylabs":
@@ -16,7 +18,7 @@ const RAW_LOGO_URL: Record<string, string> = {
   "soax":
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725875/soax_logo_ssdefv_wlxqwk.png",
   "netnut":
-    "https://res.cloudinary.com/dkcqakosa/image/upload/v1784928032/net_nut_now_down_fhg7gd.jpg",
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701037/netnut_logo_ugn59g.png",
   "webshare":
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1777701038/webshare_logo_stwvzs.png",
   "rayobyte":

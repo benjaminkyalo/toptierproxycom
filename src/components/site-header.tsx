@@ -10,7 +10,8 @@ type DropItem = { to: string; label: string; params?: Record<string, string> };
 
 const reviewItems: DropItem[] = providers
   .slice(0, 12)
-  .map((p) => ({ to: "/reviews/$slug", params: { slug: p.slug }, label: `${p.name} Review` }));
+  .map((p) => ({ to: "/reviews/$slug", params: { slug: p.slug }, label: `${p.name} Review` }))
+  .concat([{ to: "/thordata-review", label: "Thordata Review" }]);
 
 const guideItems: DropItem[] = guides
   .slice(0, 10)

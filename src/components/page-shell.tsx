@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { PromoBanner } from "@/components/promo-banner";
 import { Link } from "@tanstack/react-router";
 export function PageShell({
   title,
@@ -19,7 +20,10 @@ export function PageShell({
 }) {
   return (
     <div className="flex min-h-screen flex-col">
-      <SiteHeader />
+      <div className="sticky top-0 z-50">
+        <SiteHeader />
+        <PromoBanner />
+      </div>
       <section
         className="bg-navy text-navy-foreground relative overflow-hidden"
         style={bgImage ? {

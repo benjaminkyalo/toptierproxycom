@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhyTrustUsRouteImport } from './routes/why-trust-us'
 import { Route as VpnDealsRouteImport } from './routes/vpn-deals'
 import { Route as TrustScoreRouteImport } from './routes/trust-score'
+import { Route as ThordataReviewRouteImport } from './routes/thordata-review'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ScrapyReviewRouteImport } from './routes/scrapy-review'
 import { Route as ScraperApiRouteImport } from './routes/scraper-api'
@@ -55,6 +56,11 @@ const VpnDealsRoute = VpnDealsRouteImport.update({
 const TrustScoreRoute = TrustScoreRouteImport.update({
   id: '/trust-score',
   path: '/trust-score',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ThordataReviewRoute = ThordataReviewRouteImport.update({
+  id: '/thordata-review',
+  path: '/thordata-review',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TermsRoute = TermsRouteImport.update({
@@ -218,6 +224,7 @@ export interface FileRoutesByFullPath {
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
   '/terms': typeof TermsRoute
+  '/thordata-review': typeof ThordataReviewRoute
   '/trust-score': typeof TrustScoreRoute
   '/vpn-deals': typeof VpnDealsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
@@ -252,6 +259,7 @@ export interface FileRoutesByTo {
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
   '/terms': typeof TermsRoute
+  '/thordata-review': typeof ThordataReviewRoute
   '/trust-score': typeof TrustScoreRoute
   '/vpn-deals': typeof VpnDealsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
@@ -287,6 +295,7 @@ export interface FileRoutesById {
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
   '/terms': typeof TermsRoute
+  '/thordata-review': typeof ThordataReviewRoute
   '/trust-score': typeof TrustScoreRoute
   '/vpn-deals': typeof VpnDealsRoute
   '/why-trust-us': typeof WhyTrustUsRoute
@@ -323,6 +332,7 @@ export interface FileRouteTypes {
     | '/scraper-api'
     | '/scrapy-review'
     | '/terms'
+    | '/thordata-review'
     | '/trust-score'
     | '/vpn-deals'
     | '/why-trust-us'
@@ -357,6 +367,7 @@ export interface FileRouteTypes {
     | '/scraper-api'
     | '/scrapy-review'
     | '/terms'
+    | '/thordata-review'
     | '/trust-score'
     | '/vpn-deals'
     | '/why-trust-us'
@@ -391,6 +402,7 @@ export interface FileRouteTypes {
     | '/scraper-api'
     | '/scrapy-review'
     | '/terms'
+    | '/thordata-review'
     | '/trust-score'
     | '/vpn-deals'
     | '/why-trust-us'
@@ -426,6 +438,7 @@ export interface RootRouteChildren {
   ScraperApiRoute: typeof ScraperApiRoute
   ScrapyReviewRoute: typeof ScrapyReviewRoute
   TermsRoute: typeof TermsRoute
+  ThordataReviewRoute: typeof ThordataReviewRoute
   TrustScoreRoute: typeof TrustScoreRoute
   VpnDealsRoute: typeof VpnDealsRoute
   WhyTrustUsRoute: typeof WhyTrustUsRoute
@@ -466,6 +479,13 @@ declare module '@tanstack/react-router' {
       path: '/trust-score'
       fullPath: '/trust-score'
       preLoaderRoute: typeof TrustScoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/thordata-review': {
+      id: '/thordata-review'
+      path: '/thordata-review'
+      fullPath: '/thordata-review'
+      preLoaderRoute: typeof ThordataReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/terms': {
@@ -701,6 +721,7 @@ const rootRouteChildren: RootRouteChildren = {
   ScraperApiRoute: ScraperApiRoute,
   ScrapyReviewRoute: ScrapyReviewRoute,
   TermsRoute: TermsRoute,
+  ThordataReviewRoute: ThordataReviewRoute,
   TrustScoreRoute: TrustScoreRoute,
   VpnDealsRoute: VpnDealsRoute,
   WhyTrustUsRoute: WhyTrustUsRoute,

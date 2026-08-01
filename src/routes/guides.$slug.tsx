@@ -4,6 +4,7 @@ import { PageShell, Prose } from "@/components/page-shell";
 import { LongFormSection } from "@/components/long-form";
 import { providers } from "@/data/providers";
 import { getGuide, guides } from "@/data/guides";
+import { LinkedParagraph } from "@/components/linked-paragraph";
 
 export const Route = createFileRoute("/guides/$slug")({
   loader: ({ params }) => {

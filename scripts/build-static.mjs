@@ -43,6 +43,7 @@ async function run() {
     "/", "/reviews", "/guides", "/countries", "/compare", "/blog", "/use-cases",
     "/resources", "/about", "/contact", "/how-we-test", "/why-trust-us",
     "/trust-score", "/privacy", "/terms", "/disclaimers", "/vpn-deals",
+    "/gologin-review", "/multilogin-review", "/2captcha-review", "/scrapy-review", "/thordata-review",
   ];
   const urls = [
     ...staticUrls.map((u) => ({ loc: u, p: u === "/" ? "1.0" : "0.8", c: "weekly" })),

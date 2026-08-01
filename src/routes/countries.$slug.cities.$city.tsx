@@ -4,6 +4,7 @@ import { ProviderBadge } from "@/components/provider-logo";
 import { LongFormSection } from "@/components/long-form";
 import { Flag } from "@/components/flag";
 import { getCityCountry, cityToSlug } from "@/data/countries";
+import { getCityContent } from "@/data/city-content";
 import { providers } from "@/data/providers";
 
 export const Route = createFileRoute("/countries/$slug/cities/$city")({
@@ -36,6 +37,7 @@ function CityPage() {
   const { country, city } = Route.useLoaderData() as NonNullable<ReturnType<typeof getCityCountry>>;
   const top = country.topProviders.map((s) => providers.find((p) => p.slug === s)).filter((p): p is NonNullable<typeof p> => Boolean(p)).slice(0, 5);
   const otherCities = country.topCities.filter((c) => c !== city).slice(0, 6);
+  const extra = getCityContent(cityToSlug(city));
   return (
     <PageShell title={`Best ${city} Proxies`} intro={`Buy clean residential, mobile and ISP IPs in ${city}, ${country.name}. City-level targeting from every major vendor.`} breadcrumb={[{ to: "/", label: "Home" }, { to: "/countries", label: "Countries" }, { to: `/countries/${country.slug}`, label: country.name }]}>
       <div className="mb-6 flex items-center gap-4 rounded-md border border-border bg-card p-5">
@@ -67,7 +69,25 @@ function CityPage() {
         <p>{country.legalNote}</p>
         <h3>How accurate is {city} city-level targeting?</h3>
         <p>The top vendors (Bright Data, Oxylabs, Decodo) maintain over 95% city-level accuracy in major metros like {city}.</p>
+        {extra && extra.faq.map((f) => (
+          <div key={f.q}>
+            <h3>{f.q}</h3>
+            <p>{f.a}</p>
+          </div>
+        ))}
       </Prose>
+      {extra && (
+        <section className="mt-8 rounded-md border border-border bg-card p-6">
+          <h2 className="text-xl font-bold text-foreground">{city} at a glance</h2>
+          <div className="mt-3 grid grid-cols-2 gap-3 text-sm sm:grid-cols-4">
+            <div><span className="text-muted-foreground">Population:</span> <strong>{extra.population}</strong></div>
+            <div><span className="text-muted-foreground">Internet penetration:</span> <strong>{extra.internetPenetration}</strong></div>
+            <div><span className="text-muted-foreground">Avg speed:</span> <strong>{extra.avgSpeed}</strong></div>
+            <div><span className="text-muted-foreground">Carriers:</span> <strong>{extra.dominantCarriers.join(", ")}</strong></div>
+          </div>
+          <p className="mt-4 text-sm text-foreground/80">{extra.uniqueNote}</p>
+        </section>
+      )}
       <LongFormSection variant="city" topic={`${city}, ${country.name}`} />
 
       {otherCities.length > 0 && (
