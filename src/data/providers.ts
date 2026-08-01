@@ -32,7 +32,7 @@ export interface Provider {
   setupSteps?: string[]; // real getting-started steps
   richFaq?: { q: string; a: string }[]; // provider-specific FAQ, overrides generic FAQ when present
   richRatings?: { label: string; score: number }[]; // sub-metric breakdown, only shown when we have real editorial basis for it
-  richRatings?: { label: string; score: number }[]; // sub-metric breakdown, only shown when we have real editorial basis for it
+
   trustScore: number; // 0-100
   badge?: string; // e.g. "Editor's Choice"
 }
