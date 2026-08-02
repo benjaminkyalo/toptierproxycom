@@ -2,22 +2,49 @@ import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 
 const THORDATA_URL = "https://dashboard.thordata.com/register?invitation_code=FGOCHJZN";
-const STORAGE_KEY = "thordata-popup-dismissed";
+const STORAGE_KEY = "thordata-popup-snooze";
+const SHOW_DELAY = 5000;
+const REPEAT_INTERVAL = 15000;
 
 export function PromoPopup() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (sessionStorage.getItem(STORAGE_KEY) === "1") return;
-    const t = window.setTimeout(() => setOpen(true), 7000);
-    return () => window.clearTimeout(t);
-  }, []);
+
+    const shouldShow = () => {
+      const snoozedUntil = Number(sessionStorage.getItem(STORAGE_KEY) || "0");
+      return Date.now() >= snoozedUntil;
+    };
+
+    const show = () => {
+      if (shouldShow()) setOpen(true);
+    };
+
+    const snooze = () => {
+      setOpen(false);
+      try {
+        sessionStorage.setItem(STORAGE_KEY, String(Date.now() + REPEAT_INTERVAL));
+      } catch {
+        /* ignore */
+      }
+    };
+
+    const initialTimer = window.setTimeout(show, SHOW_DELAY);
+    const repeatTimer = window.setInterval(() => {
+      if (!open && shouldShow()) show();
+    }, 1000);
+
+    return () => {
+      window.clearTimeout(initialTimer);
+      window.clearInterval(repeatTimer);
+    };
+  }, [open]);
 
   const dismiss = () => {
     setOpen(false);
     try {
-      sessionStorage.setItem(STORAGE_KEY, "1");
+      sessionStorage.setItem(STORAGE_KEY, String(Date.now() + REPEAT_INTERVAL));
     } catch {
       /* ignore */
     }
