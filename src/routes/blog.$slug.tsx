@@ -218,7 +218,7 @@ function BlogPostPage() {
                         href={`/go/${recProvider.slug}`}
                         target="_blank"
                         rel="noopener noreferrer sponsored nofollow"
-                        className="inline-flex h-10 shrink-0 items-center justify-center rounded-md bg-primary px-5 text-sm font-bold text-primary-foreground hover:bg-brand-blue-hover"
+                        className="inline-flex h-10 shrink-0 items-center justify-center rounded-md bg-primary px-5 text-sm font-bold !text-primary-foreground !no-underline hover:bg-brand-blue-hover"
                       >
                         Get Deal →
                       </a>
