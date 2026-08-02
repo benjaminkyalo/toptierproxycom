@@ -47,6 +47,20 @@ export const Route = createFileRoute("/reviews/$slug")({
                 name: provider.name,
                 description: provider.shortDescription,
                 brand: { "@type": "Brand", name: provider.name },
+                aggregateRating: {
+                  "@type": "AggregateRating",
+                  ratingValue: provider.rating,
+                  bestRating: 5,
+                  worstRating: 1,
+                  ratingCount: 1,
+                },
+                offers: {
+                  "@type": "Offer",
+                  price: provider.startingPriceGB,
+                  priceCurrency: "USD",
+                  url: `https://www.toptierproxy.com/reviews/${provider.slug}`,
+                  availability: "https://schema.org/InStock",
+                },
               },
               reviewRating: {
                 "@type": "Rating",

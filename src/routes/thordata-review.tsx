@@ -45,7 +45,14 @@ export const Route = createFileRoute("/thordata-review")({
             {
               "@context": "https://schema.org",
               "@type": "Review",
-              itemReviewed: { "@type": "Product", name: "Thordata", description },
+              itemReviewed: {
+                "@type": "Product",
+                name: "Thordata",
+                description,
+                brand: { "@type": "Brand", name: "Thordata" },
+                aggregateRating: { "@type": "AggregateRating", ratingValue: "4.4", bestRating: "5", worstRating: "1", ratingCount: 1 },
+                offers: { "@type": "Offer", price: "0.65", priceCurrency: "USD", url: "https://www.toptierproxy.com/thordata-review", availability: "https://schema.org/InStock" },
+              },
               reviewRating: { "@type": "Rating", ratingValue: "4.4", bestRating: "5", worstRating: "1" },
               author: { "@type": "Organization", name: "ToptierProxy.com" },
               publisher: { "@type": "Organization", name: "ToptierProxy.com" },

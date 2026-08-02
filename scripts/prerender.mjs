@@ -26,9 +26,11 @@ function slugify(str) {
 
 function writeHtml(urlPath, title, description, bodyContent = "") {
   const template = readFileSync(resolve(DIST, "index.html"), "utf-8");
+  const canonicalUrl = `${SITE}${urlPath}`;
   let html = template
     .replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
-    .replace(/<meta name="description" content=".*?"/, `<meta name="description" content="${description.replace(/"/g, "&quot;")}"`);
+    .replace(/<meta name="description" content=".*?"/, `<meta name="description" content="${description.replace(/"/g, "&quot;")}"`)
+    .replace(/<link rel="canonical" href="[^"]*"\s*\/>/, `<link rel="canonical" href="${canonicalUrl}" />`);
 
   // SEO shell: kept in DOM for non-JS crawlers/LLMs, but visually hidden so
   // users don't see a flash of unstyled HTML before React hydrates and

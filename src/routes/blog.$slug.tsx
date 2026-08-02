@@ -26,10 +26,14 @@ export const Route = createFileRoute("/blog/$slug")({
         { property: "og:title", content: post.title },
         { property: "og:description", content: post.description },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: `https://www.toptierproxy.com/blog/${post.slug}` },
+        { property: "og:image", content: "https://www.toptierproxy.com/favicon.svg" },
         { property: "article:published_time", content: post.datePublished },
         { property: "article:author", content: post.author },
         { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:image", content: "https://www.toptierproxy.com/favicon.svg" },
       ],
+      links: [{ rel: "canonical", href: `https://www.toptierproxy.com/blog/${post.slug}` }],
       scripts: [
         {
           type: "application/ld+json",
@@ -48,6 +52,7 @@ export const Route = createFileRoute("/blog/$slug")({
               "@type": "Article",
               headline: post.title,
               description: post.description,
+              image: "https://www.toptierproxy.com/favicon.svg",
               author: { "@type": "Person", name: post.author },
               publisher: { "@type": "Organization", name: "ToptierProxy.com", url: "https://www.toptierproxy.com", logo: { "@type": "ImageObject", url: "https://www.toptierproxy.com/favicon.svg" } },
               datePublished: post.datePublished,
