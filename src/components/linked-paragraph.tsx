@@ -111,6 +111,16 @@ export const INTERNAL_LINKS: Record<string, string> = {
   "cheap proxy": "/guides/best-payg-proxies",
   "cheap proxies": "/guides/best-payg-proxies",
   "buy proxy": "/guides/best-proxies-2026",
+  "comparison page": "/compare",
+  "our comparison page": "/compare",
+  "country pages": "/countries",
+  "per-country pages": "/countries",
+  "our disclaimers": "/disclaimers",
+  "scraper API comparison": "/guides/best-scraping-apis",
+  "free tier": "/guides/best-free-proxy-trials",
+  "free proxy list": "/blog/free-proxy-list",
+  "free proxy lists": "/blog/free-proxy-list",
+  "free proxy checker": "/blog/free-proxy-list",
 };
 
 // Pure logic, no JSX - shared by the React component below AND by
