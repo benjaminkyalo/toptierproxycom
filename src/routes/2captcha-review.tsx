@@ -5,12 +5,13 @@ import { useState } from "react";
 
 export const Route = createFileRoute("/2captcha-review")({
   head: () => {
-    const title = "2Captcha Review 2026 — Pricing, API, Accuracy & Best Alternatives";
-    const description = "Independent 2Captcha review 2026. We tested the API, speed, accuracy and pricing across reCAPTCHA v2/v3, hCaptcha, Cloudflare Turnstile and image captchas. Is it worth it?";
+    const title = "2Captcha Review 2026: Pricing, API & Accuracy Tested";
+    const description = "We tested 2Captcha in 2026 on reCAPTCHA v2/v3, hCaptcha and Turnstile — real solve times, accuracy rates and true cost per 1,000. See the verdict & alternatives →";
     return {
       meta: [
-        { title: `${title} | ToptierProxy.com` },
+        { title },
         { name: "description", content: description },
+
         { name: "keywords", content: "2captcha review, 2captcha pricing 2026, captcha solving service, recaptcha bypass, hcaptcha solver, cloudflare turnstile bypass, 2captcha api, 2captcha alternatives, captcha solver for scraping" },
         { property: "og:title", content: title },
         { property: "og:description", content: description },

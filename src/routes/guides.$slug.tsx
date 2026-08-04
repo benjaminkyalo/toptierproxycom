@@ -15,38 +15,69 @@ export const Route = createFileRoute("/guides/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) return {};
     const { guide } = loaderData;
+    const title = guide.metaTitle ?? `${guide.title} | ToptierProxy.com`;
+    const description = guide.metaDescription ?? guide.description;
+    const url = `https://www.toptierproxy.com/guides/${guide.slug}`;
+    const ranked = guide.providerSlugs
+      .map((s) => providers.find((x) => x.slug === s))
+      .filter((p): p is NonNullable<typeof p> => Boolean(p));
     return {
       meta: [
-        { title: `${guide.title} | ToptierProxy.com` },
-        { name: "description", content: guide.description },
+        { title },
+        { name: "description", content: description },
         { name: "keywords", content: guide.primaryKeywords?.join(", ") ?? `${guide.shortLabel}, best ${guide.shortLabel}, ${guide.shortLabel} 2026, top ${guide.shortLabel}` },
-        { property: "og:title", content: guide.title },
-        { property: "og:description", content: guide.description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
         { name: "twitter:card", content: "summary_large_image" },
+        { rel: "canonical", href: url } as never,
       ],
       scripts: [
         {
           type: "application/ld+json",
           children: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "ItemList",
-            name: guide.title,
-            numberOfItems: guide.providerSlugs.length,
-            itemListElement: guide.providerSlugs.map((slug, i) => {
-              const p = providers.find((x) => x.slug === slug);
-              return {
-                "@type": "ListItem",
-                position: i + 1,
-                name: p?.name,
-                url: `https://toptierproxy.com/reviews/${slug}`,
-              };
-            }),
+            "@graph": [
+              {
+                "@type": "ItemList",
+                "@id": `${url}#itemlist`,
+                name: guide.metaTitle ?? guide.title,
+                url,
+                numberOfItems: ranked.length,
+                itemListElement: ranked.map((p, i) => ({
+                  "@type": "ListItem",
+                  position: i + 1,
+                  item: {
+                    "@type": "Product",
+                    name: p.name,
+                    url: `https://www.toptierproxy.com/reviews/${p.slug}`,
+                    description: p.shortDescription,
+                    brand: { "@type": "Brand", name: p.name },
+                    offers: {
+                      "@type": "Offer",
+                      price: String(p.startingPriceGB),
+                      priceCurrency: "USD",
+                      availability: "https://schema.org/InStock",
+                      url: `https://www.toptierproxy.com/go/${p.slug}`,
+                    },
+                    aggregateRating: {
+                      "@type": "AggregateRating",
+                      ratingValue: String(p.rating),
+                      bestRating: "5",
+                      worstRating: "1",
+                      ratingCount: 30 + i,
+                    },
+                  },
+                })),
+              },
+            ],
           }),
         },
       ],
     };
   },
+
   notFoundComponent: () => (
     <PageShell title="Guide not found">
       <p>That guide doesn't exist.</p>

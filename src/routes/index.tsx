@@ -550,7 +550,36 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Editorial internal-link block — exact-match anchors to priority guides */}
+      <section className="border-t border-border bg-background">
+        <div className="mx-auto max-w-4xl px-6 py-12">
+          <h2 className="text-2xl font-bold">Where to start</h2>
+          <p className="mt-4 leading-relaxed text-foreground/85">
+            If you are buying a proxy for the first time, start with our ranking of the{" "}
+            <Link to="/guides/$slug" params={{ slug: "best-proxies-2026" }} className="font-semibold text-primary underline underline-offset-4">best proxy providers</Link>{" "}
+            — 35 networks tested on success rate, pool size and true cost per request. For scraping sites behind Cloudflare or DataDome,
+            the{" "}
+            <Link to="/guides/$slug" params={{ slug: "best-residential-proxies" }} className="font-semibold text-primary underline underline-offset-4">best residential proxies</Link>{" "}
+            deliver household IPs that pass reputation checks, while the{" "}
+            <Link to="/guides/$slug" params={{ slug: "best-datacenter-proxies" }} className="font-semibold text-primary underline underline-offset-4">best datacenter proxies</Link>{" "}
+            are the cheapest way to hit unprotected targets at volume.
+          </p>
+          <p className="mt-4 leading-relaxed text-foreground/85">
+            Need one IP that never changes? Compare the{" "}
+            <Link to="/guides/$slug" params={{ slug: "best-isp-proxies" }} className="font-semibold text-primary underline underline-offset-4">best ISP proxies</Link>{" "}
+            for static residential trust at datacenter speed. For account management, social platforms and app testing, the{" "}
+            <Link to="/guides/$slug" params={{ slug: "best-mobile-proxies" }} className="font-semibold text-primary underline underline-offset-4">best mobile proxies</Link>{" "}
+            run on real 4G/5G carrier IPs. Rank tracking teams should use the{" "}
+            <Link to="/guides/$slug" params={{ slug: "best-seo-proxies" }} className="font-semibold text-primary underline underline-offset-4">best SEO proxies</Link>{" "}
+            for accurate city-level SERP data, and everyone should read{" "}
+            <Link to="/how-we-test" className="font-semibold text-primary underline underline-offset-4">how we test</Link>{" "}
+            before trusting any ranking — including ours.
+          </p>
+        </div>
+      </section>
+
       <SiteFooter />
+
     </div>
   );
 }

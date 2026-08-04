@@ -18,19 +18,24 @@ export const Route = createFileRoute("/best/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) return {};
     const { country } = loaderData;
-    const title = `Best ${country.name} Proxies in 2026 — Top 5 Providers Ranked`;
-    const description = `The best ${country.name} proxy providers for 2026. ${country.poolDepth}, city-level targeting in ${country.topCities.slice(0, 3).join(", ")}. Pricing, pool size & verdict.`;
+    const title = `Best ${country.name} Proxies 2026: Top 5 Ranked`;
+    const description = `We ranked the top 5 ${country.name} proxy providers for 2026 — ${country.poolDepth}, city targeting in ${country.topCities.slice(0, 2).join(" & ")}, real pricing. Compare speed →`;
+    const url = `https://www.toptierproxy.com/best/${country.slug}-proxies`;
     return {
       meta: [
-        { title: `${title} | ToptierProxy.com` },
+        { title },
         { name: "description", content: description },
-        { name: "keywords", content: country.primaryKeywords.join(", ") },
+        { name: "keywords", content: [`best ${country.name} proxy`, `best ${country.name} proxies 2026`, `${country.name} proxy provider`, `buy ${country.name} proxy`, ...country.primaryKeywords].join(", ") },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
+        { rel: "canonical", href: url } as never,
       ],
     };
   },
+
+
   notFoundComponent: () => <PageShell title="Not found"><Link to="/countries" className="text-primary underline">Browse countries</Link></PageShell>,
   errorComponent: ({ error }) => <PageShell title="Error"><p>{error.message}</p></PageShell>,
   component: BestPage,
