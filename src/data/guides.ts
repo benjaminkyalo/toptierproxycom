@@ -10,7 +10,12 @@ export interface Guide {
   providerSlugs: string[];
   related: { to: string; label: string }[];
   primaryKeywords?: string[];
+  /** SERP-optimised <title> — exact query first, under ~60 chars, no site suffix. */
+  metaTitle?: string;
+  /** SERP-optimised meta description — 150–160 chars with a soft CTA. */
+  metaDescription?: string;
 }
+
 
 const RELATED_DEFAULT = [
   { to: "best-proxies-2026", label: "Best Proxy Providers for 2026" },
