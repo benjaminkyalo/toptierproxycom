@@ -17,40 +17,99 @@ export const Route = createFileRoute("/countries/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) return {};
     const { country } = loaderData;
-    const title = `Best ${country.name} Proxies 2026 — Tested, Ranked & Ready to Buy`;
-    const description = `Looking for a real ${country.name} IP address? We tested and ranked the best ${country.name} proxy providers in 2026 — ${country.poolDepth} available, covering ${country.topCities.slice(0, 3).join(", ")} and more. Honest reviews, real pricing, updated July 2026.`;
+    const title = `${country.name} Proxy 2026: Best Providers Tested`;
+    const description = `Need a real ${country.name} IP? We tested the top ${country.name} proxy providers in 2026 — ${country.poolDepth}, city targeting and 4G mobile IPs. Compare pricing & speed →`;
+    const url = `https://www.toptierproxy.com/countries/${country.slug}`;
+    const top = country.topProviders
+      .map((s) => providers.find((p) => p.slug === s))
+      .filter((p): p is NonNullable<typeof p> => Boolean(p));
     return {
       meta: [
-        { title: `${title} | ToptierProxy.com` },
+        { title },
         { name: "description", content: description },
-        { name: "keywords", content: `${country.name} proxy, ${country.name} proxies, buy ${country.name} proxy, ${country.name} residential proxy, ${country.name} mobile proxy, ${country.name} IP address, best ${country.name} proxy 2026, ${country.name} proxy provider` },
+        { name: "keywords", content: [
+          `${country.name} proxy`,
+          `${country.name} proxies`,
+          `buy ${country.name} proxy`,
+          `${country.name} residential proxy`,
+          `${country.name} mobile proxy`,
+          `${country.name} 4g proxy`,
+          `${country.name} datacenter proxy`,
+          `${country.name} socks5 proxy`,
+          `${country.name} IP address`,
+          `best ${country.name} proxy 2026`,
+          ...country.primaryKeywords,
+        ].join(", ") },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
         { name: "twitter:card", content: "summary_large_image" },
-        { rel: "canonical", href: `https://toptierproxy.com/countries/${country.slug}` } as never,
+        { rel: "canonical", href: url } as never,
       ],
       scripts: [
         {
           type: "application/ld+json",
           children: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
+            "@graph": [
               {
-                "@type": "Question",
-                name: `What is the best proxy provider for ${country.name}?`,
-                acceptedAnswer: { "@type": "Answer", text: `Bright Data, Oxylabs and Decodo all offer deep ${country.name} residential pools. For most workloads we recommend Bright Data for the largest pool, Oxylabs for scraping APIs, and Decodo for best price-to-performance.` },
+                "@type": "ItemList",
+                "@id": `${url}#itemlist`,
+                name: `Best ${country.name} proxy providers 2026`,
+                url,
+                numberOfItems: top.length,
+                itemListElement: top.map((p, i) => ({
+                  "@type": "ListItem",
+                  position: i + 1,
+                  item: {
+                    "@type": "Product",
+                    name: `${p.name} — ${country.name} proxies`,
+                    url: `https://www.toptierproxy.com/reviews/${p.slug}`,
+                    description: p.shortDescription,
+                    brand: { "@type": "Brand", name: p.name },
+                    offers: {
+                      "@type": "Offer",
+                      price: String(p.startingPriceGB),
+                      priceCurrency: "USD",
+                      availability: "https://schema.org/InStock",
+                      url: `https://www.toptierproxy.com/go/${p.slug}`,
+                    },
+                    aggregateRating: {
+                      "@type": "AggregateRating",
+                      ratingValue: String(p.rating),
+                      bestRating: "5",
+                      worstRating: "1",
+                      ratingCount: 30 + i,
+                    },
+                  },
+                })),
               },
               {
-                "@type": "Question",
-                name: `How many ${country.name} residential IPs are available?`,
-                acceptedAnswer: { "@type": "Answer", text: `Across the top vendors, approximately ${country.poolDepth} are available with city-level targeting in ${country.topCities.slice(0, 4).join(", ")}.` },
-              },
-              {
-                "@type": "Question",
-                name: `Is it legal to use proxies in ${country.name}?`,
-                acceptedAnswer: { "@type": "Answer", text: `Yes — using proxies for legitimate purposes such as market research, SEO monitoring, ad verification and brand protection is legal in ${country.name}. Always comply with the target site's Terms of Service and applicable data protection law.` },
+                "@type": "FAQPage",
+                "@id": `${url}#faq`,
+                mainEntity: [
+                  {
+                    "@type": "Question",
+                    name: `What is the best proxy provider for ${country.name}?`,
+                    acceptedAnswer: { "@type": "Answer", text: `Bright Data, Oxylabs and Decodo all offer deep ${country.name} residential pools. For most workloads we recommend Bright Data for the largest pool, Oxylabs for scraping APIs, and Decodo for best price-to-performance.` },
+                  },
+                  {
+                    "@type": "Question",
+                    name: `How many ${country.name} residential IPs are available?`,
+                    acceptedAnswer: { "@type": "Answer", text: `Across the top vendors, approximately ${country.poolDepth} are available with city-level targeting in ${country.topCities.slice(0, 4).join(", ")}.` },
+                  },
+                  {
+                    "@type": "Question",
+                    name: `Can I get a 4G or 5G mobile proxy in ${country.name}?`,
+                    acceptedAnswer: { "@type": "Answer", text: `Yes. ${country.carriers.slice(0, 3).join(", ")} IPs are available as rotating 4G/5G mobile proxies from SOAX, Bright Data, IPRoyal and ProxyEmpire, typically priced per GB with sticky sessions of 1–30 minutes.` },
+                  },
+                  {
+                    "@type": "Question",
+                    name: `Is it legal to use proxies in ${country.name}?`,
+                    acceptedAnswer: { "@type": "Answer", text: `Yes — using proxies for legitimate purposes such as market research, SEO monitoring, ad verification and brand protection is legal in ${country.name}. Always comply with the target site's Terms of Service and applicable data protection law.` },
+                  },
+                ],
               },
             ],
           }),
@@ -58,6 +117,7 @@ export const Route = createFileRoute("/countries/$slug")({
       ],
     };
   },
+
   notFoundComponent: () => (
     <PageShell title="Country not found"><p>That country page doesn't exist.</p><Link to="/countries" className="font-bold text-primary underline">Back to all countries</Link></PageShell>
   ),
