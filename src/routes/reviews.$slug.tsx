@@ -14,18 +14,22 @@ export const Route = createFileRoute("/reviews/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) return {};
     const { provider } = loaderData;
-    const title = `${provider.name} Review 2026 - Honest Score, Real Tests & Verdict`;
-    const description = `${provider.name} rated ${provider.rating}/5 in our 2026 hands-on review - tested with a real paid account. Honest breakdown of success rates on Cloudflare and DataDome, ${provider.poolSize} pool, pricing from $${provider.startingPriceGB}/GB and who it is actually best for.`;
+    const title = `${provider.name} Review 2026: Pricing, Speed & Verdict`;
+    const description = `${provider.name} scored ${provider.rating}/5 in our 2026 hands-on test on a real paid account — Cloudflare success rate, ${provider.poolSize} pool, from $${provider.startingPriceGB}/GB. See the verdict →`;
+    const url = `https://www.toptierproxy.com/reviews/${provider.slug}`;
     return {
       meta: [
-        { title: `${title} | ToptierProxy.com` },
+        { title },
         { name: "description", content: description },
-        { name: "keywords", content: `${provider.name} review, ${provider.name} pricing, ${provider.name} vs, ${provider.name} alternative, ${provider.name} proxy` },
-        { property: "og:title", content: `${provider.name} Review 2026` },
+        { name: "keywords", content: `${provider.name}, ${provider.name} review, ${provider.name} pricing, ${provider.name} vs, ${provider.name} alternative, ${provider.name} proxy` },
+        { property: "og:title", content: title },
         { property: "og:description", content: provider.shortDescription },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
         { name: "twitter:card", content: "summary_large_image" },
+        { rel: "canonical", href: url } as never,
       ],
+
       scripts: [
         {
           type: "application/ld+json",
