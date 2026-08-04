@@ -32,6 +32,9 @@ export const Route = createFileRoute("/best/$slug")({
         { property: "og:url", content: url },
         { rel: "canonical", href: url } as never,
       ],
+    };
+  },
+
 
   notFoundComponent: () => <PageShell title="Not found"><Link to="/countries" className="text-primary underline">Browse countries</Link></PageShell>,
   errorComponent: ({ error }) => <PageShell title="Error"><p>{error.message}</p></PageShell>,
