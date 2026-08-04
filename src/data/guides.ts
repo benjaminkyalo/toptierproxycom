@@ -28,7 +28,7 @@ export const guides: Guide[] = [
   {
     slug: "best-proxies-2026",
     metaTitle: "Proxy Rating 2026: Best Proxy Providers Ranked",
-    metaDescription: "We rated 35 proxy providers in 2026 on success rate, pool size, speed and true cost per request. See the full ranking, scores and pricing. Compare providers now.",
+    metaDescription: "We rated 35 proxy providers in 2026 on success rate, pool size, speed and cost per request. See the full ranking, scores and pricing. Compare providers now.",
     title: "Best Proxy Providers 2026 — Ranked After 1,000+ Hours of Real Testing",
     shortLabel: "overall proxy quality",
     intro: "Our annual ranking of the world's best proxy providers across every category — residential, datacenter, ISP and mobile.",
@@ -41,7 +41,7 @@ export const guides: Guide[] = [
   {
     slug: "best-residential-proxies",
     metaTitle: "Best Residential Proxies 2026: 12 Providers Tested",
-    metaDescription: "We sent 1.2M requests through 12 residential proxy networks in 2026 and scored each on Cloudflare success rate, pool depth and price per GB. Compare pricing & speed.",
+    metaDescription: "We sent 1.2M requests through 12 residential proxy networks in 2026, scoring Cloudflare success rate, pool depth and price per GB. Compare pricing & speed.",
     title: "Best Residential Proxies 2026 — Tested Across 1.2M Real Requests",
     shortLabel: "residential proxies",
     intro: "Residential proxies use real consumer IPs sourced from ISPs — making them the gold standard for stealth scraping.",
@@ -54,7 +54,7 @@ export const guides: Guide[] = [
   {
     slug: "best-datacenter-proxies",
     metaTitle: "Best Datacenter Proxies 2026: Speed & Price Tested",
-    metaDescription: "We tested every major datacenter proxy provider across 50+ live targets in 2026 and ranked them on speed, block rate and price from $0.50/IP. Compare pricing & speed.",
+    metaDescription: "We tested every major datacenter proxy provider on 50+ live targets in 2026, ranked by speed, block rate and price from $0.50/IP. Compare pricing & speed.",
     title: "Best Datacenter Proxies 2026 — Tested, Ranked & Ready to Buy",
     shortLabel: "datacenter proxies",
     intro: "Datacenter proxies are fast, cheap and perfect for unprotected targets and high-volume workloads.",
@@ -67,7 +67,7 @@ export const guides: Guide[] = [
   {
     slug: "best-isp-proxies",
     metaTitle: "Best ISP Proxies 2026: Static IPs Tested & Ranked",
-    metaDescription: "ISP proxies give residential trust at datacenter speed. We benchmarked 6 static ISP proxy providers in 2026 on speed, uptime and price per IP. Compare plans now.",
+    metaDescription: "ISP proxies give residential trust at datacenter speed. We benchmarked 6 static ISP proxy providers in 2026 on speed, uptime and price per IP. Compare plans.",
     title: "Best ISP Proxies 2026 — Residential Trust at Datacenter Speed, Ranked",
     shortLabel: "ISP proxies",
     intro: "ISP proxies combine the speed of datacenter with the stealth of residential — the best of both worlds.",
@@ -80,7 +80,7 @@ export const guides: Guide[] = [
   {
     slug: "best-mobile-proxies",
     metaTitle: "Best Mobile Proxies 2026: Real 4G/5G IPs Tested",
-    metaDescription: "We tested 6 mobile proxy networks on real 4G/5G carrier IPs in 2026, scoring block rate, carrier coverage and price per GB. Compare mobile proxy pricing & speed.",
+    metaDescription: "We tested 6 mobile proxy networks on real 4G/5G carrier IPs in 2026, scoring block rate, carrier coverage and price per GB. Compare pricing & speed.",
     title: "Best Mobile Proxies 2026 — Real 4G/5G IPs That Actually Work",
     shortLabel: "mobile proxies",
     intro: "Mobile proxies route traffic through real 4G/5G devices — the most trusted IPs you can buy.",
@@ -168,7 +168,7 @@ export const guides: Guide[] = [
   {
     slug: "best-seo-proxies",
     metaTitle: "Best SEO Proxies 2026: Rank Tracking Tested",
-    metaDescription: "Google results change by city. We tested 5 SEO proxy providers in 2026 for accurate local SERP data, city-level targeting and cost per scan. Compare pricing & speed.",
+    metaDescription: "Google results change by city. We tested 5 SEO proxy providers in 2026 for local SERP accuracy, city targeting and cost per scan. Compare pricing & speed.",
     title: "Best SEO Proxies 2026 — Accurate Google Rankings in Any City",
     shortLabel: "SEO proxies",
     intro: "Track keyword rankings, monitor SERPs and audit competitors across every geography.",
