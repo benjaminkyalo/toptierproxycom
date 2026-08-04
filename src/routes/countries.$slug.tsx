@@ -219,7 +219,40 @@ function CountryPage() {
         </ul>
       </div>
 
+      {/* 4G / 5G mobile IP block — targets "<country> 4g proxy" style queries */}
+      <div className="mt-10 rounded-md border border-border bg-card p-6">
+        <h3 className="text-lg font-bold">4G &amp; 5G mobile proxies in {country.name}</h3>
+        <p className="mt-2 text-sm text-foreground/80">
+          Mobile IPs in {country.name} are issued by {country.carriers.slice(0, 4).join(", ")} and shared behind carrier-grade NAT, which
+          makes them the hardest {country.name} IPs for anti-bot systems to block. Expect rotating or sticky sessions of 1–30 minutes,
+          billed per GB. If you only need clean {country.name} household IPs, residential is cheaper; if you need raw throughput on
+          unprotected targets, datacenter wins.
+        </p>
+        <ul className="mt-4 grid gap-2 text-sm sm:grid-cols-3">
+          <li>
+            <Link to="/guides/$slug" params={{ slug: "best-mobile-proxies" }} className="font-semibold text-primary underline underline-offset-4">best mobile proxies</Link>
+            <span className="text-muted-foreground"> — 4G/5G pools ranked</span>
+          </li>
+          <li>
+            <Link to="/guides/$slug" params={{ slug: "best-residential-proxies" }} className="font-semibold text-primary underline underline-offset-4">best residential proxies</Link>
+            <span className="text-muted-foreground"> — household IP networks</span>
+          </li>
+          <li>
+            <Link to="/guides/$slug" params={{ slug: "best-datacenter-proxies" }} className="font-semibold text-primary underline underline-offset-4">best datacenter proxies</Link>
+            <span className="text-muted-foreground"> — cheapest per IP</span>
+          </li>
+        </ul>
+        <p className="mt-4 text-sm text-foreground/80">
+          Running local rank tracking from {country.capital}? Use our{" "}
+          <Link to="/guides/$slug" params={{ slug: "best-seo-proxies" }} className="font-semibold text-primary underline underline-offset-4">best SEO proxies</Link>{" "}
+          shortlist, or read the full{" "}
+          <Link to="/best/$slug" params={{ slug: `${country.slug}-proxies` }} className="font-semibold text-primary underline underline-offset-4">best {country.name} proxies</Link>{" "}
+          ranking.
+        </p>
+      </div>
+
       <LongFormSection variant="country" topic={country.name} />
+
 
       {/* Related countries */}
       {related.length > 0 && (
