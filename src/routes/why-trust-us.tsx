@@ -8,6 +8,12 @@ export const Route = createFileRoute("/why-trust-us")({
       { name: "description", content: "Why ToptierProxy.com is the most-trusted source for proxy provider reviews. Editorial independence, hands-on testing, transparent methodology, and a track record of calling out the industry's worst practices since 2020." },
       { property: "og:title", content: "Why Trust ToptierProxy.com" },
       { property: "og:description", content: "Editorial independence, hands-on testing, and a six-year track record." },
+      { tagName: "link", rel: "canonical", href: "https://www.toptierproxy.com/why-trust-us" },
+      { property: "og:url", content: "https://www.toptierproxy.com/why-trust-us" },
+      { property: "og:site_name", content: "ToptierProxy.com" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
     ],
   }),
   component: () => (
