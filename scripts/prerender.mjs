@@ -369,6 +369,7 @@ async function run() {
   const { providers } = await loadTs("src/data/providers.ts");
   const { guides } = await loadTs("src/data/guides.ts");
   const { countries, allCityPairs } = await loadTs("src/data/countries.ts");
+  const { getCityDeep } = await loadTs("src/data/city-deep.ts");
   const { useCases } = await loadTs("src/data/use-cases.ts");
   const { blogPosts } = await loadTs("src/data/blog.ts");
 
@@ -433,11 +434,45 @@ async function run() {
   }
   console.log(` ${countries.length} country pages + ${countries.length} best pages`);
 
-  // City pages
+  // City pages (deep content for select metros, generic template for the rest)
+  function cityDeepBody(deep) {
+    const statsHtml = deep.stats.map(s => `<li><strong>${s.label}:</strong> ${s.value}</li>`).join("");
+    const asnsHtml = deep.asns.map(a => `<tr><td>${a.carrier}</td><td>${a.asn}</td><td>${a.share}</td><td>${a.type}</td></tr>`).join("");
+    const picksHtml = deep.picks.map(p => `<li><a href="${SITE}/reviews/${p.slug}" style="color:#2563eb">${p.slug}</a> - ${p.why} (${p.bestFor})</li>`).join("");
+    const priceRows = deep.prices.rows.map(r => `<tr>${r.map(cell => `<td>${cell}</td>`).join("")}</tr>`).join("");
+    const priceHead = deep.prices.head.map(h => `<th>${h}</th>`).join("");
+    const sectionsHtml = deep.sections.map(s => `<h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${s.title}</h2><p>${s.body}</p>`).join("");
+    const howToHtml = deep.howTo.map(h => `<li><strong>${h.step}:</strong> ${h.detail}</li>`).join("");
+    const useCasesHtml = deep.useCases.map(u => `<h3 style="font-size:1.15rem;font-weight:700;color:#1e3a5f;margin-top:1.25rem">${u.title}</h3><p>${u.body}</p>`).join("");
+    const faqHtml = deep.faq.map(f => `<h3 style="font-size:1.1rem;font-weight:700;color:#1e3a5f;margin-top:1rem">${f.q}</h3><p>${f.a}</p>`).join("");
+    return `
+      <h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">${deep.metaTitle}</h1>
+      <p style="font-size:1.1rem;margin-bottom:1.5rem">${deep.quickAnswer}</p>
+      <ul style="margin:1rem 0;padding-left:1.5rem">${statsHtml}</ul>
+      <h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${deep.city} Carrier and ASN Coverage</h2>
+      <table style="width:100%;border-collapse:collapse;margin:1rem 0"><thead><tr>${["Carrier","ASN","Share","Type"].map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${asnsHtml}</tbody></table>
+      <h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">Best Providers for ${deep.city}</h2>
+      <ul style="margin:1rem 0;padding-left:1.5rem">${picksHtml}</ul>
+      <h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${deep.city} Proxy Pricing</h2>
+      <table style="width:100%;border-collapse:collapse;margin:1rem 0"><thead><tr>${priceHead}</tr></thead><tbody>${priceRows}</tbody></table>
+      ${sectionsHtml}
+      <h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">How to Get a ${deep.city} Proxy</h2>
+      <ol style="margin:1rem 0;padding-left:1.5rem">${howToHtml}</ol>
+      <h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${deep.city} Proxy Use Cases</h2>
+      ${useCasesHtml}
+      <h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">Frequently Asked Questions</h2>
+      ${faqHtml}`;
+  }
+
   for (const x of allCityPairs) {
-    const title = `Best ${x.city} Proxies 2026  ${x.country.name} IPs | ToptierProxy.com`;
-    const desc = `Find the best proxy providers with ${x.city}, ${x.country.name} IP addresses. Residential and datacenter proxies for ${x.city}.`;
-    writeHtml(`/countries/${x.countrySlug}/cities/${x.citySlug}`, title, desc, cityBody(x, providers));
+    const deep = getCityDeep(x.citySlug, x.countrySlug);
+    if (deep) {
+      writeHtml(`/countries/${x.countrySlug}/cities/${x.citySlug}`, `${deep.metaTitle} | ToptierProxy.com`, deep.metaDescription, cityDeepBody(deep));
+    } else {
+      const title = `Best ${x.city} Proxies 2026 - ${x.country.name} IPs | ToptierProxy.com`;
+      const desc = `Find the best proxy providers with ${x.city}, ${x.country.name} IP addresses. Residential and datacenter proxies for ${x.city}.`;
+      writeHtml(`/countries/${x.countrySlug}/cities/${x.citySlug}`, title, desc, cityBody(x, providers));
+    }
     count++;
   }
   console.log(` ${allCityPairs.length} city pages`);
