@@ -23,11 +23,11 @@ import { cityToSlug } from "@/data/countries";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Best Proxy Providers 2026 — Independent Reviews & Rankings | ToptierProxy.com" },
+      { title: "Best Proxy Providers 2026 — Tested & Ranked" },
       {
         name: "description",
         content:
-          "Independent hands-on reviews and rankings of the world's best proxy providers — residential, datacenter, ISP, mobile and scraping APIs. Trusted by data professionals. Updated July 2026.",
+          "We tested 40+ proxy providers in 2026 — residential, datacenter, ISP, mobile and scraping APIs. Compare real pricing, pool size and success rates.",
       },
       { property: "og:title", content: "ToptierProxy.com — Best Proxy Providers 2026" },
       {
