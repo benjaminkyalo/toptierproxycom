@@ -15,6 +15,7 @@ export const Route = createFileRoute("/use-cases/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) return {};
     const { useCase } = loaderData;
+    const url = `https://www.toptierproxy.com/use-cases/${useCase.slug}`;
     return {
       meta: [
         { title: `${useCase.metaTitle} | ToptierProxy.com` },
@@ -23,6 +24,11 @@ export const Route = createFileRoute("/use-cases/$slug")({
         { property: "og:title", content: useCase.metaTitle },
         { property: "og:description", content: useCase.metaDescription },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
+        { property: "og:site_name", content: "ToptierProxy.com" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
+        { tagName: "link", rel: "canonical", href: url },
       ],
       scripts: [{
         type: "application/ld+json",

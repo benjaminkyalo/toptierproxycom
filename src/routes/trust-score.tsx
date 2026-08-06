@@ -9,6 +9,12 @@ export const Route = createFileRoute("/trust-score")({
       { name: "keywords", content: "proxy rating, proxy ratings, how are proxies rated, proxy trust score, proxy provider score, proxy review methodology, best rated proxy provider 2026" },
       { property: "og:title", content: "Proxy Provider Ratings 2026 — How We Score Every Provider" },
       { property: "og:description", content: "How we calculate the Trust Score (0-100) and star rating for every proxy provider." },
+      { tagName: "link", rel: "canonical", href: "https://www.toptierproxy.com/trust-score" },
+      { property: "og:url", content: "https://www.toptierproxy.com/trust-score" },
+      { property: "og:site_name", content: "ToptierProxy.com" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
     ],
   }),
   component: () => (

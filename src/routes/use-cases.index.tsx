@@ -9,6 +9,12 @@ export const Route = createFileRoute("/use-cases/")({
       { name: "description", content: "Find the best proxy provider for your specific workload — web scraping, SEO rank tracking, ad verification, sneaker copping, social media automation, AI training data, brand protection and more. Hands-on tested for 2026." },
       { property: "og:title", content: "Proxy Use Cases — Best Provider by Workload" },
       { property: "og:description", content: "12+ in-depth proxy use case guides. Pick the right vendor for your workload." },
+      { tagName: "link", rel: "canonical", href: "https://www.toptierproxy.com/use-cases" },
+      { property: "og:url", content: "https://www.toptierproxy.com/use-cases" },
+      { property: "og:site_name", content: "ToptierProxy.com" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
     ],
   }),
   component: () => (

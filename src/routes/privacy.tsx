@@ -6,6 +6,13 @@ export const Route = createFileRoute("/privacy")({
     meta: [
       { title: "Privacy Policy — ToptierProxy.com" },
       { name: "description", content: "ToptierProxy.com's privacy policy: what data we collect, how we use it, and your rights." },
+      { tagName: "link", rel: "canonical", href: "https://www.toptierproxy.com/privacy" },
+      { property: "og:url", content: "https://www.toptierproxy.com/privacy" },
+      { property: "og:site_name", content: "ToptierProxy.com" },
+      { property: "og:type", content: "website" },
+      { property: "og:title", content: "ToptierProxy.com — Best Proxy Providers 2026" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
     ],
   }),
   component: () => (

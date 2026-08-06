@@ -8,6 +8,11 @@ export const Route = createFileRoute("/disclaimers")({
       { name: "description", content: "Full affiliate disclosure, editorial independence statement, content accuracy policy and legal disclaimers for ToptierProxy.com — the independent proxy provider review site." },
       { property: "og:title", content: "Disclaimers & Affiliate Disclosure" },
       { property: "og:description", content: "How ToptierProxy.com handles affiliate links, editorial independence and content accuracy." },
+      { tagName: "link", rel: "canonical", href: "https://www.toptierproxy.com/disclaimers" },
+      { property: "og:url", content: "https://www.toptierproxy.com/disclaimers" },
+      { property: "og:site_name", content: "ToptierProxy.com" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: () => (

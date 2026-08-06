@@ -23,11 +23,11 @@ import { cityToSlug } from "@/data/countries";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Best Proxy Providers 2026 — Independent Reviews & Rankings | ToptierProxy.com" },
+      { title: "Best Proxy Providers 2026 — Tested & Ranked" },
       {
         name: "description",
         content:
-          "Independent hands-on reviews and rankings of the world's best proxy providers — residential, datacenter, ISP, mobile and scraping APIs. Trusted by data professionals. Updated July 2026.",
+          "We tested 40+ proxy providers in 2026 — residential, datacenter, ISP, mobile and scraping APIs. Compare real pricing, pool size and success rates.",
       },
       { property: "og:title", content: "ToptierProxy.com — Best Proxy Providers 2026" },
       {
@@ -39,6 +39,10 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
       { tagName: "link", rel: "preload", as: "image", href: "https://res.cloudinary.com/dkcqakosa/image/upload/v1780194300/Capture-Photoroom_1_w5jmmt.png" },
       { tagName: "link", rel: "preload", as: "image", href: "https://res.cloudinary.com/dkcqakosa/image/upload/v1780194300/image_22-Photoroom_1_d2osmc.png" },
+      { tagName: "link", rel: "canonical", href: "https://www.toptierproxy.com/" },
+      { property: "og:url", content: "https://www.toptierproxy.com/" },
+      { property: "og:site_name", content: "ToptierProxy.com" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
     ],
     scripts: [
       {

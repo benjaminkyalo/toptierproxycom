@@ -8,6 +8,12 @@ export const Route = createFileRoute("/about")({
       { name: "description", content: "ToptierProxy.com is the world's most-trusted independent review site for residential, datacenter, ISP and mobile proxy providers. Meet our team, read our methodology and see how 9M+ data professionals use our rankings every year." },
       { property: "og:title", content: "About ToptierProxy.com — Independent Proxy Reviews" },
       { property: "og:description", content: "Independent, hands-on proxy provider reviews trusted by 9M+ data professionals." },
+      { tagName: "link", rel: "canonical", href: "https://www.toptierproxy.com/about" },
+      { property: "og:url", content: "https://www.toptierproxy.com/about" },
+      { property: "og:site_name", content: "ToptierProxy.com" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
     ],
     scripts: [
       {
