@@ -198,7 +198,7 @@ export const cityDeep: CityDeep[] = [
         ["Oxylabs", "$4.00 – $8.00", "Yes", "Yes", "$0 (PAYG)"],
         ["Decodo", "$1.50 – $3.50", "Yes", "Yes", "$6"],
         ["IPRoyal", "$1.75 – $3.50", "Yes", "Yes", "$1"],
-        ["SOAX", "$3.60 – $6.60", "Limited", "Yes (best)", "$ance-free trial"],
+        ["SOAX", "$3.60 – $6.60", "Limited", "Yes (best)", "Trial available"],
         ["Webshare", "$3.50 – $4.50", "Yes", "No", "Free tier"],
       ],
     },
