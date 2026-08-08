@@ -100,7 +100,13 @@ export function TopPicks() {
                 </div>
                 <div className="flex flex-col gap-2 sm:w-44">
                   <a
-                    href={p.slug === "thordata" ? "https://dashboard.thordata.com/register?invitation_code=FGOCHJZN" : `/go/${p.slug}`}
+                    href={
+                      p.slug === "thordata"
+                        ? "https://dashboard.thordata.com/register?invitation_code=FGOCHJZN"
+                        : p.slug === "proxy-seller"
+                          ? "https://proxy-seller.com/?partner=4PB3INBLBLHU1G"
+                          : `/go/${p.slug}`
+                    }
                     target="_blank"
                     rel="noopener noreferrer sponsored nofollow"
                     className="inline-flex h-10 items-center justify-center gap-1 rounded-md bg-green-500 text-sm font-bold text-white hover:bg-green-600 transition-colors"
@@ -110,6 +116,13 @@ export function TopPicks() {
                   {p.slug === "thordata" ? (
                     <Link
                       to="/thordata-review"
+                      className="inline-flex h-10 items-center justify-center gap-1 rounded-md bg-primary text-sm font-bold text-primary-foreground hover:bg-brand-blue-hover transition-colors"
+                    >
+                      Read Review
+                    </Link>
+                  ) : p.slug === "proxy-seller" ? (
+                    <Link
+                      to="/proxy-seller-review"
                       className="inline-flex h-10 items-center justify-center gap-1 rounded-md bg-primary text-sm font-bold text-primary-foreground hover:bg-brand-blue-hover transition-colors"
                     >
                       Read Review
