@@ -700,7 +700,7 @@ function ProxySellerReview() {
                       <td className="px-4 py-3">{p.poolSize}</td>
                       <td className="px-4 py-3 capitalize">{p.proxyTypes.join(", ")}</td>
                       <td className="px-4 py-3">{p.rating >= 4.5 ? "99.9%" : "99.5%"}</td>
-                      <td className="px-4 py-3">{p.rating >= 4.5 ? "&lt;5 min" : "&lt;1 hr"}</td>
+                      <td className="px-4 py-3">{p.rating >= 4.5 ? "<5 min" : "<1 hr"}</td>
                     </tr>
                   ))}
                 </tbody>

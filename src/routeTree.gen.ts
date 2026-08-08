@@ -17,6 +17,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ScrapyReviewRouteImport } from './routes/scrapy-review'
 import { Route as ScraperApiRouteImport } from './routes/scraper-api'
 import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as ProxySellerReviewRouteImport } from './routes/proxy-seller-review'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as MultiloginReviewRouteImport } from './routes/multilogin-review'
 import { Route as HowWeTestRouteImport } from './routes/how-we-test'
@@ -81,6 +82,11 @@ const ScraperApiRoute = ScraperApiRouteImport.update({
 const ResourcesRoute = ResourcesRouteImport.update({
   id: '/resources',
   path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProxySellerReviewRoute = ProxySellerReviewRouteImport.update({
+  id: '/proxy-seller-review',
+  path: '/proxy-seller-review',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -220,6 +226,7 @@ export interface FileRoutesByFullPath {
   '/how-we-test': typeof HowWeTestRoute
   '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
+  '/proxy-seller-review': typeof ProxySellerReviewRoute
   '/resources': typeof ResourcesRoute
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
@@ -255,6 +262,7 @@ export interface FileRoutesByTo {
   '/how-we-test': typeof HowWeTestRoute
   '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
+  '/proxy-seller-review': typeof ProxySellerReviewRoute
   '/resources': typeof ResourcesRoute
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
@@ -291,6 +299,7 @@ export interface FileRoutesById {
   '/how-we-test': typeof HowWeTestRoute
   '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
+  '/proxy-seller-review': typeof ProxySellerReviewRoute
   '/resources': typeof ResourcesRoute
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
@@ -328,6 +337,7 @@ export interface FileRouteTypes {
     | '/how-we-test'
     | '/multilogin-review'
     | '/privacy'
+    | '/proxy-seller-review'
     | '/resources'
     | '/scraper-api'
     | '/scrapy-review'
@@ -363,6 +373,7 @@ export interface FileRouteTypes {
     | '/how-we-test'
     | '/multilogin-review'
     | '/privacy'
+    | '/proxy-seller-review'
     | '/resources'
     | '/scraper-api'
     | '/scrapy-review'
@@ -398,6 +409,7 @@ export interface FileRouteTypes {
     | '/how-we-test'
     | '/multilogin-review'
     | '/privacy'
+    | '/proxy-seller-review'
     | '/resources'
     | '/scraper-api'
     | '/scrapy-review'
@@ -434,6 +446,7 @@ export interface RootRouteChildren {
   HowWeTestRoute: typeof HowWeTestRoute
   MultiloginReviewRoute: typeof MultiloginReviewRoute
   PrivacyRoute: typeof PrivacyRoute
+  ProxySellerReviewRoute: typeof ProxySellerReviewRoute
   ResourcesRoute: typeof ResourcesRoute
   ScraperApiRoute: typeof ScraperApiRoute
   ScrapyReviewRoute: typeof ScrapyReviewRoute
@@ -514,6 +527,13 @@ declare module '@tanstack/react-router' {
       path: '/resources'
       fullPath: '/resources'
       preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/proxy-seller-review': {
+      id: '/proxy-seller-review'
+      path: '/proxy-seller-review'
+      fullPath: '/proxy-seller-review'
+      preLoaderRoute: typeof ProxySellerReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -717,6 +737,7 @@ const rootRouteChildren: RootRouteChildren = {
   HowWeTestRoute: HowWeTestRoute,
   MultiloginReviewRoute: MultiloginReviewRoute,
   PrivacyRoute: PrivacyRoute,
+  ProxySellerReviewRoute: ProxySellerReviewRoute,
   ResourcesRoute: ResourcesRoute,
   ScraperApiRoute: ScraperApiRoute,
   ScrapyReviewRoute: ScrapyReviewRoute,
