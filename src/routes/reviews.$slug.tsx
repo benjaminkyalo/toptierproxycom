@@ -387,7 +387,16 @@ function ReviewPage() {
                 </Link>
               ))}
             </div>
+            <p className="mt-4 text-sm text-foreground/80">
+              Also worth shortlisting:{" "}
+              <Link to="/proxy-seller-review" className="font-semibold text-primary hover:underline">
+                Proxy-Seller
+              </Link>{" "}
+              — the only provider on our list selling rotating residential, static ISP, mobile 5G, dedicated IPv4 and bulk IPv6
+              under one account, from $1.3/GB across 220+ locations.
+            </p>
           </section>
+
 
           {/* FAQ */}
           <section id="faq" className="mt-10 rounded-md border-2 border-dashed border-border p-6 md:p-8">
