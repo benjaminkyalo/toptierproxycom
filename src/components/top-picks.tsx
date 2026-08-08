@@ -15,10 +15,21 @@ const THORDATA_PICK = {
   proxyTypes: ["residential", "isp", "mobile", "datacenter"],
 };
 
+const PROXY_SELLER_PICK = {
+  slug: "proxy-seller",
+  name: "Proxy-Seller",
+  rating: 4.8,
+  startingPriceGB: 1.3,
+  poolSize: "10M+ IPs",
+  countries: 220,
+  bestFor: "Residential, ISP, mobile, IPv4 & IPv6 in 220+ locations",
+  proxyTypes: ["residential", "isp", "mobile", "ipv4", "ipv6"],
+};
+
 export function TopPicks() {
   const [showAll, setShowAll] = useState(false);
   const ranked = [...providers].sort((a, b) => b.rating - a.rating);
-  const withThordata = [THORDATA_PICK, ...ranked];
+  const withThordata = [THORDATA_PICK, PROXY_SELLER_PICK, ...ranked];
   const visible = showAll ? withThordata : withThordata.slice(0, 6);
 
   return (
