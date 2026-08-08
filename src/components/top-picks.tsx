@@ -15,10 +15,21 @@ const THORDATA_PICK = {
   proxyTypes: ["residential", "isp", "mobile", "datacenter"],
 };
 
+const PROXY_SELLER_PICK = {
+  slug: "proxy-seller",
+  name: "Proxy-Seller",
+  rating: 4.8,
+  startingPriceGB: 1.3,
+  poolSize: "10M+ IPs",
+  countries: 220,
+  bestFor: "Residential, ISP, mobile, IPv4 & IPv6 in 220+ locations",
+  proxyTypes: ["residential", "isp", "mobile", "ipv4", "ipv6"],
+};
+
 export function TopPicks() {
   const [showAll, setShowAll] = useState(false);
   const ranked = [...providers].sort((a, b) => b.rating - a.rating);
-  const withThordata = [THORDATA_PICK, ...ranked];
+  const withThordata = [THORDATA_PICK, PROXY_SELLER_PICK, ...ranked];
   const visible = showAll ? withThordata : withThordata.slice(0, 6);
 
   return (
@@ -89,7 +100,13 @@ export function TopPicks() {
                 </div>
                 <div className="flex flex-col gap-2 sm:w-44">
                   <a
-                    href={p.slug === "thordata" ? "https://dashboard.thordata.com/register?invitation_code=FGOCHJZN" : `/go/${p.slug}`}
+                    href={
+                      p.slug === "thordata"
+                        ? "https://dashboard.thordata.com/register?invitation_code=FGOCHJZN"
+                        : p.slug === "proxy-seller"
+                          ? "https://proxy-seller.com/?partner=4PB3INBLBLHU1G"
+                          : `/go/${p.slug}`
+                    }
                     target="_blank"
                     rel="noopener noreferrer sponsored nofollow"
                     className="inline-flex h-10 items-center justify-center gap-1 rounded-md bg-green-500 text-sm font-bold text-white hover:bg-green-600 transition-colors"
@@ -99,6 +116,13 @@ export function TopPicks() {
                   {p.slug === "thordata" ? (
                     <Link
                       to="/thordata-review"
+                      className="inline-flex h-10 items-center justify-center gap-1 rounded-md bg-primary text-sm font-bold text-primary-foreground hover:bg-brand-blue-hover transition-colors"
+                    >
+                      Read Review
+                    </Link>
+                  ) : p.slug === "proxy-seller" ? (
+                    <Link
+                      to="/proxy-seller-review"
                       className="inline-flex h-10 items-center justify-center gap-1 rounded-md bg-primary text-sm font-bold text-primary-foreground hover:bg-brand-blue-hover transition-colors"
                     >
                       Read Review
