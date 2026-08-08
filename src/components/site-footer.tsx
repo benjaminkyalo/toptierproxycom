@@ -27,6 +27,7 @@ const sections: Section[] = [
       { label: "Best VPN Deals", href: "/vpn-deals" },
       { label: "ExpressVPN", href: "/vpn-deals" },
       { label: "Surfshark", href: "/vpn-deals" },
+      { label: "Proxy-Seller", href: "/proxy-seller-review" },
       { label: "Multilogin", href: "/multilogin-review" },
       { label: "GoLogin", href: "/gologin-review" },
       { label: "AdsPower", href: "#" },

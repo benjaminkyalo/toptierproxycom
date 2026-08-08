@@ -34,6 +34,7 @@ async function run() {
     { id: "review-2captcha", title: "2Captcha Review 2026", description: "Independent 2Captcha review - CAPTCHA solving API pricing, accuracy and alternatives.", url: "/2captcha-review", type: "review", keywords: "2captcha review captcha solver api pricing" },
     { id: "review-scrapy", title: "Scrapy Review 2026", description: "Independent Scrapy review - Python web scraping framework costs, setup and comparisons.", url: "/scrapy-review", type: "review", keywords: "scrapy review python web scraping framework" },
     { id: "review-thordata", title: "Thordata Review 2026", description: "Independent Thordata review - 125M+ residential proxies, pricing from $0.65/GB, pros and cons.", url: "/thordata-review", type: "review", keywords: "thordata review proxy pricing residential isp mobile datacenter" },
+    { id: "review-proxy-seller", title: "Proxy-Seller Review 2026", description: "Proxy-Seller review — residential $1.3/GB, ISP $0.98/IP, mobile $10/IP, IPv4 $0.49/IP, IPv6 $0.02/IP across 220+ locations.", url: "/proxy-seller-review", type: "review", keywords: "proxy seller review pricing residential isp mobile ipv4 ipv6 socks5 affiliate legit" },
 
     // Providers
     ...providers.map(p => ({
