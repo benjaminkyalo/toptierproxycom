@@ -4,6 +4,70 @@ import { PageShell, Prose } from "@/components/page-shell";
 import { ProviderLogo } from "@/components/provider-logo";
 import { providers } from "@/data/providers";
 
+const STANDALONE_REVIEWS: {
+  to: string;
+  name: string;
+  initials: string;
+  rating: number;
+  description: string;
+  facts: string[];
+}[] = [
+  {
+    to: "/thordata-review",
+    name: "Thordata",
+    initials: "TD",
+    rating: 4,
+    description:
+      "125M+ residential IPs from $0.65/GB with ISP, mobile and datacenter plans — strong value for high-volume scraping.",
+    facts: ["From $0.65/GB", "125M+ IPs", "190+ countries"],
+  },
+  {
+    to: "/proxy-seller-review",
+    name: "Proxy-Seller",
+    initials: "PS",
+    rating: 4.8,
+    description:
+      "Residential $1.3/GB, ISP $0.98/IP, mobile $10/IP, IPv4 $0.49/IP and IPv6 $0.02/IP across 220+ locations.",
+    facts: ["From $1.3/GB", "220+ locations", "IPv4 · IPv6 · ISP · mobile"],
+  },
+  {
+    to: "/gologin-review",
+    name: "GoLogin",
+    initials: "GL",
+    rating: 4.3,
+    description:
+      "Antidetect browser with cloud profiles — pairs with residential proxies for multi-account management.",
+    facts: ["From $24/mo", "Antidetect browser", "Cloud profiles"],
+  },
+  {
+    to: "/multilogin-review",
+    name: "Multilogin",
+    initials: "ML",
+    rating: 4.5,
+    description:
+      "Source-level fingerprint spoofing, the most robust antidetect browser for agencies and automation teams.",
+    facts: ["From €1.99/profile", "Mimic & Stealthfox", "Team workspaces"],
+  },
+  {
+    to: "/2captcha-review",
+    name: "2Captcha",
+    initials: "2C",
+    rating: 4.4,
+    description:
+      "CAPTCHA solving API for reCAPTCHA, hCaptcha, Cloudflare Turnstile and image challenges at scale.",
+    facts: ["From $0.50/1k", "reCAPTCHA · hCaptcha", "API + SDKs"],
+  },
+  {
+    to: "/scrapy-review",
+    name: "Scrapy",
+    initials: "SC",
+    rating: 4.6,
+    description:
+      "Open-source Python scraping framework — free to run, needs proxies and a headless layer for hard targets.",
+    facts: ["Free / open source", "Python", "Proxy middleware"],
+  },
+];
+
 export const Route = createFileRoute("/reviews/")({
   head: () => ({
     meta: [
