@@ -40,6 +40,35 @@ function ReviewsIndex() {
         </p>
       </Prose>
       <div className="mt-8 grid gap-4 md:grid-cols-2">
+        {STANDALONE_REVIEWS.map((p) => (
+          <Link
+            key={p.to}
+            to={p.to}
+            className="group flex items-start gap-5 rounded-md border border-border bg-card p-5 shadow-card transition-shadow hover:shadow-card-hover"
+          >
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-md border border-border bg-muted text-lg font-extrabold text-primary">
+              {p.initials}
+            </div>
+            <div className="flex-1">
+              <div className="flex items-center justify-between gap-3">
+                <h2 className="text-lg font-bold group-hover:text-primary">{p.name} Review</h2>
+                <div className="flex items-center gap-1 text-sm">
+                  <Star className="h-4 w-4 fill-warning text-warning" />
+                  <span className="font-bold">{p.rating}</span>
+                </div>
+              </div>
+              <p className="mt-1 text-sm text-foreground/80">{p.description}</p>
+              <div className="mt-2 flex flex-wrap gap-2 text-xs text-muted-foreground">
+                {p.facts.map((f, i) => (
+                  <span key={f} className="flex gap-2">
+                    {i > 0 && <span>•</span>}
+                    <span>{f}</span>
+                  </span>
+                ))}
+              </div>
+            </div>
+          </Link>
+        ))}
         {providers.map((p) => (
           <Link
             key={p.slug}
