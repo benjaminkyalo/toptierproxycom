@@ -244,7 +244,12 @@ function ThordataReview() {
               </table>
             </div>
             <p className="mt-3 text-xs text-muted-foreground">Prices as published on Thordata's site at time of writing. Proxy pricing changes fairly often across this industry, so confirm current rates on their site before committing.</p>
+            <p className="mt-3 text-sm text-foreground/80">
+              If you also need dedicated IPv4 or bulk IPv6 addresses alongside residential and mobile, compare this against our{" "}
+              <Link to="/proxy-seller-review" className="font-semibold text-primary hover:underline">Proxy-Seller review</Link> — five proxy types on one account from $1.3/GB, with ISO/IEC 27001 certification and 220+ locations.
+            </p>
           </section>
+
 
           <section className="mt-10">
             <h2 className="text-2xl font-bold text-foreground">Proxy types explained</h2>
