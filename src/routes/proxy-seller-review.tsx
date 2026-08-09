@@ -897,6 +897,26 @@ function ProxySellerReview() {
           </div>
         </aside>
       </div>
+
+      {/* Mobile sticky price bar — transparent pricing, single clear action */}
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-card/95 px-4 py-3 backdrop-blur lg:hidden">
+        <div className="flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <div className="truncate text-sm font-bold text-foreground">Proxy-Seller — from $1.3/GB</div>
+            <div className="truncate text-xs text-muted-foreground">220+ locations · no monthly lock-in · affiliate link</div>
+          </div>
+          <a
+            href={PS_URL}
+            target="_blank"
+            rel="sponsored nofollow noopener"
+            className="inline-flex h-10 shrink-0 items-center gap-1.5 rounded-md bg-green-500 px-4 text-sm font-bold text-white hover:bg-green-600"
+          >
+            See live pricing <ExternalLink className="h-3.5 w-3.5" />
+          </a>
+        </div>
+      </div>
+      <div className="h-16 lg:hidden" />
+
     </PageShell>
   );
 }
