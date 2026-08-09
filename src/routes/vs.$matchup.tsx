@@ -18,6 +18,7 @@ export const Route = createFileRoute("/vs/$matchup")({
     if (!loaderData) return {};
     const { A, B } = loaderData;
     const title = `${A.name} vs ${B.name} 2026 — Side-by-Side Comparison`;
+    const url = `https://www.toptierproxy.com/vs/${A.slug}-vs-${B.slug}`;
     const description = `${A.name} vs ${B.name}: pricing, pool size, country coverage, success rates and verdict. Independent 2026 comparison.`;
     return {
       meta: [
@@ -26,6 +27,12 @@ export const Route = createFileRoute("/vs/$matchup")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
+        { property: "og:site_name", content: "ToptierProxy.com" },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "keywords", content: `${A.name} vs ${B.name}, ${A.name} or ${B.name}, ${A.name} alternative, ${B.name} alternative, best proxy provider 2026` },
+        { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
+        { tagName: "link", rel: "canonical", href: url },
       ],
     };
   },

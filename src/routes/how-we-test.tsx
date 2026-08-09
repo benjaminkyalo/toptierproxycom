@@ -8,6 +8,12 @@ export const Route = createFileRoute("/how-we-test")({
       { name: "description", content: "Our full proxy testing methodology — 225+ evaluation criteria, monthly re-benchmarks, identical workloads against Cloudflare, DataDome, PerimeterX and Akamai. See exactly how we score every provider." },
       { property: "og:title", content: "How We Test Proxy Providers — Full Methodology" },
       { property: "og:description", content: "225+ criteria, hands-on benchmarks, monthly re-tests across every major provider." },
+      { tagName: "link", rel: "canonical", href: "https://www.toptierproxy.com/how-we-test" },
+      { property: "og:url", content: "https://www.toptierproxy.com/how-we-test" },
+      { property: "og:site_name", content: "ToptierProxy.com" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
     ],
   }),
   component: () => (

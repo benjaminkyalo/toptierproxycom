@@ -12,6 +12,11 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact ToptierProxy.com — Talk to Our Proxy Experts" },
       { property: "og:description", content: "Reach the ToptierProxy team for proxy buying advice, partnerships, reviews and press. Real humans reply within 24 hours." },
       { property: "og:type", content: "website" },
+      { tagName: "link", rel: "canonical", href: "https://www.toptierproxy.com/contact" },
+      { property: "og:url", content: "https://www.toptierproxy.com/contact" },
+      { property: "og:site_name", content: "ToptierProxy.com" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
     ],
     scripts: [
       {
