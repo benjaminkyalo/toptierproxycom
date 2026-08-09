@@ -3,7 +3,7 @@ import { useMemo, useState, useEffect } from "react";
 import { Calendar, Clock, Search, Sparkles } from "lucide-react";
 import { SiteSearch } from "@/components/site-search";
 import { PageShell, Prose } from "@/components/page-shell";
-import { blogPosts } from "@/data/blog";
+import { blogPostsMeta as blogPosts } from "@/data/blog-meta";
 import { providers } from "@/data/providers";
 import { ProviderLogo } from "@/components/provider-logo";
 
