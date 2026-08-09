@@ -19,7 +19,24 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+    <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+    <!-- Non-blocking webfont load: paint immediately with system fallback, swap in Poppins -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    </noscript>
+
     <style>
       :root {
         --radius: .5rem;
@@ -52,13 +69,31 @@
         --warning: oklch(.75 .15 80);
       }
     </style>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9N1G48CJGW"></script>
   <script>
+    // GA4 — queue hits immediately, but load the tag only after the page is
+    // interactive (idle / first input) so it never competes with first paint.
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-9N1G48CJGW');
+    (function () {
+      var loaded = false;
+      function loadGA() {
+        if (loaded) return;
+        loaded = true;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9N1G48CJGW';
+        document.head.appendChild(s);
+      }
+      ['pointerdown', 'keydown', 'scroll'].forEach(function (e) {
+        window.addEventListener(e, loadGA, { once: true, passive: true });
+      });
+      if ('requestIdleCallback' in window) requestIdleCallback(loadGA, { timeout: 4000 });
+      else window.addEventListener('load', function () { setTimeout(loadGA, 2000); });
+    })();
   </script>
+
 </head>
   <body>
     <div id="root"></div>

@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell, Prose } from "@/components/page-shell";
-import { blogPosts } from "@/data/blog";
+import { blogPostsMeta as blogPosts } from "@/data/blog-meta";
 import { Linkedin, Twitter, Mail, Award, BookOpen, FlaskConical, Calendar } from "lucide-react";
 
 type Author = {

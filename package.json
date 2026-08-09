@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && npx tsx scripts/prerender.mjs",
-    "build:static": "tsx scripts/build-static.mjs && vite build",
+    "build": "tsx scripts/build-blog-meta.mjs && vite build && npx tsx scripts/prerender.mjs",
+    "build:static": "tsx scripts/build-blog-meta.mjs && tsx scripts/build-static.mjs && vite build",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "blog:meta": "tsx scripts/build-blog-meta.mjs"
   },
   "dependencies": {
     "@cloudflare/vite-plugin": "^1.25.5",

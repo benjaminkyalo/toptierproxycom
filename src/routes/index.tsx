@@ -16,7 +16,7 @@ import { providers, editorChoice } from "@/data/providers";
 import { countries } from "@/data/countries";
 import { guides } from "@/data/guides";
 import { useCases } from "@/data/use-cases";
-import { blogPosts } from "@/data/blog";
+import { blogLinks as blogPosts } from "@/data/blog-links";
 import { popularMatchups } from "@/data/matchups";
 import { cityToSlug } from "@/data/countries";
 
