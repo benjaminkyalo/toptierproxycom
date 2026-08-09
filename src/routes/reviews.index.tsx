@@ -6,6 +6,7 @@ import { providers } from "@/data/providers";
 
 const STANDALONE_REVIEWS: {
   to: string;
+  slug: string;
   name: string;
   initials: string;
   rating: number;
@@ -14,6 +15,7 @@ const STANDALONE_REVIEWS: {
 }[] = [
   {
     to: "/thordata-review",
+    slug: "thordata",
     name: "Thordata",
     initials: "TD",
     rating: 4,
@@ -23,6 +25,7 @@ const STANDALONE_REVIEWS: {
   },
   {
     to: "/proxy-seller-review",
+    slug: "proxy-seller",
     name: "Proxy-Seller",
     initials: "PS",
     rating: 4.8,
@@ -32,6 +35,7 @@ const STANDALONE_REVIEWS: {
   },
   {
     to: "/gologin-review",
+    slug: "gologin",
     name: "GoLogin",
     initials: "GL",
     rating: 4.3,
@@ -41,6 +45,7 @@ const STANDALONE_REVIEWS: {
   },
   {
     to: "/multilogin-review",
+    slug: "multilogin",
     name: "Multilogin",
     initials: "ML",
     rating: 4.5,
@@ -50,6 +55,7 @@ const STANDALONE_REVIEWS: {
   },
   {
     to: "/2captcha-review",
+    slug: "2captcha",
     name: "2Captcha",
     initials: "2C",
     rating: 4.4,
@@ -59,6 +65,7 @@ const STANDALONE_REVIEWS: {
   },
   {
     to: "/scrapy-review",
+    slug: "scrapy",
     name: "Scrapy",
     initials: "SC",
     rating: 4.6,
@@ -110,10 +117,11 @@ function ReviewsIndex() {
             to={p.to}
             className="group flex items-start gap-5 rounded-md border border-border bg-card p-5 shadow-card transition-shadow hover:shadow-card-hover"
           >
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-md border border-border bg-muted text-lg font-extrabold text-primary">
-              {p.initials}
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-md border border-border bg-background">
+              <ProviderLogo provider={{ slug: p.slug, name: p.name }} size="md" className="!bg-transparent" />
             </div>
             <div className="flex-1">
+
               <div className="flex items-center justify-between gap-3">
                 <h2 className="text-lg font-bold group-hover:text-primary">{p.name} Review</h2>
                 <div className="flex items-center gap-1 text-sm">
