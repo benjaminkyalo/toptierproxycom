@@ -110,10 +110,11 @@ function ReviewsIndex() {
             to={p.to}
             className="group flex items-start gap-5 rounded-md border border-border bg-card p-5 shadow-card transition-shadow hover:shadow-card-hover"
           >
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-md border border-border bg-muted text-lg font-extrabold text-primary">
-              {p.initials}
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-md border border-border bg-background">
+              <ProviderLogo provider={{ slug: p.slug, name: p.name }} size="md" className="!bg-transparent" />
             </div>
             <div className="flex-1">
+
               <div className="flex items-center justify-between gap-3">
                 <h2 className="text-lg font-bold group-hover:text-primary">{p.name} Review</h2>
                 <div className="flex items-center gap-1 text-sm">
