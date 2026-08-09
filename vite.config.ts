@@ -28,6 +28,7 @@ export default defineConfig({
           // only by the routes that actually need them.
           if (id.includes("/src/data/blog.ts")) return "data-blog";
           if (id.includes("/src/data/blog-meta.ts")) return "data-blog-meta";
+          if (id.includes("/src/data/blog-links.ts")) return "data-blog-links";
           if (id.includes("/src/data/city-deep.ts")) return "data-city-deep";
           if (id.includes("/src/data/city-content.ts")) return "data-city-content";
           if (id.includes("/src/data/countries.ts")) return "data-countries";
