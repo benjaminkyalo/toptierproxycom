@@ -741,6 +741,68 @@ function ProxySellerReview() {
             </Accordion>
           </section>
 
+          {/* Related reading — internal link cluster */}
+          <section className="mt-10">
+            <H2 id="related">Related reading</H2>
+            <p className="mt-3 text-foreground/85">
+              Where Proxy-Seller fits depends on your workload. These pages go deeper on each tier, use case and matchup.
+            </p>
+            <div className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                {
+                  heading: "By proxy type",
+                  links: [
+                    { label: "Best residential proxies", to: "/guides/$slug", params: { slug: "best-residential-proxies" } },
+                    { label: "Best ISP (static residential) proxies", to: "/guides/$slug", params: { slug: "best-isp-proxies" } },
+                    { label: "Best mobile 4G/5G proxies", to: "/guides/$slug", params: { slug: "best-mobile-proxies" } },
+                    { label: "Best datacenter proxies", to: "/guides/$slug", params: { slug: "best-datacenter-proxies" } },
+                    { label: "Best scraping APIs", to: "/guides/$slug", params: { slug: "best-scraping-apis" } },
+                  ],
+                },
+                {
+                  heading: "By use case",
+                  links: [
+                    { label: "Web scraping at scale", to: "/use-cases/$slug", params: { slug: "web-scraping" } },
+                    { label: "SEO rank monitoring", to: "/use-cases/$slug", params: { slug: "seo-monitoring" } },
+                    { label: "Price & e-commerce monitoring", to: "/use-cases/$slug", params: { slug: "price-monitoring" } },
+                    { label: "Ad verification", to: "/use-cases/$slug", params: { slug: "ad-verification" } },
+                    { label: "Social media management", to: "/use-cases/$slug", params: { slug: "social-media" } },
+                  ],
+                },
+                {
+                  heading: "Head-to-head & tools",
+                  links: [
+                    { label: "Thordata review", to: "/thordata-review", params: undefined },
+                    { label: "IPRoyal review", to: "/reviews/$slug", params: { slug: "iproyal" } },
+                    { label: "Bright Data vs Oxylabs", to: "/vs/$matchup", params: { matchup: "bright-data-vs-oxylabs" } },
+                    { label: "Compare any two providers", to: "/compare", params: undefined },
+                    { label: "Proxies by country", to: "/countries", params: undefined },
+                  ],
+                },
+              ].map((col) => (
+                <div key={col.heading} className="rounded-md border border-border bg-card p-5">
+                  <div className="text-xs font-extrabold uppercase tracking-wider text-foreground/50">{col.heading}</div>
+                  <ul className="mt-3 space-y-2 text-sm">
+                    {col.links.map((l) => (
+                      <li key={l.label}>
+                        <Link
+                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                          to={l.to as any}
+                          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                          params={l.params as any}
+                          className="font-semibold text-primary hover:underline"
+                        >
+                          {l.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </section>
+
+
           {/* Verdict */}
           <section id="verdict" className="mt-10 scroll-mt-28 rounded-md border-2 border-primary bg-muted/40 p-6 md:p-8">
             <div className="flex flex-wrap items-center gap-3">
