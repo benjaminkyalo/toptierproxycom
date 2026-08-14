@@ -106,6 +106,34 @@ function GuidePage() {
       <Prose>
         <LinkedParagraph text={guide.body} />
         <p>Below, our team's 2026 ranking — based on 1,000+ hours of hands-on testing across 35 vendors, with success rates measured on Cloudflare-, DataDome- and PerimeterX-protected targets.</p>
+      </Prose>
+
+      <div className="mt-6 overflow-x-auto rounded-md border border-border">
+        <table className="w-full text-sm">
+          <thead className="bg-muted">
+            <tr>
+              <th className="px-4 py-3 text-left font-bold">Provider</th>
+              <th className="px-4 py-3 text-left font-bold">Rating</th>
+              <th className="px-4 py-3 text-left font-bold">Starting Price</th>
+              <th className="px-4 py-3 text-left font-bold">Pool Size</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border">
+            {ranked.map((p) => (
+              <tr key={p.slug}>
+                <td className="px-4 py-3 font-semibold">
+                  <Link to="/reviews/$slug" params={{ slug: p.slug }} className="text-primary hover:underline">{p.name}</Link>
+                </td>
+                <td className="px-4 py-3">{p.rating}/5</td>
+                <td className="px-4 py-3">{p.startingPriceGB ? `$${p.startingPriceGB}/GB` : "-"}</td>
+                <td className="px-4 py-3">{p.poolSize ?? "-"}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <Prose>
         <h2>The {ranked.length} best picks for {guide.shortLabel}</h2>
       </Prose>
 
