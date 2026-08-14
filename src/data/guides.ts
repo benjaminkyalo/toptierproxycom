@@ -8,6 +8,8 @@ export interface Guide {
   description: string; // for meta
   body: string;
   providerSlugs: string[];
+  /** For standalone-page providers (not in providers.ts) that genuinely fit this guide's category. */
+  extraProviders?: { name: string; url: string; rating: number; startingPrice: string; poolSize: string }[];
   related: { to: string; label: string }[];
   primaryKeywords?: string[];
   /** SERP-optimised <title> — exact query first, under ~60 chars, no site suffix. */
@@ -61,6 +63,7 @@ export const guides: Guide[] = [
     description: "Looking for the best datacenter proxy in 2026? We tested every major provider across 50+ real targets and ranked them honestly by speed, block rate and price. From $0.50/IP/month.",
     body: "Datacenter proxies are hosted in commercial data centers, which makes them fast, cheap and easy to scale. The downside is that their IP ranges are well-known to anti-bot services, so success rates on protected sites are lower than residential.",
     providerSlugs: ["webshare", "bright-data", "rayobyte", "oxylabs", "decodo", "proxy-cheap"],
+    extraProviders: [{ name: "Thordata", url: "/thordata-review", rating: 4.7, startingPrice: "$0.75/IP", poolSize: "125M+ IPs" }],
     related: RELATED_DEFAULT,
     primaryKeywords: ["best datacenter proxies","datacenter proxy","best datacenter proxy","datacenter proxy provider","datacenter proxy providers","best datacenter proxy services","best data center proxies","datacenter proxies 2026"],
   },

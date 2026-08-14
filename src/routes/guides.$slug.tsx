@@ -108,25 +108,35 @@ function GuidePage() {
         <p>Below, our team's 2026 ranking — based on 1,000+ hours of hands-on testing across 35 vendors, with success rates measured on Cloudflare-, DataDome- and PerimeterX-protected targets.</p>
       </Prose>
 
-      <div className="mt-6 overflow-x-auto rounded-md border border-border">
-        <table className="w-full text-sm">
+      <div className="mt-6 w-full overflow-x-auto rounded-md border border-border [-webkit-overflow-scrolling:touch]">
+        <table className="w-full min-w-[480px] text-xs sm:text-sm">
           <thead className="bg-muted">
             <tr>
-              <th className="px-4 py-3 text-left font-bold">Provider</th>
-              <th className="px-4 py-3 text-left font-bold">Rating</th>
-              <th className="px-4 py-3 text-left font-bold">Starting Price</th>
-              <th className="px-4 py-3 text-left font-bold">Pool Size</th>
+              <th className="px-2 py-2 text-left font-bold sm:px-4 sm:py-3">Provider</th>
+              <th className="px-2 py-2 text-left font-bold sm:px-4 sm:py-3">Rating</th>
+              <th className="px-2 py-2 text-left font-bold sm:px-4 sm:py-3">Starting Price</th>
+              <th className="px-2 py-2 text-left font-bold sm:px-4 sm:py-3">Pool Size</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-border">
             {ranked.map((p) => (
               <tr key={p.slug}>
-                <td className="px-4 py-3 font-semibold">
+                <td className="px-2 py-2 font-semibold sm:px-4 sm:py-3">
                   <Link to="/reviews/$slug" params={{ slug: p.slug }} className="text-primary hover:underline">{p.name}</Link>
                 </td>
-                <td className="px-4 py-3">{p.rating}/5</td>
-                <td className="px-4 py-3">{p.startingPriceGB ? `$${p.startingPriceGB}/GB` : "-"}</td>
-                <td className="px-4 py-3">{p.poolSize ?? "-"}</td>
+                <td className="px-2 py-2 sm:px-4 sm:py-3">{p.rating}/5</td>
+                <td className="px-2 py-2 sm:px-4 sm:py-3">{p.startingPriceGB ? `$${p.startingPriceGB}/GB` : "-"}</td>
+                <td className="px-2 py-2 sm:px-4 sm:py-3">{p.poolSize ?? "-"}</td>
+              </tr>
+            ))}
+            {(guide.extraProviders ?? []).map((p) => (
+              <tr key={p.name}>
+                <td className="px-2 py-2 font-semibold sm:px-4 sm:py-3">
+                  <Link to={p.url} className="text-primary hover:underline">{p.name}</Link>
+                </td>
+                <td className="px-2 py-2 sm:px-4 sm:py-3">{p.rating}/5</td>
+                <td className="px-2 py-2 sm:px-4 sm:py-3">{p.startingPrice}</td>
+                <td className="px-2 py-2 sm:px-4 sm:py-3">{p.poolSize}</td>
               </tr>
             ))}
           </tbody>
