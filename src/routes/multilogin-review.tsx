@@ -29,7 +29,7 @@ export const Route = createFileRoute("/multilogin-review")({
             name: "Multilogin",
             applicationCategory: "BrowserApplication",
             operatingSystem: "Windows, macOS, Linux",
-            offers: { "@type": "Offer", price: "99", priceCurrency: "USD" },
+            offers: { "@type": "Offer", price: "7.08", priceCurrency: "USD" },
             aggregateRating: { "@type": "AggregateRating", ratingValue: "4.3", bestRating: "5", ratingCount: "312" },
             description,
           }),
@@ -104,8 +104,8 @@ const faqs = [
   { q: "Does Multilogin work with free proxies?", a: "Technically yes, but it is pointless. Free proxies are almost universally flagged datacenter IPs sitting on blacklists that platforms update in real time. Your profiles will be detected and banned within hours. Multilogin requires residential or mobile proxies from reputable providers to function at a level that justifies the subscription cost." },
   { q: "What is the best proxy for Multilogin?", a: "Residential proxies are the minimum for serious work — Bright Data, Oxylabs and IPRoyal are our top tested picks for Multilogin compatibility. For the highest-risk platforms (Facebook Ads, TikTok, Amazon), mobile proxies (4G/5G rotating) produce the cleanest sessions. Datacenter proxies work only on low-protection targets." },
   { q: "Can Multilogin be detected by Cloudflare?", a: "Cloudflare Bot Management can detect Multilogin profiles when datacenter proxies are used, fingerprints are reused across sessions, or behavioral patterns are robotic. With fresh residential IPs, unique Multilogin X canvas fingerprints, and realistic mouse movement, detection rates drop significantly even on Cloudflare Enterprise-protected targets." },
-  { q: "Is there a Multilogin free plan?", a: "No free plan — Multilogin offers a 3-day free trial on all paid tiers. If you need a free antidetect browser to evaluate the category, Incogniton offers 10 free profiles permanently, which is enough to test workflows before committing to Multilogin's pricing." },
-  { q: "How many accounts can I manage with Multilogin?", a: "The Solo plan supports 100 browser profiles, Team supports 300, and Scale supports 1,000. Enterprise plans go higher on request. Each profile is a fully isolated browser environment — separate cookies, fingerprint, proxy, and storage — so 100 profiles means 100 completely independent browser identities." },
+  { q: "Is there a Multilogin free plan?", a: "Yes - Multilogin offers a genuine free-forever plan with 5 browser profiles, no time limit and no credit card required. Paid plans start at Pro ($7.08/month) for higher profile limits and team features." },
+  { q: "How many accounts can I manage with Multilogin?", a: "The free plan supports 5 profiles. Pro lets you choose a limit of 10, 50 or 100 profiles. Business starts at 300 profiles and scales up further. Multilogin supports up to 10,000 profiles total. Each profile is a fully isolated browser or Cloud Phone environment - separate cookies, fingerprint, proxy, and storage." },
   { q: "Does Multilogin support automation?", a: "Yes — full Selenium and Playwright support via the Multilogin REST API. You can launch profiles programmatically, inject cookies, control browser behavior, and integrate with any automation framework. This is one of Multilogin's strongest differentiators over cheaper competitors like AdsPower." },
   { q: "What is the difference between Multilogin X and Multilogin 6?", a: "Multilogin X is a complete rewrite of the legacy Multilogin 6 platform, launched in 2023. Key differences: cloud-native architecture with instant cross-device profile sync, rebuilt fingerprinting engine with updated browser baselines, new UI, and improved API. Multilogin 6 is still available but no longer receiving major feature updates. All new users should start with Multilogin X." },
 ];
@@ -165,13 +165,13 @@ function MultiloginReviewPage() {
               <tbody>
                 {[
                   ["Founded", "2015"],
-                  ["Headquarters", "Tallinn, Estonia"],
-                  ["Pricing", "From $99/month"],
-                  ["Free Trial", "3-day trial available"],
-                  ["Browser Profiles", "Up to 1,000+ (Scale plan)"],
+                  ["Headquarters", "UAE, Dubai"],
+                  ["Pricing", "Pro from $7.08/month, Business from $57.08/month"],
+                  ["Free Trial", "Free plan with 5 profiles, no time limit, no credit card required"],
+                  ["Browser Profiles", "Up to 10,000"],
                   ["Supported OS", "Windows, macOS, Linux"],
-                  ["API Access", "Yes — REST API, Selenium & Playwright"],
-                  ["Team Collaboration", "Yes — shared profiles, role permissions"],
+                  ["API Access", "Yes - Multilogin API, Selenium, Puppeteer, Playwright, Postman"],
+                  ["Team Collaboration", "Yes - Shared profiles, role permissions, activity log"],
                 ].map(([k, v], i) => (
                   <tr key={k} className={i % 2 === 0 ? "bg-muted/40" : ""}>
                     <td className="py-2 px-3 font-semibold text-foreground/70 w-40">{k}</td>
@@ -185,8 +185,8 @@ function MultiloginReviewPage() {
           {/* CTA: After Summary */}
           <div className="mt-6 flex items-center justify-between rounded-md border border-nav-hover/30 bg-nav-hover/5 px-5 py-4">
             <div>
-              <div className="text-sm font-extrabold text-foreground">3-day free trial — no credit card games</div>
-              <div className="text-xs text-foreground/60 mt-0.5">Test all features. Cancel anytime. Full refund if you upgrade and change your mind.</div>
+              <div className="text-sm font-extrabold text-foreground">Free plan with 5 profiles — no credit card required</div>
+              <div className="text-xs text-foreground/60 mt-0.5">No time limit on the free plan. Upgrade to Pro or Business whenever you need more profiles.</div>
             </div>
             <a href="https://multilogin.com" target="_blank" rel="sponsored nofollow noopener"
               className="ml-4 shrink-0 rounded-md bg-nav-hover px-5 py-2 text-sm font-bold text-black hover:opacity-90 transition-opacity">
@@ -230,7 +230,7 @@ function MultiloginReviewPage() {
           <div className="mt-6 rounded-md bg-[#0f172a] text-white px-6 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
               <div className="text-sm font-extrabold">Sounds like you? Start with the Solo plan.</div>
-              <div className="text-xs text-white/60 mt-1">100 profiles · API access · 3-day trial · Cancel anytime</div>
+              <div className="text-xs text-white/60 mt-1">10·50·100 profiles · API access · No credit card required</div>
             </div>
             <a href="https://multilogin.com" target="_blank" rel="sponsored nofollow noopener"
               className="shrink-0 rounded-md bg-nav-hover px-6 py-2.5 text-sm font-bold text-black hover:opacity-90 transition-opacity">
@@ -260,13 +260,12 @@ function MultiloginReviewPage() {
           {/* PRICING */}
           <section id="pricing" className="mt-10">
             <h2 className="text-2xl font-extrabold text-foreground">Multilogin Pricing 2026</h2>
-            <p className="mt-2 text-sm text-foreground/70">All plans include a 3-day free trial. Annual billing saves 25%.</p>
-            <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <p className="mt-2 text-sm text-foreground/70">Free forever plan available. Annual billing on paid plans brings the monthly rate down.</p>
+            <div className="mt-6 grid sm:grid-cols-3 gap-4">
               {[
-                { name: "Solo", price: "$99", period: "/month", profiles: "100 profiles", features: ["2 team seats", "Cloud sync", "API access", "All browsers"], highlight: false },
-                { name: "Team", price: "$199", period: "/month", profiles: "300 profiles", features: ["5 team seats", "Shared folders", "Activity log", "Priority support"], highlight: true },
-                { name: "Scale", price: "$399", period: "/month", profiles: "1,000 profiles", features: ["10 team seats", "Advanced API", "Bulk actions", "SLA uptime"], highlight: false },
-                { name: "Custom", price: "POA", period: "", profiles: "Unlimited profiles", features: ["Unlimited seats", "Dedicated infra", "Custom SLA", "Onboarding"], highlight: false },
+                { name: "Free", price: "$0", period: "/forever", profiles: "5 profiles", features: ["Cloud mobile and browser profiles", "300+ social and mobile apps", "Folder access management"], highlight: false },
+                { name: "Pro", price: "$7.08", period: "/month", profiles: "10, 50 or 100 profiles", features: ["Profile transfer to teams", "Automation-friendly API access", "1 team seat", "1GB proxy traffic/mo bonus"], highlight: true },
+                { name: "Business", price: "$57.08", period: "/month", profiles: "300+ profiles", features: ["All Pro features unlocked", "Custom API rate limits", "Proxy and profile templates", "Unlimited team seats"], highlight: false },
               ].map(({ name, price, period, profiles, features, highlight }) => (
                 <div key={name} className={`rounded-md border-2 p-5 flex flex-col ${highlight ? "border-nav-hover bg-nav-hover/5" : "border-border bg-card"}`}>
                   {highlight && <div className="text-xs font-bold text-nav-hover mb-2">MOST POPULAR</div>}
@@ -282,7 +281,7 @@ function MultiloginReviewPage() {
                   </ul>
                   <a href="https://multilogin.com" target="_blank" rel="sponsored nofollow noopener"
                     className={`mt-5 block rounded-md py-2 text-center text-sm font-bold transition-opacity hover:opacity-90 ${highlight ? "bg-nav-hover text-black" : "bg-muted text-foreground"}`}>
-                    Start Free Trial
+                    {name === "Free" ? "Get Started Free" : "Try Free"}
                   </a>
                 </div>
               ))}
@@ -296,7 +295,7 @@ function MultiloginReviewPage() {
               <div className="rounded-md border border-green-500/30 bg-green-500/5 p-5">
                 <div className="font-extrabold text-green-600 mb-3">✓ Pros</div>
                 <ul className="space-y-2">
-                  {["Most realistic browser fingerprint spoofing available in 2026","Source-level browser modification — not patchable JS overrides","Works with all major proxy providers including Bright Data and Oxylabs","Strong REST API — full Selenium and Playwright support","Multilogin X is a complete modern rewrite, actively developed","Team collaboration with granular profile permissions","Cloud-native profile sync across devices"].map(p => (
+                  {["Cloud Phones and browser profiles cover both mobile and desktop account management in one platform","A genuine free plan, with no card required and no countdown","Team collaboration built for agencies: locking, assignment, and an activity log","Deep automation support through the Multilogin API, Selenium, Puppeteer, Playwright, and Postman","150+ locations for Cloud Phones, useful for localized research and region-specific work","Android coverage from version 10 through 16"].map(p => (
                     <li key={p} className="flex items-start gap-2 text-sm text-foreground/80">
                       <Check className="h-4 w-4 text-green-500 shrink-0 mt-0.5" />{p}
                     </li>
@@ -306,7 +305,7 @@ function MultiloginReviewPage() {
               <div className="rounded-md border border-red-500/30 bg-red-500/5 p-5">
                 <div className="font-extrabold text-red-500 mb-3">✗ Cons</div>
                 <ul className="space-y-2">
-                  {["Expensive — $99/month is a high floor for solo operators","Steep learning curve for users new to antidetect browsers","No mobile browser support (Android/iOS profiles)","Occasional fingerprint detection on the most heavily protected sites","100-profile limit on Solo plan fills up fast for serious operations","No perpetual free tier — trial is only 3 days"].map(c => (
+                  {["The API and automation tools have a learning curve if your team has not built profile-based workflows before","No native support for iOS profiles, only Android through Cloud Phones"].map(c => (
                     <li key={c} className="flex items-start gap-2 text-sm text-foreground/80">
                       <X className="h-4 w-4 text-red-500 shrink-0 mt-0.5" />{c}
                     </li>
@@ -319,12 +318,12 @@ function MultiloginReviewPage() {
           {/* CTA: Risk reversal */}
           <div className="mt-6 rounded-md border-2 border-dashed border-border p-5 flex flex-col sm:flex-row sm:items-center gap-4">
             <div className="flex-1">
-              <div className="text-sm font-extrabold text-foreground">Not sure yet? The 3-day trial costs you nothing.</div>
+              <div className="text-sm font-extrabold text-foreground">Not sure yet? Start on the free plan.</div>
               <div className="text-xs text-foreground/60 mt-1">Every con above is something you can verify yourself before paying a cent. That is the whole point of the trial.</div>
             </div>
             <a href="https://multilogin.com" target="_blank" rel="sponsored nofollow noopener"
               className="shrink-0 rounded-md bg-nav-hover px-6 py-2.5 text-sm font-bold text-black hover:opacity-90 transition-opacity">
-              Start Free Trial →
+              Try Free →
             </a>
           </div>
 
