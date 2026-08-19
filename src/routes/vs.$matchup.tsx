@@ -32,7 +32,8 @@ export const Route = createFileRoute("/vs/$matchup")({
         { name: "twitter:card", content: "summary_large_image" },
         { name: "keywords", content: `${A.name} vs ${B.name}, ${A.name} or ${B.name}, ${A.name} alternative, ${B.name} alternative, best proxy provider 2026` },
         { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
-        { tagName: "link", rel: "canonical", href: url },
+        // Consolidation: long-tail matchups (71% sibling overlap) canonical to /compare.
+        { tagName: "link", rel: "canonical", href: `https://www.toptierproxy.com${vsCanonicalPath(A.slug, B.slug)}` },
       ],
     };
   },
