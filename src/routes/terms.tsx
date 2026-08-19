@@ -16,7 +16,7 @@ export const Route = createFileRoute("/terms")({
     ],
   }),
   component: () => (
-    <PageShell title="Terms of Use" breadcrumb={[{ to: "/", label: "Home" }, { to: "/terms", label: "Terms" }]}>
+    <PageShell title="Terms of Use" breadcrumb={[{ to: "/", label: "Home" }, { to: "/terms", label: "Terms" }]} linkHub={false}>
       <Prose>
         <p>Last updated: April 2026.</p>
         <h2>Acceptance</h2>

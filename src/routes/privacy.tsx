@@ -16,7 +16,7 @@ export const Route = createFileRoute("/privacy")({
     ],
   }),
   component: () => (
-    <PageShell title="Privacy Policy" breadcrumb={[{ to: "/", label: "Home" }, { to: "/privacy", label: "Privacy" }]}>
+    <PageShell title="Privacy Policy" breadcrumb={[{ to: "/", label: "Home" }, { to: "/privacy", label: "Privacy" }]} linkHub={false}>
       <Prose>
         <p>Last updated: April 2026.</p>
         <h2>What we collect</h2>
