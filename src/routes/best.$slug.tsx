@@ -7,6 +7,7 @@ import { Flag } from "@/components/flag";
 import { countries } from "@/data/countries";
 import { providers } from "@/data/providers";
 import { getSerpOverride } from "@/data/serp-overrides";
+import { bestCanonicalPath } from "@/data/canonical-policy";
 
 export const Route = createFileRoute("/best/$slug")({
   loader: ({ params }) => {
@@ -20,6 +21,9 @@ export const Route = createFileRoute("/best/$slug")({
     if (!loaderData) return {};
     const { country } = loaderData;
     const url = `https://www.toptierproxy.com/best/${country.slug}-proxies`;
+    // Consolidation: this page duplicates /countries/{slug} (~42% body overlap),
+    // so the country page carries the canonical. URL stays live and linked.
+    const canonical = `https://www.toptierproxy.com${bestCanonicalPath(country.slug)}`;
     const ov = getSerpOverride(`/best/${country.slug}-proxies`);
     const title = ov?.title ?? `Best ${country.name} Proxies 2026: Top 5 Ranked`;
     const description = ov?.description ?? `We ranked the top 5 ${country.name} proxy providers for 2026 — ${country.poolDepth}, city targeting in ${country.topCities.slice(0, 2).join(" & ")}, real pricing. Compare speed →`;
@@ -32,10 +36,11 @@ export const Route = createFileRoute("/best/$slug")({
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
-        { rel: "canonical", href: url } as never,
+        { rel: "canonical", href: canonical } as never,
       ],
     };
   },
+
 
 
   notFoundComponent: () => <PageShell title="Not found"><Link to="/countries" className="text-primary underline">Browse countries</Link></PageShell>,
@@ -54,6 +59,14 @@ function BestPage() {
           <div className="text-sm text-muted-foreground">{country.region} · {country.population} population · {country.internetUsers} online</div>
           <div className="mt-1 font-bold">{country.poolDepth} available across the top vendors</div>
         </div>
+      </div>
+
+      <div className="mb-8 rounded-md border border-border bg-muted/40 p-5 text-sm">
+        <strong className="font-bold">The full {country.name} guide</strong> — pool depth, per-GB pricing, carrier
+        and ASN mix, city-level targeting and legal notes — lives on our{" "}
+        <Link to="/countries/$slug" params={{ slug: country.slug }} className="font-semibold text-primary underline">
+          {country.name} proxy hub
+        </Link>.
       </div>
 
       <ol className="space-y-4">

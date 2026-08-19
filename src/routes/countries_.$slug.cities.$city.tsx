@@ -8,8 +8,9 @@ import { getCityContent } from "@/data/city-content";
 import { getCityDeep } from "@/data/city-deep";
 import { providers } from "@/data/providers";
 import { getSerpOverride } from "@/data/serp-overrides";
+import { cityCanonicalPath, isCityTierA } from "@/data/canonical-policy";
 
-export const Route = createFileRoute("/countries/$slug/cities/$city")({
+export const Route = createFileRoute("/countries_/$slug/cities/$city")({
   loader: ({ params }) => {
     const found = getCityCountry(params.city, params.slug);
     if (!found) throw notFound();
@@ -50,7 +51,7 @@ export const Route = createFileRoute("/countries/$slug/cities/$city")({
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
         { name: "twitter:card", content: "summary_large_image" },
-        { rel: "canonical", href: url } as never,
+        { rel: "canonical", href: `https://www.toptierproxy.com${cityCanonicalPath(country.slug, params.city)}` } as never,
       ],
       scripts: [
         {
@@ -169,6 +170,18 @@ function CityPage() {
           <div className="font-bold">Carrier mix: {country.carriers.slice(0, 3).join(", ")}</div>
         </div>
       </div>
+
+      {!isCityTierA(country.slug, citySlug) && (
+        <div className="mb-8 rounded-md border border-border bg-muted/40 p-5 text-sm">
+          <strong className="font-bold">Looking for the full picture?</strong>{" "}
+          Our complete, independently tested breakdown for this market lives on the{" "}
+          <Link to="/countries/$slug" params={{ slug: country.slug }} className="font-semibold text-primary underline">
+            {country.name} proxy guide
+          </Link>{" "}
+          — pool sizes, per-GB pricing, carrier mix and legal notes, with {city} targeting included.
+        </div>
+      )}
+
 
       {deep && (
         <div className="mb-8 rounded-md border-l-4 border-primary bg-primary/5 p-5">

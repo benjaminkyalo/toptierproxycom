@@ -5,6 +5,7 @@ import { providers, getProvider } from "@/data/providers";
 import { LinkedParagraph } from "@/components/linked-paragraph";
 import { NetNutAlert } from "@/components/netnut-alert";
 import { Star, Check, X } from "lucide-react";
+import { vsCanonicalPath, isVsTierA } from "@/data/canonical-policy";
 
 export const Route = createFileRoute("/vs/$matchup")({
   loader: ({ params }) => {
@@ -32,7 +33,8 @@ export const Route = createFileRoute("/vs/$matchup")({
         { name: "twitter:card", content: "summary_large_image" },
         { name: "keywords", content: `${A.name} vs ${B.name}, ${A.name} or ${B.name}, ${A.name} alternative, ${B.name} alternative, best proxy provider 2026` },
         { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
-        { tagName: "link", rel: "canonical", href: url },
+        // Consolidation: long-tail matchups (71% sibling overlap) canonical to /compare.
+        { tagName: "link", rel: "canonical", href: `https://www.toptierproxy.com${vsCanonicalPath(A.slug, B.slug)}` },
       ],
     };
   },
@@ -57,6 +59,15 @@ function VsPage() {
       breadcrumb={[{ to: "/", label: "Home" }, { to: "/compare", label: "Compare" }]}
     >
       {(A.slug === "netnut" || B.slug === "netnut") && <NetNutAlert />}
+
+      {!isVsTierA(A.slug, B.slug) && (
+        <div className="mb-8 rounded-md border border-border bg-muted/40 p-5 text-sm">
+          Comparing more than two vendors? Our{" "}
+          <Link to="/compare" className="font-semibold text-primary underline">full proxy provider comparison table</Link>{" "}
+          ranks every major provider on price per GB, pool size, success rate and support side by side.
+        </div>
+      )}
+
 
       <Prose>
         <p>

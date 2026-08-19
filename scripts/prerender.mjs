@@ -3,6 +3,7 @@ import { mkdirSync, writeFileSync, readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { findLink } from "../src/components/linked-paragraph.tsx";
+import { bestCanonicalPath, cityCanonicalPath, vsCanonicalPath } from "../src/data/canonical-policy.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "..");
@@ -24,9 +25,11 @@ function slugify(str) {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
 }
 
-function writeHtml(urlPath, title, description, bodyContent = "") {
+function writeHtml(urlPath, title, description, bodyContent = "", canonicalPath) {
   const template = readFileSync(resolve(DIST, "index.html"), "utf-8");
-  const canonicalUrl = `${SITE}${urlPath}`;
+  // Consolidation policy: near-duplicate pages point their canonical at the
+  // page that owns the topic. See docs/seo-consolidation-audit.md.
+  const canonicalUrl = `${SITE}${canonicalPath || urlPath}`;
   let html = template
     .replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
     .replace(/<meta name="description" content=".*?"/, `<meta name="description" content="${description.replace(/"/g, "&quot;")}"`)
@@ -453,7 +456,7 @@ async function run() {
     const desc = `Find the best ${c.name} proxy providers. ${c.poolDepth} available. Compare residential, datacenter and ISP proxies for ${c.name}.`;
     writeHtml(`/countries/${c.slug}`, title, desc, countryBody(c, providers));
     const bestTitle = `Best Proxies for ${c.name} 2026 | ToptierProxy.com`;
-    writeHtml(`/best/${c.slug}-proxies`, bestTitle, desc, countryBody(c, providers));
+    writeHtml(`/best/${c.slug}-proxies`, bestTitle, desc, countryBody(c, providers), bestCanonicalPath(c.slug));
     count += 2;
   }
   console.log(` ${countries.length} country pages + ${countries.length} best pages`);
@@ -491,11 +494,11 @@ async function run() {
   for (const x of allCityPairs) {
     const deep = getCityDeep(x.citySlug, x.countrySlug);
     if (deep) {
-      writeHtml(`/countries/${x.countrySlug}/cities/${x.citySlug}`, `${deep.metaTitle} | ToptierProxy.com`, deep.metaDescription, cityDeepBody(deep));
+      writeHtml(`/countries/${x.countrySlug}/cities/${x.citySlug}`, `${deep.metaTitle} | ToptierProxy.com`, deep.metaDescription, cityDeepBody(deep), cityCanonicalPath(x.countrySlug, x.citySlug));
     } else {
       const title = `Best ${x.city} Proxies 2026 - ${x.country.name} IPs | ToptierProxy.com`;
       const desc = `Find the best proxy providers with ${x.city}, ${x.country.name} IP addresses. Residential and datacenter proxies for ${x.city}.`;
-      writeHtml(`/countries/${x.countrySlug}/cities/${x.citySlug}`, title, desc, cityBody(x, providers));
+      writeHtml(`/countries/${x.countrySlug}/cities/${x.citySlug}`, title, desc, cityBody(x, providers), cityCanonicalPath(x.countrySlug, x.citySlug));
     }
     count++;
   }
@@ -524,7 +527,7 @@ async function run() {
       const b = providers[j];
       const title = `${a.name} vs ${b.name} 2026  Side-by-Side Comparison | ToptierProxy.com`;
       const desc = `${a.name} vs ${b.name}: compare pricing, pool size, speed and features. Which proxy provider is better in 2026?`;
-      writeHtml(`/vs/${a.slug}-vs-${b.slug}`, title, desc, vsBody(a, b));
+      writeHtml(`/vs/${a.slug}-vs-${b.slug}`, title, desc, vsBody(a, b), vsCanonicalPath(a.slug, b.slug));
       vsCount++;
       count++;
     }

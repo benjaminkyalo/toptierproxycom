@@ -32,6 +32,7 @@ async function run() {
   const { countries, allCityPairs } = await loadTs("src/data/countries.ts");
   const { useCases } = await loadTs("src/data/use-cases.ts");
   const { blogPosts } = await loadTs("src/data/blog.ts");
+  const { isCityTierA, isVsTierA } = await loadTs("src/data/canonical-policy.ts");
 
   // robots.txt
   writeFileSync(
@@ -39,8 +40,8 @@ async function run() {
     `User-agent: *\nAllow: /\nDisallow: /go/\n\nSitemap: ${SITE}/sitemap.xml\n`,
   );
 
-  // sitemap.xml
-  const today = new Date().toISOString().split("T")[0];
+  // sitemap.xml — Tier A (canonical) URLs only. Consolidated pages stay live and
+  // linked, they are simply not advertised. See docs/seo-consolidation-audit.md.
   const staticUrls = [
     "/", "/reviews", "/guides", "/countries", "/compare", "/blog", "/use-cases",
     "/resources", "/about", "/contact", "/how-we-test", "/why-trust-us",
@@ -55,18 +56,20 @@ async function run() {
     ...resourcesContent.map((r) => ({ loc: `/resources/${r.slug}`, p: "0.7", c: "monthly" })),
     ...Object.values(AUTHORS).map((a) => ({ loc: `/team/${a.slug}`, p: "0.6", c: "monthly" })),
     ...countries.map((c) => ({ loc: `/countries/${c.slug}`, p: "0.7", c: "monthly" })),
-    ...countries.map((c) => ({ loc: `/best/${c.slug}-proxies`, p: "0.8", c: "monthly" })),
-    ...allCityPairs.map((x) => ({ loc: `/countries/${x.countrySlug}/cities/${x.citySlug}`, p: "0.6", c: "monthly" })),
+    ...allCityPairs
+      .filter((x) => isCityTierA(x.countrySlug, x.citySlug))
+      .map((x) => ({ loc: `/countries/${x.countrySlug}/cities/${x.citySlug}`, p: "0.6", c: "monthly" })),
     ...useCases.map((u) => ({ loc: `/use-cases/${u.slug}`, p: "0.8", c: "monthly" })),
     ...blogPosts.map((b) => ({ loc: `/blog/${b.slug}`, p: "0.8", c: "monthly" })),
   ];
   for (let i = 0; i < providers.length; i++) {
     for (let j = i + 1; j < providers.length; j++) {
+      if (!isVsTierA(providers[i].slug, providers[j].slug)) continue;
       urls.push({ loc: `/vs/${providers[i].slug}-vs-${providers[j].slug}`, p: "0.5", c: "monthly" });
     }
   }
   const body = urls
-    .map((u) => `  <url><loc>${SITE}${u.loc}</loc><lastmod>${today}</lastmod><changefreq>${u.c}</changefreq><priority>${u.p}</priority></url>`)
+    .map((u) => `  <url><loc>${SITE}${u.loc}</loc><changefreq>${u.c}</changefreq><priority>${u.p}</priority></url>`)
     .join("\n");
   writeFileSync(
     resolve(PUBLIC, "sitemap.xml"),
