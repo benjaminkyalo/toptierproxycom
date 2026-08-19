@@ -54,7 +54,7 @@ export function PageShell({
             </nav>
           )}
           {title && <h1 className="text-4xl font-bold tracking-tight md:text-5xl text-center">{title}</h1>}
-          {intro && <p className="mt-4 max-w-3xl text-lg opacity-90 text-center mx-auto">{intro}</p>}
+          {intro && <p className="tt-speakable mt-4 max-w-3xl text-lg opacity-90 text-center mx-auto">{intro}</p>}
           {heroContent && <div className="mt-6 flex justify-center w-full max-w-2xl mx-auto">{heroContent}</div>}
         </div>
       </section>
