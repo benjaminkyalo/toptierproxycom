@@ -5,6 +5,7 @@ import { LongFormSection } from "@/components/long-form";
 import { getUseCase, useCases } from "@/data/use-cases";
 import { providers } from "@/data/providers";
 import { LinkedParagraph } from "@/components/linked-paragraph";
+import { getSerpOverride } from "@/data/serp-overrides";
 
 export const Route = createFileRoute("/use-cases/$slug")({
   loader: ({ params }) => {
@@ -16,13 +17,16 @@ export const Route = createFileRoute("/use-cases/$slug")({
     if (!loaderData) return {};
     const { useCase } = loaderData;
     const url = `https://www.toptierproxy.com/use-cases/${useCase.slug}`;
+    const ov = getSerpOverride(`/use-cases/${useCase.slug}`);
+    const metaTitle = ov?.title ?? useCase.metaTitle;
+    const metaDescription = ov?.description ?? useCase.metaDescription;
     return {
       meta: [
-        { title: `${useCase.metaTitle} | ToptierProxy.com` },
-        { name: "description", content: useCase.metaDescription },
+        { title: ov ? metaTitle : `${metaTitle} | ToptierProxy.com` },
+        { name: "description", content: metaDescription },
         { name: "keywords", content: useCase.primaryKeywords.join(", ") },
-        { property: "og:title", content: useCase.metaTitle },
-        { property: "og:description", content: useCase.metaDescription },
+        { property: "og:title", content: metaTitle },
+        { property: "og:description", content: metaDescription },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
         { property: "og:site_name", content: "ToptierProxy.com" },
