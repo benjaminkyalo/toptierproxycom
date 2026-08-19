@@ -61,6 +61,14 @@ function BestPage() {
         </div>
       </div>
 
+      <div className="mb-8 rounded-md border border-border bg-muted/40 p-5 text-sm">
+        <strong className="font-bold">The full {country.name} guide</strong> — pool depth, per-GB pricing, carrier
+        and ASN mix, city-level targeting and legal notes — lives on our{" "}
+        <Link to="/countries/$slug" params={{ slug: country.slug }} className="font-semibold text-primary underline">
+          {country.name} proxy hub
+        </Link>.
+      </div>
+
       <ol className="space-y-4">
         {top.map((p, i) => (
           <li key={p.slug} className="rounded-md border border-border bg-card p-6 shadow-card">
