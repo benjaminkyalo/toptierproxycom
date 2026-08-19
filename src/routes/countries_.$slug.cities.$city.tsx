@@ -10,7 +10,7 @@ import { providers } from "@/data/providers";
 import { getSerpOverride } from "@/data/serp-overrides";
 import { cityCanonicalPath, isCityTierA } from "@/data/canonical-policy";
 
-export const Route = createFileRoute("/countries/$slug/cities/$city")({
+export const Route = createFileRoute("/countries_/$slug/cities/$city")({
   loader: ({ params }) => {
     const found = getCityCountry(params.city, params.slug);
     if (!found) throw notFound();
