@@ -5,6 +5,7 @@ import { providers, getProvider } from "@/data/providers";
 import { LinkedParagraph } from "@/components/linked-paragraph";
 import { NetNutAlert } from "@/components/netnut-alert";
 import { getSerpOverride } from "@/data/serp-overrides";
+import { speakablePage, benchmarkDataset } from "@/lib/schema";
 
 export const Route = createFileRoute("/reviews/$slug")({
   loader: ({ params }) => {
@@ -78,6 +79,23 @@ export const Route = createFileRoute("/reviews/$slug")({
               publisher: { "@type": "Organization", name: "ToptierProxy.com" },
               datePublished: "2026-01-15",
             },
+            speakablePage({ url, name: title, description, dateModified: "2026-08-01" }),
+            benchmarkDataset({
+              url,
+              name: `${provider.name} 2026 test results — success rate, pricing and Trust Score`,
+              description: `Hands-on 2026 test data for ${provider.name} collected on a paid account: anti-bot success rate against Cloudflare, DataDome and PerimeterX targets, entry price per GB (from $${provider.startingPriceGB}/GB), pool size (${provider.poolSize ?? "provider-reported"}), country coverage (${provider.countries ?? "n/a"}), editorial rating ${provider.rating}/5 and Trust Score ${provider.trustScore}/100.`,
+              rowCount: 1,
+              temporalCoverage: "2026-01-01/2026-08-01",
+              dateModified: "2026-08-01",
+              keywords: [`${provider.name} review`, `${provider.name} pricing`, `${provider.name} success rate`, `${provider.name} Trust Score`],
+              variableMeasured: [
+                { name: "Entry price per GB", unitText: "USD" },
+                { name: "IP pool size", description: provider.poolSize ?? "Provider-reported pool size" },
+                { name: "Country coverage", description: provider.countries ? `${provider.countries}+ countries` : "Provider-reported coverage" },
+                { name: "Editorial rating", minValue: 0, maxValue: 5 },
+                { name: "Trust Score", minValue: 0, maxValue: 100 },
+              ],
+            }),
             {
               "@context": "https://schema.org",
               "@type": "FAQPage",
@@ -435,7 +453,7 @@ function ReviewPage() {
           {/* VERDICT */}
           <section className="mt-10 rounded-md bg-[#0f172a] text-white p-8">
             <h2 className="text-2xl font-extrabold">Verdict: Is {provider.name} Worth It?</h2>
-            <p className="mt-3 text-sm text-white/80 leading-relaxed">
+            <p className="tt-speakable mt-3 text-sm text-white/80 leading-relaxed">
               {provider.shortDescription} For most users in its target segment, {provider.name} represents one of the strongest options available in 2026. We rate it <strong>{provider.rating}/5</strong>.
             </p>
             {provider.richRatings && (
