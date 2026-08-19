@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "@tanstack/react-router";
 import { Search, X, BookOpen, Globe, Star, Zap, FileText, ArrowRight } from "lucide-react";
 import Fuse from "fuse.js";
+import { pagefindSearch, typeFromUrl, loadPagefind } from "@/lib/pagefind";
 
 interface SearchItem {
   id: string;
