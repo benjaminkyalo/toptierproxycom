@@ -1,4 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent } from "@tanstack/react-router";
+import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 import { PromoPopup } from "@/components/promo-popup";
 
 function NotFoundComponent() {
@@ -31,9 +31,6 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <>
-      {/* Renders each route's head() meta/canonical on client-side navigation.
-          Without this the head stayed frozen on the prerendered values. */}
-      <HeadContent />
       <Outlet />
       <PromoPopup />
     </>

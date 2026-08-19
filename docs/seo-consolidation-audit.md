@@ -103,3 +103,13 @@ now renders "Best Valencia Proxies 2026" with 13 city mentions.
    sites, city-level price observations, 3 FAQs each.
 2. The 15 surviving `/vs` pages: add own benchmark numbers (success rate, latency, dated price).
 3. Country pages with impressions but no clicks: intent-match the format to the live top 5.
+
+### Phase 5 queue (head plumbing)
+
+The root route renders no `<HeadContent />`, so route `head()` values never reach the browser —
+each URL relies on its prerendered HTML (which is correct, and is what Google indexes). Enabling
+`<HeadContent />` today emits React `tagName` warnings and does not override the canonical,
+because routes declare canonicals inconsistently: some as `{ rel: "canonical" }` inside `meta`,
+some as `{ tagName: "link", ... }`. Normalize every route's `head()` to `{ meta: [...], links:
+[{ rel: "canonical", href }] }` first, then mount `<HeadContent />` so client-side navigation
+updates the head too.
