@@ -33,13 +33,12 @@ const AFF = {
 // ---- Route ---------------------------------------------------------------
 export const Route = createFileRoute("/scraper-api")({
   head: () => {
-    const title =
-      "Best Scraper API 2026 — Benchmarked: ScraperAPI, Bright Data, ScrapingBee, Zyte & 7 More";
+    const title = "Best Scraper API 2026: 11 Tested on Cloudflare";
     const description =
-      "Independent 2026 scraper API comparison. Hands-on success rates on Cloudflare, DataDome & PerimeterX, real cost-per-1K-request math, JSON/Markdown output for AI pipelines. ScraperAPI, Bright Data, Oxylabs, ScrapingBee, Scrape.do, ZenRows, Zyte, Apify, Firecrawl & more.";
+      "We benchmarked 11 scraper APIs on Cloudflare, DataDome and PerimeterX targets — success rates, cost per 1k requests and JSON output for AI pipelines.";
     return {
       meta: [
-        { title: `${title} | ToptierProxy.com` },
+        { title },
         { name: "description", content: description },
         {
           name: "keywords",

@@ -7,6 +7,7 @@ import { getCityCountry, cityToSlug } from "@/data/countries";
 import { getCityContent } from "@/data/city-content";
 import { getCityDeep } from "@/data/city-deep";
 import { providers } from "@/data/providers";
+import { getSerpOverride } from "@/data/serp-overrides";
 
 export const Route = createFileRoute("/countries/$slug/cities/$city")({
   loader: ({ params }) => {
@@ -19,12 +20,13 @@ export const Route = createFileRoute("/countries/$slug/cities/$city")({
     const { country, city } = loaderData;
     const deep = getCityDeep(params.city, params.slug);
     const url = `https://www.toptierproxy.com/countries/${country.slug}/cities/${params.city}`;
-    const title = deep
+    const ov = getSerpOverride(`/countries/${country.slug}/cities/${params.city}`);
+    const title = ov?.title ?? (deep
       ? deep.metaTitle
-      : `${city} Proxy 2026: Buy Real ${city} Residential IPs`;
-    const description = deep
+      : `${city} Proxy 2026: Buy Real ${city} Residential IPs`);
+    const description = ov?.description ?? (deep
       ? deep.metaDescription
-      : `Need a ${city}, ${country.name} IP? Compare the best ${city} residential, ISP and mobile proxies in 2026 — city-level targeting, ${country.poolDepth}, price per GB →`;
+      : `Need a ${city}, ${country.name} IP? Compare the best ${city} residential, ISP and mobile proxies in 2026 — city-level targeting, ${country.poolDepth}, price per GB →`);
     const keywords = deep
       ? deep.keywords
       : [

@@ -7,6 +7,7 @@ import { getCountry, countries, cityToSlug } from "@/data/countries";
 import { providers } from "@/data/providers";
 import { Star, MapPin, Users, Wifi, Globe2 } from "lucide-react";
 import { LinkedParagraph } from "@/components/linked-paragraph";
+import { getSerpOverride } from "@/data/serp-overrides";
 
 export const Route = createFileRoute("/countries/$slug")({
   loader: ({ params }) => {
@@ -17,9 +18,10 @@ export const Route = createFileRoute("/countries/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) return {};
     const { country } = loaderData;
-    const title = `${country.name} Proxy 2026: Best Providers Tested`;
-    const description = `Need a real ${country.name} IP? We tested the top ${country.name} proxy providers in 2026 — ${country.poolDepth}, city targeting and 4G mobile IPs. Compare pricing & speed →`;
     const url = `https://www.toptierproxy.com/countries/${country.slug}`;
+    const ov = getSerpOverride(`/countries/${country.slug}`);
+    const title = ov?.title ?? `${country.name} Proxy 2026: Best Providers Tested`;
+    const description = ov?.description ?? `Need a real ${country.name} IP? We tested the top ${country.name} proxy providers in 2026 — ${country.poolDepth}, city targeting and 4G mobile IPs. Compare pricing & speed →`;
     const top = country.topProviders
       .map((s) => providers.find((p) => p.slug === s))
       .filter((p): p is NonNullable<typeof p> => Boolean(p));

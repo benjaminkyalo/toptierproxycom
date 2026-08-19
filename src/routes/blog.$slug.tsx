@@ -7,6 +7,7 @@ import { providers } from "@/data/providers";
 import { ProviderLogo } from "@/components/provider-logo";
 import { LinkedParagraph } from "@/components/linked-paragraph";
 import { Calendar, Clock, User, ListOrdered } from "lucide-react";
+import { getSerpOverride } from "@/data/serp-overrides";
 
 
 export const Route = createFileRoute("/blog/$slug")({
@@ -18,10 +19,11 @@ export const Route = createFileRoute("/blog/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) return {};
     const { post } = loaderData;
+    const ov = getSerpOverride(`/blog/${post.slug}`);
     return {
       meta: [
-        { title: `${post.title} | ToptierProxy.com` },
-        { name: "description", content: post.description },
+        { title: ov ? ov.title : `${post.title} | ToptierProxy.com` },
+        { name: "description", content: ov?.description ?? post.description },
         { name: "keywords", content: post.tags.join(", ") },
         { property: "og:title", content: post.title },
         { property: "og:description", content: post.description },

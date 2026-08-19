@@ -4,6 +4,7 @@ import { PageShell, Prose } from "@/components/page-shell";
 import { providers, getProvider } from "@/data/providers";
 import { LinkedParagraph } from "@/components/linked-paragraph";
 import { NetNutAlert } from "@/components/netnut-alert";
+import { getSerpOverride } from "@/data/serp-overrides";
 
 export const Route = createFileRoute("/reviews/$slug")({
   loader: ({ params }) => {
@@ -14,9 +15,10 @@ export const Route = createFileRoute("/reviews/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) return {};
     const { provider } = loaderData;
-    const title = `${provider.name} Review 2026: Pricing, Speed & Verdict`;
-    const description = `${provider.name} scored ${provider.rating}/5 in our 2026 hands-on test on a real paid account — Cloudflare success rate, ${provider.poolSize} pool, from $${provider.startingPriceGB}/GB. See the verdict →`;
     const url = `https://www.toptierproxy.com/reviews/${provider.slug}`;
+    const ov = getSerpOverride(`/reviews/${provider.slug}`);
+    const title = ov?.title ?? `${provider.name} Review 2026: Pricing, Speed & Verdict`;
+    const description = ov?.description ?? `${provider.name} scored ${provider.rating}/5 in our 2026 hands-on test on a real paid account — Cloudflare success rate, ${provider.poolSize} pool, from $${provider.startingPriceGB}/GB. See the verdict →`;
     return {
       meta: [
         { title },

@@ -6,6 +6,7 @@ import { LongFormSection } from "@/components/long-form";
 import { Flag } from "@/components/flag";
 import { countries } from "@/data/countries";
 import { providers } from "@/data/providers";
+import { getSerpOverride } from "@/data/serp-overrides";
 
 export const Route = createFileRoute("/best/$slug")({
   loader: ({ params }) => {
@@ -18,9 +19,10 @@ export const Route = createFileRoute("/best/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) return {};
     const { country } = loaderData;
-    const title = `Best ${country.name} Proxies 2026: Top 5 Ranked`;
-    const description = `We ranked the top 5 ${country.name} proxy providers for 2026 — ${country.poolDepth}, city targeting in ${country.topCities.slice(0, 2).join(" & ")}, real pricing. Compare speed →`;
     const url = `https://www.toptierproxy.com/best/${country.slug}-proxies`;
+    const ov = getSerpOverride(`/best/${country.slug}-proxies`);
+    const title = ov?.title ?? `Best ${country.name} Proxies 2026: Top 5 Ranked`;
+    const description = ov?.description ?? `We ranked the top 5 ${country.name} proxy providers for 2026 — ${country.poolDepth}, city targeting in ${country.topCities.slice(0, 2).join(" & ")}, real pricing. Compare speed →`;
     return {
       meta: [
         { title },
