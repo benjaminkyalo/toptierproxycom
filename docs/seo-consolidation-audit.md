@@ -69,3 +69,37 @@ formats (table-first for "best X", answer-box-first for "how to").
   one commit and no backlink or bookmark breaks.
 - Internal links stay in place so consolidated pages keep funnelling authority upward.
 - Changes land one phase at a time, with a health check and a re-render after each.
+
+---
+
+## 6. Implemented (2026-08-19)
+
+Policy lives in `src/data/canonical-policy.ts` — one file governs canonicals and sitemap
+inclusion for both the SPA route heads and `scripts/prerender.mjs`.
+
+- **Phase 1** — all 60 `/best/{country}-proxies` canonical to `/countries/{country}`, removed
+  from the sitemap, plus a prominent in-page link up to the country hub.
+- **Phase 2** — city tiering rule: Tier A = city has a `city-deep` or `city-content` record, or
+  is its country's primary city. Result: **70 of 284** cities are self-canonical and in the
+  sitemap; the other 214 canonical to their country page and carry a "full guide" link upward.
+- **Phase 3** — `/vs/*` kept for the 6 core providers (15 matchups); the other 51 canonical to
+  `/compare` and link to the comparison table.
+- Sitemap: **703 → 356** advertised URLs. Zero URLs deleted; `dist/` still ships 693 pages.
+- Removed the build-date `<lastmod>` from sitemap.xml (it was not page-specific, so it told
+  Google every page changed on every deploy).
+
+### Critical bug found during the audit
+
+`src/routes/countries.$slug.cities.$city.tsx` was nested under `/countries/$slug`, whose
+component renders no `<Outlet/>` — so **every one of the 284 city pages rendered the country
+page** in-browser (Valencia showed the h1 "Best Proxies for Spain"). The prerendered HTML had
+city content, but real users and JS-executing crawlers saw the country page. Fixed by moving the
+route to `countries_.$slug.cities.$city.tsx` (same URL, no parent nesting). Verified: Valencia
+now renders "Best Valencia Proxies 2026" with 13 city mentions.
+
+### Phase 4 queue (content work, per page — next)
+
+1. The 70 Tier A cities without a `city-content` record: add carrier/ASN specifics, local target
+   sites, city-level price observations, 3 FAQs each.
+2. The 15 surviving `/vs` pages: add own benchmark numbers (success rate, latency, dated price).
+3. Country pages with impressions but no clicks: intent-match the format to the live top 5.
