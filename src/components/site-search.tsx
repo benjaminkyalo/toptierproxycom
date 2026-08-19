@@ -57,10 +57,48 @@ export function SiteSearch({ className = "", heroMode = false }: { className?: s
       .catch(() => setLoaded(true));
   }, []);
 
-  // Search
+  // Warm the full-text index (no-op in dev / when the index is absent)
+  useEffect(() => { void loadPagefind(); }, []);
+
+  // Search: full-text (Pagefind) first, then Fuse title/description matches
   useEffect(() => {
-    if (!fuseCache || !query.trim() || query.length < 2) { setResults([]); return; }
-    setResults(fuseCache.search(query).slice(0, 8) as { item: SearchItem }[]);
+    const q = query.trim();
+    if (q.length < 2) { setResults([]); return; }
+    let cancelled = false;
+
+    const fuseHits = fuseCache
+      ? (fuseCache.search(q).slice(0, 10) as { item: SearchItem }[])
+      : [];
+    setResults(fuseHits.slice(0, 8));
+
+    void (async () => {
+      const hits = await pagefindSearch(q, 10);
+      if (cancelled || hits.length === 0) return;
+
+      const byUrl = new Map<string, SearchItem>();
+      for (const { item } of fuseHits) byUrl.set(item.url, item);
+
+      const merged: SearchItem[] = [];
+      const seen = new Set<string>();
+      for (const hit of hits) {
+        const known = byUrl.get(hit.url);
+        merged.push({
+          id: hit.url,
+          url: hit.url,
+          title: known?.title || hit.title || hit.url,
+          description: known?.description || "",
+          type: known?.type || typeFromUrl(hit.url),
+          excerpt: hit.excerpt,
+        });
+        seen.add(hit.url);
+      }
+      for (const { item } of fuseHits) {
+        if (!seen.has(item.url)) merged.push(item);
+      }
+      setResults(merged.slice(0, 8).map((item) => ({ item })));
+    })();
+
+    return () => { cancelled = true; };
   }, [query]);
 
   // Close on outside click
