@@ -40,7 +40,8 @@ export function loadPagefind(): Promise<PagefindApi | null> {
     try {
       const res = await fetch("/pagefind/pagefind.js", { method: "HEAD" });
       if (!res.ok) return null;
-      const mod = (await import(/* @vite-ignore */ "/pagefind/pagefind.js")) as PagefindApi;
+      const path = "/pagefind/pagefind.js";
+      const mod = (await import(/* @vite-ignore */ path)) as PagefindApi;
       await mod.options?.({ excerptLength: 25 });
       await mod.init?.();
       return mod;
