@@ -47,6 +47,18 @@ function writeHtml(urlPath, title, description, bodyContent = "", canonicalPath,
   // SEO shell: kept in DOM for non-JS crawlers/LLMs, but visually hidden so
   // users don't see a flash of unstyled HTML before React hydrates and
   // replaces #root's children.
+  // Mark the lead summary paragraph as the speakable answer so the selector in
+  // our JSON-LD matches an element in the static HTML too, not only after
+  // hydration.
+  if (bodyContent && !bodyContent.includes("tt-speakable")) {
+    const leadRe = /<p style="font-size:1\.1rem/;
+    if (leadRe.test(bodyContent)) {
+      bodyContent = bodyContent.replace(leadRe, '<p class="tt-speakable" style="font-size:1.1rem');
+    } else {
+      bodyContent = bodyContent.replace(/<p(\s|>)/, '<p class="tt-speakable"$1');
+    }
+  }
+
   const seoBody = bodyContent
     ? `<div id="root"><main data-seo-shell="true" style="position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden;font-family:system-ui,sans-serif;color:#1a1a2e;line-height:1.7">${bodyContent}</main></div>`
     : '<div id="root"></div>';
