@@ -60,6 +60,15 @@ function VsPage() {
     >
       {(A.slug === "netnut" || B.slug === "netnut") && <NetNutAlert />}
 
+      {!isVsTierA(A.slug, B.slug) && (
+        <div className="mb-8 rounded-md border border-border bg-muted/40 p-5 text-sm">
+          Comparing more than two vendors? Our{" "}
+          <Link to="/compare" className="font-semibold text-primary underline">full proxy provider comparison table</Link>{" "}
+          ranks every major provider on price per GB, pool size, success rate and support side by side.
+        </div>
+      )}
+
+
       <Prose>
         <p>
           Looking to choose between <Link to="/reviews/$slug" params={{ slug: A.slug }}>{A.name}</Link> and{" "}
