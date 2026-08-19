@@ -369,6 +369,7 @@ async function run() {
   const { providers } = await loadTs("src/data/providers.ts");
   const { guides } = await loadTs("src/data/guides.ts");
   const { resourcesContent } = await loadTs("src/data/resources-content.ts");
+  const { AUTHORS } = await loadTs("src/routes/team.$slug.tsx");
   const { countries, allCityPairs } = await loadTs("src/data/countries.ts");
   const { getCityDeep } = await loadTs("src/data/city-deep.ts");
   const { useCases } = await loadTs("src/data/use-cases.ts");
@@ -434,6 +435,17 @@ async function run() {
     count++;
   }
   console.log(` ${resourcesContent.length} resource pages`);
+
+  // Team pages
+  const authorList = Object.values(AUTHORS);
+  for (const a of authorList) {
+    const title = `${a.name} - ${a.role} at ToptierProxy.com`;
+    const desc = a.shortBio.slice(0, 155);
+    const body = `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">${a.name}</h1><p style="color:#6b7280;margin-bottom:1rem">${a.role}</p><p style="font-size:1.1rem;margin-bottom:1.5rem">${a.shortBio}</p>`;
+    writeHtml(`/team/${a.slug}`, title, desc, body);
+    count++;
+  }
+  console.log(` ${authorList.length} team pages`);
 
   // Countries
   for (const c of countries) {

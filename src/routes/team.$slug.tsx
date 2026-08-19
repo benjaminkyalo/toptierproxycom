@@ -18,7 +18,7 @@ type Author = {
   yearsExperience: number;
 };
 
-const AUTHORS: Record<string, Author> = {
+export const AUTHORS: Record<string, Author> = {
   "marcus-reiner": {
     slug: "marcus-reiner",
     name: "Marcus Reiner",
@@ -118,7 +118,7 @@ export const Route = createFileRoute("/team/$slug")({
   head: ({ loaderData, params }) => {
     if (!loaderData) return {};
     const a = loaderData.author;
-    const url = `https://toptierproxycom.lovable.app/team/${params.slug}`;
+    const url = `https://www.toptierproxy.com/team/${params.slug}`;
     const title = `${a.name} — ${a.role} at ToptierProxy.com`;
     const description = `${a.shortBio.slice(0, 155)}`;
     return {
@@ -154,7 +154,7 @@ export const Route = createFileRoute("/team/$slug")({
             worksFor: {
               "@type": "Organization",
               name: "ToptierProxy.com",
-              url: "https://toptierproxycom.lovable.app",
+              url: "https://www.toptierproxy.com",
             },
             knowsAbout: a.expertise,
             address: { "@type": "PostalAddress", addressLocality: a.location },
@@ -167,8 +167,8 @@ export const Route = createFileRoute("/team/$slug")({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: "https://toptierproxycom.lovable.app/" },
-              { "@type": "ListItem", position: 2, name: "Team", item: "https://toptierproxycom.lovable.app/about" },
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://www.toptierproxy.com/" },
+              { "@type": "ListItem", position: 2, name: "Team", item: "https://www.toptierproxy.com/about" },
               { "@type": "ListItem", position: 3, name: a.name, item: url },
             ],
           }),

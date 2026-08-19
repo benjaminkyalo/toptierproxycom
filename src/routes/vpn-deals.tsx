@@ -15,10 +15,10 @@ export const Route = createFileRoute("/vpn-deals")({
         { property: "og:title", content: title },
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
-        { property: "og:url", content: "https://toptierproxycom.lovable.app/vpn-deals" },
+        { property: "og:url", content: "https://www.toptierproxy.com/vpn-deals" },
       ],
       links: [
-        { rel: "canonical", href: "https://toptierproxycom.lovable.app/vpn-deals" },
+        { rel: "canonical", href: "https://www.toptierproxy.com/vpn-deals" },
       ],
       scripts: [
         {

@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 
 const LAST_UPDATED = "July 1, 2026";
-const CANONICAL = "https://toptierproxycom.lovable.app/scraper-api";
+const CANONICAL = "https://www.toptierproxy.com/scraper-api";
 const HERO_IMAGE =
   "https://res.cloudinary.com/dkcqakosa/image/upload/v1782976030/scraper_API_cewwci.png";
 
