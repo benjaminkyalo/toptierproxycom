@@ -31,6 +31,9 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <>
+      {/* Renders each route's head() meta/canonical on client-side navigation.
+          Without this the head stayed frozen on the prerendered values. */}
+      <HeadContent />
       <Outlet />
       <PromoPopup />
     </>
