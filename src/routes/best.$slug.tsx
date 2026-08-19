@@ -20,6 +20,9 @@ export const Route = createFileRoute("/best/$slug")({
     if (!loaderData) return {};
     const { country } = loaderData;
     const url = `https://www.toptierproxy.com/best/${country.slug}-proxies`;
+    // Consolidation: this page duplicates /countries/{slug} (~42% body overlap),
+    // so the country page carries the canonical. URL stays live and linked.
+    const canonical = `https://www.toptierproxy.com${bestCanonicalPath(country.slug)}`;
     const ov = getSerpOverride(`/best/${country.slug}-proxies`);
     const title = ov?.title ?? `Best ${country.name} Proxies 2026: Top 5 Ranked`;
     const description = ov?.description ?? `We ranked the top 5 ${country.name} proxy providers for 2026 — ${country.poolDepth}, city targeting in ${country.topCities.slice(0, 2).join(" & ")}, real pricing. Compare speed →`;
@@ -32,10 +35,11 @@ export const Route = createFileRoute("/best/$slug")({
         { property: "og:description", content: description },
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
-        { rel: "canonical", href: url } as never,
+        { rel: "canonical", href: canonical } as never,
       ],
     };
   },
+
 
 
   notFoundComponent: () => <PageShell title="Not found"><Link to="/countries" className="text-primary underline">Browse countries</Link></PageShell>,
