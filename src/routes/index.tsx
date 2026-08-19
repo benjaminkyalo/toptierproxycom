@@ -582,6 +582,38 @@ function HomePage() {
         </div>
       </section>
 
+      {/* High-demand country, city and vendor pages — exact-match anchors */}
+      <section className="border-t border-border bg-card">
+        <div className="mx-auto max-w-4xl px-6 py-12">
+          <h2 className="text-2xl font-bold">Most-requested proxy locations & vendor data</h2>
+          <p className="mt-3 text-sm text-foreground/70">
+            The pages our readers open most — each one benchmarked on real carrier routes and 2026 pricing.
+          </p>
+          <div className="mt-6 grid gap-x-8 gap-y-2 text-[15px] sm:grid-cols-2">
+            {[
+              { href: "/countries/france", label: "France proxy — real French IPs tested" },
+              { href: "/countries/australia", label: "Australia proxy — Telstra & Optus routes" },
+              { href: "/countries/poland", label: "Poland proxy — Warsaw & Krakow IPs" },
+              { href: "/best/united-kingdom-proxies", label: "Best UK proxies — top 5 ranked" },
+              { href: "/best/hungary-proxies", label: "Best Hungary proxies — Budapest targeting" },
+              { href: "/countries/brazil/cities/rio-de-janeiro", label: "Rio de Janeiro proxies — Vivo, Claro, TIM" },
+              { href: "/use-cases/seo-monitoring", label: "Best proxies for SEO rank tracking" },
+              { href: "/scraper-api", label: "Best scraper API — 11 benchmarked" },
+              { href: "/reviews/oxylabs", label: "Oxylabs review — is $8/GB worth it?" },
+              { href: "/blog/oxylabs-pricing-2026", label: "Oxylabs pricing 2026 — full cost breakdown" },
+            ].map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <SiteFooter />
 
     </div>
