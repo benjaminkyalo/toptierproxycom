@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageShell, Prose } from "@/components/page-shell";
+import { speakablePage, benchmarkDataset } from "@/lib/schema";
 import { ProviderLogo } from "@/components/provider-logo";
 import { providers } from "@/data/providers";
 import { popularMatchups } from "@/data/matchups";
@@ -23,6 +24,43 @@ export const Route = createFileRoute("/compare")({
   }),
   component: ComparePage,
 });
+
+const COMPARE_URL = "https://www.toptierproxy.com/compare";
+
+const comparisonSchema = [
+  speakablePage({
+    url: COMPARE_URL,
+    name: "Compare Proxy Providers 2026 — Side-by-Side",
+    description:
+      "Every major proxy provider compared on price per GB, pool size, country coverage, proxy types and hands-on Trust Score.",
+    dateModified: "2026-08-01",
+  }),
+  benchmarkDataset({
+    url: COMPARE_URL,
+    name: "Proxy provider comparison dataset 2026 — pricing, pool size, coverage, Trust Score",
+    description:
+      `Side-by-side dataset covering ${providers.length} proxy providers tested on paid accounts in 2026: entry price per GB, residential/ISP/datacenter/mobile pool size, number of supported countries, supported proxy types, editorial rating out of 5 and Trust Score out of 100 from the published 225-criterion methodology.`,
+    rowCount: providers.length,
+    temporalCoverage: "2026-01-01/2026-08-01",
+    dateModified: "2026-08-01",
+    spatialCoverage: "Global",
+    keywords: [
+      "proxy provider comparison 2026",
+      "residential proxy price per GB",
+      "proxy pool size comparison",
+      "proxy country coverage",
+      "proxy Trust Score",
+    ],
+    variableMeasured: [
+      { name: "Entry price per GB", unitText: "USD", description: "Lowest published pay-as-you-go residential price per gigabyte" },
+      { name: "IP pool size", description: "Provider-reported pool size, cross-checked against concurrency tests" },
+      { name: "Country coverage", description: "Number of countries with targetable IPs" },
+      { name: "Proxy types offered", description: "Residential, datacenter, ISP, mobile, scraping API" },
+      { name: "Editorial rating", minValue: 0, maxValue: 5 },
+      { name: "Trust Score", minValue: 0, maxValue: 100, description: "225-criterion score covering sourcing ethics, KYC, compliance, support and performance" },
+    ],
+  }),
+];
 
 const types = [
   { key: "residential", label: "Residential" },
@@ -98,6 +136,7 @@ function ComparePage() {
       breadcrumb={[{ to: "/", label: "Home" }, { to: "/compare", label: "Compare" }]}
     >
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(comparisonSchema) }} />
 
       {/* Comparison Table */}
       <div className="overflow-x-auto rounded-md border border-border bg-card shadow-card">
