@@ -1452,7 +1452,7 @@ function RelatedResources() {
         { to: "/reviews/oxylabs", label: "Oxylabs review", note: "SERP & E-Commerce Scraper API breakdown" },
         { to: "/reviews/decodo", label: "Decodo review", note: "Best price-to-performance proxy pool" },
         { to: "/reviews/soax", label: "SOAX review", note: "Cleanest mobile pool for anti-bot bypass" },
-        { to: "/reviews/netnut", label: "NetNut review", note: "Fastest ISP-partnered residential" },
+        { to: "/reviews/webshare", label: "Webshare review", note: "Genuine free tier - 10 datacenter IPs, no card required" },
         { to: "/reviews/iproyal", label: "IPRoyal review", note: "Budget residential + sneaker-ready ISP" },
       ],
     },
@@ -1465,6 +1465,14 @@ function RelatedResources() {
         { to: "/use-cases/ai-training-data", label: "AI & LLM training data", note: "Terabyte-scale ethical collection" },
         { to: "/use-cases/lead-generation", label: "B2B lead generation", note: "LinkedIn & Apollo scraping in 2026" },
         { to: "/use-cases/brand-protection", label: "Brand protection", note: "Counterfeit & MAP-violation detection" },
+      ],
+    },
+    {
+      title: "Related guides",
+      items: [
+        { to: "/guides/best-scraping-apis", label: "Best scraping APIs 2026 guide", note: "The full buyer's guide behind this comparison" },
+        { to: "/blog/ai-scraping-stack-2026-proxies-antidetect-browsers-automation", label: "The complete AI scraping stack", note: "How proxies, antidetect browsers and automation fit together" },
+        { to: "/blog/best-proxies-tiktok-scraping-2026", label: "Best proxies for TikTok scraping 2026", note: "Very Hard difficulty - what actually works" },
       ],
     },
     {

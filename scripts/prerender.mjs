@@ -368,6 +368,7 @@ function vsBody(a, b) {
 async function run() {
   const { providers } = await loadTs("src/data/providers.ts");
   const { guides } = await loadTs("src/data/guides.ts");
+  const { resourcesContent } = await loadTs("src/data/resources-content.ts");
   const { countries, allCityPairs } = await loadTs("src/data/countries.ts");
   const { getCityDeep } = await loadTs("src/data/city-deep.ts");
   const { useCases } = await loadTs("src/data/use-cases.ts");
@@ -424,6 +425,15 @@ async function run() {
     count++;
   }
   console.log(` ${guides.length} guides`);
+
+  // Resource pages
+  for (const r of resourcesContent) {
+    const title = `${r.metaTitle} | ToptierProxy.com`;
+    const body = `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">${r.title}</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">${r.intro}</p>` + r.sections.map(s => `<h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${s.heading}</h2>` + s.paragraphs.map(p => `<p style="margin-bottom:1rem">${p}</p>`).join("")).join("");
+    writeHtml(`/resources/${r.slug}`, title, r.metaDescription, body);
+    count++;
+  }
+  console.log(` ${resourcesContent.length} resource pages`);
 
   // Countries
   for (const c of countries) {

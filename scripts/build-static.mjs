@@ -27,6 +27,7 @@ async function loadTs(rel) {
 async function run() {
   const { providers } = await loadTs("src/data/providers.ts");
   const { guides } = await loadTs("src/data/guides.ts");
+  const { resourcesContent } = await loadTs("src/data/resources-content.ts");
   const { countries, allCityPairs } = await loadTs("src/data/countries.ts");
   const { useCases } = await loadTs("src/data/use-cases.ts");
   const { blogPosts } = await loadTs("src/data/blog.ts");
@@ -50,6 +51,7 @@ async function run() {
     ...staticUrls.map((u) => ({ loc: u, p: u === "/" ? "1.0" : "0.8", c: "weekly" })),
     ...providers.map((p) => ({ loc: `/reviews/${p.slug}`, p: "0.9", c: "weekly" })),
     ...guides.map((g) => ({ loc: `/guides/${g.slug}`, p: "0.9", c: "weekly" })),
+    ...resourcesContent.map((r) => ({ loc: `/resources/${r.slug}`, p: "0.7", c: "monthly" })),
     ...countries.map((c) => ({ loc: `/countries/${c.slug}`, p: "0.7", c: "monthly" })),
     ...countries.map((c) => ({ loc: `/best/${c.slug}-proxies`, p: "0.8", c: "monthly" })),
     ...allCityPairs.map((x) => ({ loc: `/countries/${x.countrySlug}/cities/${x.citySlug}`, p: "0.6", c: "monthly" })),

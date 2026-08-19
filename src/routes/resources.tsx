@@ -22,9 +22,9 @@ export const Route = createFileRoute("/resources")({
 const resources = [
   { title: "Proxy Glossary", desc: "Every proxy term explained in plain English.", to: "/resources/glossary" },
   { title: "Bandwidth Cost Calculator", desc: "Estimate monthly proxy spend from your scrape volume.", to: "/resources/cost-calculator" },
-  { title: "Proxy Type Cheatsheet", desc: "Residential vs datacenter vs ISP vs mobile — when to use what.", to: "/resources/proxy-type-cheatsheet" },
+  { title: "Proxy Type Cheatsheet", desc: "Residential vs datacenter vs ISP vs mobile - when to use what.", to: "/resources/proxy-type-cheatsheet" },
   { title: "Anti-Bot Reference", desc: "How Cloudflare, DataDome, PerimeterX and Akamai actually work.", to: "/resources/anti-bot-reference" },
-  { title: "HTTP vs SOCKS5 Guide", desc: "When each protocol matters — and when it doesn't.", to: "/resources/http-vs-socks5" },
+  { title: "HTTP vs SOCKS5 Guide", desc: "When each protocol matters - and when it doesn't.", to: "/resources/http-vs-socks5" },
   { title: "Sticky vs Rotating Sessions", desc: "Pick the right session strategy for your workload.", to: "/resources/sticky-vs-rotating" },
 ];
 

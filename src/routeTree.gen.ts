@@ -37,6 +37,7 @@ import { Route as VsMatchupRouteImport } from './routes/vs.$matchup'
 import { Route as UseCasesSlugRouteImport } from './routes/use-cases.$slug'
 import { Route as TeamSlugRouteImport } from './routes/team.$slug'
 import { Route as ReviewsSlugRouteImport } from './routes/reviews.$slug'
+import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as GoSlugRouteImport } from './routes/go.$slug'
 import { Route as CountriesSlugRouteImport } from './routes/countries.$slug'
@@ -184,6 +185,11 @@ const ReviewsSlugRoute = ReviewsSlugRouteImport.update({
   path: '/reviews/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResourcesSlugRoute = ResourcesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ResourcesRoute,
+} as any)
 const GuidesSlugRoute = GuidesSlugRouteImport.update({
   id: '/guides/$slug',
   path: '/guides/$slug',
@@ -227,7 +233,7 @@ export interface FileRoutesByFullPath {
   '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
   '/proxy-seller-review': typeof ProxySellerReviewRoute
-  '/resources': typeof ResourcesRoute
+  '/resources': typeof ResourcesRouteWithChildren
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
   '/terms': typeof TermsRoute
@@ -240,6 +246,7 @@ export interface FileRoutesByFullPath {
   '/countries/$slug': typeof CountriesSlugRouteWithChildren
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/resources/$slug': typeof ResourcesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
   '/team/$slug': typeof TeamSlugRoute
   '/use-cases/$slug': typeof UseCasesSlugRoute
@@ -263,7 +270,7 @@ export interface FileRoutesByTo {
   '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
   '/proxy-seller-review': typeof ProxySellerReviewRoute
-  '/resources': typeof ResourcesRoute
+  '/resources': typeof ResourcesRouteWithChildren
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
   '/terms': typeof TermsRoute
@@ -276,6 +283,7 @@ export interface FileRoutesByTo {
   '/countries/$slug': typeof CountriesSlugRouteWithChildren
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/resources/$slug': typeof ResourcesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
   '/team/$slug': typeof TeamSlugRoute
   '/use-cases/$slug': typeof UseCasesSlugRoute
@@ -300,7 +308,7 @@ export interface FileRoutesById {
   '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
   '/proxy-seller-review': typeof ProxySellerReviewRoute
-  '/resources': typeof ResourcesRoute
+  '/resources': typeof ResourcesRouteWithChildren
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
   '/terms': typeof TermsRoute
@@ -313,6 +321,7 @@ export interface FileRoutesById {
   '/countries/$slug': typeof CountriesSlugRouteWithChildren
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
+  '/resources/$slug': typeof ResourcesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
   '/team/$slug': typeof TeamSlugRoute
   '/use-cases/$slug': typeof UseCasesSlugRoute
@@ -351,6 +360,7 @@ export interface FileRouteTypes {
     | '/countries/$slug'
     | '/go/$slug'
     | '/guides/$slug'
+    | '/resources/$slug'
     | '/reviews/$slug'
     | '/team/$slug'
     | '/use-cases/$slug'
@@ -387,6 +397,7 @@ export interface FileRouteTypes {
     | '/countries/$slug'
     | '/go/$slug'
     | '/guides/$slug'
+    | '/resources/$slug'
     | '/reviews/$slug'
     | '/team/$slug'
     | '/use-cases/$slug'
@@ -423,6 +434,7 @@ export interface FileRouteTypes {
     | '/countries/$slug'
     | '/go/$slug'
     | '/guides/$slug'
+    | '/resources/$slug'
     | '/reviews/$slug'
     | '/team/$slug'
     | '/use-cases/$slug'
@@ -447,7 +459,7 @@ export interface RootRouteChildren {
   MultiloginReviewRoute: typeof MultiloginReviewRoute
   PrivacyRoute: typeof PrivacyRoute
   ProxySellerReviewRoute: typeof ProxySellerReviewRoute
-  ResourcesRoute: typeof ResourcesRoute
+  ResourcesRoute: typeof ResourcesRouteWithChildren
   ScraperApiRoute: typeof ScraperApiRoute
   ScrapyReviewRoute: typeof ScrapyReviewRoute
   TermsRoute: typeof TermsRoute
@@ -669,6 +681,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReviewsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resources/$slug': {
+      id: '/resources/$slug'
+      path: '/$slug'
+      fullPath: '/resources/$slug'
+      preLoaderRoute: typeof ResourcesSlugRouteImport
+      parentRoute: typeof ResourcesRoute
+    }
     '/guides/$slug': {
       id: '/guides/$slug'
       path: '/guides/$slug'
@@ -714,6 +733,18 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface ResourcesRouteChildren {
+  ResourcesSlugRoute: typeof ResourcesSlugRoute
+}
+
+const ResourcesRouteChildren: ResourcesRouteChildren = {
+  ResourcesSlugRoute: ResourcesSlugRoute,
+}
+
+const ResourcesRouteWithChildren = ResourcesRoute._addFileChildren(
+  ResourcesRouteChildren,
+)
+
 interface CountriesSlugRouteChildren {
   CountriesSlugCitiesCityRoute: typeof CountriesSlugCitiesCityRoute
 }
@@ -738,7 +769,7 @@ const rootRouteChildren: RootRouteChildren = {
   MultiloginReviewRoute: MultiloginReviewRoute,
   PrivacyRoute: PrivacyRoute,
   ProxySellerReviewRoute: ProxySellerReviewRoute,
-  ResourcesRoute: ResourcesRoute,
+  ResourcesRoute: ResourcesRouteWithChildren,
   ScraperApiRoute: ScraperApiRoute,
   ScrapyReviewRoute: ScrapyReviewRoute,
   TermsRoute: TermsRoute,
