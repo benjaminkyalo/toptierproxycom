@@ -170,7 +170,7 @@ function blogBody(b, allProviders) {
   });
 
   const sections = b.body.map(section => {
-    const paras = section.paragraphs.map(p => linkifyParagraph(p)).join("");
+    const paras = section.paragraphs.map(p => linkifyParagraph(p, `/blog/${b.slug}`)).join("");
     const list = section.list ? `<ul style="margin:1rem 0;padding-left:1.5rem">${section.list.map(i => `<li>${i}</li>`).join("")}</ul>` : "";
     return `<h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${section.heading}</h2>${paras}${list}`;
   }).join("");
@@ -295,7 +295,7 @@ function useCaseBody(u, allProviders) {
   const challenges = u.challenges.map(c => `<li>${c}</li>`).join("");
   const whyMatters = u.whyMatters.map(w => `<li>${w}</li>`).join("");
   const sections = u.body.map(section => {
-    const paras = section.paragraphs.map(p => linkifyParagraph(p)).join("");
+    const paras = section.paragraphs.map(p => linkifyParagraph(p, `/use-cases/${u.slug}`)).join("");
     const list = section.list ? `<ul style="margin:1rem 0;padding-left:1.5rem">${section.list.map(i => `<li>${i}</li>`).join("")}</ul>` : "";
     return `<h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${section.heading}</h2>${paras}${list}`;
   }).join("");
