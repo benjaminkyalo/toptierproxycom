@@ -7,6 +7,7 @@ import { Flag } from "@/components/flag";
 import { countries } from "@/data/countries";
 import { providers } from "@/data/providers";
 import { getSerpOverride } from "@/data/serp-overrides";
+import { bestCanonicalPath } from "@/data/canonical-policy";
 
 export const Route = createFileRoute("/best/$slug")({
   loader: ({ params }) => {
