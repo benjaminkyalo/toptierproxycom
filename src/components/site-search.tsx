@@ -11,6 +11,8 @@ interface SearchItem {
   url: string;
   type: string;
   keywords?: string;
+  /** Highlighted body snippet, present on full-text (Pagefind) results. */
+  excerpt?: string;
 }
 
 const TYPE_ICON: Record<string, React.ReactNode> = {
