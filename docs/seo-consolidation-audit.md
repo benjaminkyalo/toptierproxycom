@@ -99,8 +99,11 @@ now renders "Best Valencia Proxies 2026" with 13 city mentions.
 
 ### Phase 4 queue (content work, per page — next)
 
-1. The 70 Tier A cities without a `city-content` record: add carrier/ASN specifics, local target
-   sites, city-level price observations, 3 FAQs each.
+1. ~~The 70 Tier A cities without a `city-content` record~~ — **done (2026-08-19)**. All 54
+   missing cities now have hand-written records in `src/data/city-content-eu.ts` (32 EMEA) and
+   `src/data/city-content-apac.ts` (22 Americas/APAC): real carrier mix, median speed, local
+   target sites, a city-specific differentiation note and 3 unique FAQs each. Verified:
+   0 of 70 Tier A cities are template-only; Paris renders 929 unique words (was template).
 2. The 15 surviving `/vs` pages: add own benchmark numbers (success rate, latency, dated price).
 3. Country pages with impressions but no clicks: intent-match the format to the live top 5.
 

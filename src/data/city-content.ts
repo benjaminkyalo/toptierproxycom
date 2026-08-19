@@ -1,3 +1,6 @@
+import { cityContentEU } from "./city-content-eu";
+import { cityContentAPAC } from "./city-content-apac";
+
 export interface CityContent {
   population: string;
   internetPenetration: string;
@@ -178,7 +181,13 @@ const cityContent: Record<string, CityContent> = {
   }
 };
 
+const allCityContent: Record<string, CityContent> = {
+  ...cityContent,
+  ...cityContentEU,
+  ...cityContentAPAC,
+};
+
 export const getCityContent = (citySlug: string): CityContent | null => {
   const key = citySlug.toLowerCase().replace(/\s+/g, "-");
-  return cityContent[key] || null;
+  return allCityContent[key] || null;
 };
