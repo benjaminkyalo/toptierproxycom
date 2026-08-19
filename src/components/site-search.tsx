@@ -72,17 +72,38 @@ export function SiteSearch({ className = "", heroMode = false }: { className?: s
     setResults(fuseHits.slice(0, 8));
 
     void (async () => {
-      const hits = await pagefindSearch(q, 10);
+      const hits = await pagefindSearch(q, 16);
       if (cancelled || hits.length === 0) return;
 
       const byUrl = new Map<string, SearchItem>();
       for (const { item } of fuseHits) byUrl.set(item.url, item);
 
       const merged: SearchItem[] = [];
-      const seen = new Set<string>();
+      const seenUrl = new Set<string>();
+      const seenTitle = new Map<string, number>(); // title -> index in merged
+
+      const push = (item: SearchItem) => {
+        if (seenUrl.has(item.url)) return;
+        const key = item.title.trim().toLowerCase();
+        const existing = seenTitle.get(key);
+        if (existing !== undefined) {
+          // Same page reachable from a canonicalised duplicate (e.g. /best/x
+          // canonicals to /countries/x) — keep the canonical URL only.
+          if (item.url.startsWith("/countries") && merged[existing].url.startsWith("/best")) {
+            seenUrl.delete(merged[existing].url);
+            merged[existing] = item;
+            seenUrl.add(item.url);
+          }
+          return;
+        }
+        seenTitle.set(key, merged.length);
+        seenUrl.add(item.url);
+        merged.push(item);
+      };
+
       for (const hit of hits) {
         const known = byUrl.get(hit.url);
-        merged.push({
+        push({
           id: hit.url,
           url: hit.url,
           title: known?.title || hit.title || hit.url,
@@ -90,11 +111,9 @@ export function SiteSearch({ className = "", heroMode = false }: { className?: s
           type: known?.type || typeFromUrl(hit.url),
           excerpt: hit.excerpt,
         });
-        seen.add(hit.url);
       }
-      for (const { item } of fuseHits) {
-        if (!seen.has(item.url)) merged.push(item);
-      }
+      for (const { item } of fuseHits) push(item);
+
       setResults(merged.slice(0, 8).map((item) => ({ item })));
     })();
 
