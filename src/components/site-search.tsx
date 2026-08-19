@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "@tanstack/react-router";
 import { Search, X, BookOpen, Globe, Star, Zap, FileText, ArrowRight } from "lucide-react";
 import Fuse from "fuse.js";
+import { pagefindSearch, typeFromUrl, loadPagefind } from "@/lib/pagefind";
 
 interface SearchItem {
   id: string;
@@ -10,6 +11,8 @@ interface SearchItem {
   url: string;
   type: string;
   keywords?: string;
+  /** Highlighted body snippet, present on full-text (Pagefind) results. */
+  excerpt?: string;
 }
 
 const TYPE_ICON: Record<string, React.ReactNode> = {
@@ -54,10 +57,67 @@ export function SiteSearch({ className = "", heroMode = false }: { className?: s
       .catch(() => setLoaded(true));
   }, []);
 
-  // Search
+  // Warm the full-text index (no-op in dev / when the index is absent)
+  useEffect(() => { void loadPagefind(); }, []);
+
+  // Search: full-text (Pagefind) first, then Fuse title/description matches
   useEffect(() => {
-    if (!fuseCache || !query.trim() || query.length < 2) { setResults([]); return; }
-    setResults(fuseCache.search(query).slice(0, 8) as { item: SearchItem }[]);
+    const q = query.trim();
+    if (q.length < 2) { setResults([]); return; }
+    let cancelled = false;
+
+    const fuseHits = fuseCache
+      ? (fuseCache.search(q).slice(0, 10) as { item: SearchItem }[])
+      : [];
+    setResults(fuseHits.slice(0, 8));
+
+    void (async () => {
+      const hits = await pagefindSearch(q, 16);
+      if (cancelled || hits.length === 0) return;
+
+      const byUrl = new Map<string, SearchItem>();
+      for (const { item } of fuseHits) byUrl.set(item.url, item);
+
+      const merged: SearchItem[] = [];
+      const seenUrl = new Set<string>();
+      const seenTitle = new Map<string, number>(); // title -> index in merged
+
+      const push = (item: SearchItem) => {
+        if (seenUrl.has(item.url)) return;
+        const key = item.title.trim().toLowerCase();
+        const existing = seenTitle.get(key);
+        if (existing !== undefined) {
+          // Same page reachable from a canonicalised duplicate (e.g. /best/x
+          // canonicals to /countries/x) — keep the canonical URL only.
+          if (item.url.startsWith("/countries") && merged[existing].url.startsWith("/best")) {
+            seenUrl.delete(merged[existing].url);
+            merged[existing] = item;
+            seenUrl.add(item.url);
+          }
+          return;
+        }
+        seenTitle.set(key, merged.length);
+        seenUrl.add(item.url);
+        merged.push(item);
+      };
+
+      for (const hit of hits) {
+        const known = byUrl.get(hit.url);
+        push({
+          id: hit.url,
+          url: hit.url,
+          title: known?.title || hit.title || hit.url,
+          description: known?.description || "",
+          type: known?.type || typeFromUrl(hit.url),
+          excerpt: hit.excerpt,
+        });
+      }
+      for (const { item } of fuseHits) push(item);
+
+      setResults(merged.slice(0, 8).map((item) => ({ item })));
+    })();
+
+    return () => { cancelled = true; };
   }, [query]);
 
   // Close on outside click
@@ -136,7 +196,14 @@ export function SiteSearch({ className = "", heroMode = false }: { className?: s
                           <span className="font-medium text-sm text-foreground group-hover:text-primary transition-colors truncate">{item.title}</span>
                           <span className="flex-shrink-0 text-xs bg-muted text-muted-foreground px-1.5 py-0.5 rounded-full">{TYPE_LABEL[item.type] || "Page"}</span>
                         </div>
-                        <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{item.description}</p>
+                        {item.excerpt ? (
+                          <p
+                            className="text-xs text-muted-foreground mt-0.5 line-clamp-2 [&_mark]:bg-transparent [&_mark]:font-semibold [&_mark]:text-foreground"
+                            dangerouslySetInnerHTML={{ __html: item.excerpt }}
+                          />
+                        ) : (
+                          <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{item.description}</p>
+                        )}
                       </div>
                       <ArrowRight className="h-4 w-4 text-muted-foreground flex-shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </Link>
