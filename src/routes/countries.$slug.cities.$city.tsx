@@ -51,7 +51,7 @@ export const Route = createFileRoute("/countries/$slug/cities/$city")({
         { property: "og:type", content: "article" },
         { property: "og:url", content: url },
         { name: "twitter:card", content: "summary_large_image" },
-        { rel: "canonical", href: url } as never,
+        { rel: "canonical", href: `https://www.toptierproxy.com${cityCanonicalPath(country.slug, params.city)}` } as never,
       ],
       scripts: [
         {
