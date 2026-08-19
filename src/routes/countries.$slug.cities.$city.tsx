@@ -8,6 +8,7 @@ import { getCityContent } from "@/data/city-content";
 import { getCityDeep } from "@/data/city-deep";
 import { providers } from "@/data/providers";
 import { getSerpOverride } from "@/data/serp-overrides";
+import { cityCanonicalPath } from "@/data/canonical-policy";
 
 export const Route = createFileRoute("/countries/$slug/cities/$city")({
   loader: ({ params }) => {
