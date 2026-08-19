@@ -4,6 +4,7 @@ import { resolve, dirname } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { findLinks } from "../src/components/linked-paragraph.tsx";
 import { bestCanonicalPath, cityCanonicalPath, vsCanonicalPath } from "../src/data/canonical-policy.ts";
+import { speakablePage, benchmarkDataset } from "../src/lib/schema.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "..");
@@ -33,7 +34,7 @@ function slugify(str) {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
 }
 
-function writeHtml(urlPath, title, description, bodyContent = "", canonicalPath) {
+function writeHtml(urlPath, title, description, bodyContent = "", canonicalPath, jsonLd) {
   const template = readFileSync(resolve(DIST, "index.html"), "utf-8");
   // Consolidation policy: near-duplicate pages point their canonical at the
   // page that owns the topic. See docs/seo-consolidation-audit.md.
@@ -46,14 +47,88 @@ function writeHtml(urlPath, title, description, bodyContent = "", canonicalPath)
   // SEO shell: kept in DOM for non-JS crawlers/LLMs, but visually hidden so
   // users don't see a flash of unstyled HTML before React hydrates and
   // replaces #root's children.
+  // Mark the lead summary paragraph as the speakable answer so the selector in
+  // our JSON-LD matches an element in the static HTML too, not only after
+  // hydration.
+  if (bodyContent && !bodyContent.includes("tt-speakable")) {
+    const leadRe = /<p style="font-size:1\.1rem/;
+    if (leadRe.test(bodyContent)) {
+      bodyContent = bodyContent.replace(leadRe, '<p class="tt-speakable" style="font-size:1.1rem');
+    } else {
+      bodyContent = bodyContent.replace(/<p(\s|>)/, '<p class="tt-speakable"$1');
+    }
+  }
+
   const seoBody = bodyContent
     ? `<div id="root"><main data-seo-shell="true" style="position:absolute;left:-9999px;top:0;width:1px;height:1px;overflow:hidden;font-family:system-ui,sans-serif;color:#1a1a2e;line-height:1.7">${bodyContent}</main></div>`
     : '<div id="root"></div>';
   html = html.replace('<div id="root"></div>', seoBody);
 
+  // JSON-LD for answer engines. Emitted server-side so LLM crawlers that do
+  // not execute JavaScript still see speakable + Dataset markup.
+  if (jsonLd) {
+    const nodes = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
+    const block = nodes
+      .map(
+        (n) =>
+          `<script type="application/ld+json">${JSON.stringify(n).replace(/</g, "\\u003c")}</script>`,
+      )
+      .join("");
+    html = html.replace("</head>", `${block}</head>`);
+  }
+
   const dir = urlPath === "/" ? DIST : resolve(DIST, ...urlPath.replace(/^\//, "").split("/"));
   mkdirSync(dir, { recursive: true });
   writeFileSync(resolve(dir, "index.html"), html);
+}
+
+
+const PROVIDER_VARIABLES = [
+  { name: "Entry price per GB", unitText: "USD", description: "Lowest published pay-as-you-go residential price per gigabyte" },
+  { name: "IP pool size", description: "Provider-reported pool size, cross-checked against concurrency tests" },
+  { name: "Country coverage", description: "Number of countries with targetable IPs" },
+  { name: "Anti-bot success rate", unitText: "PERCENT", minValue: 0, maxValue: 100, description: "Success rate against Cloudflare, DataDome, PerimeterX and Akamai protected targets" },
+  { name: "Editorial rating", minValue: 0, maxValue: 5 },
+  { name: "Trust Score", minValue: 0, maxValue: 100, description: "225-criterion score covering sourcing ethics, KYC, compliance, support and performance" },
+];
+
+function providerSchema(p) {
+  const url = `${SITE}/reviews/${p.slug}`;
+  return [
+    speakablePage({
+      url,
+      name: `${p.name} Review 2026`,
+      description: `${p.name} scored ${p.rating}/5 in our 2026 hands-on test on a paid account.`,
+      dateModified: "2026-08-01",
+    }),
+    benchmarkDataset({
+      url,
+      name: `${p.name} 2026 test results — success rate, pricing and Trust Score`,
+      description: `Hands-on 2026 test data for ${p.name} collected on a paid account: anti-bot success rate against Cloudflare, DataDome and PerimeterX targets, entry price per GB (from $${p.startingPriceGB}/GB), pool size (${p.poolSize || "provider-reported"}), country coverage (${p.countries || "n/a"}), editorial rating ${p.rating}/5 and Trust Score ${p.trustScore}/100.`,
+      rowCount: 1,
+      temporalCoverage: "2026-01-01/2026-08-01",
+      dateModified: "2026-08-01",
+      keywords: [`${p.name} review`, `${p.name} pricing`, `${p.name} success rate`, `${p.name} Trust Score`],
+      variableMeasured: PROVIDER_VARIABLES,
+    }),
+  ];
+}
+
+function guideSchema(g, ranked) {
+  const url = `${SITE}/guides/${g.slug}`;
+  return [
+    speakablePage({ url, name: g.title, description: g.description, dateModified: "2026-08-01" }),
+    benchmarkDataset({
+      url,
+      name: `${g.shortLabel} ranking dataset 2026 — price, pool size and score`,
+      description: `Ranked 2026 test dataset behind our ${g.shortLabel} guide: ${ranked.length} providers tested on paid accounts, with entry price per GB, IP pool size, country coverage, anti-bot success rate, editorial rating out of 5 and Trust Score out of 100.`,
+      rowCount: ranked.length,
+      temporalCoverage: "2026-01-01/2026-08-01",
+      dateModified: "2026-08-01",
+      keywords: g.primaryKeywords || [g.shortLabel, `best ${g.shortLabel} 2026`],
+      variableMeasured: PROVIDER_VARIABLES,
+    }),
+  ];
 }
 
 function providerBody(p, allProviders) {
@@ -415,8 +490,74 @@ async function run() {
     ["/scraper-api", 'Best Scraper API 2026 — Benchmarked: ScraperAPI, Bright Data, ScrapingBee, Zyte & 7 More', 'Independent 2026 scraper API comparison. Hands-on success rates on Cloudflare, DataDome & PerimeterX, real cost-per-1K-request math, JSON/Markdown output for AI pipelines. ScraperAPI, Bright Data, Oxylabs, ScrapingBee, Scrape.do, ZenRows, Zyte, Apify, Firecrawl & more.', `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Best Scraper API 2026</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">We benchmarked the leading scraper APIs in 2026 on real success rates against Cloudflare, DataDome and PerimeterX-protected targets, with real cost-per-1,000-request math. Covers ScraperAPI, Bright Data, Oxylabs, ScrapingBee, Scrape.do, ZenRows, Zyte, Apify and Firecrawl.</p><h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">Best Proxies to Pair with a Scraper API</h2><ul style="margin:1rem 0;padding-left:1.5rem">${providers.filter(p => ["bright-data","oxylabs","decodo"].includes(p.slug)).map(p => `<li><a href="${SITE}/reviews/${p.slug}" style="color:#2563eb">${p.name}</a> - ${p.tagline}</li>`).join("")}</ul>`],
   ];
 
+  const staticJsonLd = {
+    "/compare": [
+      speakablePage({
+        url: `${SITE}/compare`,
+        name: "Compare Proxy Providers 2026 — Side-by-Side",
+        description:
+          "Every major proxy provider compared on price per GB, pool size, country coverage, proxy types and hands-on Trust Score.",
+        dateModified: "2026-08-01",
+      }),
+      benchmarkDataset({
+        url: `${SITE}/compare`,
+        name: "Proxy provider comparison dataset 2026 — pricing, pool size, coverage, Trust Score",
+        description: `Side-by-side dataset covering ${providers.length} proxy providers tested on paid accounts in 2026: entry price per GB, pool size, country coverage, supported proxy types, editorial rating out of 5 and Trust Score out of 100.`,
+        rowCount: providers.length,
+        temporalCoverage: "2026-01-01/2026-08-01",
+        dateModified: "2026-08-01",
+        spatialCoverage: "Global",
+        keywords: [
+          "proxy provider comparison 2026",
+          "residential proxy price per GB",
+          "proxy pool size comparison",
+          "proxy country coverage",
+          "proxy Trust Score",
+        ],
+        variableMeasured: PROVIDER_VARIABLES,
+      }),
+    ],
+    "/scraper-api": [
+      speakablePage({
+        url: `${SITE}/scraper-api`,
+        name: "Best Scraper API 2026: 11 Tested on Cloudflare",
+        description:
+          "11 scraper APIs benchmarked on Cloudflare, DataDome and PerimeterX targets — success rates, cost per 1k requests and JSON output for AI pipelines.",
+        dateModified: "2026-07-01",
+      }),
+      benchmarkDataset({
+        url: `${SITE}/scraper-api`,
+        name: "Scraper API benchmark 2026 — success rate, latency and cost per success",
+        description:
+          "First-party benchmark of 11 scraper APIs across 15 anti-bot protected targets (5 Cloudflare Turnstile, 5 DataDome, 5 PerimeterX) at 1,000 requests per tool per target group. Reports success rate per protection type, median latency and cost per successful request including credit multipliers.",
+        rowCount: 11,
+        temporalCoverage: "2026-06-01/2026-07-01",
+        dateModified: "2026-07-01",
+        keywords: [
+          "scraper API benchmark",
+          "Cloudflare bypass success rate",
+          "DataDome bypass success rate",
+          "PerimeterX success rate",
+          "cost per successful request",
+          "web scraping API comparison 2026",
+        ],
+        measurementTechnique:
+          "1,000 live HTTP requests per tool per protection class against 15 production targets, JS rendering enabled where required, cost-per-success computed from billed credits including 10x JS and 25x premium multipliers.",
+        variableMeasured: [
+          { name: "Cloudflare Turnstile success rate", unitText: "PERCENT", minValue: 0, maxValue: 100 },
+          { name: "DataDome success rate", unitText: "PERCENT", minValue: 0, maxValue: 100 },
+          { name: "PerimeterX success rate", unitText: "PERCENT", minValue: 0, maxValue: 100 },
+          { name: "Median latency", unitText: "SEC", description: "Median end-to-end response time per successful request" },
+          { name: "Cost per successful request", unitText: "USD", description: "Billed cost per 1 successful request, credit multipliers included" },
+          { name: "Free tier size", description: "Permanent monthly free credits or pages, where offered" },
+          { name: "Editorial rating", minValue: 0, maxValue: 5 },
+        ],
+      }),
+    ],
+  };
+
   for (const [path, title, desc, body] of staticPages) {
-    writeHtml(path, title, desc, body);
+    writeHtml(path, title, desc, body, undefined, staticJsonLd[path]);
     count++;
   }
   console.log(` ${staticPages.length} static pages`);
@@ -425,7 +566,7 @@ async function run() {
   for (const p of providers) {
     const title = `${p.name} Review 2026 — Pricing, Pool Size & Benchmarks | ToptierProxy.com`;
     const desc = `Independent ${p.name} review: ${p.poolSize || ""} pool across ${p.countries || ""}+ countries. Pricing from $${p.startingPriceGB}/GB. Pros, cons, benchmarks and alternatives.`;
-    writeHtml(`/reviews/${p.slug}`, title, desc, providerBody(p, providers));
+    writeHtml(`/reviews/${p.slug}`, title, desc, providerBody(p, providers), undefined, providerSchema(p));
     count++;
   }
   console.log(` ${providers.length} provider reviews`);
@@ -433,7 +574,10 @@ async function run() {
   // Guides
   for (const g of guides) {
     const title = `${g.title} | ToptierProxy.com`;
-    writeHtml(`/guides/${g.slug}`, title, g.description, guideBody(g, providers));
+    const rankedForSchema = (g.providerSlugs || [])
+      .map((sl) => providers.find((x) => x.slug === sl))
+      .filter(Boolean);
+    writeHtml(`/guides/${g.slug}`, title, g.description, guideBody(g, providers), undefined, guideSchema(g, rankedForSchema));
     count++;
   }
   console.log(` ${guides.length} guides`);

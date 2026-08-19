@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageShell, Prose } from "@/components/page-shell";
+import { speakablePage, benchmarkDataset } from "@/lib/schema";
 import {
   Check,
   X,
@@ -169,6 +170,40 @@ export const Route = createFileRoute("/scraper-api")({
                 },
               ],
             },
+            speakablePage({
+              url: CANONICAL,
+              name: title,
+              description,
+              dateModified: "2026-07-01",
+            }),
+            benchmarkDataset({
+              url: CANONICAL,
+              name: "Scraper API benchmark 2026 — success rate, latency and cost per success",
+              description:
+                "First-party benchmark of 11 scraper APIs (ScraperAPI, Bright Data Web Unlocker, Oxylabs Web Scraper, Zyte API, Scrape.do, ScrapingBee, Decodo, ZenRows, Firecrawl, Scrapingdog) across 15 anti-bot protected targets — 5 Cloudflare Turnstile, 5 DataDome, 5 PerimeterX — at 1,000 requests per tool per target group. Reports success rate per protection type, median latency and cost per successful request including credit multipliers.",
+              rowCount: 11,
+              temporalCoverage: "2026-06-01/2026-07-01",
+              dateModified: "2026-07-01",
+              keywords: [
+                "scraper API benchmark",
+                "Cloudflare bypass success rate",
+                "DataDome bypass success rate",
+                "PerimeterX success rate",
+                "cost per successful request",
+                "web scraping API comparison 2026",
+              ],
+              measurementTechnique:
+                "1,000 live HTTP requests per tool per protection class against 15 production targets, JS rendering enabled where required, cost-per-success computed from billed credits including 10x JS and 25x premium multipliers.",
+              variableMeasured: [
+                { name: "Cloudflare Turnstile success rate", unitText: "PERCENT", minValue: 0, maxValue: 100 },
+                { name: "DataDome success rate", unitText: "PERCENT", minValue: 0, maxValue: 100 },
+                { name: "PerimeterX success rate", unitText: "PERCENT", minValue: 0, maxValue: 100 },
+                { name: "Median latency", unitText: "SEC", description: "Median end-to-end response time per successful request" },
+                { name: "Cost per successful request", unitText: "USD", description: "Billed cost per 1 successful request, credit multipliers included" },
+                { name: "Free tier size", description: "Permanent monthly free credits or pages, where offered" },
+                { name: "Editorial rating", minValue: 0, maxValue: 5 },
+              ],
+            }),
           ]),
         },
       ],
@@ -800,7 +835,7 @@ function QuickAnswerBox() {
     },
   ];
   return (
-    <div className="mb-12 rounded-md border-2 border-primary/40 bg-primary/5 p-6">
+    <div className="tt-speakable mb-12 rounded-md border-2 border-primary/40 bg-primary/5 p-6">
       <div className="mb-4 flex items-center gap-2">
         <Trophy className="h-5 w-5 text-primary" />
         <h2 className="text-xl font-bold text-foreground">The 30-second answer</h2>

@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { speakablePage, benchmarkDataset } from "@/lib/schema";
 import { Star, Award } from "lucide-react";
 import { PageShell, Prose } from "@/components/page-shell";
 import { LongFormSection } from "@/components/long-form";
@@ -73,6 +74,28 @@ export const Route = createFileRoute("/guides/$slug")({
               },
             ],
           }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify([
+            speakablePage({ url, name: title, description, dateModified: "2026-08-01" }),
+            benchmarkDataset({
+              url,
+              name: `${guide.shortLabel} ranking dataset 2026 — price, pool size and score`,
+              description: `Ranked 2026 test dataset behind our ${guide.shortLabel} guide: ${ranked.length} providers tested on paid accounts, with entry price per GB, IP pool size, country coverage, editorial rating out of 5 and Trust Score out of 100.`,
+              rowCount: ranked.length,
+              temporalCoverage: "2026-01-01/2026-08-01",
+              dateModified: "2026-08-01",
+              keywords: guide.primaryKeywords ?? [guide.shortLabel, `best ${guide.shortLabel} 2026`],
+              variableMeasured: [
+                { name: "Entry price per GB", unitText: "USD" },
+                { name: "IP pool size" },
+                { name: "Country coverage" },
+                { name: "Editorial rating", minValue: 0, maxValue: 5 },
+                { name: "Trust Score", minValue: 0, maxValue: 100 },
+              ],
+            }),
+          ]),
         },
       ],
     };
