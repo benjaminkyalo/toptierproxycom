@@ -5,6 +5,7 @@ import { providers, getProvider } from "@/data/providers";
 import { LinkedParagraph } from "@/components/linked-paragraph";
 import { NetNutAlert } from "@/components/netnut-alert";
 import { Star, Check, X } from "lucide-react";
+import { vsCanonicalPath } from "@/data/canonical-policy";
 
 export const Route = createFileRoute("/vs/$matchup")({
   loader: ({ params }) => {
