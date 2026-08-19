@@ -2,7 +2,7 @@
 import { mkdirSync, writeFileSync, readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
-import { findLink } from "../src/components/linked-paragraph.tsx";
+import { findLinks } from "../src/components/linked-paragraph.tsx";
 import { bestCanonicalPath, cityCanonicalPath, vsCanonicalPath } from "../src/data/canonical-policy.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -15,10 +15,18 @@ async function loadTs(rel) {
   return mod;
 }
 
-function linkifyParagraph(text) {
-  const m = findLink(text);
-  if (!m) return `<p style="margin:1rem 0">${text}</p>`;
-  return `<p style="margin:1rem 0">${m.before}<a href="${m.url}" style="color:#2563eb;font-weight:600;text-decoration:underline">${m.keyword}</a>${m.after}</p>`;
+function linkifyParagraph(text, currentPath) {
+  // Up to 3 distinct internal destinations per paragraph, matching the React
+  // <LinkedParagraph /> output so static HTML and hydrated DOM agree.
+  const segments = findLinks(text, { max: 3, currentPath });
+  const inner = segments
+    .map((s) =>
+      s.url
+        ? `<a href="${s.url}" style="color:#2563eb;font-weight:600;text-decoration:underline">${s.text}</a>`
+        : s.text,
+    )
+    .join("");
+  return `<p style="margin:1rem 0">${inner}</p>`;
 }
 
 function slugify(str) {
@@ -162,7 +170,7 @@ function blogBody(b, allProviders) {
   });
 
   const sections = b.body.map(section => {
-    const paras = section.paragraphs.map(p => linkifyParagraph(p)).join("");
+    const paras = section.paragraphs.map(p => linkifyParagraph(p, `/blog/${b.slug}`)).join("");
     const list = section.list ? `<ul style="margin:1rem 0;padding-left:1.5rem">${section.list.map(i => `<li>${i}</li>`).join("")}</ul>` : "";
     return `<h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${section.heading}</h2>${paras}${list}`;
   }).join("");
@@ -287,7 +295,7 @@ function useCaseBody(u, allProviders) {
   const challenges = u.challenges.map(c => `<li>${c}</li>`).join("");
   const whyMatters = u.whyMatters.map(w => `<li>${w}</li>`).join("");
   const sections = u.body.map(section => {
-    const paras = section.paragraphs.map(p => linkifyParagraph(p)).join("");
+    const paras = section.paragraphs.map(p => linkifyParagraph(p, `/use-cases/${u.slug}`)).join("");
     const list = section.list ? `<ul style="margin:1rem 0;padding-left:1.5rem">${section.list.map(i => `<li>${i}</li>`).join("")}</ul>` : "";
     return `<h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${section.heading}</h2>${paras}${list}`;
   }).join("");

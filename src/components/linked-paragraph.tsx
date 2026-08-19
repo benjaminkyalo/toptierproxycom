@@ -139,16 +139,71 @@ export function findLink(text: string): { before: string; keyword: string; url: 
   return null;
 }
 
-export function LinkedParagraph({ text }: { text: string }) {
-  const match = findLink(text);
-  if (!match) return <p>{text}</p>;
+export type LinkSegment = { text: string; url?: string };
+
+// Multi-keyword linker. Links up to `max` DISTINCT destinations per paragraph
+// (never the same URL twice, never a self-link back to `currentPath`), always
+// preferring the longest matching keyword so "best residential proxies" wins
+// over "residential proxies". Shared with scripts/prerender.mjs so the static
+// HTML and the hydrated React output contain identical anchors.
+export function findLinks(text: string, options?: { max?: number; currentPath?: string }): LinkSegment[] {
+  const max = options?.max ?? 3;
+  const currentPath = options?.currentPath;
+  const keywords = Object.keys(INTERNAL_LINKS).sort((a, b) => b.length - a.length);
+
+  type Hit = { start: number; end: number; url: string };
+  const hits: Hit[] = [];
+  const usedUrls = new Set<string>();
+  const taken: [number, number][] = [];
+
+  for (const keyword of keywords) {
+    if (hits.length >= max) break;
+    const url = INTERNAL_LINKS[keyword];
+    if (usedUrls.has(url)) continue;
+    if (currentPath && url === currentPath) continue;
+    const idx = text.indexOf(keyword);
+    if (idx === -1) continue;
+    const start = idx;
+    const end = idx + keyword.length;
+    if (taken.some(([s, e]) => start < e && end > s)) continue;
+    hits.push({ start, end, url });
+    taken.push([start, end]);
+    usedUrls.add(url);
+  }
+
+  if (hits.length === 0) return [{ text }];
+
+  hits.sort((a, b) => a.start - b.start);
+  const segments: LinkSegment[] = [];
+  let cursor = 0;
+  for (const hit of hits) {
+    if (hit.start > cursor) segments.push({ text: text.slice(cursor, hit.start) });
+    segments.push({ text: text.slice(hit.start, hit.end), url: hit.url });
+    cursor = hit.end;
+  }
+  if (cursor < text.length) segments.push({ text: text.slice(cursor) });
+  return segments;
+}
+
+export function LinkedParagraph({ text, max = 3 }: { text: string; max?: number }) {
+  const currentPath = typeof window !== "undefined" ? window.location.pathname.replace(/\/$/, "") || "/" : undefined;
+  const segments = findLinks(text, { max, currentPath });
   return (
     <p>
-      {match.before}
-      <a href={match.url} className="font-semibold text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary">
-        {match.keyword}
-      </a>
-      {match.after}
+      {segments.map((s, i) =>
+        s.url ? (
+          <a
+            key={i}
+            href={s.url}
+            className="font-semibold text-primary underline decoration-primary/40 underline-offset-4 hover:decoration-primary"
+          >
+            {s.text}
+          </a>
+        ) : (
+          <span key={i}>{s.text}</span>
+        ),
+      )}
     </p>
   );
 }
+

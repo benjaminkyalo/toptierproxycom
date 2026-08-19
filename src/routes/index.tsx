@@ -12,6 +12,8 @@ import { AwardCard } from "@/components/award-card";
 import { PartnerRow } from "@/components/partner-row";
 import { ProviderLogo } from "@/components/provider-logo";
 import { TopPicks } from "@/components/top-picks";
+import { ContextualLinkHub } from "@/components/related-links";
+
 import { providers, editorChoice } from "@/data/providers";
 import { countries } from "@/data/countries";
 import { guides } from "@/data/guides";
@@ -614,7 +616,17 @@ function HomePage() {
         </div>
       </section>
 
+      <section className="bg-background">
+        <div className="mx-auto max-w-7xl px-6 pb-4">
+          <ContextualLinkHub
+            heading="Explore ToptierProxy"
+            intro="Every guide, review and location page on the site — start wherever your workload sits."
+          />
+        </div>
+      </section>
+
       <SiteFooter />
+
 
     </div>
   );

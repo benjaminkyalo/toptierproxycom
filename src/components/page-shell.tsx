@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { PromoBanner } from "@/components/promo-banner";
+import { ContextualLinkHub } from "@/components/related-links";
 import { Link } from "@tanstack/react-router";
 export function PageShell({
   title,
@@ -10,6 +11,9 @@ export function PageShell({
   children,
   bgImage,
   heroContent,
+  linkHub = true,
+  linkHubHeading,
+  linkHubIntro,
 }: {
   title: string;
   intro?: string;
@@ -17,6 +21,10 @@ export function PageShell({
   children: ReactNode;
   bgImage?: string;
   heroContent?: ReactNode;
+  /** Set false on legal / utility pages that shouldn't carry the link hub. */
+  linkHub?: boolean;
+  linkHubHeading?: string;
+  linkHubIntro?: string;
 }) {
   return (
     <div className="flex min-h-screen flex-col">
@@ -51,12 +59,24 @@ export function PageShell({
         </div>
       </section>
       <main className="flex-1 bg-background">
-        <div className="mx-auto max-w-7xl px-6 py-12">{children}</div>
+        <div className="mx-auto max-w-7xl px-6 py-12">
+          {children}
+          {linkHub && (
+            <ContextualLinkHub
+              heading={linkHubHeading ?? "Continue researching"}
+              intro={
+                linkHubIntro ??
+                "Hand-tested guides, provider reviews and location pages that answer the next question on this topic."
+              }
+            />
+          )}
+        </div>
       </main>
       <SiteFooter />
     </div>
   );
 }
+
 export function Prose({ children }: { children: ReactNode }) {
   return (
     <div className="prose-tt max-w-none text-foreground/85 [&_h2]:mt-10 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-foreground [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-foreground [&_p]:mt-4 [&_p]:leading-relaxed [&_ul]:mt-4 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-6 [&_a]:font-semibold [&_a]:text-primary [&_a]:underline">
