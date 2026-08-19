@@ -177,7 +177,14 @@ export function SiteSearch({ className = "", heroMode = false }: { className?: s
                           <span className="font-medium text-sm text-foreground group-hover:text-primary transition-colors truncate">{item.title}</span>
                           <span className="flex-shrink-0 text-xs bg-muted text-muted-foreground px-1.5 py-0.5 rounded-full">{TYPE_LABEL[item.type] || "Page"}</span>
                         </div>
-                        <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{item.description}</p>
+                        {item.excerpt ? (
+                          <p
+                            className="text-xs text-muted-foreground mt-0.5 line-clamp-2 [&_mark]:bg-transparent [&_mark]:font-semibold [&_mark]:text-foreground"
+                            dangerouslySetInnerHTML={{ __html: item.excerpt }}
+                          />
+                        ) : (
+                          <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{item.description}</p>
+                        )}
                       </div>
                       <ArrowRight className="h-4 w-4 text-muted-foreground flex-shrink-0 mt-0.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </Link>
