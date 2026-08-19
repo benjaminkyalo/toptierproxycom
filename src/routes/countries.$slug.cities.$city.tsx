@@ -171,6 +171,18 @@ function CityPage() {
         </div>
       </div>
 
+      {!isCityTierA(country.slug, citySlug) && (
+        <div className="mb-8 rounded-md border border-border bg-muted/40 p-5 text-sm">
+          <strong className="font-bold">Looking for the full picture?</strong>{" "}
+          Our complete, independently tested breakdown for this market lives on the{" "}
+          <Link to="/countries/$slug" params={{ slug: country.slug }} className="font-semibold text-primary underline">
+            {country.name} proxy guide
+          </Link>{" "}
+          — pool sizes, per-GB pricing, carrier mix and legal notes, with {city} targeting included.
+        </div>
+      )}
+
+
       {deep && (
         <div className="mb-8 rounded-md border-l-4 border-primary bg-primary/5 p-5">
           <h2 className="text-sm font-bold uppercase tracking-wide text-primary">Quick answer</h2>
