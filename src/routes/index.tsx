@@ -614,7 +614,17 @@ function HomePage() {
         </div>
       </section>
 
+      <section className="bg-background">
+        <div className="mx-auto max-w-7xl px-6 pb-4">
+          <ContextualLinkHub
+            heading="Explore ToptierProxy"
+            intro="Every guide, review and location page on the site — start wherever your workload sits."
+          />
+        </div>
+      </section>
+
       <SiteFooter />
+
 
     </div>
   );
