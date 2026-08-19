@@ -3,6 +3,7 @@ import { mkdirSync, writeFileSync, readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { findLink } from "../src/components/linked-paragraph.tsx";
+import { bestCanonicalPath, cityCanonicalPath, vsCanonicalPath } from "../src/data/canonical-policy.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "..");
