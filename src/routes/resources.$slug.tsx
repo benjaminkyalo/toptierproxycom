@@ -73,7 +73,9 @@ function CostCalculator() {
 }
 
 function ResourcePage() {
-  const { resource } = Route.useLoaderData();
+  const { resource } = Route.useLoaderData() as {
+    resource: NonNullable<ReturnType<typeof getResourceContent>>;
+  };
   return (
     <PageShell
       title={resource.title}
