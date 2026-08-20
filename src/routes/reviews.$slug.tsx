@@ -6,6 +6,15 @@ import { LinkedParagraph } from "@/components/linked-paragraph";
 import { NetNutAlert } from "@/components/netnut-alert";
 import { getSerpOverride } from "@/data/serp-overrides";
 import { speakablePage, benchmarkDataset } from "@/lib/schema";
+import {
+  benchmark,
+  getBenchmark,
+  benchmarkRank,
+  meanSuccess,
+  BENCHMARK_CYCLE,
+  BENCHMARK_REQUESTS_PER_PROVIDER,
+} from "@/data/benchmark-q3-2026";
+
 
 export const Route = createFileRoute("/reviews/$slug")({
   loader: ({ params }) => {
