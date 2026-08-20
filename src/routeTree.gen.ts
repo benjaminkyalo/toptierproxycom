@@ -18,6 +18,7 @@ import { Route as ScrapyReviewRouteImport } from './routes/scrapy-review'
 import { Route as ScraperApiRouteImport } from './routes/scraper-api'
 import { Route as ResourcesRouteImport } from './routes/resources'
 import { Route as ProxySellerReviewRouteImport } from './routes/proxy-seller-review'
+import { Route as ProxyBenchmarkReportRouteImport } from './routes/proxy-benchmark-report'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as MultiloginReviewRouteImport } from './routes/multilogin-review'
 import { Route as HowWeTestRouteImport } from './routes/how-we-test'
@@ -88,6 +89,11 @@ const ResourcesRoute = ResourcesRouteImport.update({
 const ProxySellerReviewRoute = ProxySellerReviewRouteImport.update({
   id: '/proxy-seller-review',
   path: '/proxy-seller-review',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProxyBenchmarkReportRoute = ProxyBenchmarkReportRouteImport.update({
+  id: '/proxy-benchmark-report',
+  path: '/proxy-benchmark-report',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -232,6 +238,7 @@ export interface FileRoutesByFullPath {
   '/how-we-test': typeof HowWeTestRoute
   '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
+  '/proxy-benchmark-report': typeof ProxyBenchmarkReportRoute
   '/proxy-seller-review': typeof ProxySellerReviewRoute
   '/resources': typeof ResourcesRouteWithChildren
   '/scraper-api': typeof ScraperApiRoute
@@ -269,6 +276,7 @@ export interface FileRoutesByTo {
   '/how-we-test': typeof HowWeTestRoute
   '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
+  '/proxy-benchmark-report': typeof ProxyBenchmarkReportRoute
   '/proxy-seller-review': typeof ProxySellerReviewRoute
   '/resources': typeof ResourcesRouteWithChildren
   '/scraper-api': typeof ScraperApiRoute
@@ -307,6 +315,7 @@ export interface FileRoutesById {
   '/how-we-test': typeof HowWeTestRoute
   '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
+  '/proxy-benchmark-report': typeof ProxyBenchmarkReportRoute
   '/proxy-seller-review': typeof ProxySellerReviewRoute
   '/resources': typeof ResourcesRouteWithChildren
   '/scraper-api': typeof ScraperApiRoute
@@ -346,6 +355,7 @@ export interface FileRouteTypes {
     | '/how-we-test'
     | '/multilogin-review'
     | '/privacy'
+    | '/proxy-benchmark-report'
     | '/proxy-seller-review'
     | '/resources'
     | '/scraper-api'
@@ -383,6 +393,7 @@ export interface FileRouteTypes {
     | '/how-we-test'
     | '/multilogin-review'
     | '/privacy'
+    | '/proxy-benchmark-report'
     | '/proxy-seller-review'
     | '/resources'
     | '/scraper-api'
@@ -420,6 +431,7 @@ export interface FileRouteTypes {
     | '/how-we-test'
     | '/multilogin-review'
     | '/privacy'
+    | '/proxy-benchmark-report'
     | '/proxy-seller-review'
     | '/resources'
     | '/scraper-api'
@@ -458,6 +470,7 @@ export interface RootRouteChildren {
   HowWeTestRoute: typeof HowWeTestRoute
   MultiloginReviewRoute: typeof MultiloginReviewRoute
   PrivacyRoute: typeof PrivacyRoute
+  ProxyBenchmarkReportRoute: typeof ProxyBenchmarkReportRoute
   ProxySellerReviewRoute: typeof ProxySellerReviewRoute
   ResourcesRoute: typeof ResourcesRouteWithChildren
   ScraperApiRoute: typeof ScraperApiRoute
@@ -547,6 +560,13 @@ declare module '@tanstack/react-router' {
       path: '/proxy-seller-review'
       fullPath: '/proxy-seller-review'
       preLoaderRoute: typeof ProxySellerReviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/proxy-benchmark-report': {
+      id: '/proxy-benchmark-report'
+      path: '/proxy-benchmark-report'
+      fullPath: '/proxy-benchmark-report'
+      preLoaderRoute: typeof ProxyBenchmarkReportRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -757,6 +777,7 @@ const rootRouteChildren: RootRouteChildren = {
   HowWeTestRoute: HowWeTestRoute,
   MultiloginReviewRoute: MultiloginReviewRoute,
   PrivacyRoute: PrivacyRoute,
+  ProxyBenchmarkReportRoute: ProxyBenchmarkReportRoute,
   ProxySellerReviewRoute: ProxySellerReviewRoute,
   ResourcesRoute: ResourcesRouteWithChildren,
   ScraperApiRoute: ScraperApiRoute,

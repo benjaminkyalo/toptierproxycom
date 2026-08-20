@@ -220,6 +220,8 @@ function ComparePage() {
         </div>
         <div className="mt-6 flex flex-wrap gap-3">
           <Link to="/how-we-test" className="inline-flex h-10 items-center rounded-md border border-border bg-background px-4 text-sm font-semibold hover:border-primary">Read our 225-criterion methodology →</Link>
+          <Link to="/proxy-benchmark-report" className="inline-flex h-10 items-center rounded-md border border-border bg-background px-4 text-sm font-semibold hover:border-primary">See the Q3 2026 benchmark results →</Link>
+
           <Link to="/trust-score" className="inline-flex h-10 items-center rounded-md border border-border bg-background px-4 text-sm font-semibold hover:border-primary">How Trust Score works →</Link>
         </div>
       </section>

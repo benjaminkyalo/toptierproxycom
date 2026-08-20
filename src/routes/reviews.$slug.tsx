@@ -6,6 +6,15 @@ import { LinkedParagraph } from "@/components/linked-paragraph";
 import { NetNutAlert } from "@/components/netnut-alert";
 import { getSerpOverride } from "@/data/serp-overrides";
 import { speakablePage, benchmarkDataset } from "@/lib/schema";
+import {
+  benchmark,
+  getBenchmark,
+  benchmarkRank,
+  meanSuccess,
+  BENCHMARK_CYCLE,
+  BENCHMARK_REQUESTS_PER_PROVIDER,
+} from "@/data/benchmark-q3-2026";
+
 
 export const Route = createFileRoute("/reviews/$slug")({
   loader: ({ params }) => {
@@ -236,6 +245,53 @@ function ReviewPage() {
             </a>
           </div>
 
+          {/* Q3 2026 BENCHMARK — first-party measured data, shared with /proxy-benchmark-report */}
+          {(() => {
+            const bm = getBenchmark(provider.slug);
+            if (!bm) return null;
+            const rank = benchmarkRank(provider.slug);
+            return (
+              <section className="mt-10 rounded-md border border-border bg-card p-6 shadow-card">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-widest text-primary">ToptierProxy benchmark · {BENCHMARK_CYCLE}</p>
+                    <h2 className="mt-1 text-xl font-extrabold text-foreground">
+                      {provider.name} measured results — {BENCHMARK_REQUESTS_PER_PROVIDER.toLocaleString()} requests
+                    </h2>
+                  </div>
+                  {rank && (
+                    <span className="rounded-md bg-muted px-3 py-1.5 text-sm font-bold text-foreground">
+                      Rank #{rank} of {benchmark.length} on success rate
+                    </span>
+                  )}
+                </div>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                  {[
+                    { l: "Mean anti-bot success", v: `${meanSuccess(bm).toFixed(1)}%` },
+                    { l: "Median / P95 TTFB", v: `${bm.p50} / ${bm.p95} ms` },
+                    { l: "10-min session stability", v: `${bm.sessionStability.toFixed(1)}%` },
+                    { l: "Cost per 1,000 successes", v: `$${bm.costPer1kSuccess.toFixed(2)}` },
+                  ].map((m) => (
+                    <div key={m.l} className="rounded-md border border-border bg-background p-4">
+                      <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">{m.l}</p>
+                      <p className="mt-1 text-lg font-bold text-foreground">{m.v}</p>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-4 text-sm text-muted-foreground">
+                  Per-stack success: Cloudflare {bm.cloudflare.toFixed(1)}% · DataDome {bm.datadome.toFixed(1)}% ·
+                  PerimeterX {bm.perimeterx.toFixed(1)}% · Akamai {bm.akamai.toFixed(1)}%. {bm.uniqueExits.toLocaleString()} unique
+                  exit IPs in a 50,000-request draw.{" "}
+                  <Link to="/proxy-benchmark-report" className="font-semibold text-primary underline">
+                    See all {benchmark.length} providers in the {BENCHMARK_CYCLE} report
+                  </Link>{" "}
+                  or read the{" "}
+                  <Link to="/how-we-test" className="font-semibold text-primary underline">methodology</Link>.
+                </p>
+              </section>
+            );
+          })()}
+
           {/* SUMMARY */}
           <section id="summary" className="mt-10">
             <Prose>
@@ -248,9 +304,10 @@ function ReviewPage() {
                 </>
               ) : (
                 <p>
-                  In our 2026 hands-on testing, {provider.name} hit a {(85 + (provider.rating - 4) * 10).toFixed(1)}% success rate on a benchmark of 10,000 requests against Cloudflare-, DataDome- and PerimeterX-protected targets, with a median response time of {(700 - (provider.rating - 4) * 200).toFixed(0)}ms from US-East. The network's {provider.poolSize} spans {provider.countries}+ countries with city-, ASN- and carrier-level targeting. For a full breakdown of how we reach these numbers, see our <Link to="/how-we-test" className="text-primary hover:underline font-semibold">testing methodology</Link>.
+                  The network's {provider.poolSize} spans {provider.countries}+ countries with city-, ASN- and carrier-level targeting. Our measured {BENCHMARK_CYCLE} figures for {provider.name} are in the benchmark panel above; for a full breakdown of how we reach them, see our <Link to="/how-we-test" className="text-primary hover:underline font-semibold">testing methodology</Link> and the <Link to="/proxy-benchmark-report" className="text-primary hover:underline font-semibold">full benchmark report</Link>.
                 </p>
               )}
+
 
               <h2>Why we recommend {provider.name}</h2>
               <p>
