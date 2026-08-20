@@ -62,7 +62,7 @@ function providerBody(p, allProviders) {
   const cons = p.cons.map(c => `<li>${c}</li>`).join("");
   return `
     <h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">${p.name} Review 2026 — Pricing, Pool Size &amp; Benchmarks</h1>
-    <p style="color:#6b7280;margin-bottom:1.5rem">Last updated: May 2026  By ToptierProxy Editorial Team  ${p.rating}/5 stars</p>
+    <p style="color:#6b7280;margin-bottom:1.5rem">Last updated: May 2026 — By ToptierProxy Editorial Team — ${p.rating}/5 stars</p>
     <p style="font-size:1.1rem;margin-bottom:1.5rem">${p.shortDescription}</p>
     <p>${p.longDescription}</p>
     <h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">Quick Facts: ${p.name}</h2>
@@ -105,8 +105,8 @@ function countryBody(c, allProviders) {
   const intents = c.searchIntents.map(i => `<li>${i}</li>`).join("");
   const useCases = c.primaryUseCases.map(u => `<li>${u}</li>`).join("");
   return `
-    <h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Best ${c.name} Proxies 2026  Residential &amp; Datacenter IPs</h1>
-    <p style="color:#6b7280;margin-bottom:1.5rem">Last updated: May 2026  ${c.poolDepth} available  ${c.internetUsers} internet users</p>
+    <h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Best ${c.name} Proxies 2026 — Residential &amp; Datacenter IPs</h1>
+    <p style="color:#6b7280;margin-bottom:1.5rem">Last updated: May 2026 — ${c.poolDepth} available — ${c.internetUsers} internet users</p>
     <p style="font-size:1.1rem;margin-bottom:1.5rem">${c.notes}</p>
     <h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${c.name} Proxy Market Overview</h2>
     <ul style="margin:1rem 0;padding-left:1.5rem">
@@ -144,7 +144,7 @@ function guideBody(g, allProviders) {
   const related = g.related.map(r => `<li><a href="${SITE}/guides/${r.to}" style="color:#2563eb">${r.label}</a></li>`).join("");
   return `
     <h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">${g.title}</h1>
-    <p style="color:#6b7280;margin-bottom:1.5rem">Last updated: May 2026  By ToptierProxy Editorial Team  Independent testing across 225+ criteria</p>
+    <p style="color:#6b7280;margin-bottom:1.5rem">Last updated: May 2026 — By ToptierProxy Editorial Team — Independent testing across 225+ criteria</p>
     <p style="font-size:1.1rem;margin-bottom:1.5rem">${g.intro}</p>
     <p>${g.body}</p>
     <h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">Top Recommended Providers for ${g.shortLabel}</h2>
@@ -249,12 +249,12 @@ function blogBody(b, allProviders) {
       `<li><a href="${SITE}/blog/how-to-bypass-cloudflare" style="color:#2563eb">How to Bypass Cloudflare in 2026</a></li>`,
     ],
     "Education": [
-      `<li><a href="${SITE}/guides/best-proxies-2026" style="color:#2563eb">Best Proxy Providers 2026  Full Ranking</a></li>`,
+      `<li><a href="${SITE}/guides/best-proxies-2026" style="color:#2563eb">Best Proxy Providers 2026 — Full Ranking</a></li>`,
       `<li><a href="${SITE}/blog/datacenter-vs-residential-proxies" style="color:#2563eb">Datacenter vs Residential Proxies Explained</a></li>`,
     ],
     "Comparisons": [
       `<li><a href="${SITE}/compare" style="color:#2563eb">Compare All Proxy Providers Side by Side</a></li>`,
-      `<li><a href="${SITE}/guides/best-proxies-2026" style="color:#2563eb">Best Proxy Providers 2026  Full Ranking</a></li>`,
+      `<li><a href="${SITE}/guides/best-proxies-2026" style="color:#2563eb">Best Proxy Providers 2026 — Full Ranking</a></li>`,
     ],
   };
   const extraLinks = (categoryLinks[b.category] || []).join("");
@@ -263,7 +263,7 @@ function blogBody(b, allProviders) {
     <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1.2rem 1.5rem;margin-top:2rem">
       <div style="font-weight:700;color:#1e3a5f;margin-bottom:.75rem"> Related Resources on ToptierProxy</div>
       <ul style="margin:0;padding-left:1.5rem;list-style:disc;line-height:2">
-        <li><a href="${SITE}/guides/best-proxies-2026" style="color:#2563eb">Best Proxy Providers 2026  Full Ranking</a></li>
+        <li><a href="${SITE}/guides/best-proxies-2026" style="color:#2563eb">Best Proxy Providers 2026 — Full Ranking</a></li>
         <li><a href="${SITE}/compare" style="color:#2563eb">Compare All Proxy Providers Side by Side</a></li>
         <li><a href="${SITE}/reviews" style="color:#2563eb">In-Depth Proxy Provider Reviews</a></li>
         <li><a href="${SITE}/trust-score" style="color:#2563eb">How We Rate Proxy Providers  Trust Score</a></li>
@@ -302,7 +302,7 @@ function useCaseBody(u, allProviders) {
   const faqs = u.faqs.map(f => `<h3 style="font-weight:700;margin-top:1.5rem">${f.q}</h3><p>${f.a}</p>`).join("");
   return `
     <h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">${u.title}</h1>
-    <p style="color:#6b7280;margin-bottom:1.5rem">Last updated: May 2026  Recommended type: ${u.recommendedType} proxies</p>
+    <p style="color:#6b7280;margin-bottom:1.5rem">Last updated: May 2026 — Recommended type: ${u.recommendedType} proxies</p>
     <p style="font-size:1.1rem;margin-bottom:1.5rem">${u.intro}</p>
     <h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">Why Proxy Choice Matters for ${u.title}</h2>
     <ul style="margin:1rem 0;padding-left:1.5rem">${whyMatters}</ul>
@@ -323,8 +323,8 @@ function cityBody(x, allProviders) {
     return prov ? `<li><a href="${SITE}/reviews/${slug}" style="color:#2563eb">${prov.name}</a>  Best for ${prov.bestFor}</li>` : "";
   }).join("");
   return `
-    <h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Best ${x.city} Proxies 2026  ${x.country.name} IPs</h1>
-    <p style="color:#6b7280;margin-bottom:1.5rem">Last updated: May 2026  Residential &amp; Datacenter IPs in ${x.city}, ${x.country.name}</p>
+    <h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Best ${x.city} Proxies 2026 — ${x.country.name} IPs</h1>
+    <p style="color:#6b7280;margin-bottom:1.5rem">Last updated: May 2026 — Residential &amp; Datacenter IPs in ${x.city}, ${x.country.name}</p>
     <p style="font-size:1.1rem;margin-bottom:1.5rem">Find the best proxy providers with IP addresses in ${x.city}, ${x.country.name}. Whether you need residential IPs for web scraping, datacenter proxies for high-volume tasks or ISP proxies for ad verification, the providers below offer verified ${x.city} IP coverage.</p>
     <h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">Why Use ${x.city} Proxies?</h2>
     <p>${x.city} is one of the key cities in ${x.country.name}  ${x.country.notes} Proxies with ${x.city} IPs are used for local SEO rank tracking, geo-targeted ad verification, e-commerce price monitoring and accessing region-locked content.</p>
@@ -342,8 +342,8 @@ function cityBody(x, allProviders) {
 
 function vsBody(a, b) {
   return `
-    <h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">${a.name} vs ${b.name} 2026  Side-by-Side Comparison</h1>
-    <p style="color:#6b7280;margin-bottom:1.5rem">Last updated: May 2026  Independent benchmark by ToptierProxy Editorial Team</p>
+    <h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">${a.name} vs ${b.name} 2026 — Side-by-Side Comparison</h1>
+    <p style="color:#6b7280;margin-bottom:1.5rem">Last updated: May 2026 — Independent benchmark by ToptierProxy Editorial Team</p>
     <p style="font-size:1.1rem;margin-bottom:1.5rem">Choosing between ${a.name} and ${b.name}? This side-by-side comparison covers pricing, pool size, proxy types, country coverage, anti-bot success rates and best use cases to help you decide.</p>
     <h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${a.name} Overview</h2>
     <p>${a.shortDescription}</p>
@@ -533,7 +533,7 @@ async function run() {
     for (let j = i + 1; j < providers.length; j++) {
       const a = providers[i];
       const b = providers[j];
-      const title = `${a.name} vs ${b.name} 2026  Side-by-Side Comparison | ToptierProxy.com`;
+      const title = `${a.name} vs ${b.name} 2026 — Side-by-Side Comparison | ToptierProxy.com`;
       const desc = `${a.name} vs ${b.name}: compare pricing, pool size, speed and features. Which proxy provider is better in 2026?`;
       writeHtml(`/vs/${a.slug}-vs-${b.slug}`, title, desc, vsBody(a, b), vsCanonicalPath(a.slug, b.slug));
       vsCount++;
