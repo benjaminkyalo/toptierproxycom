@@ -131,7 +131,20 @@ function guideSchema(g, ranked) {
   ];
 }
 
-function providerBody(p, allProviders) {
+function providerBody(p, allProviders, bench) {
+  const bm = bench && bench.getBenchmark(p.slug);
+  const benchBlock = bm ? `
+    <h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${p.name} measured results — ToptierProxy benchmark ${bench.BENCHMARK_CYCLE}</h2>
+    <p class="tt-speakable">Across ${bench.BENCHMARK_REQUESTS_PER_PROVIDER.toLocaleString()} identical requests, ${p.name} recorded a ${bench.meanSuccess(bm).toFixed(1)}% mean success rate against Cloudflare, DataDome, PerimeterX and Akamai protected targets, a ${bm.p50} ms median time to first byte (${bm.p95} ms at P95), ${bm.sessionStability.toFixed(1)}% 10-minute sticky session stability and a cost of $${bm.costPer1kSuccess.toFixed(2)} per 1,000 successful responses  rank #${bench.benchmarkRank(p.slug)} of ${bench.benchmark.length} providers tested.</p>
+    <ul style="margin:1rem 0;padding-left:1.5rem">
+      <li><strong>Cloudflare:</strong> ${bm.cloudflare}% success</li>
+      <li><strong>DataDome:</strong> ${bm.datadome}% success</li>
+      <li><strong>PerimeterX / HUMAN:</strong> ${bm.perimeterx}% success</li>
+      <li><strong>Akamai Bot Manager:</strong> ${bm.akamai}% success</li>
+      <li><strong>Unique exit IPs (50,000-request draw):</strong> ${bm.uniqueExits.toLocaleString()}</li>
+    </ul>
+    <p>Full cross-provider tables: <a href="${SITE}/proxy-benchmark-report" style="color:#2563eb">Proxy Benchmark Report ${bench.BENCHMARK_CYCLE}</a>  methodology: <a href="${SITE}/how-we-test" style="color:#2563eb">how we test</a>.</p>` : `
+    <p>See our <a href="${SITE}/proxy-benchmark-report" style="color:#2563eb">Q3 2026 Proxy Benchmark Report</a> for measured success rates across the market.</p>`;
   const alternatives = allProviders.filter(x => x.slug !== p.slug).slice(0, 4).map(x => `<a href="${SITE}/reviews/${x.slug}" style="color:#2563eb">${x.name}</a>`).join(", ");
   const pros = p.pros.map(pr => `<li>${pr}</li>`).join("");
   const cons = p.cons.map(c => `<li>${c}</li>`).join("");
@@ -140,6 +153,7 @@ function providerBody(p, allProviders) {
     <p style="color:#6b7280;margin-bottom:1.5rem">Last updated: May 2026 — By ToptierProxy Editorial Team — ${p.rating}/5 stars</p>
     <p style="font-size:1.1rem;margin-bottom:1.5rem">${p.shortDescription}</p>
     <p>${p.longDescription}</p>
+    ${benchBlock}
     <h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">Quick Facts: ${p.name}</h2>
     <ul style="margin:1rem 0;padding-left:1.5rem">
       ${p.poolSize ? `<li><strong>Pool Size:</strong> ${p.poolSize}</li>` : ""}
@@ -471,7 +485,7 @@ async function run() {
     ["/reviews", "Proxy Provider Reviews 2026 | ToptierProxy.com", "In-depth, hands-on reviews of every major proxy provider. Updated for 2026 with pricing, pool size, geographic coverage, anti-bot success rates and Trust Score.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Proxy Provider Reviews 2026</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">In-depth, hands-on reviews of every major proxy provider. Updated for 2026 with pricing, pool size, geographic coverage, anti-bot success rates and Trust Score.</p><h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">All Proxy Provider Reviews</h2><ul style="margin:1rem 0;padding-left:1.5rem">${providers.map(p => `<li><a href="${SITE}/reviews/${p.slug}" style="color:#2563eb">${p.name} Review 2026</a>  ${p.tagline}</li>`).join("")}</ul>`],
     ["/guides", "Proxy Guides & Tutorials 2026 | ToptierProxy.com", "Expert proxy guides covering residential, datacenter, ISP and mobile proxies.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Proxy Guides &amp; Tutorials 2026</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">Expert proxy guides covering residential, datacenter, ISP and mobile proxies. Step-by-step tutorials for scraping, SEO, ad verification and more.</p><ul style="margin:1rem 0;padding-left:1.5rem">${guides.map(g => `<li><a href="${SITE}/guides/${g.slug}" style="color:#2563eb">${g.title}</a>  ${g.intro}</li>`).join("")}</ul>`],
     ["/countries", "Proxy Servers by Country 2026 | ToptierProxy.com", "Find the best proxy providers for every country.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Proxy Servers by Country 2026</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">Find the best proxy providers for every country. Compare residential IP pool sizes, speeds and pricing by location across 60+ countries.</p><ul style="margin:1rem 0;padding-left:1.5rem">${countries.map(c => `<li><a href="${SITE}/countries/${c.slug}" style="color:#2563eb">Best ${c.name} Proxies 2026</a>  ${c.poolDepth}</li>`).join("")}</ul>`],
-    ["/compare", "Compare Proxy Providers Side-by-Side | ToptierProxy.com", "Side-by-side proxy provider comparison.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Compare Proxy Providers 2026</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">Side-by-side proxy provider comparison. Compare pricing, pool size, speed, uptime and features across all major providers.</p><ul style="margin:1rem 0;padding-left:1.5rem">${providers.map(p => `<li><a href="${SITE}/reviews/${p.slug}" style="color:#2563eb">${p.name}</a>  ${p.tagline}  Rating: ${p.rating}/5</li>`).join("")}</ul>`],
+    ["/compare", "Compare Proxy Providers Side-by-Side | ToptierProxy.com", "Side-by-side proxy provider comparison.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Compare Proxy Providers 2026</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">Side-by-side proxy provider comparison. Compare pricing, pool size, speed, uptime and features across all major providers. Measured success rates and latency for the same providers are published in our <a href="${SITE}/proxy-benchmark-report" style="color:#2563eb">${bench.BENCHMARK_CYCLE} Proxy Benchmark Report</a>.</p><ul style="margin:1rem 0;padding-left:1.5rem">${providers.map(p => `<li><a href="${SITE}/reviews/${p.slug}" style="color:#2563eb">${p.name}</a>  ${p.tagline}  Rating: ${p.rating}/5</li>`).join("")}</ul>`],
     ["/blog", "Proxy Blog  News, Tips & Tutorials | ToptierProxy.com", "Latest proxy industry news, scraping tutorials, and expert tips.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Proxy Blog 2026</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">Latest proxy industry news, scraping tutorials, and expert tips from the ToptierProxy.com team.</p><ul style="margin:1rem 0;padding-left:1.5rem">${blogPosts.map(b => `<li><a href="${SITE}/blog/${b.slug}" style="color:#2563eb">${b.title}</a>  ${b.excerpt}</li>`).join("")}</ul>`],
     ["/use-cases", "Proxy Use Cases & Applications | ToptierProxy.com", "Explore how proxies are used for web scraping, SEO, ad verification and more.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Proxy Use Cases 2026</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">Explore how proxies are used for web scraping, SEO, ad verification, sneaker copping, market research and more.</p><ul style="margin:1rem 0;padding-left:1.5rem">${useCases.map(u => `<li><a href="${SITE}/use-cases/${u.slug}" style="color:#2563eb">${u.title}</a>  ${u.intro}</li>`).join("")}</ul>`],
     ["/resources", "Proxy Resources & Tools | ToptierProxy.com", "Free proxy resources, tools and calculators.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Proxy Resources &amp; Tools</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">Free proxy resources, tools and calculators to help you choose the right proxy provider for your needs.</p>`],
@@ -599,7 +613,7 @@ async function run() {
   for (const p of providers) {
     const title = `${p.name} Review 2026 — Pricing, Pool Size & Benchmarks | ToptierProxy.com`;
     const desc = `Independent ${p.name} review: ${p.poolSize || ""} pool across ${p.countries || ""}+ countries. Pricing from $${p.startingPriceGB}/GB. Pros, cons, benchmarks and alternatives.`;
-    writeHtml(`/reviews/${p.slug}`, title, desc, providerBody(p, providers), undefined, providerSchema(p));
+    writeHtml(`/reviews/${p.slug}`, title, desc, providerBody(p, providers, bench), undefined, providerSchema(p));
     count++;
   }
   console.log(` ${providers.length} provider reviews`);
