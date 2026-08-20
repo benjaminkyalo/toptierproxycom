@@ -209,7 +209,7 @@ function BenchmarkReportPage() {
                   <td className="px-4 py-3 font-bold text-muted-foreground">{i + 1}</td>
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2">
-                      <ProviderLogo slug={b.slug} name={b.name} className="h-6 w-6" />
+                      <ProviderLogo provider={{ slug: b.slug, name: b.name }} size="sm" />
                       <Link to="/reviews/$slug" params={{ slug: b.slug }} className="font-semibold text-primary hover:underline">
                         {b.name}
                       </Link>
