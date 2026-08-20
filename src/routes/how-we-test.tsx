@@ -26,6 +26,12 @@ export const Route = createFileRoute("/how-we-test")({
           <Link to="/guides">buying guides</Link>, and our{" "}
           <Link to="/countries">country-by-country</Link> recommendations.
         </p>
+        <p>
+          Looking for the numbers rather than the method? The latest measured results — success rate per anti-bot stack,
+          latency, session stability and cost per 1,000 successful responses for every provider — are published in the{" "}
+          <Link to="/proxy-benchmark-report">Q3 2026 Proxy Benchmark Report</Link>.
+        </p>
+
 
         <h2>1. Network quality (35% of total score)</h2>
         <p>

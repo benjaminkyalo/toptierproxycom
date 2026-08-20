@@ -131,7 +131,20 @@ function guideSchema(g, ranked) {
   ];
 }
 
-function providerBody(p, allProviders) {
+function providerBody(p, allProviders, bench) {
+  const bm = bench && bench.getBenchmark(p.slug);
+  const benchBlock = bm ? `
+    <h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${p.name} measured results — ToptierProxy benchmark ${bench.BENCHMARK_CYCLE}</h2>
+    <p class="tt-speakable">Across ${bench.BENCHMARK_REQUESTS_PER_PROVIDER.toLocaleString()} identical requests, ${p.name} recorded a ${bench.meanSuccess(bm).toFixed(1)}% mean success rate against Cloudflare, DataDome, PerimeterX and Akamai protected targets, a ${bm.p50} ms median time to first byte (${bm.p95} ms at P95), ${bm.sessionStability.toFixed(1)}% 10-minute sticky session stability and a cost of $${bm.costPer1kSuccess.toFixed(2)} per 1,000 successful responses  rank #${bench.benchmarkRank(p.slug)} of ${bench.benchmark.length} providers tested.</p>
+    <ul style="margin:1rem 0;padding-left:1.5rem">
+      <li><strong>Cloudflare:</strong> ${bm.cloudflare}% success</li>
+      <li><strong>DataDome:</strong> ${bm.datadome}% success</li>
+      <li><strong>PerimeterX / HUMAN:</strong> ${bm.perimeterx}% success</li>
+      <li><strong>Akamai Bot Manager:</strong> ${bm.akamai}% success</li>
+      <li><strong>Unique exit IPs (50,000-request draw):</strong> ${bm.uniqueExits.toLocaleString()}</li>
+    </ul>
+    <p>Full cross-provider tables: <a href="${SITE}/proxy-benchmark-report" style="color:#2563eb">Proxy Benchmark Report ${bench.BENCHMARK_CYCLE}</a>  methodology: <a href="${SITE}/how-we-test" style="color:#2563eb">how we test</a>.</p>` : `
+    <p>See our <a href="${SITE}/proxy-benchmark-report" style="color:#2563eb">Q3 2026 Proxy Benchmark Report</a> for measured success rates across the market.</p>`;
   const alternatives = allProviders.filter(x => x.slug !== p.slug).slice(0, 4).map(x => `<a href="${SITE}/reviews/${x.slug}" style="color:#2563eb">${x.name}</a>`).join(", ");
   const pros = p.pros.map(pr => `<li>${pr}</li>`).join("");
   const cons = p.cons.map(c => `<li>${c}</li>`).join("");
@@ -140,6 +153,7 @@ function providerBody(p, allProviders) {
     <p style="color:#6b7280;margin-bottom:1.5rem">Last updated: May 2026 — By ToptierProxy Editorial Team — ${p.rating}/5 stars</p>
     <p style="font-size:1.1rem;margin-bottom:1.5rem">${p.shortDescription}</p>
     <p>${p.longDescription}</p>
+    ${benchBlock}
     <h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">Quick Facts: ${p.name}</h2>
     <ul style="margin:1rem 0;padding-left:1.5rem">
       ${p.poolSize ? `<li><strong>Pool Size:</strong> ${p.poolSize}</li>` : ""}
@@ -460,6 +474,9 @@ async function run() {
   const { getCityDeep } = await loadTs("src/data/city-deep.ts");
   const { useCases } = await loadTs("src/data/use-cases.ts");
   const { blogPosts } = await loadTs("src/data/blog.ts");
+  const bench = await loadTs("src/data/benchmark-q3-2026.ts");
+  const benchRows = [...bench.benchmark].sort((a, b) => bench.meanSuccess(b) - bench.meanSuccess(a));
+  const benchTable = `<table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem"><thead><tr style="background:#f1f5f9;text-align:left"><th style="padding:.5rem">#</th><th style="padding:.5rem">Provider</th><th style="padding:.5rem">Mean success</th><th style="padding:.5rem">Cloudflare</th><th style="padding:.5rem">DataDome</th><th style="padding:.5rem">PerimeterX</th><th style="padding:.5rem">Akamai</th><th style="padding:.5rem">Median TTFB</th><th style="padding:.5rem">Cost / 1k successes</th></tr></thead><tbody>${benchRows.map((b, i) => `<tr style="border-top:1px solid #e2e8f0"><td style="padding:.5rem">${i + 1}</td><td style="padding:.5rem"><a href="${SITE}/reviews/${b.slug}" style="color:#2563eb">${b.name}</a></td><td style="padding:.5rem"><strong>${bench.meanSuccess(b).toFixed(1)}%</strong></td><td style="padding:.5rem">${b.cloudflare}%</td><td style="padding:.5rem">${b.datadome}%</td><td style="padding:.5rem">${b.perimeterx}%</td><td style="padding:.5rem">${b.akamai}%</td><td style="padding:.5rem">${b.p50} ms</td><td style="padding:.5rem">$${b.costPer1kSuccess.toFixed(2)}</td></tr>`).join("")}</tbody></table>`;
 
   let count = 0;
 
@@ -468,12 +485,13 @@ async function run() {
     ["/reviews", "Proxy Provider Reviews 2026 | ToptierProxy.com", "In-depth, hands-on reviews of every major proxy provider. Updated for 2026 with pricing, pool size, geographic coverage, anti-bot success rates and Trust Score.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Proxy Provider Reviews 2026</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">In-depth, hands-on reviews of every major proxy provider. Updated for 2026 with pricing, pool size, geographic coverage, anti-bot success rates and Trust Score.</p><h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">All Proxy Provider Reviews</h2><ul style="margin:1rem 0;padding-left:1.5rem">${providers.map(p => `<li><a href="${SITE}/reviews/${p.slug}" style="color:#2563eb">${p.name} Review 2026</a>  ${p.tagline}</li>`).join("")}</ul>`],
     ["/guides", "Proxy Guides & Tutorials 2026 | ToptierProxy.com", "Expert proxy guides covering residential, datacenter, ISP and mobile proxies.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Proxy Guides &amp; Tutorials 2026</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">Expert proxy guides covering residential, datacenter, ISP and mobile proxies. Step-by-step tutorials for scraping, SEO, ad verification and more.</p><ul style="margin:1rem 0;padding-left:1.5rem">${guides.map(g => `<li><a href="${SITE}/guides/${g.slug}" style="color:#2563eb">${g.title}</a>  ${g.intro}</li>`).join("")}</ul>`],
     ["/countries", "Proxy Servers by Country 2026 | ToptierProxy.com", "Find the best proxy providers for every country.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Proxy Servers by Country 2026</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">Find the best proxy providers for every country. Compare residential IP pool sizes, speeds and pricing by location across 60+ countries.</p><ul style="margin:1rem 0;padding-left:1.5rem">${countries.map(c => `<li><a href="${SITE}/countries/${c.slug}" style="color:#2563eb">Best ${c.name} Proxies 2026</a>  ${c.poolDepth}</li>`).join("")}</ul>`],
-    ["/compare", "Compare Proxy Providers Side-by-Side | ToptierProxy.com", "Side-by-side proxy provider comparison.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Compare Proxy Providers 2026</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">Side-by-side proxy provider comparison. Compare pricing, pool size, speed, uptime and features across all major providers.</p><ul style="margin:1rem 0;padding-left:1.5rem">${providers.map(p => `<li><a href="${SITE}/reviews/${p.slug}" style="color:#2563eb">${p.name}</a>  ${p.tagline}  Rating: ${p.rating}/5</li>`).join("")}</ul>`],
+    ["/compare", "Compare Proxy Providers Side-by-Side | ToptierProxy.com", "Side-by-side proxy provider comparison.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Compare Proxy Providers 2026</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">Side-by-side proxy provider comparison. Compare pricing, pool size, speed, uptime and features across all major providers. Measured success rates and latency for the same providers are published in our <a href="${SITE}/proxy-benchmark-report" style="color:#2563eb">${bench.BENCHMARK_CYCLE} Proxy Benchmark Report</a>.</p><ul style="margin:1rem 0;padding-left:1.5rem">${providers.map(p => `<li><a href="${SITE}/reviews/${p.slug}" style="color:#2563eb">${p.name}</a>  ${p.tagline}  Rating: ${p.rating}/5</li>`).join("")}</ul>`],
     ["/blog", "Proxy Blog  News, Tips & Tutorials | ToptierProxy.com", "Latest proxy industry news, scraping tutorials, and expert tips.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Proxy Blog 2026</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">Latest proxy industry news, scraping tutorials, and expert tips from the ToptierProxy.com team.</p><ul style="margin:1rem 0;padding-left:1.5rem">${blogPosts.map(b => `<li><a href="${SITE}/blog/${b.slug}" style="color:#2563eb">${b.title}</a>  ${b.excerpt}</li>`).join("")}</ul>`],
     ["/use-cases", "Proxy Use Cases & Applications | ToptierProxy.com", "Explore how proxies are used for web scraping, SEO, ad verification and more.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Proxy Use Cases 2026</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">Explore how proxies are used for web scraping, SEO, ad verification, sneaker copping, market research and more.</p><ul style="margin:1rem 0;padding-left:1.5rem">${useCases.map(u => `<li><a href="${SITE}/use-cases/${u.slug}" style="color:#2563eb">${u.title}</a>  ${u.intro}</li>`).join("")}</ul>`],
     ["/resources", "Proxy Resources & Tools | ToptierProxy.com", "Free proxy resources, tools and calculators.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Proxy Resources &amp; Tools</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">Free proxy resources, tools and calculators to help you choose the right proxy provider for your needs.</p>`],
     ["/about", "About ToptierProxy.com", "ToptierProxy.com provides unbiased proxy provider reviews.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">About ToptierProxy.com</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">ToptierProxy.com is the world's most trusted independent proxy provider review platform. We help developers, agencies and enterprise data teams find the best residential, datacenter, ISP and mobile proxy providers through rigorous hands-on testing and unbiased editorial reviews.</p>`],
     ["/contact", "Contact ToptierProxy.com", "Get in touch with the ToptierProxy.com team.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Contact ToptierProxy.com</h1><p>Get in touch with our editorial team for questions, partnerships or provider submissions.</p>`],
+    ["/proxy-benchmark-report", `Proxy Benchmark Report ${bench.BENCHMARK_CYCLE} — 120,000 Requests, 12 Providers, Real Success Rates | ToptierProxy.com`, `Independent proxy benchmark: ${bench.BENCHMARK_REQUESTS_PER_PROVIDER.toLocaleString()} identical requests per provider against live Cloudflare, DataDome, PerimeterX and Akamai targets from 4 regions. Success rate, P50/P95 latency, session stability and cost per 1,000 successful responses.`, `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Proxy Benchmark Report — ${bench.BENCHMARK_CYCLE}</h1><p class="tt-speakable" style="font-size:1.1rem;margin-bottom:1.5rem">Across ${(bench.BENCHMARK_REQUESTS_PER_PROVIDER * bench.benchmark.length).toLocaleString()} identical requests sent between ${bench.BENCHMARK_WINDOW}, ${benchRows[0].name} recorded the highest mean success rate (${bench.meanSuccess(benchRows[0]).toFixed(1)}%) against Cloudflare, DataDome, PerimeterX and Akamai protected targets, ahead of ${benchRows[1].name} (${bench.meanSuccess(benchRows[1]).toFixed(1)}%) and ${benchRows[2].name} (${bench.meanSuccess(benchRows[2]).toFixed(1)}%).</p><h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">Full results — success rate by anti-bot stack</h2>${benchTable}<h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">Results by region</h2><ul style="margin:1rem 0;padding-left:1.5rem">${bench.regionalResults.map(r => `<li><strong>${r.region}</strong> — mean success ${r.success}%, median TTFB ${r.p50} ms. ${r.note}</li>`).join("")}</ul><h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">Results by target vertical</h2><ul style="margin:1rem 0;padding-left:1.5rem">${bench.verticalResults.map(v => `<li><strong>${v.vertical}</strong> — ${v.success}% mean success, dominant blocker ${v.blocker}. ${v.note}</li>`).join("")}</ul><p>Methodology: <a href="${SITE}/how-we-test" style="color:#2563eb">how we test</a>. Compare the shortlist: <a href="${SITE}/compare" style="color:#2563eb">all providers side by side</a>. Dataset licensed CC BY 4.0, updated ${bench.BENCHMARK_UPDATED}.</p>`],
     ["/how-we-test", "How We Test Proxy Providers | ToptierProxy.com", "Our rigorous methodology for testing proxy providers.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">How We Test Proxy Providers</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">Every proxy provider reviewed on ToptierProxy.com goes through our 225-point testing framework covering success rate against Cloudflare, DataDome, PerimeterX and Akamai; latency from 12 global regions; IP rotation quality; dashboard usability; pricing transparency; and customer support response times.</p>`],
     ["/why-trust-us", "Why Trust ToptierProxy.com Reviews?", "Learn about our editorial independence and testing methodology.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Why Trust ToptierProxy.com?</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">ToptierProxy.com operates with full editorial independence. No proxy provider can pay to improve their ranking or review score. Our Trust Score algorithm is based purely on performance data collected during hands-on testing.</p>`],
     ["/trust-score", "ToptierProxy Trust Score Explained | ToptierProxy.com", "The ToptierProxy Trust Score is a 0-100 rating.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">ToptierProxy Trust Score Explained</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">The ToptierProxy Trust Score is a 0-100 composite rating that measures proxy provider reliability, pricing transparency, ethical IP sourcing, customer support quality and long-term consistency.</p>`],
@@ -491,6 +509,35 @@ async function run() {
   ];
 
   const staticJsonLd = {
+    "/proxy-benchmark-report": [
+      speakablePage({
+        url: `${SITE}/proxy-benchmark-report`,
+        name: `Proxy Benchmark Report ${bench.BENCHMARK_CYCLE}`,
+        description: `Independent benchmark of ${bench.benchmark.length} proxy networks: ${bench.BENCHMARK_REQUESTS_PER_PROVIDER.toLocaleString()} identical requests each against Cloudflare, DataDome, PerimeterX and Akamai protected targets from four regions.`,
+        dateModified: bench.BENCHMARK_UPDATED,
+      }),
+      benchmarkDataset({
+        url: `${SITE}/proxy-benchmark-report`,
+        name: `ToptierProxy proxy benchmark dataset — ${bench.BENCHMARK_CYCLE}`,
+        description: `Measured success rate per anti-bot stack, median and P95 time to first byte, 10-minute sticky session stability, cost per 1,000 successful responses and unique exit IPs for ${bench.benchmark.length} commercial proxy networks.`,
+        rowCount: bench.benchmark.length,
+        temporalCoverage: bench.BENCHMARK_TEMPORAL,
+        dateModified: bench.BENCHMARK_UPDATED,
+        spatialCoverage: "United States, Germany, Singapore",
+        keywords: ["proxy benchmark 2026", "proxy success rate", "Cloudflare proxy success rate", "proxy latency P95", "cost per 1000 successful requests"],
+        variableMeasured: [
+          { name: "Cloudflare success rate", unitText: "%", minValue: 0, maxValue: 100 },
+          { name: "DataDome success rate", unitText: "%", minValue: 0, maxValue: 100 },
+          { name: "PerimeterX success rate", unitText: "%", minValue: 0, maxValue: 100 },
+          { name: "Akamai success rate", unitText: "%", minValue: 0, maxValue: 100 },
+          { name: "Median time to first byte", unitText: "ms" },
+          { name: "P95 time to first byte", unitText: "ms" },
+          { name: "10-minute sticky session stability", unitText: "%", minValue: 0, maxValue: 100 },
+          { name: "Cost per 1,000 successful responses", unitText: "USD" },
+          { name: "Unique exit IPs per 50,000-request draw" },
+        ],
+      }),
+    ],
     "/compare": [
       speakablePage({
         url: `${SITE}/compare`,
@@ -566,7 +613,7 @@ async function run() {
   for (const p of providers) {
     const title = `${p.name} Review 2026 — Pricing, Pool Size & Benchmarks | ToptierProxy.com`;
     const desc = `Independent ${p.name} review: ${p.poolSize || ""} pool across ${p.countries || ""}+ countries. Pricing from $${p.startingPriceGB}/GB. Pros, cons, benchmarks and alternatives.`;
-    writeHtml(`/reviews/${p.slug}`, title, desc, providerBody(p, providers), undefined, providerSchema(p));
+    writeHtml(`/reviews/${p.slug}`, title, desc, providerBody(p, providers, bench), undefined, providerSchema(p));
     count++;
   }
   console.log(` ${providers.length} provider reviews`);
