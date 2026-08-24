@@ -66,6 +66,8 @@ async function run() {
     ...resourcesContent.map((r) => ({ loc: `/resources/${r.slug}`, p: "0.7", c: "monthly" })),
     ...Object.values(AUTHORS).map((a) => ({ loc: `/team/${a.slug}`, p: "0.6", c: "monthly" })),
     ...countries.map((c) => ({ loc: `/countries/${c.slug}`, p: "0.7", c: "monthly" })),
+    ...countries.map((c) => ({ loc: `/best/${c.slug}-proxies`, p: "0.7", c: "monthly" })),
+
     ...allCityPairs
       .filter((x) => isCityTierA(x.countrySlug, x.citySlug))
       .map((x) => ({ loc: `/countries/${x.countrySlug}/cities/${x.citySlug}`, p: "0.6", c: "monthly" })),
