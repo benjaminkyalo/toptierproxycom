@@ -34,11 +34,21 @@ async function run() {
   const { blogPosts } = await loadTs("src/data/blog.ts");
   const { isCityTierA, isVsTierA } = await loadTs("src/data/canonical-policy.ts");
 
-  // robots.txt
+  // robots.txt — explicit allow list for AI answer engines + search crawlers.
+  const aiAgents = [
+    "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-Web", "anthropic-ai",
+    "PerplexityBot", "Perplexity-User", "Google-Extended", "Googlebot", "Bingbot",
+    "Applebot", "Applebot-Extended", "DuckDuckBot", "CCBot", "meta-externalagent",
+    "FacebookBot", "Amazonbot", "YouBot", "cohere-ai", "Diffbot", "MistralAI-User",
+    "Timpibot", "AI2Bot",
+  ];
   writeFileSync(
     resolve(PUBLIC, "robots.txt"),
-    `User-agent: *\nAllow: /\nDisallow: /go/\n\nSitemap: ${SITE}/sitemap.xml\n`,
+    `User-agent: *\nAllow: /\nDisallow: /go/\n\n` +
+      aiAgents.map((a) => `User-agent: ${a}\nAllow: /\nDisallow: /go/\n`).join("\n") +
+      `\nSitemap: ${SITE}/sitemap.xml\n`,
   );
+
 
   // sitemap.xml — Tier A (canonical) URLs only. Consolidated pages stay live and
   // linked, they are simply not advertised. See docs/seo-consolidation-audit.md.
