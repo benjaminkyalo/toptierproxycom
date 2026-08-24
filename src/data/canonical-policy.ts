@@ -5,9 +5,6 @@
 // policy only decides (a) which URL carries the canonical tag and (b) which URLs
 // are advertised in sitemap.xml. Fully reversible in one commit.
 
-import { countries, cityToSlug } from "./countries";
-import { getCityContent } from "./city-content";
-import { getCityDeep } from "./city-deep";
 
 export const SITE = "https://www.toptierproxy.com";
 
