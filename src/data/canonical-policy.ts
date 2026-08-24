@@ -5,44 +5,42 @@
 // policy only decides (a) which URL carries the canonical tag and (b) which URLs
 // are advertised in sitemap.xml. Fully reversible in one commit.
 
-import { countries, cityToSlug } from "./countries";
-import { getCityContent } from "./city-content";
-import { getCityDeep } from "./city-deep";
 
 export const SITE = "https://www.toptierproxy.com";
 
 /* ------------------------------------------------------------------ *
- * Phase 1 — /best/{country}-proxies duplicates /countries/{country}
- * (measured 41–42% body overlap). Country page is the canonical target.
+ * Phase 1 — /best/{country}-proxies: ROLLED BACK 2026-08-24.
+ *
+ * These pages target "best {country} proxies" ranking intent, which is
+ * distinct from the /countries/{slug} reference hub. Pointing their
+ * canonical at the hub removed them from the index along with the rest
+ * of the consolidation. They self-canonical and are advertised again.
  * ------------------------------------------------------------------ */
 export function bestCanonicalPath(countrySlug: string): string {
-  return `/countries/${countrySlug}`;
+  return `/best/${countrySlug}-proxies`;
 }
 
+
 /* ------------------------------------------------------------------ *
- * Phase 2 — city tiering.
- * Tier A (self-canonical, in sitemap): a city with its own researched
- * record (city-deep or city-content), or the country's primary city.
- * Tier B: canonical to the parent country page.
+ * Phase 2 — city tiering: ROLLED BACK 2026-08-24.
+ *
+ * Cross-page canonicals on ~300 city pages removed ~2,200 daily
+ * impressions within days of deploy (GSC: 2,443/day on 12 Aug →
+ * ~150/day by 19 Aug). Every city page now self-canonicals and is
+ * advertised in the sitemap again. Phase 4 gave these pages
+ * market-specific content, so they are not thin duplicates.
  * ------------------------------------------------------------------ */
-export function isCityTierA(countrySlug: string, citySlug: string): boolean {
-  if (getCityDeep(citySlug, countrySlug)) return true;
-  if (getCityContent(citySlug)) return true;
-  const country = countries.find((c) => c.slug === countrySlug);
-  if (!country) return false;
-  return cityToSlug(country.topCities[0]) === citySlug;
+export function isCityTierA(_countrySlug: string, _citySlug: string): boolean {
+  return true;
 }
 
 export function cityCanonicalPath(countrySlug: string, citySlug: string): string {
-  return isCityTierA(countrySlug, citySlug)
-    ? `/countries/${countrySlug}/cities/${citySlug}`
-    : `/countries/${countrySlug}`;
+  return `/countries/${countrySlug}/cities/${citySlug}`;
 }
 
 /* ------------------------------------------------------------------ *
- * Phase 3 — /vs/* pruning (measured 71% overlap between siblings).
- * Keep matchups between the providers users actually compare; the rest
- * canonical to the /compare hub.
+ * Phase 3 — /vs/* pruning: ROLLED BACK 2026-08-24 for the same reason.
+ * Matchup pages self-canonical and are advertised again.
  * ------------------------------------------------------------------ */
 export const VS_CORE_PROVIDERS = [
   "bright-data",
@@ -53,11 +51,11 @@ export const VS_CORE_PROVIDERS = [
   "webshare",
 ] as const;
 
-export function isVsTierA(a: string, b: string): boolean {
-  const core = VS_CORE_PROVIDERS as readonly string[];
-  return core.includes(a) && core.includes(b);
+export function isVsTierA(_a: string, _b: string): boolean {
+  return true;
 }
 
 export function vsCanonicalPath(a: string, b: string): string {
-  return isVsTierA(a, b) ? `/vs/${a}-vs-${b}` : "/compare";
+  return `/vs/${a}-vs-${b}`;
 }
+

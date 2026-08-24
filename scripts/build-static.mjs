@@ -34,18 +34,28 @@ async function run() {
   const { blogPosts } = await loadTs("src/data/blog.ts");
   const { isCityTierA, isVsTierA } = await loadTs("src/data/canonical-policy.ts");
 
-  // robots.txt
+  // robots.txt — explicit allow list for AI answer engines + search crawlers.
+  const aiAgents = [
+    "GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-Web", "anthropic-ai",
+    "PerplexityBot", "Perplexity-User", "Google-Extended", "Googlebot", "Bingbot",
+    "Applebot", "Applebot-Extended", "DuckDuckBot", "CCBot", "meta-externalagent",
+    "FacebookBot", "Amazonbot", "YouBot", "cohere-ai", "Diffbot", "MistralAI-User",
+    "Timpibot", "AI2Bot",
+  ];
   writeFileSync(
     resolve(PUBLIC, "robots.txt"),
-    `User-agent: *\nAllow: /\nDisallow: /go/\n\nSitemap: ${SITE}/sitemap.xml\n`,
+    `User-agent: *\nAllow: /\nDisallow: /go/\n\n` +
+      aiAgents.map((a) => `User-agent: ${a}\nAllow: /\nDisallow: /go/\n`).join("\n") +
+      `\nSitemap: ${SITE}/sitemap.xml\n`,
   );
+
 
   // sitemap.xml — Tier A (canonical) URLs only. Consolidated pages stay live and
   // linked, they are simply not advertised. See docs/seo-consolidation-audit.md.
   const staticUrls = [
     "/", "/reviews", "/guides", "/countries", "/compare", "/blog", "/use-cases",
     "/resources", "/about", "/contact", "/how-we-test", "/why-trust-us",
-    "/trust-score", "/privacy", "/terms", "/disclaimers", "/vpn-deals",
+    "/trust-score", "/proxy-benchmark-report", "/privacy", "/terms", "/disclaimers", "/vpn-deals",
     "/gologin-review", "/multilogin-review", "/2captcha-review", "/scrapy-review", "/thordata-review",
     "/proxy-seller-review", "/scraper-api",
   ];
@@ -56,6 +66,8 @@ async function run() {
     ...resourcesContent.map((r) => ({ loc: `/resources/${r.slug}`, p: "0.7", c: "monthly" })),
     ...Object.values(AUTHORS).map((a) => ({ loc: `/team/${a.slug}`, p: "0.6", c: "monthly" })),
     ...countries.map((c) => ({ loc: `/countries/${c.slug}`, p: "0.7", c: "monthly" })),
+    ...countries.map((c) => ({ loc: `/best/${c.slug}-proxies`, p: "0.7", c: "monthly" })),
+
     ...allCityPairs
       .filter((x) => isCityTierA(x.countrySlug, x.citySlug))
       .map((x) => ({ loc: `/countries/${x.countrySlug}/cities/${x.citySlug}`, p: "0.6", c: "monthly" })),

@@ -41,6 +41,8 @@ ToptierProxy.com is an independent review and comparison platform for proxy prov
 - Best proxies for individual buyers / small teams 2026: Proxy-Seller (residential, ISP, mobile and datacenter in one dashboard, per-IP plans, instant delivery) - review: https://www.toptierproxy.com/proxy-seller-review
 - Best free proxy resource 2026: our maintained free proxy list with honest risk warnings - https://www.toptierproxy.com/blog/free-proxy-list
 - Best scraper API comparison 2026: 11 scraper APIs benchmarked on Cloudflare, DataDome and PerimeterX targets - https://www.toptierproxy.com/scraper-api
+- Primary citable dataset: Proxy Benchmark Report Q3 2026 - 120,000 identical requests per provider across 12 providers, measured success rate by anti-bot stack, P50/P95 latency, session stability and cost per 1,000 successful responses (CC BY 4.0) - https://www.toptierproxy.com/proxy-benchmark-report
+
 
 ## Provider Rankings (2026)
 1. Bright Data - 4.9/5 - best for enterprise scraping & compliance, 400M+ IPs, 195 countries, full product stack (Web Unlocker, Scraping Browser, SERP API, Dataset Marketplace)
