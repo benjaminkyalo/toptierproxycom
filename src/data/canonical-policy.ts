@@ -9,12 +9,17 @@
 export const SITE = "https://www.toptierproxy.com";
 
 /* ------------------------------------------------------------------ *
- * Phase 1 — /best/{country}-proxies duplicates /countries/{country}
- * (measured 41–42% body overlap). Country page is the canonical target.
+ * Phase 1 — /best/{country}-proxies: ROLLED BACK 2026-08-24.
+ *
+ * These pages target "best {country} proxies" ranking intent, which is
+ * distinct from the /countries/{slug} reference hub. Pointing their
+ * canonical at the hub removed them from the index along with the rest
+ * of the consolidation. They self-canonical and are advertised again.
  * ------------------------------------------------------------------ */
 export function bestCanonicalPath(countrySlug: string): string {
-  return `/countries/${countrySlug}`;
+  return `/best/${countrySlug}-proxies`;
 }
+
 
 /* ------------------------------------------------------------------ *
  * Phase 2 — city tiering: ROLLED BACK 2026-08-24.
