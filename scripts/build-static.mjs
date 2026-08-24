@@ -55,7 +55,7 @@ async function run() {
   const staticUrls = [
     "/", "/reviews", "/guides", "/countries", "/compare", "/blog", "/use-cases",
     "/resources", "/about", "/contact", "/how-we-test", "/why-trust-us",
-    "/trust-score", "/privacy", "/terms", "/disclaimers", "/vpn-deals",
+    "/trust-score", "/proxy-benchmark-report", "/privacy", "/terms", "/disclaimers", "/vpn-deals",
     "/gologin-review", "/multilogin-review", "/2captcha-review", "/scrapy-review", "/thordata-review",
     "/proxy-seller-review", "/scraper-api",
   ];
