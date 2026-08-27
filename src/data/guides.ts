@@ -37,7 +37,13 @@ export const guides: Guide[] = [
     description: "We spent 1,000+ hours testing 35 proxy providers in 2026. Here is the full ranking — real scores, honest pricing, and exactly which provider is right for your use case. No paid placements.",
     body: "After 1,000+ hours of hands-on testing across 35 vendors, our editorial team has finalized the 2026 rankings. The top providers were selected based on success rate against modern anti-bot systems (Cloudflare, DataDome, PerimeterX, Akamai), pool size and geographic coverage, sourcing ethics and compliance posture, dashboard UX, and total cost per successful request.",
     providerSlugs: ["bright-data", "oxylabs", "decodo", "soax", "iproyal", "netnut", "webshare", "rayobyte"],
+    extraProviders: [
+      { name: "Live Proxies", url: "/live-proxies-review", rating: 4.4, startingPrice: "$45/plan", poolSize: "Private dedicated IPs" },
+      { name: "Thordata", url: "/thordata-review", rating: 4.7, startingPrice: "$0.65/GB", poolSize: "125M+ IPs" },
+      { name: "Proxy-Seller", url: "/proxy-seller-review", rating: 4.8, startingPrice: "$1.3/GB", poolSize: "47M+ IPs" },
+    ],
     related: RELATED_DEFAULT,
+
     primaryKeywords: ["best proxy","best proxies","proxy provider","best proxy providers 2026","buy proxy","proxy comparison","best proxy 2026","top proxy providers","proxy rating"],
   },
   {
