@@ -944,9 +944,18 @@ function LiveProxiesReview() {
         <aside className="hidden lg:block">
           <div className="sticky top-24 space-y-5">
             <div className="rounded-md border-2 border-primary bg-card p-5 text-center">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-md bg-navy text-lg font-extrabold text-white">
-                LP
+              <div className="mx-auto flex h-16 w-16 items-center justify-center overflow-hidden rounded-md bg-navy p-1.5">
+                <img
+                  src={IMG.logo}
+                  alt="Live Proxies logo"
+                  width={64}
+                  height={64}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-contain"
+                />
               </div>
+
               <div className="mt-2 font-extrabold">Live Proxies</div>
               <div className="mt-1 flex justify-center">
                 <StarRating rating={4.4} />
