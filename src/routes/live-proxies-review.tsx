@@ -551,7 +551,13 @@ function LiveProxiesReview() {
           {/* B2C vs B2B */}
           <section className="mt-10">
             <H2 id="b2c-b2b">B2C vs B2B — who Live Proxies is for</H2>
+            <Figure
+              src={IMG.b2cB2b}
+              alt="Live Proxies B2C and B2B plan positioning — individual use cases and enterprise level solution"
+              caption="Live Proxies splits its offer in two: individual B2C plans and a custom B2B network marketed at 10M+ IPs."
+            />
             <div className="mt-4 grid gap-4 md:grid-cols-2">
+
               <div className="rounded-md border border-border bg-card p-5">
                 <h3 className="text-base font-extrabold text-foreground">B2C / individual</h3>
                 <p className="mt-2 text-sm text-foreground/80">
