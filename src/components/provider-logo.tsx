@@ -7,7 +7,10 @@ import type { Provider } from "@/data/providers";
 const RAW_LOGO_URL: Record<string, string> = {
   "thordata":
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1785274640/thordata_logo_e7qs2t.jpg",
+  "live-proxies":
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1787820686/LOGO_LIVE_PROXIES_vwg0xl.jpg",
   "proxy-seller":
+
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1786193142/proxy-seller_logo_agmia2.jpg",
   "bright-data":
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725875/bright_data_logo_muhsjd_efmshs.png",
