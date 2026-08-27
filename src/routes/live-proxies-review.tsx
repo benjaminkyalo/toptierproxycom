@@ -616,6 +616,12 @@ function LiveProxiesReview() {
               (one identity per session) and no concurrency limit (throughput bounded by your infrastructure, not the
               contract). Confirm the exact certified integration list on their site before you architect around one tool.
             </p>
+            <Figure
+              src={IMG.integrations}
+              alt="Live Proxies supported app and bot integrations, including Selenium and automation tools"
+              caption="Live Proxies' published integration map — Selenium, automation bots and multi-account tooling."
+            />
+
             <div className="mt-4 space-y-4">
               {INTEGRATIONS.map(([name, body]) => (
                 <div key={name} className="rounded-md border border-border bg-card p-4">
