@@ -358,9 +358,19 @@ function LiveProxiesReview() {
           <section className="rounded-md bg-muted/40 p-6 md:p-8">
             <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-4">
-                <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-md bg-navy text-xl font-extrabold text-white shadow-card">
-                  LP
+                <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-md bg-navy p-2 shadow-card">
+                  <img
+                    src={IMG.logo}
+                    alt="Live Proxies logo"
+                    width={80}
+                    height={80}
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
+                    className="h-full w-full object-contain"
+                  />
                 </div>
+
                 <div>
                   <h1 className="text-2xl font-extrabold text-foreground md:text-3xl">
                     Live Proxies Review: Are Their Private Residential Proxies Worth It in 2026?
