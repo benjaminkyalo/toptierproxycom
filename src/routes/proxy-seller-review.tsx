@@ -773,6 +773,7 @@ function ProxySellerReview() {
                   heading: "Head-to-head & tools",
                   links: [
                     { label: "Thordata review", to: "/thordata-review", params: undefined },
+                    { label: "Live Proxies review (private dedicated IPs)", to: "/live-proxies-review", params: undefined },
                     { label: "IPRoyal review", to: "/reviews/$slug", params: { slug: "iproyal" } },
                     { label: "Bright Data vs Oxylabs", to: "/vs/$matchup", params: { matchup: "bright-data-vs-oxylabs" } },
                     { label: "Compare any two providers", to: "/compare", params: undefined },
