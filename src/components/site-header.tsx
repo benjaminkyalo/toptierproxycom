@@ -14,6 +14,8 @@ const reviewItems: DropItem[] = [
     .map((p): DropItem => ({ to: "/reviews/$slug", params: { slug: p.slug }, label: `${p.name} Review` })),
   { to: "/thordata-review", label: "Thordata Review" },
   { to: "/proxy-seller-review", label: "Proxy-Seller Review" },
+  { to: "/live-proxies-review", label: "Live Proxies Review" },
+
 ];
 
 const guideItems: DropItem[] = guides
