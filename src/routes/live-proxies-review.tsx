@@ -252,6 +252,31 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
+const CLD = "https://res.cloudinary.com/dkcqakosa/image/upload";
+const IMG = {
+  logo: `${CLD}/f_auto,q_auto,c_fit,w_160,h_160/v1787820686/LOGO_LIVE_PROXIES_vwg0xl.jpg`,
+  homepage: `${CLD}/f_auto,q_auto,w_1280/v1787820386/image1_1_tgdxae.jpg`,
+  b2cB2b: `${CLD}/f_auto,q_auto,w_1280/v1787820391/image_3_1_deeypy.jpg`,
+  integrations: `${CLD}/f_auto,q_auto,w_1280/v1787820386/image_8_1_rjchhh.jpg`,
+} as const;
+
+function Figure({ src, alt, caption }: { src: string; alt: string; caption: string }) {
+  return (
+    <figure className="mt-6">
+      <img
+        src={src}
+        alt={alt}
+        width={1280}
+        height={694}
+        loading="lazy"
+        decoding="async"
+        className="w-full rounded-md border border-border bg-card shadow-card"
+      />
+      <figcaption className="mt-2 text-xs text-muted-foreground">{caption}</figcaption>
+    </figure>
+  );
+}
+
 function CTA({ label = "Get Live Proxies", className = "" }: { label?: string; className?: string }) {
   return (
     <a
@@ -264,6 +289,7 @@ function CTA({ label = "Get Live Proxies", className = "" }: { label?: string; c
     </a>
   );
 }
+
 
 function H2({ id, children }: { id: string; children: React.ReactNode }) {
   return (
@@ -358,9 +384,19 @@ function LiveProxiesReview() {
           <section className="rounded-md bg-muted/40 p-6 md:p-8">
             <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-4">
-                <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-md bg-navy text-xl font-extrabold text-white shadow-card">
-                  LP
+                <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-md bg-navy p-2 shadow-card">
+                  <img
+                    src={IMG.logo}
+                    alt="Live Proxies logo"
+                    width={80}
+                    height={80}
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
+                    className="h-full w-full object-contain"
+                  />
                 </div>
+
                 <div>
                   <h1 className="text-2xl font-extrabold text-foreground md:text-3xl">
                     Live Proxies Review: Are Their Private Residential Proxies Worth It in 2026?
@@ -456,7 +492,13 @@ function LiveProxiesReview() {
               </Link>
               .
             </p>
+            <Figure
+              src={IMG.homepage}
+              alt="Live Proxies homepage showing private residential proxy positioning and Trustpilot, G2 and Proxyway ratings"
+              caption="Live Proxies' homepage leads on private residential IPs and third-party ratings from Trustpilot, G2 and Proxyway."
+            />
           </section>
+
 
           {/* Pricing */}
           <section className="mt-10">
@@ -551,7 +593,13 @@ function LiveProxiesReview() {
           {/* B2C vs B2B */}
           <section className="mt-10">
             <H2 id="b2c-b2b">B2C vs B2B — who Live Proxies is for</H2>
+            <Figure
+              src={IMG.b2cB2b}
+              alt="Live Proxies B2C and B2B plan positioning — individual use cases and enterprise level solution"
+              caption="Live Proxies splits its offer in two: individual B2C plans and a custom B2B network marketed at 10M+ IPs."
+            />
             <div className="mt-4 grid gap-4 md:grid-cols-2">
+
               <div className="rounded-md border border-border bg-card p-5">
                 <h3 className="text-base font-extrabold text-foreground">B2C / individual</h3>
                 <p className="mt-2 text-sm text-foreground/80">
@@ -616,6 +664,12 @@ function LiveProxiesReview() {
               (one identity per session) and no concurrency limit (throughput bounded by your infrastructure, not the
               contract). Confirm the exact certified integration list on their site before you architect around one tool.
             </p>
+            <Figure
+              src={IMG.integrations}
+              alt="Live Proxies supported app and bot integrations, including Selenium and automation tools"
+              caption="Live Proxies' published integration map — Selenium, automation bots and multi-account tooling."
+            />
+
             <div className="mt-4 space-y-4">
               {INTEGRATIONS.map(([name, body]) => (
                 <div key={name} className="rounded-md border border-border bg-card p-4">
@@ -890,9 +944,18 @@ function LiveProxiesReview() {
         <aside className="hidden lg:block">
           <div className="sticky top-24 space-y-5">
             <div className="rounded-md border-2 border-primary bg-card p-5 text-center">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-md bg-navy text-lg font-extrabold text-white">
-                LP
+              <div className="mx-auto flex h-16 w-16 items-center justify-center overflow-hidden rounded-md bg-navy p-1.5">
+                <img
+                  src={IMG.logo}
+                  alt="Live Proxies logo"
+                  width={64}
+                  height={64}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-contain"
+                />
               </div>
+
               <div className="mt-2 font-extrabold">Live Proxies</div>
               <div className="mt-1 flex justify-center">
                 <StarRating rating={4.4} />
