@@ -24,6 +24,17 @@ const STANDALONE_REVIEWS: {
     facts: ["From $0.65/GB", "125M+ IPs", "190+ countries"],
   },
   {
+    to: "/live-proxies-review",
+    slug: "live-proxies",
+    name: "Live Proxies",
+    initials: "LP",
+    rating: 4.4,
+    description:
+      "Private, dedicated residential IPs with US state-level targeting, sticky rotation and unlimited threads — metered or unmetered plans.",
+    facts: ["From $45/plan", "Private dedicated IPs", "US state-level targeting"],
+  },
+  {
+
     to: "/proxy-seller-review",
     slug: "proxy-seller",
     name: "Proxy-Seller",

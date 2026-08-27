@@ -248,6 +248,13 @@ function ThordataReview() {
               If you also need dedicated IPv4 or bulk IPv6 addresses alongside residential and mobile, compare this against our{" "}
               <Link to="/proxy-seller-review" className="font-semibold text-primary hover:underline">Proxy-Seller review</Link> — five proxy types on one account from $1.3/GB, with ISO/IEC 27001 certification and 220+ locations.
             </p>
+            <p className="mt-3 text-sm text-foreground/80">
+              If shared-pool bandwidth is the problem — inherited block history, unpredictable success rates on the same
+              target — read our{" "}
+              <Link to="/live-proxies-review" className="font-semibold text-primary hover:underline">Live Proxies review</Link>{" "}
+              instead: private dedicated residential IPs with US state-level targeting from $45/plan, metered or unmetered.
+            </p>
+
           </section>
 
 
