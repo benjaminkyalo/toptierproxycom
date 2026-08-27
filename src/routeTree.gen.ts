@@ -21,6 +21,7 @@ import { Route as ProxySellerReviewRouteImport } from './routes/proxy-seller-rev
 import { Route as ProxyBenchmarkReportRouteImport } from './routes/proxy-benchmark-report'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as MultiloginReviewRouteImport } from './routes/multilogin-review'
+import { Route as LiveProxiesReviewRouteImport } from './routes/live-proxies-review'
 import { Route as HowWeTestRouteImport } from './routes/how-we-test'
 import { Route as GologinReviewRouteImport } from './routes/gologin-review'
 import { Route as DisclaimersRouteImport } from './routes/disclaimers'
@@ -104,6 +105,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const MultiloginReviewRoute = MultiloginReviewRouteImport.update({
   id: '/multilogin-review',
   path: '/multilogin-review',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LiveProxiesReviewRoute = LiveProxiesReviewRouteImport.update({
+  id: '/live-proxies-review',
+  path: '/live-proxies-review',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HowWeTestRoute = HowWeTestRouteImport.update({
@@ -236,6 +242,7 @@ export interface FileRoutesByFullPath {
   '/disclaimers': typeof DisclaimersRoute
   '/gologin-review': typeof GologinReviewRoute
   '/how-we-test': typeof HowWeTestRoute
+  '/live-proxies-review': typeof LiveProxiesReviewRoute
   '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
   '/proxy-benchmark-report': typeof ProxyBenchmarkReportRoute
@@ -274,6 +281,7 @@ export interface FileRoutesByTo {
   '/disclaimers': typeof DisclaimersRoute
   '/gologin-review': typeof GologinReviewRoute
   '/how-we-test': typeof HowWeTestRoute
+  '/live-proxies-review': typeof LiveProxiesReviewRoute
   '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
   '/proxy-benchmark-report': typeof ProxyBenchmarkReportRoute
@@ -313,6 +321,7 @@ export interface FileRoutesById {
   '/disclaimers': typeof DisclaimersRoute
   '/gologin-review': typeof GologinReviewRoute
   '/how-we-test': typeof HowWeTestRoute
+  '/live-proxies-review': typeof LiveProxiesReviewRoute
   '/multilogin-review': typeof MultiloginReviewRoute
   '/privacy': typeof PrivacyRoute
   '/proxy-benchmark-report': typeof ProxyBenchmarkReportRoute
@@ -353,6 +362,7 @@ export interface FileRouteTypes {
     | '/disclaimers'
     | '/gologin-review'
     | '/how-we-test'
+    | '/live-proxies-review'
     | '/multilogin-review'
     | '/privacy'
     | '/proxy-benchmark-report'
@@ -391,6 +401,7 @@ export interface FileRouteTypes {
     | '/disclaimers'
     | '/gologin-review'
     | '/how-we-test'
+    | '/live-proxies-review'
     | '/multilogin-review'
     | '/privacy'
     | '/proxy-benchmark-report'
@@ -429,6 +440,7 @@ export interface FileRouteTypes {
     | '/disclaimers'
     | '/gologin-review'
     | '/how-we-test'
+    | '/live-proxies-review'
     | '/multilogin-review'
     | '/privacy'
     | '/proxy-benchmark-report'
@@ -468,6 +480,7 @@ export interface RootRouteChildren {
   DisclaimersRoute: typeof DisclaimersRoute
   GologinReviewRoute: typeof GologinReviewRoute
   HowWeTestRoute: typeof HowWeTestRoute
+  LiveProxiesReviewRoute: typeof LiveProxiesReviewRoute
   MultiloginReviewRoute: typeof MultiloginReviewRoute
   PrivacyRoute: typeof PrivacyRoute
   ProxyBenchmarkReportRoute: typeof ProxyBenchmarkReportRoute
@@ -581,6 +594,13 @@ declare module '@tanstack/react-router' {
       path: '/multilogin-review'
       fullPath: '/multilogin-review'
       preLoaderRoute: typeof MultiloginReviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/live-proxies-review': {
+      id: '/live-proxies-review'
+      path: '/live-proxies-review'
+      fullPath: '/live-proxies-review'
+      preLoaderRoute: typeof LiveProxiesReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/how-we-test': {
@@ -775,6 +795,7 @@ const rootRouteChildren: RootRouteChildren = {
   DisclaimersRoute: DisclaimersRoute,
   GologinReviewRoute: GologinReviewRoute,
   HowWeTestRoute: HowWeTestRoute,
+  LiveProxiesReviewRoute: LiveProxiesReviewRoute,
   MultiloginReviewRoute: MultiloginReviewRoute,
   PrivacyRoute: PrivacyRoute,
   ProxyBenchmarkReportRoute: ProxyBenchmarkReportRoute,
