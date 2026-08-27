@@ -456,7 +456,13 @@ function LiveProxiesReview() {
               </Link>
               .
             </p>
+            <Figure
+              src={IMG.homepage}
+              alt="Live Proxies homepage showing private residential proxy positioning and Trustpilot, G2 and Proxyway ratings"
+              caption="Live Proxies' homepage leads on private residential IPs and third-party ratings from Trustpilot, G2 and Proxyway."
+            />
           </section>
+
 
           {/* Pricing */}
           <section className="mt-10">
