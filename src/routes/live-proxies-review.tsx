@@ -252,6 +252,31 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
+const CLD = "https://res.cloudinary.com/dkcqakosa/image/upload";
+const IMG = {
+  logo: `${CLD}/f_auto,q_auto,c_fit,w_160,h_160/v1787820686/LOGO_LIVE_PROXIES_vwg0xl.jpg`,
+  homepage: `${CLD}/f_auto,q_auto,w_1280/v1787820386/image1_1_tgdxae.jpg`,
+  b2cB2b: `${CLD}/f_auto,q_auto,w_1280/v1787820391/image_3_1_deeypy.jpg`,
+  integrations: `${CLD}/f_auto,q_auto,w_1280/v1787820386/image_8_1_rjchhh.jpg`,
+} as const;
+
+function Figure({ src, alt, caption }: { src: string; alt: string; caption: string }) {
+  return (
+    <figure className="mt-6">
+      <img
+        src={src}
+        alt={alt}
+        width={1280}
+        height={694}
+        loading="lazy"
+        decoding="async"
+        className="w-full rounded-md border border-border bg-card shadow-card"
+      />
+      <figcaption className="mt-2 text-xs text-muted-foreground">{caption}</figcaption>
+    </figure>
+  );
+}
+
 function CTA({ label = "Get Live Proxies", className = "" }: { label?: string; className?: string }) {
   return (
     <a
@@ -264,6 +289,7 @@ function CTA({ label = "Get Live Proxies", className = "" }: { label?: string; c
     </a>
   );
 }
+
 
 function H2({ id, children }: { id: string; children: React.ReactNode }) {
   return (
