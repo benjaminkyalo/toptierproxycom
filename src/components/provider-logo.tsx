@@ -8,7 +8,7 @@ const RAW_LOGO_URL: Record<string, string> = {
   "thordata":
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1785274640/thordata_logo_e7qs2t.jpg",
   "live-proxies":
-    "https://res.cloudinary.com/dkcqakosa/image/upload/v1787820686/LOGO_LIVE_PROXIES_vwg0xl.jpg",
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1787823270/live_proxies_logo-Photoroom_xabxix.png",
   "proxy-seller":
 
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1786193142/proxy-seller_logo_agmia2.jpg",

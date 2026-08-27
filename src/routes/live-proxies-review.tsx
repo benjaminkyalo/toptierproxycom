@@ -254,7 +254,7 @@ function StarRating({ rating }: { rating: number }) {
 
 const CLD = "https://res.cloudinary.com/dkcqakosa/image/upload";
 const IMG = {
-  logo: `${CLD}/f_auto,q_auto,c_fit,w_160,h_160/v1787820686/LOGO_LIVE_PROXIES_vwg0xl.jpg`,
+  logo: `${CLD}/f_auto,q_auto,c_fit,w_160,h_160/v1787823270/live_proxies_logo-Photoroom_xabxix.png`,
   homepage: `${CLD}/f_auto,q_auto,w_1280/v1787820386/image1_1_tgdxae.jpg`,
   b2cB2b: `${CLD}/f_auto,q_auto,w_1280/v1787820391/image_3_1_deeypy.jpg`,
   integrations: `${CLD}/f_auto,q_auto,w_1280/v1787820386/image_8_1_rjchhh.jpg`,
