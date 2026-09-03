@@ -1,6 +1,8 @@
 // SEO blog post data — long-form articles to drive organic traffic.
 // Each post targets a high-intent search query in the proxy / web scraping space.
 
+import { expandedBodies } from "./blog-expanded";
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -18,7 +20,7 @@ export interface BlogPost {
 }
 
 
-export const blogPosts: BlogPost[] = [
+const rawBlogPosts: BlogPost[] = [
   {
     slug: "free-proxy-vs-paid-proxy-why-free-fails-2026",
     title: "Free Proxy vs Paid Proxy 2026 - Why Free Proxies Fail and What Actually Works",
@@ -3156,6 +3158,17 @@ export const blogPosts: BlogPost[] = [
   },
 
 ];
+
+export const blogPosts: BlogPost[] = rawBlogPosts.map((p) => {
+  const expansion = expandedBodies[p.slug];
+  if (!expansion) return p;
+  return {
+    ...p,
+    body: expansion.body,
+    faq: expansion.faq ?? p.faq,
+    readTime: expansion.readTime ?? p.readTime,
+  };
+});
 
 export const getBlogPost = (slug: string) => blogPosts.find((p) => p.slug === slug);
 
