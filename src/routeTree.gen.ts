@@ -14,6 +14,7 @@ import { Route as VpnDealsRouteImport } from './routes/vpn-deals'
 import { Route as TrustScoreRouteImport } from './routes/trust-score'
 import { Route as ThordataReviewRouteImport } from './routes/thordata-review'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as ScrapyReviewRouteImport } from './routes/scrapy-review'
 import { Route as ScraperApiRouteImport } from './routes/scraper-api'
 import { Route as ResourcesRouteImport } from './routes/resources'
@@ -70,6 +71,11 @@ const ThordataReviewRoute = ThordataReviewRouteImport.update({
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SponsorsRoute = SponsorsRouteImport.update({
+  id: '/sponsors',
+  path: '/sponsors',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ScrapyReviewRoute = ScrapyReviewRouteImport.update({
@@ -250,6 +256,7 @@ export interface FileRoutesByFullPath {
   '/resources': typeof ResourcesRouteWithChildren
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
+  '/sponsors': typeof SponsorsRoute
   '/terms': typeof TermsRoute
   '/thordata-review': typeof ThordataReviewRoute
   '/trust-score': typeof TrustScoreRoute
@@ -289,6 +296,7 @@ export interface FileRoutesByTo {
   '/resources': typeof ResourcesRouteWithChildren
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
+  '/sponsors': typeof SponsorsRoute
   '/terms': typeof TermsRoute
   '/thordata-review': typeof ThordataReviewRoute
   '/trust-score': typeof TrustScoreRoute
@@ -329,6 +337,7 @@ export interface FileRoutesById {
   '/resources': typeof ResourcesRouteWithChildren
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
+  '/sponsors': typeof SponsorsRoute
   '/terms': typeof TermsRoute
   '/thordata-review': typeof ThordataReviewRoute
   '/trust-score': typeof TrustScoreRoute
@@ -370,6 +379,7 @@ export interface FileRouteTypes {
     | '/resources'
     | '/scraper-api'
     | '/scrapy-review'
+    | '/sponsors'
     | '/terms'
     | '/thordata-review'
     | '/trust-score'
@@ -409,6 +419,7 @@ export interface FileRouteTypes {
     | '/resources'
     | '/scraper-api'
     | '/scrapy-review'
+    | '/sponsors'
     | '/terms'
     | '/thordata-review'
     | '/trust-score'
@@ -448,6 +459,7 @@ export interface FileRouteTypes {
     | '/resources'
     | '/scraper-api'
     | '/scrapy-review'
+    | '/sponsors'
     | '/terms'
     | '/thordata-review'
     | '/trust-score'
@@ -488,6 +500,7 @@ export interface RootRouteChildren {
   ResourcesRoute: typeof ResourcesRouteWithChildren
   ScraperApiRoute: typeof ScraperApiRoute
   ScrapyReviewRoute: typeof ScrapyReviewRoute
+  SponsorsRoute: typeof SponsorsRoute
   TermsRoute: typeof TermsRoute
   ThordataReviewRoute: typeof ThordataReviewRoute
   TrustScoreRoute: typeof TrustScoreRoute
@@ -545,6 +558,13 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sponsors': {
+      id: '/sponsors'
+      path: '/sponsors'
+      fullPath: '/sponsors'
+      preLoaderRoute: typeof SponsorsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/scrapy-review': {
@@ -803,6 +823,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResourcesRoute: ResourcesRouteWithChildren,
   ScraperApiRoute: ScraperApiRoute,
   ScrapyReviewRoute: ScrapyReviewRoute,
+  SponsorsRoute: SponsorsRoute,
   TermsRoute: TermsRoute,
   ThordataReviewRoute: ThordataReviewRoute,
   TrustScoreRoute: TrustScoreRoute,
