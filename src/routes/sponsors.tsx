@@ -420,6 +420,13 @@ function SponsorsPage() {
                 </div>
               ))}
             </div>
+            <p className="mt-6 text-center text-sm text-muted-foreground">
+              Still have a question, or want a custom package?{" "}
+              <Link to="/contact" className={inlineLink}>
+                Get in touch with our team
+              </Link>{" "}
+              — we usually reply within one business day.
+            </p>
           </section>
 
           <ContextualLinkHub
