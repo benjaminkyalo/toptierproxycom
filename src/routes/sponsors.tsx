@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import { PromoBanner } from "@/components/promo-banner";
 import { SiteFooter } from "@/components/site-footer";
 import { ContextualLinkHub } from "@/components/related-links";
+import { ProviderLogo } from "@/components/provider-logo";
 
 export const Route = createFileRoute("/sponsors")({
   head: () => {
@@ -65,8 +66,9 @@ const sidebarPlans = [
 ];
 
 const activeSponsors = [
-  { name: "Thordata", slot: "sidebar", mark: "T", accent: "bg-primary" },
-  { name: "Proxy-Seller", slot: "sidebar", mark: "P", accent: "bg-orange-500" },
+  { name: "Thordata", slug: "thordata", slot: "sidebar" },
+  { name: "Proxy-Seller", slug: "proxy-seller", slot: "sidebar" },
+  { name: "Live Proxies", slug: "live-proxies", slot: "sidebar" },
 ];
 
 const faqs = [
@@ -211,11 +213,11 @@ function SponsorsPage() {
                       key={s.name}
                       className="flex items-center gap-3 rounded-md border border-border bg-card p-3"
                     >
-                      <span
-                        className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-md text-sm font-extrabold text-primary-foreground ${s.accent}`}
-                      >
-                        {s.mark}
-                      </span>
+                      <ProviderLogo
+                        provider={{ slug: s.slug, name: s.name }}
+                        size="sm"
+                        className="rounded-md bg-background"
+                      />
                       <span className="min-w-0">
                         <span className="block truncate text-sm font-bold text-foreground">
                           {s.name}
