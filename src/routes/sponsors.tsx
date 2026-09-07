@@ -71,14 +71,36 @@ const activeSponsors = [
   { name: "Live Proxies", slug: "live-proxies", slot: "sidebar" },
 ];
 
-const faqs = [
+const inlineLink =
+  "font-semibold text-primary underline underline-offset-2 hover:text-brand-blue-hover";
+
+const faqs: { q: string; a: React.ReactNode }[] = [
   {
-    q: "How quickly will my sponsorship go live?",
-    a: "Most placements go live within 24 hours of us receiving your logo, link and short description. Newsletter placements go live in the next scheduled issue.",
+    q: "How do I send product info?",
+    a: (
+      <>
+        After the payment is successful, you will receive an email collecting your logo, destination
+        URL and a short description (if you do not receive it, please check your spam folder). You can
+        also send everything through our{" "}
+        <Link to="/contact" className={inlineLink}>
+          contact page
+        </Link>{" "}
+        and reference your sponsorship.
+      </>
+    ),
   },
   {
-    q: "How many issues are included in the newsletter plan?",
-    a: "The newsletter plan covers every issue published in your sponsored month — typically four weekly issues.",
+    q: "How quickly will my sponsorship go live?",
+    a: (
+      <>
+        Most placements go live within 24 hours of us receiving your assets. Newsletter placements go
+        live in the next scheduled issue. Need a specific launch date? Tell us on the{" "}
+        <Link to="/contact" className={inlineLink}>
+          contact page
+        </Link>{" "}
+        and we will hold the slot.
+      </>
+    ),
   },
   {
     q: "What do I need to provide?",
@@ -86,11 +108,87 @@ const faqs = [
   },
   {
     q: "Where exactly will my logo appear?",
-    a: "Sidebar sponsors appear in the homepage sidebar and on every provider review and blog article page, above the related links block.",
+    a: (
+      <>
+        Sidebar sponsors appear in the homepage sidebar and on every provider review and article page
+        — for example our{" "}
+        <Link to="/reviews" className={inlineLink}>
+          provider reviews
+        </Link>
+        ,{" "}
+        <Link to="/compare" className={inlineLink}>
+          comparison hub
+        </Link>{" "}
+        and{" "}
+        <Link to="/blog" className={inlineLink}>
+          blog articles
+        </Link>
+        , directly above the related links block.
+      </>
+    ),
   },
   {
-    q: "How do I send product info?",
-    a: "Reply to the confirmation email with your assets, or send them through our contact page and reference your sponsorship.",
+    q: "How many issues are included in the newsletter plan?",
+    a: "The newsletter plan covers every issue published in your sponsored month — typically four weekly issues, each sent to roughly 10,000 subscribers.",
+  },
+  {
+    q: "What kind of traffic and audience will I reach?",
+    a: (
+      <>
+        Developers, data teams, SEO agencies and proxy buyers researching pricing and performance.
+        Most of them arrive through our{" "}
+        <Link to="/proxy-benchmark-report" className={inlineLink}>
+          independent benchmark report
+        </Link>{" "}
+        and{" "}
+        <Link to="/how-we-test" className={inlineLink}>
+          testing methodology
+        </Link>
+        .
+      </>
+    ),
+  },
+  {
+    q: "Are sponsorships the same as reviews or rankings?",
+    a: (
+      <>
+        No. Sponsorships are clearly labelled placements and never change scores or ordering — see our{" "}
+        <Link to="/why-trust-us" className={inlineLink}>
+          editorial independence policy
+        </Link>{" "}
+        and{" "}
+        <Link to="/disclaimers" className={inlineLink}>
+          disclaimers
+        </Link>
+        .
+      </>
+    ),
+  },
+  {
+    q: "Which payment methods do you accept, and can I get an invoice?",
+    a: (
+      <>
+        Card and bank transfer, with a VAT-ready invoice issued for every placement. All plans are
+        one-time payments, not subscriptions. Request an invoice or a purchase order via the{" "}
+        <Link to="/contact" className={inlineLink}>
+          contact page
+        </Link>
+        .
+      </>
+    ),
+  },
+  {
+    q: "Can I cancel, pause or swap my creative mid-flight?",
+    a: (
+      <>
+        You can swap your logo, link or copy at any time at no cost. Placements are non-refundable
+        once live, but unused months can be paused and resumed within 12 months — just{" "}
+        <Link to="/contact" className={inlineLink}>
+          message us
+        </Link>
+        .
+      </>
+    ),
   },
 ];
 
@@ -322,6 +420,13 @@ function SponsorsPage() {
                 </div>
               ))}
             </div>
+            <p className="mt-6 text-center text-sm text-muted-foreground">
+              Still have a question, or want a custom package?{" "}
+              <Link to="/contact" className={inlineLink}>
+                Get in touch with our team
+              </Link>{" "}
+              — we usually reply within one business day.
+            </p>
           </section>
 
           <ContextualLinkHub
