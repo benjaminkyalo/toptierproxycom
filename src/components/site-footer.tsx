@@ -10,6 +10,7 @@ const footerNav = [
   { to: "/trust-score", label: "TRUST SCORE" },
   { to: "/blog", label: "BLOG" },
   { to: "/compare", label: "COMPARE" },
+  { to: "/sponsors", label: "SPONSORS" },
   { to: "/contact", label: "CONTACT" },
 ] as const;
 
