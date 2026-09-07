@@ -35,6 +35,7 @@ const nav: { to: string; label: string; items?: DropItem[] }[] = [
   { to: "/guides", label: "Guides", items: guideItems },
   { to: "/countries", label: "Countries", items: countryItems },
   { to: "/use-cases", label: "Use Cases", items: useCaseItems },
+  { to: "/sponsors", label: "Sponsors" },
   { to: "/compare", label: "Compare" },
   { to: "/proxy-benchmark-report", label: "Benchmark" },
 
