@@ -7,7 +7,7 @@ import { getSponsorPlan } from "@/data/sponsor-plans";
 
 type Search = { plan?: string };
 
-export const Route = createFileRoute("/sponsors/form")({
+export const Route = createFileRoute("/sponsors_/form")({
   validateSearch: (search: Record<string, unknown>): Search => ({
     plan: typeof search.plan === "string" ? search.plan : undefined,
   }),

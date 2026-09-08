@@ -39,8 +39,8 @@ import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as VsMatchupRouteImport } from './routes/vs.$matchup'
 import { Route as UseCasesSlugRouteImport } from './routes/use-cases.$slug'
 import { Route as TeamSlugRouteImport } from './routes/team.$slug'
-import { Route as SponsorsFormRouteImport } from './routes/sponsors.form'
-import { Route as SponsorsCheckoutRouteImport } from './routes/sponsors.checkout'
+import { Route as SponsorsFormRouteImport } from './routes/sponsors_.form'
+import { Route as SponsorsCheckoutRouteImport } from './routes/sponsors_.checkout'
 import { Route as ReviewsSlugRouteImport } from './routes/reviews.$slug'
 import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
@@ -201,14 +201,14 @@ const TeamSlugRoute = TeamSlugRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const SponsorsFormRoute = SponsorsFormRouteImport.update({
-  id: '/form',
-  path: '/form',
-  getParentRoute: () => SponsorsRoute,
+  id: '/sponsors_/form',
+  path: '/sponsors/form',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const SponsorsCheckoutRoute = SponsorsCheckoutRouteImport.update({
-  id: '/checkout',
-  path: '/checkout',
-  getParentRoute: () => SponsorsRoute,
+  id: '/sponsors_/checkout',
+  path: '/sponsors/checkout',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ReviewsSlugRoute = ReviewsSlugRouteImport.update({
   id: '/reviews/$slug',
@@ -268,7 +268,7 @@ export interface FileRoutesByFullPath {
   '/resources': typeof ResourcesRouteWithChildren
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
-  '/sponsors': typeof SponsorsRouteWithChildren
+  '/sponsors': typeof SponsorsRoute
   '/terms': typeof TermsRoute
   '/thordata-review': typeof ThordataReviewRoute
   '/trust-score': typeof TrustScoreRoute
@@ -310,7 +310,7 @@ export interface FileRoutesByTo {
   '/resources': typeof ResourcesRouteWithChildren
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
-  '/sponsors': typeof SponsorsRouteWithChildren
+  '/sponsors': typeof SponsorsRoute
   '/terms': typeof TermsRoute
   '/thordata-review': typeof ThordataReviewRoute
   '/trust-score': typeof TrustScoreRoute
@@ -353,7 +353,7 @@ export interface FileRoutesById {
   '/resources': typeof ResourcesRouteWithChildren
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
-  '/sponsors': typeof SponsorsRouteWithChildren
+  '/sponsors': typeof SponsorsRoute
   '/terms': typeof TermsRoute
   '/thordata-review': typeof ThordataReviewRoute
   '/trust-score': typeof TrustScoreRoute
@@ -366,8 +366,8 @@ export interface FileRoutesById {
   '/guides/$slug': typeof GuidesSlugRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
-  '/sponsors/checkout': typeof SponsorsCheckoutRoute
-  '/sponsors/form': typeof SponsorsFormRoute
+  '/sponsors_/checkout': typeof SponsorsCheckoutRoute
+  '/sponsors_/form': typeof SponsorsFormRoute
   '/team/$slug': typeof TeamSlugRoute
   '/use-cases/$slug': typeof UseCasesSlugRoute
   '/vs/$matchup': typeof VsMatchupRoute
@@ -494,8 +494,8 @@ export interface FileRouteTypes {
     | '/guides/$slug'
     | '/resources/$slug'
     | '/reviews/$slug'
-    | '/sponsors/checkout'
-    | '/sponsors/form'
+    | '/sponsors_/checkout'
+    | '/sponsors_/form'
     | '/team/$slug'
     | '/use-cases/$slug'
     | '/vs/$matchup'
@@ -524,7 +524,7 @@ export interface RootRouteChildren {
   ResourcesRoute: typeof ResourcesRouteWithChildren
   ScraperApiRoute: typeof ScraperApiRoute
   ScrapyReviewRoute: typeof ScrapyReviewRoute
-  SponsorsRoute: typeof SponsorsRouteWithChildren
+  SponsorsRoute: typeof SponsorsRoute
   TermsRoute: typeof TermsRoute
   ThordataReviewRoute: typeof ThordataReviewRoute
   TrustScoreRoute: typeof TrustScoreRoute
@@ -536,6 +536,8 @@ export interface RootRouteChildren {
   GoSlugRoute: typeof GoSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   ReviewsSlugRoute: typeof ReviewsSlugRoute
+  SponsorsCheckoutRoute: typeof SponsorsCheckoutRoute
+  SponsorsFormRoute: typeof SponsorsFormRoute
   TeamSlugRoute: typeof TeamSlugRoute
   UseCasesSlugRoute: typeof UseCasesSlugRoute
   VsMatchupRoute: typeof VsMatchupRoute
@@ -759,19 +761,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TeamSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/sponsors/form': {
-      id: '/sponsors/form'
-      path: '/form'
+    '/sponsors_/form': {
+      id: '/sponsors_/form'
+      path: '/sponsors/form'
       fullPath: '/sponsors/form'
       preLoaderRoute: typeof SponsorsFormRouteImport
-      parentRoute: typeof SponsorsRoute
+      parentRoute: typeof rootRouteImport
     }
-    '/sponsors/checkout': {
-      id: '/sponsors/checkout'
-      path: '/checkout'
+    '/sponsors_/checkout': {
+      id: '/sponsors_/checkout'
+      path: '/sponsors/checkout'
       fullPath: '/sponsors/checkout'
       preLoaderRoute: typeof SponsorsCheckoutRouteImport
-      parentRoute: typeof SponsorsRoute
+      parentRoute: typeof rootRouteImport
     }
     '/reviews/$slug': {
       id: '/reviews/$slug'
@@ -844,20 +846,6 @@ const ResourcesRouteWithChildren = ResourcesRoute._addFileChildren(
   ResourcesRouteChildren,
 )
 
-interface SponsorsRouteChildren {
-  SponsorsCheckoutRoute: typeof SponsorsCheckoutRoute
-  SponsorsFormRoute: typeof SponsorsFormRoute
-}
-
-const SponsorsRouteChildren: SponsorsRouteChildren = {
-  SponsorsCheckoutRoute: SponsorsCheckoutRoute,
-  SponsorsFormRoute: SponsorsFormRoute,
-}
-
-const SponsorsRouteWithChildren = SponsorsRoute._addFileChildren(
-  SponsorsRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R2captchaReviewRoute: R2captchaReviewRoute,
@@ -875,7 +863,7 @@ const rootRouteChildren: RootRouteChildren = {
   ResourcesRoute: ResourcesRouteWithChildren,
   ScraperApiRoute: ScraperApiRoute,
   ScrapyReviewRoute: ScrapyReviewRoute,
-  SponsorsRoute: SponsorsRouteWithChildren,
+  SponsorsRoute: SponsorsRoute,
   TermsRoute: TermsRoute,
   ThordataReviewRoute: ThordataReviewRoute,
   TrustScoreRoute: TrustScoreRoute,
@@ -887,6 +875,8 @@ const rootRouteChildren: RootRouteChildren = {
   GoSlugRoute: GoSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   ReviewsSlugRoute: ReviewsSlugRoute,
+  SponsorsCheckoutRoute: SponsorsCheckoutRoute,
+  SponsorsFormRoute: SponsorsFormRoute,
   TeamSlugRoute: TeamSlugRoute,
   UseCasesSlugRoute: UseCasesSlugRoute,
   VsMatchupRoute: VsMatchupRoute,
