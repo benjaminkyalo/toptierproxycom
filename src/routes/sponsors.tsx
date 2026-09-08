@@ -359,12 +359,13 @@ function SponsorsPage() {
                       </li>
                     ))}
                   </ul>
-                  <button
-                    type="button"
+                  <Link
+                    to="/sponsors/form"
+                    search={{ plan: "newsletter-1m" }}
                     className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-md border border-border bg-card px-3 text-xs font-bold text-foreground transition-colors hover:border-primary hover:text-primary"
                   >
                     Sponsor Newsletter
-                  </button>
+                  </Link>
                 </div>
               </div>
 
@@ -386,12 +387,13 @@ function SponsorsPage() {
                       </li>
                     ))}
                   </ul>
-                  <button
-                    type="button"
+                  <Link
+                    to="/sponsors/form"
+                    search={{ plan: "bundle-1m" }}
                     className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-md bg-primary px-3 text-xs font-bold text-primary-foreground transition-colors hover:bg-brand-blue-hover"
                   >
                     Get Bundle
-                  </button>
+                  </Link>
                 </div>
               </div>
             </aside>
