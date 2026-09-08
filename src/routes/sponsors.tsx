@@ -43,6 +43,7 @@ const sidebarPlans = [
     blurb: "Ideal for short-term campaigns or specific announcements.",
     perk: "1 month of visibility",
     cta: "Sponsor for a month",
+    plan: "sidebar-1m",
     best: false,
   },
   {
@@ -52,6 +53,7 @@ const sidebarPlans = [
     blurb: "Maximize exposure with sustained visibility and best value.",
     perk: "3 months of visibility",
     cta: "Sponsor for 3 Months",
+    plan: "sidebar-3m",
     best: true,
   },
   {
@@ -61,6 +63,7 @@ const sidebarPlans = [
     blurb: "Secure long-term visibility with our most cost-effective annual plan.",
     perk: "1 year of visibility",
     cta: "Sponsor for a Year",
+    plan: "sidebar-12m",
     best: false,
   },
 ];
@@ -286,8 +289,9 @@ function SponsorsPage() {
                       <Check className="h-3.5 w-3.5 shrink-0 rounded-full bg-muted p-0.5 text-foreground" />
                       {p.perk}
                     </p>
-                    <button
-                      type="button"
+                    <Link
+                      to="/sponsors/form"
+                      search={{ plan: p.plan }}
                       className={`mt-5 inline-flex h-10 w-full items-center justify-center rounded-md border px-3 text-xs font-bold transition-colors ${
                         p.best
                           ? "border-primary bg-primary text-primary-foreground hover:bg-brand-blue-hover"
@@ -295,7 +299,7 @@ function SponsorsPage() {
                       }`}
                     >
                       {p.cta}
-                    </button>
+                    </Link>
                   </div>
                 ))}
               </div>
@@ -355,12 +359,13 @@ function SponsorsPage() {
                       </li>
                     ))}
                   </ul>
-                  <button
-                    type="button"
+                  <Link
+                    to="/sponsors/form"
+                    search={{ plan: "newsletter-1m" }}
                     className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-md border border-border bg-card px-3 text-xs font-bold text-foreground transition-colors hover:border-primary hover:text-primary"
                   >
                     Sponsor Newsletter
-                  </button>
+                  </Link>
                 </div>
               </div>
 
@@ -382,12 +387,13 @@ function SponsorsPage() {
                       </li>
                     ))}
                   </ul>
-                  <button
-                    type="button"
+                  <Link
+                    to="/sponsors/form"
+                    search={{ plan: "bundle-1m" }}
                     className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-md bg-primary px-3 text-xs font-bold text-primary-foreground transition-colors hover:bg-brand-blue-hover"
                   >
                     Get Bundle
-                  </button>
+                  </Link>
                 </div>
               </div>
             </aside>
