@@ -290,7 +290,7 @@ function SponsorsPage() {
                       {p.perk}
                     </p>
                     <Link
-                      to="/sponsors/form"
+                      to="/sponsors/checkout"
                       search={{ plan: p.plan }}
                       className={`mt-5 inline-flex h-10 w-full items-center justify-center rounded-md border px-3 text-xs font-bold transition-colors ${
                         p.best
@@ -360,7 +360,7 @@ function SponsorsPage() {
                     ))}
                   </ul>
                   <Link
-                    to="/sponsors/form"
+                    to="/sponsors/checkout"
                     search={{ plan: "newsletter-1m" }}
                     className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-md border border-border bg-card px-3 text-xs font-bold text-foreground transition-colors hover:border-primary hover:text-primary"
                   >
@@ -388,7 +388,7 @@ function SponsorsPage() {
                     ))}
                   </ul>
                   <Link
-                    to="/sponsors/form"
+                    to="/sponsors/checkout"
                     search={{ plan: "bundle-1m" }}
                     className="mt-5 inline-flex h-10 w-full items-center justify-center rounded-md bg-primary px-3 text-xs font-bold text-primary-foreground transition-colors hover:bg-brand-blue-hover"
                   >

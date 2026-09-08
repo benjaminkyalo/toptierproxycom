@@ -1,8 +1,27 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, CreditCard, Lock } from "lucide-react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
+import { ArrowLeft, Lock } from "lucide-react";
 import { getSponsorPlan } from "@/data/sponsor-plans";
 
 type Search = { plan?: string };
+
+const PAYSTACK_PUBLIC_KEY = "pk_test_b59854afeeb4221e6a82db520090daef680087cc";
+
+declare global {
+  interface Window {
+    PaystackPop?: {
+      setup: (opts: {
+        key: string;
+        email: string;
+        amount: number;
+        currency: string;
+        ref: string;
+        callback: (response: { reference: string }) => void;
+        onClose: () => void;
+      }) => { openIframe: () => void };
+    };
+  }
+}
 
 export const Route = createFileRoute("/sponsors_/checkout")({
   validateSearch: (search: Record<string, unknown>): Search => ({
@@ -25,6 +44,40 @@ const labelCls = "text-xs font-semibold text-muted-foreground";
 function SponsorCheckoutPage() {
   const { plan: planId } = Route.useSearch();
   const plan = getSponsorPlan(planId);
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  function payWithPaystack() {
+    if (!email || !email.includes("@")) {
+      setError("Enter a valid email to continue.");
+      return;
+    }
+    setError("");
+    if (!window.PaystackPop) {
+      setError("Payment system is still loading, try again in a moment.");
+      return;
+    }
+    setLoading(true);
+    const handler = window.PaystackPop.setup({
+      key: PAYSTACK_PUBLIC_KEY,
+      email,
+      amount: Math.round(plan.price * 100),
+      currency: "USD",
+      ref: `TTP-${plan.id}-${Date.now()}`,
+      callback: (response) => {
+        navigate({
+          to: "/sponsors/form",
+          search: { plan: plan.id, paid: "1", ref: response.reference },
+        });
+      },
+      onClose: () => {
+        setLoading(false);
+      },
+    });
+    handler.openIframe();
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -47,22 +100,6 @@ function SponsorCheckoutPage() {
               Pay ToptierProxy.com
             </h1>
 
-            <p className="mt-6 text-xs font-semibold text-muted-foreground">Choose currency</p>
-            <div className="mt-2 flex gap-3">
-              <button
-                type="button"
-                className="h-11 flex-1 rounded-md border-2 border-primary bg-card px-3 text-sm font-semibold text-foreground"
-              >
-                USD {plan.priceLabel}
-              </button>
-              <button
-                type="button"
-                className="h-11 flex-1 rounded-md border border-border bg-card px-3 text-sm text-muted-foreground"
-              >
-                EUR €{(plan.price * 0.92).toFixed(2)}
-              </button>
-            </div>
-
             <div className="mt-8 flex items-start justify-between gap-6 border-b border-border pb-5">
               <div>
                 <p className="text-sm font-semibold text-foreground">{plan.name}</p>
@@ -75,12 +112,6 @@ function SponsorCheckoutPage() {
               <p className="text-sm text-foreground">Subtotal</p>
               <p className="text-sm text-foreground">{plan.priceLabel}</p>
             </div>
-            <button
-              type="button"
-              className="rounded-md bg-muted px-4 py-2 text-sm font-semibold text-foreground transition-colors hover:bg-muted/70"
-            >
-              Add promotion code
-            </button>
 
             <div className="mt-6 flex items-center justify-between border-t border-border pt-5">
               <p className="text-sm font-semibold text-foreground">Total due</p>
@@ -96,51 +127,29 @@ function SponsorCheckoutPage() {
               <p className={labelCls}>Contact information</p>
               <label className="mt-3 block">
                 <span className={labelCls}>Email</span>
-                <input type="email" placeholder="email@example.com" className={inputCls} />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="email@example.com"
+                  className={inputCls}
+                />
               </label>
             </div>
 
-            <p className="mt-8 text-xs font-semibold text-muted-foreground">Payment method</p>
-            <div className="mt-3 rounded-lg border border-border p-4">
-              <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
-                <CreditCard className="h-4 w-4" /> Card
-              </div>
-
-              <label className="mt-4 block">
-                <span className={labelCls}>Card information</span>
-                <input placeholder="1234 1234 1234 1234" className={inputCls} />
-              </label>
-              <div className="mt-3 grid grid-cols-2 gap-3">
-                <input placeholder="MM / YY" className={`${inputCls} mt-0`} />
-                <input placeholder="CVC" className={`${inputCls} mt-0`} />
-              </div>
-
-              <label className="mt-3 block">
-                <span className={labelCls}>Cardholder name</span>
-                <input placeholder="Full name on card" className={inputCls} />
-              </label>
-
-              <label className="mt-3 block">
-                <span className={labelCls}>Country or region</span>
-                <select className={inputCls}>
-                  <option>United States</option>
-                  <option>United Kingdom</option>
-                  <option>Germany</option>
-                  <option>Kenya</option>
-                  <option>Other</option>
-                </select>
-              </label>
-            </div>
+            {error && <p className="mt-3 text-xs font-semibold text-destructive">{error}</p>}
 
             <button
               type="button"
-              className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-md bg-primary px-4 text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-blue-hover"
+              onClick={payWithPaystack}
+              disabled={loading}
+              className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-md bg-primary px-4 text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-blue-hover disabled:opacity-60"
             >
-              Pay {plan.priceLabel}
+              {loading ? "Opening secure payment..." : `Pay ${plan.priceLabel}`}
             </button>
 
             <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
-              <Lock className="h-3 w-3" /> Secure checkout — card processing goes live shortly.
+              <Lock className="h-3 w-3" /> Payments are processed securely by Paystack.
             </p>
             <p className="mt-2 text-center text-xs text-muted-foreground">
               Questions?{" "}
