@@ -27,7 +27,7 @@ export const Route = createFileRoute("/sponsors/form")({
       links: [{ rel: "canonical", href: "https://www.toptierproxy.com/sponsors/form" }],
     };
   },
-  component: SponsorFormPage;
+  component: SponsorFormPage,
 });
 
 const labelCls = "block text-sm font-bold text-foreground";
