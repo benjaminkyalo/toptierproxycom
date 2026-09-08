@@ -289,8 +289,9 @@ function SponsorsPage() {
                       <Check className="h-3.5 w-3.5 shrink-0 rounded-full bg-muted p-0.5 text-foreground" />
                       {p.perk}
                     </p>
-                    <button
-                      type="button"
+                    <Link
+                      to="/sponsors/form"
+                      search={{ plan: p.plan }}
                       className={`mt-5 inline-flex h-10 w-full items-center justify-center rounded-md border px-3 text-xs font-bold transition-colors ${
                         p.best
                           ? "border-primary bg-primary text-primary-foreground hover:bg-brand-blue-hover"
@@ -298,7 +299,7 @@ function SponsorsPage() {
                       }`}
                     >
                       {p.cta}
-                    </button>
+                    </Link>
                   </div>
                 ))}
               </div>
