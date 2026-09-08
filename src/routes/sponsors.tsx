@@ -43,6 +43,7 @@ const sidebarPlans = [
     blurb: "Ideal for short-term campaigns or specific announcements.",
     perk: "1 month of visibility",
     cta: "Sponsor for a month",
+    plan: "sidebar-1m",
     best: false,
   },
   {
@@ -52,6 +53,7 @@ const sidebarPlans = [
     blurb: "Maximize exposure with sustained visibility and best value.",
     perk: "3 months of visibility",
     cta: "Sponsor for 3 Months",
+    plan: "sidebar-3m",
     best: true,
   },
   {
@@ -61,6 +63,7 @@ const sidebarPlans = [
     blurb: "Secure long-term visibility with our most cost-effective annual plan.",
     perk: "1 year of visibility",
     cta: "Sponsor for a Year",
+    plan: "sidebar-12m",
     best: false,
   },
 ];
