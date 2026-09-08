@@ -39,6 +39,8 @@ import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as VsMatchupRouteImport } from './routes/vs.$matchup'
 import { Route as UseCasesSlugRouteImport } from './routes/use-cases.$slug'
 import { Route as TeamSlugRouteImport } from './routes/team.$slug'
+import { Route as SponsorsFormRouteImport } from './routes/sponsors_.form'
+import { Route as SponsorsCheckoutRouteImport } from './routes/sponsors_.checkout'
 import { Route as ReviewsSlugRouteImport } from './routes/reviews.$slug'
 import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
@@ -198,6 +200,16 @@ const TeamSlugRoute = TeamSlugRouteImport.update({
   path: '/team/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SponsorsFormRoute = SponsorsFormRouteImport.update({
+  id: '/sponsors_/form',
+  path: '/sponsors/form',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SponsorsCheckoutRoute = SponsorsCheckoutRouteImport.update({
+  id: '/sponsors_/checkout',
+  path: '/sponsors/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsSlugRoute = ReviewsSlugRouteImport.update({
   id: '/reviews/$slug',
   path: '/reviews/$slug',
@@ -269,6 +281,8 @@ export interface FileRoutesByFullPath {
   '/guides/$slug': typeof GuidesSlugRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/sponsors/checkout': typeof SponsorsCheckoutRoute
+  '/sponsors/form': typeof SponsorsFormRoute
   '/team/$slug': typeof TeamSlugRoute
   '/use-cases/$slug': typeof UseCasesSlugRoute
   '/vs/$matchup': typeof VsMatchupRoute
@@ -309,6 +323,8 @@ export interface FileRoutesByTo {
   '/guides/$slug': typeof GuidesSlugRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/sponsors/checkout': typeof SponsorsCheckoutRoute
+  '/sponsors/form': typeof SponsorsFormRoute
   '/team/$slug': typeof TeamSlugRoute
   '/use-cases/$slug': typeof UseCasesSlugRoute
   '/vs/$matchup': typeof VsMatchupRoute
@@ -350,6 +366,8 @@ export interface FileRoutesById {
   '/guides/$slug': typeof GuidesSlugRoute
   '/resources/$slug': typeof ResourcesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
+  '/sponsors_/checkout': typeof SponsorsCheckoutRoute
+  '/sponsors_/form': typeof SponsorsFormRoute
   '/team/$slug': typeof TeamSlugRoute
   '/use-cases/$slug': typeof UseCasesSlugRoute
   '/vs/$matchup': typeof VsMatchupRoute
@@ -392,6 +410,8 @@ export interface FileRouteTypes {
     | '/guides/$slug'
     | '/resources/$slug'
     | '/reviews/$slug'
+    | '/sponsors/checkout'
+    | '/sponsors/form'
     | '/team/$slug'
     | '/use-cases/$slug'
     | '/vs/$matchup'
@@ -432,6 +452,8 @@ export interface FileRouteTypes {
     | '/guides/$slug'
     | '/resources/$slug'
     | '/reviews/$slug'
+    | '/sponsors/checkout'
+    | '/sponsors/form'
     | '/team/$slug'
     | '/use-cases/$slug'
     | '/vs/$matchup'
@@ -472,6 +494,8 @@ export interface FileRouteTypes {
     | '/guides/$slug'
     | '/resources/$slug'
     | '/reviews/$slug'
+    | '/sponsors_/checkout'
+    | '/sponsors_/form'
     | '/team/$slug'
     | '/use-cases/$slug'
     | '/vs/$matchup'
@@ -512,6 +536,8 @@ export interface RootRouteChildren {
   GoSlugRoute: typeof GoSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
   ReviewsSlugRoute: typeof ReviewsSlugRoute
+  SponsorsCheckoutRoute: typeof SponsorsCheckoutRoute
+  SponsorsFormRoute: typeof SponsorsFormRoute
   TeamSlugRoute: typeof TeamSlugRoute
   UseCasesSlugRoute: typeof UseCasesSlugRoute
   VsMatchupRoute: typeof VsMatchupRoute
@@ -735,6 +761,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TeamSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sponsors_/form': {
+      id: '/sponsors_/form'
+      path: '/sponsors/form'
+      fullPath: '/sponsors/form'
+      preLoaderRoute: typeof SponsorsFormRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sponsors_/checkout': {
+      id: '/sponsors_/checkout'
+      path: '/sponsors/checkout'
+      fullPath: '/sponsors/checkout'
+      preLoaderRoute: typeof SponsorsCheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews/$slug': {
       id: '/reviews/$slug'
       path: '/reviews/$slug'
@@ -835,6 +875,8 @@ const rootRouteChildren: RootRouteChildren = {
   GoSlugRoute: GoSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,
   ReviewsSlugRoute: ReviewsSlugRoute,
+  SponsorsCheckoutRoute: SponsorsCheckoutRoute,
+  SponsorsFormRoute: SponsorsFormRoute,
   TeamSlugRoute: TeamSlugRoute,
   UseCasesSlugRoute: UseCasesSlugRoute,
   VsMatchupRoute: VsMatchupRoute,
