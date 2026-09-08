@@ -651,6 +651,9 @@ async function run() {
   }
   console.log(` ${authorList.length} team pages`);
 
+  writeHtml("/sponsors", `Become a Sponsor — Reach Proxy and Web Scraping Buyers | ToptierProxy.com`, "Sponsor a review or placement on ToptierProxy.com and reach a real audience of proxy buyers, developers and web scraping teams.", `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">Become a Sponsor</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">Sponsor a review or placement on ToptierProxy.com and reach a real audience of proxy buyers, developers and web scraping teams.</p>`);
+  count++;
+
   // Countries
   for (const c of countries) {
     const title = `Best ${c.name} Proxies 2026 — Residential & Datacenter IPs | ToptierProxy.com`;

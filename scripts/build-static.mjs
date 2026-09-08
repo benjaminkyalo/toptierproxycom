@@ -66,6 +66,7 @@ async function run() {
     ...guides.map((g) => ({ loc: `/guides/${g.slug}`, p: "0.9", c: "weekly" })),
     ...resourcesContent.map((r) => ({ loc: `/resources/${r.slug}`, p: "0.7", c: "monthly" })),
     ...Object.values(AUTHORS).map((a) => ({ loc: `/team/${a.slug}`, p: "0.6", c: "monthly" })),
+    { loc: "/sponsors", p: "0.5", c: "monthly" },
     ...countries.map((c) => ({ loc: `/countries/${c.slug}`, p: "0.7", c: "monthly" })),
     ...countries.map((c) => ({ loc: `/best/${c.slug}-proxies`, p: "0.7", c: "monthly" })),
 
