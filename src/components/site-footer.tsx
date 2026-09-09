@@ -148,41 +148,6 @@ export function SiteFooter() {
           ))}
         </div>
 
-        {/* Newsletter + trust row */}
-        <div className="mt-10 grid gap-8 border-t border-border pt-8 sm:grid-cols-2 lg:grid-cols-3">
-          <div className="lg:col-span-2">
-            <h4 className="mb-2 text-sm font-semibold">Stay ahead of the proxy market</h4>
-            <p className="mb-3 text-sm text-muted-foreground">
-              One email per month. New benchmarks, provider reviews, and scraping tactics.
-            </p>
-            <form
-              className="flex max-w-md gap-2"
-              onSubmit={(e) => e.preventDefault()}
-            >
-              <div className="relative flex-1">
-                <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="h-10 w-full rounded-md border border-input bg-background pl-9 pr-3 text-sm outline-none ring-offset-background transition-colors focus-visible:ring-2 focus-visible:ring-ring"
-                />
-              </div>
-              <button
-                type="submit"
-                className="h-10 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-          <div className="flex flex-col justify-center rounded-lg border border-border bg-muted/30 p-4">
-            <p className="text-xs leading-relaxed text-muted-foreground">
-              <span className="font-semibold text-foreground">Affiliate note:</span>{" "}
-              We earn commissions on some provider links at no extra cost to you.
-              Rankings are driven by independent test data, not payouts.
-            </p>
-          </div>
-        </div>
 
         {/* Bottom bar */}
         <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
