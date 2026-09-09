@@ -35,7 +35,7 @@ export function GlobalPartners() {
   return (
     <section aria-label="Global partners" className="border-t border-border bg-background py-12">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center text-xl font-extrabold uppercase tracking-[0.2em] text-nav-hover">
+        <h2 className="text-center text-3xl font-extrabold uppercase tracking-[0.2em] text-navy-foreground">
           Global Partners
         </h2>
       </div>
