@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Triangle, Linkedin, Twitter, Youtube } from "lucide-react";
+import { Triangle, Linkedin, Twitter, Youtube, Mail } from "lucide-react";
 
 type LinkItem = { label: string; href: string };
 
@@ -52,19 +52,28 @@ const columns: Column[] = [
 function FooterLink({ item }: { item: LinkItem }) {
   const isInternal = item.href.startsWith("/");
   const className =
-    "inline-block py-1 text-sm text-foreground/80 transition-colors hover:text-primary";
+    "group inline-block py-1 text-sm text-foreground/80 transition-colors hover:text-primary";
+
+  const inner = (
+    <>
+      <span className="relative">
+        {item.label}
+        <span className="absolute bottom-0 left-0 h-[1.5px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
+      </span>
+    </>
+  );
 
   if (isInternal) {
     return (
       <Link to={item.href} className={className}>
-        {item.label}
+        {inner}
       </Link>
     );
   }
 
   return (
     <a href={item.href} className={className} rel="nofollow noopener">
-      {item.label}
+      {inner}
     </a>
   );
 }
@@ -82,7 +91,7 @@ function SocialIcon({
     <a
       href={href}
       aria-label={label}
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground/70 transition-colors hover:border-primary hover:text-primary"
+      className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground/70 transition-all hover:-translate-y-0.5 hover:border-primary hover:text-primary hover:shadow-sm"
     >
       {children}
     </a>
@@ -92,15 +101,21 @@ function SocialIcon({
 export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-background text-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-10">
+      <div className="mx-auto max-w-7xl px-6 py-12">
         {/* Top bar */}
-        <div className="flex flex-col items-start justify-between gap-6 pb-10 sm:flex-row sm:items-center">
-          <Link to="/" className="flex items-center gap-2">
-            <Triangle className="h-6 w-6 fill-current text-primary" strokeWidth={1.5} />
-            <span className="text-xl font-bold tracking-tight">
-              ToptierProxy<span className="font-normal opacity-80">.com</span>
-            </span>
-          </Link>
+        <div className="flex flex-col items-start justify-between gap-8 pb-10 sm:flex-row sm:items-center">
+          <div className="max-w-md">
+            <Link to="/" className="flex items-center gap-2">
+              <Triangle className="h-6 w-6 fill-current text-primary" strokeWidth={1.5} />
+              <span className="text-xl font-bold tracking-tight">
+                ToptierProxy<span className="font-normal opacity-80">.com</span>
+              </span>
+            </Link>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              Independent proxy intelligence for developers, SEO teams, and data
+              engineers. We test, benchmark, and compare so you don’t have to.
+            </p>
+          </div>
 
           <div className="flex items-center gap-3">
             <SocialIcon href="#" label="X (Twitter)">
@@ -131,6 +146,42 @@ export function SiteFooter() {
               </ul>
             </div>
           ))}
+        </div>
+
+        {/* Newsletter + trust row */}
+        <div className="mt-10 grid gap-8 border-t border-border pt-8 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="lg:col-span-2">
+            <h4 className="mb-2 text-sm font-semibold">Stay ahead of the proxy market</h4>
+            <p className="mb-3 text-sm text-muted-foreground">
+              One email per month. New benchmarks, provider reviews, and scraping tactics.
+            </p>
+            <form
+              className="flex max-w-md gap-2"
+              onSubmit={(e) => e.preventDefault()}
+            >
+              <div className="relative flex-1">
+                <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="h-10 w-full rounded-md border border-input bg-background pl-9 pr-3 text-sm outline-none ring-offset-background transition-colors focus-visible:ring-2 focus-visible:ring-ring"
+                />
+              </div>
+              <button
+                type="submit"
+                className="h-10 rounded-md bg-primary px-4 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+          <div className="flex flex-col justify-center rounded-lg border border-border bg-muted/30 p-4">
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              <span className="font-semibold text-foreground">Affiliate note:</span>{" "}
+              We earn commissions on some provider links at no extra cost to you.
+              Rankings are driven by independent test data, not payouts.
+            </p>
+          </div>
         </div>
 
         {/* Bottom bar */}
