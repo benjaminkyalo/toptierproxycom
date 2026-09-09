@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Triangle, Linkedin, Twitter, Youtube, Mail } from "lucide-react";
+import { Triangle, Linkedin, Twitter, Youtube } from "lucide-react";
 
 type LinkItem = { label: string; href: string };
 
