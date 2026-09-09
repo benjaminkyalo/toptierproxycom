@@ -21,7 +21,7 @@ const partners: Partner[] = [
 
 function PartnerCard({ partner }: { partner: Partner }) {
   return (
-    <div className="flex w-64 shrink-0 items-center gap-3 rounded-lg border border-border bg-card px-4 py-3 shadow-sm transition-shadow hover:shadow-md">
+    <div className="group/card relative flex w-64 shrink-0 items-center gap-3 rounded-lg border border-border bg-card px-4 py-3 shadow-sm transition-all duration-300 hover:z-10 hover:scale-[1.04] hover:shadow-xl hover:ring-2 hover:ring-nav-hover/60">
       <ProviderLogo provider={partner} size="md" />
       <div className="min-w-0">
         <p className="truncate text-sm font-bold text-foreground">{partner.name}</p>
@@ -35,7 +35,7 @@ export function GlobalPartners() {
   return (
     <section aria-label="Global partners" className="border-t border-border bg-background py-12">
       <div className="mx-auto max-w-7xl px-6">
-        <h2 className="text-center text-sm font-extrabold uppercase tracking-[0.2em] text-muted-foreground">
+        <h2 className="text-center text-xl font-extrabold uppercase tracking-[0.2em] text-nav-hover">
           Global Partners
         </h2>
       </div>
