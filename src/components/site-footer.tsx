@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { GlobalPartners } from "@/components/global-partners";
 import { Triangle, Linkedin, Twitter, Youtube } from "lucide-react";
 
 type LinkItem = { label: string; href: string };
@@ -100,6 +101,8 @@ function SocialIcon({
 
 export function SiteFooter() {
   return (
+    <>
+    <GlobalPartners />
     <footer className="border-t border-border bg-background text-foreground">
       <div className="mx-auto max-w-7xl px-6 py-12">
         {/* Top bar */}
@@ -168,5 +171,6 @@ export function SiteFooter() {
         </div>
       </div>
     </footer>
+    </>
   );
 }
