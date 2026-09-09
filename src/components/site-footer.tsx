@@ -53,7 +53,7 @@ const columns: Column[] = [
 function FooterLink({ item }: { item: LinkItem }) {
   const isInternal = item.href.startsWith("/");
   const className =
-    "group inline-block py-1 text-sm text-foreground/80 transition-colors hover:text-primary";
+    "group inline-block py-1 text-sm text-navy-foreground/80 transition-colors hover:text-white";
 
   const inner = (
     <>
@@ -92,7 +92,7 @@ function SocialIcon({
     <a
       href={href}
       aria-label={label}
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground/70 transition-all hover:-translate-y-0.5 hover:border-primary hover:text-primary hover:shadow-sm"
+      className="flex h-9 w-9 items-center justify-center rounded-full border border-navy-foreground/20 text-navy-foreground/70 transition-all hover:-translate-y-0.5 hover:border-white hover:text-white hover:shadow-sm"
     >
       {children}
     </a>
@@ -103,7 +103,7 @@ export function SiteFooter() {
   return (
     <>
     <GlobalPartners />
-    <footer className="border-t border-border bg-background text-foreground">
+    <footer className="border-t border-border bg-navy text-navy-foreground">
       <div className="mx-auto max-w-7xl px-6 py-12">
         {/* Top bar */}
         <div className="flex flex-col items-start justify-between gap-8 pb-10 sm:flex-row sm:items-center">
@@ -114,7 +114,7 @@ export function SiteFooter() {
                 ToptierProxy<span className="font-normal opacity-80">.com</span>
               </span>
             </Link>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-3 text-sm leading-relaxed text-navy-foreground/60">
               Independent proxy intelligence for developers, SEO teams, and data
               engineers. We test, benchmark, and compare so you don’t have to.
             </p>
@@ -134,10 +134,10 @@ export function SiteFooter() {
         </div>
 
         {/* Four-column directory */}
-        <div className="grid grid-cols-1 gap-10 border-t border-border pt-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-10 border-t border-navy-foreground/15 pt-10 sm:grid-cols-2 lg:grid-cols-4">
           {columns.map((column) => (
             <div key={column.title}>
-              <h3 className="mb-5 text-sm font-extrabold uppercase tracking-wider text-foreground underline decoration-2 underline-offset-4">
+              <h3 className="mb-5 text-sm font-extrabold uppercase tracking-wider text-navy-foreground underline decoration-2 underline-offset-4">
                 {column.title}
               </h3>
               <ul className="space-y-2">
@@ -153,18 +153,18 @@ export function SiteFooter() {
 
 
         {/* Bottom bar */}
-        <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
+        <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-navy-foreground/15 pt-6 text-xs text-navy-foreground/60 sm:flex-row sm:items-center">
           <p>
             © {new Date().getFullYear()} ToptierProxy Media Group LLC. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-x-6 gap-y-2">
-            <Link to="/terms" className="hover:text-foreground">
+            <Link to="/terms" className="hover:text-white">
               Terms of Use
             </Link>
-            <Link to="/privacy" className="hover:text-foreground">
+            <Link to="/privacy" className="hover:text-white">
               Privacy Policy
             </Link>
-            <Link to="/disclaimers" className="hover:text-foreground">
+            <Link to="/disclaimers" className="hover:text-white">
               Disclaimers
             </Link>
           </div>
