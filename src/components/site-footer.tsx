@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { GlobalPartners } from "@/components/global-partners";
 import { Triangle, Linkedin, Twitter, Youtube } from "lucide-react";
 
 type LinkItem = { label: string; href: string };
@@ -170,5 +171,6 @@ export function SiteFooter() {
         </div>
       </div>
     </footer>
+    </>
   );
 }
