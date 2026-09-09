@@ -1,273 +1,154 @@
 import { Link } from "@tanstack/react-router";
 import { Triangle, Linkedin, Twitter, Youtube } from "lucide-react";
 
-const footerNav = [
-  { to: "/about", label: "ABOUT" },
-  { to: "/why-trust-us", label: "WHY TRUST US" },
-  { to: "/how-we-test", label: "HOW WE TEST" },
-  { to: "/proxy-benchmark-report", label: "BENCHMARK REPORT" },
-
-  { to: "/trust-score", label: "TRUST SCORE" },
-  { to: "/blog", label: "BLOG" },
-  { to: "/compare", label: "COMPARE" },
-  { to: "/sponsors", label: "SPONSORS" },
-  { to: "/contact", label: "CONTACT" },
-] as const;
-
 type LinkItem = { label: string; href: string };
 
-type Section = {
+type Column = {
   title: string;
   items: LinkItem[];
 };
 
-// CNET-style dense link sections. Internal links route to relevant blog/review
-// pages where available; external tool names use "#" as the user requested.
-const sections: Section[] = [
+const columns: Column[] = [
   {
-    title: "DIRECT COMPLEMENTS",
+    title: "PROXY REVIEWS",
+    items: [
+      { label: "Proxy-Seller Review", href: "/proxy-seller-review" },
+      { label: "Live Proxies Review", href: "/live-proxies-review" },
+      { label: "GoLogin Review", href: "/gologin-review" },
+      { label: "Multilogin Review", href: "/multilogin-review" },
+      { label: "2Captcha Review", href: "/2captcha-review" },
+      { label: "All Reviews", href: "/reviews" },
+    ],
+  },
+  {
+    title: "PROXIES",
     items: [
       { label: "Best VPN Deals", href: "/vpn-deals" },
-      { label: "ExpressVPN", href: "/vpn-deals" },
-      { label: "Surfshark", href: "/vpn-deals" },
-      { label: "Proxy-Seller", href: "/proxy-seller-review" },
-      { label: "Live Proxies", href: "/live-proxies-review" },
-
-      { label: "Multilogin", href: "/multilogin-review" },
-      { label: "GoLogin", href: "/gologin-review" },
-      { label: "AdsPower", href: "#" },
-      { label: "2Captcha", href: "/2captcha-review" },
-      { label: "CapSolver", href: "#" },
-      { label: "AntiCaptcha", href: "#" },
+      { label: "Compare Providers", href: "/compare" },
+      { label: "Proxy Benchmark Report", href: "/proxy-benchmark-report" },
+    ],
+  },
+  {
+    title: "SCRAPERS",
+    items: [
+      { label: "Scraper API", href: "/scraper-api" },
       { label: "Scrapy", href: "/scrapy-review" },
-      { label: "Playwright", href: "#" },
-      { label: "Puppeteer", href: "#" },
-      { label: "ScraperAPI", href: "/scraper-api" },
-      { label: "ZenRows", href: "#" },
-      { label: "ScrapingBee", href: "#" },
-      { label: "Browserless", href: "#" },
-      { label: "Bright Data Browser", href: "/reviews/bright-data" },
-      { label: "IPRoyal Rotation", href: "/reviews/iproyal" },
-      { label: "Smartproxy", href: "/reviews/decodo" },
-      { label: "Decodo", href: "/reviews/decodo" },
-      { label: "ProxyMesh", href: "#" },
-      { label: "Storm Proxies", href: "#" },
-      { label: "Proxy6", href: "#" },
+      { label: "All Guides", href: "/guides" },
     ],
   },
   {
-    title: "SECURITY & PRIVACY",
+    title: "COMPANY",
     items: [
-      { label: "Norton", href: "#" },
-      { label: "Bitdefender", href: "#" },
-      { label: "Malwarebytes", href: "#" },
-      { label: "1Password", href: "#" },
-      { label: "Bitwarden", href: "#" },
-      { label: "Dashlane", href: "#" },
-      { label: "Cloudflare 1.1.1.1", href: "#" },
-      { label: "NextDNS", href: "#" },
-      { label: "Quad9", href: "#" },
-      { label: "GlassWire", href: "#" },
-      { label: "Little Snitch", href: "#" },
-      { label: "ZoneAlarm", href: "#" },
-      { label: "Aura", href: "#" },
-      { label: "IdentityForce", href: "#" },
-      { label: "DeleteMe", href: "#" },
-      { label: "ProtonMail", href: "#" },
-      { label: "SimpleLogin", href: "#" },
-      { label: "Tutanota", href: "#" },
-    ],
-  },
-  {
-    title: "DATA & BUSINESS TOOLS",
-    items: [
-      { label: "Octoparse", href: "#" },
-      { label: "ParseHub", href: "#" },
-      { label: "Import.io", href: "#" },
-      { label: "Semrush", href: "#" },
-      { label: "Ahrefs", href: "#" },
-      { label: "Moz", href: "#" },
-      { label: "Bright Data", href: "/reviews/bright-data" },
-      { label: "Oxylabs", href: "/reviews/oxylabs" },
-      { label: "Cloudflare Bot Mgmt", href: "#" },
-      { label: "Jungle Scout", href: "#" },
-      { label: "Helium 10", href: "#" },
-      { label: "DataHawk", href: "#" },
-      { label: "Jarvee", href: "#" },
-      { label: "FollowLiker", href: "#" },
-      { label: "MassPlanner", href: "#" },
-      { label: "AdSpy", href: "#" },
-      { label: "BigSpy", href: "#" },
-      { label: "PowerAdSpy", href: "#" },
-    ],
-  },
-  {
-    title: "DEVELOPER & AUTOMATION",
-    items: [
-      { label: "curl_cffi", href: "#" },
-      { label: "httpx", href: "#" },
-      { label: "Requests", href: "#" },
-      { label: "Selenium", href: "#" },
-      { label: "Playwright", href: "#" },
-      { label: "Puppeteer", href: "#" },
-      { label: "Apache Airflow", href: "#" },
-      { label: "Prefect", href: "#" },
-      { label: "Celery", href: "#" },
-      { label: "AWS Lambda", href: "#" },
-      { label: "Google Cloud Functions", href: "#" },
-      { label: "Postman", href: "#" },
-      { label: "Insomnia", href: "#" },
-      { label: "RapidAPI", href: "#" },
-      { label: "BeautifulSoup", href: "#" },
-      { label: "Cheerio", href: "#" },
-      { label: "lxml", href: "#" },
-    ],
-  },
-  {
-    title: "E-COMMERCE & MARKETING",
-    items: [
-      { label: "Prisync", href: "#" },
-      { label: "Wiser", href: "#" },
-      { label: "Skuuudle", href: "#" },
-      { label: "Impact", href: "#" },
-      { label: "ShareASale", href: "#" },
-      { label: "CJ Affiliate", href: "#" },
-      { label: "Mailchimp", href: "#" },
-      { label: "Klaviyo", href: "#" },
-      { label: "ActiveCampaign", href: "#" },
-      { label: "Unbounce", href: "#" },
-      { label: "Leadpages", href: "#" },
-      { label: "Instapage", href: "#" },
-      { label: "Google Analytics", href: "#" },
-      { label: "Mixpanel", href: "#" },
-      { label: "Hotjar", href: "#" },
-      { label: "Optimizely", href: "#" },
-      { label: "VWO", href: "#" },
-      { label: "AB Tasty", href: "#" },
-    ],
-  },
-  {
-    title: "RESEARCH & INTELLIGENCE",
-    items: [
-      { label: "SimilarWeb", href: "#" },
-      { label: "SpyFu", href: "#" },
-      { label: "iSpionage", href: "#" },
-      { label: "Mention", href: "#" },
-      { label: "Brandwatch", href: "#" },
-      { label: "Talkwalker", href: "#" },
-      { label: "Crayon", href: "#" },
-      { label: "Klue", href: "#" },
-      { label: "Kompyte", href: "#" },
-      { label: "Feedly", href: "#" },
-      { label: "Pocket", href: "#" },
-      { label: "Flipboard", href: "#" },
-      { label: "Tableau", href: "#" },
-      { label: "Power BI", href: "#" },
-      { label: "Looker", href: "#" },
-      { label: "SurveyMonkey", href: "#" },
-      { label: "Typeform", href: "#" },
-      { label: "Google Forms", href: "#" },
+      { label: "About", href: "/about" },
+      { label: "Why Trust Us", href: "/why-trust-us" },
+      { label: "How We Test", href: "/how-we-test" },
+      { label: "Blog", href: "/blog" },
+      { label: "Sponsors", href: "/sponsors" },
+      { label: "Contact", href: "/contact" },
     ],
   },
 ];
 
-function isInternal(href: string) {
-  return href.startsWith("/");
-}
-
 function FooterLink({ item }: { item: LinkItem }) {
-  const cls =
-    "group relative inline-block py-1.5 text-sm text-footer-foreground/85 hover:text-white";
-  const underline = (
-    <span
-      aria-hidden
-      className="pointer-events-none absolute bottom-1 left-0 h-[2px] w-0 bg-nav-hover transition-all duration-300 ease-out group-hover:w-full"
-    />
-  );
-  if (isInternal(item.href)) {
+  const isInternal = item.href.startsWith("/");
+  const className =
+    "inline-block py-1 text-sm text-foreground/80 transition-colors hover:text-primary";
+
+  if (isInternal) {
     return (
-      <span className="block">
-        <Link to={item.href} className={cls} target="_blank">
-          {item.label}
-          {underline}
-        </Link>
-      </span>
+      <Link to={item.href} className={className}>
+        {item.label}
+      </Link>
     );
   }
+
   return (
-    <span className="block">
-      <a href={item.href} className={cls} target="_blank" rel="nofollow noopener">
-        {item.label}
-        {underline}
-      </a>
-    </span>
+    <a href={item.href} className={className} rel="nofollow noopener">
+      {item.label}
+    </a>
   );
 }
 
-function SectionBlock({ section }: { section: Section }) {
+function SocialIcon({
+  href,
+  label,
+  children,
+}: {
+  href: string;
+  label: string;
+  children: React.ReactNode;
+}) {
   return (
-    <section className="mb-10">
-      <div className="mb-4 flex items-center gap-3">
-        <h3 className="whitespace-nowrap text-base font-extrabold uppercase tracking-wider">
-          {section.title}
-        </h3>
-        <div className="flex-1 border-t-2 border-dotted border-white/70" />
-      </div>
-      <div className="grid grid-cols-1 gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
-        {section.items.map((item) => (
-          <FooterLink key={item.label} item={item} />
-        ))}
-      </div>
-    </section>
+    <a
+      href={href}
+      aria-label={label}
+      className="flex h-9 w-9 items-center justify-center rounded-full border border-border text-foreground/70 transition-colors hover:border-primary hover:text-primary"
+    >
+      {children}
+    </a>
   );
 }
 
 export function SiteFooter() {
   return (
-    <footer className="bg-navy text-footer-foreground">
-      <div className="mx-auto max-w-7xl px-6 py-14">
-        {sections.map((s) => (
-          <SectionBlock key={s.title} section={s} />
-        ))}
-
-        <div className="mt-6 flex flex-col items-start justify-between gap-8 border-t border-white/10 pt-8 md:flex-row md:items-center">
+    <footer className="border-t border-border bg-background text-foreground">
+      <div className="mx-auto max-w-7xl px-6 py-10">
+        {/* Top bar */}
+        <div className="flex flex-col items-start justify-between gap-6 pb-10 sm:flex-row sm:items-center">
           <Link to="/" className="flex items-center gap-2">
-            <Triangle className="h-6 w-6 fill-current" strokeWidth={1.5} />
-            <span className="text-xl font-bold">
+            <Triangle className="h-6 w-6 fill-current text-primary" strokeWidth={1.5} />
+            <span className="text-xl font-bold tracking-tight">
               ToptierProxy<span className="font-normal opacity-80">.com</span>
             </span>
           </Link>
-          <nav className="flex flex-wrap gap-x-8 gap-y-3">
-            {footerNav.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                className="text-xs font-bold tracking-wider opacity-90 hover:opacity-100"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+
+          <div className="flex items-center gap-3">
+            <SocialIcon href="#" label="X (Twitter)">
+              <Twitter className="h-4 w-4" />
+            </SocialIcon>
+            <SocialIcon href="#" label="YouTube">
+              <Youtube className="h-4 w-4" />
+            </SocialIcon>
+            <SocialIcon href="#" label="LinkedIn">
+              <Linkedin className="h-4 w-4" />
+            </SocialIcon>
+          </div>
         </div>
 
-        <div className="mt-8 flex gap-3">
-          <a aria-label="LinkedIn" href="#" className="flex h-8 w-8 items-center justify-center bg-white/10 hover:bg-white/20"><Linkedin className="h-4 w-4" /></a>
-          <a aria-label="Twitter" href="#" className="flex h-8 w-8 items-center justify-center bg-white/10 hover:bg-white/20"><Twitter className="h-4 w-4" /></a>
-          <a aria-label="YouTube" href="#" className="flex h-8 w-8 items-center justify-center bg-white/10 hover:bg-white/20"><Youtube className="h-4 w-4" /></a>
+        {/* Four-column directory */}
+        <div className="grid grid-cols-1 gap-10 border-t border-border pt-10 sm:grid-cols-2 lg:grid-cols-4">
+          {columns.map((column) => (
+            <div key={column.title}>
+              <h3 className="mb-5 text-sm font-extrabold uppercase tracking-wider text-foreground underline decoration-2 underline-offset-4">
+                {column.title}
+              </h3>
+              <ul className="space-y-2">
+                {column.items.map((item) => (
+                  <li key={item.label}>
+                    <FooterLink item={item} />
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        <div className="mt-10 space-y-2 text-xs opacity-70">
+        {/* Bottom bar */}
+        <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center">
           <p>
-            Tool and proxy services listed are for reference. Pricing, pool sizes and features
-            change frequently — always confirm current details on the provider's website before
-            purchase. External links are not endorsements unless explicitly stated in a review.
+            © {new Date().getFullYear()} ToptierProxy Media Group LLC. All rights reserved.
           </p>
-          <p>
-            © {new Date().getFullYear()} ToptierProxy Media Group LLC. All rights reserved.{" "}
-            <Link to="/terms" className="underline">Terms of Use</Link> |{" "}
-            <Link to="/disclaimers" className="underline">Disclaimers</Link> |{" "}
-            <Link to="/privacy" className="underline">Privacy Policy</Link>
-          </p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link to="/terms" className="hover:text-foreground">
+              Terms of Use
+            </Link>
+            <Link to="/privacy" className="hover:text-foreground">
+              Privacy Policy
+            </Link>
+            <Link to="/disclaimers" className="hover:text-foreground">
+              Disclaimers
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
