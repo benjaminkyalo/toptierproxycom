@@ -628,8 +628,22 @@ function HomePage() {
               </a>
             ))}
           </div>
+          </div>
+          <div className="md:w-2/5">
+            <img
+              src="https://res.cloudinary.com/dkcqakosa/image/upload/f_auto,q_auto,w_600/v1788959638/ChatGPT_Image_Sep_9_2026_04_11_41_PM_1_iigv3y.png"
+              srcSet="https://res.cloudinary.com/dkcqakosa/image/upload/f_auto,q_auto,w_400/v1788959638/ChatGPT_Image_Sep_9_2026_04_11_41_PM_1_iigv3y.png 400w, https://res.cloudinary.com/dkcqakosa/image/upload/f_auto,q_auto,w_800/v1788959638/ChatGPT_Image_Sep_9_2026_04_11_41_PM_1_iigv3y.png 800w"
+              sizes="(min-width: 768px) 40vw, 100vw"
+              alt="Global proxy location coverage across Europe, Asia-Pacific and the Americas"
+              className="w-full rounded-xl border border-border bg-card shadow-sm"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+         </div>
         </div>
       </section>
+
 
       <section className="bg-background">
         <div className="mx-auto max-w-7xl px-6 pb-4">
