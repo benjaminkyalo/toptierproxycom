@@ -39,8 +39,6 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { tagName: "link", rel: "preload", as: "image", href: "https://res.cloudinary.com/dkcqakosa/image/upload/v1780194300/Capture-Photoroom_1_w5jmmt.png" },
-      { tagName: "link", rel: "preload", as: "image", href: "https://res.cloudinary.com/dkcqakosa/image/upload/v1780194300/image_22-Photoroom_1_d2osmc.png" },
       { tagName: "link", rel: "canonical", href: "https://www.toptierproxy.com/" },
       { property: "og:url", content: "https://www.toptierproxy.com/" },
       { property: "og:site_name", content: "ToptierProxy.com" },
@@ -562,7 +560,9 @@ function HomePage() {
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-10">
             <div className="md:w-2/5">
               <img
-                src="https://res.cloudinary.com/dkcqakosa/image/upload/v1788959637/ChatGPT_Image_Sep_9_2026_04_07_40_PM_1_fhrgtc.png"
+                src="https://res.cloudinary.com/dkcqakosa/image/upload/f_auto,q_auto,w_600/v1788959637/ChatGPT_Image_Sep_9_2026_04_07_40_PM_1_fhrgtc.png"
+                srcSet="https://res.cloudinary.com/dkcqakosa/image/upload/f_auto,q_auto,w_400/v1788959637/ChatGPT_Image_Sep_9_2026_04_07_40_PM_1_fhrgtc.png 400w, https://res.cloudinary.com/dkcqakosa/image/upload/f_auto,q_auto,w_800/v1788959637/ChatGPT_Image_Sep_9_2026_04_07_40_PM_1_fhrgtc.png 800w"
+                sizes="(min-width: 768px) 40vw, 100vw"
                 alt="Proxy network diagram showing residential, datacenter, ISP and mobile proxy routes"
                 className="w-full rounded-xl border border-border bg-card shadow-sm"
                 loading="lazy"
@@ -599,7 +599,9 @@ function HomePage() {
 
       {/* High-demand country, city and vendor pages — exact-match anchors */}
       <section className="border-t border-border bg-card">
-        <div className="mx-auto max-w-4xl px-6 py-12">
+        <div className="mx-auto max-w-6xl px-6 py-12">
+         <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-10">
+          <div className="md:w-3/5">
           <h2 className="text-2xl font-bold">Most-requested proxy locations & vendor data</h2>
           <p className="mt-3 text-sm text-foreground/70">
             The pages our readers open most — each one benchmarked on real carrier routes and 2026 pricing.
@@ -626,8 +628,22 @@ function HomePage() {
               </a>
             ))}
           </div>
+          </div>
+          <div className="md:w-2/5">
+            <img
+              src="https://res.cloudinary.com/dkcqakosa/image/upload/f_auto,q_auto,w_600/v1788959638/ChatGPT_Image_Sep_9_2026_04_11_41_PM_1_iigv3y.png"
+              srcSet="https://res.cloudinary.com/dkcqakosa/image/upload/f_auto,q_auto,w_400/v1788959638/ChatGPT_Image_Sep_9_2026_04_11_41_PM_1_iigv3y.png 400w, https://res.cloudinary.com/dkcqakosa/image/upload/f_auto,q_auto,w_800/v1788959638/ChatGPT_Image_Sep_9_2026_04_11_41_PM_1_iigv3y.png 800w"
+              sizes="(min-width: 768px) 40vw, 100vw"
+              alt="Global proxy location coverage across Europe, Asia-Pacific and the Americas"
+              className="w-full rounded-xl border border-border bg-card shadow-sm"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+         </div>
         </div>
       </section>
+
 
       <section className="bg-background">
         <div className="mx-auto max-w-7xl px-6 pb-4">
@@ -660,7 +676,7 @@ function Expert({ name, role, image }: { name: string; role: string; image?: str
   return (
     <a href={`/team/${slug}`} className="flex items-center gap-5 pl-8 group cursor-pointer">
       <div className="flex h-24 w-24 rounded-full overflow-hidden flex-shrink-0 transition-all duration-500 group-hover:scale-105 group-hover:shadow-lg group-hover:ring-2 group-hover:ring-primary">
-        {image ? <img src={image} alt={name} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-110" loading="eager" fetchPriority="high" decoding="async" /> : <span className="flex h-full w-full items-center justify-center bg-navy text-lg font-bold text-navy-foreground">{initials}</span>}
+        {image ? <img src={image.replace("/upload/", "/upload/f_auto,q_auto,c_fill,g_face,w_192,h_192/")} alt={name} width={96} height={96} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-110" loading="lazy" decoding="async" /> : <span className="flex h-full w-full items-center justify-center bg-navy text-lg font-bold text-navy-foreground">{initials}</span>}
       </div>
       <div className="transition-all duration-300 group-hover:translate-x-1">
         <div className="text-lg font-bold group-hover:text-primary transition-colors duration-300">{name}</div>
