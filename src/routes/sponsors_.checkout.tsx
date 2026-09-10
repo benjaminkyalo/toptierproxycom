@@ -64,8 +64,8 @@ function SponsorCheckoutPage() {
     const handler = window.PaystackPop.setup({
       key: PAYSTACK_PUBLIC_KEY,
       email,
-      amount: Math.round(plan.priceKES * 100),
-      currency: "KES",
+      amount: Math.round(plan.price * 100),
+      currency: "USD",
       channels: ["card"],
       ref: `TTP-${plan.id}-${Date.now()}`,
       callback: (response) => {
@@ -107,17 +107,17 @@ function SponsorCheckoutPage() {
                 <p className="text-sm font-semibold text-foreground">{plan.name}</p>
                 <p className="mt-1 text-xs text-muted-foreground">{plan.blurb}</p>
               </div>
-              <p className="shrink-0 text-sm text-foreground">{plan.priceKESLabel}</p>
+              <p className="shrink-0 text-sm text-foreground">{plan.priceLabel}</p>
             </div>
 
             <div className="flex items-center justify-between py-5">
               <p className="text-sm text-foreground">Subtotal</p>
-              <p className="text-sm text-foreground">{plan.priceKESLabel}</p>
+              <p className="text-sm text-foreground">{plan.priceLabel}</p>
             </div>
 
             <div className="mt-6 flex items-center justify-between border-t border-border pt-5">
               <p className="text-sm font-semibold text-foreground">Total due</p>
-              <p className="text-sm font-semibold text-foreground">{plan.priceKESLabel}</p>
+              <p className="text-sm font-semibold text-foreground">{plan.priceLabel}</p>
             </div>
           </div>
         </section>
@@ -147,7 +147,7 @@ function SponsorCheckoutPage() {
               disabled={loading}
               className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-md bg-primary px-4 text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-blue-hover disabled:opacity-60"
             >
-              {loading ? "Opening secure payment..." : `Pay ${plan.priceKESLabel}`}
+              {loading ? "Opening secure payment..." : `Pay ${plan.priceLabel}`}
             </button>
 
             <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
