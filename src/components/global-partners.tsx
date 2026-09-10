@@ -21,7 +21,7 @@ const partners: Partner[] = [
 
 function PartnerCard({ partner }: { partner: Partner }) {
   return (
-    <div className="partner-card-glow group/card relative flex w-64 shrink-0 items-center gap-3 rounded-lg border border-border bg-card px-4 py-3 shadow-sm transition-all duration-300 hover:z-10 hover:scale-[1.04] hover:shadow-xl">
+    <div className="partner-card-glow group/card relative flex w-64 shrink-0 items-center gap-3 rounded-lg border border-border bg-card px-4 py-3 shadow-sm transition-all duration-300 hover:z-10 hover:scale-[1.15] hover:shadow-2xl">
       <ProviderLogo provider={partner} size="md" />
       <div className="min-w-0">
         <p className="truncate text-sm font-bold text-foreground">{partner.name}</p>
