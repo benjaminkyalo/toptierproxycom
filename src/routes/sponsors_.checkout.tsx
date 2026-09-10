@@ -15,6 +15,7 @@ declare global {
         email: string;
         amount: number;
         currency: string;
+        channels?: string[];
         ref: string;
         callback: (response: { reference: string }) => void;
         onClose: () => void;
@@ -65,6 +66,7 @@ function SponsorCheckoutPage() {
       email,
       amount: Math.round(plan.priceKES * 100),
       currency: "KES",
+      channels: ["card"],
       ref: `TTP-${plan.id}-${Date.now()}`,
       callback: (response) => {
         navigate({
