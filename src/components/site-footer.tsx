@@ -115,8 +115,9 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="mt-3 text-sm leading-relaxed text-navy-foreground/60">
-              Independent proxy intelligence for developers, SEO teams, and data
-              engineers. We test, benchmark, and compare so you don’t have to.
+              The leading independent authority on proxy performance for
+              developers, SEO teams, and data engineers. We test, benchmark,
+              and compare so you don’t have to.
             </p>
           </div>
 
