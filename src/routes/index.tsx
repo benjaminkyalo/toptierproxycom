@@ -678,7 +678,7 @@ function Expert({ name, role, image }: { name: string; role: string; image?: str
   return (
     <a href={`/team/${slug}`} className="flex items-center gap-5 pl-8 group cursor-pointer">
       <div className="flex h-24 w-24 rounded-full overflow-hidden flex-shrink-0 transition-all duration-500 group-hover:scale-105 group-hover:shadow-lg group-hover:ring-2 group-hover:ring-primary">
-        {image ? <img src={image} alt={name} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-110" loading="eager" fetchPriority="high" decoding="async" /> : <span className="flex h-full w-full items-center justify-center bg-navy text-lg font-bold text-navy-foreground">{initials}</span>}
+        {image ? <img src={image.replace("/upload/", "/upload/f_auto,q_auto,c_fill,g_face,w_192,h_192/")} alt={name} width={96} height={96} className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-110" loading="lazy" decoding="async" /> : <span className="flex h-full w-full items-center justify-center bg-navy text-lg font-bold text-navy-foreground">{initials}</span>}
       </div>
       <div className="transition-all duration-300 group-hover:translate-x-1">
         <div className="text-lg font-bold group-hover:text-primary transition-colors duration-300">{name}</div>
