@@ -213,7 +213,7 @@ function SponsorsPage() {
               Become a Sponsor
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">
-              Support ToptierProxy and gain visibility. Limited sponsorship slots for maximum impact.
+              Get your product in front of thousands of developers, SEO teams, data engineers and proxy buyers every month.
             </p>
             <p className="mt-2 text-sm font-semibold text-primary">Currently, 1 slot is available!</p>
           </header>
