@@ -49,6 +49,7 @@ function SponsorCheckoutPage() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [maintenance, setMaintenance] = useState(false);
 
   function payWithPaystack() {
     if (!email || !email.includes("@")) {
@@ -56,29 +57,7 @@ function SponsorCheckoutPage() {
       return;
     }
     setError("");
-    if (!window.PaystackPop) {
-      setError("Payment system is still loading, try again in a moment.");
-      return;
-    }
-    setLoading(true);
-    const handler = window.PaystackPop.setup({
-      key: PAYSTACK_PUBLIC_KEY,
-      email,
-      amount: Math.round(plan.price * 100),
-      currency: "USD",
-      channels: ["card"],
-      ref: `TTP-${plan.id}-${Date.now()}`,
-      callback: (response) => {
-        navigate({
-          to: "/sponsors/form",
-          search: { plan: plan.id, paid: "1", ref: response.reference },
-        });
-      },
-      onClose: () => {
-        setLoading(false);
-      },
-    });
-    handler.openIframe();
+    setMaintenance(true);
   }
 
   return (
@@ -141,14 +120,30 @@ function SponsorCheckoutPage() {
 
             {error && <p className="mt-3 text-xs font-semibold text-destructive">{error}</p>}
 
-            <button
-              type="button"
-              onClick={payWithPaystack}
-              disabled={loading}
-              className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-md bg-primary px-4 text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-blue-hover disabled:opacity-60"
-            >
-              {loading ? "Opening secure payment..." : `Pay ${plan.priceLabel}`}
-            </button>
+            {maintenance ? (
+              <div className="mt-6 rounded-md border border-border bg-muted/40 p-5 text-center">
+                <p className="text-sm font-semibold text-foreground">
+                  This page is currently under maintenance.
+                </p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Please send an email to{" "}
+                  <a href="mailto:partners@toptierproxy.com" className="font-semibold text-primary underline">
+                    partners@toptierproxy.com
+                  </a>{" "}
+                  and include a link to your product. You will be issued an invoice within 3-4 hours.
+                </p>
+                <p className="mt-3 text-sm text-muted-foreground">Thanks.</p>
+              </div>
+            ) : (
+              <button
+                type="button"
+                onClick={payWithPaystack}
+                disabled={loading}
+                className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-md bg-primary px-4 text-sm font-bold text-primary-foreground transition-colors hover:bg-brand-blue-hover disabled:opacity-60"
+              >
+                {loading ? "Opening secure payment..." : `Pay ${plan.priceLabel}`}
+              </button>
+            )}
 
             <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
               <Lock className="h-3 w-3" /> Payments are processed securely by Paystack.
