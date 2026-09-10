@@ -599,7 +599,9 @@ function HomePage() {
 
       {/* High-demand country, city and vendor pages — exact-match anchors */}
       <section className="border-t border-border bg-card">
-        <div className="mx-auto max-w-4xl px-6 py-12">
+        <div className="mx-auto max-w-6xl px-6 py-12">
+         <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-10">
+          <div className="md:w-3/5">
           <h2 className="text-2xl font-bold">Most-requested proxy locations & vendor data</h2>
           <p className="mt-3 text-sm text-foreground/70">
             The pages our readers open most — each one benchmarked on real carrier routes and 2026 pricing.
