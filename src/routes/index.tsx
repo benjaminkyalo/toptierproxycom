@@ -39,8 +39,6 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { tagName: "link", rel: "preload", as: "image", href: "https://res.cloudinary.com/dkcqakosa/image/upload/v1780194300/Capture-Photoroom_1_w5jmmt.png" },
-      { tagName: "link", rel: "preload", as: "image", href: "https://res.cloudinary.com/dkcqakosa/image/upload/v1780194300/image_22-Photoroom_1_d2osmc.png" },
       { tagName: "link", rel: "canonical", href: "https://www.toptierproxy.com/" },
       { property: "og:url", content: "https://www.toptierproxy.com/" },
       { property: "og:site_name", content: "ToptierProxy.com" },
