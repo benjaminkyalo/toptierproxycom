@@ -562,7 +562,9 @@ function HomePage() {
           <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-10">
             <div className="md:w-2/5">
               <img
-                src="https://res.cloudinary.com/dkcqakosa/image/upload/v1788959637/ChatGPT_Image_Sep_9_2026_04_07_40_PM_1_fhrgtc.png"
+                src="https://res.cloudinary.com/dkcqakosa/image/upload/f_auto,q_auto,w_600/v1788959637/ChatGPT_Image_Sep_9_2026_04_07_40_PM_1_fhrgtc.png"
+                srcSet="https://res.cloudinary.com/dkcqakosa/image/upload/f_auto,q_auto,w_400/v1788959637/ChatGPT_Image_Sep_9_2026_04_07_40_PM_1_fhrgtc.png 400w, https://res.cloudinary.com/dkcqakosa/image/upload/f_auto,q_auto,w_800/v1788959637/ChatGPT_Image_Sep_9_2026_04_07_40_PM_1_fhrgtc.png 800w"
+                sizes="(min-width: 768px) 40vw, 100vw"
                 alt="Proxy network diagram showing residential, datacenter, ISP and mobile proxy routes"
                 className="w-full rounded-xl border border-border bg-card shadow-sm"
                 loading="lazy"
