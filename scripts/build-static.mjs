@@ -100,13 +100,30 @@ async function run() {
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Redirecting…</title>
+<title>Redirecting...</title>
 <meta name="robots" content="noindex,nofollow">
-<meta http-equiv="refresh" content="0; url=${p.visitUrl}">
 <link rel="canonical" href="${p.visitUrl}">
-<script>location.replace(${JSON.stringify(p.visitUrl)});</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9N1G48CJGW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-9N1G48CJGW", { send_page_view: false });
+  var redirected = false;
+  function doRedirect() {
+    if (redirected) return;
+    redirected = true;
+    location.replace(${JSON.stringify(p.visitUrl)});
+  }
+  gtag("event", "affiliate_click", {
+    provider: ${JSON.stringify(p.slug)},
+    event_callback: doRedirect,
+    event_timeout: 800
+  });
+  setTimeout(doRedirect, 800);
+</script>
 </head>
-<body>Redirecting to <a href="${p.visitUrl}" rel="nofollow sponsored noopener">${p.visitUrl}</a>…</body>
+<body>Redirecting to <a href="${p.visitUrl}" rel="nofollow sponsored noopener">${p.visitUrl}</a>...</body>
 </html>`;
     writeFileSync(resolve(dir, "index.html"), html);
   }
