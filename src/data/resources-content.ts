@@ -136,6 +136,80 @@ export const resourcesContent: ResourceEntry[] = [
       ] },
     ],
   },
+  {
+    slug: "fingerprint-checker",
+    title: "Browser Fingerprint Checker - Canvas, WebGL and WebRTC Leak Test",
+    metaTitle: "Browser Fingerprint Checker - WebRTC Leak Test",
+    metaDescription: "Free browser fingerprint checker and WebRTC leak test - see if your proxy is leaking your real IP, and check your canvas, WebGL and device fingerprint live.",
+    intro: "Every value below is read live from your own browser. Start with the WebRTC leak result: it tells you whether your real IP is escaping past your proxy or VPN.",
+    tool: { name: "Browser Fingerprint Checker", category: "SecurityApplication" },
+    sections: [
+      { heading: "Why the WebRTC leak test matters most", paragraphs: [
+        "WebRTC is the browser technology behind video and voice calls. To connect two people directly, it asks your operating system for your network addresses - and by design that happens outside the proxy tunnel your HTTP traffic uses. That means a browser can hand a website your real IP even while every page request goes through a proxy or VPN.",
+        "If the check above reports a leak, your proxy setup is not actually hiding you from any site that runs a few lines of WebRTC JavaScript. The usual fixes are disabling WebRTC in the browser, using an antidetect browser that patches the API, or routing traffic at the system level rather than only in the browser. Re-run this test after each change to confirm the leak is gone.",
+      ] },
+      { heading: "What a canvas fingerprint actually is", paragraphs: [
+        "A canvas fingerprint is produced by drawing text and shapes to an invisible canvas element and reading the resulting pixels back out. Because GPU model, driver version, font rendering and anti-aliasing all differ slightly between machines, the pixel output is near-unique per device. Sites hash it into a short string and use it to recognise you across sessions, and across IP addresses.",
+        "This is why swapping IPs alone does not make you a new visitor. If your canvas hash, WebGL renderer string and screen metrics stay identical across ten different residential IPs, a serious anti-bot system can still cluster all ten sessions as one device. Proxy quality and fingerprint hygiene are two separate problems, and you need both solved.",
+      ] },
+      { heading: "Reading the WebGL and hardware values", paragraphs: [
+        "The WebGL vendor and renderer strings expose your actual graphics hardware, often down to the exact GPU model. Values that read as software renderers, or as virtualised adapters, are a common tell for headless browsers and cheap virtual machines - and several anti-bot vendors score them accordingly.",
+        "CPU core count, device memory, screen resolution and colour depth are individually weak signals, but combined they narrow you down quickly. A useful sanity check: does the profile look like a plausible consumer machine? A 1x1 viewport, one CPU core or a missing renderer string is a stronger bot signal than any single IP-based check.",
+      ] },
+      { heading: "Timezone and language consistency", paragraphs: [
+        "Mismatches are what get sessions flagged. If your IP geolocates to Germany but your browser reports an America/New_York timezone and en-US as the only accepted language, the two stories do not agree, and that inconsistency is trivially detectable. Compare the values above against the IP-based location shown by our what-is-my-ip tool.",
+        "For anything session-based - account management, checkout flows, ad verification - align timezone, language and locale with the proxy exit country before you start. It costs nothing and removes one of the easiest reasons to challenge your traffic.",
+      ] },
+    ],
+  },
+  {
+    slug: "what-is-my-ip",
+    title: "What Is My Proxy IP - Verify Your Proxy or VPN Is Working",
+    metaTitle: "What Is My Proxy IP - Check If Your VPN Is Working",
+    metaDescription: "Check the IP address websites actually see, with country, city and ISP - the fastest way to verify your proxy or VPN is really hiding your real IP.",
+    intro: "This shows the IP address websites actually see when you connect, along with its location and network owner. Compare it against what you expect your proxy to be doing.",
+    tool: { name: "What Is My Proxy IP", category: "UtilitiesApplication" },
+    sections: [
+      { heading: "How to verify a proxy is really working", paragraphs: [
+        "Load this page twice: once with your proxy off, once with it on. If the IP, country and ISP all change on the second load, traffic is genuinely routed through the proxy. If any of the three stays the same, your client is either ignoring the proxy settings or falling back to a direct connection when the proxy errors - a silent failure mode that quietly de-anonymises entire scrape jobs.",
+        "Also check the network owner line. An ISP or organisation name belonging to a hosting company means you are on a datacenter IP, whatever the provider called the plan. A consumer ISP name is the signature of a genuine residential or ISP proxy.",
+      ] },
+      { heading: "Comparing IP location with browser signals", paragraphs: [
+        "The timezone and language shown next to the IP data come from your browser, not from the network. Sites compare the two constantly. An IP in Tokyo paired with a Europe/London browser timezone is a contradiction no real visitor produces, and it is one of the cheapest checks an anti-bot system can run.",
+        "If the two do not match, either set your browser or automation profile to the proxy exit country's timezone and locale, or pick a proxy exit closer to your real profile. For a full picture of the other signals sites read, run our fingerprint checker.",
+      ] },
+      { heading: "What this tool cannot tell you", paragraphs: [
+        "A clean IP result does not mean you are undetectable. IP is one signal among dozens: canvas and WebGL fingerprints, TLS handshake shape, request timing and behaviour all continue to identify you independently of the address you connect from. WebRTC in particular can leak your real IP while this page still shows the proxy address.",
+        "It also cannot tell you whether an IP is already burned on your target. A residential IP that geolocates perfectly may still have been rate-limited or flagged by that specific site through earlier abuse. Real success-rate testing against your own target is the only way to answer that, which is exactly what our benchmark report measures.",
+      ] },
+    ],
+  },
+  {
+    slug: "user-agent-generator",
+    title: "User-Agent Generator for Scraping - Real Current UA Strings",
+    metaTitle: "User Agent Generator for Scraping - Real 2026 Strings",
+    metaDescription: "Free user agent generator for scraping and testing - copy real, current 2026 Chrome, Firefox, Safari, Android and iOS user agent strings with one click.",
+    intro: "Pick a browser and platform, get a real, current User-Agent string, and copy it with one click. A User-Agent is the header your client sends to identify its browser, engine and operating system - servers read it to decide what to serve, and anti-bot systems read it to decide whether to trust you.",
+    tool: { name: "User-Agent Generator", category: "DeveloperApplication" },
+    sections: [
+      { heading: "Why the default user agent gets you blocked", paragraphs: [
+        "HTTP libraries announce themselves honestly. Send a request with python-requests/2.32 or Go-http-client/1.1 in the header and you have told the server you are a script before it has looked at anything else. Blocking that is a single rule, and most protected sites have had it in place for years.",
+        "Swapping in a real browser User-Agent removes that one trivially cheap reason to refuse you. It is the lowest-effort change in scraping, and it is also the most commonly skipped one.",
+      ] },
+      { heading: "Keep the User-Agent consistent with everything else", paragraphs: [
+        "A User-Agent is a claim, and modern anti-bot systems check the claim against the evidence. Claim Safari on macOS while sending Chrome's TLS handshake and header order, and the mismatch itself becomes the detection signal - you are now more suspicious than an honest client would have been.",
+        "Match the whole profile: if the header says Chrome on Windows, send Chrome's Accept, Accept-Language and Sec-CH-UA headers in Chrome's order, and ideally drive a real Chrome instance rather than a raw HTTP client. If the header claims a mobile Safari build, the viewport and touch capability should agree.",
+      ] },
+      { heading: "Rotation: useful, and widely overdone", paragraphs: [
+        "Rotating User-Agents across requests helps when you are spreading traffic across many IPs and want each session to look like a separate visitor. It stops helping the moment rotation happens inside a single session - a visitor whose browser changes from Chrome on Windows to Safari on iPhone between two page loads is an obvious anomaly.",
+        "The practical rule: one User-Agent per session, held for the life of that session, paired with one IP. Rotate both together when you rotate at all. Our sticky vs rotating sessions guide covers how to size those sessions.",
+      ] },
+      { heading: "Keeping strings current", paragraphs: [
+        "Browser versions move every few weeks. A User-Agent claiming a Chrome build from two years ago is itself a weak bot signal, because almost no real installation stays that far behind auto-update. The strings in this tool reflect current 2026 stable releases; if you cache a list in your own code, refresh it on a schedule rather than pinning it once and forgetting.",
+        "Note also that Chrome now freezes much of its User-Agent detail and exposes the specifics through Client Hints instead. That means the header alone carries less information than it used to, and matters less in isolation than the rest of your fingerprint - see our fingerprint checker for the signals that carry the weight.",
+      ] },
+    ],
+  },
 ];
 
 export function getResourceContent(slug: string) {
