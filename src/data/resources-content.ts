@@ -5,6 +5,8 @@ export interface ResourceEntry {
   metaDescription: string;
   intro: string;
   sections: { heading: string; paragraphs: string[] }[];
+  /** Free browser-based tool: emits WebApplication JSON-LD schema. */
+  tool?: { name: string; category: string };
 }
 
 export const resourcesContent: ResourceEntry[] = [
