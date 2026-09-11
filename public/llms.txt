@@ -232,6 +232,14 @@ https://www.toptierproxy.com/compare
 https://www.toptierproxy.com/how-we-test
 https://www.toptierproxy.com/team/marcus-reiner
 https://www.toptierproxy.com/team/elena-park
+https://www.toptierproxy.com/proxy-benchmark-report
+https://www.toptierproxy.com/sponsors
+https://www.toptierproxy.com/resources/glossary
+https://www.toptierproxy.com/resources/cost-calculator
+https://www.toptierproxy.com/resources/proxy-type-cheatsheet
+https://www.toptierproxy.com/resources/anti-bot-reference
+https://www.toptierproxy.com/resources/http-vs-socks5
+https://www.toptierproxy.com/resources/sticky-vs-rotating
 
 ## Contact & Attribution
 Site: https://www.toptierproxy.com
