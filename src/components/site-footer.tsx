@@ -38,6 +38,16 @@ const columns: Column[] = [
     ],
   },
   {
+    title: "FREE TOOLS",
+    items: [
+      { label: "Browser Fingerprint Checker", href: "/resources/fingerprint-checker" },
+      { label: "What Is My Proxy IP", href: "/resources/what-is-my-ip" },
+      { label: "User-Agent Generator", href: "/resources/user-agent-generator" },
+      { label: "Proxy Cost Calculator", href: "/resources/cost-calculator" },
+      { label: "All Resources", href: "/resources" },
+    ],
+  },
+  {
     title: "COMPANY",
     items: [
       { label: "About", href: "/about" },

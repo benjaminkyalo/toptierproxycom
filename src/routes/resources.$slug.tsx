@@ -2,6 +2,9 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageShell, Prose } from "@/components/page-shell";
 import { getResourceContent } from "@/data/resources-content";
+import { FingerprintChecker } from "@/components/tools/fingerprint-checker";
+import { WhatIsMyIp } from "@/components/tools/what-is-my-ip";
+import { UserAgentGenerator } from "@/components/tools/user-agent-generator";
 
 export const Route = createFileRoute("/resources/$slug")({
   loader: ({ params }) => {
@@ -12,15 +15,41 @@ export const Route = createFileRoute("/resources/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) return {};
     const { resource } = loaderData;
+    const url = `https://www.toptierproxy.com/resources/${resource.slug}`;
     return {
       meta: [
         { title: `${resource.metaTitle} | ToptierProxy.com` },
         { name: "description", content: resource.metaDescription },
         { property: "og:title", content: resource.metaTitle },
         { property: "og:description", content: resource.metaDescription },
-        { property: "og:type", content: "article" },
+        { property: "og:url", content: url },
+        { property: "og:type", content: resource.tool ? "website" : "article" },
       ],
-      links: [{ rel: "canonical", href: `https://www.toptierproxy.com/resources/${resource.slug}` }],
+      links: [{ rel: "canonical", href: url }],
+      scripts: resource.tool
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "WebApplication",
+                name: resource.tool.name,
+                url,
+                description: resource.metaDescription,
+                applicationCategory: resource.tool.category,
+                operatingSystem: "Any",
+                browserRequirements: "Requires JavaScript",
+                isAccessibleForFree: true,
+                offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+                publisher: {
+                  "@type": "Organization",
+                  name: "ToptierProxy.com",
+                  url: "https://www.toptierproxy.com",
+                },
+              }),
+            },
+          ]
+        : undefined,
     };
   },
   notFoundComponent: () => (
@@ -83,6 +112,9 @@ function ResourcePage() {
       breadcrumb={[{ to: "/", label: "Home" }, { to: "/resources", label: "Resources" }]}
     >
       {resource.slug === "cost-calculator" && <CostCalculator />}
+      {resource.slug === "fingerprint-checker" && <FingerprintChecker />}
+      {resource.slug === "what-is-my-ip" && <WhatIsMyIp />}
+      {resource.slug === "user-agent-generator" && <UserAgentGenerator />}
       <Prose>
         {resource.sections.map((s) => (
           <div key={s.heading}>

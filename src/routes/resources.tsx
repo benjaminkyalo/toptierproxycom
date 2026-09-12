@@ -20,6 +20,9 @@ export const Route = createFileRoute("/resources")({
 });
 
 const resources = [
+  { title: "Browser Fingerprint Checker", desc: "Live WebRTC leak test plus canvas, WebGL and device fingerprint.", to: "/resources/fingerprint-checker" },
+  { title: "What Is My Proxy IP", desc: "See the IP, country and ISP websites actually see.", to: "/resources/what-is-my-ip" },
+  { title: "User-Agent Generator", desc: "Copy real, current 2026 browser user agent strings.", to: "/resources/user-agent-generator" },
   { title: "Proxy Glossary", desc: "Every proxy term explained in plain English.", to: "/resources/glossary" },
   { title: "Bandwidth Cost Calculator", desc: "Estimate monthly proxy spend from your scrape volume.", to: "/resources/cost-calculator" },
   { title: "Proxy Type Cheatsheet", desc: "Residential vs datacenter vs ISP vs mobile - when to use what.", to: "/resources/proxy-type-cheatsheet" },
