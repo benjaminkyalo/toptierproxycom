@@ -2,6 +2,9 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { PageShell, Prose } from "@/components/page-shell";
 import { getResourceContent } from "@/data/resources-content";
+import { FingerprintChecker } from "@/components/tools/fingerprint-checker";
+import { WhatIsMyIp } from "@/components/tools/what-is-my-ip";
+import { UserAgentGenerator } from "@/components/tools/user-agent-generator";
 
 export const Route = createFileRoute("/resources/$slug")({
   loader: ({ params }) => {
