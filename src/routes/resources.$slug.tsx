@@ -112,6 +112,9 @@ function ResourcePage() {
       breadcrumb={[{ to: "/", label: "Home" }, { to: "/resources", label: "Resources" }]}
     >
       {resource.slug === "cost-calculator" && <CostCalculator />}
+      {resource.slug === "fingerprint-checker" && <FingerprintChecker />}
+      {resource.slug === "what-is-my-ip" && <WhatIsMyIp />}
+      {resource.slug === "user-agent-generator" && <UserAgentGenerator />}
       <Prose>
         {resource.sections.map((s) => (
           <div key={s.heading}>
