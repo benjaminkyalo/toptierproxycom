@@ -636,7 +636,7 @@ async function run() {
     const title = `${r.metaTitle} | ToptierProxy.com`;
     const body = `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">${r.title}</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">${r.intro}</p>` + r.sections.map(s => `<h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${s.heading}</h2>` + s.paragraphs.map(p => `<p style="margin-bottom:1rem">${p}</p>`).join("")).join("");
     const toolSchema = r.tool
-      ? JSON.stringify({
+      ? ({
           "@context": "https://schema.org",
           "@type": "WebApplication",
           name: r.tool.name,
