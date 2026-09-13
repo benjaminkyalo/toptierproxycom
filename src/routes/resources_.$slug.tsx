@@ -6,7 +6,7 @@ import { FingerprintChecker } from "@/components/tools/fingerprint-checker";
 import { WhatIsMyIp } from "@/components/tools/what-is-my-ip";
 import { UserAgentGenerator } from "@/components/tools/user-agent-generator";
 
-export const Route = createFileRoute("/resources/$slug")({
+export const Route = createFileRoute("/resources_/$slug")({
   loader: ({ params }) => {
     const resource = getResourceContent(params.slug);
     if (!resource) throw notFound();
