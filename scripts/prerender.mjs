@@ -635,7 +635,22 @@ async function run() {
   for (const r of resourcesContent) {
     const title = `${r.metaTitle} | ToptierProxy.com`;
     const body = `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">${r.title}</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">${r.intro}</p>` + r.sections.map(s => `<h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${s.heading}</h2>` + s.paragraphs.map(p => `<p style="margin-bottom:1rem">${p}</p>`).join("")).join("");
-    writeHtml(`/resources/${r.slug}`, title, r.metaDescription, body);
+    const toolSchema = r.tool
+      ? ({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          name: r.tool.name,
+          description: r.metaDescription,
+          url: `https://www.toptierproxy.com/resources/${r.slug}`,
+          applicationCategory: r.tool.category,
+          operatingSystem: "Any",
+          browserRequirements: "Requires JavaScript",
+          offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+          publisher: { "@type": "Organization", name: "ToptierProxy.com", url: "https://www.toptierproxy.com" },
+        })
+      : undefined;
+    writeHtml(`/resources/${r.slug}`, title, r.metaDescription, body, undefined, toolSchema);
+
     count++;
   }
   console.log(` ${resourcesContent.length} resource pages`);
