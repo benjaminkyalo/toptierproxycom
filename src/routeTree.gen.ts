@@ -42,7 +42,7 @@ import { Route as TeamSlugRouteImport } from './routes/team.$slug'
 import { Route as SponsorsFormRouteImport } from './routes/sponsors_.form'
 import { Route as SponsorsCheckoutRouteImport } from './routes/sponsors_.checkout'
 import { Route as ReviewsSlugRouteImport } from './routes/reviews.$slug'
-import { Route as ResourcesSlugRouteImport } from './routes/resources.$slug'
+import { Route as ResourcesSlugRouteImport } from './routes/resources_.$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
 import { Route as GoSlugRouteImport } from './routes/go.$slug'
 import { Route as CountriesSlugRouteImport } from './routes/countries.$slug'
@@ -216,9 +216,9 @@ const ReviewsSlugRoute = ReviewsSlugRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const ResourcesSlugRoute = ResourcesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ResourcesRoute,
+  id: '/resources_/$slug',
+  path: '/resources/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const GuidesSlugRoute = GuidesSlugRouteImport.update({
   id: '/guides/$slug',
@@ -265,7 +265,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/proxy-benchmark-report': typeof ProxyBenchmarkReportRoute
   '/proxy-seller-review': typeof ProxySellerReviewRoute
-  '/resources': typeof ResourcesRouteWithChildren
+  '/resources': typeof ResourcesRoute
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
   '/sponsors': typeof SponsorsRoute
@@ -307,7 +307,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/proxy-benchmark-report': typeof ProxyBenchmarkReportRoute
   '/proxy-seller-review': typeof ProxySellerReviewRoute
-  '/resources': typeof ResourcesRouteWithChildren
+  '/resources': typeof ResourcesRoute
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
   '/sponsors': typeof SponsorsRoute
@@ -350,7 +350,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/proxy-benchmark-report': typeof ProxyBenchmarkReportRoute
   '/proxy-seller-review': typeof ProxySellerReviewRoute
-  '/resources': typeof ResourcesRouteWithChildren
+  '/resources': typeof ResourcesRoute
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
   '/sponsors': typeof SponsorsRoute
@@ -364,7 +364,7 @@ export interface FileRoutesById {
   '/countries/$slug': typeof CountriesSlugRoute
   '/go/$slug': typeof GoSlugRoute
   '/guides/$slug': typeof GuidesSlugRoute
-  '/resources/$slug': typeof ResourcesSlugRoute
+  '/resources_/$slug': typeof ResourcesSlugRoute
   '/reviews/$slug': typeof ReviewsSlugRoute
   '/sponsors_/checkout': typeof SponsorsCheckoutRoute
   '/sponsors_/form': typeof SponsorsFormRoute
@@ -492,7 +492,7 @@ export interface FileRouteTypes {
     | '/countries/$slug'
     | '/go/$slug'
     | '/guides/$slug'
-    | '/resources/$slug'
+    | '/resources_/$slug'
     | '/reviews/$slug'
     | '/sponsors_/checkout'
     | '/sponsors_/form'
@@ -521,7 +521,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ProxyBenchmarkReportRoute: typeof ProxyBenchmarkReportRoute
   ProxySellerReviewRoute: typeof ProxySellerReviewRoute
-  ResourcesRoute: typeof ResourcesRouteWithChildren
+  ResourcesRoute: typeof ResourcesRoute
   ScraperApiRoute: typeof ScraperApiRoute
   ScrapyReviewRoute: typeof ScrapyReviewRoute
   SponsorsRoute: typeof SponsorsRoute
@@ -535,6 +535,7 @@ export interface RootRouteChildren {
   CountriesSlugRoute: typeof CountriesSlugRoute
   GoSlugRoute: typeof GoSlugRoute
   GuidesSlugRoute: typeof GuidesSlugRoute
+  ResourcesSlugRoute: typeof ResourcesSlugRoute
   ReviewsSlugRoute: typeof ReviewsSlugRoute
   SponsorsCheckoutRoute: typeof SponsorsCheckoutRoute
   SponsorsFormRoute: typeof SponsorsFormRoute
@@ -782,12 +783,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReviewsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/resources/$slug': {
-      id: '/resources/$slug'
-      path: '/$slug'
+    '/resources_/$slug': {
+      id: '/resources_/$slug'
+      path: '/resources/$slug'
       fullPath: '/resources/$slug'
       preLoaderRoute: typeof ResourcesSlugRouteImport
-      parentRoute: typeof ResourcesRoute
+      parentRoute: typeof rootRouteImport
     }
     '/guides/$slug': {
       id: '/guides/$slug'
@@ -834,18 +835,6 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface ResourcesRouteChildren {
-  ResourcesSlugRoute: typeof ResourcesSlugRoute
-}
-
-const ResourcesRouteChildren: ResourcesRouteChildren = {
-  ResourcesSlugRoute: ResourcesSlugRoute,
-}
-
-const ResourcesRouteWithChildren = ResourcesRoute._addFileChildren(
-  ResourcesRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R2captchaReviewRoute: R2captchaReviewRoute,
@@ -860,7 +849,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ProxyBenchmarkReportRoute: ProxyBenchmarkReportRoute,
   ProxySellerReviewRoute: ProxySellerReviewRoute,
-  ResourcesRoute: ResourcesRouteWithChildren,
+  ResourcesRoute: ResourcesRoute,
   ScraperApiRoute: ScraperApiRoute,
   ScrapyReviewRoute: ScrapyReviewRoute,
   SponsorsRoute: SponsorsRoute,
@@ -874,6 +863,7 @@ const rootRouteChildren: RootRouteChildren = {
   CountriesSlugRoute: CountriesSlugRoute,
   GoSlugRoute: GoSlugRoute,
   GuidesSlugRoute: GuidesSlugRoute,
+  ResourcesSlugRoute: ResourcesSlugRoute,
   ReviewsSlugRoute: ReviewsSlugRoute,
   SponsorsCheckoutRoute: SponsorsCheckoutRoute,
   SponsorsFormRoute: SponsorsFormRoute,
