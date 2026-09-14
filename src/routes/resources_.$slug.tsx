@@ -1,10 +1,13 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState } from "react";
 import { PageShell, Prose } from "@/components/page-shell";
 import { getResourceContent } from "@/data/resources-content";
 import { FingerprintChecker } from "@/components/tools/fingerprint-checker";
 import { WhatIsMyIp } from "@/components/tools/what-is-my-ip";
 import { UserAgentGenerator } from "@/components/tools/user-agent-generator";
+import { TrueCostCalculator } from "@/components/tools/true-cost-calculator";
+import { benchmarkDataset, speakablePage } from "@/lib/schema";
+import { benchmark, BENCHMARK_TEMPORAL, BENCHMARK_UPDATED } from "@/data/benchmark-q3-2026";
+
 
 export const Route = createFileRoute("/resources_/$slug")({
   loader: ({ params }) => {
@@ -26,31 +29,75 @@ export const Route = createFileRoute("/resources_/$slug")({
         { property: "og:type", content: resource.tool ? "website" : "article" },
       ],
       links: [{ rel: "canonical", href: url }],
-      scripts: resource.tool
-        ? [
-            {
-              type: "application/ld+json",
-              children: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "WebApplication",
-                name: resource.tool.name,
-                url,
-                description: resource.metaDescription,
-                applicationCategory: resource.tool.category,
-                operatingSystem: "Any",
-                browserRequirements: "Requires JavaScript",
-                isAccessibleForFree: true,
-                offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-                publisher: {
-                  "@type": "Organization",
-                  name: "ToptierProxy.com",
-                  url: "https://www.toptierproxy.com",
-                },
-              }),
-            },
-          ]
-        : undefined,
+      scripts: [
+        ...(resource.tool
+          ? [
+              {
+                type: "application/ld+json",
+                children: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "WebApplication",
+                  name: resource.tool.name,
+                  url,
+                  description: resource.metaDescription,
+                  applicationCategory: resource.tool.category,
+                  operatingSystem: "Any",
+                  browserRequirements: "Requires JavaScript",
+                  isAccessibleForFree: true,
+                  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+                  publisher: {
+                    "@type": "Organization",
+                    name: "ToptierProxy.com",
+                    url: "https://www.toptierproxy.com",
+                  },
+                }),
+              },
+            ]
+          : []),
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(
+            speakablePage({
+              url,
+              name: resource.metaTitle,
+              description: resource.metaDescription,
+              dateModified: BENCHMARK_UPDATED,
+            }),
+          ),
+        },
+        ...(resource.slug === "cost-calculator"
+          ? [
+              {
+                type: "application/ld+json",
+                children: JSON.stringify(
+                  benchmarkDataset({
+                    url,
+                    name: "Proxy true cost per 1,000 successful requests, by provider",
+                    description:
+                      "Block-rate adjusted proxy cost model combining published per-GB pricing with first-party measured success rates against Cloudflare, DataDome, PerimeterX and Akamai protected targets.",
+                    temporalCoverage: BENCHMARK_TEMPORAL,
+                    dateModified: BENCHMARK_UPDATED,
+                    rowCount: benchmark.length,
+                    keywords: [
+                      "proxy cost calculator",
+                      "cost per successful request",
+                      "residential proxy pricing 2026",
+                      "proxy block rate",
+                    ],
+                    variableMeasured: [
+                      { name: "Price per GB", unitText: "USD" },
+                      { name: "Success rate", unitText: "PERCENT", minValue: 0, maxValue: 100 },
+                      { name: "True cost per 1,000 successful requests", unitText: "USD" },
+                      { name: "Median time to first byte", unitText: "ms" },
+                    ],
+                  }),
+                ),
+              },
+            ]
+          : []),
+      ],
     };
+
   },
   notFoundComponent: () => (
     <PageShell title="Resource not found">
@@ -59,47 +106,6 @@ export const Route = createFileRoute("/resources_/$slug")({
   ),
   component: ResourcePage,
 });
-
-function CostCalculator() {
-  const [gb, setGb] = useState(50);
-  const [price, setPrice] = useState(4);
-  const monthly = (gb * price).toFixed(2);
-  return (
-    <div className="mt-6 rounded-md border border-border bg-card p-6">
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block">
-          <span className="text-sm font-semibold text-foreground">Estimated GB per month</span>
-          <input
-            type="number"
-            min={1}
-            value={gb}
-            onChange={(e) => setGb(Number(e.target.value) || 0)}
-            className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
-          />
-        </label>
-        <label className="block">
-          <span className="text-sm font-semibold text-foreground">Price per GB ($)</span>
-          <input
-            type="number"
-            min={0}
-            step={0.1}
-            value={price}
-            onChange={(e) => setPrice(Number(e.target.value) || 0)}
-            className="mt-1 w-full rounded-md border border-border bg-background px-3 py-2 text-sm"
-          />
-        </label>
-      </div>
-      <div className="mt-5 rounded-md bg-primary/10 p-4 text-center">
-        <div className="text-xs font-semibold text-foreground/60">Estimated monthly cost</div>
-        <div className="mt-1 text-3xl font-extrabold text-primary">${monthly}</div>
-      </div>
-      <p className="mt-4 text-xs text-foreground/60">
-        Real 2026 residential pricing ranges from roughly $1.75/GB (IPRoyal) to $8/GB (Bright Data, Oxylabs pay-as-you-go). Datacenter and ISP proxies are typically priced per IP instead of per GB - see our{" "}
-        <Link to="/resources/$slug" params={{ slug: "proxy-type-cheatsheet" }} className="text-primary hover:underline">proxy type cheatsheet</Link> for those numbers.
-      </p>
-    </div>
-  );
-}
 
 function ResourcePage() {
   const { resource } = Route.useLoaderData() as {
@@ -111,10 +117,11 @@ function ResourcePage() {
       intro={resource.intro}
       breadcrumb={[{ to: "/", label: "Home" }, { to: "/resources", label: "Resources" }]}
     >
-      {resource.slug === "cost-calculator" && <CostCalculator />}
+      {resource.slug === "cost-calculator" && <TrueCostCalculator />}
       {resource.slug === "fingerprint-checker" && <FingerprintChecker />}
       {resource.slug === "what-is-my-ip" && <WhatIsMyIp />}
       {resource.slug === "user-agent-generator" && <UserAgentGenerator />}
+
       <Prose>
         {resource.sections.map((s) => (
           <div key={s.heading}>

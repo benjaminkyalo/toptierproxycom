@@ -12,18 +12,20 @@ export interface ResourceEntry {
 export const resourcesContent: ResourceEntry[] = [
   {
     slug: "cost-calculator",
-    title: "Bandwidth Cost Calculator - Estimate Your Monthly Proxy Spend",
-    metaTitle: "Proxy Cost Calculator 2026 - Estimate Monthly Bandwidth Spend",
-    metaDescription: "Free proxy bandwidth cost calculator - estimate your monthly proxy spend from GB usage and real 2026 provider pricing, from $1.75/GB to $8/GB.",
-    intro: "Estimate your monthly proxy bandwidth cost below, then compare against real 2026 provider pricing.",
+    title: "Proxy Cost Calculator - True Cost Per 1,000 Successful Requests",
+    metaTitle: "Proxy Cost Calculator - True Cost After Blocked Requests",
+    metaDescription: "Free proxy cost calculator using our own measured block rates - see the real monthly cost per provider once failed requests are priced in, not the sticker per-GB rate.",
+    intro: "Enter your monthly volume and target difficulty. We price it against our own measured success rates for 12 providers, so blocked requests are counted as money spent - because your provider bills them either way.",
+    tool: { name: "Proxy True Cost Calculator", category: "BusinessApplication" },
     sections: [
-      { heading: "How proxy pricing actually works", paragraphs: [
-        "Residential and mobile proxies are almost always billed per gigabyte of bandwidth used, not per request or per IP. Datacenter and ISP (static residential) proxies are typically billed per IP instead, since you are renting a specific address rather than paying for rotating bandwidth.",
-        "The calculator above uses a per-GB model, since that covers the majority of scraping and automation use cases. If your work is account management or long-session automation on ISP proxies, check our proxy type cheatsheet for per-IP pricing instead.",
+      { heading: "Why per-GB pricing lies to you", paragraphs: [
+        "Residential and mobile proxies are billed per gigabyte of bandwidth used, and that meter runs on blocked responses too. A provider at $1.24/GB with a 76% success rate on your target moves more bytes to deliver the same 100,000 usable pages than a provider at $2.71/GB with 93% success - and the cheap sticker price can end up the more expensive invoice.",
+        "The only number that lets you compare providers honestly is cost per 1,000 successful requests on the protection your target actually runs. That is what the calculator above computes, using published entry pricing and the success rates we measured ourselves rather than rates providers quote in marketing.",
       ] },
       { heading: "Real 2026 pricing benchmarks", paragraphs: [
         "Pay-as-you-go residential pricing in 2026 ranges from roughly $1.75/GB (IPRoyal) at the budget end to $8/GB (Bright Data, Oxylabs) at the premium, enterprise-support end. Committed-volume plans bring the higher end down substantially - often to $2.50-5/GB at real production scale.",
         "Datacenter proxies are far cheaper per unit, typically $0.50-2 per IP per month, but are blocked far more often on protected targets, so the true cost-per-successful-request can end up higher than a pricier residential plan once retries are factored in.",
+
       ] },
     ],
   },
