@@ -634,7 +634,45 @@ async function run() {
   // Resource pages
   for (const r of resourcesContent) {
     const title = `${r.metaTitle} | ToptierProxy.com`;
-    const body = `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">${r.title}</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">${r.intro}</p>` + r.sections.map(s => `<h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${s.heading}</h2>` + s.paragraphs.map(p => `<p style="margin-bottom:1rem">${p}</p>`).join("")).join("");
+    let body = `<h1 style="font-size:2rem;font-weight:800;color:#1e3a5f;margin-bottom:.5rem">${r.title}</h1><p style="font-size:1.1rem;margin-bottom:1.5rem">${r.intro}</p>` + r.sections.map(s => `<h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">${s.heading}</h2>` + s.paragraphs.map(p => `<p style="margin-bottom:1rem">${p}</p>`).join("")).join("");
+    const extraSchema = [];
+    if (r.slug === "cost-calculator") {
+      // Static reference scenario so non-JS crawlers and AI answer engines can
+      // read the actual numbers, not just the calculator UI.
+      const REQ = 100000, KB = 250;
+      const rows = bench.benchmark
+        .map((b) => {
+          const price = providers.find((p) => p.slug === b.slug)?.startingPriceGB;
+          if (!price) return null;
+          const success = bench.meanSuccess(b);
+          const gb = ((REQ / (success / 100)) * KB) / 1048576;
+          const cost = gb * price;
+          return { name: b.name, slug: b.slug, price, success, gb, cost, per1k: cost / (REQ / 1000), p50: b.p50 };
+        })
+        .filter(Boolean)
+        .sort((a, b) => a.cost - b.cost);
+      body += `<h2 style="font-size:1.4rem;font-weight:700;color:#1e3a5f;margin-top:2rem">Reference scenario: 100,000 successful requests per month, 250 KB average response</h2>
+      <p class="tt-speakable">At 100,000 successful requests a month on mixed anti-bot protection, ${rows[0].name} is the cheapest provider in real terms at $${rows[0].cost.toFixed(2)} per month ($${rows[0].per1k.toFixed(2)} per 1,000 successful requests at a measured ${rows[0].success.toFixed(1)}% success rate), because blocked requests are billed as bandwidth even though they return no data.</p>
+      <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem"><thead><tr style="background:#1e3a5f;color:#fff"><th style="padding:.5rem;text-align:left">Provider</th><th style="padding:.5rem">$/GB</th><th style="padding:.5rem">Measured success</th><th style="padding:.5rem">GB billed</th><th style="padding:.5rem">True monthly cost</th><th style="padding:.5rem">Per 1,000 successful</th><th style="padding:.5rem">Median TTFB</th></tr></thead><tbody>${rows.map((x) => `<tr><td style="padding:.5rem;border-bottom:1px solid #e5e7eb"><a href="${SITE}/reviews/${x.slug}" style="color:#2563eb">${x.name}</a></td><td style="padding:.5rem;border-bottom:1px solid #e5e7eb;text-align:center">$${x.price.toFixed(2)}</td><td style="padding:.5rem;border-bottom:1px solid #e5e7eb;text-align:center">${x.success.toFixed(1)}%</td><td style="padding:.5rem;border-bottom:1px solid #e5e7eb;text-align:center">${x.gb.toFixed(1)}</td><td style="padding:.5rem;border-bottom:1px solid #e5e7eb;text-align:center">$${x.cost.toFixed(2)}</td><td style="padding:.5rem;border-bottom:1px solid #e5e7eb;text-align:center">$${x.per1k.toFixed(2)}</td><td style="padding:.5rem;border-bottom:1px solid #e5e7eb;text-align:center">${x.p50} ms</td></tr>`).join("")}</tbody></table>
+      <p>Success rates are our own measurements from the <a href="${SITE}/proxy-benchmark-report" style="color:#2563eb">${bench.BENCHMARK_CYCLE} Proxy Benchmark Report</a> (${bench.BENCHMARK_WINDOW}); methodology at <a href="${SITE}/how-we-test" style="color:#2563eb">how we test</a>. Per-GB rates are published entry pricing, so committed-volume plans land lower.</p>`;
+      extraSchema.push(
+        benchmarkDataset({
+          url: `${SITE}/resources/cost-calculator`,
+          name: "Proxy true cost per 1,000 successful requests, by provider",
+          description: "Block-rate adjusted proxy cost model combining published per-GB pricing with first-party measured success rates against Cloudflare, DataDome, PerimeterX and Akamai protected targets.",
+          rowCount: rows.length,
+          temporalCoverage: bench.BENCHMARK_TEMPORAL,
+          dateModified: bench.BENCHMARK_UPDATED,
+          keywords: ["proxy cost calculator", "cost per successful request", "residential proxy pricing 2026", "proxy block rate"],
+          variableMeasured: [
+            { name: "Price per GB", unitText: "USD" },
+            { name: "Success rate", unitText: "PERCENT", minValue: 0, maxValue: 100 },
+            { name: "True cost per 1,000 successful requests", unitText: "USD" },
+            { name: "Median time to first byte", unitText: "ms" },
+          ],
+        }),
+      );
+    }
     const toolSchema = r.tool
       ? ({
           "@context": "https://schema.org",
@@ -649,7 +687,18 @@ async function run() {
           publisher: { "@type": "Organization", name: "ToptierProxy.com", url: "https://www.toptierproxy.com" },
         })
       : undefined;
-    writeHtml(`/resources/${r.slug}`, title, r.metaDescription, body, undefined, toolSchema);
+    const resourceSchema = [
+      ...(toolSchema ? [toolSchema] : []),
+      speakablePage({
+        url: `${SITE}/resources/${r.slug}`,
+        name: r.metaTitle,
+        description: r.metaDescription,
+        dateModified: bench.BENCHMARK_UPDATED,
+      }),
+      ...extraSchema,
+    ];
+    writeHtml(`/resources/${r.slug}`, title, r.metaDescription, body, undefined, resourceSchema);
+
 
     count++;
   }
