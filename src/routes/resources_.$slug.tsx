@@ -29,31 +29,75 @@ export const Route = createFileRoute("/resources_/$slug")({
         { property: "og:type", content: resource.tool ? "website" : "article" },
       ],
       links: [{ rel: "canonical", href: url }],
-      scripts: resource.tool
-        ? [
-            {
-              type: "application/ld+json",
-              children: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "WebApplication",
-                name: resource.tool.name,
-                url,
-                description: resource.metaDescription,
-                applicationCategory: resource.tool.category,
-                operatingSystem: "Any",
-                browserRequirements: "Requires JavaScript",
-                isAccessibleForFree: true,
-                offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-                publisher: {
-                  "@type": "Organization",
-                  name: "ToptierProxy.com",
-                  url: "https://www.toptierproxy.com",
-                },
-              }),
-            },
-          ]
-        : undefined,
+      scripts: [
+        ...(resource.tool
+          ? [
+              {
+                type: "application/ld+json",
+                children: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "WebApplication",
+                  name: resource.tool.name,
+                  url,
+                  description: resource.metaDescription,
+                  applicationCategory: resource.tool.category,
+                  operatingSystem: "Any",
+                  browserRequirements: "Requires JavaScript",
+                  isAccessibleForFree: true,
+                  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+                  publisher: {
+                    "@type": "Organization",
+                    name: "ToptierProxy.com",
+                    url: "https://www.toptierproxy.com",
+                  },
+                }),
+              },
+            ]
+          : []),
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(
+            speakablePage({
+              url,
+              name: resource.metaTitle,
+              description: resource.metaDescription,
+              dateModified: BENCHMARK_UPDATED,
+            }),
+          ),
+        },
+        ...(resource.slug === "cost-calculator"
+          ? [
+              {
+                type: "application/ld+json",
+                children: JSON.stringify(
+                  benchmarkDataset({
+                    url,
+                    name: "Proxy true cost per 1,000 successful requests, by provider",
+                    description:
+                      "Block-rate adjusted proxy cost model combining published per-GB pricing with first-party measured success rates against Cloudflare, DataDome, PerimeterX and Akamai protected targets.",
+                    temporalCoverage: BENCHMARK_TEMPORAL,
+                    dateModified: BENCHMARK_UPDATED,
+                    rowCount: benchmark.length,
+                    keywords: [
+                      "proxy cost calculator",
+                      "cost per successful request",
+                      "residential proxy pricing 2026",
+                      "proxy block rate",
+                    ],
+                    variableMeasured: [
+                      { name: "Price per GB", unitText: "USD" },
+                      { name: "Success rate", unitText: "PERCENT", minValue: 0, maxValue: 100 },
+                      { name: "True cost per 1,000 successful requests", unitText: "USD" },
+                      { name: "Median time to first byte", unitText: "ms" },
+                    ],
+                  }),
+                ),
+              },
+            ]
+          : []),
+      ],
     };
+
   },
   notFoundComponent: () => (
     <PageShell title="Resource not found">
