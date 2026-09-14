@@ -1,10 +1,13 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useState } from "react";
 import { PageShell, Prose } from "@/components/page-shell";
 import { getResourceContent } from "@/data/resources-content";
 import { FingerprintChecker } from "@/components/tools/fingerprint-checker";
 import { WhatIsMyIp } from "@/components/tools/what-is-my-ip";
 import { UserAgentGenerator } from "@/components/tools/user-agent-generator";
+import { TrueCostCalculator } from "@/components/tools/true-cost-calculator";
+import { benchmarkDataset, speakablePage } from "@/lib/schema";
+import { benchmark, BENCHMARK_TEMPORAL, BENCHMARK_UPDATED } from "@/data/benchmark-q3-2026";
+
 
 export const Route = createFileRoute("/resources_/$slug")({
   loader: ({ params }) => {
