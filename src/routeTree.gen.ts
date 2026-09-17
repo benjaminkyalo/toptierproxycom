@@ -18,6 +18,7 @@ import { Route as SponsorsRouteImport } from './routes/sponsors'
 import { Route as ScrapyReviewRouteImport } from './routes/scrapy-review'
 import { Route as ScraperApiRouteImport } from './routes/scraper-api'
 import { Route as ResourcesRouteImport } from './routes/resources'
+import { Route as ProxysIoReviewRouteImport } from './routes/proxys-io-review'
 import { Route as ProxySellerReviewRouteImport } from './routes/proxy-seller-review'
 import { Route as ProxyBenchmarkReportRouteImport } from './routes/proxy-benchmark-report'
 import { Route as PrivacyRouteImport } from './routes/privacy'
@@ -93,6 +94,11 @@ const ScraperApiRoute = ScraperApiRouteImport.update({
 const ResourcesRoute = ResourcesRouteImport.update({
   id: '/resources',
   path: '/resources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProxysIoReviewRoute = ProxysIoReviewRouteImport.update({
+  id: '/proxys-io-review',
+  path: '/proxys-io-review',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProxySellerReviewRoute = ProxySellerReviewRouteImport.update({
@@ -265,6 +271,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/proxy-benchmark-report': typeof ProxyBenchmarkReportRoute
   '/proxy-seller-review': typeof ProxySellerReviewRoute
+  '/proxys-io-review': typeof ProxysIoReviewRoute
   '/resources': typeof ResourcesRoute
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
@@ -307,6 +314,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/proxy-benchmark-report': typeof ProxyBenchmarkReportRoute
   '/proxy-seller-review': typeof ProxySellerReviewRoute
+  '/proxys-io-review': typeof ProxysIoReviewRoute
   '/resources': typeof ResourcesRoute
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
@@ -350,6 +358,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/proxy-benchmark-report': typeof ProxyBenchmarkReportRoute
   '/proxy-seller-review': typeof ProxySellerReviewRoute
+  '/proxys-io-review': typeof ProxysIoReviewRoute
   '/resources': typeof ResourcesRoute
   '/scraper-api': typeof ScraperApiRoute
   '/scrapy-review': typeof ScrapyReviewRoute
@@ -394,6 +403,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/proxy-benchmark-report'
     | '/proxy-seller-review'
+    | '/proxys-io-review'
     | '/resources'
     | '/scraper-api'
     | '/scrapy-review'
@@ -436,6 +446,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/proxy-benchmark-report'
     | '/proxy-seller-review'
+    | '/proxys-io-review'
     | '/resources'
     | '/scraper-api'
     | '/scrapy-review'
@@ -478,6 +489,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/proxy-benchmark-report'
     | '/proxy-seller-review'
+    | '/proxys-io-review'
     | '/resources'
     | '/scraper-api'
     | '/scrapy-review'
@@ -521,6 +533,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ProxyBenchmarkReportRoute: typeof ProxyBenchmarkReportRoute
   ProxySellerReviewRoute: typeof ProxySellerReviewRoute
+  ProxysIoReviewRoute: typeof ProxysIoReviewRoute
   ResourcesRoute: typeof ResourcesRoute
   ScraperApiRoute: typeof ScraperApiRoute
   ScrapyReviewRoute: typeof ScrapyReviewRoute
@@ -613,6 +626,13 @@ declare module '@tanstack/react-router' {
       path: '/resources'
       fullPath: '/resources'
       preLoaderRoute: typeof ResourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/proxys-io-review': {
+      id: '/proxys-io-review'
+      path: '/proxys-io-review'
+      fullPath: '/proxys-io-review'
+      preLoaderRoute: typeof ProxysIoReviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/proxy-seller-review': {
@@ -849,6 +869,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ProxyBenchmarkReportRoute: ProxyBenchmarkReportRoute,
   ProxySellerReviewRoute: ProxySellerReviewRoute,
+  ProxysIoReviewRoute: ProxysIoReviewRoute,
   ResourcesRoute: ResourcesRoute,
   ScraperApiRoute: ScraperApiRoute,
   ScrapyReviewRoute: ScrapyReviewRoute,
