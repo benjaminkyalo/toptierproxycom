@@ -356,6 +356,13 @@ function HomePage() {
                 <span className="text-sm font-semibold text-foreground">{p.name} Review</span>
               </Link>
             ))}
+            <a
+              href="/proxys-io-review"
+              className="flex h-44 flex-col items-center justify-center gap-4 rounded-md bg-card px-4 py-6 text-center shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover"
+            >
+              <ProviderLogo provider={{ slug: "proxys-io", name: "PROXYS.IO" }} size="lg" className="!h-24 !w-24" />
+              <span className="text-sm font-semibold text-foreground">PROXYS.IO Review</span>
+            </a>
           </div>
         </div>
       </section>
