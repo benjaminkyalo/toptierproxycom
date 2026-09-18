@@ -72,6 +72,7 @@ const activeSponsors = [
   { name: "Thordata", slug: "thordata", slot: "sidebar" },
   { name: "Proxy-Seller", slug: "proxy-seller", slot: "sidebar" },
   { name: "Live Proxies", slug: "live-proxies", slot: "sidebar" },
+  { name: "PROXYS.IO", slug: "proxys-io", slot: "review page" },
 ];
 
 const inlineLink =
