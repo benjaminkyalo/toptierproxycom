@@ -34,6 +34,8 @@ const RAW_LOGO_URL: Record<string, string> = {
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725876/nibleway_logo_wddvm2_aqsi2z.png",
   "proxy-cheap":
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725875/proxycheap_logo_jl5ucv_pnghvr.png",
+  "proxys-io":
+    "https://res.cloudinary.com/dkcqakosa/image/upload/v1789525867/logo_gsacnb.png",
   "infatica":
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1777725875/infatica_logo_xxzvgj_qxk5vg.jpg",
 };

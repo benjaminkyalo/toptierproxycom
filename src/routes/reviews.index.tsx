@@ -45,6 +45,16 @@ const STANDALONE_REVIEWS: {
     facts: ["From $1.3/GB", "220+ locations", "IPv4 · IPv6 · ISP · mobile"],
   },
   {
+    to: "/proxys-io-review",
+    slug: "proxys-io",
+    name: "PROXYS.IO",
+    initials: "PX",
+    rating: 4.5,
+    description:
+      "Residential rotating from $1.50/GB across 100M+ IPs in 195 countries, plus per-address IPv4, IPv6, ISP and dedicated mobile plans. Use code HEAT_RES for 35% off residential traffic.",
+    facts: ["From $1.50/GB", "100M+ IPs · 195 countries", "HTTP · HTTPS · SOCKS5"],
+  },
+  {
     to: "/gologin-review",
     slug: "gologin",
     name: "GoLogin",
