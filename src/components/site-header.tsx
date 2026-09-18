@@ -15,6 +15,7 @@ const reviewItems: DropItem[] = [
   { to: "/thordata-review", label: "Thordata Review" },
   { to: "/proxy-seller-review", label: "Proxy-Seller Review" },
   { to: "/live-proxies-review", label: "Live Proxies Review" },
+  { to: "/proxys-io-review", label: "PROXYS.IO Review" },
 
 ];
 

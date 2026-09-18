@@ -15,6 +15,7 @@ const columns: Column[] = [
     items: [
       { label: "Proxy-Seller Review", href: "/proxy-seller-review" },
       { label: "Live Proxies Review", href: "/live-proxies-review" },
+      { label: "PROXYS.IO Review", href: "/proxys-io-review" },
       { label: "GoLogin Review", href: "/gologin-review" },
       { label: "Multilogin Review", href: "/multilogin-review" },
       { label: "2Captcha Review", href: "/2captcha-review" },

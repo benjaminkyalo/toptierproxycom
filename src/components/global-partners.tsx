@@ -6,6 +6,7 @@ const partners: Partner[] = [
   { slug: "thordata", name: "Thordata", description: "Global residential network", href: "https://dashboard.thordata.com/register?invitation_code=FGOCHJZN" },
   { slug: "live-proxies", name: "Live Proxies", description: "Private rotating residential", href: "https://liveproxies.io/" },
   { slug: "proxy-seller", name: "Proxy-Seller", description: "ISP, mobile & datacenter", href: "https://proxy-seller.com/?partner=4PB3INBLBLHU1G" },
+  { slug: "proxys-io", name: "PROXYS.IO", description: "Residential from $1.50/GB", href: "https://proxys.io/?refid=389543" },
   { slug: "bright-data", name: "Bright Data", description: "Enterprise proxy leader", href: "https://get.brightdata.com/68a0yf9mr2cl" },
   { slug: "oxylabs", name: "Oxylabs", description: "Premium scraping APIs", href: "https://oxylabs.hasoffers.com/signup/2192" },
   { slug: "decodo", name: "Decodo", description: "Affordable premium proxies", href: "https://decodo.com/?refcode=toptierproxy" },
