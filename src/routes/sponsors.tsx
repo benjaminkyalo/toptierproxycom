@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Check, ChevronDown } from "lucide-react";
+import { Check, ChevronDown, ChevronRight, Plus } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { PromoBanner } from "@/components/promo-banner";
 import { SiteFooter } from "@/components/site-footer";
 import { ContextualLinkHub } from "@/components/related-links";
 import { ProviderLogo } from "@/components/provider-logo";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/sponsors")({
   head: () => {
@@ -73,6 +74,13 @@ const activeSponsors = [
   { name: "Proxy-Seller", slug: "proxy-seller", slot: "sidebar" },
   { name: "Live Proxies", slug: "live-proxies", slot: "sidebar" },
   { name: "PROXYS.IO", slug: "proxys-io", slot: "review page" },
+  { name: "Floppydata", slug: "floppydata", slot: "sponsor" },
+  { name: "NodeMaven", slug: "nodemaven", slot: "sponsor" },
+];
+
+const featuredSponsors = [
+  { name: "Floppydata", slug: "floppydata", href: "https://floppydata.com/" },
+  { name: "NodeMaven", slug: "nodemaven", href: "https://nodemaven.com/" },
 ];
 
 const inlineLink =
@@ -217,6 +225,32 @@ function SponsorsPage() {
               Get your product in front of thousands of developers, SEO teams, data engineers and proxy buyers every month.
             </p>
             <p className="mt-2 text-sm font-semibold text-primary">Currently, 1 slot is available!</p>
+            <div aria-label="Featured sponsors" className="mx-auto mt-5 max-w-md">
+              <div className="grid grid-cols-3 gap-3">
+                <Button asChild variant="outline" className="h-20 rounded-lg border-2 border-dashed bg-transparent p-0 text-muted-foreground">
+                  <Link to="/contact" aria-label="Enquire about the available sponsor slot" title="Available sponsor slot">
+                    <Plus className="h-5 w-5" />
+                  </Link>
+                </Button>
+                {featuredSponsors.map((s) => (
+                  <Button key={s.slug} asChild variant="secondary" className="h-20 min-w-0 rounded-md p-2 hover:ring-2 hover:ring-primary">
+                    <a href={s.href} target="_blank" rel="sponsored nofollow noopener noreferrer" aria-label={`Visit ${s.name}`} title={s.name}>
+                      <ProviderLogo provider={s} size="md" eager className="!h-full !w-full" />
+                    </a>
+                  </Button>
+                ))}
+              </div>
+              <div className="mt-3 grid grid-cols-2 gap-3">
+                {featuredSponsors.map((s) => (
+                  <Button key={s.slug} asChild variant="outline" size="sm" className="h-auto min-h-9 min-w-0 px-2 py-2 text-[11px]">
+                    <a href={s.href} target="_blank" rel="sponsored nofollow noopener noreferrer">
+                      <span className="min-w-0 whitespace-normal">More about {s.name}</span>
+                      <ChevronRight className="h-3.5 w-3.5 shrink-0" />
+                    </a>
+                  </Button>
+                ))}
+              </div>
+            </div>
           </header>
 
           {/* Body */}
