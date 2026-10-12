@@ -78,9 +78,7 @@ export function ProviderLogo({
   eager?: boolean;
 }) {
   const url = LOGO_URL[provider.slug];
-  const backdrop = provider.slug === "nodemaven"
-    ? "!bg-logo-inverse rounded"
-    : provider.slug === "proxys-io" || provider.slug === "floppydata"
+  const backdrop = ["proxys-io", "floppydata", "nodemaven"].includes(provider.slug)
       ? "!bg-logo-surface rounded"
       : "";
 
