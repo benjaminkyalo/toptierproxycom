@@ -1,10 +1,14 @@
 import type { Provider } from "@/data/providers";
+import floppydataLogo from "@/assets/floppydata-logo.svg.asset.json";
+import nodemavenLogo from "@/assets/nodemaven-logo.svg.asset.json";
 
 // Real provider logos hosted on Cloudinary. We pipe each URL through
 // Cloudinary's `f_auto,q_auto` transform so the CDN serves AVIF/WebP at
 // the smallest weight the browser supports, plus a width cap matching the
 // rendered tile size for ultra-fast loading.
 const RAW_LOGO_URL: Record<string, string> = {
+  "floppydata": floppydataLogo.url,
+  "nodemaven": nodemavenLogo.url,
   "thordata":
     "https://res.cloudinary.com/dkcqakosa/image/upload/v1785274640/thordata_logo_e7qs2t.jpg",
   "live-proxies":
@@ -74,6 +78,11 @@ export function ProviderLogo({
   eager?: boolean;
 }) {
   const url = LOGO_URL[provider.slug];
+  const backdrop = provider.slug === "nodemaven"
+    ? "!bg-logo-inverse rounded"
+    : provider.slug === "proxys-io" || provider.slug === "floppydata"
+      ? "!bg-logo-surface rounded"
+      : "";
 
   if (url) {
     const w = SIZE_PX[size];
@@ -82,7 +91,7 @@ export function ProviderLogo({
     return (
       <span
         aria-label={`${provider.name} logo`}
-        className={`inline-flex shrink-0 items-center justify-center overflow-hidden bg-transparent ${SIZES[size]} ${className}`}
+        className={`inline-flex shrink-0 items-center justify-center overflow-hidden bg-transparent ${SIZES[size]} ${className} ${backdrop}`}
       >
         <img
           src={src1x}
