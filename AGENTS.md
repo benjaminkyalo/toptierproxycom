@@ -1,2 +1,3 @@
 # Project rules
 - Render sponsor and provider logos through the shared ProviderLogo component so assets and visibility treatments remain consistent across placements.
+- Keep focused blog refreshes in the final editorial expansion module, merging optional metadata with bodies and rendering sources in both live and prerendered articles; this preserves URLs and prevents stale batch content from overriding verified updates.

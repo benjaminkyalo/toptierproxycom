@@ -31,6 +31,7 @@ export const Route = createFileRoute("/blog/$slug")({
         { property: "og:url", content: `https://www.toptierproxy.com/blog/${post.slug}` },
         { property: "og:image", content: "https://www.toptierproxy.com/favicon.svg" },
         { property: "article:published_time", content: post.datePublished },
+        ...(post.dateModified ? [{ property: "article:modified_time", content: post.dateModified }] : []),
         { property: "article:author", content: post.author },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:image", content: "https://www.toptierproxy.com/favicon.svg" },
@@ -58,7 +59,8 @@ export const Route = createFileRoute("/blog/$slug")({
               author: { "@type": "Person", name: post.author },
               publisher: { "@type": "Organization", name: "ToptierProxy.com", url: "https://www.toptierproxy.com", logo: { "@type": "ImageObject", url: "https://www.toptierproxy.com/favicon.svg" } },
               datePublished: post.datePublished,
-              dateModified: post.datePublished,
+              dateModified: post.dateModified ?? post.datePublished,
+              ...(post.sources?.length ? { citation: post.sources.map((s) => s.url) } : {}),
               mainEntityOfPage: { "@type": "WebPage", "@id": `https://www.toptierproxy.com/blog/${post.slug}` },
               keywords: post.tags.join(", "),
             },
@@ -193,6 +195,7 @@ function BlogPostPage() {
           <div className="mb-8 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
             <span className="flex items-center gap-1"><User className="h-4 w-4" /> {post.author}</span>
             <span className="flex items-center gap-1"><Calendar className="h-4 w-4" /> {post.datePublished}</span>
+            {post.dateModified && <span className="text-muted-foreground">Updated {post.dateModified}</span>}
             <span className="flex items-center gap-1"><Clock className="h-4 w-4" /> {post.readTime}</span>
             <span className="rounded bg-primary/10 px-2 py-0.5 text-xs font-bold text-primary">{post.category}</span>
           </div>
@@ -308,7 +311,23 @@ function BlogPostPage() {
             </section>
           )}
 
-          <LongFormSection variant="blog" topic={post.title} />
+          {!post.omitLongForm && <LongFormSection variant="blog" topic={post.title} />}
+          {post.sources?.length ? (
+            <section className="mt-10 border-t border-border pt-6">
+              <h2 className="text-xl font-bold">Sources and further reading</h2>
+              <ul className="mt-4 space-y-3 text-sm">
+                {post.sources.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer" className="text-primary underline underline-offset-4">{source.label}</a></li>)}
+              </ul>
+            </section>
+          ) : null}
+          {post.relatedLinks?.length ? (
+            <section className="mt-8 border-t border-border pt-6">
+              <h2 className="text-xl font-bold">Put this guide into practice</h2>
+              <ul className="mt-4 space-y-3 text-sm">
+                {post.relatedLinks.map((link) => <li key={link.url}><a href={link.url} className="text-primary underline underline-offset-4">{link.label}</a></li>)}
+              </ul>
+            </section>
+          ) : null}
 
           <div className="mt-10 flex flex-wrap gap-2 border-t border-border pt-6">
             {post.tags.map((t) => (

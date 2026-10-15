@@ -10,6 +10,10 @@ export interface BlogPost {
   excerpt: string;
   author: string;
   datePublished: string;
+  dateModified?: string;
+  omitLongForm?: boolean;
+  sources?: { label: string; url: string }[];
+  relatedLinks?: { label: string; url: string }[];
   readTime: string;
   category: string;
   body: { heading: string; paragraphs: string[]; list?: string[] }[];
@@ -3164,6 +3168,7 @@ export const blogPosts: BlogPost[] = rawBlogPosts.map((p) => {
   if (!expansion) return p;
   return {
     ...p,
+    ...expansion,
     body: expansion.body,
     faq: expansion.faq ?? p.faq,
     readTime: expansion.readTime ?? p.readTime,
