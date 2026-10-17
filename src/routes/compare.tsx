@@ -4,6 +4,7 @@ import { speakablePage, benchmarkDataset } from "@/lib/schema";
 import { ProviderLogo } from "@/components/provider-logo";
 import { providers } from "@/data/providers";
 import { popularMatchups } from "@/data/matchups";
+import { comparisonSummaries } from "@/data/comparisons/catalog";
 import { Star, Check, Trophy, DollarSign, Globe2, Shield, Zap, Users, TrendingUp, HelpCircle } from "lucide-react";
 
 export const Route = createFileRoute("/compare")({
@@ -279,6 +280,12 @@ function ComparePage() {
       </section>
 
       {/* Pricing Reality Check */}
+      <section id="all-comparisons" className="mt-12 scroll-mt-40">
+        <h2 className="text-2xl font-bold">All 105 provider comparisons</h2>
+        <div className="mt-5 grid gap-x-6 gap-y-3 sm:grid-cols-2 lg:grid-cols-3">
+          {comparisonSummaries.map((article) => <Link key={article.slug} to="/vs/$matchup" params={{ matchup: article.slug }} className="border-b border-border py-3 text-sm font-semibold hover:text-primary">{article.title}</Link>)}
+        </div>
+      </section>
       <section className="mt-16">
         <h2 className="text-2xl font-bold">Pricing reality check — what you'll actually pay</h2>
         <p className="mt-2 text-muted-foreground">Headline "from $X/GB" pricing rarely matches your invoice. Here's how the tiers actually behave in 2026.</p>

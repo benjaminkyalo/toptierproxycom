@@ -32,6 +32,7 @@ async function run() {
   const { countries, allCityPairs } = await loadTs("src/data/countries.ts");
   const { useCases } = await loadTs("src/data/use-cases.ts");
   const { blogPosts } = await loadTs("src/data/blog.ts");
+  const { comparisonSummaries } = await loadTs("src/data/comparisons/catalog.ts");
   const { isCityTierA, isVsTierA } = await loadTs("src/data/canonical-policy.ts");
 
   // robots.txt — explicit allow list for AI answer engines + search crawlers.
@@ -76,12 +77,14 @@ async function run() {
     ...useCases.map((u) => ({ loc: `/use-cases/${u.slug}`, p: "0.8", c: "monthly" })),
     ...blogPosts.map((b) => ({ loc: `/blog/${b.slug}`, p: "0.8", c: "monthly" })),
   ];
+  const comparisonPaths = new Set(comparisonSummaries.map((entry) => `/vs/${entry.slug}`));
   for (let i = 0; i < providers.length; i++) {
     for (let j = i + 1; j < providers.length; j++) {
       if (!isVsTierA(providers[i].slug, providers[j].slug)) continue;
-      urls.push({ loc: `/vs/${providers[i].slug}-vs-${providers[j].slug}`, p: "0.5", c: "monthly" });
+      comparisonPaths.add(`/vs/${providers[i].slug}-vs-${providers[j].slug}`);
     }
   }
+  urls.push(...[...comparisonPaths].map((loc) => ({ loc, p: "0.7", c: "monthly" })));
   const body = urls
     .map((u) => `  <url><loc>${SITE}${u.loc}</loc><changefreq>${u.c}</changefreq><priority>${u.p}</priority></url>`)
     .join("\n");

@@ -6,18 +6,48 @@ import { LinkedParagraph } from "@/components/linked-paragraph";
 import { NetNutAlert } from "@/components/netnut-alert";
 import { Star, Check, X } from "lucide-react";
 import { vsCanonicalPath, isVsTierA } from "@/data/canonical-policy";
+import { getComparisonSummary } from "@/data/comparisons/catalog";
+import { loadComparisonArticle } from "@/data/comparisons/load-article";
+import { comparisonSchema } from "@/data/comparisons/publishing";
+import { ComparisonArticle } from "@/components/comparison-article";
 
 export const Route = createFileRoute("/vs/$matchup")({
-  loader: ({ params }) => {
+  loader: async ({ params }) => {
+    const summary = getComparisonSummary(params.matchup);
+    if (summary) {
+      const article = await loadComparisonArticle(summary.slug);
+      if (article) return { article, requestedPath: `/vs/${params.matchup}`, A: undefined, B: undefined };
+    }
     const [a, b] = params.matchup.split("-vs-");
     const A = getProvider(a);
     const B = getProvider(b);
     if (!A || !B) throw notFound();
-    return { A, B };
+    return { A, B, article: undefined, requestedPath: `/vs/${params.matchup}` };
   },
   head: ({ loaderData }) => {
     if (!loaderData) return {};
+    if (loaderData.article) {
+      const { article, requestedPath } = loaderData;
+      return {
+        meta: [
+          { title: `${article.seoTitle} | ToptierProxy.com` },
+          { name: "description", content: article.description },
+          { property: "og:title", content: article.seoTitle },
+          { property: "og:description", content: article.description },
+          { property: "og:type", content: "article" },
+          { property: "og:url", content: `https://www.toptierproxy.com${requestedPath}` },
+          { property: "og:site_name", content: "ToptierProxy.com" },
+          { property: "article:modified_time", content: article.dateModified },
+          { name: "twitter:card", content: "summary_large_image" },
+          { name: "keywords", content: article.keywords },
+          { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
+          { tagName: "link", rel: "canonical", href: `https://www.toptierproxy.com${requestedPath}` },
+        ],
+        scripts: comparisonSchema(article, requestedPath).map((node) => ({ type: "application/ld+json", children: JSON.stringify(node).replace(/</g, "\\u003c") })),
+      };
+    }
     const { A, B } = loaderData;
+    if (!A || !B) return {};
     const title = `${A.name} vs ${B.name} 2026 — Side-by-Side Comparison`;
     const url = `https://www.toptierproxy.com/vs/${A.slug}-vs-${B.slug}`;
     const description = `${A.name} vs ${B.name}: pricing, pool size, country coverage, success rates and verdict. Independent 2026 comparison.`;
@@ -49,7 +79,9 @@ export const Route = createFileRoute("/vs/$matchup")({
 });
 
 function VsPage() {
-  const { A, B } = Route.useLoaderData();
+  const { A, B, article } = Route.useLoaderData();
+  if (article) return <ComparisonArticle article={article} />;
+  if (!A || !B) return null;
   const winner = A.rating >= B.rating ? A : B;
 
   return (
