@@ -1,0 +1,299 @@
+{
+  "pdfSlug": "iproyal-vs-nimbleway",
+  "pageStart": 21,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Quick verdict",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "For raw residential proxies, IPRoyal is the clear choice: it is cheaper at small volumes, supports SOCKS5 (Nimble's proxies are HTTP/HTTPS only), publishes its pool size, and its traffic never expires. Nimble only makes sense if you want to stop running your own scraping stack and buy structured results instead: its SERP and e-commerce APIs, AI browser and 5,000-page free trial are aimed at that buyer. If you already have a scraper that works, Nimble's per-GB pricing is hard to justify."
+    },
+    {
+      "type": "paragraph",
+      "text": "IPRoyal and Nimble look like competitors because both sell residential proxies, but they are built for different buyers. IPRoyal sells raw proxy bandwidth cheaply and flexibly, with traffic that never expires. Nimble (Nimbleway) has become an AI-first web-data platform whose real products are its Nimble Browser, scraping APIs and managed data pipelines, with residential proxies as one ingredient. This comparison helps you decide whether you need cheap IPs to run your own scraper or a managed layer that returns data."
+    },
+    {
+      "type": "heading",
+      "text": "IPRoyal vs Nimble at a glance",
+      "level": 2
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "",
+          "IPRoyal",
+          "Nimble"
+        ],
+        [
+          "Residential pool (advertised)",
+          "32M+",
+          "Not published"
+        ],
+        [
+          "Countries",
+          "195",
+          "Worldwide"
+        ],
+        [
+          "Targeting",
+          "Country, state and city (ISP selection needs verification)",
+          "Country, state and city"
+        ],
+        [
+          "Protocols",
+          "HTTP, HTTPS, SOCKS5",
+          "HTTP, HTTPS"
+        ],
+        [
+          "Sessions",
+          "Rotating or sticky sessions from 1 second up to 7 days",
+          "Auto-rotation by default; sticky sessions available"
+        ],
+        [
+          "Entry price",
+          "$7/GB (1 GB subscription) or $7.35/GB pay-as-you-go",
+          "$8/GB on PAYG plan cards; developer docs list $5.30/GB"
+        ],
+        [
+          "Cost for 10 GB",
+          "$52.50 (10 GB subscription, $5.25/GB)",
+          "About $53 at the $5.30/GB docs rate ($80 at the $8 card rate)"
+        ],
+        [
+          "Cost for 100 GB",
+          "Shown in the dashboard; not published",
+          "About $530 at $5.30/GB"
+        ],
+        [
+          "Best published rate",
+          "$1.75/GB at 10 TB",
+          "$5.30/GB (larger credit packages; annual billing saves 15%)"
+        ],
+        [
+          "Billing model",
+          "Subscription (5% cheaper) or one-off PAYG",
+          "Credit packages, PAYG, and data-services contracts"
+        ],
+        [
+          "Unused traffic",
+          "Residential traffic does not expire under standard terms",
+          "Credits usable across Nimble products"
+        ],
+        [
+          "Trial",
+          "No general free trial; Enterprise trial for verified companies",
+          "Free trial of 5,000 web pages on its APIs"
+        ],
+        [
+          "Other products",
+          "ISP, datacenter, mobile, Web Unblocker",
+          "Web, SERP and e-commerce APIs, Nimble Browser, web search agents"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "IPRoyal in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "IPRoyal is a value-focused provider best known for residential traffic that never expires. You can buy a single gigabyte, use it over months, and top up when you need to, which suits irregular projects better than monthly allowances. The residential pool is advertised at 32M+ IPs across 195 countries with state and city targeting, and sticky sessions can be requested for up to seven days. IPRoyal also sells ISP, datacenter and mobile proxies and a Web Unblocker billed per successful request."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Residential traffic that does not expire; Sticky sessions up to 7 days; Can start with a single gigabyte; Several proxy types plus Web Unblocker in one account. Weak spots: Smaller pool than the enterprise networks; Headline $1.75/GB rate needs a 10 TB purchase; Mid-volume prices are not published."
+    },
+    {
+      "type": "heading",
+      "text": "Nimble in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimbleway, now usually just called Nimble, has moved from selling proxies to selling web data. Its residential proxies still exist as an infrastructure product, but the company's focus is its AI-driven Nimble Browser, scraping APIs priced per 1,000 URLs, and managed data pipelines. Nimble does not publish a residential pool size, and its proxy product is documented for HTTP and HTTPS rather than SOCKS5. Buyers who want raw bandwidth tend to find it expensive; buyers who want finished data find it convenient."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Strong managed APIs and an AI-driven browser; Unlimited concurrency on proxies; Credits shared across all Nimble products; Free 5,000-page API trial. Weak spots: No published pool size; HTTP/HTTPS only, no SOCKS5 on proxies; High per-GB price for raw residential traffic."
+    },
+    {
+      "type": "heading",
+      "text": "Pricing: IPRoyal vs Nimble",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "IPRoyal's residential subscription costs $7 for 1 GB, $11.90 for 2 GB and $52.50 for 10 GB ($5.25/GB); pay-as-you-go is 5% more ($7.35 for 1 GB). The advertised $1.75/GB rate applies only at 10 TB. Prices for custom volumes such as 25, 100 or 500 GB are calculated in the dashboard."
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble's plan cards list residential proxy traffic at $8/GB pay-as-you-go, falling through credit packages ($150 and $600 entry packages) toward $5.30/GB; its current developer documentation lists $5.30/GB for residential traffic without a commitment. Annual billing saves 15%. Its scraping APIs bill $0.90 to $1.45 per 1,000 URLs depending on rendering."
+    },
+    {
+      "type": "paragraph",
+      "text": "At 10 GB a month the two cost almost the same: about $52.50 with IPRoyal against $53 with Nimble. At 100 GB, a like-for-like total is harder to state because IPRoyal does not publish an exact price for that volume; Nimble comes to about $530. The sticker price is only half of it. IPRoyal's unused traffic carries forward, while Nimble's does not (credits usable across nimble products), so if your usage swings from month to month IPRoyal can work out cheaper than the per-GB numbers suggest."
+    },
+    {
+      "type": "heading",
+      "text": "Pool size, coverage and targeting",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble does not publish a clear residential pool figure, so a size comparison is not possible on published data. IPRoyal lists '32M+' and Nimble lists 'Not published'. In practice, what matters is how many unique IPs you get in the countries you target, which you can measure in a short trial by sending a few thousand requests and counting distinct exit addresses. For coverage, IPRoyal lists 195 countries and Nimble lists Worldwide. On targeting, IPRoyal offers country, state and city (ISP selection needs verification), while Nimble offers country, state and city."
+    },
+    {
+      "type": "heading",
+      "text": "Protocols, sessions and setup",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Protocol support is a real difference here. IPRoyal supports HTTP, HTTPS, SOCKS5, while Nimble offers HTTP, HTTPS. If your tooling needs SOCKS5, for example some anti-detect browsers, desktop apps or non-HTTP traffic, that settles it in IPRoyal's favour. On sessions, IPRoyal offers rotating or sticky sessions from 1 second up to 7 days, and Nimble offers auto-rotation by default; sticky sessions available. Both use a backconnect gateway: you point your tool at one host and port, and choose country, city or session behaviour through parameters in the username."
+    },
+    {
+      "type": "heading",
+      "text": "Which is better for your use case?",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "General web scraping: close call. Both are reasonable choices here. IPRoyal: solid success rates and non-expiring traffic for bursty crawls. Nimble: its managed APIs remove much of the anti-bot work. Let price and the countries you need decide."
+    },
+    {
+      "type": "paragraph",
+      "text": "SERP and rank tracking: Nimble. Nimble has the edge here. Why: its SERP API and search agents return structured results. How IPRoyal compares: it works, but it has no dedicated SERP product."
+    },
+    {
+      "type": "paragraph",
+      "text": "Social media and multi-account management: IPRoyal. IPRoyal has the edge here. Why: 7-day sticky sessions keep one IP on one account. How Nimble compares: no SOCKS5 and a high per-GB cost make it a poor fit for account work."
+    },
+    {
+      "type": "paragraph",
+      "text": "E-commerce price and stock monitoring: close call. Both are reasonable choices here. IPRoyal: city targeting with pay-only-for-what-you-use traffic. Nimble: dedicated e-commerce data APIs. Let price and the countries you need decide."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ad verification and geo-testing: close call. Both are reasonable choices here. IPRoyal: decent coverage but no ASN or carrier targeting on standard accounts. Nimble: good geo targeting but no published pool data. Let price and the countries you need decide."
+    },
+    {
+      "type": "paragraph",
+      "text": "Tight budgets: IPRoyal. IPRoyal has the edge here. Why: small entry purchases and traffic that never expires. How Nimble compares: per-GB rates are among the highest here."
+    },
+    {
+      "type": "heading",
+      "text": "Trials, verification and billing fine print",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Before you pay, check how each provider lets you test. IPRoyal: No general free trial; Enterprise trial for verified companies. Nimble: Free trial of 5,000 web pages on its APIs. Verification and payment rules differ too. IPRoyal: Optional ID verification; required for ISP-level targeting and PayPal. Nimble: Sales-led onboarding for data-services plans. Whichever you choose, measure cost per successful request rather than cost per gigabyte: retries, blocked pages and heavy page assets all burn bandwidth, and a cheaper network that fails more often can end up costing more. Blocking images and fonts in your scraper, reusing sessions where a target allows it, and capping concurrency are the quickest ways to cut the bill on either provider."
+    },
+    {
+      "type": "heading",
+      "text": "How to test IPRoyal and Nimble before you commit",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "The quickest way to choose between IPRoyal and Nimble is a side-by-side test on the sites and countries you actually care about:"
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Buy the smallest option on each side (IPRoyal: no general free trial; Enterprise trial for verified companies; Nimble: free trial of 5,000 web pages on its APIs)."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Pick three to five real target URLs and the two or three countries that matter most, and send the same number of requests (a few hundred is enough) through each provider at the same time of day. 3. Record success rate, median response time, CAPTCHAs or blocks, and the number of unique exit IPs you received per country."
+    },
+    {
+      "type": "paragraph",
+      "text": "4. Divide what you spent by the number of successful, correctly located responses to get cost per useful request, then scale that to your monthly volume."
+    },
+    {
+      "type": "heading",
+      "text": "Bottom line",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Across the six use cases above, IPRoyal comes out ahead in 2, Nimble in 1, and 3 are ties. That makes IPRoyal the safer default if you are unsure, but the right answer still depends on your volume and targets: IPRoyal is strongest for irregular or seasonal projects, while Nimble is strongest for teams that want structured data rather than raw IPs. If you can, spend a few dollars testing both on the exact sites and countries you care about; a one-hour test tells you more than any spec sheet."
+    },
+    {
+      "type": "heading",
+      "text": "IPRoyal is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Irregular or seasonal projects"
+    },
+    {
+      "type": "listItem",
+      "text": "Account management that needs long sticky sessions"
+    },
+    {
+      "type": "listItem",
+      "text": "Small buyers testing with 1-2 GB"
+    },
+    {
+      "type": "heading",
+      "text": "Nimble is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Teams that want structured data rather than raw IPs"
+    },
+    {
+      "type": "listItem",
+      "text": "AI and agent workloads that need a managed browser"
+    },
+    {
+      "type": "listItem",
+      "text": "Buyers comfortable with sales-led contracts"
+    }
+  ],
+  "title": "IPRoyal vs Nimble (2026)",
+  "subtitle": "Raw Residential Bandwidth vs AI Web-Data Platform",
+  "seoTitle": "IPRoyal vs Nimble (2026): Pricing, Pool Size & Verdict",
+  "description": "IPRoyal vs Nimble (2026): prices at 10 GB and 100 GB, pool size, targeting, trials and which to pick for scraping, SERP and multi-account work.",
+  "keywords": "iproyal vs nimble , iproyal vs nimble 2026, iproyal vs nimble pricing, iproyal vs nimble comparison",
+  "pageEnd": 24,
+  "slug": "iproyal-vs-nimbleway",
+  "providerSlugs": [
+    "iproyal",
+    "nimbleway"
+  ],
+  "faq": [
+    {
+      "q": "Is IPRoyal or Nimble cheaper?",
+      "a": "For small volumes IPRoyal is cheaper: about $52.50 for 10 GB against $53. At scale, IPRoyal's best published rate is $1.75/GB at 10 TB and Nimble's is $5.30/GB (larger credit packages; annual billing saves 15%). Check both pricing pages before buying, because promotions change often."
+    },
+    {
+      "q": "Which has more residential IPs, IPRoyal or Nimble?",
+      "a": "A direct comparison is not possible on published data: IPRoyal lists 32M+ and Nimble lists Not published. Test unique IP counts in your target countries during a trial."
+    },
+    {
+      "q": "Do IPRoyal and Nimble offer a free trial?",
+      "a": "IPRoyal: No general free trial; Enterprise trial for verified companies. Nimble: Free trial of 5,000 web pages on its APIs."
+    },
+    {
+      "q": "Do both support SOCKS5?",
+      "a": "IPRoyal supports HTTP, HTTPS, SOCKS5. Nimble supports HTTP, HTTPS."
+    },
+    {
+      "q": "Which is better for beginners?",
+      "a": "IPRoyal is usually the easier starting point because of its entry pricing and self-service setup. IPRoyal is best for irregular or seasonal projects; Nimble is best for teams that want structured data rather than raw IPs."
+    }
+  ],
+  "methodology": "Imported from the supplied October 2026 comparison brief. Prices and advertised specifications are not new hands-on benchmarks; confirm current prices, promotions, availability and terms on each provider’s site. Prices are in US dollars before VAT and coupons unless stated. Advertised pool totals have not been independently audited.",
+  "dateModified": "2026-10-17",
+  "quickVerdict": "For raw residential proxies, IPRoyal is the clear choice: it is cheaper at small volumes, supports SOCKS5 (Nimble's proxies are HTTP/HTTPS only), publishes its pool size, and its traffic never expires. Nimble only makes sense if you want to stop running your own scraping stack and buy structured results instead: its SERP and e-commerce APIs, AI browser and 5,000-page free trial are aimed at that buyer. If you already have a scraper that works, Nimble's per-GB pricing is hard to justify.",
+  "wordCount": 1787
+}

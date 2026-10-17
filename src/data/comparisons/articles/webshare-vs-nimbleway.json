@@ -1,0 +1,303 @@
+{
+  "pdfSlug": "webshare-vs-nimbleway",
+  "pageStart": 162,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Quick verdict",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Webshare is the clear choice for raw proxies: $27.50 for 10 GB against about $53 at Nimble's docs rate, $225 for 100 GB against $530, SOCKS5 support (Nimble's proxies are HTTP/HTTPS only), a published pool size and a free datacenter tier. Nimble is the better choice only if you want to stop maintaining scrapers and pay for structured results from its SERP and e-commerce APIs or AI browser. Its 5,000-page free API trial is a low-risk way to find out."
+    },
+    {
+      "type": "paragraph",
+      "text": "Webshare and Nimble both offer residential proxies to developers, but for very different reasons. Webshare is a low-cost, self-service proxy provider with a free datacenter plan, an 80M+ residential pool and transparent monthly pricing. Nimble (Nimbleway) is an AI-driven data platform where proxies sit beneath a managed browser, search agents and data pipelines. This comparison helps you decide whether you need cheap IPs for your own code or a service that returns structured data."
+    },
+    {
+      "type": "heading",
+      "text": "Webshare vs Nimble at a glance",
+      "level": 2
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "",
+          "Webshare",
+          "Nimble"
+        ],
+        [
+          "Residential pool (advertised)",
+          "80M+",
+          "Not published"
+        ],
+        [
+          "Countries",
+          "195",
+          "Worldwide"
+        ],
+        [
+          "Targeting",
+          "Country, plus state, city or ZIP (US) or ASN",
+          "Country, state and city"
+        ],
+        [
+          "Protocols",
+          "HTTP, HTTPS, SOCKS5",
+          "HTTP, HTTPS"
+        ],
+        [
+          "Sessions",
+          "Rotating or sticky from 1 minute to 24 hours",
+          "Auto-rotation by default; sticky sessions available"
+        ],
+        [
+          "Entry price",
+          "$3.50 for 1 GB per month",
+          "$8/GB on PAYG plan cards; developer docs list $5.30/GB"
+        ],
+        [
+          "Cost for 10 GB",
+          "$27.50 (10 GB monthly, $2.75/GB)",
+          "About $53 at the $5.30/GB docs rate ($80 at the $8 card rate)"
+        ],
+        [
+          "Cost for 100 GB",
+          "$225 (100 GB monthly, $2.25/GB)",
+          "About $530 at $5.30/GB"
+        ],
+        [
+          "Best published rate",
+          "$1.40/GB at 3 TB; yearly billing is 30% cheaper",
+          "$5.30/GB (larger credit packages; annual billing saves 15%)"
+        ],
+        [
+          "Billing model",
+          "Monthly or yearly subscription",
+          "Credit packages, PAYG, and data-services contracts"
+        ],
+        [
+          "Unused traffic",
+          "Allowance resets every 30 days; no rollover",
+          "Credits usable across Nimble products"
+        ],
+        [
+          "Trial",
+          "10 free datacenter proxies (1 GB/month); no residential trial",
+          "Free trial of 5,000 web pages on its APIs"
+        ],
+        [
+          "Other products",
+          "Datacenter proxy servers, static residential (ISP)",
+          "Web, SERP and e-commerce APIs, Nimble Browser, web search agents"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Webshare in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Webshare is the self-service favourite of solo developers. It gives away 10 shared datacenter proxies with 1 GB a month forever, sells paid datacenter lists from $2.99 for 100 proxies, and offers static ISP and rotating residential networks with a clean dashboard and good API. Its rotating residential pool is listed at 80M+ IPs in 195 countries, with sticky sessions from one minute to 24 hours. The main catch is that monthly bandwidth resets every 30 days and does not roll over."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Permanent free datacenter plan for testing; Low, transparent residential pricing; Excellent dashboard and API; Sticky sessions up to 24 hours. Weak spots: Bandwidth resets monthly with no rollover; No mobile proxies; 500-request default concurrency limit."
+    },
+    {
+      "type": "heading",
+      "text": "Nimble in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble (Nimbleway) is an AI-first web-data platform. It offers residential proxies with fast response times and unlimited concurrency, but most of its product investment goes into the Nimble Browser, SERP and e-commerce APIs, and data-services plans that start in the thousands of dollars per month. It does not disclose its residential pool size, and its per-GB rates are among the highest here, so it competes on finished results rather than cheap traffic."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Strong managed APIs and an AI-driven browser; Unlimited concurrency on proxies; Credits shared across all Nimble products; Free 5,000-page API trial. Weak spots: No published pool size; HTTP/HTTPS only, no SOCKS5 on proxies; High per-GB price for raw residential traffic."
+    },
+    {
+      "type": "heading",
+      "text": "Pricing: Webshare vs Nimble",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Webshare's rotating residential plans cost $3.50 for 1 GB, $27.50 for 10 GB, $65 for 25 GB, $225 for 100 GB and $875 for 500 GB per month, falling to $1.40/GB at 3 TB. Yearly billing is about 30% cheaper but is paid upfront for a 360-day term. Unused bandwidth resets every 30 days."
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble's plan cards list residential proxy traffic at $8/GB pay-as-you-go, falling through credit packages ($150 and $600 entry packages) toward $5.30/GB; its current developer documentation lists $5.30/GB for residential traffic without a commitment. Annual billing saves 15%. Its scraping APIs bill $0.90 to $1.45 per 1,000 URLs depending on rendering."
+    },
+    {
+      "type": "paragraph",
+      "text": "For a 10 GB month, Webshare costs about $27.50 while Nimble costs about $53, so Webshare saves around 48%. For a 100 GB month, Webshare costs about $225 while Nimble costs about $530, so Webshare saves around 58%. Both Webshare and Nimble work on allowances that do not carry forward indefinitely, so size your plan to real monthly usage rather than buying ahead."
+    },
+    {
+      "type": "heading",
+      "text": "Pool size, coverage and targeting",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble does not publish a clear residential pool figure, so a size comparison is not possible on published data. Webshare lists '80M+' and Nimble lists 'Not published'. In practice, what matters is how many unique IPs you get in the countries you target, which you can measure in a short trial by sending a few thousand requests and counting distinct exit addresses. For coverage, Webshare lists 195 countries and Nimble lists Worldwide. On targeting, Webshare offers country, plus state, city or ZIP (US) or ASN, while Nimble offers country, state and city."
+    },
+    {
+      "type": "heading",
+      "text": "Protocols, sessions and setup",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Protocol support is a real difference here. Webshare supports HTTP, HTTPS, SOCKS5, while Nimble offers HTTP, HTTPS. If your tooling needs SOCKS5, for example some anti-detect browsers, desktop apps or non-HTTP traffic, that settles it in Webshare's favour. On sessions, Webshare offers rotating or sticky from 1 minute to 24 hours, and Nimble offers auto-rotation by default; sticky sessions available. Both use a backconnect gateway: you point your tool at one host and port, and choose country, city or session behaviour through parameters in the username."
+    },
+    {
+      "type": "heading",
+      "text": "Which is better for your use case?",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "General web scraping: close call. Both are reasonable choices here. Webshare: low prices and a developer-friendly API. Nimble: its managed APIs remove much of the anti-bot work. Let price and the countries you need decide."
+    },
+    {
+      "type": "paragraph",
+      "text": "SERP and rank tracking: Nimble wins. The deciding factor for Nimble: its SERP API and search agents return structured results. The limitation on the Webshare side: fine for light rank tracking."
+    },
+    {
+      "type": "paragraph",
+      "text": "Social media and multi-account management: Webshare wins. The deciding factor for Webshare: 24-hour sticky sessions and cheap static ISP IPs. The limitation on the Nimble side: no SOCKS5 and a high per-GB cost make it a poor fit for account work."
+    },
+    {
+      "type": "paragraph",
+      "text": "E-commerce price and stock monitoring: Nimble wins. The deciding factor for Nimble: dedicated e-commerce data APIs. The limitation on the Webshare side: good for US work with ZIP targeting, thinner elsewhere."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ad verification and geo-testing: Nimble wins. The deciding factor for Nimble: good geo targeting but no published pool data. The limitation on the Webshare side: no mobile network and limited selector combinations."
+    },
+    {
+      "type": "paragraph",
+      "text": "Tight budgets: Webshare. Webshare has the edge here. Why: free tier plus some of the lowest per-GB rates here. How Nimble compares: per-GB rates are among the highest here."
+    },
+    {
+      "type": "heading",
+      "text": "Trials, verification and billing fine print",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Before you pay, check how each provider lets you test. Webshare: 10 free datacenter proxies (1 GB/month); no residential trial. Nimble: Free trial of 5,000 web pages on its APIs. Verification and payment rules differ too. Webshare: ID checks only when flagged or for restricted categories. Nimble: Sales-led onboarding for data-services plans. Whichever you choose, measure cost per successful request rather than cost per gigabyte: retries, blocked pages and heavy page assets all burn bandwidth, and a cheaper network that fails more often can end up costing more. Blocking images and fonts in your scraper, reusing sessions where a target allows it, and capping concurrency are the quickest ways to cut the bill on either provider."
+    },
+    {
+      "type": "heading",
+      "text": "How to test Webshare and Nimble before you commit",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "The quickest way to choose between Webshare and Nimble is a side-by-side test on the sites and countries you actually care about:"
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Buy the smallest option on each side (Webshare: 10 free datacenter proxies (1 GB/month); no residential trial; Nimble: free trial of 5,000 web pages on its APIs)."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Pick three to five real target URLs and the two or three countries that matter most, and send the same number of requests (a few hundred is enough) through each provider at the same time of day."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. Record success rate, median response time, CAPTCHAs or blocks, and the number of unique exit IPs you received per country."
+    },
+    {
+      "type": "paragraph",
+      "text": "4. Divide what you spent by the number of successful, correctly located responses to get cost per useful request, then scale that to your monthly volume."
+    },
+    {
+      "type": "heading",
+      "text": "Bottom line",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Across the six use cases above, Webshare comes out ahead in 2, Nimble in 3, and 1 is a tie. That makes Nimble the safer default if you are unsure, but the right answer still depends on your volume and targets: Webshare is strongest for solo developers and small teams, while Nimble is strongest for teams that want structured data rather than raw IPs. If you can, spend a few dollars testing both on the exact sites and countries you care about; a one-hour test tells you more than any spec sheet."
+    },
+    {
+      "type": "heading",
+      "text": "Webshare is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Solo developers and small teams"
+    },
+    {
+      "type": "listItem",
+      "text": "Budget scraping with predictable monthly volume"
+    },
+    {
+      "type": "listItem",
+      "text": "Buyers who also need cheap datacenter lists"
+    },
+    {
+      "type": "heading",
+      "text": "Nimble is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Teams that want structured data rather than raw IPs"
+    },
+    {
+      "type": "listItem",
+      "text": "AI and agent workloads that need a managed browser"
+    },
+    {
+      "type": "listItem",
+      "text": "Buyers comfortable with sales-led contracts"
+    }
+  ],
+  "title": "Webshare vs Nimble (2026)",
+  "subtitle": "Developer Self-Service vs AI-First Data Platform",
+  "seoTitle": "Webshare vs Nimble (2026): Pricing, Pool Size & Verdict",
+  "description": "Webshare vs Nimble (2026): prices at 10 GB and 100 GB, pool size, targeting, trials and which to pick for scraping, SERP and multi-account work.",
+  "keywords": "webshare vs nimble , webshare vs nimble 2026, webshare vs nimble pricing, webshare vs nimble comparison",
+  "pageEnd": 165,
+  "slug": "webshare-vs-nimbleway",
+  "providerSlugs": [
+    "webshare",
+    "nimbleway"
+  ],
+  "faq": [
+    {
+      "q": "Is Webshare or Nimble cheaper?",
+      "a": "For small volumes Webshare is cheaper: about $27.50 for 10 GB against $53. At scale, Webshare's best published rate is $1.40/GB at 3 TB; yearly billing is 30% cheaper and Nimble's is $5.30/GB (larger credit packages; annual billing saves 15%). Check both pricing pages before buying, because promotions change often."
+    },
+    {
+      "q": "Which has more residential IPs, Webshare or Nimble?",
+      "a": "A direct comparison is not possible on published data: Webshare lists 80M+ and Nimble lists Not published. Test unique IP counts in your target countries during a trial."
+    },
+    {
+      "q": "Do Webshare and Nimble offer a free trial?",
+      "a": "Webshare: 10 free datacenter proxies (1 GB/month); no residential trial. Nimble: Free trial of 5,000 web pages on its APIs."
+    },
+    {
+      "q": "Do both support SOCKS5?",
+      "a": "Webshare supports HTTP, HTTPS, SOCKS5. Nimble supports HTTP, HTTPS."
+    },
+    {
+      "q": "Which is better for beginners?",
+      "a": "Webshare is usually the easier starting point because of its entry pricing and self-service setup. Webshare is best for solo developers and small teams; Nimble is best for teams that want structured data rather than raw IPs."
+    }
+  ],
+  "methodology": "Imported from the supplied October 2026 comparison brief. Prices and advertised specifications are not new hands-on benchmarks; confirm current prices, promotions, availability and terms on each provider’s site. Prices are in US dollars before VAT and coupons unless stated. Advertised pool totals have not been independently audited.",
+  "dateModified": "2026-10-17",
+  "quickVerdict": "Webshare is the clear choice for raw proxies: $27.50 for 10 GB against about $53 at Nimble's docs rate, $225 for 100 GB against $530, SOCKS5 support (Nimble's proxies are HTTP/HTTPS only), a published pool size and a free datacenter tier. Nimble is the better choice only if you want to stop maintaining scrapers and pay for structured results from its SERP and e-commerce APIs or AI browser. Its 5,000-page free API trial is a low-risk way to find out.",
+  "wordCount": 1738
+}

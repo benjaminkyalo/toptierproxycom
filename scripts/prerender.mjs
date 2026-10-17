@@ -5,6 +5,8 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import { findLinks } from "../src/components/linked-paragraph.tsx";
 import { bestCanonicalPath, cityCanonicalPath, vsCanonicalPath } from "../src/data/canonical-policy.ts";
 import { speakablePage, benchmarkDataset } from "../src/lib/schema.ts";
+import { comparisonSummaries } from "../src/data/comparisons/catalog.ts";
+import { comparisonHtml, comparisonSchema } from "../src/data/comparisons/publishing.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "..");
@@ -788,12 +790,25 @@ async function run() {
   }
   console.log(` ${blogPosts.length} blog posts`);
 
-  // VS matchups
+  // Complete editorial comparison briefs, plus reverse URLs already linked on site.
+  const expandedPaths = new Set();
+  for (const summary of comparisonSummaries) {
+    const article = JSON.parse(readFileSync(resolve(root, `src/data/comparisons/articles/${summary.slug}.json`), "utf-8"));
+    const paths = new Set([summary.slug, summary.pdfSlug, [...summary.providerSlugs].reverse().join("-vs-")]);
+    for (const slug of paths) {
+      const path = `/vs/${slug}`;
+      writeHtml(path, `${article.seoTitle} | ToptierProxy.com`, article.description, comparisonHtml(article), path, comparisonSchema(article, path));
+      expandedPaths.add(slug);
+      count++;
+    }
+  }
+  // Preserve any other existing provider pairs without overwriting the briefs.
   let vsCount = 0;
   for (let i = 0; i < providers.length; i++) {
     for (let j = i + 1; j < providers.length; j++) {
       const a = providers[i];
       const b = providers[j];
+      if (expandedPaths.has(`${a.slug}-vs-${b.slug}`)) continue;
       const title = `${a.name} vs ${b.name} 2026 — Side-by-Side Comparison | ToptierProxy.com`;
       const desc = `${a.name} vs ${b.name}: compare pricing, pool size, speed and features. Which proxy provider is better in 2026?`;
       writeHtml(`/vs/${a.slug}-vs-${b.slug}`, title, desc, vsBody(a, b), vsCanonicalPath(a.slug, b.slug));
@@ -801,7 +816,7 @@ async function run() {
       count++;
     }
   }
-  console.log(` ${vsCount} VS matchup pages`);
+  console.log(` ${comparisonSummaries.length} expanded comparisons (${expandedPaths.size} URLs), ${vsCount} additional VS pages`);
   console.log(`\n DONE  ${count} HTML files generated in dist/`);
 }
 

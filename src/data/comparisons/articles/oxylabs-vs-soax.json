@@ -1,0 +1,299 @@
+{
+  "pdfSlug": "oxylabs-vs-soax",
+  "pageStart": 150,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Quick verdict",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "SOAX is the better value for most mobile-first and multi-country teams: residential and mobile share one rate, its Builder plan prices US traffic at $3/GB, Tier 3 countries are far cheaper, and its UDP and QUIC support is unusual. Oxylabs is the better choice for large enterprise scraping pipelines, especially those that need datacenter or ISP proxies (SOAX discontinued both), per-result scraper APIs, a published 99.95% success rate and formal sourcing paperwork. At the top end, both fall to well under $2/GB for committed volume."
+    },
+    {
+      "type": "paragraph",
+      "text": "Oxylabs and SOAX both run large residential and mobile networks and both serve ad-verification, market-research and scraping teams. Oxylabs is the enterprise heavyweight with a 175M+ residential pool, ISP and datacenter networks and per-result scraper APIs. SOAX advertises 155M residential and 33M mobile IPs on one balance, supports UDP and QUIC, and prices traffic by country tier with credits that expire after 60 days. This comparison helps you choose for your geography and workload."
+    },
+    {
+      "type": "heading",
+      "text": "Oxylabs vs SOAX at a glance",
+      "level": 2
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "",
+          "Oxylabs",
+          "SOAX"
+        ],
+        [
+          "Residential pool (advertised)",
+          "175M+",
+          "155M residential + 33M mobile"
+        ],
+        [
+          "Countries",
+          "195",
+          "195"
+        ],
+        [
+          "Targeting",
+          "Country, state, city, ZIP and ASN",
+          "Country, region, city and ISP; ASN and ZIP on Scale plans"
+        ],
+        [
+          "Protocols",
+          "HTTP, HTTPS, SOCKS5",
+          "HTTP, HTTPS, SOCKS5, UDP, QUIC"
+        ],
+        [
+          "Sessions",
+          "Rotating and sticky sessions on residential and mobile",
+          "Rotating or sticky; mobile sessions up to 60 minutes"
+        ],
+        [
+          "Entry price",
+          "$8/GB pay-as-you-go; Starter plan $30 for 5 GB ($6/GB)",
+          "$5/GB on the no-fee Sandbox plan (US, Tier 1)"
+        ],
+        [
+          "Cost for 10 GB",
+          "$80 PAYG, or $100 Basic plan for 20 GB",
+          "$50 on Sandbox (US traffic)"
+        ],
+        [
+          "Cost for 100 GB",
+          "Mid-tier plans priced inside the dashboard",
+          "$300 on Builder ($200/month plan, $3/GB US)"
+        ],
+        [
+          "Best published rate",
+          "$2.50/GB on the $2,500/month Corporate plan",
+          "$1.50/GB US on Scale; Enterprise from $0.85/GB"
+        ],
+        [
+          "Billing model",
+          "Pay-as-you-go or monthly plans",
+          "Prepaid credits; rate depends on plan and exit-country tier"
+        ],
+        [
+          "Unused traffic",
+          "Monthly plan allowances reset each cycle",
+          "Credits expire 60 days after they are added"
+        ],
+        [
+          "Trial",
+          "Residential trial arranged through sales, once per customer",
+          "Paid 3-day trial, 400 MB for $1.99"
+        ],
+        [
+          "Other products",
+          "Datacenter, dedicated datacenter, ISP, mobile, Web Scraper API, Web Unblocker, headless browser",
+          "Residential and mobile on one balance; scraping APIs and unblocker (datacenter and ISP discontinued)"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Oxylabs in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Oxylabs is a Lithuanian web-data company and Bright Data's closest rival at the top of the market. It advertises a residential pool of more than 175 million IPs across 195 locations, publishes a 99.95% success rate for residential traffic, and sells seven product lines including datacenter, ISP and mobile proxies, a Web Scraper API and Web Unblocker. Onboarding is more sales-led than the mid-market providers, but self-service has expanded through 2026, including dedicated ISP proxies."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: One of the two largest residential pools available; Published 99.95% residential success rate; Strong scraper APIs that bill per result; Formal ethical-sourcing documentation for procurement. Weak spots: Expensive at low volume ($8/GB PAYG); Best rates need large monthly commitments; Residential trial goes through sales rather than self-service."
+    },
+    {
+      "type": "heading",
+      "text": "SOAX in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "SOAX rebuilt its pricing in 2026 around credits and country tiers. Residential and mobile traffic share one balance and one per-GB rate, and the rate depends on your plan and the country your exit IP is in: US and German traffic costs more than Indian or Filipino traffic. SOAX advertises 155 million residential and 33 million mobile IPs in 195 countries, supports UDP and QUIC as well as SOCKS5, and includes city and ISP targeting on every plan. It discontinued its datacenter and ISP proxies between late 2025 and mid 2026."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Residential and mobile on one balance; UDP and QUIC support alongside SOCKS5; Large pool with city and ISP targeting on every plan; Cheap traffic for Tier 2 and Tier 3 countries. Weak spots: Credits expire after 60 days; US traffic is expensive on small plans; Datacenter and ISP proxies were discontinued."
+    },
+    {
+      "type": "heading",
+      "text": "Pricing: Oxylabs vs SOAX",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Oxylabs charges $8/GB pay-as-you-go for residential traffic. Monthly plans start with Starter at $30 for 5 GB ($6/GB) and a Basic tier around $100 for 20 GB, and the rate falls to $2.50/GB on the $2,500/month Corporate plan. Mobile traffic starts at $7.50/GB."
+    },
+    {
+      "type": "paragraph",
+      "text": "SOAX bills prepaid credits. For US (Tier 1) traffic, the no-fee Sandbox plan costs $5/GB, Builder ($200/month) $3/GB, Team ($500/month) $2.20/GB, and Scale ($1,500/month) $1.50/GB; cheaper countries cost less (Tier 3 from $2/GB on Sandbox). Credits expire 60 days after purchase, and SOAX counts traffic in both directions."
+    },
+    {
+      "type": "paragraph",
+      "text": "Buying 10 GB, you would pay about $50 with SOAX and $80 with Oxylabs: a 38% saving in SOAX's favour. At 100 GB, a like-for-like total is harder to state because Oxylabs does not publish an exact price for that volume; SOAX comes to about $300. Both Oxylabs and SOAX work on allowances that do not carry forward indefinitely, so size your plan to real monthly usage rather than buying ahead."
+    },
+    {
+      "type": "heading",
+      "text": "Pool size, coverage and targeting",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "On paper the two networks are similar in size: Oxylabs advertises 175M+ residential IPs and SOAX advertises 155M residential + 33M mobile. Advertised pool sizes are marketing figures counted over long periods; the number of IPs actually reachable in a given country at a given moment is far smaller for every provider, so treat these as a rough guide to depth rather than a guarantee. For coverage, Oxylabs lists 195 countries and SOAX lists 195. On targeting, Oxylabs offers country, state, city, ZIP and ASN, while SOAX offers country, region, city and ISP; ASN and ZIP on Scale plans."
+    },
+    {
+      "type": "heading",
+      "text": "Protocols, sessions and setup",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Both providers support SOCKS5 as well as HTTP(S), so either will plug into scrapers, anti-detect browsers and automation tools that expect a SOCKS endpoint. On sessions, Oxylabs offers rotating and sticky sessions on residential and mobile, and SOAX offers rotating or sticky; mobile sessions up to 60 minutes. Setup works the same way on both: a single gateway endpoint, with location and session options passed as username parameters, plus IP whitelisting if you prefer not to use credentials."
+    },
+    {
+      "type": "heading",
+      "text": "Which is better for your use case?",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "General web scraping: Oxylabs. Oxylabs has the edge here. Why: its pool size and Web Scraper API suit large crawls. How SOAX compares: a large pool and its own error headers help debugging."
+    },
+    {
+      "type": "paragraph",
+      "text": "SERP and rank tracking: Oxylabs wins. The deciding factor for Oxylabs: its scraper API returns parsed search results. The limitation on the SOAX side: city and ISP targeting for local results."
+    },
+    {
+      "type": "paragraph",
+      "text": "Social media and multi-account management: SOAX wins. The deciding factor for SOAX: mobile IPs on the same balance as residential. The limitation on the Oxylabs side: it works, but the pricing is built for volume, not a handful of accounts."
+    },
+    {
+      "type": "paragraph",
+      "text": "E-commerce price and stock monitoring: Oxylabs wins. The deciding factor for Oxylabs: city and ZIP targeting plus parsed e-commerce endpoints. The limitation on the SOAX side: granular location filters."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ad verification and geo-testing: SOAX. SOAX has the edge here. Why: ISP, ASN and carrier-level targeting. How Oxylabs compares: broad geo coverage with ASN targeting."
+    },
+    {
+      "type": "paragraph",
+      "text": "Tight budgets: SOAX wins. The deciding factor for SOAX: cheap in Tier 3 countries but pricey for small US jobs. The limitation on the Oxylabs side: entry pricing is among the highest in this comparison."
+    },
+    {
+      "type": "heading",
+      "text": "Trials, verification and billing fine print",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Before you pay, check how each provider lets you test. Oxylabs: Residential trial arranged through sales, once per customer. SOAX: Paid 3-day trial, 400 MB for $1.99. Verification and payment rules differ too. Oxylabs: Business verification on larger accounts. SOAX: Verification for postpaid and enterprise terms. Whichever you choose, measure cost per successful request rather than cost per gigabyte: retries, blocked pages and heavy page assets all burn bandwidth, and a cheaper network that fails more often can end up costing more. Blocking images and fonts in your scraper, reusing sessions where a target allows it, and capping concurrency are the quickest ways to cut the bill on either provider."
+    },
+    {
+      "type": "heading",
+      "text": "How to test Oxylabs and SOAX before you commit",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Spec sheets only get you so far. A short, structured test on your own targets will settle Oxylabs vs SOAX faster than any review:"
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Buy the smallest option on each side (Oxylabs: residential trial arranged through sales, once per customer; SOAX: paid 3-day trial, 400 MB for $1.99)."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Pick three to five real target URLs and the two or three countries that matter most, and send the same number of requests (a few hundred is enough) through each provider at the same time of day."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. Record success rate, median response time, CAPTCHAs or blocks, and the number of unique exit IPs you received per country. 4. Divide what you spent by the number of successful, correctly located responses to get cost per useful request, then scale that to your monthly volume."
+    },
+    {
+      "type": "heading",
+      "text": "Bottom line",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Across the six use cases above, Oxylabs comes out ahead in 3, SOAX in 3, and 0 are ties. With no overall winner, decide on the factor that matters most to you: Oxylabs is strongest for large scraping pipelines with steady volume, while SOAX is strongest for mobile-first work such as app testing and social platforms. If you can, spend a few dollars testing both on the exact sites and countries you care about; a one-hour test tells you more than any spec sheet."
+    },
+    {
+      "type": "heading",
+      "text": "Oxylabs is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Large scraping pipelines with steady volume"
+    },
+    {
+      "type": "listItem",
+      "text": "Teams that want a managed scraper API option"
+    },
+    {
+      "type": "listItem",
+      "text": "Procurement-heavy buyers who need sourcing paperwork"
+    },
+    {
+      "type": "heading",
+      "text": "SOAX is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Mobile-first work such as app testing and social platforms"
+    },
+    {
+      "type": "listItem",
+      "text": "Teams targeting cheaper Tier 2/3 countries"
+    },
+    {
+      "type": "listItem",
+      "text": "Workloads needing UDP or QUIC"
+    }
+  ],
+  "title": "Oxylabs vs SOAX (2026)",
+  "subtitle": "Largest-Pool Enterprise Vendor vs Mobile-Ready Specialist",
+  "seoTitle": "Oxylabs vs SOAX (2026): Pricing, Pool Size & Verdict",
+  "description": "Oxylabs vs SOAX (2026): prices at 10 GB and 100 GB, pool size, targeting, trials and which to pick for scraping, SERP and multi-account work.",
+  "keywords": "oxylabs vs soax , oxylabs vs soax 2026, oxylabs vs soax pricing, oxylabs vs soax comparison",
+  "pageEnd": 153,
+  "slug": "oxylabs-vs-soax",
+  "providerSlugs": [
+    "oxylabs",
+    "soax"
+  ],
+  "faq": [
+    {
+      "q": "Is Oxylabs or SOAX cheaper?",
+      "a": "For small volumes SOAX is cheaper: about $50 for 10 GB against $80. At scale, Oxylabs's best published rate is $2.50/GB on the $2,500/month Corporate plan and SOAX's is $1.50/GB US on Scale; Enterprise from $0.85/GB. Check both pricing pages before buying, because promotions change often."
+    },
+    {
+      "q": "Which has more residential IPs, Oxylabs or SOAX?",
+      "a": "Their advertised pools are roughly the same size. Oxylabs lists 175M+ and SOAX lists 155M residential + 33M mobile. Real availability per country is lower for both, so test the locations you need."
+    },
+    {
+      "q": "Do Oxylabs and SOAX offer a free trial?",
+      "a": "Oxylabs: Residential trial arranged through sales, once per customer. SOAX: Paid 3-day trial, 400 MB for $1.99."
+    },
+    {
+      "q": "Do both support SOCKS5?",
+      "a": "Oxylabs supports HTTP, HTTPS, SOCKS5. SOAX supports HTTP, HTTPS, SOCKS5, UDP, QUIC."
+    },
+    {
+      "q": "Which is better for beginners?",
+      "a": "SOAX is usually the easier starting point because of its entry pricing and self-service setup. Oxylabs is best for large scraping pipelines with steady volume; SOAX is best for mobile-first work such as app testing and social platforms."
+    }
+  ],
+  "methodology": "Imported from the supplied October 2026 comparison brief. Prices and advertised specifications are not new hands-on benchmarks; confirm current prices, promotions, availability and terms on each provider’s site. Prices are in US dollars before VAT and coupons unless stated. Advertised pool totals have not been independently audited.",
+  "dateModified": "2026-10-17",
+  "quickVerdict": "SOAX is the better value for most mobile-first and multi-country teams: residential and mobile share one rate, its Builder plan prices US traffic at $3/GB, Tier 3 countries are far cheaper, and its UDP and QUIC support is unusual. Oxylabs is the better choice for large enterprise scraping pipelines, especially those that need datacenter or ISP proxies (SOAX discontinued both), per-result scraper APIs, a published 99.95% success rate and formal sourcing paperwork. At the top end, both fall to well under $2/GB for committed volume.",
+  "wordCount": 1775
+}

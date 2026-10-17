@@ -1,0 +1,299 @@
+{
+  "pdfSlug": "bright-data-vs-nimbleway",
+  "pageStart": 202,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Quick verdict",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Bright Data is the more complete platform: a published 150M+ pool, SOCKS5 (Nimble's proxies are HTTP/HTTPS only), ZIP, ASN and carrier targeting, datacenter, ISP and mobile networks, and monthly rates down to $2.50/GB. Nimble is a strong alternative for teams focused on AI agents and structured output, and its $5.30/GB docs rate beats Bright Data's $8 list price at small volumes. For most enterprise buyers, Bright Data's breadth makes it the safer choice; trial Nimble's 5,000 free pages if AI browsing is central to your work."
+    },
+    {
+      "type": "paragraph",
+      "text": "Bright Data and Nimble both sell far more than proxies. Bright Data offers residential, datacenter, ISP and mobile networks plus Web Unlocker, a SERP API, the Scraping Browser and ready-made datasets. Nimble (Nimbleway) has repositioned around an AI-driven browser, search agents and managed data services, with residential proxies underneath. Both are premium-priced, so this comparison is about which platform's tools and pricing fit an enterprise data team best."
+    },
+    {
+      "type": "heading",
+      "text": "Bright Data vs Nimble at a glance",
+      "level": 2
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "",
+          "Bright Data",
+          "Nimble"
+        ],
+        [
+          "Residential pool (advertised)",
+          "150M+",
+          "Not published"
+        ],
+        [
+          "Countries",
+          "195",
+          "Worldwide"
+        ],
+        [
+          "Targeting",
+          "Country, state, city, ZIP, ASN and carrier",
+          "Country, state and city"
+        ],
+        [
+          "Protocols",
+          "HTTP, HTTPS, SOCKS5",
+          "HTTP, HTTPS"
+        ],
+        [
+          "Sessions",
+          "Rotating per request or sticky sessions you control per zone",
+          "Auto-rotation by default; sticky sessions available"
+        ],
+        [
+          "Entry price",
+          "$8/GB pay-as-you-go list price (50%-off promos are frequent)",
+          "$8/GB on PAYG plan cards; developer docs list $5.30/GB"
+        ],
+        [
+          "Cost for 10 GB",
+          "$80 PAYG list (about $40 when the half-price promo runs)",
+          "About $53 at the $5.30/GB docs rate ($80 at the $8 card rate)"
+        ],
+        [
+          "Cost for 100 GB",
+          "$499 Growth plan (141 GB included, about $3.50/GB)",
+          "About $530 at $5.30/GB"
+        ],
+        [
+          "Best published rate",
+          "$2.50/GB on its largest public monthly plan",
+          "$5.30/GB (larger credit packages; annual billing saves 15%)"
+        ],
+        [
+          "Billing model",
+          "Pay-as-you-go or monthly plans with included GB",
+          "Credit packages, PAYG, and data-services contracts"
+        ],
+        [
+          "Unused traffic",
+          "Monthly plan allowances reset each cycle",
+          "Credits usable across Nimble products"
+        ],
+        [
+          "Trial",
+          "Free trial for business accounts, no card required",
+          "Free trial of 5,000 web pages on its APIs"
+        ],
+        [
+          "Other products",
+          "Datacenter, ISP, mobile, Web Unlocker, SERP API, Scraping Browser, datasets",
+          "Web, SERP and e-commerce APIs, Nimble Browser, web search agents"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Bright Data in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Bright Data, formerly Luminati, is the default enterprise pick for teams that want every collection tool under one contract. Its residential pool is one of the deepest available (150M+ advertised IPs across 195 countries), targeting goes down to city, ZIP and ASN, and the company layers managed products such as Web Unlocker and the Scraping Browser on top. You pay for that breadth: entry pricing is the highest of the major providers unless a promotion is running, and access to some target categories requires a compliance review."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Deepest targeting in the market (ZIP, ASN, carrier); Managed unblocking, SERP and browser products under one account; Mature compliance and KYC processes that enterprise buyers ask for; Very large residential pool for high-rotation work. Weak spots: Highest list price per GB at low volume; Dashboard and zone setup take time to learn; Some targets need a compliance review before access."
+    },
+    {
+      "type": "heading",
+      "text": "Nimble in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble (Nimbleway) is an AI-first web-data platform. It offers residential proxies with fast response times and unlimited concurrency, but most of its product investment goes into the Nimble Browser, SERP and e-commerce APIs, and data-services plans that start in the thousands of dollars per month. It does not disclose its residential pool size, and its per-GB rates are among the highest here, so it competes on finished results rather than cheap traffic."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Strong managed APIs and an AI-driven browser; Unlimited concurrency on proxies; Credits shared across all Nimble products; Free 5,000-page API trial. Weak spots: No published pool size; HTTP/HTTPS only, no SOCKS5 on proxies; High per-GB price for raw residential traffic."
+    },
+    {
+      "type": "heading",
+      "text": "Pricing: Bright Data vs Nimble",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Bright Data lists residential traffic at $8/GB pay-as-you-go with no commitment, and it frequently runs 50%-off promotions that bring that to about $4/GB. Monthly plans start with the Growth tier at $499 for roughly 141 GB (about $3.50/GB) and fall to around $2.50/GB on the largest public plan."
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble's plan cards list residential proxy traffic at $8/GB pay-as-you-go, falling through credit packages ($150 and $600 entry packages) toward $5.30/GB; its current developer documentation lists $5.30/GB for residential traffic without a commitment. Annual billing saves 15%. Its scraping APIs bill $0.90 to $1.45 per 1,000 URLs depending on rendering."
+    },
+    {
+      "type": "paragraph",
+      "text": "At 10 GB a month, Nimble is the cheaper option at about $53 against $80 for Bright Data, roughly 34% less. At 100 GB a month the two cost almost the same: about $499 with Bright Data against $530 with Nimble. Both Bright Data and Nimble work on allowances that do not carry forward indefinitely, so size your plan to real monthly usage rather than buying ahead."
+    },
+    {
+      "type": "heading",
+      "text": "Pool size, coverage and targeting",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble does not publish a clear residential pool figure, so a size comparison is not possible on published data. Bright Data lists '150M+' and Nimble lists 'Not published'. In practice, what matters is how many unique IPs you get in the countries you target, which you can measure in a short trial by sending a few thousand requests and counting distinct exit addresses. For coverage, Bright Data lists 195 countries and Nimble lists Worldwide. On targeting, Bright Data offers country, state, city, ZIP, ASN and carrier, while Nimble offers country, state and city."
+    },
+    {
+      "type": "heading",
+      "text": "Protocols, sessions and setup",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Protocol support is a real difference here. Bright Data supports HTTP, HTTPS, SOCKS5, while Nimble offers HTTP, HTTPS. If your tooling needs SOCKS5, for example some anti-detect browsers, desktop apps or non-HTTP traffic, that settles it in Bright Data's favour. On sessions, Bright Data offers rotating per request or sticky sessions you control per zone, and Nimble offers auto-rotation by default; sticky sessions available. Setup works the same way on both: a single gateway endpoint, with location and session options passed as username parameters, plus IP whitelisting if you prefer not to use credentials."
+    },
+    {
+      "type": "heading",
+      "text": "Which is better for your use case?",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "General web scraping: Bright Data wins. The deciding factor for Bright Data: its pool depth and Web Unlocker handle hardened targets. The limitation on the Nimble side: its managed APIs remove much of the anti-bot work."
+    },
+    {
+      "type": "paragraph",
+      "text": "SERP and rank tracking: close call. Both are reasonable choices here. Bright Data: it sells a dedicated SERP API alongside raw proxies. Nimble: its SERP API and search agents return structured results. Let price and the countries you need decide."
+    },
+    {
+      "type": "paragraph",
+      "text": "Social media and multi-account management: Bright Data wins. The deciding factor for Bright Data: it is powerful but expensive for low-volume account work. The limitation on the Nimble side: no SOCKS5 and a high per-GB cost make it a poor fit for account work."
+    },
+    {
+      "type": "paragraph",
+      "text": "E-commerce price and stock monitoring: Bright Data. Bright Data has the edge here. Why: ZIP-level targeting suits local pricing and stock checks. How Nimble compares: dedicated e-commerce data APIs."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ad verification and geo-testing: Bright Data. Bright Data has the edge here. Why: carrier and ASN targeting reproduce what real users see. How Nimble compares: good geo targeting but no published pool data."
+    },
+    {
+      "type": "paragraph",
+      "text": "Tight budgets: tie. Neither has a clear edge. With Bright Data: its list price is the highest in this comparison. With Nimble: per-GB rates are among the highest here. Run the same small test on both before committing."
+    },
+    {
+      "type": "heading",
+      "text": "Trials, verification and billing fine print",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Before you pay, check how each provider lets you test. Bright Data: Free trial for business accounts, no card required. Nimble: Free trial of 5,000 web pages on its APIs. Verification and payment rules differ too. Bright Data: Verification required for some sensitive targets. Nimble: Sales-led onboarding for data-services plans. Whichever you choose, measure cost per successful request rather than cost per gigabyte: retries, blocked pages and heavy page assets all burn bandwidth, and a cheaper network that fails more often can end up costing more. Blocking images and fonts in your scraper, reusing sessions where a target allows it, and capping concurrency are the quickest ways to cut the bill on either provider."
+    },
+    {
+      "type": "heading",
+      "text": "How to test Bright Data and Nimble before you commit",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Spec sheets only get you so far. A short, structured test on your own targets will settle Bright Data vs Nimble faster than any review:"
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Buy the smallest option on each side (Bright Data: free trial for business accounts, no card required; Nimble: free trial of 5,000 web pages on its APIs)."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Pick three to five real target URLs and the two or three countries that matter most, and send the same number of requests (a few hundred is enough) through each provider at the same time of day."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. Record success rate, median response time, CAPTCHAs or blocks, and the number of unique exit IPs you received per country. 4. Divide what you spent by the number of successful, correctly located responses to get cost per useful request, then scale that to your monthly volume."
+    },
+    {
+      "type": "heading",
+      "text": "Bottom line",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Across the six use cases above, Bright Data comes out ahead in 4, Nimble in 0, and 2 are ties. That makes Bright Data the safer default if you are unsure, but the right answer still depends on your volume and targets: Bright Data is strongest for enterprise data teams with budget for managed tooling, while Nimble is strongest for teams that want structured data rather than raw IPs. If you can, spend a few dollars testing both on the exact sites and countries you care about; a one-hour test tells you more than any spec sheet."
+    },
+    {
+      "type": "heading",
+      "text": "Bright Data is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Enterprise data teams with budget for managed tooling"
+    },
+    {
+      "type": "listItem",
+      "text": "Hard targets where unblocking APIs save engineering time"
+    },
+    {
+      "type": "listItem",
+      "text": "Buyers who need precise ZIP or ASN targeting"
+    },
+    {
+      "type": "heading",
+      "text": "Nimble is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Teams that want structured data rather than raw IPs"
+    },
+    {
+      "type": "listItem",
+      "text": "AI and agent workloads that need a managed browser"
+    },
+    {
+      "type": "listItem",
+      "text": "Buyers comfortable with sales-led contracts"
+    }
+  ],
+  "title": "Bright Data vs Nimble (2026)",
+  "subtitle": "Two Premium Web-Data Platforms Head to Head",
+  "seoTitle": "Bright Data vs Nimble (2026): Pricing, Pool Size & Verdict",
+  "description": "Bright Data vs Nimble (2026): prices at 10 GB and 100 GB, pool size, targeting, trials and which to pick for scraping, SERP and multi-account work.",
+  "keywords": "bright data vs nimble , bright data vs nimble 2026, bright data vs nimble pricing, bright data vs nimble comparison",
+  "pageEnd": 205,
+  "slug": "bright-data-vs-nimbleway",
+  "providerSlugs": [
+    "bright-data",
+    "nimbleway"
+  ],
+  "faq": [
+    {
+      "q": "Is Bright Data or Nimble cheaper?",
+      "a": "For small volumes Nimble is cheaper: about $53 for 10 GB against $80. At scale, Bright Data's best published rate is $2.50/GB on its largest public monthly plan and Nimble's is $5.30/GB (larger credit packages; annual billing saves 15%). Check both pricing pages before buying, because promotions change often."
+    },
+    {
+      "q": "Which has more residential IPs, Bright Data or Nimble?",
+      "a": "A direct comparison is not possible on published data: Bright Data lists 150M+ and Nimble lists Not published. Test unique IP counts in your target countries during a trial."
+    },
+    {
+      "q": "Do Bright Data and Nimble offer a free trial?",
+      "a": "Bright Data: Free trial for business accounts, no card required. Nimble: Free trial of 5,000 web pages on its APIs."
+    },
+    {
+      "q": "Do both support SOCKS5?",
+      "a": "Bright Data supports HTTP, HTTPS, SOCKS5. Nimble supports HTTP, HTTPS."
+    },
+    {
+      "q": "Which is better for beginners?",
+      "a": "Nimble is usually the easier starting point because of its entry pricing and self-service setup. Bright Data is best for enterprise data teams with budget for managed tooling; Nimble is best for teams that want structured data rather than raw IPs."
+    }
+  ],
+  "methodology": "Imported from the supplied October 2026 comparison brief. Prices and advertised specifications are not new hands-on benchmarks; confirm current prices, promotions, availability and terms on each provider’s site. Prices are in US dollars before VAT and coupons unless stated. Advertised pool totals have not been independently audited.",
+  "dateModified": "2026-10-17",
+  "quickVerdict": "Bright Data is the more complete platform: a published 150M+ pool, SOCKS5 (Nimble's proxies are HTTP/HTTPS only), ZIP, ASN and carrier targeting, datacenter, ISP and mobile networks, and monthly rates down to $2.50/GB. Nimble is a strong alternative for teams focused on AI agents and structured output, and its $5.30/GB docs rate beats Bright Data's $8 list price at small volumes. For most enterprise buyers, Bright Data's breadth makes it the safer choice; trial Nimble's 5,000 free pages if AI browsing is central to your work.",
+  "wordCount": 1834
+}

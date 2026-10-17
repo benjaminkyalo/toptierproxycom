@@ -17,6 +17,7 @@ async function run() {
   const { countries, allCityPairs } = await loadTs("src/data/countries.ts");
   const { useCases } = await loadTs("src/data/use-cases.ts");
   const { blogPosts } = await loadTs("src/data/blog.ts");
+  const { comparisonSummaries } = await loadTs("src/data/comparisons/catalog.ts");
 
   const items = [
     // Static pages
@@ -47,16 +48,10 @@ async function run() {
     })),
 
     // VS matchups
-    ...providers.flatMap((a, i) =>
-      providers.slice(i + 1).map(b => ({
-        id: `vs-${a.slug}-${b.slug}`,
-        title: `${a.name} vs ${b.name} 2026`,
-        description: `Compare ${a.name} and ${b.name} — pricing, pool size, speed and features.`,
-        url: `/vs/${a.slug}-vs-${b.slug}`,
-        type: "vs",
-        keywords: `${a.name} ${b.name} comparison versus alternative`
-      }))
-    ),
+    ...comparisonSummaries.map((article) => ({
+      id: `vs-${article.slug}`, title: article.title, description: article.description,
+      url: `/vs/${article.slug}`, type: "vs", keywords: article.keywords,
+    })),
 
     // Guides
     ...guides.map(g => ({

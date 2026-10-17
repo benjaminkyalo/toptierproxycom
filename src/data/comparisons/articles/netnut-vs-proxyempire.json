@@ -1,0 +1,336 @@
+{
+  "pdfSlug": "netnut-vs-proxyempire",
+  "pageStart": 230,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Quick verdict",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "ProxyEmpire is a strong NetNut replacement for mid-size teams: its residential traffic starts at $3.50/GB and falls to $1.50/GB at a terabyte, broadly in line with NetNut's old rates, prepaid traffic never expires, and it sells the static residential and mobile proxies former NetNut customers relied on. ISP and ASN targeting are included at no extra cost, and the $1.97 trial lets you validate your targets before moving production traffic. Very large enterprise users may want a bigger pool, but most will be well served."
+    },
+    {
+      "type": "paragraph",
+      "text": "With NetNut's domains seized by the FBI since July 2026, anyone comparing NetNut and ProxyEmpire is really asking whether ProxyEmpire can replace it. ProxyEmpire covers most of NetNut's former product range, including rotating residential, static residential (ISP), mobile and datacenter proxies, and adds bandwidth that never expires and free ISP-level targeting. This page explains what happened to NetNut, how ProxyEmpire compares on price and features, and how to migrate safely."
+    },
+    {
+      "type": "heading",
+      "text": "What happened to NetNut?",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "On July 2, 2026, the FBI, working with IRS Criminal Investigation, Google, Lumen and the Shadowserver Foundation, seized hundreds of domains tied to NetNut, the residential proxy service owned by Nasdaq-listed Alarum Technologies. Google's Threat Intelligence Group said NetNut's exit-node pool overlapped with Popa, a botnet it estimated at about two million consumer devices, many of them smart TVs and streaming boxes. Alarum disputes the botnet label and said it would cooperate with law enforcement, but netnut.com and, within days, netnut.io displayed federal seizure notices. As of October 2026 the service is not something you can responsibly buy or rely on."
+    },
+    {
+      "type": "heading",
+      "text": "NetNut vs ProxyEmpire at a glance",
+      "level": 2
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "",
+          "NetNut",
+          "ProxyEmpire"
+        ],
+        [
+          "Residential pool (advertised)",
+          "Unavailable since July 2026",
+          "30M+"
+        ],
+        [
+          "Countries",
+          "n/a",
+          "170+"
+        ],
+        [
+          "Targeting",
+          "n/a",
+          "Country, region, city and ISP/ASN (included by default)"
+        ],
+        [
+          "Protocols",
+          "n/a",
+          "HTTP, HTTPS, SOCKS5"
+        ],
+        [
+          "Sessions",
+          "n/a",
+          "Rotating or sticky sessions up to 24 hours"
+        ],
+        [
+          "Entry price",
+          "Unavailable",
+          "$3.50/GB at entry (currently discounted 50% from $7/GB)"
+        ],
+        [
+          "Cost for 10 GB",
+          "Unavailable (service seized)",
+          "Up to $35 at the entry rate; lower tiers apply as volume grows"
+        ],
+        [
+          "Cost for 100 GB",
+          "Unavailable",
+          "Tier pricing between $1.50 and $3.50/GB"
+        ],
+        [
+          "Best published rate",
+          "Formerly about $1.87-$3.53/GB on larger plans",
+          "$1.50/GB at 1 TB; custom from $0.75/GB above 5 TB"
+        ],
+        [
+          "Billing model",
+          "Formerly subscription",
+          "Pay-as-you-go or subscription with rollover"
+        ],
+        [
+          "Unused traffic",
+          "n/a",
+          "Prepaid traffic rolls over and does not expire"
+        ],
+        [
+          "Trial",
+          "n/a",
+          "$1.97 trial with 100 MB residential and 50 MB mobile"
+        ],
+        [
+          "Other products",
+          "Formerly residential, ISP, mobile, datacenter",
+          "Static residential, rotating and dedicated 4G/5G mobile, rotating datacenter, unlimited residential"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "ProxyEmpire in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "ProxyEmpire is a Bulgarian-registered provider (SWIFT SAAS LTD) that has been selling since 2020. Its residential and mobile networks share one system with 30M+ advertised IPs in 170+ countries, and country, region, city and ISP targeting are included at no extra cost. The standout policy is bandwidth rollover: prepaid traffic carries forward indefinitely, even after a subscription lapses. Proxyway's 2026 market tests found ProxyEmpire's pool was the third largest among the providers it tested."
+    },
+    {
+      "type": "paragraph",
+      "text": "ProxyEmpire sells residential, mobile, static residential and datacenter proxies from one dashboard and competes on flexibility. Traffic you prepay never expires, ISP-level targeting is free, and the $1.97 trial lets you test both residential and mobile networks before committing. Its 30M+ advertised pool is smaller on paper than the enterprise providers, but independent testing has rated its real reachable pool well relative to its claims."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Prepaid traffic rolls over indefinitely; ISP/ASN targeting included at no extra cost; Cheap $1.97 trial covering residential and mobile; Unlimited residential option priced per day. Weak spots: Smaller advertised pool than the big three; Exact GB thresholds for each tier only shown at checkout; Weaker results on Google in some independent tests."
+    },
+    {
+      "type": "heading",
+      "text": "What NetNut offered, and how ProxyEmpire compares",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Before the seizure, NetNut was best known for ISP-sourced static residential proxies and a fast rotating residential network aimed at scraping, ad verification and brand-protection teams. Its residential rates generally ran from about $1.87 to $3.53 per GB on larger plans, with higher effective prices on entry plans. ProxyEmpire covers much of the same ground: static residential, rotating and dedicated 4g/5g mobile, rotating datacenter, unlimited residential sit alongside its residential network, which advertises 30M+ IPs in 170+ countries."
+    },
+    {
+      "type": "heading",
+      "text": "What former NetNut customers need, and whether ProxyEmpire",
+      "level": 2
+    },
+    {
+      "type": "heading",
+      "text": "delivers",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Most NetNut accounts were built around three things: static ISP IPs for long-lived sessions, rotating residential traffic with US state and city targeting, and high concurrency for scraping. On static ISP-style IPs, ProxyEmpire's answer is yes; its other products are static residential, rotating and dedicated 4G/5G mobile, rotating datacenter, unlimited residential. On rotating residential targeting, ProxyEmpire offers country, region, city and ISP/ASN (included by default) in 170+ countries, with rotating or sticky sessions up to 24 hours. On billing, ProxyEmpire uses pay-as-you-go or subscription with rollover, and unused traffic is handled as follows: prepaid traffic rolls over and does not expire. Map each of your old NetNut zones to one of these before you migrate, so nothing breaks on the day you switch."
+    },
+    {
+      "type": "heading",
+      "text": "ProxyEmpire pricing",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "ProxyEmpire's rotating residential pricing currently starts at $3.50/GB (shown as 50% off a $7 list price) and steps down through several tiers to $1.50/GB at 1 TB, with custom pricing from about $0.75/GB above 5 TB. Rotating mobile starts at $4.50/GB, rotating datacenter at about $0.65/GB, and a flat-rate unlimited residential plan is sold by the day."
+    },
+    {
+      "type": "paragraph",
+      "text": "Quick cost check for ProxyEmpire: 10 GB comes to up to $35 at the entry rate; lower tiers apply as volume grows, and 100 GB comes to tier pricing between $1.50 and $3.50/GB. NetNut's larger plans used to run about $1.87-$3.53/GB, so compare against what you actually paid rather than NetNut's headline rate."
+    },
+    {
+      "type": "heading",
+      "text": "How to migrate from NetNut to ProxyEmpire",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Export your NetNut usage history and list the countries, cities and session types you actually used, so you can map them to ProxyEmpire's targeting (country, region, city and ISP/ASN (included by default))."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Test before you commit. ProxyEmpire's testing option: $1.97 trial with 100 MB residential and 50 MB mobile. Run your real targets for a day on the smallest purchase before moving production traffic."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. Swap the gateway host and credentials in your scraper or browser profiles. ProxyEmpire supports HTTP, HTTPS, SOCKS5."
+    },
+    {
+      "type": "paragraph",
+      "text": "4. Compare success rate, response time and cost per successful request against your old NetNut baseline, then move traffic over in stages."
+    },
+    {
+      "type": "paragraph",
+      "text": "5. Remove any NetNut SDKs, browser extensions or endpoints from your systems, and rotate any credentials that were stored alongside them."
+    },
+    {
+      "type": "heading",
+      "text": "Where ProxyEmpire fits best",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "General web scraping: strong fit. Why: stable connections and traffic that never expires."
+    },
+    {
+      "type": "paragraph",
+      "text": "SERP and rank tracking: workable. Why: Google was its weakest target in independent tests."
+    },
+    {
+      "type": "paragraph",
+      "text": "Social media and multi-account management: strong fit. Why: residential and mobile IPs with 24-hour sticky sessions."
+    },
+    {
+      "type": "paragraph",
+      "text": "E-commerce price and stock monitoring: strong fit. Why: free city and ISP targeting."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ad verification and geo-testing: strong fit. Why: ISP-level targeting at no extra cost."
+    },
+    {
+      "type": "paragraph",
+      "text": "Tight budgets: strong fit. Why: rollover means nothing you pay for is wasted."
+    },
+    {
+      "type": "heading",
+      "text": "Protocols and sessions",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "ProxyEmpire supports HTTP, HTTPS, SOCKS5 and offers rotating or sticky sessions up to 24 hours. Targeting covers country, region, city and ISP/ASN (included by default) across 170+ countries. Like NetNut's residential gateway, it works through a single backconnect endpoint with location and session options passed in the username, plus IP whitelisting."
+    },
+    {
+      "type": "heading",
+      "text": "How to vet a residential proxy provider after NetNut",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "The NetNut case showed that a residential pool can look like a normal enterprise product while resting on devices whose owners never meaningfully agreed to share their connection. Before you move traffic to any provider, including ProxyEmpire, ask a few direct questions and keep the answers on file:"
+    },
+    {
+      "type": "listItem",
+      "text": "How are residential IPs sourced? Look for an opt-in SDK or app programme with clear user"
+    },
+    {
+      "type": "paragraph",
+      "text": "consent and compensation, and ask which partner apps are involved."
+    },
+    {
+      "type": "listItem",
+      "text": "Does the provider publish an ethics or sourcing policy, and has it been audited or certified (for"
+    },
+    {
+      "type": "paragraph",
+      "text": "example AppEsteem or ISO 27001)?"
+    },
+    {
+      "type": "listItem",
+      "text": "What KYC does the provider apply to customers, and which target categories are restricted?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Strict onboarding is a good sign, not an inconvenience."
+    },
+    {
+      "type": "listItem",
+      "text": "How does it handle abuse reports, and is there a named legal entity and jurisdiction behind the"
+    },
+    {
+      "type": "paragraph",
+      "text": "service?"
+    },
+    {
+      "type": "listItem",
+      "text": "Can you get contractual assurances, such as a data-processing agreement, if your compliance"
+    },
+    {
+      "type": "paragraph",
+      "text": "team needs them?"
+    },
+    {
+      "type": "heading",
+      "text": "Bottom line",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "NetNut is no longer a provider you can plan around, so the real decision is which network replaces it. ProxyEmpire is strongest for teams that hate losing unused bandwidth and mobile plus residential work from one account, starts at $3.50/GB at entry (currently discounted 50% from $7/GB), and offers $1.97 trial with 100 MB residential and 50 MB mobile. Test it on your own targets for a day, compare cost per successful request with your old NetNut baseline, and move production traffic in stages."
+    },
+    {
+      "type": "heading",
+      "text": "ProxyEmpire is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Teams that hate losing unused bandwidth"
+    },
+    {
+      "type": "listItem",
+      "text": "Mobile plus residential work from one account"
+    },
+    {
+      "type": "listItem",
+      "text": "Mid-volume scraping that needs ISP targeting"
+    }
+  ],
+  "title": "NetNut vs ProxyEmpire (2026)",
+  "subtitle": "NetNut Is Offline: How ProxyEmpire Compares",
+  "seoTitle": "NetNut vs ProxyEmpire (2026): NetNut Alternative",
+  "description": "NetNut was seized in July 2026. See how ProxyEmpire compares with what NetNut offered, what it costs, and how to migrate your scraping or account traffic safely.",
+  "keywords": "netnut vs proxyempire , netnut vs proxyempire 2026, netnut vs proxyempire pricing, netnut vs proxyempire comparison",
+  "pageEnd": 233,
+  "slug": "netnut-vs-proxyempire",
+  "providerSlugs": [
+    "netnut",
+    "proxyempire"
+  ],
+  "faq": [
+    {
+      "q": "Is NetNut still working in 2026?",
+      "a": "No. NetNut's main domains were seized by the FBI on July 2, 2026, after Google linked its residential exit nodes to the Popa botnet. Alarum Technologies disputes the allegations, but the service should not be relied on for business traffic."
+    },
+    {
+      "q": "Is ProxyEmpire a good NetNut alternative?",
+      "a": "Yes, for most former NetNut use cases. ProxyEmpire is best for teams that hate losing unused bandwidth and mobile plus residential work from one account. It starts at $3.50/GB at entry (currently discounted 50% from $7/GB)."
+    },
+    {
+      "q": "How much does ProxyEmpire cost compared with NetNut?",
+      "a": "NetNut's larger plans used to run about $1.87-$3.53/GB. ProxyEmpire starts at $3.50/GB at entry (currently discounted 50% from $7/GB), and its best published rate is $1.50/GB at 1 TB; custom from $0.75/GB above 5 TB."
+    },
+    {
+      "q": "Does ProxyEmpire support SOCKS5?",
+      "a": "ProxyEmpire supports HTTP, HTTPS, SOCKS5."
+    },
+    {
+      "q": "Does ProxyEmpire offer a trial?",
+      "a": "$1.97 trial with 100 MB residential and 50 MB mobile."
+    }
+  ],
+  "methodology": "Imported from the supplied October 2026 comparison brief. Prices and advertised specifications are not new hands-on benchmarks; confirm current prices, promotions, availability and terms on each provider’s site. Prices are in US dollars before VAT and coupons unless stated. Advertised pool totals have not been independently audited.",
+  "dateModified": "2026-10-17",
+  "quickVerdict": "ProxyEmpire is a strong NetNut replacement for mid-size teams: its residential traffic starts at $3.50/GB and falls to $1.50/GB at a terabyte, broadly in line with NetNut's old rates, prepaid traffic never expires, and it sells the static residential and mobile proxies former NetNut customers relied on. ISP and ASN targeting are included at no extra cost, and the $1.97 trial lets you validate your targets before moving production traffic. Very large enterprise users may want a bigger pool, but most will be well served.",
+  "wordCount": 1646
+}
