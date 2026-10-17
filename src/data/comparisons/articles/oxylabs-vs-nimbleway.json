@@ -1,0 +1,299 @@
+{
+  "pdfSlug": "oxylabs-vs-nimbleway",
+  "pageStart": 114,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Quick verdict",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Oxylabs is the better choice for raw residential proxies and for scraper APIs at scale: it publishes a 175M+ pool, supports SOCKS5, falls to $2.50/GB on its Corporate plan, and offers mobile, ISP and datacenter networks too. Nimble is the better choice for teams that want an AI-driven managed browser, search agents and data delivered as structured output, and its $5.30/GB docs rate beats Oxylabs' $8 pay-as-you-go at small volumes. For most proxy-led buyers, Oxylabs is the safer pick."
+    },
+    {
+      "type": "paragraph",
+      "text": "Oxylabs and Nimble are both premium web-data vendors that sell residential proxies alongside scraper APIs, and both price for teams that value results over cheap bandwidth. The difference is emphasis. Oxylabs remains a proxy infrastructure giant with one of the two largest pools in the world, while its APIs are a strong second line. Nimble (Nimbleway) has shifted toward AI-driven browsing, search agents and managed data services, with proxies as supporting infrastructure. This comparison helps premium buyers pick the right partner."
+    },
+    {
+      "type": "heading",
+      "text": "Oxylabs vs Nimble at a glance",
+      "level": 2
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "",
+          "Oxylabs",
+          "Nimble"
+        ],
+        [
+          "Residential pool (advertised)",
+          "175M+",
+          "Not published"
+        ],
+        [
+          "Countries",
+          "195",
+          "Worldwide"
+        ],
+        [
+          "Targeting",
+          "Country, state, city, ZIP and ASN",
+          "Country, state and city"
+        ],
+        [
+          "Protocols",
+          "HTTP, HTTPS, SOCKS5",
+          "HTTP, HTTPS"
+        ],
+        [
+          "Sessions",
+          "Rotating and sticky sessions on residential and mobile",
+          "Auto-rotation by default; sticky sessions available"
+        ],
+        [
+          "Entry price",
+          "$8/GB pay-as-you-go; Starter plan $30 for 5 GB ($6/GB)",
+          "$8/GB on PAYG plan cards; developer docs list $5.30/GB"
+        ],
+        [
+          "Cost for 10 GB",
+          "$80 PAYG, or $100 Basic plan for 20 GB",
+          "About $53 at the $5.30/GB docs rate ($80 at the $8 card rate)"
+        ],
+        [
+          "Cost for 100 GB",
+          "Mid-tier plans priced inside the dashboard",
+          "About $530 at $5.30/GB"
+        ],
+        [
+          "Best published rate",
+          "$2.50/GB on the $2,500/month Corporate plan",
+          "$5.30/GB (larger credit packages; annual billing saves 15%)"
+        ],
+        [
+          "Billing model",
+          "Pay-as-you-go or monthly plans",
+          "Credit packages, PAYG, and data-services contracts"
+        ],
+        [
+          "Unused traffic",
+          "Monthly plan allowances reset each cycle",
+          "Credits usable across Nimble products"
+        ],
+        [
+          "Trial",
+          "Residential trial arranged through sales, once per customer",
+          "Free trial of 5,000 web pages on its APIs"
+        ],
+        [
+          "Other products",
+          "Datacenter, dedicated datacenter, ISP, mobile, Web Scraper API, Web Unblocker, headless browser",
+          "Web, SERP and e-commerce APIs, Nimble Browser, web search agents"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Oxylabs in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Oxylabs is a Lithuanian web-data company and Bright Data's closest rival at the top of the market. It advertises a residential pool of more than 175 million IPs across 195 locations, publishes a 99.95% success rate for residential traffic, and sells seven product lines including datacenter, ISP and mobile proxies, a Web Scraper API and Web Unblocker. Onboarding is more sales-led than the mid-market providers, but self-service has expanded through 2026, including dedicated ISP proxies."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: One of the two largest residential pools available; Published 99.95% residential success rate; Strong scraper APIs that bill per result; Formal ethical-sourcing documentation for procurement. Weak spots: Expensive at low volume ($8/GB PAYG); Best rates need large monthly commitments; Residential trial goes through sales rather than self-service."
+    },
+    {
+      "type": "heading",
+      "text": "Nimble in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimbleway, now usually just called Nimble, has moved from selling proxies to selling web data. Its residential proxies still exist as an infrastructure product, but the company's focus is its AI-driven Nimble Browser, scraping APIs priced per 1,000 URLs, and managed data pipelines. Nimble does not publish a residential pool size, and its proxy product is documented for HTTP and HTTPS rather than SOCKS5. Buyers who want raw bandwidth tend to find it expensive; buyers who want finished data find it convenient."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Strong managed APIs and an AI-driven browser; Unlimited concurrency on proxies; Credits shared across all Nimble products; Free 5,000-page API trial. Weak spots: No published pool size; HTTP/HTTPS only, no SOCKS5 on proxies; High per-GB price for raw residential traffic."
+    },
+    {
+      "type": "heading",
+      "text": "Pricing: Oxylabs vs Nimble",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Oxylabs charges $8/GB pay-as-you-go for residential traffic. Monthly plans start with Starter at $30 for 5 GB ($6/GB) and a Basic tier around $100 for 20 GB, and the rate falls to $2.50/GB on the $2,500/month Corporate plan. Mobile traffic starts at $7.50/GB."
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble's plan cards list residential proxy traffic at $8/GB pay-as-you-go, falling through credit packages ($150 and $600 entry packages) toward $5.30/GB; its current developer documentation lists $5.30/GB for residential traffic without a commitment. Annual billing saves 15%. Its scraping APIs bill $0.90 to $1.45 per 1,000 URLs depending on rendering."
+    },
+    {
+      "type": "paragraph",
+      "text": "For a 10 GB month, Nimble costs about $53 while Oxylabs costs about $80, so Nimble saves around 34%. At 100 GB, a like-for-like total is harder to state because Oxylabs does not publish an exact price for that volume; Nimble comes to about $530. Both Oxylabs and Nimble work on allowances that do not carry forward indefinitely, so size your plan to real monthly usage rather than buying ahead."
+    },
+    {
+      "type": "heading",
+      "text": "Pool size, coverage and targeting",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble does not publish a clear residential pool figure, so a size comparison is not possible on published data. Oxylabs lists '175M+' and Nimble lists 'Not published'. In practice, what matters is how many unique IPs you get in the countries you target, which you can measure in a short trial by sending a few thousand requests and counting distinct exit addresses. For coverage, Oxylabs lists 195 countries and Nimble lists Worldwide. On targeting, Oxylabs offers country, state, city, ZIP and ASN, while Nimble offers country, state and city."
+    },
+    {
+      "type": "heading",
+      "text": "Protocols, sessions and setup",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Protocol support is a real difference here. Oxylabs supports HTTP, HTTPS, SOCKS5, while Nimble offers HTTP, HTTPS. If your tooling needs SOCKS5, for example some anti-detect browsers, desktop apps or non-HTTP traffic, that settles it in Oxylabs's favour. On sessions, Oxylabs offers rotating and sticky sessions on residential and mobile, and Nimble offers auto-rotation by default; sticky sessions available. Both use a backconnect gateway: you point your tool at one host and port, and choose country, city or session behaviour through parameters in the username."
+    },
+    {
+      "type": "heading",
+      "text": "Which is better for your use case?",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "General web scraping: Oxylabs wins. The deciding factor for Oxylabs: its pool size and Web Scraper API suit large crawls. The limitation on the Nimble side: its managed APIs remove much of the anti-bot work."
+    },
+    {
+      "type": "paragraph",
+      "text": "SERP and rank tracking: close call. Both are reasonable choices here. Oxylabs: its scraper API returns parsed search results. Nimble: its SERP API and search agents return structured results. Let price and the countries you need decide."
+    },
+    {
+      "type": "paragraph",
+      "text": "Social media and multi-account management: Oxylabs wins. The deciding factor for Oxylabs: it works, but the pricing is built for volume, not a handful of accounts. The limitation on the Nimble side: no SOCKS5 and a high per-GB cost make it a poor fit for account work."
+    },
+    {
+      "type": "paragraph",
+      "text": "E-commerce price and stock monitoring: Oxylabs. Oxylabs has the edge here. Why: city and ZIP targeting plus parsed e-commerce endpoints. How Nimble compares: dedicated e-commerce data APIs."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ad verification and geo-testing: Oxylabs wins. The deciding factor for Oxylabs: broad geo coverage with ASN targeting. The limitation on the Nimble side: good geo targeting but no published pool data."
+    },
+    {
+      "type": "paragraph",
+      "text": "Tight budgets: close call. Both are reasonable choices here. Oxylabs: entry pricing is among the highest in this comparison. Nimble: per-GB rates are among the highest here. Let price and the countries you need decide."
+    },
+    {
+      "type": "heading",
+      "text": "Trials, verification and billing fine print",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Before you pay, check how each provider lets you test. Oxylabs: Residential trial arranged through sales, once per customer. Nimble: Free trial of 5,000 web pages on its APIs. Verification and payment rules differ too. Oxylabs: Business verification on larger accounts. Nimble: Sales-led onboarding for data-services plans. Whichever you choose, measure cost per successful request rather than cost per gigabyte: retries, blocked pages and heavy page assets all burn bandwidth, and a cheaper network that fails more often can end up costing more. Blocking images and fonts in your scraper, reusing sessions where a target allows it, and capping concurrency are the quickest ways to cut the bill on either provider."
+    },
+    {
+      "type": "heading",
+      "text": "How to test Oxylabs and Nimble before you commit",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "The quickest way to choose between Oxylabs and Nimble is a side-by-side test on the sites and countries you actually care about:"
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Buy the smallest option on each side (Oxylabs: residential trial arranged through sales, once per customer; Nimble: free trial of 5,000 web pages on its APIs)."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Pick three to five real target URLs and the two or three countries that matter most, and send the same number of requests (a few hundred is enough) through each provider at the same time of day."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. Record success rate, median response time, CAPTCHAs or blocks, and the number of unique exit IPs you received per country. 4. Divide what you spent by the number of successful, correctly located responses to get cost per useful request, then scale that to your monthly volume."
+    },
+    {
+      "type": "heading",
+      "text": "Bottom line",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Across the six use cases above, Oxylabs comes out ahead in 4, Nimble in 0, and 2 are ties. That makes Oxylabs the safer default if you are unsure, but the right answer still depends on your volume and targets: Oxylabs is strongest for large scraping pipelines with steady volume, while Nimble is strongest for teams that want structured data rather than raw IPs. If you can, spend a few dollars testing both on the exact sites and countries you care about; a one-hour test tells you more than any spec sheet."
+    },
+    {
+      "type": "heading",
+      "text": "Oxylabs is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Large scraping pipelines with steady volume"
+    },
+    {
+      "type": "listItem",
+      "text": "Teams that want a managed scraper API option"
+    },
+    {
+      "type": "listItem",
+      "text": "Procurement-heavy buyers who need sourcing paperwork"
+    },
+    {
+      "type": "heading",
+      "text": "Nimble is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Teams that want structured data rather than raw IPs"
+    },
+    {
+      "type": "listItem",
+      "text": "AI and agent workloads that need a managed browser"
+    },
+    {
+      "type": "listItem",
+      "text": "Buyers comfortable with sales-led contracts"
+    }
+  ],
+  "title": "Oxylabs vs Nimble (2026)",
+  "subtitle": "Two Premium Data Platforms Compared",
+  "seoTitle": "Oxylabs vs Nimble (2026): Pricing, Pool Size & Verdict",
+  "description": "Oxylabs vs Nimble (2026): prices at 10 GB and 100 GB, pool size, targeting, trials and which to pick for scraping, SERP and multi-account work.",
+  "keywords": "oxylabs vs nimble , oxylabs vs nimble 2026, oxylabs vs nimble pricing, oxylabs vs nimble comparison",
+  "pageEnd": 117,
+  "slug": "oxylabs-vs-nimbleway",
+  "providerSlugs": [
+    "oxylabs",
+    "nimbleway"
+  ],
+  "faq": [
+    {
+      "q": "Is Oxylabs or Nimble cheaper?",
+      "a": "For small volumes Nimble is cheaper: about $53 for 10 GB against $80. At scale, Oxylabs's best published rate is $2.50/GB on the $2,500/month Corporate plan and Nimble's is $5.30/GB (larger credit packages; annual billing saves 15%). Check both pricing pages before buying, because promotions change often."
+    },
+    {
+      "q": "Which has more residential IPs, Oxylabs or Nimble?",
+      "a": "A direct comparison is not possible on published data: Oxylabs lists 175M+ and Nimble lists Not published. Test unique IP counts in your target countries during a trial."
+    },
+    {
+      "q": "Do Oxylabs and Nimble offer a free trial?",
+      "a": "Oxylabs: Residential trial arranged through sales, once per customer. Nimble: Free trial of 5,000 web pages on its APIs."
+    },
+    {
+      "q": "Do both support SOCKS5?",
+      "a": "Oxylabs supports HTTP, HTTPS, SOCKS5. Nimble supports HTTP, HTTPS."
+    },
+    {
+      "q": "Which is better for beginners?",
+      "a": "Nimble is usually the easier starting point because of its entry pricing and self-service setup. Oxylabs is best for large scraping pipelines with steady volume; Nimble is best for teams that want structured data rather than raw IPs."
+    }
+  ],
+  "methodology": "Imported from the supplied October 2026 comparison brief. Prices and advertised specifications are not new hands-on benchmarks; confirm current prices, promotions, availability and terms on each provider’s site. Prices are in US dollars before VAT and coupons unless stated. Advertised pool totals have not been independently audited.",
+  "dateModified": "2026-10-17",
+  "quickVerdict": "Oxylabs is the better choice for raw residential proxies and for scraper APIs at scale: it publishes a 175M+ pool, supports SOCKS5, falls to $2.50/GB on its Corporate plan, and offers mobile, ISP and datacenter networks too. Nimble is the better choice for teams that want an AI-driven managed browser, search agents and data delivered as structured output, and its $5.30/GB docs rate beats Oxylabs' $8 pay-as-you-go at small volumes. For most proxy-led buyers, Oxylabs is the safer pick.",
+  "wordCount": 1762
+}

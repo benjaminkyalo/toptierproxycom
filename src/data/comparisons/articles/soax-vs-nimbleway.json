@@ -1,0 +1,303 @@
+{
+  "pdfSlug": "soax-vs-nimbleway",
+  "pageStart": 122,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Quick verdict",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "SOAX is the better choice for anyone buying proxies: it publishes a large residential and mobile pool, supports SOCKS5, UDP and QUIC (Nimble's proxies are HTTP/HTTPS only), and its Builder plan prices US traffic at $3/GB against Nimble's $5.30/GB docs rate. Nimble is the better choice only if you want managed extraction and AI-driven browsing rather than raw IPs. Note that SOAX credits expire after 60 days, so size plans carefully."
+    },
+    {
+      "type": "paragraph",
+      "text": "SOAX and Nimble both sell residential proxies plus scraping tools, but their centres of gravity differ. SOAX is a proxy network first, with 155M residential and 33M mobile IPs on one balance, granular targeting and unusual protocol support. Nimble (Nimbleway) is an AI-first data platform whose Nimble Browser, search agents and data-services contracts are the main event. This comparison helps you decide whether you need a flexible proxy network or a managed data partner."
+    },
+    {
+      "type": "heading",
+      "text": "SOAX vs Nimble at a glance",
+      "level": 2
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "",
+          "SOAX",
+          "Nimble"
+        ],
+        [
+          "Residential pool (advertised)",
+          "155M residential + 33M mobile",
+          "Not published"
+        ],
+        [
+          "Countries",
+          "195",
+          "Worldwide"
+        ],
+        [
+          "Targeting",
+          "Country, region, city and ISP; ASN and ZIP on Scale plans",
+          "Country, state and city"
+        ],
+        [
+          "Protocols",
+          "HTTP, HTTPS, SOCKS5, UDP, QUIC",
+          "HTTP, HTTPS"
+        ],
+        [
+          "Sessions",
+          "Rotating or sticky; mobile sessions up to 60 minutes",
+          "Auto-rotation by default; sticky sessions available"
+        ],
+        [
+          "Entry price",
+          "$5/GB on the no-fee Sandbox plan (US, Tier 1)",
+          "$8/GB on PAYG plan cards; developer docs list $5.30/GB"
+        ],
+        [
+          "Cost for 10 GB",
+          "$50 on Sandbox (US traffic)",
+          "About $53 at the $5.30/GB docs rate ($80 at the $8 card rate)"
+        ],
+        [
+          "Cost for 100 GB",
+          "$300 on Builder ($200/month plan, $3/GB US)",
+          "About $530 at $5.30/GB"
+        ],
+        [
+          "Best published rate",
+          "$1.50/GB US on Scale; Enterprise from $0.85/GB",
+          "$5.30/GB (larger credit packages; annual billing saves 15%)"
+        ],
+        [
+          "Billing model",
+          "Prepaid credits; rate depends on plan and exit-country tier",
+          "Credit packages, PAYG, and data-services contracts"
+        ],
+        [
+          "Unused traffic",
+          "Credits expire 60 days after they are added",
+          "Credits usable across Nimble products"
+        ],
+        [
+          "Trial",
+          "Paid 3-day trial, 400 MB for $1.99",
+          "Free trial of 5,000 web pages on its APIs"
+        ],
+        [
+          "Other products",
+          "Residential and mobile on one balance; scraping APIs and unblocker (datacenter and ISP discontinued)",
+          "Web, SERP and e-commerce APIs, Nimble Browser, web search agents"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "SOAX in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "SOAX rebuilt its pricing in 2026 around credits and country tiers. Residential and mobile traffic share one balance and one per-GB rate, and the rate depends on your plan and the country your exit IP is in: US and German traffic costs more than Indian or Filipino traffic. SOAX advertises 155 million residential and 33 million mobile IPs in 195 countries, supports UDP and QUIC as well as SOCKS5, and includes city and ISP targeting on every plan. It discontinued its datacenter and ISP proxies between late 2025 and mid 2026."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Residential and mobile on one balance; UDP and QUIC support alongside SOCKS5; Large pool with city and ISP targeting on every plan; Cheap traffic for Tier 2 and Tier 3 countries. Weak spots: Credits expire after 60 days; US traffic is expensive on small plans; Datacenter and ISP proxies were discontinued."
+    },
+    {
+      "type": "heading",
+      "text": "Nimble in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble (Nimbleway) is an AI-first web-data platform. It offers residential proxies with fast response times and unlimited concurrency, but most of its product investment goes into the Nimble Browser, SERP and e-commerce APIs, and data-services plans that start in the thousands of dollars per month. It does not disclose its residential pool size, and its per-GB rates are among the highest here, so it competes on finished results rather than cheap traffic."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Strong managed APIs and an AI-driven browser; Unlimited concurrency on proxies; Credits shared across all Nimble products; Free 5,000-page API trial. Weak spots: No published pool size; HTTP/HTTPS only, no SOCKS5 on proxies; High per-GB price for raw residential traffic."
+    },
+    {
+      "type": "heading",
+      "text": "Pricing: SOAX vs Nimble",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "SOAX bills prepaid credits. For US (Tier 1) traffic, the no-fee Sandbox plan costs $5/GB, Builder ($200/month) $3/GB, Team ($500/month) $2.20/GB, and Scale ($1,500/month) $1.50/GB; cheaper countries cost less (Tier 3 from $2/GB on Sandbox). Credits expire 60 days after purchase, and SOAX counts traffic in both directions."
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble's plan cards list residential proxy traffic at $8/GB pay-as-you-go, falling through credit packages ($150 and $600 entry packages) toward $5.30/GB; its current developer documentation lists $5.30/GB for residential traffic without a commitment. Annual billing saves 15%. Its scraping APIs bill $0.90 to $1.45 per 1,000 URLs depending on rendering."
+    },
+    {
+      "type": "paragraph",
+      "text": "For 10 GB, there is little to separate them on price ($50 for SOAX, $53 for Nimble). Buying 100 GB, you would pay about $300 with SOAX and $530 with Nimble: a 43% saving in SOAX's favour. Both SOAX and Nimble work on allowances that do not carry forward indefinitely, so size your plan to real monthly usage rather than buying ahead."
+    },
+    {
+      "type": "heading",
+      "text": "Pool size, coverage and targeting",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble does not publish a clear residential pool figure, so a size comparison is not possible on published data. SOAX lists '155M residential + 33M mobile' and Nimble lists 'Not published'. In practice, what matters is how many unique IPs you get in the countries you target, which you can measure in a short trial by sending a few thousand requests and counting distinct exit addresses. For coverage, SOAX lists 195 countries and Nimble lists Worldwide. On targeting, SOAX offers country, region, city and ISP; ASN and ZIP on Scale plans, while Nimble offers country, state and city."
+    },
+    {
+      "type": "heading",
+      "text": "Protocols, sessions and setup",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Protocol support is a real difference here. SOAX supports HTTP, HTTPS, SOCKS5, UDP, QUIC, while Nimble offers HTTP, HTTPS. If your tooling needs SOCKS5, for example some anti-detect browsers, desktop apps or non-HTTP traffic, that settles it in SOAX's favour. On sessions, SOAX offers rotating or sticky; mobile sessions up to 60 minutes, and Nimble offers auto-rotation by default; sticky sessions available. Both use a backconnect gateway: you point your tool at one host and port, and choose country, city or session behaviour through parameters in the username."
+    },
+    {
+      "type": "heading",
+      "text": "Which is better for your use case?",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "General web scraping: tie. Neither has a clear edge. With SOAX: a large pool and its own error headers help debugging. With Nimble: its managed APIs remove much of the anti-bot work. Run the same small test on both before committing."
+    },
+    {
+      "type": "paragraph",
+      "text": "SERP and rank tracking: Nimble. Nimble has the edge here. Why: its SERP API and search agents return structured results. How SOAX compares: city and ISP targeting for local results."
+    },
+    {
+      "type": "paragraph",
+      "text": "Social media and multi-account management: SOAX. SOAX has the edge here. Why: mobile IPs on the same balance as residential. How Nimble compares: no SOCKS5 and a high per-GB cost make it a poor fit for account work."
+    },
+    {
+      "type": "paragraph",
+      "text": "E-commerce price and stock monitoring: tie. Neither has a clear edge. With SOAX: granular location filters. With Nimble: dedicated e-commerce data APIs. Run the same small test on both before committing."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ad verification and geo-testing: SOAX. SOAX has the edge here. Why: ISP, ASN and carrier-level targeting. How Nimble compares: good geo targeting but no published pool data."
+    },
+    {
+      "type": "paragraph",
+      "text": "Tight budgets: SOAX wins. The deciding factor for SOAX: cheap in Tier 3 countries but pricey for small US jobs. The limitation on the Nimble side: per-GB rates are among the highest here."
+    },
+    {
+      "type": "heading",
+      "text": "Trials, verification and billing fine print",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Before you pay, check how each provider lets you test. SOAX: Paid 3-day trial, 400 MB for $1.99. Nimble: Free trial of 5,000 web pages on its APIs. Verification and payment rules differ too. SOAX: Verification for postpaid and enterprise terms. Nimble: Sales-led onboarding for data-services plans. Whichever you choose, measure cost per successful request rather than cost per gigabyte: retries, blocked pages and heavy page assets all burn bandwidth, and a cheaper network that fails more often can end up costing more. Blocking images and fonts in your scraper, reusing sessions where a target allows it, and capping concurrency are the quickest ways to cut the bill on either provider."
+    },
+    {
+      "type": "heading",
+      "text": "How to test SOAX and Nimble before you commit",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Spec sheets only get you so far. A short, structured test on your own targets will settle SOAX vs Nimble faster than any review:"
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Buy the smallest option on each side (SOAX: paid 3-day trial, 400 MB for $1.99; Nimble: free trial of 5,000 web pages on its APIs)."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Pick three to five real target URLs and the two or three countries that matter most, and send the same number of requests (a few hundred is enough) through each provider at the same time of day."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. Record success rate, median response time, CAPTCHAs or blocks, and the number of unique exit IPs you received per country."
+    },
+    {
+      "type": "paragraph",
+      "text": "4. Divide what you spent by the number of successful, correctly located responses to get cost per useful request, then scale that to your monthly volume."
+    },
+    {
+      "type": "heading",
+      "text": "Bottom line",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Across the six use cases above, SOAX comes out ahead in 3, Nimble in 1, and 2 are ties. That makes SOAX the safer default if you are unsure, but the right answer still depends on your volume and targets: SOAX is strongest for mobile-first work such as app testing and social platforms, while Nimble is strongest for teams that want structured data rather than raw IPs. If you can, spend a few dollars testing both on the exact sites and countries you care about; a one-hour test tells you more than any spec sheet."
+    },
+    {
+      "type": "heading",
+      "text": "SOAX is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Mobile-first work such as app testing and social platforms"
+    },
+    {
+      "type": "listItem",
+      "text": "Teams targeting cheaper Tier 2/3 countries"
+    },
+    {
+      "type": "listItem",
+      "text": "Workloads needing UDP or QUIC"
+    },
+    {
+      "type": "heading",
+      "text": "Nimble is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Teams that want structured data rather than raw IPs"
+    },
+    {
+      "type": "listItem",
+      "text": "AI and agent workloads that need a managed browser"
+    },
+    {
+      "type": "listItem",
+      "text": "Buyers comfortable with sales-led contracts"
+    }
+  ],
+  "title": "SOAX vs Nimble (2026)",
+  "subtitle": "Residential + Mobile Network vs AI Data Platform",
+  "seoTitle": "SOAX vs Nimble (2026): Pricing, Pool Size & Verdict",
+  "description": "SOAX vs Nimble (2026): prices at 10 GB and 100 GB, pool size, targeting, trials and which to pick for scraping, SERP and multi-account work.",
+  "keywords": "soax vs nimble , soax vs nimble 2026, soax vs nimble pricing, soax vs nimble comparison",
+  "pageEnd": 125,
+  "slug": "soax-vs-nimbleway",
+  "providerSlugs": [
+    "soax",
+    "nimbleway"
+  ],
+  "faq": [
+    {
+      "q": "Is SOAX or Nimble cheaper?",
+      "a": "For small volumes SOAX is cheaper: about $50 for 10 GB against $53. At scale, SOAX's best published rate is $1.50/GB US on Scale; Enterprise from $0.85/GB and Nimble's is $5.30/GB (larger credit packages; annual billing saves 15%). Check both pricing pages before buying, because promotions change often."
+    },
+    {
+      "q": "Which has more residential IPs, SOAX or Nimble?",
+      "a": "A direct comparison is not possible on published data: SOAX lists 155M residential + 33M mobile and Nimble lists Not published. Test unique IP counts in your target countries during a trial."
+    },
+    {
+      "q": "Do SOAX and Nimble offer a free trial?",
+      "a": "SOAX: Paid 3-day trial, 400 MB for $1.99. Nimble: Free trial of 5,000 web pages on its APIs."
+    },
+    {
+      "q": "Do both support SOCKS5?",
+      "a": "SOAX supports HTTP, HTTPS, SOCKS5, UDP, QUIC. Nimble supports HTTP, HTTPS."
+    },
+    {
+      "q": "Which is better for beginners?",
+      "a": "SOAX is usually the easier starting point because of its entry pricing and self-service setup. SOAX is best for mobile-first work such as app testing and social platforms; Nimble is best for teams that want structured data rather than raw IPs."
+    }
+  ],
+  "methodology": "Imported from the supplied October 2026 comparison brief. Prices and advertised specifications are not new hands-on benchmarks; confirm current prices, promotions, availability and terms on each provider’s site. Prices are in US dollars before VAT and coupons unless stated. Advertised pool totals have not been independently audited.",
+  "dateModified": "2026-10-17",
+  "quickVerdict": "SOAX is the better choice for anyone buying proxies: it publishes a large residential and mobile pool, supports SOCKS5, UDP and QUIC (Nimble's proxies are HTTP/HTTPS only), and its Builder plan prices US traffic at $3/GB against Nimble's $5.30/GB docs rate. Nimble is the better choice only if you want managed extraction and AI-driven browsing rather than raw IPs. Note that SOAX credits expire after 60 days, so size plans carefully.",
+  "wordCount": 1785
+}

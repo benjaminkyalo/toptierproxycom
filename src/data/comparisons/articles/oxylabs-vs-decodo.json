@@ -1,0 +1,303 @@
+{
+  "pdfSlug": "oxylabs-vs-decodo",
+  "pageStart": 102,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Quick verdict",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Decodo is the better value for most teams: $35 for 10 GB against $80 on Oxylabs pay-as-you-go, $275 for 100 GB, a free trial, and benchmark performance close to Oxylabs'. Oxylabs is the better choice for large enterprise pipelines that need the biggest pool, formal sourcing documentation, account management and per-result scraper APIs, and at very high volume its $2.50/GB Corporate rate undercuts Decodo's published $2.75. Start with Decodo unless procurement or scale clearly points to Oxylabs."
+    },
+    {
+      "type": "paragraph",
+      "text": "Oxylabs and Decodo are often compared because independent testers have ranked their residential pools as the two largest among the providers they measured, with near-identical success rates. The difference is positioning. Oxylabs is a premium enterprise vendor with a 175M+ pool, sales-led onboarding and scraper APIs priced for large teams. Decodo is a self-service mid-market provider with a 115M+ pool and much lower entry prices. This comparison asks how much extra Oxylabs' scale is worth."
+    },
+    {
+      "type": "heading",
+      "text": "Oxylabs vs Decodo at a glance",
+      "level": 2
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "",
+          "Oxylabs",
+          "Decodo"
+        ],
+        [
+          "Residential pool (advertised)",
+          "175M+",
+          "115M+"
+        ],
+        [
+          "Countries",
+          "195",
+          "195+"
+        ],
+        [
+          "Targeting",
+          "Country, state, city, ZIP and ASN",
+          "Country, state, city, ZIP and ASN"
+        ],
+        [
+          "Protocols",
+          "HTTP, HTTPS, SOCKS5",
+          "HTTP, HTTPS, SOCKS5"
+        ],
+        [
+          "Sessions",
+          "Rotating and sticky sessions on residential and mobile",
+          "Rotating or sticky sessions with configurable duration"
+        ],
+        [
+          "Entry price",
+          "$8/GB pay-as-you-go; Starter plan $30 for 5 GB ($6/GB)",
+          "$4/GB pay-as-you-go; plans from $3.75/GB (3 GB for $11.25)"
+        ],
+        [
+          "Cost for 10 GB",
+          "$80 PAYG, or $100 Basic plan for 20 GB",
+          "$35 (10 GB plan, $3.50/GB)"
+        ],
+        [
+          "Cost for 100 GB",
+          "Mid-tier plans priced inside the dashboard",
+          "$275 (100 GB plan, $2.75/GB)"
+        ],
+        [
+          "Best published rate",
+          "$2.50/GB on the $2,500/month Corporate plan",
+          "$2.75/GB published; larger volumes by quote"
+        ],
+        [
+          "Billing model",
+          "Pay-as-you-go or monthly plans",
+          "Pay-as-you-go or monthly plans; top-ups at the same per-GB rate"
+        ],
+        [
+          "Unused traffic",
+          "Monthly plan allowances reset each cycle",
+          "Plan traffic resets monthly; PAYG for bursty work"
+        ],
+        [
+          "Trial",
+          "Residential trial arranged through sales, once per customer",
+          "Free trial (about 100 MB) on residential"
+        ],
+        [
+          "Other products",
+          "Datacenter, dedicated datacenter, ISP, mobile, Web Scraper API, Web Unblocker, headless browser",
+          "Datacenter, ISP, mobile, scraping APIs (web, SERP, e-commerce, social)"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Oxylabs in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Oxylabs is a Lithuanian web-data company and Bright Data's closest rival at the top of the market. It advertises a residential pool of more than 175 million IPs across 195 locations, publishes a 99.95% success rate for residential traffic, and sells seven product lines including datacenter, ISP and mobile proxies, a Web Scraper API and Web Unblocker. Onboarding is more sales-led than the mid-market providers, but self-service has expanded through 2026, including dedicated ISP proxies."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: One of the two largest residential pools available; Published 99.95% residential success rate; Strong scraper APIs that bill per result; Formal ethical-sourcing documentation for procurement. Weak spots: Expensive at low volume ($8/GB PAYG); Best rates need large monthly commitments; Residential trial goes through sales rather than self-service."
+    },
+    {
+      "type": "heading",
+      "text": "Decodo in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Decodo is the 2024 rebrand of Smartproxy, one of the most popular mid-market providers. Its residential network is advertised at 115 million IPs across 195+ locations, and independent benchmarks put its success rate around 99.9% with sub-second response times. Every plan includes the full pool plus city, state, ZIP and ASN targeting, and the dashboard is one of the easiest to set up. Decodo also sells datacenter, ISP and mobile proxies and a family of scraping APIs."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Large 115M+ pool at a mid-market price; Near-perfect success rates in independent tests; Clean, fast self-service onboarding; Scraping APIs available when raw proxies are not enough. Weak spots: Plan traffic does not roll over; Published pricing stops at 100 GB; beyond that you need a quote; More expensive per GB than budget brands."
+    },
+    {
+      "type": "heading",
+      "text": "Pricing: Oxylabs vs Decodo",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Oxylabs charges $8/GB pay-as-you-go for residential traffic. Monthly plans start with Starter at $30 for 5 GB ($6/GB) and a Basic tier around $100 for 20 GB, and the rate falls to $2.50/GB on the $2,500/month Corporate plan. Mobile traffic starts at $7.50/GB."
+    },
+    {
+      "type": "paragraph",
+      "text": "Decodo sells residential traffic at $4/GB pay-as-you-go with no commitment, or on monthly plans: 3 GB for $11.25 ($3.75/GB), 10 GB for $35, 25 GB at $3.25/GB, 50 GB for $150 and 100 GB for $275 ($2.75/GB). Top-ups are billed at your plan's rate, so you are not pushed into the next tier."
+    },
+    {
+      "type": "paragraph",
+      "text": "For a 10 GB month, Decodo costs about $35 while Oxylabs costs about $80, so Decodo saves around 56%. At 100 GB, a like-for-like total is harder to state because Oxylabs does not publish an exact price for that volume; Decodo comes to about $275. Both Oxylabs and Decodo work on allowances that do not carry forward indefinitely, so size your plan to real monthly usage rather than buying ahead."
+    },
+    {
+      "type": "heading",
+      "text": "Pool size, coverage and targeting",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "By advertised size, Oxylabs (175M+) is about 1.5x larger than Decodo (115M+). Advertised pool sizes are marketing figures counted over long periods; the number of IPs actually reachable in a given country at a given moment is far smaller for every provider, so treat these as a rough guide to depth rather than a guarantee. For coverage, Oxylabs lists 195 countries and Decodo lists 195+. On targeting, Oxylabs offers country, state, city, ZIP and ASN, while Decodo offers country, state, city, ZIP and ASN."
+    },
+    {
+      "type": "heading",
+      "text": "Protocols, sessions and setup",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Both providers support SOCKS5 as well as HTTP(S), so either will plug into scrapers, anti-detect browsers and automation tools that expect a SOCKS endpoint. On sessions, Oxylabs offers rotating and sticky sessions on residential and mobile, and Decodo offers rotating or sticky sessions with configurable duration. Setup works the same way on both: a single gateway endpoint, with location and session options passed as username parameters, plus IP whitelisting if you prefer not to use credentials."
+    },
+    {
+      "type": "heading",
+      "text": "Which is better for your use case?",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "General web scraping: close call. Both are reasonable choices here. Oxylabs: its pool size and Web Scraper API suit large crawls. Decodo: a large pool and near-perfect benchmark success rates. Let price and the countries you need decide."
+    },
+    {
+      "type": "paragraph",
+      "text": "SERP and rank tracking: Oxylabs wins. The deciding factor for Oxylabs: its scraper API returns parsed search results. The limitation on the Decodo side: a dedicated SERP scraping API plus city targeting."
+    },
+    {
+      "type": "paragraph",
+      "text": "Social media and multi-account management: Decodo. Decodo has the edge here. Why: sticky sessions, sub-users and an easy dashboard. How Oxylabs compares: it works, but the pricing is built for volume, not a handful of accounts."
+    },
+    {
+      "type": "paragraph",
+      "text": "E-commerce price and stock monitoring: Oxylabs. Oxylabs has the edge here. Why: city and ZIP targeting plus parsed e-commerce endpoints. How Decodo compares: ZIP targeting and a ready-made e-commerce API."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ad verification and geo-testing: close call. Both are reasonable choices here. Oxylabs: broad geo coverage with ASN targeting. Decodo: wide coverage with city and ASN targeting. Let price and the countries you need decide."
+    },
+    {
+      "type": "paragraph",
+      "text": "Tight budgets: Decodo. Decodo has the edge here. Why: it is mid-priced, not cheap. How Oxylabs compares: entry pricing is among the highest in this comparison."
+    },
+    {
+      "type": "heading",
+      "text": "Trials, verification and billing fine print",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Before you pay, check how each provider lets you test. Oxylabs: Residential trial arranged through sales, once per customer. Decodo: Free trial (about 100 MB) on residential. Verification and payment rules differ too. Oxylabs: Business verification on larger accounts. Decodo: Light KYC; checks on some targets. Whichever you choose, measure cost per successful request rather than cost per gigabyte: retries, blocked pages and heavy page assets all burn bandwidth, and a cheaper network that fails more often can end up costing more. Blocking images and fonts in your scraper, reusing sessions where a target allows it, and capping concurrency are the quickest ways to cut the bill on either provider."
+    },
+    {
+      "type": "heading",
+      "text": "How to test Oxylabs and Decodo before you commit",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "The quickest way to choose between Oxylabs and Decodo is a side-by-side test on the sites and countries you actually care about:"
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Buy the smallest option on each side (Oxylabs: residential trial arranged through sales, once per customer; Decodo: free trial (about 100 MB) on residential)."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Pick three to five real target URLs and the two or three countries that matter most, and send the same number of requests (a few hundred is enough) through each provider at the same time of day."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. Record success rate, median response time, CAPTCHAs or blocks, and the number of unique exit IPs you received per country."
+    },
+    {
+      "type": "paragraph",
+      "text": "4. Divide what you spent by the number of successful, correctly located responses to get cost per useful request, then scale that to your monthly volume."
+    },
+    {
+      "type": "heading",
+      "text": "Bottom line",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Across the six use cases above, Oxylabs comes out ahead in 2, Decodo in 2, and 2 are ties. With no overall winner, decide on the factor that matters most to you: Oxylabs is strongest for large scraping pipelines with steady volume, while Decodo is strongest for small and mid-size scraping teams. If you can, spend a few dollars testing both on the exact sites and countries you care about; a one-hour test tells you more than any spec sheet."
+    },
+    {
+      "type": "heading",
+      "text": "Oxylabs is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Large scraping pipelines with steady volume"
+    },
+    {
+      "type": "listItem",
+      "text": "Teams that want a managed scraper API option"
+    },
+    {
+      "type": "listItem",
+      "text": "Procurement-heavy buyers who need sourcing paperwork"
+    },
+    {
+      "type": "heading",
+      "text": "Decodo is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Small and mid-size scraping teams"
+    },
+    {
+      "type": "listItem",
+      "text": "Developers who want enterprise-like quality without contracts"
+    },
+    {
+      "type": "listItem",
+      "text": "Mixed workloads that may grow into scraping APIs"
+    }
+  ],
+  "title": "Oxylabs vs Decodo (2026)",
+  "subtitle": "Enterprise Flagship vs Its Best-Value Rival",
+  "seoTitle": "Oxylabs vs Decodo (2026): Pricing, Pool Size & Verdict",
+  "description": "Oxylabs vs Decodo (2026): prices at 10 GB and 100 GB, pool size, targeting, trials and which to pick for scraping, SERP and multi-account work.",
+  "keywords": "oxylabs vs decodo , oxylabs vs decodo 2026, oxylabs vs decodo pricing, oxylabs vs decodo comparison",
+  "pageEnd": 105,
+  "slug": "oxylabs-vs-decodo",
+  "providerSlugs": [
+    "oxylabs",
+    "decodo"
+  ],
+  "faq": [
+    {
+      "q": "Is Oxylabs or Decodo cheaper?",
+      "a": "For small volumes Decodo is cheaper: about $35 for 10 GB against $80. At scale, Oxylabs's best published rate is $2.50/GB on the $2,500/month Corporate plan and Decodo's is $2.75/GB published; larger volumes by quote. Check both pricing pages before buying, because promotions change often."
+    },
+    {
+      "q": "Which has more residential IPs, Oxylabs or Decodo?",
+      "a": "Oxylabs advertises the larger pool. Oxylabs lists 175M+ and Decodo lists 115M+. Real availability per country is lower for both, so test the locations you need."
+    },
+    {
+      "q": "Do Oxylabs and Decodo offer a free trial?",
+      "a": "Oxylabs: Residential trial arranged through sales, once per customer. Decodo: Free trial (about 100 MB) on residential."
+    },
+    {
+      "q": "Do both support SOCKS5?",
+      "a": "Oxylabs supports HTTP, HTTPS, SOCKS5. Decodo supports HTTP, HTTPS, SOCKS5."
+    },
+    {
+      "q": "Which is better for beginners?",
+      "a": "Decodo is usually the easier starting point because of its entry pricing and self-service setup. Oxylabs is best for large scraping pipelines with steady volume; Decodo is best for small and mid-size scraping teams."
+    }
+  ],
+  "methodology": "Imported from the supplied October 2026 comparison brief. Prices and advertised specifications are not new hands-on benchmarks; confirm current prices, promotions, availability and terms on each provider’s site. Prices are in US dollars before VAT and coupons unless stated. Advertised pool totals have not been independently audited.",
+  "dateModified": "2026-10-17",
+  "quickVerdict": "Decodo is the better value for most teams: $35 for 10 GB against $80 on Oxylabs pay-as-you-go, $275 for 100 GB, a free trial, and benchmark performance close to Oxylabs'. Oxylabs is the better choice for large enterprise pipelines that need the biggest pool, formal sourcing documentation, account management and per-result scraper APIs, and at very high volume its $2.50/GB Corporate rate undercuts Decodo's published $2.75. Start with Decodo unless procurement or scale clearly points to Oxylabs.",
+  "wordCount": 1706
+}

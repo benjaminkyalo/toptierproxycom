@@ -1,0 +1,303 @@
+{
+  "pdfSlug": "nimbleway-vs-infatica",
+  "pageStart": 82,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Quick verdict",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Infatica is the better choice for buying residential proxies: it is cheaper ($40 for 10 GB against about $53 at Nimble's docs rate), publishes its pool size, supports SOCKS5 and includes ZIP targeting on every plan, with a $4 seven-day trial. Nimble is the better choice only if you want managed extraction, such as an AI browser and structured SERP or e-commerce data, rather than IPs. Compliance-focused buyers will find Infatica's sourcing documentation more detailed."
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble and Infatica both sell residential proxies and scraping APIs, but they lead with different products. Infatica is first and foremost a proxy network, with ZIP targeting, SOCKS5 and a clear ethical-sourcing policy at mid-market prices. Nimble (Nimbleway) is an AI-first data platform built around its Nimble Browser, search agents and managed pipelines, with proxies as supporting infrastructure. This comparison helps you decide which model fits your team."
+    },
+    {
+      "type": "heading",
+      "text": "Nimble vs Infatica at a glance",
+      "level": 2
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "",
+          "Nimble",
+          "Infatica"
+        ],
+        [
+          "Residential pool (advertised)",
+          "Not published",
+          "35M-40M"
+        ],
+        [
+          "Countries",
+          "Worldwide",
+          "195"
+        ],
+        [
+          "Targeting",
+          "Country, state and city",
+          "Country, state, city and ZIP"
+        ],
+        [
+          "Protocols",
+          "HTTP, HTTPS",
+          "HTTP, HTTPS, SOCKS5"
+        ],
+        [
+          "Sessions",
+          "Auto-rotation by default; sticky sessions available",
+          "Per-request rotation or selectable rotation times"
+        ],
+        [
+          "Entry price",
+          "$8/GB on PAYG plan cards; developer docs list $5.30/GB",
+          "$4/GB pay-as-you-go"
+        ],
+        [
+          "Cost for 10 GB",
+          "About $53 at the $5.30/GB docs rate ($80 at the $8 card rate)",
+          "$40 (PAYG at $4/GB)"
+        ],
+        [
+          "Cost for 100 GB",
+          "About $530 at $5.30/GB",
+          "$360 (100 GB plan, $3.60/GB)"
+        ],
+        [
+          "Best published rate",
+          "$5.30/GB (larger credit packages; annual billing saves 15%)",
+          "About $2.60/GB on 1 TB plans"
+        ],
+        [
+          "Billing model",
+          "Credit packages, PAYG, and data-services contracts",
+          "Pay-as-you-go or monthly subscription"
+        ],
+        [
+          "Unused traffic",
+          "Credits usable across Nimble products",
+          "Subscription traffic resets monthly"
+        ],
+        [
+          "Trial",
+          "Free trial of 5,000 web pages on its APIs",
+          "7-day trial for $4 (residential) or $8 (mobile)"
+        ],
+        [
+          "Other products",
+          "Web, SERP and e-commerce APIs, Nimble Browser, web search agents",
+          "Mobile, static ISP, datacenter, IPv6 residential, scraper APIs, datasets"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Nimble in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimbleway, now usually just called Nimble, has moved from selling proxies to selling web data. Its residential proxies still exist as an infrastructure product, but the company's focus is its AI-driven Nimble Browser, scraping APIs priced per 1,000 URLs, and managed data pipelines. Nimble does not publish a residential pool size, and its proxy product is documented for HTTP and HTTPS rather than SOCKS5. Buyers who want raw bandwidth tend to find it expensive; buyers who want finished data find it convenient."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Strong managed APIs and an AI-driven browser; Unlimited concurrency on proxies; Credits shared across all Nimble products; Free 5,000-page API trial. Weak spots: No published pool size; HTTP/HTTPS only, no SOCKS5 on proxies; High per-GB price for raw residential traffic."
+    },
+    {
+      "type": "heading",
+      "text": "Infatica in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Infatica pitches itself on ethical sourcing and features available to every customer. All residential plans include country, city and ZIP targeting, IP whitelisting and selectable rotation times, and a 7-day $4 trial lowers the risk of testing. Independent reviewers have found its proxies fast and its pool modest but respectable. Its niche extra is a premium IPv6 residential pool, rare in this market, at about 1.5x the normal per-GB price."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: ZIP targeting included on every plan; Clear sourcing policy and ISO certifications; Cheap 7-day trial; Rare IPv6 residential pool. Weak spots: Mid-range pool size; Per-GB price stays above $3.50 until large volumes; Subscription traffic does not roll over."
+    },
+    {
+      "type": "heading",
+      "text": "Pricing: Nimble vs Infatica",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble's plan cards list residential proxy traffic at $8/GB pay-as-you-go, falling through credit packages ($150 and $600 entry packages) toward $5.30/GB; its current developer documentation lists $5.30/GB for residential traffic without a commitment. Annual billing saves 15%. Its scraping APIs bill $0.90 to $1.45 per 1,000 URLs depending on rendering."
+    },
+    {
+      "type": "paragraph",
+      "text": "Infatica charges $4/GB pay-as-you-go for residential traffic. Subscriptions cost $3.84/GB at 25 GB, $3.60/GB at 100 GB, and fall to about $2.70/GB at 500 GB and $2.60/GB at 1 TB. Premium IPv6 residential runs at roughly 1.5x those rates, starting at $6/GB."
+    },
+    {
+      "type": "paragraph",
+      "text": "At 10 GB a month, Infatica is the cheaper option at about $40 against $53 for Nimble, roughly 25% less. Buying 100 GB, you would pay about $360 with Infatica and $530 with Nimble: a 32% saving in Infatica's favour. Both Nimble and Infatica work on allowances that do not carry forward indefinitely, so size your plan to real monthly usage rather than buying ahead."
+    },
+    {
+      "type": "heading",
+      "text": "Pool size, coverage and targeting",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble does not publish a clear residential pool figure, so a size comparison is not possible on published data. Nimble lists 'Not published' and Infatica lists '35M-40M'. In practice, what matters is how many unique IPs you get in the countries you target, which you can measure in a short trial by sending a few thousand requests and counting distinct exit addresses. For coverage, Nimble lists Worldwide countries and Infatica lists 195. On targeting, Nimble offers country, state and city, while Infatica offers country, state, city and ZIP."
+    },
+    {
+      "type": "heading",
+      "text": "Protocols, sessions and setup",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Protocol support is a real difference here. Infatica supports HTTP, HTTPS, SOCKS5, while Nimble offers HTTP, HTTPS. If your tooling needs SOCKS5, for example some anti-detect browsers, desktop apps or non-HTTP traffic, that settles it in Infatica's favour. On sessions, Nimble offers auto-rotation by default; sticky sessions available, and Infatica offers per-request rotation or selectable rotation times. Both use a backconnect gateway: you point your tool at one host and port, and choose country, city or session behaviour through parameters in the username."
+    },
+    {
+      "type": "heading",
+      "text": "Which is better for your use case?",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "General web scraping: tie. Neither has a clear edge. With Nimble: its managed APIs remove much of the anti-bot work. With Infatica: fast proxies that did well on popular targets in independent tests. Run the same small test on both before committing."
+    },
+    {
+      "type": "paragraph",
+      "text": "SERP and rank tracking: Nimble wins. The deciding factor for Nimble: its SERP API and search agents return structured results. The limitation on the Infatica side: ZIP targeting helps local search results."
+    },
+    {
+      "type": "paragraph",
+      "text": "Social media and multi-account management: Infatica wins. The deciding factor for Infatica: rotation controls are good but very long sticky sessions are not a headline feature. The limitation on the Nimble side: no SOCKS5 and a high per-GB cost make it a poor fit for account work."
+    },
+    {
+      "type": "paragraph",
+      "text": "E-commerce price and stock monitoring: close call. Both are reasonable choices here. Nimble: dedicated e-commerce data APIs. Infatica: ZIP-level targeting for local prices. Let price and the countries you need decide."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ad verification and geo-testing: Infatica wins. The deciding factor for Infatica: precise geo targeting and clean sourcing. The limitation on the Nimble side: good geo targeting but no published pool data."
+    },
+    {
+      "type": "paragraph",
+      "text": "Tight budgets: Infatica wins. The deciding factor for Infatica: mid-range pricing until you reach large volumes. The limitation on the Nimble side: per-GB rates are among the highest here."
+    },
+    {
+      "type": "heading",
+      "text": "Trials, verification and billing fine print",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Before you pay, check how each provider lets you test. Nimble: Free trial of 5,000 web pages on its APIs. Infatica: 7-day trial for $4 (residential) or $8 (mobile). Verification and payment rules differ too. Nimble: Sales-led onboarding for data-services plans. Infatica: Standard verification; states it does not resell IPs. Whichever you choose, measure cost per successful request rather than cost per gigabyte: retries, blocked pages and heavy page assets all burn bandwidth, and a cheaper network that fails more often can end up costing more. Blocking images and fonts in your scraper, reusing sessions where a target allows it, and capping concurrency are the quickest ways to cut the bill on either provider."
+    },
+    {
+      "type": "heading",
+      "text": "How to test Nimble and Infatica before you commit",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Spec sheets only get you so far. A short, structured test on your own targets will settle Nimble vs Infatica faster than any review:"
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Buy the smallest option on each side (Nimble: free trial of 5,000 web pages on its APIs; Infatica: 7-day trial for $4 (residential) or $8 (mobile))."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Pick three to five real target URLs and the two or three countries that matter most, and send the same number of requests (a few hundred is enough) through each provider at the same time of day."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. Record success rate, median response time, CAPTCHAs or blocks, and the number of unique exit IPs you received per country."
+    },
+    {
+      "type": "paragraph",
+      "text": "4. Divide what you spent by the number of successful, correctly located responses to get cost per useful request, then scale that to your monthly volume."
+    },
+    {
+      "type": "heading",
+      "text": "Bottom line",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Across the six use cases above, Nimble comes out ahead in 1, Infatica in 3, and 2 are ties. That makes Infatica the safer default if you are unsure, but the right answer still depends on your volume and targets: Nimble is strongest for teams that want structured data rather than raw IPs, while Infatica is strongest for compliance-conscious buyers. If you can, spend a few dollars testing both on the exact sites and countries you care about; a one-hour test tells you more than any spec sheet."
+    },
+    {
+      "type": "heading",
+      "text": "Nimble is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Teams that want structured data rather than raw IPs"
+    },
+    {
+      "type": "listItem",
+      "text": "AI and agent workloads that need a managed browser"
+    },
+    {
+      "type": "listItem",
+      "text": "Buyers comfortable with sales-led contracts"
+    },
+    {
+      "type": "heading",
+      "text": "Infatica is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Compliance-conscious buyers"
+    },
+    {
+      "type": "listItem",
+      "text": "Location-precise collection that needs ZIP targeting"
+    },
+    {
+      "type": "listItem",
+      "text": "Teams wanting IPv6 residential IPs"
+    }
+  ],
+  "title": "Nimble vs Infatica (2026)",
+  "subtitle": "Managed Data Platform vs Ethical Proxy Network",
+  "seoTitle": "Nimble vs Infatica (2026): Pricing, Pool Size & Verdict",
+  "description": "Nimble vs Infatica (2026): prices at 10 GB and 100 GB, pool size, targeting, trials and which to pick for scraping, SERP and multi-account work.",
+  "keywords": "nimble vs infatica , nimble vs infatica 2026, nimble vs infatica pricing, nimble vs infatica comparison",
+  "pageEnd": 85,
+  "slug": "nimbleway-vs-infatica",
+  "providerSlugs": [
+    "nimbleway",
+    "infatica"
+  ],
+  "faq": [
+    {
+      "q": "Is Nimble or Infatica cheaper?",
+      "a": "For small volumes Infatica is cheaper: about $40 for 10 GB against $53. At scale, Nimble's best published rate is $5.30/GB (larger credit packages; annual billing saves 15%) and Infatica's is About $2.60/GB on 1 TB plans. Check both pricing pages before buying, because promotions change often."
+    },
+    {
+      "q": "Which has more residential IPs, Nimble or Infatica?",
+      "a": "A direct comparison is not possible on published data: Nimble lists Not published and Infatica lists 35M-40M. Test unique IP counts in your target countries during a trial."
+    },
+    {
+      "q": "Do Nimble and Infatica offer a free trial?",
+      "a": "Nimble: Free trial of 5,000 web pages on its APIs. Infatica: 7-day trial for $4 (residential) or $8 (mobile)."
+    },
+    {
+      "q": "Do both support SOCKS5?",
+      "a": "Nimble supports HTTP, HTTPS. Infatica supports HTTP, HTTPS, SOCKS5."
+    },
+    {
+      "q": "Which is better for beginners?",
+      "a": "Infatica is usually the easier starting point because of its entry pricing and self-service setup. Nimble is best for teams that want structured data rather than raw IPs; Infatica is best for compliance-conscious buyers."
+    }
+  ],
+  "methodology": "Imported from the supplied October 2026 comparison brief. Prices and advertised specifications are not new hands-on benchmarks; confirm current prices, promotions, availability and terms on each provider’s site. Prices are in US dollars before VAT and coupons unless stated. Advertised pool totals have not been independently audited.",
+  "dateModified": "2026-10-17",
+  "quickVerdict": "Infatica is the better choice for buying residential proxies: it is cheaper ($40 for 10 GB against about $53 at Nimble's docs rate), publishes its pool size, supports SOCKS5 and includes ZIP targeting on every plan, with a $4 seven-day trial. Nimble is the better choice only if you want managed extraction, such as an AI browser and structured SERP or e-commerce data, rather than IPs. Compliance-focused buyers will find Infatica's sourcing documentation more detailed.",
+  "wordCount": 1691
+}

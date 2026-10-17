@@ -1,0 +1,332 @@
+{
+  "pdfSlug": "netnut-vs-nimbleway",
+  "pageStart": 258,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Quick verdict",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble suits former NetNut customers who want to stop managing proxies altogether and buy structured data through its SERP and e-commerce APIs, AI-driven Nimble Browser or data-services contracts. It is a weaker fit if you simply need a like-for-like proxy replacement: it does not publish a residential pool size, its proxies are HTTP/HTTPS only, it has no static ISP product to replace NetNut's best-known offering, and its $5.30-$8/GB rates are above what NetNut used to charge. In that case, look at a pool-based provider first."
+    },
+    {
+      "type": "paragraph",
+      "text": "NetNut and Nimble were once both premium-priced residential proxy vendors aimed at data teams. Since the FBI seized NetNut's domains in July 2026, after Google linked its network to the Popa botnet, the comparison is really about whether Nimble is the right destination for former NetNut users. The honest answer depends on whether you want to keep running your own scrapers on raw IPs or hand extraction over to a managed platform, because that is where Nimble has placed its bets."
+    },
+    {
+      "type": "heading",
+      "text": "What happened to NetNut?",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "NetNut stopped being a normal buying option on July 2, 2026. That day the FBI and IRS Criminal Investigation seized NetNut-related domains, and Google published research linking the network's residential exit nodes to the Popa botnet, which it estimated at two million or more hijacked home devices. NetNut's parent, Alarum Technologies, rejects the allegations, but its main domains went on to show seizure banners and its share price fell sharply. Whatever the final legal outcome, routing business traffic through that infrastructure now carries legal and reputational risk."
+    },
+    {
+      "type": "heading",
+      "text": "NetNut vs Nimble at a glance",
+      "level": 2
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "",
+          "NetNut",
+          "Nimble"
+        ],
+        [
+          "Residential pool (advertised)",
+          "Unavailable since July 2026",
+          "Not published"
+        ],
+        [
+          "Countries",
+          "n/a",
+          "Worldwide"
+        ],
+        [
+          "Targeting",
+          "n/a",
+          "Country, state and city"
+        ],
+        [
+          "Protocols",
+          "n/a",
+          "HTTP, HTTPS"
+        ],
+        [
+          "Sessions",
+          "n/a",
+          "Auto-rotation by default; sticky sessions available"
+        ],
+        [
+          "Entry price",
+          "Unavailable",
+          "$8/GB on PAYG plan cards; developer docs list $5.30/GB"
+        ],
+        [
+          "Cost for 10 GB",
+          "Unavailable (service seized)",
+          "About $53 at the $5.30/GB docs rate ($80 at the $8 card rate)"
+        ],
+        [
+          "Cost for 100 GB",
+          "Unavailable",
+          "About $530 at $5.30/GB"
+        ],
+        [
+          "Best published rate",
+          "Formerly about $1.87-$3.53/GB on larger plans",
+          "$5.30/GB (larger credit packages; annual billing saves 15%)"
+        ],
+        [
+          "Billing model",
+          "Formerly subscription",
+          "Credit packages, PAYG, and data-services contracts"
+        ],
+        [
+          "Unused traffic",
+          "n/a",
+          "Credits usable across Nimble products"
+        ],
+        [
+          "Trial",
+          "n/a",
+          "Free trial of 5,000 web pages on its APIs"
+        ],
+        [
+          "Other products",
+          "Formerly residential, ISP, mobile, datacenter",
+          "Web, SERP and e-commerce APIs, Nimble Browser, web search agents"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Nimble in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimbleway, now usually just called Nimble, has moved from selling proxies to selling web data. Its residential proxies still exist as an infrastructure product, but the company's focus is its AI-driven Nimble Browser, scraping APIs priced per 1,000 URLs, and managed data pipelines. Nimble does not publish a residential pool size, and its proxy product is documented for HTTP and HTTPS rather than SOCKS5. Buyers who want raw bandwidth tend to find it expensive; buyers who want finished data find it convenient."
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble (Nimbleway) is an AI-first web-data platform. It offers residential proxies with fast response times and unlimited concurrency, but most of its product investment goes into the Nimble Browser, SERP and e-commerce APIs, and data-services plans that start in the thousands of dollars per month. It does not disclose its residential pool size, and its per-GB rates are among the highest here, so it competes on finished results rather than cheap traffic."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Strong managed APIs and an AI-driven browser; Unlimited concurrency on proxies; Credits shared across all Nimble products; Free 5,000-page API trial. Weak spots: No published pool size; HTTP/HTTPS only, no SOCKS5 on proxies; High per-GB price for raw residential traffic."
+    },
+    {
+      "type": "heading",
+      "text": "What NetNut offered, and how Nimble compares",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Before the seizure, NetNut was best known for ISP-sourced static residential proxies and a fast rotating residential network aimed at scraping, ad verification and brand-protection teams. Its residential rates generally ran from about $1.87 to $3.53 per GB on larger plans, with higher effective prices on entry plans. Nimble covers much of the same ground: web, serp and e-commerce apis, nimble browser, web search agents sit alongside its residential network, which advertises Not published IPs in Worldwide countries."
+    },
+    {
+      "type": "heading",
+      "text": "What former NetNut customers need, and whether Nimble",
+      "level": 2
+    },
+    {
+      "type": "heading",
+      "text": "delivers",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Most NetNut accounts were built around three things: static ISP IPs for long-lived sessions, rotating residential traffic with US state and city targeting, and high concurrency for scraping. On static ISP-style IPs, Nimble's answer is not as a separate product; its other products are web, SERP and e-commerce APIs, Nimble Browser, web search agents. On rotating residential targeting, Nimble offers country, state and city in Worldwide countries, with auto-rotation by default; sticky sessions available. On billing, Nimble uses credit packages, PAYG, and data-services contracts, and unused traffic is handled as follows: credits usable across Nimble products. Map each of your old NetNut zones to one of these before you migrate, so nothing breaks on the day you switch."
+    },
+    {
+      "type": "heading",
+      "text": "Nimble pricing",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble's plan cards list residential proxy traffic at $8/GB pay-as-you-go, falling through credit packages ($150 and $600 entry packages) toward $5.30/GB; its current developer documentation lists $5.30/GB for residential traffic without a commitment. Annual billing saves 15%. Its scraping APIs bill $0.90 to $1.45 per 1,000 URLs depending on rendering. Quick cost check for Nimble: 10 GB comes to about $53 at the $5.30/GB docs rate ($80 at the $8 card rate), and 100 GB comes to about $530 at $5.30/GB. NetNut's larger plans used to run about $1.87-$3.53/GB, so compare against what you actually paid rather than NetNut's headline rate."
+    },
+    {
+      "type": "heading",
+      "text": "How to migrate from NetNut to Nimble",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Export your NetNut usage history and list the countries, cities and session types you actually used, so you can map them to Nimble's targeting (country, state and city)."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Test before you commit. Nimble's testing option: free trial of 5,000 web pages on its APIs. Run your real targets for a day on the smallest purchase before moving production traffic."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. Swap the gateway host and credentials in your scraper or browser profiles. Nimble supports HTTP, HTTPS, so tools that relied on SOCKS5 need an HTTP(S) configuration."
+    },
+    {
+      "type": "paragraph",
+      "text": "4. Compare success rate, response time and cost per successful request against your old NetNut baseline, then move traffic over in stages."
+    },
+    {
+      "type": "paragraph",
+      "text": "5. Remove any NetNut SDKs, browser extensions or endpoints from your systems, and rotate any credentials that were stored alongside them."
+    },
+    {
+      "type": "heading",
+      "text": "Where Nimble fits best",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "General web scraping: strong fit. Why: its managed APIs remove much of the anti-bot work."
+    },
+    {
+      "type": "paragraph",
+      "text": "SERP and rank tracking: strong fit. Why: its SERP API and search agents return structured results."
+    },
+    {
+      "type": "paragraph",
+      "text": "Social media and multi-account management: weak fit. Why: no SOCKS5 and a high per-GB cost make it a poor fit for account work."
+    },
+    {
+      "type": "paragraph",
+      "text": "E-commerce price and stock monitoring: strong fit. Why: dedicated e-commerce data APIs."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ad verification and geo-testing: workable. Why: good geo targeting but no published pool data."
+    },
+    {
+      "type": "paragraph",
+      "text": "Tight budgets: weak fit. Why: per-GB rates are among the highest here."
+    },
+    {
+      "type": "heading",
+      "text": "Protocols and sessions",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble supports HTTP, HTTPS and offers auto-rotation by default; sticky sessions available. Targeting covers country, state and city across Worldwide countries. Like NetNut's residential gateway, it works through a single backconnect endpoint with location and session options passed in the username, plus IP whitelisting."
+    },
+    {
+      "type": "heading",
+      "text": "How to vet a residential proxy provider after NetNut",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "NetNut's customers did not choose to route traffic through a botnet; they bought what looked like a standard enterprise service. The lesson is to check sourcing before you buy, not after. Whichever provider replaces NetNut for you, Nimble included, run through these checks:"
+    },
+    {
+      "type": "listItem",
+      "text": "How are residential IPs sourced? Look for an opt-in SDK or app programme with clear user"
+    },
+    {
+      "type": "paragraph",
+      "text": "consent and compensation, and ask which partner apps are involved."
+    },
+    {
+      "type": "listItem",
+      "text": "Does the provider publish an ethics or sourcing policy, and has it been audited or certified (for"
+    },
+    {
+      "type": "paragraph",
+      "text": "example AppEsteem or ISO 27001)?"
+    },
+    {
+      "type": "listItem",
+      "text": "What KYC does the provider apply to customers, and which target categories are restricted?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Strict onboarding is a good sign, not an inconvenience."
+    },
+    {
+      "type": "listItem",
+      "text": "How does it handle abuse reports, and is there a named legal entity and jurisdiction behind the"
+    },
+    {
+      "type": "paragraph",
+      "text": "service?"
+    },
+    {
+      "type": "listItem",
+      "text": "Can you get contractual assurances, such as a data-processing agreement, if your compliance"
+    },
+    {
+      "type": "paragraph",
+      "text": "team needs them?"
+    },
+    {
+      "type": "heading",
+      "text": "Bottom line",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "NetNut is no longer a provider you can plan around, so the real decision is which network replaces it. Nimble is strongest for teams that want structured data rather than raw IPs and AI and agent workloads that need a managed browser, starts at $8/GB on PAYG plan cards; developer docs list $5.30/GB, and offers free trial of 5,000 web pages on its APIs. Test it on your own targets for a day, compare cost per successful request with your old NetNut baseline, and move production traffic in stages."
+    },
+    {
+      "type": "heading",
+      "text": "Nimble is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Teams that want structured data rather than raw IPs"
+    },
+    {
+      "type": "listItem",
+      "text": "AI and agent workloads that need a managed browser"
+    },
+    {
+      "type": "listItem",
+      "text": "Buyers comfortable with sales-led contracts"
+    }
+  ],
+  "title": "NetNut vs Nimble (2026)",
+  "subtitle": "NetNut Is Offline: Should You Move to Nimble?",
+  "seoTitle": "NetNut vs Nimble (2026): NetNut Is Offline - Use Nimble?",
+  "description": "NetNut was seized in July 2026. See how Nimble compares with what NetNut offered, what it costs, and how to migrate your scraping or account traffic safely.",
+  "keywords": "netnut vs nimble , netnut vs nimble 2026, netnut vs nimble pricing, netnut vs nimble comparison",
+  "pageEnd": 261,
+  "slug": "netnut-vs-nimbleway",
+  "providerSlugs": [
+    "netnut",
+    "nimbleway"
+  ],
+  "faq": [
+    {
+      "q": "Is NetNut still working in 2026?",
+      "a": "No. NetNut's main domains were seized by the FBI on July 2, 2026, after Google linked its residential exit nodes to the Popa botnet. Alarum Technologies disputes the allegations, but the service should not be relied on for business traffic."
+    },
+    {
+      "q": "Is Nimble a good NetNut alternative?",
+      "a": "Yes, for most former NetNut use cases. Nimble is best for teams that want structured data rather than raw IPs and AI and agent workloads that need a managed browser. It starts at $8/GB on PAYG plan cards; developer docs list $5.30/GB."
+    },
+    {
+      "q": "How much does Nimble cost compared with NetNut?",
+      "a": "NetNut's larger plans used to run about $1.87-$3.53/GB. Nimble starts at $8/GB on PAYG plan cards; developer docs list $5.30/GB, and its best published rate is $5.30/GB (larger credit packages; annual billing saves 15%)."
+    },
+    {
+      "q": "Does Nimble support SOCKS5?",
+      "a": "Nimble supports HTTP, HTTPS."
+    },
+    {
+      "q": "Does Nimble offer a trial?",
+      "a": "Free trial of 5,000 web pages on its APIs."
+    }
+  ],
+  "methodology": "Imported from the supplied October 2026 comparison brief. Prices and advertised specifications are not new hands-on benchmarks; confirm current prices, promotions, availability and terms on each provider’s site. Prices are in US dollars before VAT and coupons unless stated. Advertised pool totals have not been independently audited.",
+  "dateModified": "2026-10-17",
+  "quickVerdict": "Nimble suits former NetNut customers who want to stop managing proxies altogether and buy structured data through its SERP and e-commerce APIs, AI-driven Nimble Browser or data-services contracts. It is a weaker fit if you simply need a like-for-like proxy replacement: it does not publish a residential pool size, its proxies are HTTP/HTTPS only, it has no static ISP product to replace NetNut's best-known offering, and its $5.30-$8/GB rates are above what NetNut used to charge. In that case, look at a pool-based provider first.",
+  "wordCount": 1633
+}

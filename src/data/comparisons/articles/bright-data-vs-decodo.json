@@ -1,0 +1,299 @@
+{
+  "pdfSlug": "bright-data-vs-decodo",
+  "pageStart": 190,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Quick verdict",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Decodo is the better choice for most teams: $35 for 10 GB against $80 at Bright Data's list price, $275 for 100 GB against $499 for Bright Data's smallest monthly plan, and independent benchmarks close to the enterprise leaders. Bright Data is the better choice for the hardest targets and largest pipelines, where Web Unlocker, the Scraping Browser, carrier targeting and mature compliance processes save real engineering time, and its monthly rates fall to $2.50/GB. Check Bright Data's promotions, which often halve its PAYG price."
+    },
+    {
+      "type": "paragraph",
+      "text": "Bright Data and Decodo are two of the most-searched residential proxy providers, and they represent the main fork in the road for scraping teams. Bright Data is the most complete platform on the market, with a 150M+ pool, ZIP, ASN and carrier targeting, and managed unblocking, SERP and browser products. Decodo offers a 115M+ pool, near-perfect benchmark success rates and its own scraping APIs at roughly half the price. This comparison helps you decide whether you need Bright Data's extra power."
+    },
+    {
+      "type": "heading",
+      "text": "Bright Data vs Decodo at a glance",
+      "level": 2
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "",
+          "Bright Data",
+          "Decodo"
+        ],
+        [
+          "Residential pool (advertised)",
+          "150M+",
+          "115M+"
+        ],
+        [
+          "Countries",
+          "195",
+          "195+"
+        ],
+        [
+          "Targeting",
+          "Country, state, city, ZIP, ASN and carrier",
+          "Country, state, city, ZIP and ASN"
+        ],
+        [
+          "Protocols",
+          "HTTP, HTTPS, SOCKS5",
+          "HTTP, HTTPS, SOCKS5"
+        ],
+        [
+          "Sessions",
+          "Rotating per request or sticky sessions you control per zone",
+          "Rotating or sticky sessions with configurable duration"
+        ],
+        [
+          "Entry price",
+          "$8/GB pay-as-you-go list price (50%-off promos are frequent)",
+          "$4/GB pay-as-you-go; plans from $3.75/GB (3 GB for $11.25)"
+        ],
+        [
+          "Cost for 10 GB",
+          "$80 PAYG list (about $40 when the half-price promo runs)",
+          "$35 (10 GB plan, $3.50/GB)"
+        ],
+        [
+          "Cost for 100 GB",
+          "$499 Growth plan (141 GB included, about $3.50/GB)",
+          "$275 (100 GB plan, $2.75/GB)"
+        ],
+        [
+          "Best published rate",
+          "$2.50/GB on its largest public monthly plan",
+          "$2.75/GB published; larger volumes by quote"
+        ],
+        [
+          "Billing model",
+          "Pay-as-you-go or monthly plans with included GB",
+          "Pay-as-you-go or monthly plans; top-ups at the same per-GB rate"
+        ],
+        [
+          "Unused traffic",
+          "Monthly plan allowances reset each cycle",
+          "Plan traffic resets monthly; PAYG for bursty work"
+        ],
+        [
+          "Trial",
+          "Free trial for business accounts, no card required",
+          "Free trial (about 100 MB) on residential"
+        ],
+        [
+          "Other products",
+          "Datacenter, ISP, mobile, Web Unlocker, SERP API, Scraping Browser, datasets",
+          "Datacenter, ISP, mobile, scraping APIs (web, SERP, e-commerce, social)"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Bright Data in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Bright Data is the largest and most complete web-data platform in this market. Beyond residential proxies it sells datacenter, ISP and mobile networks, an unblocking API, a SERP API, a hosted Scraping Browser and ready-made datasets, each billed on its own meter. Its residential network is advertised at more than 150 million IPs in 195 countries, with targeting down to ZIP code and ASN. The trade-off is cost and complexity: the list price sits at the top of the market and the dashboard is built around zones, rules and compliance checks rather than a two-click setup."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Deepest targeting in the market (ZIP, ASN, carrier); Managed unblocking, SERP and browser products under one account; Mature compliance and KYC processes that enterprise buyers ask for; Very large residential pool for high-rotation work. Weak spots: Highest list price per GB at low volume; Dashboard and zone setup take time to learn; Some targets need a compliance review before access."
+    },
+    {
+      "type": "heading",
+      "text": "Decodo in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Decodo is the 2024 rebrand of Smartproxy, one of the most popular mid-market providers. Its residential network is advertised at 115 million IPs across 195+ locations, and independent benchmarks put its success rate around 99.9% with sub-second response times. Every plan includes the full pool plus city, state, ZIP and ASN targeting, and the dashboard is one of the easiest to set up. Decodo also sells datacenter, ISP and mobile proxies and a family of scraping APIs."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Large 115M+ pool at a mid-market price; Near-perfect success rates in independent tests; Clean, fast self-service onboarding; Scraping APIs available when raw proxies are not enough. Weak spots: Plan traffic does not roll over; Published pricing stops at 100 GB; beyond that you need a quote; More expensive per GB than budget brands."
+    },
+    {
+      "type": "heading",
+      "text": "Pricing: Bright Data vs Decodo",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Bright Data lists residential traffic at $8/GB pay-as-you-go with no commitment, and it frequently runs 50%-off promotions that bring that to about $4/GB. Monthly plans start with the Growth tier at $499 for roughly 141 GB (about $3.50/GB) and fall to around $2.50/GB on the largest public plan."
+    },
+    {
+      "type": "paragraph",
+      "text": "Decodo sells residential traffic at $4/GB pay-as-you-go with no commitment, or on monthly plans: 3 GB for $11.25 ($3.75/GB), 10 GB for $35, 25 GB at $3.25/GB, 50 GB for $150 and 100 GB for $275 ($2.75/GB). Top-ups are billed at your plan's rate, so you are not pushed into the next tier."
+    },
+    {
+      "type": "paragraph",
+      "text": "Buying 10 GB, you would pay about $35 with Decodo and $80 with Bright Data: a 56% saving in Decodo's favour. Buying 100 GB, you would pay about $275 with Decodo and $499 with Bright Data: a 45% saving in Decodo's favour. Both Bright Data and Decodo work on allowances that do not carry forward indefinitely, so size your plan to real monthly usage rather than buying ahead."
+    },
+    {
+      "type": "heading",
+      "text": "Pool size, coverage and targeting",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Bright Data has the bigger advertised network, 150M+ residential IPs against 115M+ for Decodo, roughly 1.3 times larger. Advertised pool sizes are marketing figures counted over long periods; the number of IPs actually reachable in a given country at a given moment is far smaller for every provider, so treat these as a rough guide to depth rather than a guarantee. For coverage, Bright Data lists 195 countries and Decodo lists 195+. On targeting, Bright Data offers country, state, city, ZIP, ASN and carrier, while Decodo offers country, state, city, ZIP and ASN."
+    },
+    {
+      "type": "heading",
+      "text": "Protocols, sessions and setup",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Both providers support SOCKS5 as well as HTTP(S), so either will plug into scrapers, anti-detect browsers and automation tools that expect a SOCKS endpoint. On sessions, Bright Data offers rotating per request or sticky sessions you control per zone, and Decodo offers rotating or sticky sessions with configurable duration. Setup works the same way on both: a single gateway endpoint, with location and session options passed as username parameters, plus IP whitelisting if you prefer not to use credentials."
+    },
+    {
+      "type": "heading",
+      "text": "Which is better for your use case?",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "General web scraping: close call. Both are reasonable choices here. Bright Data: its pool depth and Web Unlocker handle hardened targets. Decodo: a large pool and near-perfect benchmark success rates. Let price and the countries you need decide."
+    },
+    {
+      "type": "paragraph",
+      "text": "SERP and rank tracking: Bright Data. Bright Data has the edge here. Why: it sells a dedicated SERP API alongside raw proxies. How Decodo compares: a dedicated SERP scraping API plus city targeting."
+    },
+    {
+      "type": "paragraph",
+      "text": "Social media and multi-account management: Decodo. Decodo has the edge here. Why: sticky sessions, sub-users and an easy dashboard. How Bright Data compares: it is powerful but expensive for low-volume account work."
+    },
+    {
+      "type": "paragraph",
+      "text": "E-commerce price and stock monitoring: Bright Data. Bright Data has the edge here. Why: ZIP-level targeting suits local pricing and stock checks. How Decodo compares: ZIP targeting and a ready-made e-commerce API."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ad verification and geo-testing: Bright Data. Bright Data has the edge here. Why: carrier and ASN targeting reproduce what real users see. How Decodo compares: wide coverage with city and ASN targeting."
+    },
+    {
+      "type": "paragraph",
+      "text": "Tight budgets: Decodo wins. The deciding factor for Decodo: it is mid-priced, not cheap. The limitation on the Bright Data side: its list price is the highest in this comparison."
+    },
+    {
+      "type": "heading",
+      "text": "Trials, verification and billing fine print",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Before you pay, check how each provider lets you test. Bright Data: Free trial for business accounts, no card required. Decodo: Free trial (about 100 MB) on residential. Verification and payment rules differ too. Bright Data: Verification required for some sensitive targets. Decodo: Light KYC; checks on some targets. Whichever you choose, measure cost per successful request rather than cost per gigabyte: retries, blocked pages and heavy page assets all burn bandwidth, and a cheaper network that fails more often can end up costing more. Blocking images and fonts in your scraper, reusing sessions where a target allows it, and capping concurrency are the quickest ways to cut the bill on either provider."
+    },
+    {
+      "type": "heading",
+      "text": "How to test Bright Data and Decodo before you commit",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Spec sheets only get you so far. A short, structured test on your own targets will settle Bright Data vs Decodo faster than any review:"
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Buy the smallest option on each side (Bright Data: free trial for business accounts, no card required; Decodo: free trial (about 100 MB) on residential)."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Pick three to five real target URLs and the two or three countries that matter most, and send the same number of requests (a few hundred is enough) through each provider at the same time of day."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. Record success rate, median response time, CAPTCHAs or blocks, and the number of unique exit IPs you received per country. 4. Divide what you spent by the number of successful, correctly located responses to get cost per useful request, then scale that to your monthly volume."
+    },
+    {
+      "type": "heading",
+      "text": "Bottom line",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Across the six use cases above, Bright Data comes out ahead in 3, Decodo in 2, and 1 is a tie. That makes Bright Data the safer default if you are unsure, but the right answer still depends on your volume and targets: Bright Data is strongest for enterprise data teams with budget for managed tooling, while Decodo is strongest for small and mid-size scraping teams. If you can, spend a few dollars testing both on the exact sites and countries you care about; a one-hour test tells you more than any spec sheet."
+    },
+    {
+      "type": "heading",
+      "text": "Bright Data is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Enterprise data teams with budget for managed tooling"
+    },
+    {
+      "type": "listItem",
+      "text": "Hard targets where unblocking APIs save engineering time"
+    },
+    {
+      "type": "listItem",
+      "text": "Buyers who need precise ZIP or ASN targeting"
+    },
+    {
+      "type": "heading",
+      "text": "Decodo is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Small and mid-size scraping teams"
+    },
+    {
+      "type": "listItem",
+      "text": "Developers who want enterprise-like quality without contracts"
+    },
+    {
+      "type": "listItem",
+      "text": "Mixed workloads that may grow into scraping APIs"
+    }
+  ],
+  "title": "Bright Data vs Decodo (2026)",
+  "subtitle": "The Enterprise Default vs the Mid-Market Favourite",
+  "seoTitle": "Bright Data vs Decodo (2026): Pricing, Pool Size & Verdict",
+  "description": "Bright Data vs Decodo (2026): prices at 10 GB and 100 GB, pool size, targeting, trials and which to pick for scraping, SERP and multi-account work.",
+  "keywords": "bright data vs decodo , bright data vs decodo 2026, bright data vs decodo pricing, bright data vs decodo comparison",
+  "pageEnd": 193,
+  "slug": "bright-data-vs-decodo",
+  "providerSlugs": [
+    "bright-data",
+    "decodo"
+  ],
+  "faq": [
+    {
+      "q": "Is Bright Data or Decodo cheaper?",
+      "a": "For small volumes Decodo is cheaper: about $35 for 10 GB against $80. At scale, Bright Data's best published rate is $2.50/GB on its largest public monthly plan and Decodo's is $2.75/GB published; larger volumes by quote. Check both pricing pages before buying, because promotions change often."
+    },
+    {
+      "q": "Which has more residential IPs, Bright Data or Decodo?",
+      "a": "Bright Data advertises the larger pool. Bright Data lists 150M+ and Decodo lists 115M+. Real availability per country is lower for both, so test the locations you need."
+    },
+    {
+      "q": "Do Bright Data and Decodo offer a free trial?",
+      "a": "Bright Data: Free trial for business accounts, no card required. Decodo: Free trial (about 100 MB) on residential."
+    },
+    {
+      "q": "Do both support SOCKS5?",
+      "a": "Bright Data supports HTTP, HTTPS, SOCKS5. Decodo supports HTTP, HTTPS, SOCKS5."
+    },
+    {
+      "q": "Which is better for beginners?",
+      "a": "Decodo is usually the easier starting point because of its entry pricing and self-service setup. Bright Data is best for enterprise data teams with budget for managed tooling; Decodo is best for small and mid-size scraping teams."
+    }
+  ],
+  "methodology": "Imported from the supplied October 2026 comparison brief. Prices and advertised specifications are not new hands-on benchmarks; confirm current prices, promotions, availability and terms on each provider’s site. Prices are in US dollars before VAT and coupons unless stated. Advertised pool totals have not been independently audited.",
+  "dateModified": "2026-10-17",
+  "quickVerdict": "Decodo is the better choice for most teams: $35 for 10 GB against $80 at Bright Data's list price, $275 for 100 GB against $499 for Bright Data's smallest monthly plan, and independent benchmarks close to the enterprise leaders. Bright Data is the better choice for the hardest targets and largest pipelines, where Web Unlocker, the Scraping Browser, carrier targeting and mature compliance processes save real engineering time, and its monthly rates fall to $2.50/GB. Check Bright Data's promotions, which often halve its PAYG price.",
+  "wordCount": 1820
+}

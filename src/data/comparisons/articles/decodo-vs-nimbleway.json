@@ -1,0 +1,303 @@
+{
+  "pdfSlug": "decodo-vs-nimbleway",
+  "pageStart": 62,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Quick verdict",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Decodo is the better choice for almost anyone buying residential proxies: it is far cheaper ($35 for 10 GB against about $53 at Nimble's docs rate), publishes its 115M+ pool, supports SOCKS5, and has its own SERP and e-commerce APIs if you need them. Nimble is worth considering only if you want an AI-driven managed browser and structured data pipelines and are happy with a sales-led, credit-based relationship. For raw proxies, Decodo wins comfortably."
+    },
+    {
+      "type": "paragraph",
+      "text": "Decodo and Nimble both sell residential proxies and scraping APIs, which makes this one of the closer feature comparisons on paper. In practice they target different buyers. Decodo is a self-service, mid-priced proxy provider whose APIs are an add-on. Nimble (Nimbleway) is an AI-driven web-data platform whose proxies support its managed browser, search agents and data-services contracts. This comparison helps you work out whether you are buying bandwidth or buying finished data."
+    },
+    {
+      "type": "heading",
+      "text": "Decodo vs Nimble at a glance",
+      "level": 2
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "",
+          "Decodo",
+          "Nimble"
+        ],
+        [
+          "Residential pool (advertised)",
+          "115M+",
+          "Not published"
+        ],
+        [
+          "Countries",
+          "195+",
+          "Worldwide"
+        ],
+        [
+          "Targeting",
+          "Country, state, city, ZIP and ASN",
+          "Country, state and city"
+        ],
+        [
+          "Protocols",
+          "HTTP, HTTPS, SOCKS5",
+          "HTTP, HTTPS"
+        ],
+        [
+          "Sessions",
+          "Rotating or sticky sessions with configurable duration",
+          "Auto-rotation by default; sticky sessions available"
+        ],
+        [
+          "Entry price",
+          "$4/GB pay-as-you-go; plans from $3.75/GB (3 GB for $11.25)",
+          "$8/GB on PAYG plan cards; developer docs list $5.30/GB"
+        ],
+        [
+          "Cost for 10 GB",
+          "$35 (10 GB plan, $3.50/GB)",
+          "About $53 at the $5.30/GB docs rate ($80 at the $8 card rate)"
+        ],
+        [
+          "Cost for 100 GB",
+          "$275 (100 GB plan, $2.75/GB)",
+          "About $530 at $5.30/GB"
+        ],
+        [
+          "Best published rate",
+          "$2.75/GB published; larger volumes by quote",
+          "$5.30/GB (larger credit packages; annual billing saves 15%)"
+        ],
+        [
+          "Billing model",
+          "Pay-as-you-go or monthly plans; top-ups at the same per-GB rate",
+          "Credit packages, PAYG, and data-services contracts"
+        ],
+        [
+          "Unused traffic",
+          "Plan traffic resets monthly; PAYG for bursty work",
+          "Credits usable across Nimble products"
+        ],
+        [
+          "Trial",
+          "Free trial (about 100 MB) on residential",
+          "Free trial of 5,000 web pages on its APIs"
+        ],
+        [
+          "Other products",
+          "Datacenter, ISP, mobile, scraping APIs (web, SERP, e-commerce, social)",
+          "Web, SERP and e-commerce APIs, Nimble Browser, web search agents"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Decodo in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Decodo (formerly Smartproxy) sits between the budget brands and the enterprise giants. It gives every customer the full 115M+ residential pool, city and ZIP targeting, and a self-service dashboard that most people can configure in minutes. Proxyway's annual tests ranked its pool second only to Oxylabs in size among the providers it tested, at a price well below enterprise level, which is why Decodo shows up on almost every shortlist."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Large 115M+ pool at a mid-market price; Near-perfect success rates in independent tests; Clean, fast self-service onboarding; Scraping APIs available when raw proxies are not enough. Weak spots: Plan traffic does not roll over; Published pricing stops at 100 GB; beyond that you need a quote; More expensive per GB than budget brands."
+    },
+    {
+      "type": "heading",
+      "text": "Nimble in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimbleway, now usually just called Nimble, has moved from selling proxies to selling web data. Its residential proxies still exist as an infrastructure product, but the company's focus is its AI-driven Nimble Browser, scraping APIs priced per 1,000 URLs, and managed data pipelines. Nimble does not publish a residential pool size, and its proxy product is documented for HTTP and HTTPS rather than SOCKS5. Buyers who want raw bandwidth tend to find it expensive; buyers who want finished data find it convenient."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Strong managed APIs and an AI-driven browser; Unlimited concurrency on proxies; Credits shared across all Nimble products; Free 5,000-page API trial. Weak spots: No published pool size; HTTP/HTTPS only, no SOCKS5 on proxies; High per-GB price for raw residential traffic."
+    },
+    {
+      "type": "heading",
+      "text": "Pricing: Decodo vs Nimble",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Decodo sells residential traffic at $4/GB pay-as-you-go with no commitment, or on monthly plans: 3 GB for $11.25 ($3.75/GB), 10 GB for $35, 25 GB at $3.25/GB, 50 GB for $150 and 100 GB for $275 ($2.75/GB). Top-ups are billed at your plan's rate, so you are not pushed into the next tier."
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble's plan cards list residential proxy traffic at $8/GB pay-as-you-go, falling through credit packages ($150 and $600 entry packages) toward $5.30/GB; its current developer documentation lists $5.30/GB for residential traffic without a commitment. Annual billing saves 15%. Its scraping APIs bill $0.90 to $1.45 per 1,000 URLs depending on rendering."
+    },
+    {
+      "type": "paragraph",
+      "text": "Buying 10 GB, you would pay about $35 with Decodo and $53 with Nimble: a 34% saving in Decodo's favour. At 100 GB a month, Decodo is the cheaper option at about $275 against $530 for Nimble, roughly 48% less. Both Decodo and Nimble work on allowances that do not carry forward indefinitely, so size your plan to real monthly usage rather than buying ahead."
+    },
+    {
+      "type": "heading",
+      "text": "Pool size, coverage and targeting",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble does not publish a clear residential pool figure, so a size comparison is not possible on published data. Decodo lists '115M+' and Nimble lists 'Not published'. In practice, what matters is how many unique IPs you get in the countries you target, which you can measure in a short trial by sending a few thousand requests and counting distinct exit addresses. For coverage, Decodo lists 195+ countries and Nimble lists Worldwide. On targeting, Decodo offers country, state, city, ZIP and ASN, while Nimble offers country, state and city."
+    },
+    {
+      "type": "heading",
+      "text": "Protocols, sessions and setup",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Protocol support is a real difference here. Decodo supports HTTP, HTTPS, SOCKS5, while Nimble offers HTTP, HTTPS. If your tooling needs SOCKS5, for example some anti-detect browsers, desktop apps or non-HTTP traffic, that settles it in Decodo's favour. On sessions, Decodo offers rotating or sticky sessions with configurable duration, and Nimble offers auto-rotation by default; sticky sessions available. Setup works the same way on both: a single gateway endpoint, with location and session options passed as username parameters, plus IP whitelisting if you prefer not to use credentials."
+    },
+    {
+      "type": "heading",
+      "text": "Which is better for your use case?",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "General web scraping: Decodo wins. The deciding factor for Decodo: a large pool and near-perfect benchmark success rates. The limitation on the Nimble side: its managed APIs remove much of the anti-bot work."
+    },
+    {
+      "type": "paragraph",
+      "text": "SERP and rank tracking: Nimble wins. The deciding factor for Nimble: its SERP API and search agents return structured results. The limitation on the Decodo side: a dedicated SERP scraping API plus city targeting."
+    },
+    {
+      "type": "paragraph",
+      "text": "Social media and multi-account management: Decodo wins. The deciding factor for Decodo: sticky sessions, sub-users and an easy dashboard. The limitation on the Nimble side: no SOCKS5 and a high per-GB cost make it a poor fit for account work."
+    },
+    {
+      "type": "paragraph",
+      "text": "E-commerce price and stock monitoring: close call. Both are reasonable choices here. Decodo: ZIP targeting and a ready-made e-commerce API. Nimble: dedicated e-commerce data APIs. Let price and the countries you need decide."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ad verification and geo-testing: Decodo wins. The deciding factor for Decodo: wide coverage with city and ASN targeting. The limitation on the Nimble side: good geo targeting but no published pool data."
+    },
+    {
+      "type": "paragraph",
+      "text": "Tight budgets: Decodo wins. The deciding factor for Decodo: it is mid-priced, not cheap. The limitation on the Nimble side: per-GB rates are among the highest here."
+    },
+    {
+      "type": "heading",
+      "text": "Trials, verification and billing fine print",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Before you pay, check how each provider lets you test. Decodo: Free trial (about 100 MB) on residential. Nimble: Free trial of 5,000 web pages on its APIs. Verification and payment rules differ too. Decodo: Light KYC; checks on some targets. Nimble: Sales-led onboarding for data-services plans. Whichever you choose, measure cost per successful request rather than cost per gigabyte: retries, blocked pages and heavy page assets all burn bandwidth, and a cheaper network that fails more often can end up costing more. Blocking images and fonts in your scraper, reusing sessions where a target allows it, and capping concurrency are the quickest ways to cut the bill on either provider."
+    },
+    {
+      "type": "heading",
+      "text": "How to test Decodo and Nimble before you commit",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "The quickest way to choose between Decodo and Nimble is a side-by-side test on the sites and countries you actually care about:"
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Buy the smallest option on each side (Decodo: free trial (about 100 MB) on residential; Nimble: free trial of 5,000 web pages on its APIs)."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Pick three to five real target URLs and the two or three countries that matter most, and send the same number of requests (a few hundred is enough) through each provider at the same time of day."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. Record success rate, median response time, CAPTCHAs or blocks, and the number of unique exit IPs you received per country."
+    },
+    {
+      "type": "paragraph",
+      "text": "4. Divide what you spent by the number of successful, correctly located responses to get cost per useful request, then scale that to your monthly volume."
+    },
+    {
+      "type": "heading",
+      "text": "Bottom line",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Across the six use cases above, Decodo comes out ahead in 4, Nimble in 1, and 1 is a tie. That makes Decodo the safer default if you are unsure, but the right answer still depends on your volume and targets: Decodo is strongest for small and mid-size scraping teams, while Nimble is strongest for teams that want structured data rather than raw IPs. If you can, spend a few dollars testing both on the exact sites and countries you care about; a one-hour test tells you more than any spec sheet."
+    },
+    {
+      "type": "heading",
+      "text": "Decodo is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Small and mid-size scraping teams"
+    },
+    {
+      "type": "listItem",
+      "text": "Developers who want enterprise-like quality without contracts"
+    },
+    {
+      "type": "listItem",
+      "text": "Mixed workloads that may grow into scraping APIs"
+    },
+    {
+      "type": "heading",
+      "text": "Nimble is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Teams that want structured data rather than raw IPs"
+    },
+    {
+      "type": "listItem",
+      "text": "AI and agent workloads that need a managed browser"
+    },
+    {
+      "type": "listItem",
+      "text": "Buyers comfortable with sales-led contracts"
+    }
+  ],
+  "title": "Decodo vs Nimble (2026)",
+  "subtitle": "Proxies Plus APIs vs AI-First Data Platform",
+  "seoTitle": "Decodo vs Nimble (2026): Pricing, Pool Size & Verdict",
+  "description": "Decodo vs Nimble (2026): prices at 10 GB and 100 GB, pool size, targeting, trials and which to pick for scraping, SERP and multi-account work.",
+  "keywords": "decodo vs nimble , decodo vs nimble 2026, decodo vs nimble pricing, decodo vs nimble comparison",
+  "pageEnd": 65,
+  "slug": "decodo-vs-nimbleway",
+  "providerSlugs": [
+    "decodo",
+    "nimbleway"
+  ],
+  "faq": [
+    {
+      "q": "Is Decodo or Nimble cheaper?",
+      "a": "For small volumes Decodo is cheaper: about $35 for 10 GB against $53. At scale, Decodo's best published rate is $2.75/GB published; larger volumes by quote and Nimble's is $5.30/GB (larger credit packages; annual billing saves 15%). Check both pricing pages before buying, because promotions change often."
+    },
+    {
+      "q": "Which has more residential IPs, Decodo or Nimble?",
+      "a": "A direct comparison is not possible on published data: Decodo lists 115M+ and Nimble lists Not published. Test unique IP counts in your target countries during a trial."
+    },
+    {
+      "q": "Do Decodo and Nimble offer a free trial?",
+      "a": "Decodo: Free trial (about 100 MB) on residential. Nimble: Free trial of 5,000 web pages on its APIs."
+    },
+    {
+      "q": "Do both support SOCKS5?",
+      "a": "Decodo supports HTTP, HTTPS, SOCKS5. Nimble supports HTTP, HTTPS."
+    },
+    {
+      "q": "Which is better for beginners?",
+      "a": "Decodo is usually the easier starting point because of its entry pricing and self-service setup. Decodo is best for small and mid-size scraping teams; Nimble is best for teams that want structured data rather than raw IPs."
+    }
+  ],
+  "methodology": "Imported from the supplied October 2026 comparison brief. Prices and advertised specifications are not new hands-on benchmarks; confirm current prices, promotions, availability and terms on each provider’s site. Prices are in US dollars before VAT and coupons unless stated. Advertised pool totals have not been independently audited.",
+  "dateModified": "2026-10-17",
+  "quickVerdict": "Decodo is the better choice for almost anyone buying residential proxies: it is far cheaper ($35 for 10 GB against about $53 at Nimble's docs rate), publishes its 115M+ pool, supports SOCKS5, and has its own SERP and e-commerce APIs if you need them. Nimble is worth considering only if you want an AI-driven managed browser and structured data pipelines and are happy with a sales-led, credit-based relationship. For raw proxies, Decodo wins comfortably.",
+  "wordCount": 1739
+}

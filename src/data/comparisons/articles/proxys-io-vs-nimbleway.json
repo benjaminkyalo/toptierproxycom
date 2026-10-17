@@ -1,0 +1,304 @@
+{
+  "pdfSlug": "proxys-io-vs-nimbleway",
+  "pageStart": 298,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Quick verdict",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Proxys.io is the better choice for fixed identities and low-cost static proxies: dedicated IPs for long-lived accounts, bulk IPv6 from $0.13 per address, mobile proxies with unlimited bandwidth and a 24-hour refund window. Nimble is the better choice for structured data extraction at scale through its SERP and e-commerce APIs and AI browser. If you are buying proxies to run your own tools, Proxys.io is far cheaper; if you want data delivered, Nimble is built for that."
+    },
+    {
+      "type": "paragraph",
+      "text": "Proxys.io and Nimble have almost nothing in common beyond the word proxy. Proxys.io rents individual IPv4, IPv6, residential and mobile IPs cheaply, mostly with unlimited bandwidth, to affiliate marketers and multi-account operators. Nimble (Nimbleway) is an AI-driven data platform with premium residential traffic, a managed browser, search agents and data-services contracts. This comparison helps you place each one correctly."
+    },
+    {
+      "type": "heading",
+      "text": "Proxys.io vs Nimble at a glance",
+      "level": 2
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "",
+          "Proxys.io",
+          "Nimble"
+        ],
+        [
+          "Residential pool (advertised)",
+          "100M+ ISP addresses (provider-reported)",
+          "Not published"
+        ],
+        [
+          "Countries",
+          "195 residential; 14 mobile; 24 static IPv4 markets",
+          "Worldwide"
+        ],
+        [
+          "Targeting",
+          "Residential: country, region and city; mobile: city and carrier",
+          "Country, state and city"
+        ],
+        [
+          "Protocols",
+          "HTTP, HTTPS, SOCKS5",
+          "HTTP, HTTPS"
+        ],
+        [
+          "Sessions",
+          "Residential rotation every 2-60 minutes; static addresses rented monthly",
+          "Auto-rotation by default; sticky sessions available"
+        ],
+        [
+          "Entry price",
+          "Rotating residential from $1.50/GB; IPv6 from $0.13/IP/month",
+          "$8/GB on PAYG plan cards; developer docs list $5.30/GB"
+        ],
+        [
+          "Cost for 10 GB",
+          "$15 at the starting residential rate, before discounts and tax",
+          "About $53 at the $5.30/GB docs rate ($80 at the $8 card rate)"
+        ],
+        [
+          "Cost for 100 GB",
+          "$150 at the starting residential rate; confirm cart quotation",
+          "About $530 at $5.30/GB"
+        ],
+        [
+          "Best published rate",
+          "Residential starting price $1.50/GB; HEAT_RES gives 35% off eligible residential traffic",
+          "$5.30/GB (larger credit packages; annual billing saves 15%)"
+        ],
+        [
+          "Billing model",
+          "Residential traffic: 30/60/90-day plans; static: per IP/month",
+          "Credit packages, PAYG, and data-services contracts"
+        ],
+        [
+          "Unused traffic",
+          "Residential plan validity is 30, 60 or 90 days; static rental minimum one month",
+          "Credits usable across Nimble products"
+        ],
+        [
+          "Trial",
+          "24-hour refund window; check eligibility before purchase",
+          "Free trial of 5,000 web pages on its APIs"
+        ],
+        [
+          "Other products",
+          "Shared and dedicated IPv4, IPv6, premium residential IPv4, rotating residential, mobile 4G/5G",
+          "Web, SERP and e-commerce APIs, Nimble Browser, web search agents"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Proxys.io in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "PROXYS.IO offers both rented static addresses and a rotating residential network. The provider reports more than 100 million ISP addresses across 195 countries, country/region/city targeting, up to 100 saved parameter sets and rotation every 2-60 minutes. Its mobile service covers 14 countries with city/carrier selection and roughly 2,000-5,000 addresses per country/carrier combination. Static IPv4 covers 24 markets. These are supplied specifications, not independently measured availability. HTTP, HTTPS and SOCKS5 are included on every plan."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Low-entry per-address products; a provider-reported 100M+ residential network; country, region and city targeting; HTTP/HTTPS/SOCKS5 included; a 24-hour refund window. Weak spots: Rotating mobile traffic pricing must be checked in the cart; residential plans have 30/60/90-day validity; published pool totals do not guarantee reachable IPs; independent target-specific performance has not been established here."
+    },
+    {
+      "type": "heading",
+      "text": "Nimble in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimbleway, now usually just called Nimble, has moved from selling proxies to selling web data. Its residential proxies still exist as an infrastructure product, but the company's focus is its AI-driven Nimble Browser, scraping APIs priced per 1,000 URLs, and managed data pipelines. Nimble does not publish a residential pool size, and its proxy product is documented for HTTP and HTTPS rather than SOCKS5. Buyers who want raw bandwidth tend to find it expensive; buyers who want finished data find it convenient."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Strong managed APIs and an AI-driven browser; Unlimited concurrency on proxies; Credits shared across all Nimble products; Free 5,000-page API trial. Weak spots: No published pool size; HTTP/HTTPS only, no SOCKS5 on proxies; High per-GB price for raw residential traffic."
+    },
+    {
+      "type": "heading",
+      "text": "Pricing: Proxys.io vs Nimble",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "PROXYS.IO separates traffic-based plans from per-address rentals. Rotating residential starts at $1.50/GB on 30, 60 or 90-day plans, without an IP or session cap. Static monthly starting prices are IPv6 $0.13, dynamic $0.27, shared IPv4 $0.67 (up to three users), foreign individual IPv4 $1.47, Windows-fingerprint IPv4 $1.87 and premium static residential IPv4 $3.60. Dedicated mobile IPv4 with unlimited traffic on a private channel starts at $56.79/month. Rotating mobile traffic is priced by the cart slider; no single starting per-GB rate has been confirmed. HEAT_RES provides 35% off eligible residential pay-per-traffic plans. Minimum static rental is one month and the refund window is 24 hours."
+    },
+    {
+      "type": "paragraph",
+      "text": "Nimble's plan cards list residential proxy traffic at $8/GB pay-as-you-go, falling through credit packages ($150 and $600 entry packages) toward $5.30/GB; its current developer documentation lists $5.30/GB for residential traffic without a commitment. Annual billing saves 15%. Its scraping APIs bill $0.90 to $1.45 per 1,000 URLs depending on rendering."
+    },
+    {
+      "type": "paragraph",
+      "text": "At 10 GB, a like-for-like total is harder to state because Proxys.io does not publish an exact price for that volume; Nimble comes to about $53. At 100 GB, a like-for-like total is harder to state because Proxys.io does not publish an exact price for that volume; Nimble comes to about $530. Both Proxys.io and Nimble work on allowances that do not carry forward indefinitely, so size your plan to real monthly usage rather than buying ahead."
+    },
+    {
+      "type": "heading",
+      "text": "Pool size, coverage and targeting",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Proxys.io and Nimble do not publish a clear residential pool figure, so a size comparison is not possible on published data. Proxys.io reports 100M+ addresses and Nimble lists 'Not published'. In practice, what matters is how many unique IPs you get in the countries you target, which you can measure in a short trial by sending a few thousand requests and counting distinct exit addresses. For coverage, Proxys.io lists 195 residential countries, with separate mobile and static coverage countries and Nimble lists Worldwide. On targeting, Proxys.io offers country, region and city for residential traffic, with city/carrier selection for mobile, while Nimble offers country, state and city."
+    },
+    {
+      "type": "heading",
+      "text": "Protocols, sessions and setup",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Protocol support is a real difference here. Proxys.io supports HTTP, HTTPS, SOCKS5, while Nimble offers HTTP, HTTPS. If your tooling needs SOCKS5, for example some anti-detect browsers, desktop apps or non-HTTP traffic, that settles it in Proxys.io's favour. On sessions, Proxys.io offers static per-IP proxies; rotating residential and mobile, and Nimble offers auto-rotation by default; sticky sessions available. Setup works the same way on both: a single gateway endpoint, with location and session options passed as username parameters, plus IP whitelisting if you prefer not to use credentials."
+    },
+    {
+      "type": "heading",
+      "text": "Which is better for your use case?",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "General web scraping: Nimble. Nimble has the edge here. Why: its managed APIs remove much of the anti-bot work. How Proxys.io compares: it is a per-IP shop, not a large rotating pool."
+    },
+    {
+      "type": "paragraph",
+      "text": "SERP and rank tracking: Nimble. Nimble has the edge here. Why: its SERP API and search agents return structured results. How Proxys.io compares: cheap IPv6 can handle some search tasks."
+    },
+    {
+      "type": "paragraph",
+      "text": "Social media and multi-account management: Proxys.io. Proxys.io has the edge here. Why: fixed dedicated or mobile IPs per account. How Nimble compares: no SOCKS5 and a high per-GB cost make it a poor fit for account work."
+    },
+    {
+      "type": "paragraph",
+      "text": "E-commerce price and stock monitoring: Nimble wins. The deciding factor for Nimble: dedicated e-commerce data APIs. The limitation on the Proxys.io side: limited rotation for large catalog crawls."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ad verification and geo-testing: Nimble. Nimble has the edge here. Why: good geo targeting but no published pool data. How Proxys.io compares: limited geo depth."
+    },
+    {
+      "type": "paragraph",
+      "text": "Tight budgets: Proxys.io wins. The deciding factor for Proxys.io: cheap per-IP rentals with unlimited bandwidth. The limitation on the Nimble side: per-GB rates are among the highest here."
+    },
+    {
+      "type": "heading",
+      "text": "Trials, verification and billing fine print",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Before you pay, check how each provider lets you test. Proxys.io: 24-hour refund window instead of a trial. Nimble: Free trial of 5,000 web pages on its APIs. Verification and payment rules differ too. Proxys.io: Light; crypto accepted. Nimble: Sales-led onboarding for data-services plans. Whichever you choose, measure cost per successful request rather than cost per gigabyte: retries, blocked pages and heavy page assets all burn bandwidth, and a cheaper network that fails more often can end up costing more. Blocking images and fonts in your scraper, reusing sessions where a target allows it, and capping concurrency are the quickest ways to cut the bill on either provider."
+    },
+    {
+      "type": "heading",
+      "text": "How to test Proxys.io and Nimble before you commit",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "The quickest way to choose between Proxys.io and Nimble is a side-by-side test on the sites and countries you actually care about:"
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Buy the smallest option on each side (Proxys.io: 24-hour refund window instead of a trial; Nimble: free trial of 5,000 web pages on its APIs)."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Pick three to five real target URLs and the two or three countries that matter most, and send the same number of requests (a few hundred is enough) through each provider at the same time of day."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. Record success rate, median response time, CAPTCHAs or blocks, and the number of unique exit IPs you received per country."
+    },
+    {
+      "type": "paragraph",
+      "text": "4. Divide what you spent by the number of successful, correctly located responses to get cost per useful request, then scale that to your monthly volume."
+    },
+    {
+      "type": "heading",
+      "text": "Bottom line",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Across the six use cases above, Proxys.io comes out ahead in 2, Nimble in 4, and 0 are ties. That makes Nimble the safer default if you are unsure, but the right answer still depends on your volume and targets: Proxys.io is strongest for multi-account and affiliate work that needs fixed IPs, while Nimble is strongest for teams that want structured data rather than raw IPs. If you can, spend a few dollars testing both on the exact sites and countries you care about; a one-hour test tells you more than any spec sheet."
+    },
+    {
+      "type": "heading",
+      "text": "Proxys.io is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Multi-account and affiliate work that needs fixed IPs"
+    },
+    {
+      "type": "listItem",
+      "text": "Bulk IPv6 tasks"
+    },
+    {
+      "type": "listItem",
+      "text": "Low-budget static proxies"
+    },
+    {
+      "type": "heading",
+      "text": "Nimble is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Teams that want structured data rather than raw IPs"
+    },
+    {
+      "type": "listItem",
+      "text": "AI and agent workloads that need a managed browser"
+    },
+    {
+      "type": "listItem",
+      "text": "Buyers comfortable with sales-led contracts"
+    }
+  ],
+  "title": "Proxys.io vs Nimble (2026)",
+  "subtitle": "Cheap Per-IP Rentals vs AI-First Data Platform",
+  "seoTitle": "Proxys.io vs Nimble (2026): Pricing, Pool Size & Verdict",
+  "description": "Proxys.io vs Nimble (2026): prices at 10 GB and 100 GB, pool size, targeting, trials and which to pick for scraping, SERP and multi-account work.",
+  "keywords": "proxys.io vs nimble , proxys.io vs nimble 2026, proxys.io vs nimble pricing, proxys.io vs nimble comparison",
+  "pageEnd": 301,
+  "slug": "proxys-io-vs-nimbleway",
+  "providerSlugs": [
+    "proxys-io",
+    "nimbleway"
+  ],
+  "correctionNote": "PROXYS.IO pricing, pool, coverage and rental terms were corrected against the specifications supplied directly by the provider; the PDF contained older conflicting figures.",
+  "faq": [
+    {
+      "q": "Is Proxys.io or Nimble cheaper?",
+      "a": "Proxys.io starts at Per-IP from $0.13 (IPv6); residential GB packages from about $4 for 1 GB, and Nimble starts at $8/GB on PAYG plan cards; developer docs list $5.30/GB. Their best published rates are Per-IP pricing; longer rentals are cheaper and $5.30/GB (larger credit packages; annual billing saves 15%) respectively. Exact mid-volume prices are not published for both, so get a checkout quote for your real volume."
+    },
+    {
+      "q": "Which has more residential IPs, Proxys.io or Nimble?",
+      "a": "A direct comparison is not possible on published data: PROXYS.IO reports 100M+ residential ISP addresses and Nimble lists Not published. Test unique IP counts in your target countries during a trial."
+    },
+    {
+      "q": "Do Proxys.io and Nimble offer a free trial?",
+      "a": "Proxys.io: 24-hour refund window instead of a trial. Nimble: Free trial of 5,000 web pages on its APIs."
+    },
+    {
+      "q": "Do both support SOCKS5?",
+      "a": "Proxys.io supports HTTP, HTTPS, SOCKS5. Nimble supports HTTP, HTTPS."
+    },
+    {
+      "q": "Which is better for beginners?",
+      "a": "Proxys.io is usually the easier starting point because of its entry pricing and self-service setup. Proxys.io is best for multi-account and affiliate work that needs fixed IPs; Nimble is best for teams that want structured data rather than raw IPs."
+    }
+  ],
+  "methodology": "Imported from the supplied October 2026 comparison brief. Prices and advertised specifications are not new hands-on benchmarks; confirm current prices, promotions, availability and terms on each provider’s site. Prices are in US dollars before VAT and coupons unless stated. Advertised pool totals have not been independently audited.",
+  "dateModified": "2026-10-17",
+  "quickVerdict": "Proxys.io is the better choice for fixed identities and low-cost static proxies: dedicated IPs for long-lived accounts, bulk IPv6 from $0.13 per address, mobile proxies with unlimited bandwidth and a 24-hour refund window. Nimble is the better choice for structured data extraction at scale through its SERP and e-commerce APIs and AI browser. If you are buying proxies to run your own tools, Proxys.io is far cheaper; if you want data delivered, Nimble is built for that.",
+  "wordCount": 1845
+}

@@ -1,0 +1,299 @@
+{
+  "pdfSlug": "webshare-vs-infatica",
+  "pageStart": 142,
+  "blocks": [
+    {
+      "type": "heading",
+      "text": "Quick verdict",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Webshare is the better value for most small teams: $27.50 for 10 GB against $40, $225 for 100 GB against $360, an 80M+ advertised pool, and free datacenter proxies for testing. Infatica is the better choice when you need mobile proxies (Webshare has none), ZIP targeting outside the US, IPv6 residential IPs, or sourcing documentation and ISO certifications for procurement. Both reset unused monthly traffic, so the price gap is real at every steady volume."
+    },
+    {
+      "type": "paragraph",
+      "text": "Webshare and Infatica both offer residential, static ISP and datacenter proxies with SOCKS5 and solid targeting. Webshare is the budget, developer-first option with a larger advertised pool and a free datacenter plan. Infatica is the compliance-first option with ZIP targeting on every plan, mobile proxies, an IPv6 residential pool and a written no-reselling policy. This comparison shows which buyers should take Webshare's savings and which should pay for Infatica's extras."
+    },
+    {
+      "type": "heading",
+      "text": "Webshare vs Infatica at a glance",
+      "level": 2
+    },
+    {
+      "type": "table",
+      "rows": [
+        [
+          "",
+          "Webshare",
+          "Infatica"
+        ],
+        [
+          "Residential pool (advertised)",
+          "80M+",
+          "35M-40M"
+        ],
+        [
+          "Countries",
+          "195",
+          "195"
+        ],
+        [
+          "Targeting",
+          "Country, plus state, city or ZIP (US) or ASN",
+          "Country, state, city and ZIP"
+        ],
+        [
+          "Protocols",
+          "HTTP, HTTPS, SOCKS5",
+          "HTTP, HTTPS, SOCKS5"
+        ],
+        [
+          "Sessions",
+          "Rotating or sticky from 1 minute to 24 hours",
+          "Per-request rotation or selectable rotation times"
+        ],
+        [
+          "Entry price",
+          "$3.50 for 1 GB per month",
+          "$4/GB pay-as-you-go"
+        ],
+        [
+          "Cost for 10 GB",
+          "$27.50 (10 GB monthly, $2.75/GB)",
+          "$40 (PAYG at $4/GB)"
+        ],
+        [
+          "Cost for 100 GB",
+          "$225 (100 GB monthly, $2.25/GB)",
+          "$360 (100 GB plan, $3.60/GB)"
+        ],
+        [
+          "Best published rate",
+          "$1.40/GB at 3 TB; yearly billing is 30% cheaper",
+          "About $2.60/GB on 1 TB plans"
+        ],
+        [
+          "Billing model",
+          "Monthly or yearly subscription",
+          "Pay-as-you-go or monthly subscription"
+        ],
+        [
+          "Unused traffic",
+          "Allowance resets every 30 days; no rollover",
+          "Subscription traffic resets monthly"
+        ],
+        [
+          "Trial",
+          "10 free datacenter proxies (1 GB/month); no residential trial",
+          "7-day trial for $4 (residential) or $8 (mobile)"
+        ],
+        [
+          "Other products",
+          "Datacenter proxy servers, static residential (ISP)",
+          "Mobile, static ISP, datacenter, IPv6 residential, scraper APIs, datasets"
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Webshare in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Webshare is built for developers who want to configure everything themselves. Pricing is transparent, the free datacenter plan makes it easy to test integrations, and paid plans scale smoothly from tiny to large. Its residential network advertises 80M+ IPs across 195 countries. It does not sell mobile proxies or a broad scraping API, and paid plans start with an account-wide limit of 500 concurrent requests."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: Permanent free datacenter plan for testing; Low, transparent residential pricing; Excellent dashboard and API; Sticky sessions up to 24 hours. Weak spots: Bandwidth resets monthly with no rollover; No mobile proxies; 500-request default concurrency limit."
+    },
+    {
+      "type": "heading",
+      "text": "Infatica in 2026: what you get",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Infatica is a web-data provider with offices in the UK, Singapore and the UAE. It started with premium residential proxies and now sells mobile, static ISP, datacenter and IPv6 residential networks plus scraper APIs and datasets. Its residential pool is advertised at 35M-40M IPs in 195 countries, with ZIP-level targeting on every plan, and the company is unusually explicit about sourcing: it says it does not resell IPs and lists several ISO certifications."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths: ZIP targeting included on every plan; Clear sourcing policy and ISO certifications; Cheap 7-day trial; Rare IPv6 residential pool. Weak spots: Mid-range pool size; Per-GB price stays above $3.50 until large volumes; Subscription traffic does not roll over."
+    },
+    {
+      "type": "heading",
+      "text": "Pricing: Webshare vs Infatica",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Webshare's rotating residential plans cost $3.50 for 1 GB, $27.50 for 10 GB, $65 for 25 GB, $225 for 100 GB and $875 for 500 GB per month, falling to $1.40/GB at 3 TB. Yearly billing is about 30% cheaper but is paid upfront for a 360-day term. Unused bandwidth resets every 30 days."
+    },
+    {
+      "type": "paragraph",
+      "text": "Infatica charges $4/GB pay-as-you-go for residential traffic. Subscriptions cost $3.84/GB at 25 GB, $3.60/GB at 100 GB, and fall to about $2.70/GB at 500 GB and $2.60/GB at 1 TB. Premium IPv6 residential runs at roughly 1.5x those rates, starting at $6/GB."
+    },
+    {
+      "type": "paragraph",
+      "text": "Buying 10 GB, you would pay about $27.50 with Webshare and $40 with Infatica: a 31% saving in Webshare's favour. Buying 100 GB, you would pay about $225 with Webshare and $360 with Infatica: a 38% saving in Webshare's favour. Both Webshare and Infatica work on allowances that do not carry forward indefinitely, so size your plan to real monthly usage rather than buying ahead."
+    },
+    {
+      "type": "heading",
+      "text": "Pool size, coverage and targeting",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Webshare has the bigger advertised network, 80M+ residential IPs against 35M-40M for Infatica, roughly 2.3 times larger. Advertised pool sizes are marketing figures counted over long periods; the number of IPs actually reachable in a given country at a given moment is far smaller for every provider, so treat these as a rough guide to depth rather than a guarantee. For coverage, Webshare lists 195 countries and Infatica lists 195. On targeting, Webshare offers country, plus state, city or ZIP (US) or ASN, while Infatica offers country, state, city and ZIP."
+    },
+    {
+      "type": "heading",
+      "text": "Protocols, sessions and setup",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Both providers support SOCKS5 as well as HTTP(S), so either will plug into scrapers, anti-detect browsers and automation tools that expect a SOCKS endpoint. On sessions, Webshare offers rotating or sticky from 1 minute to 24 hours, and Infatica offers per-request rotation or selectable rotation times. Both use a backconnect gateway: you point your tool at one host and port, and choose country, city or session behaviour through parameters in the username."
+    },
+    {
+      "type": "heading",
+      "text": "Which is better for your use case?",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "General web scraping: tie. Neither has a clear edge. With Webshare: low prices and a developer-friendly API. With Infatica: fast proxies that did well on popular targets in independent tests. Run the same small test on both before committing. SERP and rank tracking: Infatica wins. The deciding factor for Infatica: ZIP targeting helps local search results. The limitation on the Webshare side: fine for light rank tracking."
+    },
+    {
+      "type": "paragraph",
+      "text": "Social media and multi-account management: Webshare wins. The deciding factor for Webshare: 24-hour sticky sessions and cheap static ISP IPs. The limitation on the Infatica side: rotation controls are good but very long sticky sessions are not a headline feature."
+    },
+    {
+      "type": "paragraph",
+      "text": "E-commerce price and stock monitoring: Infatica wins. The deciding factor for Infatica: ZIP-level targeting for local prices. The limitation on the Webshare side: good for US work with ZIP targeting, thinner elsewhere."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ad verification and geo-testing: Infatica wins. The deciding factor for Infatica: precise geo targeting and clean sourcing. The limitation on the Webshare side: no mobile network and limited selector combinations."
+    },
+    {
+      "type": "paragraph",
+      "text": "Tight budgets: Webshare wins. The deciding factor for Webshare: free tier plus some of the lowest per-GB rates here. The limitation on the Infatica side: mid-range pricing until you reach large volumes."
+    },
+    {
+      "type": "heading",
+      "text": "Trials, verification and billing fine print",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Before you pay, check how each provider lets you test. Webshare: 10 free datacenter proxies (1 GB/month); no residential trial. Infatica: 7-day trial for $4 (residential) or $8 (mobile). Verification and payment rules differ too. Webshare: ID checks only when flagged or for restricted categories. Infatica: Standard verification; states it does not resell IPs. Whichever you choose, measure cost per successful request rather than cost per gigabyte: retries, blocked pages and heavy page assets all burn bandwidth, and a cheaper network that fails more often can end up costing more. Blocking images and fonts in your scraper, reusing sessions where a target allows it, and capping concurrency are the quickest ways to cut the bill on either provider."
+    },
+    {
+      "type": "heading",
+      "text": "How to test Webshare and Infatica before you commit",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Spec sheets only get you so far. A short, structured test on your own targets will settle Webshare vs Infatica faster than any review:"
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Buy the smallest option on each side (Webshare: 10 free datacenter proxies (1 GB/month); no residential trial; Infatica: 7-day trial for $4 (residential) or $8 (mobile))."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Pick three to five real target URLs and the two or three countries that matter most, and send the same number of requests (a few hundred is enough) through each provider at the same time of day."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. Record success rate, median response time, CAPTCHAs or blocks, and the number of unique exit IPs you received per country."
+    },
+    {
+      "type": "paragraph",
+      "text": "4. Divide what you spent by the number of successful, correctly located responses to get cost per useful request, then scale that to your monthly volume."
+    },
+    {
+      "type": "heading",
+      "text": "Bottom line",
+      "level": 2
+    },
+    {
+      "type": "paragraph",
+      "text": "Across the six use cases above, Webshare comes out ahead in 2, Infatica in 3, and 1 is a tie. That makes Infatica the safer default if you are unsure, but the right answer still depends on your volume and targets: Webshare is strongest for solo developers and small teams, while Infatica is strongest for compliance-conscious buyers. If you can, spend a few dollars testing both on the exact sites and countries you care about; a one-hour test tells you more than any spec sheet."
+    },
+    {
+      "type": "heading",
+      "text": "Webshare is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Solo developers and small teams"
+    },
+    {
+      "type": "listItem",
+      "text": "Budget scraping with predictable monthly volume"
+    },
+    {
+      "type": "listItem",
+      "text": "Buyers who also need cheap datacenter lists"
+    },
+    {
+      "type": "heading",
+      "text": "Infatica is the better pick for:",
+      "level": 3
+    },
+    {
+      "type": "listItem",
+      "text": "Compliance-conscious buyers"
+    },
+    {
+      "type": "listItem",
+      "text": "Location-precise collection that needs ZIP targeting"
+    },
+    {
+      "type": "listItem",
+      "text": "Teams wanting IPv6 residential IPs"
+    }
+  ],
+  "title": "Webshare vs Infatica (2026)",
+  "subtitle": "Budget Self-Service vs Compliance-First Mid-Market",
+  "seoTitle": "Webshare vs Infatica (2026): Pricing, Pool Size & Verdict",
+  "description": "Webshare vs Infatica (2026): prices at 10 GB and 100 GB, pool size, targeting, trials and which to pick for scraping, SERP and multi-account work.",
+  "keywords": "webshare vs infatica , webshare vs infatica 2026, webshare vs infatica pricing, webshare vs infatica comparison",
+  "pageEnd": 145,
+  "slug": "webshare-vs-infatica",
+  "providerSlugs": [
+    "webshare",
+    "infatica"
+  ],
+  "faq": [
+    {
+      "q": "Is Webshare or Infatica cheaper?",
+      "a": "For small volumes Webshare is cheaper: about $27.50 for 10 GB against $40. At scale, Webshare's best published rate is $1.40/GB at 3 TB; yearly billing is 30% cheaper and Infatica's is About $2.60/GB on 1 TB plans. Check both pricing pages before buying, because promotions change often."
+    },
+    {
+      "q": "Which has more residential IPs, Webshare or Infatica?",
+      "a": "Webshare advertises the larger pool. Webshare lists 80M+ and Infatica lists 35M-40M. Real availability per country is lower for both, so test the locations you need."
+    },
+    {
+      "q": "Do Webshare and Infatica offer a free trial?",
+      "a": "Webshare: 10 free datacenter proxies (1 GB/month); no residential trial. Infatica: 7-day trial for $4 (residential) or $8 (mobile)."
+    },
+    {
+      "q": "Do both support SOCKS5?",
+      "a": "Webshare supports HTTP, HTTPS, SOCKS5. Infatica supports HTTP, HTTPS, SOCKS5."
+    },
+    {
+      "q": "Which is better for beginners?",
+      "a": "Webshare is usually the easier starting point because of its entry pricing and self-service setup. Webshare is best for solo developers and small teams; Infatica is best for compliance-conscious buyers."
+    }
+  ],
+  "methodology": "Imported from the supplied October 2026 comparison brief. Prices and advertised specifications are not new hands-on benchmarks; confirm current prices, promotions, availability and terms on each provider’s site. Prices are in US dollars before VAT and coupons unless stated. Advertised pool totals have not been independently audited.",
+  "dateModified": "2026-10-17",
+  "quickVerdict": "Webshare is the better value for most small teams: $27.50 for 10 GB against $40, $225 for 100 GB against $360, an 80M+ advertised pool, and free datacenter proxies for testing. Infatica is the better choice when you need mobile proxies (Webshare has none), ZIP targeting outside the US, IPv6 residential IPs, or sourcing documentation and ISO certifications for procurement. Both reset unused monthly traffic, so the price gap is real at every steady volume.",
+  "wordCount": 1646
+}
