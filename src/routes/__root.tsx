@@ -1,4 +1,4 @@
-import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
+import { Outlet, Link, HeadContent, createRootRoute } from "@tanstack/react-router";
 import { PromoPopup } from "@/components/promo-popup";
 
 function NotFoundComponent() {
@@ -31,6 +31,7 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <>
+      <HeadContent />
       <Outlet />
       <PromoPopup />
     </>

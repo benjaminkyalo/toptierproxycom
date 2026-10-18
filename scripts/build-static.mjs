@@ -14,7 +14,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "..");
 const PUBLIC = resolve(root, "public");
-const SITE = process.env.SITE_URL || "https://www.toptierproxy.com";
+const SITE = process.env.SITE_URL || "https://toptierproxycom.lovable.app";
 
 async function loadTs(rel) {
   // tsx is not required: data files are plain TS exports w/ no runtime deps.
@@ -78,6 +78,10 @@ async function run() {
     ...blogPosts.map((b) => ({ loc: `/blog/${b.slug}`, p: "0.8", c: "monthly" })),
   ];
   const comparisonPaths = new Set(comparisonSummaries.map((entry) => `/vs/${entry.slug}`));
+  for (const entry of comparisonSummaries) {
+    comparisonPaths.add(`/vs/${entry.pdfSlug}`);
+    comparisonPaths.add(`/vs/${[...entry.providerSlugs].reverse().join("-vs-")}`);
+  }
   for (let i = 0; i < providers.length; i++) {
     for (let j = i + 1; j < providers.length; j++) {
       if (!isVsTierA(providers[i].slug, providers[j].slug)) continue;
