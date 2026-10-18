@@ -11,6 +11,7 @@ import { batch as b09 } from "./batch-09";
 import { batch as b10 } from "./batch-10";
 import { batch as b11 } from "./batch-11";
 import { batch as b12 } from "./batch-12";
+import { editorialRefresh } from "./editorial-refresh";
 
 export type { BlogExpansion };
 
@@ -32,4 +33,5 @@ export const expandedBodies: Record<string, BlogExpansion> = {
   ...b10,
   ...b11,
   ...b12,
+  ...editorialRefresh,
 };

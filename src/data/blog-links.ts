@@ -18,11 +18,11 @@ export const blogLinks: { slug: string; title: string }[] = [
   },
   {
     "slug": "how-to-set-up-install-proxy-step-by-step-guide-2026",
-    "title": "How to Set Up a Proxy - Complete Step-by-Step Guide for 2026"
+    "title": "How to Set Up a Proxy: Windows, Mac, Chrome and Firefox"
   },
   {
     "slug": "ai-browser-agents-2026-atlas-comet-proxies-data-collection",
-    "title": "AI Browser Agents in 2026 - What ChatGPT Atlas and Perplexity Comet Mean for Data Collection and Proxies"
+    "title": "AI Web Scraping: Tools, Workflow and Reliable JSON Extraction"
   },
   {
     "slug": "ai-scraping-stack-2026-proxies-antidetect-browsers-automation",

@@ -13,7 +13,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Proxys.io and Decodo both sell residential, mobile and datacenter proxies, but their core models are different. Proxys.io rents individual IPs, from $0.13 for IPv6 to a few dollars for premium residential IPv4, usually with unlimited bandwidth. Decodo sells access to a 115M+ rotating residential pool by the gigabyte, with city, ZIP and ASN targeting and scraping APIs. This comparison helps you decide whether your work needs fixed identities or rotation at scale."
+      "text": "Proxys.io and Decodo both sell residential, mobile and datacenter proxies, but their core models are different. Proxys.io rents individual IPs, from $0.13 for IPv6 to a few dollars for premium residential IPv4, with unlimited traffic specifically confirmed for dedicated mobile IPv4 on a private channel. Decodo sells access to a 115M+ rotating residential pool by the gigabyte, with city, ZIP and ASN targeting and scraping APIs. This comparison helps you decide whether your work needs fixed identities or rotation at scale."
     },
     {
       "type": "heading",
@@ -163,7 +163,7 @@
     },
     {
       "type": "paragraph",
-      "text": "General web scraping: Decodo. Decodo has the edge here. Why: a large pool and near-perfect benchmark success rates. How Proxys.io compares: it is a per-IP shop, not a large rotating pool."
+      "text": "General web scraping: compare the exact target and traffic plan before choosing. PROXYS.IO reports a 100M+ rotating residential network across 195 countries, in addition to static rentals. Pool size alone does not establish success rate; this brief does not independently benchmark PROXYS.IO against the other provider."
     },
     {
       "type": "paragraph",
@@ -278,7 +278,7 @@
   "faq": [
     {
       "q": "Is Proxys.io or Decodo cheaper?",
-      "a": "Proxys.io starts at Per-IP from $0.13 (IPv6); residential GB packages from about $4 for 1 GB, and Decodo starts at $4/GB pay-as-you-go; plans from $3.75/GB (3 GB for $11.25). Their best published rates are Per-IP pricing; longer rentals are cheaper and $2.75/GB published; larger volumes by quote respectively. Exact mid-volume prices are not published for both, so get a checkout quote for your real volume."
+      "a": "Proxys.io starts at rotating residential from $1.50/GB; IPv6 from $0.13/IP/month, and Decodo starts at $4/GB pay-as-you-go; plans from $3.75/GB (3 GB for $11.25). Their best published rates are Per-IP pricing; longer rentals are cheaper and $2.75/GB published; larger volumes by quote respectively. Exact mid-volume prices are not published for both, so get a checkout quote for your real volume."
     },
     {
       "q": "Which has more residential IPs, Proxys.io or Decodo?",

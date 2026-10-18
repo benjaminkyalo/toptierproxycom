@@ -13,7 +13,7 @@
     },
     {
       "type": "paragraph",
-      "text": "NodeMaven and Proxys.io are both favourites of multi-account operators, but they solve the identity problem differently. NodeMaven gives you rotating or long-sticky residential and mobile IPs that are screened for quality before assignment, plus ISP proxies. Proxys.io rents you fixed IPs, from cheap IPv6 to premium residential IPv4 and SIM-based mobile, usually with unlimited bandwidth. This comparison helps you choose between filtered pool IPs and dedicated rented ones."
+      "text": "NodeMaven and Proxys.io are both favourites of multi-account operators, but they solve the identity problem differently. NodeMaven gives you rotating or long-sticky residential and mobile IPs that are screened for quality before assignment, plus ISP proxies. Proxys.io rents you fixed IPs, from cheap IPv6 to premium residential IPv4 and SIM-based mobile, with unlimited traffic specifically confirmed for dedicated mobile IPv4 on a private channel. This comparison helps you choose between filtered pool IPs and dedicated rented ones."
     },
     {
       "type": "heading",
@@ -163,7 +163,7 @@
     },
     {
       "type": "paragraph",
-      "text": "General web scraping: NodeMaven. NodeMaven has the edge here. Why: the quality filter matters less for high-rotation crawling. How Proxys.io compares: it is a per-IP shop, not a large rotating pool."
+      "text": "General web scraping: compare the exact target and traffic plan before choosing. PROXYS.IO reports a 100M+ rotating residential network across 195 countries, in addition to static rentals. Pool size alone does not establish success rate; this brief does not independently benchmark PROXYS.IO against the other provider."
     },
     {
       "type": "paragraph",
@@ -278,7 +278,7 @@
   "faq": [
     {
       "q": "Is NodeMaven or Proxys.io cheaper?",
-      "a": "NodeMaven starts at $4.50/GB pay-as-you-go; $3.50 trial for 750 MB, and Proxys.io starts at Per-IP from $0.13 (IPv6); residential GB packages from about $4 for 1 GB. Their best published rates are $2.20/GB on monthly plans; custom above 1 TB and Per-IP pricing; longer rentals are cheaper respectively. Exact mid-volume prices are not published for both, so get a checkout quote for your real volume."
+      "a": "NodeMaven starts at $4.50/GB pay-as-you-go; $3.50 trial for 750 MB, and Proxys.io starts at rotating residential from $1.50/GB; IPv6 from $0.13/IP/month. Their best published rates are $2.20/GB on monthly plans; custom above 1 TB and Per-IP pricing; longer rentals are cheaper respectively. Exact mid-volume prices are not published for both, so get a checkout quote for your real volume."
     },
     {
       "q": "Which has more residential IPs, NodeMaven or Proxys.io?",

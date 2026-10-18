@@ -41,8 +41,8 @@ export const Route = createFileRoute("/vs/$matchup")({
           { name: "twitter:card", content: "summary_large_image" },
           { name: "keywords", content: article.keywords },
           { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
-          { tagName: "link", rel: "canonical", href: `https://www.toptierproxy.com${requestedPath}` },
         ],
+        links: [{ rel: "canonical", href: `https://www.toptierproxy.com${requestedPath}` }],
         scripts: comparisonSchema(article, requestedPath).map((node) => ({ type: "application/ld+json", children: JSON.stringify(node).replace(/</g, "\\u003c") })),
       };
     }
