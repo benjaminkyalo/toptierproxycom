@@ -349,6 +349,8 @@ function blogBody(b, allProviders) {
     ],
   };
   const extraLinks = (categoryLinks[b.category] || []).join("");
+  const sources = b.sources?.length ? `<h2>Sources and further reading</h2><ul>${b.sources.map(s => `<li><a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.label}</a></li>`).join("")}</ul>` : "";
+  const relatedLinks = b.relatedLinks?.length ? `<h2>Put this guide into practice</h2><ul>${b.relatedLinks.map(l => `<li><a href="${l.url}">${l.label}</a></li>`).join("")}</ul>` : "";
 
   const internalLinks = `
     <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:1.2rem 1.5rem;margin-top:2rem">
@@ -374,6 +376,8 @@ function blogBody(b, allProviders) {
     ${comparisonBox}
     ${affiliateCTA}
     ${faqHtml}
+    ${sources}
+    ${relatedLinks}
     ${internalLinks}`;
 }
 
@@ -785,7 +789,15 @@ async function run() {
   // Blog posts
   for (const b of blogPosts) {
     const title = `${b.title} | ToptierProxy.com`;
-    writeHtml(`/blog/${b.slug}`, title, b.description, blogBody(b, providers));
+    const url = `${SITE}/blog/${b.slug}`;
+    const schema = {
+      "@context": "https://schema.org", "@type": "BlogPosting",
+      headline: b.title, description: b.description, mainEntityOfPage: url,
+      datePublished: b.datePublished, dateModified: b.dateModified ?? b.datePublished,
+      author: { "@type": "Person", name: b.author },
+      ...(b.sources?.length ? { citation: b.sources.map(s => s.url) } : {}),
+    };
+    writeHtml(`/blog/${b.slug}`, title, b.description, blogBody(b, providers), undefined, schema);
     count++;
   }
   console.log(` ${blogPosts.length} blog posts`);
