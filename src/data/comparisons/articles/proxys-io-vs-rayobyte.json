@@ -13,7 +13,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Proxys.io and Rayobyte both sell datacenter, residential and mobile proxies, but their strengths differ. Proxys.io rents fixed IPs, including very cheap IPv6 and premium residential IPv4, by the day or month with unlimited bandwidth. Rayobyte is a US company with a strong datacenter catalog and rotating residential traffic that never expires, falling to $0.90/GB at a terabyte. This comparison helps you decide between fixed rentals and a rotating pool."
+      "text": "Proxys.io and Rayobyte both sell datacenter, residential and mobile proxies, but their strengths differ. Proxys.io rents fixed IPs, including very cheap IPv6 and premium residential IPv4, with a minimum one-month static rental with unlimited bandwidth. Rayobyte is a US company with a strong datacenter catalog and rotating residential traffic that never expires, falling to $0.90/GB at a terabyte. This comparison helps you decide between fixed rentals and a rotating pool."
     },
     {
       "type": "heading",
@@ -163,7 +163,7 @@
     },
     {
       "type": "paragraph",
-      "text": "General web scraping: Rayobyte wins. The deciding factor for Rayobyte: cheap volume bands and traffic that never expires. The limitation on the Proxys.io side: it is a per-IP shop, not a large rotating pool."
+      "text": "General web scraping: compare the exact target and traffic plan before choosing. PROXYS.IO reports a 100M+ rotating residential network across 195 countries, in addition to static rentals. Pool size alone does not establish success rate; this brief does not independently benchmark PROXYS.IO against the other provider."
     },
     {
       "type": "paragraph",
@@ -278,7 +278,7 @@
   "faq": [
     {
       "q": "Is Proxys.io or Rayobyte cheaper?",
-      "a": "Proxys.io starts at Per-IP from $0.13 (IPv6); residential GB packages from about $4 for 1 GB, and Rayobyte starts at $3.50/GB (1-49 GB). Their best published rates are Per-IP pricing; longer rentals are cheaper and $0.90/GB at 1-5 TB respectively. Exact mid-volume prices are not published for both, so get a checkout quote for your real volume."
+      "a": "Proxys.io starts at rotating residential from $1.50/GB; IPv6 from $0.13/IP/month, and Rayobyte starts at $3.50/GB (1-49 GB). Their best published rates are Per-IP pricing; longer rentals are cheaper and $0.90/GB at 1-5 TB respectively. Exact mid-volume prices are not published for both, so get a checkout quote for your real volume."
     },
     {
       "q": "Which has more residential IPs, Proxys.io or Rayobyte?",

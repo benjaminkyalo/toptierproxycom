@@ -163,7 +163,7 @@
     },
     {
       "type": "paragraph",
-      "text": "General web scraping: Proxy-Cheap wins. The deciding factor for Proxy-Cheap: cheap traffic, though independent benchmark results have been mixed. The limitation on the Proxys.io side: it is a per-IP shop, not a large rotating pool."
+      "text": "General web scraping: compare the exact target and traffic plan before choosing. PROXYS.IO reports a 100M+ rotating residential network across 195 countries, in addition to static rentals. Pool size alone does not establish success rate; this brief does not independently benchmark PROXYS.IO against the other provider."
     },
     {
       "type": "paragraph",
@@ -274,7 +274,7 @@
   "faq": [
     {
       "q": "Is Proxys.io or Proxy-Cheap cheaper?",
-      "a": "Proxys.io starts at Per-IP from $0.13 (IPv6); residential GB packages from about $4 for 1 GB, and Proxy-Cheap starts at $0.78/GB promotional price (list $2.60/GB). Their best published rates are Per-IP pricing; longer rentals are cheaper and $0.78/GB while the promotion runs respectively. Exact mid-volume prices are not published for both, so get a checkout quote for your real volume."
+      "a": "Proxys.io starts at rotating residential from $1.50/GB; IPv6 from $0.13/IP/month, and Proxy-Cheap starts at $0.78/GB promotional price (list $2.60/GB). Their best published rates are Per-IP pricing; longer rentals are cheaper and $0.78/GB while the promotion runs respectively. Exact mid-volume prices are not published for both, so get a checkout quote for your real volume."
     },
     {
       "q": "Which has more residential IPs, Proxys.io or Proxy-Cheap?",

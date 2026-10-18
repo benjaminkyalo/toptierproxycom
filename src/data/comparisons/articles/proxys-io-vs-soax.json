@@ -13,7 +13,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Proxys.io and SOAX both sell mobile and residential proxies to social media and marketing teams, but through different models. Proxys.io rents fixed IPs and SIM-based mobile proxies by the day or month, often with unlimited bandwidth. SOAX sells access to 155M residential and 33M mobile IPs on one credit balance, with ISP targeting, UDP and QUIC support and per-GB rates set by country tier. This comparison helps you pick the right model for account work and data collection."
+      "text": "Proxys.io and SOAX both sell mobile and residential proxies to social media and marketing teams, but through different models. Proxys.io rents fixed IPs and SIM-based mobile proxies with a minimum one-month static rental, often with unlimited bandwidth. SOAX sells access to 155M residential and 33M mobile IPs on one credit balance, with ISP targeting, UDP and QUIC support and per-GB rates set by country tier. This comparison helps you pick the right model for account work and data collection."
     },
     {
       "type": "heading",
@@ -163,7 +163,7 @@
     },
     {
       "type": "paragraph",
-      "text": "General web scraping: SOAX wins. The deciding factor for SOAX: a large pool and its own error headers help debugging. The limitation on the Proxys.io side: it is a per-IP shop, not a large rotating pool."
+      "text": "General web scraping: compare the exact target and traffic plan before choosing. PROXYS.IO reports a 100M+ rotating residential network across 195 countries, in addition to static rentals. Pool size alone does not establish success rate; this brief does not independently benchmark PROXYS.IO against the other provider."
     },
     {
       "type": "paragraph",
@@ -278,7 +278,7 @@
   "faq": [
     {
       "q": "Is Proxys.io or SOAX cheaper?",
-      "a": "Proxys.io starts at Per-IP from $0.13 (IPv6); residential GB packages from about $4 for 1 GB, and SOAX starts at $5/GB on the no-fee Sandbox plan (US, Tier 1). Their best published rates are Per-IP pricing; longer rentals are cheaper and $1.50/GB US on Scale; Enterprise from $0.85/GB respectively. Exact mid-volume prices are not published for both, so get a checkout quote for your real volume."
+      "a": "Proxys.io starts at rotating residential from $1.50/GB; IPv6 from $0.13/IP/month, and SOAX starts at $5/GB on the no-fee Sandbox plan (US, Tier 1). Their best published rates are Per-IP pricing; longer rentals are cheaper and $1.50/GB US on Scale; Enterprise from $0.85/GB respectively. Exact mid-volume prices are not published for both, so get a checkout quote for your real volume."
     },
     {
       "q": "Which has more residential IPs, Proxys.io or SOAX?",

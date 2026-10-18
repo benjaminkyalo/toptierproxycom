@@ -13,7 +13,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Bright Data and Proxys.io rarely compete for the same buyer. Bright Data is an enterprise web-data platform with a 150M+ rotating residential pool, datacenter, ISP and mobile networks and managed unblocking products. Proxys.io is a per-IP shop renting IPv4, IPv6, premium residential and mobile proxies cheaply, usually with unlimited bandwidth. This comparison clarifies which one fits your workload, because the right answer depends on whether you need rotation at scale or a handful of stable identities."
+      "text": "Bright Data and Proxys.io rarely compete for the same buyer. Bright Data is an enterprise web-data platform with a 150M+ rotating residential pool, datacenter, ISP and mobile networks and managed unblocking products. Proxys.io is a provider offering rotating residential traffic and monthly rentals of IPv4, IPv6, premium residential and mobile proxies cheaply, with unlimited traffic specifically confirmed for dedicated mobile IPv4 on a private channel. This comparison clarifies which one fits your workload, because the right answer depends on whether you need rotation at scale or a handful of stable identities."
     },
     {
       "type": "heading",
@@ -163,7 +163,7 @@
     },
     {
       "type": "paragraph",
-      "text": "General web scraping: Bright Data. Bright Data has the edge here. Why: its pool depth and Web Unlocker handle hardened targets. How Proxys.io compares: it is a per-IP shop, not a large rotating pool."
+      "text": "General web scraping: compare the exact target and traffic plan before choosing. PROXYS.IO reports a 100M+ rotating residential network across 195 countries, in addition to static rentals. Pool size alone does not establish success rate; this brief does not independently benchmark PROXYS.IO against the other provider."
     },
     {
       "type": "paragraph",
@@ -274,7 +274,7 @@
   "faq": [
     {
       "q": "Is Bright Data or Proxys.io cheaper?",
-      "a": "Bright Data starts at $8/GB pay-as-you-go list price (50%-off promos are frequent), and Proxys.io starts at Per-IP from $0.13 (IPv6); residential GB packages from about $4 for 1 GB. Their best published rates are $2.50/GB on its largest public monthly plan and Per-IP pricing; longer rentals are cheaper respectively. Exact mid-volume prices are not published for both, so get a checkout quote for your real volume."
+      "a": "Bright Data starts at $8/GB pay-as-you-go list price (50%-off promos are frequent), and Proxys.io starts at rotating residential from $1.50/GB; IPv6 from $0.13/IP/month. Their best published rates are $2.50/GB on its largest public monthly plan and Per-IP pricing; longer rentals are cheaper respectively. Exact mid-volume prices are not published for both, so get a checkout quote for your real volume."
     },
     {
       "q": "Which has more residential IPs, Bright Data or Proxys.io?",

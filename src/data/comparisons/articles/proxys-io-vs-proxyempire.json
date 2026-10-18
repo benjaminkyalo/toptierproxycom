@@ -13,7 +13,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Proxys.io and ProxyEmpire both sell residential, mobile and static proxies, but their core products differ. Proxys.io is a per-IP shop: you rent individual IPv4 or IPv6 addresses, premium residential IPs or mobile proxies for a set period, usually with unlimited bandwidth. ProxyEmpire is a rotating pool provider with 30M+ advertised residential IPs, free ISP targeting and bandwidth that never expires. This comparison helps you decide which model suits your workload."
+      "text": "Proxys.io and ProxyEmpire both sell residential, mobile and static proxies, but their core products differ. Proxys.io is a provider of rotating residential traffic and monthly rentals: you can rent individual IPv4 or IPv6 addresses, premium residential IPs or mobile proxies for a set period, with unlimited traffic specifically confirmed for dedicated mobile IPv4 on a private channel. ProxyEmpire is a rotating pool provider with 30M+ advertised residential IPs, free ISP targeting and bandwidth that never expires. This comparison helps you decide which model suits your workload."
     },
     {
       "type": "heading",
@@ -163,7 +163,7 @@
     },
     {
       "type": "paragraph",
-      "text": "General web scraping: ProxyEmpire wins. The deciding factor for ProxyEmpire: stable connections and traffic that never expires. The limitation on the Proxys.io side: it is a per-IP shop, not a large rotating pool."
+      "text": "General web scraping: compare the exact target and traffic plan before choosing. PROXYS.IO reports a 100M+ rotating residential network across 195 countries, in addition to static rentals. Pool size alone does not establish success rate; this brief does not independently benchmark PROXYS.IO against the other provider."
     },
     {
       "type": "paragraph",
@@ -278,7 +278,7 @@
   "faq": [
     {
       "q": "Is Proxys.io or ProxyEmpire cheaper?",
-      "a": "Proxys.io starts at Per-IP from $0.13 (IPv6); residential GB packages from about $4 for 1 GB, and ProxyEmpire starts at $3.50/GB at entry (currently discounted 50% from $7/GB). Their best published rates are Per-IP pricing; longer rentals are cheaper and $1.50/GB at 1 TB; custom from $0.75/GB above 5 TB respectively. Exact mid-volume prices are not published for both, so get a checkout quote for your real volume."
+      "a": "Proxys.io starts at rotating residential from $1.50/GB; IPv6 from $0.13/IP/month, and ProxyEmpire starts at $3.50/GB at entry (currently discounted 50% from $7/GB). Their best published rates are Per-IP pricing; longer rentals are cheaper and $1.50/GB at 1 TB; custom from $0.75/GB above 5 TB respectively. Exact mid-volume prices are not published for both, so get a checkout quote for your real volume."
     },
     {
       "q": "Which has more residential IPs, Proxys.io or ProxyEmpire?",
