@@ -1,7 +1,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { comparisonSummaries, getComparisonSummary, getComparisonProvider } from "./catalog";
 import { providers } from "../providers";
+import type { ComparisonArticle } from "./types";
 
 test("all 105 supplied comparisons resolve in both provider orders", () => {
   assert.equal(comparisonSummaries.length, 105);
@@ -22,4 +24,19 @@ test("PROXYS.IO keeps the supplied affiliate destination without joining the ben
   assert.equal(getComparisonProvider("proxys-io")?.visitUrl, "https://proxys.io/?refid=389543");
   assert.equal(getComparisonProvider("proxys-io")?.reviewUrl, "/proxys-io-review");
   assert.equal(providers.some(p => p.slug === "proxys-io"), false);
+});
+
+test("all 14 PROXYS.IO comparisons use the supplied price and minimum static rental", () => {
+  const summaries = comparisonSummaries.filter(a => a.providerSlugs.includes("proxys-io"));
+  assert.equal(summaries.length, 14);
+  for (const summary of summaries) {
+    const article: ComparisonArticle = JSON.parse(readFileSync(new URL(`./articles/${summary.slug}.json`, import.meta.url), "utf8"));
+    const text = JSON.stringify(article);
+    assert.ok(text.includes("$1.50/GB"), summary.slug);
+    assert.ok(text.includes("Minimum static rental is one month"), summary.slug);
+    assert.ok(text.includes("24 hours"), summary.slug);
+    assert.equal(text.includes("residential GB packages from about $4 for 1 GB"), false, summary.slug);
+    assert.equal(text.includes("daily rentals"), false, summary.slug);
+    assert.equal(text.includes("not a large rotating pool"), false, summary.slug);
+  }
 });
