@@ -9,7 +9,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Webshare is the better choice for rotating residential scraping and for developers who want a strong API: it publishes an 80M+ pool, offers US city and ZIP plus ASN targeting, and costs $27.50 for 10 GB. Its free 10-proxy datacenter plan is also ideal for testing. Proxys.io is the better choice for bulk IPv6, daily rentals, mobile proxies with unlimited bandwidth (Webshare has no mobile product) and country choices for static IPv4, with a 24-hour refund window. Compare per-IP prices for your countries."
+      "text": "Webshare is the better choice for rotating residential scraping and for developers who want a strong API: it publishes an 80M+ pool, offers US city and ZIP plus ASN targeting, and costs $27.50 for 10 GB. Its free 10-proxy datacenter plan is also ideal for testing. Proxys.io is the better choice for bulk IPv6, monthly static rentals, mobile proxies with unlimited bandwidth (Webshare has no mobile product) and country choices for static IPv4, with a 24-hour refund window. Compare per-IP prices for your countries."
     },
     {
       "type": "paragraph",
@@ -299,6 +299,6 @@
   ],
   "methodology": "Imported from the supplied October 2026 comparison brief. Prices and advertised specifications are not new hands-on benchmarks; confirm current prices, promotions, availability and terms on each provider’s site. Prices are in US dollars before VAT and coupons unless stated. Advertised pool totals have not been independently audited.",
   "dateModified": "2026-10-17",
-  "quickVerdict": "Webshare is the better choice for rotating residential scraping and for developers who want a strong API: it publishes an 80M+ pool, offers US city and ZIP plus ASN targeting, and costs $27.50 for 10 GB. Its free 10-proxy datacenter plan is also ideal for testing. Proxys.io is the better choice for bulk IPv6, daily rentals, mobile proxies with unlimited bandwidth (Webshare has no mobile product) and country choices for static IPv4, with a 24-hour refund window. Compare per-IP prices for your countries.",
+  "quickVerdict": "Webshare is the better choice for rotating residential scraping and for developers who want a strong API: it publishes an 80M+ pool, offers US city and ZIP plus ASN targeting, and costs $27.50 for 10 GB. Its free 10-proxy datacenter plan is also ideal for testing. Proxys.io is the better choice for bulk IPv6, monthly static rentals, mobile proxies with unlimited bandwidth (Webshare has no mobile product) and country choices for static IPv4, with a 24-hour refund window. Compare per-IP prices for your countries.",
   "wordCount": 1833
 }
