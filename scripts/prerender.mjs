@@ -10,7 +10,7 @@ import { comparisonHtml, comparisonSchema } from "../src/data/comparisons/publis
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "..");
-const DIST = resolve(root, "dist");
+const DIST = resolve(process.env.PRERENDER_OUTPUT_DIR || resolve(root, "dist"));
 const SITE = "https://www.toptierproxy.com";
 
 async function loadTs(rel) {

@@ -128,7 +128,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Before the seizure, NetNut was best known for ISP-sourced static residential proxies and a fast rotating residential network aimed at scraping, ad verification and brand-protection teams. Its residential rates generally ran from about $1.87 to $3.53 per GB on larger plans, with higher effective prices on entry plans. Proxys.io covers much of the same ground: shared and dedicated ipv4, ipv6, premium residential ipv4, rotating residential, mobile 4g/5g sit alongside its residential network, which advertises Not published IPs in Varies by product countries."
+      "text": "Before the seizure, NetNut was best known for ISP-sourced static residential proxies and a fast rotating residential network aimed at scraping, ad verification and brand-protection teams. Its residential rates generally ran from about $1.87 to $3.53 per GB on larger plans, with higher effective prices on entry plans. Proxys.io covers much of the same ground: shared and dedicated ipv4, ipv6, premium residential ipv4, rotating residential, mobile 4g/5g sit alongside its residential network, which advertises Not published IPs across 195 residential countries, with 14 mobile countries and 24 static IPv4 markets."
     },
     {
       "type": "heading",
@@ -142,7 +142,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Most NetNut accounts were built around three things: static ISP IPs for long-lived sessions, rotating residential traffic with US state and city targeting, and high concurrency for scraping. On static ISP-style IPs, Proxys.io's answer is not as a separate product; its other products are shared and dedicated IPv4, IPv6, premium residential IPv4, rotating residential, mobile 4G/5G. On rotating residential targeting, Proxys.io offers country, region and city for residential traffic, with city/carrier selection for mobile in Varies by product countries, with static per-IP proxies; rotating residential and mobile. On billing, Proxys.io uses per IP per period, with per-GB residential packages, and unused traffic is handled as follows: rental periods (days or months). Map each of your old NetNut zones to one of these before you migrate, so nothing breaks on the day you switch."
+      "text": "Most NetNut accounts were built around three things: static ISP IPs for long-lived sessions, rotating residential traffic with US state and city targeting, and high concurrency for scraping. On static ISP-style IPs, Proxys.io's answer is not as a separate product; its other products are shared and dedicated IPv4, IPv6, premium residential IPv4, rotating residential, mobile 4G/5G. On rotating residential targeting, Proxys.io offers country, region and city for residential traffic, with city/carrier selection for mobile across 195 residential countries, with 14 mobile countries and 24 static IPv4 markets, with static per-IP proxies; rotating residential and mobile. On billing, Proxys.io uses per IP per period, with per-GB residential packages, and unused traffic is handled as follows: 30/60/90-day traffic validity; minimum one-month static rental. Map each of your old NetNut zones to one of these before you migrate, so nothing breaks on the day you switch."
     },
     {
       "type": "heading",
@@ -276,7 +276,7 @@
     },
     {
       "type": "paragraph",
-      "text": "NetNut is no longer a provider you can plan around, so the real decision is which network replaces it. Proxys.io is strongest for multi-account and affiliate work that needs fixed IPs and bulk IPv6 tasks, starts at Per-IP from $0.13 (IPv6); residential GB packages from about $4 for 1 GB, and offers 24-hour refund window instead of a trial. Test it on your own targets for a day, compare cost per successful request with your old NetNut baseline, and move production traffic in stages."
+      "text": "NetNut is no longer a provider you can plan around, so the real decision is which network replaces it. Proxys.io is strongest for multi-account and affiliate work that needs fixed IPs and bulk IPv6 tasks, starts at rotating residential from $1.50/GB; IPv6 from $0.13/IP/month, and offers 24-hour refund window instead of a trial. Test it on your own targets for a day, compare cost per successful request with your old NetNut baseline, and move production traffic in stages."
     },
     {
       "type": "heading",

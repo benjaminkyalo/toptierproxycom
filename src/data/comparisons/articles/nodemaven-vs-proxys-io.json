@@ -136,7 +136,7 @@
     },
     {
       "type": "paragraph",
-      "text": "At 10 GB, a like-for-like total is harder to state because Proxys.io does not publish an exact price for that volume; NodeMaven comes to about $45. At 100 GB, a like-for-like total is harder to state because Proxys.io does not publish an exact price for that volume; NodeMaven comes to about $220. The sticker price is only half of it. NodeMaven's unused traffic carries forward, while Proxys.io's does not (rental periods (days or months)), so if your usage swings from month to month NodeMaven can work out cheaper than the per-GB numbers suggest."
+      "text": "At 10 GB, a like-for-like total is harder to state because Proxys.io does not publish an exact price for that volume; NodeMaven comes to about $45. At 100 GB, a like-for-like total is harder to state because Proxys.io does not publish an exact price for that volume; NodeMaven comes to about $220. The sticker price is only half of it. NodeMaven's unused traffic carries forward, while Proxys.io's does not (30/60/90-day traffic validity; minimum one-month static rental), so if your usage swings from month to month NodeMaven can work out cheaper than the per-GB numbers suggest."
     },
     {
       "type": "heading",

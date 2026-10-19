@@ -136,7 +136,7 @@
     },
     {
       "type": "paragraph",
-      "text": "At 10 GB, a like-for-like total is harder to state because Proxys.io does not publish an exact price for that volume; IPRoyal comes to about $52.50. At 100 GB, a like-for-like total is harder to state because Proxys.io and IPRoyal do not publish an exact price for that volume. Look past the per-GB figure too. IPRoyal lets unused traffic carry forward, while Proxys.io's allowance does not (rental periods (days or months)). For irregular workloads, that difference can outweigh a small gap in list price."
+      "text": "At 10 GB, a like-for-like total is harder to state because Proxys.io does not publish an exact price for that volume; IPRoyal comes to about $52.50. At 100 GB, a like-for-like total is harder to state because Proxys.io and IPRoyal do not publish an exact price for that volume. Look past the per-GB figure too. IPRoyal lets unused traffic carry forward, while Proxys.io's allowance does not (30/60/90-day traffic validity; minimum one-month static rental). For irregular workloads, that difference can outweigh a small gap in list price."
     },
     {
       "type": "heading",
