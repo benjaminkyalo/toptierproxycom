@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound, redirect } from "@tanstack/react-router";
 import { PageShell, Prose } from "@/components/page-shell";
 import { LongFormSection } from "@/components/long-form";
 import { providers, getProvider } from "@/data/providers";
@@ -15,13 +15,23 @@ export const Route = createFileRoute("/vs/$matchup")({
   loader: async ({ params }) => {
     const summary = getComparisonSummary(params.matchup);
     if (summary) {
+      // One address per comparison: swapped-name URLs forward to the main one.
+      if (summary.slug !== params.matchup) {
+        throw redirect({ to: "/vs/$matchup", params: { matchup: summary.slug }, replace: true, statusCode: 301 });
+      }
       const article = await loadComparisonArticle(summary.slug);
-      if (article) return { article, requestedPath: `/vs/${params.matchup}`, A: undefined, B: undefined };
+      if (article) return { article, requestedPath: `/vs/${summary.slug}`, A: undefined, B: undefined };
     }
     const [a, b] = params.matchup.split("-vs-");
     const A = getProvider(a);
     const B = getProvider(b);
     if (!A || !B) throw notFound();
+    // Generic pairs: keep the registry order as the single address.
+    const ia = providers.findIndex((p) => p.slug === A.slug);
+    const ib = providers.findIndex((p) => p.slug === B.slug);
+    if (ia > ib) {
+      throw redirect({ to: "/vs/$matchup", params: { matchup: `${B.slug}-vs-${A.slug}` }, replace: true, statusCode: 301 });
+    }
     return { A, B, article: undefined, requestedPath: `/vs/${params.matchup}` };
   },
   head: ({ loaderData }) => {

@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { comparisonSummaries, getComparisonSummary, getComparisonProvider } from "./catalog";
+import { comparisonSummaries, getComparisonSummary, getComparisonProvider, canonicalComparisonPath } from "./catalog";
 import { providers } from "../providers";
 import type { ComparisonArticle } from "./types";
 
@@ -39,4 +39,13 @@ test("all 14 PROXYS.IO comparisons use the supplied price and minimum static ren
     assert.equal(text.includes("daily rentals"), false, summary.slug);
     assert.equal(text.includes("not a large rotating pool"), false, summary.slug);
   }
+});
+test("each comparison has one main address; swapped-name addresses point to it", () => {
+  for (const article of comparisonSummaries) {
+    const main = `/vs/${article.slug}`;
+    assert.equal(canonicalComparisonPath(article.slug), main);
+    assert.equal(canonicalComparisonPath([...article.providerSlugs].reverse().join("-vs-")), main);
+  }
+  assert.equal(canonicalComparisonPath("rayobyte-vs-nimbleway"), "/vs/rayobyte-vs-nimbleway");
+  assert.equal(canonicalComparisonPath("nimbleway-vs-rayobyte"), "/vs/rayobyte-vs-nimbleway");
 });

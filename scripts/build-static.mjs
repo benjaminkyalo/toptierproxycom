@@ -14,7 +14,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, "..");
 const PUBLIC = resolve(root, "public");
-const SITE = process.env.SITE_URL || "https://toptierproxycom.lovable.app";
+const SITE = process.env.SITE_URL || "https://www.toptierproxy.com";
 
 async function loadTs(rel) {
   // tsx is not required: data files are plain TS exports w/ no runtime deps.
@@ -77,14 +77,13 @@ async function run() {
     ...useCases.map((u) => ({ loc: `/use-cases/${u.slug}`, p: "0.8", c: "monthly" })),
     ...blogPosts.map((b) => ({ loc: `/blog/${b.slug}`, p: "0.8", c: "monthly" })),
   ];
+  // Sitemap lists only the main address of each comparison, never swapped-name duplicates.
   const comparisonPaths = new Set(comparisonSummaries.map((entry) => `/vs/${entry.slug}`));
-  for (const entry of comparisonSummaries) {
-    comparisonPaths.add(`/vs/${entry.pdfSlug}`);
-    comparisonPaths.add(`/vs/${[...entry.providerSlugs].reverse().join("-vs-")}`);
-  }
+  const coveredPairs = new Set(comparisonSummaries.map((entry) => [...entry.providerSlugs].sort().join("|")));
   for (let i = 0; i < providers.length; i++) {
     for (let j = i + 1; j < providers.length; j++) {
       if (!isVsTierA(providers[i].slug, providers[j].slug)) continue;
+      if (coveredPairs.has([providers[i].slug, providers[j].slug].sort().join("|"))) continue;
       comparisonPaths.add(`/vs/${providers[i].slug}-vs-${providers[j].slug}`);
     }
   }
