@@ -36,6 +36,16 @@ function slugify(str) {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
 }
 
+// Duplicate address -> main address. Instant meta refresh is treated by search
+// engines as a permanent redirect; the canonical consolidates any signals.
+function writeRedirect(urlPath, targetPath, title) {
+  const target = `${SITE}${targetPath}`;
+  const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${title}</title><link rel="canonical" href="${target}"><meta name="robots" content="noindex, follow"><meta http-equiv="refresh" content="0; url=${targetPath}"><script>location.replace(${JSON.stringify(targetPath)}+location.search+location.hash)</script></head><body><p>This comparison has moved to <a href="${targetPath}">${title}</a>.</p></body></html>`;
+  const dir = resolve(DIST, ...urlPath.replace(/^\//, "").split("/"));
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(resolve(dir, "index.html"), html);
+}
+
 function writeHtml(urlPath, title, description, bodyContent = "", canonicalPath, jsonLd) {
   const template = readFileSync(resolve(DIST, "index.html"), "utf-8");
   // Consolidation policy: near-duplicate pages point their canonical at the
@@ -802,14 +812,19 @@ async function run() {
   }
   console.log(` ${blogPosts.length} blog posts`);
 
-  // Complete editorial comparison briefs, plus reverse URLs already linked on site.
+  // Complete editorial comparison briefs. Each has ONE main address; the
+  // swapped-name address is a redirect page whose canonical is the main one.
   const expandedPaths = new Set();
   for (const summary of comparisonSummaries) {
     const article = JSON.parse(readFileSync(resolve(root, `src/data/comparisons/articles/${summary.slug}.json`), "utf-8"));
-    const paths = new Set([summary.slug, summary.pdfSlug, [...summary.providerSlugs].reverse().join("-vs-")]);
-    for (const slug of paths) {
-      const path = `/vs/${slug}`;
-      writeHtml(path, `${article.seoTitle} | ToptierProxy.com`, article.description, comparisonHtml(article), path, comparisonSchema(article, path));
+    const mainPath = `/vs/${summary.slug}`;
+    writeHtml(mainPath, `${article.seoTitle} | ToptierProxy.com`, article.description, comparisonHtml(article), mainPath, comparisonSchema(article, mainPath));
+    expandedPaths.add(summary.slug);
+    count++;
+    const aliases = new Set([summary.pdfSlug, [...summary.providerSlugs].reverse().join("-vs-")]);
+    aliases.delete(summary.slug);
+    for (const slug of aliases) {
+      writeRedirect(`/vs/${slug}`, mainPath, article.seoTitle);
       expandedPaths.add(slug);
       count++;
     }

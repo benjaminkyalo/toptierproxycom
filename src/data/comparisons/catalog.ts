@@ -12,6 +12,12 @@ export function getComparisonSummary(slug: string): ComparisonSummary | undefine
   );
 }
 
+/** Main address for a comparison; swapped-name addresses resolve to the stored slug. */
+export function canonicalComparisonPath(slug: string): string | undefined {
+  const summary = getComparisonSummary(slug);
+  return summary ? `/vs/${summary.slug}` : undefined;
+}
+
 const extraProviders: Record<string, { name: string; visitUrl: string; reviewUrl?: string }> = {
   floppydata: { name: "Floppydata", visitUrl: "https://floppydata.com/" },
   nodemaven: { name: "NodeMaven", visitUrl: "https://nodemaven.com/" },
