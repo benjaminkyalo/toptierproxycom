@@ -98,4 +98,4 @@ User-agent: AI2Bot
 Allow: /
 Disallow: /go/
 
-Sitemap: https://toptierproxycom.lovable.app/sitemap.xml
+Sitemap: https://www.toptierproxy.com/sitemap.xml
