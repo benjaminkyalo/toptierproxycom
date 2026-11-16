@@ -8,6 +8,7 @@ export interface Guide {
   description: string; // for meta
   body: string;
   providerSlugs: string[];
+  sponsoredProvider?: "floppydata";
   /** For standalone-page providers (not in providers.ts) that genuinely fit this guide's category. */
   extraProviders?: { name: string; url: string; rating: number; startingPrice: string; poolSize: string }[];
   related: { to: string; label: string }[];
@@ -34,9 +35,10 @@ export const guides: Guide[] = [
     title: "Best Proxy Providers 2026 — Ranked After 1,000+ Hours of Real Testing",
     shortLabel: "overall proxy quality",
     intro: "Our annual ranking of the world's best proxy providers across every category — residential, datacenter, ISP and mobile.",
-    description: "We spent 1,000+ hours testing 35 proxy providers in 2026. Here is the full ranking — real scores, honest pricing, and exactly which provider is right for your use case. No paid placements.",
-    body: "After 1,000+ hours of hands-on testing across 35 vendors, our editorial team has finalized the 2026 rankings. The top providers were selected based on success rate against modern anti-bot systems (Cloudflare, DataDome, PerimeterX, Akamai), pool size and geographic coverage, sourcing ethics and compliance posture, dashboard UX, and total cost per successful request.",
+    description: "We spent 1,000+ hours testing 35 proxy providers in 2026. See the independent ranking, real scores, honest pricing and a clearly separated sponsor spotlight.",
+    body: "After 1,000+ hours of hands-on testing across 35 vendors, our editorial team has finalized the 2026 rankings. The ranked providers were selected based on success rate, pool size and geographic coverage, sourcing ethics and compliance posture, dashboard UX, and total cost per successful request. Sponsor placements appear separately and do not determine the order of the tested ranking.",
     providerSlugs: ["bright-data", "oxylabs", "decodo", "soax", "iproyal", "netnut", "webshare", "rayobyte"],
+    sponsoredProvider: "floppydata",
     extraProviders: [
       { name: "Live Proxies", url: "/live-proxies-review", rating: 4.4, startingPrice: "$45/plan", poolSize: "Private dedicated IPs" },
       { name: "Thordata", url: "/thordata-review", rating: 4.7, startingPrice: "$0.65/GB", poolSize: "125M+ IPs" },
@@ -56,6 +58,7 @@ export const guides: Guide[] = [
     description: "We sent 1.2 million requests through every major residential proxy in 2026. Here are the providers that actually hold up on Cloudflare and DataDome — with real pricing, pool sizes and our honest verdict.",
     body: "Residential proxies route traffic through real consumer devices, making them effectively indistinguishable from regular user traffic. They're the preferred choice for any workload that touches modern anti-bot systems — Cloudflare, DataDome, PerimeterX or Akamai. The trade-off is price: residential bandwidth typically costs $2–$15/GB.",
     providerSlugs: ["bright-data", "oxylabs", "decodo", "soax", "iproyal", "netnut", "infatica"],
+    sponsoredProvider: "floppydata",
     related: RELATED_DEFAULT,
     primaryKeywords: ["best residential proxies","residential proxy","best residential proxy","residential proxies 2026","residential proxy providers","best residential proxy providers","us residential proxy","uk residential proxies","usa residential proxy"],
   },
@@ -195,6 +198,7 @@ export const guides: Guide[] = [
     description: "The best proxies for ad verification in 2026 — global residential pools for fraud detection and creative auditing.",
     body: "Ad verification platforms need to see exactly what a real consumer in a given country, city or carrier sees. That requires deep geographic coverage, sticky sessions long enough to load full ad creatives, and clean, ethically-sourced IPs.",
     providerSlugs: ["bright-data", "oxylabs", "netnut", "soax"],
+    sponsoredProvider: "floppydata",
     related: RELATED_DEFAULT,
   },
   {

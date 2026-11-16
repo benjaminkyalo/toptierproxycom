@@ -21,6 +21,7 @@ export interface BlogPost {
   faq?: { q: string; a: string }[];
   recommendedProvider?: string; // provider slug for affiliate CTA on card / in-body
   featured?: boolean;
+  sponsoredProviders?: ("nodemaven" | "floppydata")[];
 }
 
 
@@ -476,7 +477,6 @@ const rawBlogPosts: BlogPost[] = [
     readTime: "14 min",
     category: "Engineering",
     tags: ["linkedin scraping 2026", "linkedin blocked", "linkedin anti-bot", "linkedin automation ban", "scrape linkedin 2026", "linkedin proxy", "linkedin detection"],
-    recommendedProvider: "soax",
     featured: true,
     body: [
       { heading: "What changed in 2026", paragraphs: [
@@ -1071,6 +1071,7 @@ const rawBlogPosts: BlogPost[] = [
     tags: ["best proxies", "benchmark", "2026", "ranking"],
     featured: true,
     recommendedProvider: "bright-data",
+    sponsoredProviders: ["nodemaven", "floppydata"],
     body: [
       { heading: "How we tested", paragraphs: ["We ran 1.2 million test requests through 12 leading providers across 30 days, hitting Cloudflare-, Akamai-, DataDome- and PerimeterX-protected targets in 8 countries. Each provider was scored on success rate, average latency, content fidelity, and total cost per clean response. No vendor saw the results before publication."] },
       { heading: "The 2026 ranking", paragraphs: ["1. **Bright Data** — 98.4% success, 150M+ IP pool, best for enterprise compliance.", "2. **Oxylabs** — 97.8% success, premium SERP & e-commerce APIs.", "3. **Decodo** — 96.1% success at $2/GB, best price-to-performance.", "4. **IPRoyal** — 94.7% success at $1.75/GB, budget winner.", "5. **SOAX** — 95.2% success, deepest mobile pool.", "6. **NetNut** — 94.0% success, fastest residential thanks to ISP peering.", "7. **Webshare** — 91.3% on simple targets, unmatched free tier.", "8. **Rayobyte** — 92.5% on unprotected targets, great support."] },

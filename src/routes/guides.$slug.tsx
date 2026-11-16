@@ -6,6 +6,7 @@ import { LongFormSection } from "@/components/long-form";
 import { providers } from "@/data/providers";
 import { getGuide, guides } from "@/data/guides";
 import { LinkedParagraph } from "@/components/linked-paragraph";
+import { ProviderLogo } from "@/components/provider-logo";
 
 export const Route = createFileRoute("/guides/$slug")({
   loader: ({ params }) => {
@@ -130,6 +131,18 @@ function GuidePage() {
         <LinkedParagraph text={guide.body} />
         <p>Below, our team's 2026 ranking — based on 1,000+ hours of hands-on testing across 35 vendors, with success rates measured on Cloudflare-, DataDome- and PerimeterX-protected targets.</p>
       </Prose>
+
+      {guide.sponsoredProvider === "floppydata" && (
+        <aside className="mt-6 flex flex-col gap-4 border-y border-border bg-muted/40 px-4 py-5 sm:flex-row sm:items-center sm:px-6">
+          <ProviderLogo provider={{ slug: "floppydata", name: "Floppydata" }} size="lg" />
+          <div className="flex-1">
+            <p className="text-xs font-bold uppercase text-muted-foreground">Sponsored provider</p>
+            <h2 className="mt-1 text-lg font-bold">Floppydata</h2>
+            <p className="mt-1 text-sm text-muted-foreground">Explore Floppydata's proxy offerings. This sponsor feature is separate from the independently ordered provider ranking below.</p>
+          </div>
+          <a href="https://floppydata.com/" target="_blank" rel="noopener noreferrer sponsored nofollow" className="inline-flex h-10 shrink-0 items-center justify-center rounded-md bg-primary px-5 text-sm font-bold text-primary-foreground hover:bg-brand-blue-hover">Visit Floppydata</a>
+        </aside>
+      )}
 
       <div className="mt-6 w-full overflow-x-auto rounded-md border border-border [-webkit-overflow-scrolling:touch]">
         <table className="w-full min-w-[480px] text-xs sm:text-sm">

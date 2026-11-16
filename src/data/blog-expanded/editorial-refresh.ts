@@ -381,5 +381,191 @@ export const editorialRefresh: Record<string, BlogExpansion> = {
       }
     ],
     "readTime": "9 min"
+  },
+  "ai-scraping-stack-2026-proxies-antidetect-browsers-automation": {
+    "title": "AI Web Scraping in 2026: Tools, Data Quality, and Responsible Workflows",
+    "description": "A practical guide to AI-assisted web scraping: choosing APIs, parsers, browser tools and language models while protecting data quality, privacy and access permissions.",
+    "excerpt": "AI can help extract structured information, but it is only one part of a reliable collection workflow. Compare APIs, parsers, browser automation and model-based extraction, with checks for permission, quality and privacy.",
+    "category": "Engineering",
+    "tags": ["AI web scraping", "AI data extraction", "web scraping tools", "structured data extraction", "responsible web scraping", "scraping data quality"],
+    "dateModified": "2026-11-16",
+    "omitLongForm": true,
+    "readTime": "12 min",
+    "body": [
+      {
+        "heading": "What people mean by AI web scraping",
+        "paragraphs": [
+          "AI web scraping usually combines ordinary retrieval with one or more intelligent extraction steps. A crawler or approved API obtains content; a parser or language model turns it into fields; validation checks that the result is complete and plausible. The model does not make access permissible, guarantee that a page can be fetched, or make a wrong value true. Treat it as one replaceable stage in a data pipeline, not as a magic browser that can access every site.",
+          "Start by writing down the decision the dataset should support. If the task is collecting a public product price, define the product identifier, currency, timestamp and treatment of promotions. If the task is summarizing a permitted set of documents, define the source list, citation format and retention period. A narrow schema and clear purpose make it easier to choose tools and spot errors than starting with a model name or a promise of scale."
+        ]
+      },
+      {
+        "heading": "Choose the access method before the extraction tool",
+        "paragraphs": [
+          "Check for an official API, export, data feed or written permission first. Read the applicable terms, authentication requirements and usage limits. A public page is not automatically licensed for every form of collection or reuse, and robots.txt is crawler guidance rather than an access grant. When the source requires an account or partner relationship, use the approved route and credentials; do not attempt to defeat access controls or anti-bot protections.",
+          "For pages you are authorized to collect, record the source URL and retrieval time. Respect published rate limits, use conservative concurrency and back off when a service signals overload. If the site denies access, stop and seek permission or another source instead of cycling identities or network addresses. This keeps the workflow predictable and reduces the chance that a research project creates avoidable load or violates a site's rules."
+        ]
+      },
+      {
+        "heading": "Match the tool to the shape of the source",
+        "paragraphs": [
+          "Use an API when it provides the fields and rights your project needs. For stable HTML and a known structure, a conventional parser is usually easier to test, cheaper to run and more repeatable than asking a model to rediscover the same fields on every page. A browser automation tool is useful when an authorized site requires client-side rendering or a documented interactive workflow; it adds runtime cost and should not be introduced simply because it is fashionable.",
+          "A language model can help with varied prose, inconsistent layouts or classification where a deterministic parser is brittle. Give it only the context needed for the task and require a defined output schema. Preserve the source excerpt that supports each extracted value. If the model cannot find a value, allow an explicit null or review state rather than encouraging it to fill gaps from general knowledge."
+        ]
+      },
+      {
+        "heading": "Build a pipeline that can explain every record",
+        "paragraphs": [
+          "A dependable pipeline separates discovery, retrieval, extraction, validation and storage. Keep the original source reference, fetch timestamp, parser or model version, and a compact evidence excerpt alongside normalized fields. Deduplicate records by a stable identifier rather than a display name. Store the currency and units explicitly, and preserve the raw value when a conversion or normalization is applied.",
+          "Make failure visible. Distinguish a missing field from a failed request, an empty page, a source that changed format and a model refusal. Use bounded retries for transient network failures, but do not retry indefinitely or turn an access-denied response into a strategy for gaining access. Route ambiguous or high-impact records to human review. A small queue of honest exceptions is more valuable than a large table of plausible-looking guesses."
+        ]
+      },
+      {
+        "heading": "Measure extraction quality instead of trusting fluent output",
+        "paragraphs": [
+          "Create a manually checked evaluation set that represents the actual sources, including edge cases such as missing values, multiple currencies, ranges, duplicate listings and changed page layouts. Compare model output with the labeled values using field-level accuracy, completeness and evidence support. For numeric fields, add domain checks such as nonnegative prices or recognized currency codes. For dates, confirm timezone and locale assumptions before comparing strings.",
+          "Run the same examples whenever the prompt, model, parser or source template changes. A fluent explanation is not evidence that a record is correct; measure the extracted fields. Track the share of records that need review, the rate of unsupported values and the cost per accepted record. If quality drops, pause expansion and investigate rather than hiding the change with more retries or a larger model."
+        ]
+      },
+      {
+        "heading": "Protect against prompt injection and unsafe content",
+        "paragraphs": [
+          "Web pages are untrusted input. A page can contain text that attempts to instruct an AI system, request secrets or change the task. Treat retrieved text as data, never as authority over the extraction instructions. Keep system rules separate from page content, give the model no tools or credentials it does not need, and validate the response against a strict schema before any downstream action.",
+          "Do not let a model-generated URL trigger an unrestricted server-side fetch. If your application follows links, limit destinations to approved hosts, block private and local network addresses, and apply normal request timeouts and size limits. Avoid placing API keys, cookies or private documents in prompts unless the processing arrangement explicitly permits it. These controls reduce the impact of malicious content and accidental data exposure."
+        ]
+      },
+      {
+        "heading": "Handle personal data and retention deliberately",
+        "paragraphs": [
+          "Collect only fields that the stated purpose requires. Public availability does not remove privacy obligations, contractual restrictions or copyright considerations. Before collecting information about people, identify a lawful basis where required, document the purpose, minimize sensitive fields and provide a retention and deletion plan. If a project involves regulated or sensitive data, get qualified privacy and legal review before it goes live.",
+          "Keep access to the dataset limited to people and services that need it. Set a deletion schedule for raw pages and prompts, and review whether a hosted model provider stores or reuses submitted content. Separate public source text from customer records and secrets. A short data-flow map can reveal that a seemingly simple extractor sends information to more vendors than the project owner expected."
+        ]
+      },
+      {
+        "heading": "Estimate total cost per usable record",
+        "paragraphs": [
+          "Model pricing is only one line item. Include fetching, browser runtime, storage, review time, failed records and maintenance when comparing approaches. A parser may take longer to build but be inexpensive to run on a stable source. A managed API can be more economical when it replaces substantial engineering, while model extraction can help on genuinely variable content but costs more if every result needs manual correction.",
+          "Pilot a representative sample before committing to volume. Compare a simple baseline with the proposed AI-assisted path on the same permitted pages. Report the number of accepted records, evidence coverage, review minutes and total cost. Do not advertise an illustrative pilot as an independent benchmark or promise universal success against protected websites. The right option is the one that meets quality, authorization and operating-cost requirements together."
+        ]
+      },
+      {
+        "heading": "A practical launch checklist",
+        "paragraphs": [
+          "Before launch, confirm the source is authorized, the access method follows its terms, the schema defines missing values, and a labeled test set measures the fields that matter. Decide what happens when pages change, a request is denied or model output fails validation. Assign an owner to review errors and set a limit for retries, concurrency, spending and data retention.",
+          "Begin with one source and a small sample. Preserve evidence, compare results with a human-checked baseline, and expand only after the workflow remains reliable through ordinary changes. If permission is unclear or the source blocks automated access, pause and use an official API, a licensed dataset or a direct agreement. Reliable AI-assisted collection is measured by useful, supportable records—not by how many requests a system can send."
+        ]
+      }
+    ],
+    "faq": [
+      { "q": "What is AI web scraping?", "a": "It is a collection workflow that may use language models to classify or extract fields from content retrieved through an authorized source. Retrieval, permissions, validation and data handling remain the responsibility of the workflow." },
+      { "q": "Can AI scrape any website automatically?", "a": "No. A model does not grant access or override a site's terms, authentication or technical restrictions. Use an official API, permission or another authorized source, and stop when access is denied." },
+      { "q": "Should I use an LLM or a normal parser?", "a": "Use a parser for stable, structured pages and an API when it provides the needed data. Consider a model for variable content, then validate each field against source evidence and a labeled test set." },
+      { "q": "How do I prevent AI extraction errors?", "a": "Define a narrow schema, allow missing values, preserve evidence, validate domain rules and compare output with manually labeled examples. Fluent text alone is not proof of correctness." },
+      { "q": "Is AI web scraping legal?", "a": "It depends on the source, jurisdiction, data, access method and intended use. Public visibility and robots.txt are not blanket permission; review the applicable terms and obtain legal advice when needed." },
+      { "q": "Do AI scraping workflows need proxies?", "a": "Not inherently. Use a proxy only for an authorized network or geographic requirement. It does not provide permission or make a denied request acceptable." }
+    ],
+    "sources": [
+      { "label": "RFC 9309: Robots Exclusion Protocol", "url": "https://www.rfc-editor.org/rfc/rfc9309.html" },
+      { "label": "Scrapy documentation: downloader middleware", "url": "https://docs.scrapy.org/en/latest/topics/downloader-middleware.html" },
+      { "label": "Playwright documentation", "url": "https://playwright.dev/docs/intro" },
+      { "label": "Firecrawl documentation", "url": "https://docs.firecrawl.dev/" },
+      { "label": "OWASP: LLM Prompt Injection Prevention Cheat Sheet", "url": "https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html" },
+      { "label": "OWASP: Server-Side Request Forgery Prevention Cheat Sheet", "url": "https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html" }
+    ],
+    "relatedLinks": [
+      { "label": "Compare managed scraper APIs", "url": "/scraper-api" },
+      { "label": "Read our Scrapy review", "url": "/scrapy-review" },
+      { "label": "Review our testing methodology", "url": "/how-we-test" },
+      { "label": "Estimate proxy bandwidth and retry costs", "url": "/resources/cost-calculator" }
+    ]
+  },
+  "linkedin-scraping-2026-bot-crackdown-what-still-works": {
+    "title": "LinkedIn Data Collection in 2026: APIs, Policies, and Safer Alternatives",
+    "description": "Understand LinkedIn's published rules, official API access and lower-risk alternatives for business research. A practical guide to permission, privacy and data quality.",
+    "excerpt": "LinkedIn research needs more than a technical setup. Start with official APIs or an approved data source, review the platform's current terms, and minimize personal data before collecting anything.",
+    "category": "Research & Compliance",
+    "tags": ["LinkedIn data collection", "LinkedIn API access", "LinkedIn scraping policy", "LinkedIn research alternatives", "business data compliance", "LinkedIn data privacy"],
+    "dateModified": "2026-11-16",
+    "omitLongForm": true,
+    "readTime": "11 min",
+    "body": [
+      {
+        "heading": "Start with the purpose, not an automation recipe",
+        "paragraphs": [
+          "Teams search for LinkedIn data collection to support recruiting, account research, market analysis or sales planning. Those goals do not all require collecting profile pages. Write down the exact fields, people or companies involved, the decision the data supports, and how long it must be retained. Then identify whether the information is available through an official API, an approved partner, a licensed provider or a source that permits the intended use.",
+          "This guide focuses on compliant access and safer alternatives, not ways to bypass platform controls. A proxy, browser profile or automation framework cannot grant permission, make a restricted endpoint public or remove privacy obligations. If the intended method is unclear, pause before collecting personal information and ask the platform, your legal team or a qualified adviser for direction."
+        ]
+      },
+      {
+        "heading": "Check LinkedIn's current terms and product rules",
+        "paragraphs": [
+          "Read LinkedIn's current User Agreement and Professional Community Policies before designing a collection process. The terms and policies describe permitted account use and prohibited activity; their precise language can change. Do not rely on old blog posts, a vendor's marketing claims or a code sample as proof that a particular workflow is allowed. Review the agreement applicable to the account and product you actually use.",
+          "Separate three questions: is the data accessible, does the platform authorize the method, and may your organization use the resulting data for its purpose? A page being visible to a signed-in member does not answer all three. Also consider the rules of any data provider, the expectations of the people represented in the data and the law in the locations involved."
+        ]
+      },
+      {
+        "heading": "Use official APIs and approved access when they fit",
+        "paragraphs": [
+          "LinkedIn provides APIs for specific products and use cases, but access may require an application, approval, member authorization or a particular partner relationship. Start with LinkedIn's developer documentation and the access path that matches your goal. Confirm available fields, retention limits, refresh behavior and whether the API permits the downstream analysis or storage you plan to perform.",
+          "An API's existence does not mean every profile field is available or that every organization can call it. Build around the documented scope returned to your application. If an approval is required, request it rather than trying to reproduce an undocumented endpoint. For a one-time or small research task, a manual review process may be more appropriate than building a collector that creates ongoing data and compliance obligations."
+        ]
+      },
+      {
+        "heading": "Consider alternatives that reduce platform and privacy risk",
+        "paragraphs": [
+          "For company-level market research, use company websites, annual reports, public registries, industry associations and licensed business databases where their terms permit your use. For recruiting, consider LinkedIn's own recruiting products or an approved provider with a clear data provenance statement. For people who have directly engaged with your organization, use data they supplied and the consent or notice applicable to that relationship.",
+          "A licensed provider is not automatically compliant simply because it sells a dataset. Ask where the data comes from, what rights support the transfer, how often records are updated, whether deletion requests propagate, and what restrictions apply to enrichment or outreach. Prefer providers that can explain provenance and honor correction and deletion obligations over a large but opaque dataset."
+        ]
+      },
+      {
+        "heading": "Minimize personal data and document the workflow",
+        "paragraphs": [
+          "If a permitted workflow includes information about people, collect only fields needed for a defined purpose. Avoid sensitive categories and speculative inferences. Set an access policy, retention period, correction route and deletion process before data enters a CRM or analytics system. Document the source, retrieval date, access basis and downstream recipients so that future users can understand the limits of the records.",
+          "Privacy obligations depend on jurisdiction and context. Publicly accessible information can still be personal data. Depending on the organization and purpose, notice, a lawful basis, data subject rights, cross-border transfer safeguards or other requirements may apply. Involve privacy counsel for large-scale monitoring, sensitive information, automated decisions or cross-border processing rather than assuming that a public profile is unrestricted."
+        ]
+      },
+      {
+        "heading": "Keep quality, provenance and corrections visible",
+        "paragraphs": [
+          "Professional profiles change, and similar names can lead to mistaken matches. Store a source reference and timestamp with each record, distinguish directly observed facts from inferred fields, and provide a review path for uncertain matches. Do not present an old title or employer as current without a recent source. If a dataset is used to make decisions about a person, evaluate the consequences of errors and provide appropriate human review.",
+          "Define when a record expires and how it will be refreshed through an authorized source. Track duplicates, missing fields and conflicts instead of silently overwriting them. A provenance trail helps analysts explain where a claim came from and gives the organization a way to correct outdated or inaccurate information. Keep deletion requests connected to downstream copies rather than removing only the original row."
+        ]
+      },
+      {
+        "heading": "Where proxies do—and do not—fit",
+        "paragraphs": [
+          "A proxy changes the network path for a connection. It does not create API permission, provide a lawful basis, authorize automation or make platform restrictions disappear. Buying residential or mobile traffic to continue after access is denied can increase cost and risk without resolving the underlying policy question. Do not rotate addresses or accounts to evade a block or rate limit.",
+          "A proxy may have a legitimate role in an organization-approved test of its own service, a permitted regional quality check or another documented network requirement. In those cases, use infrastructure approved by the system owner, identify the test window and scope, and stop if the test causes unexpected impact. For ordinary market research, prefer official and licensed data sources over routing tricks."
+        ]
+      },
+      {
+        "heading": "A decision checklist for teams",
+        "paragraphs": [
+          "Before collecting LinkedIn-related data, answer these questions in writing: What decision requires the data? Are the fields available from an official API or approved source? Do the applicable terms allow the specific method and reuse? Does the data identify people, and what privacy obligations apply? Who can access the results, how long are they needed, and how will corrections or deletion requests be handled?",
+          "If any answer is unknown, narrow the project or seek review before scaling. Pilot with the smallest dataset needed, measure match accuracy and freshness, and keep a human accountable for high-impact decisions. A workflow that uses less data and has clear provenance is easier to defend, maintain and correct than a large collection whose source and permissions cannot be explained."
+        ]
+      }
+    ],
+    "faq": [
+      { "q": "Can I scrape LinkedIn in 2026?", "a": "Whether a specific collection method is permitted depends on LinkedIn's current terms, the access method, the data and applicable law. This guide does not provide bypass instructions. Review current platform rules and use an official API, approved partner or another authorized source." },
+      { "q": "Does LinkedIn offer an API for profile data?", "a": "LinkedIn documents APIs for specific products and use cases, with access scopes and approval requirements that vary. Check the current developer documentation; do not assume all profile fields or all applications are eligible." },
+      { "q": "Is publicly visible LinkedIn information free to reuse?", "a": "Not automatically. Platform terms, privacy law, copyright, contractual restrictions and the intended use may still apply. Public visibility alone is not a blanket license." },
+      { "q": "Can proxies make LinkedIn data collection compliant?", "a": "No. A proxy changes the network route; it does not provide authorization or satisfy privacy obligations. Do not use proxies to evade platform restrictions or rate limits." },
+      { "q": "What are safer alternatives to scraping profiles?", "a": "Consider official LinkedIn products and APIs, approved partners, licensed datasets with documented provenance, company websites and public registries, or data directly supplied by people with appropriate notice." },
+      { "q": "What should a company record before using business-profile data?", "a": "Document the purpose, source, access basis, fields, retention period, permitted recipients, correction process and deletion workflow. Seek privacy or legal review when the scale or impact warrants it." }
+    ],
+    "sources": [
+      { "label": "LinkedIn User Agreement", "url": "https://www.linkedin.com/legal/user-agreement" },
+      { "label": "LinkedIn Professional Community Policies", "url": "https://www.linkedin.com/legal/professional-community-policies" },
+      { "label": "LinkedIn developer documentation: getting access", "url": "https://learn.microsoft.com/en-us/linkedin/shared/authentication/getting-access" },
+      { "label": "LinkedIn Marketing API documentation", "url": "https://learn.microsoft.com/en-us/linkedin/marketing/community-management/community-management-api/overview" },
+      { "label": "LinkedIn Help: data privacy and account controls", "url": "https://www.linkedin.com/help/linkedin/" },
+      { "label": "European Commission: data protection in the EU", "url": "https://commission.europa.eu/law/law-topic/data-protection/data-protection-eu_en" }
+    ],
+    "relatedLinks": [
+      { "label": "Read our web scraping legal considerations", "url": "/blog/is-web-scraping-legal" },
+      { "label": "Review our testing methodology", "url": "/how-we-test" },
+      { "label": "Explore ethical proxy sourcing", "url": "/blog/ethical-residential-proxy-sourcing-2026" }
+    ]
   }
 };

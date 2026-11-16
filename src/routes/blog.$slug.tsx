@@ -200,6 +200,29 @@ function BlogPostPage() {
             <span className="rounded bg-primary/10 px-2 py-0.5 text-xs font-bold text-primary">{post.category}</span>
           </div>
 
+          {post.sponsoredProviders?.length ? (
+            <aside className="mb-8 border-y border-border bg-muted/40 px-4 py-5 sm:px-6">
+              <p className="text-xs font-bold uppercase text-muted-foreground">Sponsored partners · separate from our tested ranking</p>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                {post.sponsoredProviders.map((slug) => {
+                  const partner = slug === "nodemaven"
+                    ? { name: "NodeMaven", url: "https://nodemaven.com/" }
+                    : { name: "Floppydata", url: "https://floppydata.com/" };
+                  return (
+                    <div key={slug} className="flex min-w-0 items-center gap-3 border-t border-border pt-4 first:border-0 first:pt-0 sm:first:border-t sm:first:pt-4">
+                      <ProviderLogo provider={{ slug, name: partner.name }} size="md" />
+                      <div className="min-w-0 flex-1">
+                        <h2 className="font-bold">{partner.name}</h2>
+                        <p className="text-xs text-muted-foreground">Sponsored placement; not independently ranked in this article.</p>
+                      </div>
+                      <a href={partner.url} target="_blank" rel="noopener noreferrer sponsored nofollow" className="shrink-0 text-sm font-bold text-primary underline underline-offset-4">Visit site</a>
+                    </div>
+                  );
+                })}
+              </div>
+            </aside>
+          ) : null}
+
           <Prose>
             {post.body.map((section, idx) => (
               <div key={section.heading}>

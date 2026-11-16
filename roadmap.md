@@ -1,4 +1,8 @@
 # Tasks
+- [x] Add clearly disclosed Floppydata placements to the requested guide and best-proxies article.
+- [x] Feature NodeMaven first on the best-proxies article without presenting it as independently ranked.
+- [x] Refresh the AI scraping stack and LinkedIn data-collection articles with verified, responsible guidance.
+- [ ] Verify sponsor placements, article content, preview type errors and relevant tests.
 - [x] Import all 105 comparison briefs from the 425-page PDF without losing tables, sections or FAQs.
 - [x] Publish expanded content on every matching comparison URL, including reverse-order existing URLs.
 - [x] Include all comparisons in crawlable HTML, sitemap, search and related comparison links.
