@@ -1433,8 +1433,8 @@ function BuyersGuide() {
         <p>
           If your scraping stack is already mature — Scrapy in production,
           Playwright pools, in-house CAPTCHA solving — a raw residential
-          proxy from <Link to="/reviews/bright-data">Bright Data</Link> or{" "}
-          <Link to="/reviews/decodo">Decodo</Link> is dramatically cheaper per
+          proxy from <Link to="/reviews/$slug" params={{ slug: "bright-data" }}>Bright Data</Link> or{" "}
+          <Link to="/reviews/$slug" params={{ slug: "decodo" }}>Decodo</Link> is dramatically cheaper per
           successful request. Managed APIs make sense when engineering time is
           scarce, targets change often, or you're scraping at low-to-medium
           volume where the &quot;stop maintaining unblockers&quot; benefit

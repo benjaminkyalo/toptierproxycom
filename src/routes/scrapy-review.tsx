@@ -287,7 +287,7 @@ function ScrapyReviewPage() {
                 className="inline-block rounded-md bg-nav-hover px-8 py-3 text-sm font-bold text-black hover:opacity-90 transition-opacity">
                 Get Scrapy Free →
               </a>
-              <Link to="/reviews/bright-data"
+              <Link to="/reviews/$slug" params={{ slug: "bright-data" }}
                 className="inline-block rounded-md border border-white/30 px-6 py-3 text-sm font-bold text-white hover:bg-white/10 transition-colors">
                 Best Proxies for Scrapy →
               </Link>
@@ -362,7 +362,7 @@ function ScrapyReviewPage() {
               <div className="text-sm font-extrabold text-foreground">Need proxies for your Scrapy spider?</div>
               <div className="text-xs text-foreground/60 mt-0.5">See our tested residential proxy picks — benchmarked specifically for Scrapy integration.</div>
             </div>
-            <Link to="/reviews/bright-data"
+            <Link to="/reviews/$slug" params={{ slug: "bright-data" }}
               className="ml-4 shrink-0 rounded-md bg-nav-hover px-5 py-2 text-sm font-bold text-black hover:opacity-90 transition-opacity">
               See Proxy Reviews →
             </Link>
@@ -411,7 +411,7 @@ function ScrapyReviewPage() {
                 </div>
               ))}
             </div>
-            <p className="mt-4 text-sm text-foreground/70">Our tested proxy providers for Scrapy: <Link to="/reviews/bright-data" className="text-primary hover:underline font-semibold">Bright Data</Link>, <Link to="/reviews/oxylabs" className="text-primary hover:underline font-semibold">Oxylabs</Link>, <Link to="/reviews/iproyal" className="text-primary hover:underline font-semibold">IPRoyal</Link>.</p>
+            <p className="mt-4 text-sm text-foreground/70">Our tested proxy providers for Scrapy: <Link to="/reviews/$slug" params={{ slug: "bright-data" }} className="text-primary hover:underline font-semibold">Bright Data</Link>, <Link to="/reviews/$slug" params={{ slug: "oxylabs" }} className="text-primary hover:underline font-semibold">Oxylabs</Link>, <Link to="/reviews/$slug" params={{ slug: "iproyal" }} className="text-primary hover:underline font-semibold">IPRoyal</Link>.</p>
           </section>
 
           {/* CAPTCHA */}
@@ -429,7 +429,7 @@ function ScrapyReviewPage() {
             <CopyBlock code={playwrightCode} />
             <div className="mt-4 rounded-md bg-amber-500/10 border border-amber-500/30 p-4">
               <div className="font-extrabold text-amber-600 text-sm mb-1">Performance Warning</div>
-              <p className="text-sm text-foreground/80">scrapy-playwright drops throughput by 60-80% compared to plain Scrapy — each request spins up a full browser context. For sites that are mostly JS-rendered, consider switching to pure Playwright or a managed API like <Link to="/reviews/bright-data" className="text-primary hover:underline">Bright Data</Link> which handles JS rendering at the proxy layer.</p>
+              <p className="text-sm text-foreground/80">scrapy-playwright drops throughput by 60-80% compared to plain Scrapy — each request spins up a full browser context. For sites that are mostly JS-rendered, consider switching to pure Playwright or a managed API like <Link to="/reviews/$slug" params={{ slug: "bright-data" }} className="text-primary hover:underline">Bright Data</Link> which handles JS rendering at the proxy layer.</p>
             </div>
           </section>
 
@@ -561,7 +561,7 @@ function ScrapyReviewPage() {
                 className="inline-block rounded-md bg-nav-hover px-8 py-3 text-sm font-bold text-black hover:opacity-90 transition-opacity">
                 Get Scrapy Free →
               </a>
-              <Link to="/reviews/bright-data"
+              <Link to="/reviews/$slug" params={{ slug: "bright-data" }}
                 className="inline-block rounded-md border border-white/30 px-6 py-3 text-sm font-bold text-white hover:bg-white/10 transition-colors">
                 Best Proxies for Scrapy →
               </Link>

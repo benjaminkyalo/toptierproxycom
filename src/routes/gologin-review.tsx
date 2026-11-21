@@ -393,10 +393,10 @@ function GoLoginReviewPage() {
               </div>
               <p><strong>Which proxy type to use:</strong> For Facebook Ads, Amazon and TikTok - mobile (4G/5G) proxies give the cleanest sessions. For general scraping and most e-commerce work - residential rotating proxies. For low-risk targets - datacenter proxies are cheaper and faster.</p>
               <ul className="space-y-1 pl-4">
-                <li>-&gt; <Link to="/reviews/decodo" className="text-primary hover:underline font-semibold">Decodo</Link> - best value residential proxies, strong match for GoLogin's price point</li>
-                <li>-&gt; <Link to="/reviews/iproyal" className="text-primary hover:underline font-semibold">IPRoyal</Link> - pay-as-you-go residential proxies, good for smaller operations</li>
-                <li>-&gt; <Link to="/reviews/bright-data" className="text-primary hover:underline font-semibold">Bright Data</Link> - largest residential pool, for when you scale past small-team volume</li>
-                <li>-&gt; <Link to="/guides/best-residential-proxies" className="text-primary hover:underline font-semibold">Full guide: Best residential proxies for antidetect browsers -&gt;</Link></li>
+                <li>-&gt; <Link to="/reviews/$slug" params={{ slug: "decodo" }} className="text-primary hover:underline font-semibold">Decodo</Link> - best value residential proxies, strong match for GoLogin's price point</li>
+                <li>-&gt; <Link to="/reviews/$slug" params={{ slug: "iproyal" }} className="text-primary hover:underline font-semibold">IPRoyal</Link> - pay-as-you-go residential proxies, good for smaller operations</li>
+                <li>-&gt; <Link to="/reviews/$slug" params={{ slug: "bright-data" }} className="text-primary hover:underline font-semibold">Bright Data</Link> - largest residential pool, for when you scale past small-team volume</li>
+                <li>-&gt; <Link to="/guides/$slug" params={{ slug: "best-residential-proxies" }} className="text-primary hover:underline font-semibold">Full guide: Best residential proxies for antidetect browsers -&gt;</Link></li>
               </ul>
             </div>
           </section>

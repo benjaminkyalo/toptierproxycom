@@ -363,7 +363,7 @@ driver.execute_script(
 
               <div>
                 <h3 className="font-extrabold text-foreground text-base">Proxy Passthrough</h3>
-                <p className="mt-1">2Captcha supports routing solve requests through your own residential or SOCKS5 proxy. This ensures the CAPTCHA is solved from the same IP as your scraper — critical for reCAPTCHA v3 and Enterprise, which factor the solving IP into the trust score. Without proxy passthrough on v3, you may receive low-score tokens that the target site rejects. See our guide on <Link to="/reviews/bright-data" className="text-primary hover:underline font-semibold">Bright Data</Link> and <Link to="/reviews/iproyal" className="text-primary hover:underline font-semibold">IPRoyal</Link> for residential proxy options.</p>
+                <p className="mt-1">2Captcha supports routing solve requests through your own residential or SOCKS5 proxy. This ensures the CAPTCHA is solved from the same IP as your scraper — critical for reCAPTCHA v3 and Enterprise, which factor the solving IP into the trust score. Without proxy passthrough on v3, you may receive low-score tokens that the target site rejects. See our guide on <Link to="/reviews/$slug" params={{ slug: "bright-data" }} className="text-primary hover:underline font-semibold">Bright Data</Link> and <Link to="/reviews/$slug" params={{ slug: "iproyal" }} className="text-primary hover:underline font-semibold">IPRoyal</Link> for residential proxy options.</p>
               </div>
             </div>
           </section>

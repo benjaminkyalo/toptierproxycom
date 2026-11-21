@@ -391,10 +391,10 @@ function MultiloginReviewPage() {
               </div>
               <p><strong>Which proxy type to use:</strong> For Facebook Ads, Amazon, and TikTok — use mobile (4G/5G) proxies. For general web scraping — residential rotating proxies. For low-risk targets — datacenter proxies are cheaper and faster.</p>
               <ul className="space-y-1 pl-4">
-                <li>→ <Link to="/reviews/bright-data" className="text-primary hover:underline font-semibold">Bright Data</Link> — largest residential pool, best for enterprise scraping</li>
-                <li>→ <Link to="/reviews/oxylabs" className="text-primary hover:underline font-semibold">Oxylabs</Link> — premium residential and mobile, strong uptime SLA</li>
-                <li>→ <Link to="/reviews/iproyal" className="text-primary hover:underline font-semibold">IPRoyal</Link> — best value residential proxies, good for smaller operations</li>
-                <li>→ <Link to="/guides/best-residential-proxies" className="text-primary hover:underline font-semibold">Full guide: Best residential proxies for antidetect browsers →</Link></li>
+                <li>→ <Link to="/reviews/$slug" params={{ slug: "bright-data" }} className="text-primary hover:underline font-semibold">Bright Data</Link> — largest residential pool, best for enterprise scraping</li>
+                <li>→ <Link to="/reviews/$slug" params={{ slug: "oxylabs" }} className="text-primary hover:underline font-semibold">Oxylabs</Link> — premium residential and mobile, strong uptime SLA</li>
+                <li>→ <Link to="/reviews/$slug" params={{ slug: "iproyal" }} className="text-primary hover:underline font-semibold">IPRoyal</Link> — best value residential proxies, good for smaller operations</li>
+                <li>→ <Link to="/guides/$slug" params={{ slug: "best-residential-proxies" }} className="text-primary hover:underline font-semibold">Full guide: Best residential proxies for antidetect browsers →</Link></li>
               </ul>
             </div>
           </section>
